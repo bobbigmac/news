@@ -1,6 +1,7 @@
 import { writeFileSync, readdirSync, existsSync, unlinkSync, readFileSync } from 'fs';
 import { join } from 'path';
 
+// curl "https://api.currentsapi.services/v1/latest-news?language=us&apiKey=lCOF86JDor85-nGp2pjExpsDbnxjW5nP3JK7w1w2KB6P7UKL"
 const API_KEY = 'lCOF86JDor85-nGp2pjExpsDbnxjW5nP3JK7w1w2KB6P7UKL';
 const API_BASE_URL = 'https://api.currentsapi.services/v1';
 
@@ -34,11 +35,12 @@ function yamlSummary(summary) {
 
 async function fetchLatestNews(limit = LATEST_NEWS_LIMIT, country = null) {
   try {
-    let url = `${API_BASE_URL}/latest-news?language=en&apiKey=${API_KEY}`;
+    let url = `${API_BASE_URL}/latest-news?language=en&apiKey=${encodeURIComponent(API_KEY)}`;
     if (country) {
       url += `&country=${country}`;
     }
     
+    console.log(`Fetching: ${url}`);
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const data = await response.json();
@@ -137,7 +139,7 @@ async function generateNewsFiles() {
   console.log('Fetching latest news from Currents API...');
   const newsDir = 'news';
   
-  // Fetch both global and UK news
+  // Test with just one request first
   console.log('Fetching global latest news...');
   const globalNews = await fetchLatestNews(LATEST_NEWS_LIMIT);
   if (globalNews === null) {
