@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "ai-regulation-2024",
+    "title": "Global AI Regulation: New Frameworks Emerge in 2024",
+    "tags": [
+      "artificial intelligence",
+      "regulation",
+      "policy",
+      "ethics",
+      "technology"
+    ],
+    "published_date": "2024-01-20",
+    "summary": "Major developments in artificial intelligence regulation as governments worldwide implement new frameworks to address AI safety and ethical concerns.",
+    "category": "Technology"
+  },
+  {
+    "slug": "ukraine-conflict-2024",
+    "title": "Ukraine Conflict: Latest Developments in 2024",
+    "tags": [
+      "ukraine",
+      "russia",
+      "war",
+      "europe",
+      "nato"
+    ],
+    "published_date": "2024-01-15",
+    "summary": "Ongoing developments in the Ukraine conflict as the war enters its third year, with new military strategies and diplomatic efforts emerging.",
+    "category": "International"
+  }
+]
