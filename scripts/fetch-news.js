@@ -5,7 +5,7 @@ const API_KEY = 'lCOF86JDor85-nGp2pjExpsDbnxjW5nP3JK7w1w2KB6P7UKL';
 const API_BASE_URL = 'https://api.currentsapi.services/v1';
 
 // Fetch latest news across all categories
-const LATEST_NEWS_LIMIT = 12; // Single request, well under 20/day limit
+const LATEST_NEWS_LIMIT = 100;
 const MAX_STORIES_TO_KEEP = 100; // Keep last 100 stories
 
 // Generate a slug from title
@@ -32,15 +32,19 @@ function yamlSummary(summary) {
   return `summary: "${yamlEscape(summary)}"`;
 }
 
-async function fetchLatestNews(limit = LATEST_NEWS_LIMIT) {
+async function fetchLatestNews(limit = LATEST_NEWS_LIMIT, country = null) {
   try {
-    const url = `${API_BASE_URL}/latest-news?language=en&apiKey=${API_KEY}&limit=${limit}`;
+    let url = `${API_BASE_URL}/latest-news?language=en&apiKey=${API_KEY}`;
+    if (country) {
+      url += `&country=${country}`;
+    }
+    
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const data = await response.json();
     return data.news || [];
   } catch (error) {
-    console.error('Error fetching latest news:', error.message);
+    console.error(`Error fetching latest news${country ? ` for ${country}` : ''}:`, error.message);
     return null; // null signals a hard failure
   }
 }
@@ -133,16 +137,51 @@ async function generateNewsFiles() {
   console.log('Fetching latest news from Currents API...');
   const newsDir = 'news';
   
-  const newsItems = await fetchLatestNews(LATEST_NEWS_LIMIT);
-  if (newsItems === null) {
+  // Fetch both global and UK news
+  console.log('Fetching global latest news...');
+  const globalNews = await fetchLatestNews(LATEST_NEWS_LIMIT);
+  if (globalNews === null) {
     console.error('API failure or quota exceeded. Aborting. No files will be modified.');
     return;
   }
+  
+  // Add delay between requests to avoid rate limiting
+  console.log('Waiting 2 seconds before fetching UK news...');
+  await new Promise(resolve => setTimeout(resolve, 10000));
+  
+  console.log('Fetching UK latest news...');
+  const ukNews = await fetchLatestNews(LATEST_NEWS_LIMIT, 'gb');
+  if (ukNews === null) {
+    console.error('UK news API failure. Continuing with global news only.');
+  }
+  
+  // Combine and deduplicate by story ID
+  const allNews = new Map();
+  
+  // Add global news first
+  for (const newsItem of globalNews) {
+    if (newsItem.id) {
+      allNews.set(newsItem.id, newsItem);
+    }
+  }
+  
+  // Add UK news (will overwrite duplicates, keeping UK version if same story)
+  if (ukNews) {
+    for (const newsItem of ukNews) {
+      if (newsItem.id) {
+        allNews.set(newsItem.id, newsItem);
+      }
+    }
+  }
+  
+  const newsItems = Array.from(allNews.values());
   
   if (newsItems.length === 0) {
     console.error('No latest news fetched. Aborting. No files will be modified.');
     return;
   }
+  
+  console.log(`Combined ${globalNews.length} global + ${ukNews ? ukNews.length : 0} UK stories = ${newsItems.length} unique stories`);
   
   // Load existing stories
   const existingStories = loadExistingStories(newsDir);
