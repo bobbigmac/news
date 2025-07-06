@@ -65,13 +65,13 @@ export async function initSearch() {
   if (isHomepage && storiesGridEl) {
     // Initial render of all stories
     renderStoriesGrid(storiesData);
-    
+  
     // Search input handler for homepage - real-time filtering
-    filterEl.addEventListener('input', (e) => {
-      const query = e.target.value;
+  filterEl.addEventListener('input', (e) => {
+    const query = e.target.value;
       const results = searchStories(query);
       renderStoriesGrid(results);
-    });
+  });
     
     // Check for search parameter in URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -110,11 +110,11 @@ function renderStoriesGrid(stories) {
       <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: #6c757d;">
         <h2>No stories found</h2>
         <p>Try adjusting your search terms.</p>
-      </div>
+    </div>
     `;
     return;
-  }
-  
+}
+
   const storiesHTML = stories.map(story => {
     const imageStyle = story.image ? `background-image: url('${story.image}')` : '';
     const dateStr = story.published_date ? new Date(story.published_date).toLocaleDateString() : '';
