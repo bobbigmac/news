@@ -19,6 +19,10 @@ jobs:
           node-version: 20
 
       - run: npm ci
+      
+      - name: Fetch latest news
+        run: node scripts/fetch-news.js
+        
       - run: npm run build
 
       - name: Deploy to GitHub Pages

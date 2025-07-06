@@ -1,11 +1,12 @@
 {
-  "name": "recipe-site",
+  "name": "news-site",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "node scripts/build.js",
-    "dev": "npm run build && live-server docs --port=8000 --open=/",
-    "watch": "live-server docs --port=8000 --open=/ --watch=src,recipes"
+    "fetch-news": "node scripts/fetch-news.js",
+    "dev": "npm run fetch-news && npm run build && live-server docs --port=8000 --open=/",
+    "watch": "live-server docs --port=8000 --open=/ --watch=src,news"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

@@ -62,8 +62,8 @@ for (const file of readdirSync(srcDir)) {
       const sectionContent = lines.slice(1).join('\n').trim();
       
       // Render section content as markdown
-      const sectionHtml = md.render(`## ${section}`);
-      htmlBody += sectionHtml;
+         const sectionHtml = md.render(`## ${section}`);
+         htmlBody += sectionHtml;
     }
     
     htmlBody += '</div>';
