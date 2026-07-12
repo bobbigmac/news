@@ -152,6 +152,57 @@
       "contentVersion": 1
     },
     {
+      "id": "cluster-1783845254048-zlmp2s",
+      "headline": "Footage shows death of World Cup star",
+      "summary": "Footage of 25‑year‑old footballer Adams, who had played twice in the World Cup, surfaced after his death in Schotschekloof, Cape Town. The cause of death remains unconfirmed.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "4f86e6b1-5597-5b42-addc-9d0b57a4654d",
+          "title": "Heartbreaking footage of tragic World Cup star emerges",
+          "source": "Luke Power",
+          "url": "https://www.dailymail.com/sport/football/article-15971413/jayden-adams-world-cup-south-africa.html",
+          "published": "2026-07-12 07:42:53 +0000",
+          "category": [
+            "national"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i.dailymail.com/1s/2026/07/12/08/109965447-0-image-m-19_1783840403039.jpg",
+          "sourceName": "Daily Mail"
+        }
+      ],
+      "created": "2026-07-12T08:34:14.048Z",
+      "updated": "2026-07-12T08:34:14.048Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845254048-b674xb",
+      "headline": "FIFA to consider 64‑team World Cup",
+      "summary": "FIFA President Gianni Infantino said the governing body is exploring expanding the World Cup to 64 teams, arguing that every nation should have the opportunity to participate. The proposal would increase the tournament’s size beyond the current 32 teams.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "7b781bae-42ee-56cd-837a-9a19be0fd85e",
+          "title": "FIFA considers expanding World Cup to 64 teams, Infantino says",
+          "source": "",
+          "url": "https://tass.com/sports/2159133",
+          "published": "2026-07-12 07:42:13 +0000",
+          "category": [
+            "general",
+            "world"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://tass.com/img/blocks/common/tass_logo_share_eng.png",
+          "sourceName": "TASS"
+        }
+      ],
+      "created": "2026-07-12T08:34:14.048Z",
+      "updated": "2026-07-12T08:34:14.048Z",
+      "contentVersion": 1
+    },
+    {
       "id": "cluster-1783845254048-mj6gc6",
       "headline": "Farage rating falls to lowest level",
       "summary": "An Opinium survey showed former UKIP leader Nigel Farage’s approval rating dropped to –27, the lowest since the general election. More than half of voters disapproved of him, while only a quarter approved.",
@@ -498,6 +549,31 @@
       "contentVersion": 1
     },
     {
+      "id": "cluster-1783845378710-01u1tp",
+      "headline": "New footage emerges of deceased World Cup star",
+      "summary": "Heartbreaking footage shows the tragic World Cup star Adams, 25, found dead in Cape Town weeks after playing in the tournament; cause of death remains unconfirmed, adding to existing coverage of the player's death.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "10e9928c-f79c-5d81-b78a-81db0503be49",
+          "title": "Heartbreaking footage of tragic World Cup star emerges",
+          "source": "Luke Power",
+          "url": "https://www.dailymail.com/sport/football/article-15971413/jayden-adams-world-cup-south-africa.html",
+          "published": "2026-07-12 07:51:49 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i.dailymail.com/1s/2026/07/12/08/109965447-0-image-m-19_1783840403039.jpg",
+          "sourceName": "Daily Mail"
+        }
+      ],
+      "created": "2026-07-12T08:36:18.710Z",
+      "updated": "2026-07-12T08:36:18.710Z",
+      "contentVersion": 1
+    },
+    {
       "id": "cluster-1783845378710-l5l3w6",
       "headline": "High street offers cooling fashion for heatwave",
       "summary": "Shoppers can keep cool in the heat with breezy buys from Monsoon and other high street retailers, with items starting from as little as £18, as advice is given for dressing during the current heatwave.",
@@ -758,6 +834,18 @@
           "pluginPriority": 0
         },
         {
+          "id": "rss-e2c833ca678f994956ff6f5685261a86",
+          "title": "'Animals', Hand of God and Beckham: Argentina and England's World Cup rivalry",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/football/articles/c621y75w2x2o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T10:10:33.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
           "id": "rss-e82a2050ab5596664941cc70abf42086",
           "title": "Declan Rice was in bed ill for nearly three days before Norway game, Tuchel reveals",
           "source": "",
@@ -790,6 +878,42 @@
           "image": "",
           "published": "2026-07-12T00:33:04.000Z",
           "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-64949330425b9ae79a83c4094364e8a8",
+          "title": "How to get through World Cup-induced sleep deprivation",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cx2kkrndr00o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-06T13:09:31.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-7f139e3114d6ece6fb50adb764e655a7",
+          "title": "Starmer hints at bank holiday if England win World Cup",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c20y9g2v2wvo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T01:25:24.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-7b0807a77e1a810a09a8aa0de306ebbd",
+          "title": "Will we get a bank holiday if England wins World Cup?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/cdx781xqn01o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T21:30:34.000Z",
+          "category": "Politics",
           "plugin": "bbc",
           "pluginPriority": 0
         }
@@ -865,6 +989,29 @@
       ],
       "created": "2026-07-12T17:26:40.749Z",
       "updated": "2026-07-12T17:26:40.749Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877250053-1wvcxs",
+      "headline": "Senator Lindsey Graham dies after brief illness",
+      "summary": "Senator Lindsey Graham, 71, died after a brief and sudden illness, his office said. He had returned from Kyiv, meeting Ukrainian President Volodymyr Zelensky on Friday. Donald Trump paid tribute, calling Graham a true American patriot who will be greatly missed.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-b2e44540b8de5a08f02eb6fb80ca474e",
+          "title": "US senator and close Trump ally Lindsey Graham dies after 'brief and sudden illness'",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cvgj25j6nmeo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T15:34:45.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:27:30.053Z",
+      "updated": "2026-07-12T17:27:30.053Z",
       "contentVersion": 1
     },
     {
@@ -980,6 +1127,52 @@
       ],
       "created": "2026-07-12T17:29:52.599Z",
       "updated": "2026-07-12T17:29:52.599Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877443499-x18ttp",
+      "headline": "Jayden Adams death confirmed after footage emerges",
+      "summary": "Footage of 25‑year‑old South African midfielder Jayden Adams surfaced after his death in Schotschekloof, Cape Town. Adams, who played for Mamelodi Sundowns and featured for South Africa at the World Cup weeks earlier, was found dead; the cause remains unconfirmed.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "rss-0a622d2e9922bb9ad8781ab34ceb305c",
+          "title": "South Africa World Cup midfielder Adams dies aged 25",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/football/articles/cr47y5nvrqlo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T14:47:47.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:30:43.499Z",
+      "updated": "2026-07-12T17:30:43.499Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877443499-2djfri",
+      "headline": "World Cup and Wimbledon fashion quiz launched",
+      "summary": "An interactive fashion test invites users to compare the style of the World Cup and Wimbledon, highlighting the high‑stakes attire associated with both events and encouraging participants to choose their favourite looks.",
+      "category": "Entertainment",
+      "stories": [
+        {
+          "id": "rss-a58dd513284bfa78e9ab5b3c41953171",
+          "title": "Is the World Cup or Wimbledon more stylish? Take our fashion test to find out",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cx2vz37z7v3o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T00:39:45.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:30:43.499Z",
+      "updated": "2026-07-12T17:30:43.499Z",
       "contentVersion": 1
     },
     {
@@ -1422,6 +1615,34 @@
       "contentVersion": 1
     },
     {
+      "id": "cluster-1783879438340-1j0fow",
+      "headline": "Trump subpoenas NYT journalists over Air Force One",
+      "summary": "The Trump administration has subpoenaed New York Times journalists for reporting on security concerns related to the president's new plane, gifted by Qatar. The journalists face legal action over their coverage.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-2bfa21b061700315dc52653d6270e1f2",
+          "title": "Trump administration subpoenas New York Times journalists over Air Force One reporting",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cpd3g8q51g7o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T16:11:33.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Trump",
+        "Air Force One"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T18:03:58.340Z",
+      "contentVersion": 1
+    },
+    {
       "id": "cluster-1783879438340-jbqam6",
       "headline": "Bowel cancer screening uptake low in 50s",
       "summary": "Health officials report that less than half of 54-year-olds completed free at-home bowel cancer screening tests. The low participation rate raises concerns about early detection efforts.",
@@ -1698,6 +1919,20 @@
           ],
           "plugin": null,
           "pluginPriority": null
+        },
+        {
+          "id": "8e699fc0-f735-58ea-abdc-b51ac179d80b",
+          "title": "US senator and Trump ally Lindsey Graham dies at 71 - The Korea Times",
+          "source": "",
+          "sourceName": "Korea Times",
+          "url": "https://www.koreatimes.co.kr/world/20260712/us-senator-and-trump-ally-lindsey-graham-dies-at-71",
+          "image": "https://newsimg.koreatimes.co.kr/2026/07/12/99f0cf33-e54c-48fd-8f18-1f9a7454a58f.jpg",
+          "published": "2026-07-12 07:42:03 +0000",
+          "category": [
+            "regional"
+          ],
+          "plugin": null,
+          "pluginPriority": null
         }
       ],
       "triggerWords": [
@@ -1705,6 +1940,63 @@
         "Trump ally"
       ],
       "impact": "high",
+      "created": "2026-07-12T18:05:15.206Z",
+      "updated": "2026-07-12T18:05:15.206Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879515206-g2dzy5",
+      "headline": "White House launches Trump Accounts scheme for children",
+      "summary": "The White House announced a new \"Trump Accounts\" programme intended to give American children a stake in the nation’s future, describing it as a way to promote the American dream. Critics have questioned the plan’s purpose and implementation.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-ce200fa88551ceab00d58f8c639d8a6e",
+          "title": "Will Trump Accounts deliver for American children?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/ckg55v9e2y9o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T07:41:18.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Trump Accounts",
+        "White House"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:05:15.206Z",
+      "updated": "2026-07-12T18:05:15.206Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879515206-az65m8",
+      "headline": "Starmer says will stay in touch with Trump",
+      "summary": "British Prime Minister Keir Starmer said he will keep communication lines open with U.S. President Donald Trump after the latter’s meeting with NATO leaders in Turkey, noting Trump wished him well at the summit.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-00cf5e37417447bdb354ebbacf7b645f",
+          "title": "Starmer to keep in touch with Trump after No 10",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/crel4gzg94eo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T19:04:36.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Starmer",
+        "Trump",
+        "NATO Turkey"
+      ],
+      "impact": "medium",
       "created": "2026-07-12T18:05:15.206Z",
       "updated": "2026-07-12T18:05:15.206Z",
       "contentVersion": 1
@@ -1741,11 +2033,56 @@
       "contentVersion": 1
     },
     {
+      "id": "cluster-1783879601072-h5wiof",
+      "headline": "Senegal sacks manager Pape Thiaw",
+      "summary": "Senegal's football federation dismissed manager Pape Thiaw following the team's elimination at the 2026 World Cup last‑32 stage, confirming the decision in the wake of the early exit, marking a change in leadership after a disappointing tournament performance.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "e0bed3f5-532e-5d8f-a542-f38e62843dd5",
+          "title": "Senegal sack manager Pape Thiaw in wake of World Cup exit",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/football/articles/cq81l29lj2zo",
+          "image": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/3690/live/d4ecac00-7dbc-11f1-ad4b-13d0aac581db.jpg",
+          "published": "2026-07-12 07:25:09 +0000",
+          "category": [
+            "sports"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "Senegal sack manager",
+        "Pape Thiaw",
+        "World Cup exit"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:06:41.073Z",
+      "updated": "2026-07-12T18:06:41.073Z",
+      "contentVersion": 2
+    },
+    {
       "id": "cluster-1783879601073-tlunja",
       "headline": "Senate inquiry targets telco outage causes",
       "summary": "The Senate has launched an inquiry, chaired by Greens Senator Sarah Hanson-Young, to examine whether a cheap, outdated device caused recent telecommunications outages. Hanson-Young warned of a crackdown on the telco giants responsible for multiple outages in recent years.",
       "category": "Politics",
       "stories": [
+        {
+          "id": "4fc82ce3-6392-522b-9300-08151bd7ff82",
+          "title": "Senate inquiry to interrogate whether cheap, out of date device caused outage",
+          "source": "Jessica Yun",
+          "sourceName": "Brisbane Times",
+          "url": "https://www.brisbanetimes.com.au/technology/senate-inquiry-to-interrogate-whether-cheap-out-of-date-device-caused-outage-20260712-p60em3.html",
+          "image": "https://static.ffx.io/images/$zoom_0.3293%2C$multiply_0.7554%2C$ratio_1.777778%2C$width_1059%2C$x_110%2C$y_0/t_crop_custom/q_86%2Cf_auto/18420cde17278b925bd57fc24c8283052ba51511",
+          "published": "2026-07-12 08:06:04 +0000",
+          "category": [
+            "sports"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        },
         {
           "id": "21306b3d-2f85-54a1-8384-3027cabf63ea",
           "title": "Senate inquiry to interrogate whether cheap, out of date device caused outage",
@@ -1766,6 +2103,66 @@
         "Senate inquiry",
         "Sarah Hanson-Young"
       ],
+      "impact": "medium",
+      "created": "2026-07-12T18:06:41.073Z",
+      "updated": "2026-07-12T18:06:41.073Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879601073-326m7f",
+      "headline": "FIFA mistaken identity rule impacts quarter-final",
+      "summary": "FIFA introduced a 'mistaken identity' rule that influenced a World Cup quarter-final, resulting in Breel Embolo's red card during Switzerland's defeat to Argentina, prompting fury from the Swiss team.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "0c83afc2-706b-5f7b-bd5d-247f52220af1",
+          "title": "New FIFA rule decides World Cup quarter-final after case of mistaken identity",
+          "source": "Glen Williams",
+          "sourceName": "Wales Online",
+          "url": "https://www.walesonline.co.uk/sport/football/football-news/new-fifa-rule-decides-world-34277589",
+          "image": "https://i2-prod.walesonline.co.uk/article34277600.ece/ALTERNATES/s1200d/0_Screenshot-2026-07-12-084519.jpg",
+          "published": "2026-07-12 07:51:38 +0000",
+          "category": [
+            "sports"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "mistaken identity rule",
+        "Breel Embolo",
+        "Switzerland"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:06:41.073Z",
+      "updated": "2026-07-12T18:06:41.073Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879601073-h5xveq",
+      "headline": "Jude Bellingham snaps at Thomas Tuchel in live TV interview as viewers stunned",
+      "summary": "Jude Bellingham snaps at Thomas Tuchel in live TV interview as viewers stunned — Jude Bellingham appeared to hit back at Thomas Tuchel live on TV after England reached the World Cup semi-finals with v",
+      "category": [
+        "sports"
+      ],
+      "stories": [
+        {
+          "id": "0defe6cc-f785-5432-be2a-fa7f48498ccf",
+          "title": "Jude Bellingham snaps at Thomas Tuchel in live TV interview as viewers stunned",
+          "source": "Glen Williams",
+          "sourceName": "Wales Online",
+          "url": "https://www.walesonline.co.uk/sport/football/football-news/jude-bellingham-snaps-back-thomas-34277534",
+          "image": "https://i2-prod.walesonline.co.uk/article34277551.ece/ALTERNATES/s1200d/0_Screenshot-2026-07-12-082328.jpg",
+          "published": "2026-07-12 07:25:42 +0000",
+          "category": [
+            "sports"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [],
       "impact": "medium",
       "created": "2026-07-12T18:06:41.073Z",
       "updated": "2026-07-12T18:06:41.073Z",
@@ -2087,84 +2484,10 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880126559-hn7pd5",
-      "headline": "Japan faces declining foreign worker interest, rice consumption and maternity leave debate",
-      "summary": "Foreign workers show reduced desire to stay long-term in Japan amid falling rice consumption and public debate over a mayor's maternity leave, highlighting broader demographic and cultural challenges.",
-      "category": "Business",
-      "stories": [
-        {
-          "id": "7fa29bc1-177e-5526-a0ee-7b252aa4f0a6",
-          "title": "Gov't urges use of rice flour amid slump in consumption of Japan staple",
-          "source": "",
-          "sourceName": "Japan Today",
-          "url": "https://japantoday.com/category/national/gov%27t-urges-use-of-rice-flour-amid-slump-in-consumption-of-japan-staple",
-          "image": "None",
-          "published": "2026-07-12 07:44:32 +0000",
-          "category": [
-            "politics"
-          ],
-          "plugin": null,
-          "pluginPriority": null
-        },
-        {
-          "id": "rss-93f1b1ca8b78e4db27f8062bb9f474ee",
-          "title": "A mayor in Japan announced her maternity leave - and got the whole country talking",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/c1mykzj15xno?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-02T22:00:11.000Z",
-          "category": "Health",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "Japan",
-        "work",
-        "rice",
-        "maternity leave"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:15:26.559Z",
-      "updated": "2026-07-12T18:15:26.559Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783880126559-okk18z",
-      "headline": "Rachel Reeves stresses Burnham needs detailed governance plan",
-      "summary": "Chancellor Rachel Reeves told BBC that Andy Burnham requires a comprehensive plan to govern effectively from the start, emphasizing economic stability for any potential administration.",
-      "category": "Politics",
-      "stories": [
-        {
-          "id": "rss-07f6aaeb347aca17165b6194ea879dd6",
-          "title": "Reeves tells BBC: Burnham needs worked-through plan to govern from the start",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cwykdvgv4d4o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-11T12:00:16.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "Burnham",
-        "Reeves",
-        "plan",
-        "govern"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:15:26.559Z",
-      "updated": "2026-07-12T18:15:26.559Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783880126559-vjjoat",
-      "headline": "Typhoon forces evacuation of nearly two million in China",
-      "summary": "A powerful typhoon made landfall in Zhejiang province, prompting evacuation of nearly two million people. Schools, work and outdoor activities were suspended and transport services cancelled.",
-      "category": "World",
+      "id": "cluster-1783880122507-6hxr7y",
+      "headline": "China evacuates nearly two million in typhoon",
+      "summary": "China evacuated nearly two million people after a powerful typhoon made landfall. Schools, work and outdoor activities were suspended in Zhejiang province and many transport services cancelled. The evacuation is among the largest for the storm.",
+      "category": "Environment",
       "stories": [
         {
           "id": "rss-dc95e59d9ca7e33e2b4886a0713f4e62",
@@ -2180,21 +2503,20 @@
         }
       ],
       "triggerWords": [
-        "typhoon",
-        "China",
         "Zhejiang",
-        "evacuation"
+        "typhoon landfall",
+        "China evacuation"
       ],
       "impact": "high",
-      "created": "2026-07-12T18:15:26.559Z",
-      "updated": "2026-07-12T18:15:26.559Z",
+      "created": "2026-07-12T18:15:22.507Z",
+      "updated": "2026-07-12T18:15:22.507Z",
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880126559-oizani",
-      "headline": "4.8% of Latvia's jobs in culture sector",
-      "summary": "Eurostat figures published July 10th show 4.8% of Latvia's employment is in the cultural sector, slightly above the EU average, indicating the country's strong cultural economy.",
-      "category": "World",
+      "id": "cluster-1783880122508-535ybf",
+      "headline": "Latvia has 4.8% jobs in culture",
+      "summary": "Eurostat figures published on July 10 show 4.8% of Latvia's jobs are in the cultural sector, slightly above the EU average. The data highlights Latvia's relative concentration of cultural employment compared with other member states.",
+      "category": "Business",
       "stories": [
         {
           "id": "3feb7f5d-627c-5fe1-8941-87a7d61eba06",
@@ -2213,20 +2535,50 @@
       ],
       "triggerWords": [
         "Latvia",
-        "culture",
-        "jobs",
+        "culture jobs",
         "Eurostat"
       ],
       "impact": "low",
-      "created": "2026-07-12T18:15:26.560Z",
-      "updated": "2026-07-12T18:15:26.560Z",
+      "created": "2026-07-12T18:15:22.508Z",
+      "updated": "2026-07-12T18:15:22.508Z",
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880126560-fln9ee",
-      "headline": "Daily links compilation covers global economic and political developments",
-      "summary": "Naked capitalism's daily links compilation covers heat waves, US-Iran deadlines, Japan bond concerns, China rare earths export restrictions, German car job losses and US policy issues including AI surveillance and healthcare.",
-      "category": "World",
+      "id": "cluster-1783880122508-1uiv8u",
+      "headline": "Japan promotes rice flour amid rice decline",
+      "summary": "Japan's farm ministry is encouraging the use of rice flour to make sweets as domestic rice consumption declines. The move aims to expand how the staple is used amid a slump in demand for the grain.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "7fa29bc1-177e-5526-a0ee-7b252aa4f0a6",
+          "title": "Gov't urges use of rice flour amid slump in consumption of Japan staple",
+          "source": "",
+          "sourceName": "Japan Today",
+          "url": "https://japantoday.com/category/national/gov%27t-urges-use-of-rice-flour-amid-slump-in-consumption-of-japan-staple",
+          "image": "None",
+          "published": "2026-07-12 07:44:32 +0000",
+          "category": [
+            "politics"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "rice flour",
+        "Japan staple",
+        "farm ministry"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:15:22.508Z",
+      "updated": "2026-07-12T18:15:22.508Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880122508-5t6fd1",
+      "headline": "Naked Capitalism posts July 11 links",
+      "summary": "Yves Smith's Naked Capitalism on July 11 highlighted topics including a new US deadline for Iran, Japan bond worries, China's rare earths ban, German car job losses, AI-driven tech depression, Obamacare hikes and criticism of Trump Accounts.",
+      "category": "Other",
       "stories": [
         {
           "id": "3e22a43d-301e-5729-a284-6e9e67284ab9",
@@ -2248,22 +2600,49 @@
         }
       ],
       "triggerWords": [
-        "links",
         "naked capitalism",
-        "Japan",
-        "China",
-        "Germany"
+        "Yves Smith",
+        "July 11 links"
       ],
-      "impact": "medium",
-      "created": "2026-07-12T18:15:26.560Z",
-      "updated": "2026-07-12T18:15:26.560Z",
+      "impact": "low",
+      "created": "2026-07-12T18:15:22.508Z",
+      "updated": "2026-07-12T18:15:22.508Z",
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880126560-yivj6s",
-      "headline": "Home swapping saves families £6,000 on holiday costs",
-      "summary": "The BBC examines the growing trend of people swapping homes to cut holiday costs, with families reporting savings of £6,000 through this accommodation exchange model.",
-      "category": "World",
+      "id": "cluster-1783880122508-lp1177",
+      "headline": "Reeves tells BBC Burnham needs plan",
+      "summary": "Chancellor Rachel Reeves told BBC's Laura Kuenssberg that Andy Burnham must have a worked-through plan to govern from the start. Reeves said she would hand over a stable economy to the incoming prime minister.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-07f6aaeb347aca17165b6194ea879dd6",
+          "title": "Reeves tells BBC: Burnham needs worked-through plan to govern from the start",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cwykdvgv4d4o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T12:00:16.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Reeves",
+        "Burnham",
+        "Laura Kuenssberg"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:15:22.508Z",
+      "updated": "2026-07-12T18:15:22.508Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880122508-bzcti6",
+      "headline": "Home swaps save £6,000 on holidays",
+      "summary": "The BBC reports a growing trend of strangers swapping homes to cut holiday costs, with one family saving £6,000. The practice avoids accommodation expenses by exchanging houses for set periods.",
+      "category": "Other",
       "stories": [
         {
           "id": "rss-c1c018dc474d1768e8a816ed306f6719",
@@ -2280,19 +2659,18 @@
       ],
       "triggerWords": [
         "home swapping",
-        "holidays",
-        "BBC",
-        "£6,000"
+        "£6,000",
+        "holiday costs"
       ],
       "impact": "low",
-      "created": "2026-07-12T18:15:26.560Z",
-      "updated": "2026-07-12T18:15:26.560Z",
+      "created": "2026-07-12T18:15:22.508Z",
+      "updated": "2026-07-12T18:15:22.508Z",
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880126561-6ka1x1",
-      "headline": "AI workers drive San Francisco median home price to $1.7 million",
-      "summary": "Wealthy artificial intelligence professionals have pushed San Francisco's median home price to a record $1.7 million, according to latest figures, as tech sector wages fuel housing demand.",
+      "id": "cluster-1783880122508-q784tx",
+      "headline": "San Francisco median home hits $1.7m",
+      "summary": "Wealthy artificial intelligence workers have driven San Francisco's median home price to a record $1.7m, according to latest figures. The increase reflects concentrated buying power from the tech sector in the city's housing market.",
       "category": "Business",
       "stories": [
         {
@@ -2310,20 +2688,19 @@
       ],
       "triggerWords": [
         "San Francisco",
-        "AI",
-        "home prices",
-        "$1.7m"
+        "AI workers",
+        "house prices"
       ],
       "impact": "medium",
-      "created": "2026-07-12T18:15:26.561Z",
-      "updated": "2026-07-12T18:15:26.561Z",
+      "created": "2026-07-12T18:15:22.508Z",
+      "updated": "2026-07-12T18:15:22.508Z",
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880126561-w9402t",
-      "headline": "Australian dock workers demand 28-hour work week in AI negotiations",
-      "summary": "A union reports dock workers in Australia are calling for a 28-hour work week as they negotiate responses to automation, stating workers are 'in the crosshairs' of AI implementation across ports.",
-      "category": "World",
+      "id": "cluster-1783880122508-vhkj0c",
+      "headline": "Australia dock workers want 28-hour week",
+      "summary": "An Australian union representing dock workers has called for a 28-hour week in talks over automation, saying members are \"in the crosshairs\" of AI tested across ports. The claim seeks to offset job losses from technology.",
+      "category": "Business",
       "stories": [
         {
           "id": "rss-03ad11624b0f99a64f9c77e496ee9885",
@@ -2339,21 +2716,20 @@
         }
       ],
       "triggerWords": [
-        "Australia",
-        "dock workers",
-        "AI",
-        "28-hour week"
+        "Australia dock workers",
+        "28-hour week",
+        "AI talks"
       ],
       "impact": "medium",
-      "created": "2026-07-12T18:15:26.561Z",
-      "updated": "2026-07-12T18:15:26.561Z",
+      "created": "2026-07-12T18:15:22.508Z",
+      "updated": "2026-07-12T18:15:22.508Z",
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880126561-dfefbe",
-      "headline": "Microsoft announces 4,800 job cuts in major restructuring",
-      "summary": "Microsoft is cutting 4,800 jobs as part of a significant restructure, representing 2.1% of its workforce, with 1,600 immediate layoffs at Xbox division.",
-      "category": "Business",
+      "id": "cluster-1783880122508-q4rci9",
+      "headline": "Microsoft cuts 4,800 jobs, shrinks Xbox",
+      "summary": "Microsoft is cutting 4,800 jobs, 2.1% of its workforce, in a significant restructure that shrinks Xbox. Immediate losses include 1,600 positions at Xbox. The move reflects broader consolidation in the tech sector.",
+      "category": "Technology",
       "stories": [
         {
           "id": "rss-2bdbd18a795f12a4a74ac31d7f851857",
@@ -2370,19 +2746,47 @@
       ],
       "triggerWords": [
         "Microsoft",
-        "4,800 jobs",
         "Xbox",
-        "restructure"
+        "4,800 jobs"
       ],
       "impact": "medium",
-      "created": "2026-07-12T18:15:26.561Z",
-      "updated": "2026-07-12T18:15:26.561Z",
+      "created": "2026-07-12T18:15:22.508Z",
+      "updated": "2026-07-12T18:15:22.508Z",
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880126561-s8vvp7",
-      "headline": "Inquiry finds white working-class children failed by education system",
-      "summary": "An inquiry into white working-class children's education outcomes spoke to thousands of young people, their parents and hundreds of teachers, concluding the system fails this demographic.",
+      "id": "cluster-1783880122508-cqh1lz",
+      "headline": "Shoko Kawata takes maternity leave",
+      "summary": "Shoko Kawata, 35, mayor of a Japanese city, announced maternity leave and faced criticism but said she loves her job and is proud to take time off for her baby. The case sparked national debate on working mothers.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-93f1b1ca8b78e4db27f8062bb9f474ee",
+          "title": "A mayor in Japan announced her maternity leave - and got the whole country talking",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c1mykzj15xno?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-02T22:00:11.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Shoko Kawata",
+        "maternity leave",
+        "Japan mayor"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:15:22.508Z",
+      "updated": "2026-07-12T18:15:22.508Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880122508-hafljq",
+      "headline": "Inquiry: white working-class children failed",
+      "summary": "An inquiry found the education system fails white working-class children after speaking to thousands of young people, parents and hundreds of teachers. The report highlights persistent disadvantage in attainment for that demographic group.",
       "category": "Politics",
       "stories": [
         {
@@ -2400,20 +2804,19 @@
       ],
       "triggerWords": [
         "white working-class",
-        "children",
-        "education",
-        "inquiry"
+        "education inquiry",
+        "failed by system"
       ],
-      "impact": "high",
-      "created": "2026-07-12T18:15:26.561Z",
-      "updated": "2026-07-12T18:15:26.561Z",
+      "impact": "medium",
+      "created": "2026-07-12T18:15:22.508Z",
+      "updated": "2026-07-12T18:15:22.508Z",
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880126561-mi6vq0",
-      "headline": "Legal challenge seeks minimum wage for Germany's disabled workers",
-      "summary": "A test case is pursuing minimum wage rights for approximately 300,000 disabled workers in Germany who currently receive lower pay, seeking equal compensation under labour law.",
-      "category": "World",
+      "id": "cluster-1783880122508-j5akho",
+      "headline": "Germany disabled workers fight for min wage",
+      "summary": "A test case in Germany is seeking the minimum wage for 300,000 disabled workers currently paid less than the statutory rate. The legal action challenges exemptions allowing lower pay for sheltered workshops.",
+      "category": "Business",
       "stories": [
         {
           "id": "rss-5c3d3014b3305bf57b6e2546805df361",
@@ -2429,20 +2832,19 @@
         }
       ],
       "triggerWords": [
-        "Germany",
-        "disabled workers",
+        "Germany disabled workers",
         "equal pay",
-        "minimum wage"
+        "minimum wage test case"
       ],
       "impact": "medium",
-      "created": "2026-07-12T18:15:26.561Z",
-      "updated": "2026-07-12T18:15:26.561Z",
+      "created": "2026-07-12T18:15:22.508Z",
+      "updated": "2026-07-12T18:15:22.508Z",
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880143517-r8mmqt",
-      "headline": "Lotte Mart opens new store in Tay Ninh",
-      "summary": "Lotte Mart has opened a two-story retail store in Tay Ninh, Vietnam. The opening day saw high customer activity at the new location.",
+      "id": "cluster-1783880137957-97w3h4",
+      "headline": "KB Financial Group explores strategic opportunities",
+      "summary": "KB Financial Group Chairman Yang Jong-hee stated that the current money move could strengthen the group's competitiveness, as reported by The Korea Times on 12 July 2026. The statement reflects ongoing strategic planning amid market dynamics.",
       "category": "Business",
       "stories": [
         {
@@ -2461,19 +2863,20 @@
         }
       ],
       "triggerWords": [
-        "Lotte Mart",
-        "Tay Ninh",
-        "Vietnam"
+        "KB Financial",
+        "Yang Jong-hee",
+        "money move",
+        "Lotte Mart"
       ],
-      "impact": "low",
-      "created": "2026-07-12T18:15:43.517Z",
-      "updated": "2026-07-12T18:15:43.517Z",
+      "impact": "medium",
+      "created": "2026-07-12T18:15:37.957Z",
+      "updated": "2026-07-12T18:15:37.957Z",
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880143517-bs8kk6",
+      "id": "cluster-1783880137957-rs32v2",
       "headline": "Korea issues first heat wave emergency warning",
-      "summary": "South Korean authorities issued the first-ever heat wave emergency warning for Gyeongsan and Pohang in North Gyeongsang Province. The alert, the highest level available, was issued at 10 a.m. on Sunday.",
+      "summary": "A heat wave emergency warning, the highest alert level, was issued for Gyeongsan and Pohang in North Gyeongsang Province at 10 a.m. Sunday, marking Korea's first such alert. The measure aims to address extreme weather risks.",
       "category": "World",
       "stories": [
         {
@@ -2492,21 +2895,20 @@
         }
       ],
       "triggerWords": [
-        "heat wave",
+        "heat wave emergency warning",
         "Gyeongsan",
-        "Pohang",
-        "North Gyeongsang"
+        "Pohang"
       ],
-      "impact": "medium",
-      "created": "2026-07-12T18:15:43.517Z",
-      "updated": "2026-07-12T18:15:43.517Z",
+      "impact": "high",
+      "created": "2026-07-12T18:15:37.957Z",
+      "updated": "2026-07-12T18:15:37.957Z",
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880143517-3t4exy",
-      "headline": "Korea and US conduct disinformation tabletop exercise",
-      "summary": "South Korea and the United States held their first joint tabletop exercise to counter foreign disinformation campaigns during wartime. The military exercise focused on identifying and mitigating wartime disinformation.",
-      "category": "World",
+      "id": "cluster-1783880137957-32uwk4",
+      "headline": "Korea-US joint exercise targets wartime disinformation",
+      "summary": "Korea and the United States conducted their first joint tabletop exercise to counter foreign disinformation campaigns during wartime, as reported by The Korea Times. The drill underscores growing security cooperation.",
+      "category": "Politics",
       "stories": [
         {
           "id": "af2a6e33-0ce6-5934-93f2-2853db14b417",
@@ -2524,20 +2926,19 @@
         }
       ],
       "triggerWords": [
-        "disinformation",
-        "tabletop exercise",
-        "South Korea",
-        "United States"
+        "joint tabletop exercise",
+        "wartime disinformation",
+        "Korea-US"
       ],
       "impact": "medium",
-      "created": "2026-07-12T18:15:43.517Z",
-      "updated": "2026-07-12T18:15:43.517Z",
+      "created": "2026-07-12T18:15:37.957Z",
+      "updated": "2026-07-12T18:15:37.957Z",
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880143517-890p1u",
-      "headline": "Nostalgia-driven buying rescues stocks from delisting",
-      "summary": "A wave of nationalist-driven buying has prevented several stocks from facing delisting. The trend is exemplified by increased demand for Monami ballpoint pens, a long-standing brand in South Korean classrooms and offices.",
+      "id": "cluster-1783880137957-908u9s",
+      "headline": "Nationalist buying wave rescues delisted stocks",
+      "summary": "A surge in nationalist purchasing has revived stocks facing delisting, with Monami's ballpoint pens cited as a symbol of nostalgia-driven demand. The trend highlights market resilience.",
       "category": "Business",
       "stories": [
         {
@@ -2556,13 +2957,443 @@
         }
       ],
       "triggerWords": [
+        "nationalist buying wave",
         "delisting",
-        "Monami",
-        "nationalist buying"
+        "Monami"
       ],
       "impact": "medium",
-      "created": "2026-07-12T18:15:43.517Z",
-      "updated": "2026-07-12T18:15:43.517Z",
+      "created": "2026-07-12T18:15:37.957Z",
+      "updated": "2026-07-12T18:15:37.957Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880245688-av0kkt",
+      "headline": "Vapes to drop appealing flavour names",
+      "summary": "The government is consulting on rules that would restrict vape manufacturers from using attractive flavour names and descriptions that appeal to children, aiming to reduce youth vaping rates. The proposal seeks to limit enticing flavour branding that could attract younger users.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-fc31a1f587a6af5dce6f99083c82946d",
+          "title": "Vapes to have less enticing names and flavours to protect children",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c9v29d7vml7o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T09:54:49.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "vape",
+        "flavour",
+        "children"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:17:25.688Z",
+      "updated": "2026-07-12T18:17:25.688Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880245688-bsmv6b",
+      "headline": "Drivers urged to compare fuel prices",
+      "summary": "The RAC warns that an 11p per litre fuel price gap exists, urging drivers to use price comparison tools to save money. Many motorists fail to shop around for the cheapest fuel, missing potential savings.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-deb50c1bf1a128fbb6ceff465b9bfdc0",
+          "title": "Drivers urged to shop around amid 11p fuel gap",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cg53l34g8p3o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T05:19:17.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "fuel price gap",
+        "shop around"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:17:25.688Z",
+      "updated": "2026-07-12T18:17:25.688Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880245688-akpxdk",
+      "headline": "Meta allows AI images from public Instagram pics",
+      "summary": "Meta has introduced a feature that lets users create AI‑generated images from public Instagram profile pictures, prompting privacy concerns. Campaigners describe the move as a “recipe for disaster,” while Meta says users can opt out of the functionality.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-97fc56776747b7bbe8ef8994d1cae79b",
+          "title": "Outcry as Meta lets users make AI images from public Instagram profile pics",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cp9lee19y1yo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T12:28:03.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Meta",
+        "AI images",
+        "Instagram profile pics"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:17:25.688Z",
+      "updated": "2026-07-12T18:17:25.688Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880245688-9a8b84",
+      "headline": "Screen time impacts younger children",
+      "summary": "The piece analyses how screen time influences younger children’s behaviour, sleep patterns and social development, citing research on the effects of digital exposure. It highlights concerns about attention spans, mental health and family interactions in relation to screen use.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-06a8cb52b933dd425d53358b28a34b75",
+          "title": "Tech Life",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/w3ct8jy3?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-07T20:00:00.000Z",
+          "category": "Technology",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "screen time",
+        "younger children"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:17:25.688Z",
+      "updated": "2026-07-12T18:17:25.688Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880245688-vtoi9a",
+      "headline": "NHS fails mothers and babies without cultural shift",
+      "summary": "A report warns that the NHS will continue to fail mothers and babies unless a cultural shift occurs, as families risk further failures without meaningful changes. BBC’s Michael Buchanan argues that systemic reforms are essential to improve maternity and neonatal care outcomes.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-38c06bace438683e38eb7b3870f55407",
+          "title": "Many fear the NHS will continue to fail mothers and babies unless there's a cultural shift",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c2kyn81epdvo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-24T13:06:11.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "NHS",
+        "mothers",
+        "babies",
+        "cultural shift"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:17:25.688Z",
+      "updated": "2026-07-12T18:17:25.688Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880245688-o7yc63",
+      "headline": "Owners sell businesses to employees",
+      "summary": "The article reports that increasing numbers of US business owners approaching retirement are transferring ownership to their employees, a trend intended to preserve jobs and ensure continuity. This shift reflects a growing preference for internal succession planning.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-e691299f07d3bddff5edc3bde8f905ea",
+          "title": "Why I sold my business to my staff",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c0ey87z1ggjo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-14T23:26:01.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "sell business to staff",
+        "employee ownership"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:17:25.688Z",
+      "updated": "2026-07-12T18:17:25.688Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880245688-pud3j8",
+      "headline": "£5 coffee reflects global economic strain",
+      "summary": "High street coffee prices have risen to £5, reflecting tariffs, climate pressures, shifting Gen Z preferences and market strategies of coffee growers. The story, written by Faisal Islam, links the price surge to broader global economic turmoil affecting everyday commodities.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-f188cf7c776bf166a67a1a15c3c55037",
+          "title": "The £5 coffee that tells a story of global economic turmoil",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cr5pp1m6z06o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-05-28T06:44:47.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "£5 coffee",
+        "global economic turmoil"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:17:25.688Z",
+      "updated": "2026-07-12T18:17:25.688Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880245688-ygh17z",
+      "headline": "How much is needed in a SIPP to produce a comfortable retirement income of £45,500 a year?",
+      "summary": "How much is needed in a SIPP to produce a comfortable retirement income of £45,500 a year? — A Self-Invested Personal Pension's a great way for someone to take control of their own retirement planning",
+      "category": [
+        "finance",
+        "business",
+        "regional"
+      ],
+      "stories": [
+        {
+          "id": "0bf9c7b5-3648-5a58-9d48-0ade7b6acefa",
+          "title": "How much is needed in a SIPP to produce a comfortable retirement income of £45,500 a year?",
+          "source": "James Beard",
+          "sourceName": "",
+          "url": "https://www.twelfthmagpie.com/2026/07/12/how-much-is-needed-in-a-sipp-to-produce-a-comfortable-retirement-income-of-45500-a-year/",
+          "image": "https://www.twelfthmagpie.com/wp-content/uploads/2024/07/Fireside-1200x800.jpg",
+          "published": "2026-07-12 07:30:00 +0000",
+          "category": [
+            "finance",
+            "business",
+            "regional"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [],
+      "impact": "medium",
+      "created": "2026-07-12T18:17:25.688Z",
+      "updated": "2026-07-12T18:17:25.688Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880289921-y6pl3q",
+      "headline": "Burnham positioned for No 10 after Labour support",
+      "summary": "Andy Burnham, former Greater Manchester mayor, has secured the support of 322 Labour MPs and is poised to become prime minister. He outlines a new tax plan, pledges to ease living costs, apologised for his early Gaza response, and has appointed key advisors and MPs to his future government.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-90cd06dafaef8b40d25e0dc8de1f3c43",
+          "title": "Does Andy Burnham Have A New Plan For Tax?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/p0nx5fzl?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T14:13:00.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-b775ad05a57cf60b485856dc9335e81e",
+          "title": "Burnham will deal with living costs in short term, key adviser says",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cdr41drnvjzo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T11:32:57.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-864b42c18bcc722a5d65a7f85538b057",
+          "title": "Labour under Burnham will be faster and bolder, says minister ",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cvgeyx1e4kno?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T15:50:06.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-00f4377dba7417b3bce258d8c6612bad",
+          "title": "Andy Burnham's path to becoming prime minister",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/crm0r94mv7jo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T15:38:38.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-b20a437244b4957689f9715f068b68f1",
+          "title": "Who is Andy Burnham? Ex-Manchester mayor set to be the next prime minister",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cp8pml5z8p6o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T15:12:27.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-82c99c1a8c02172334167ef3dff71aa2",
+          "title": "Burnham set to be next PM as 322 Labour MPs back him in first nomination tally",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c77y0n7k801o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T07:30:39.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-0a0c7214484dbbaa3c08fe5f56ba7d8f",
+          "title": "Burnham apologises for Labour's initial response to Gaza war",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cvg5yrkeed1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T17:56:04.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-02111a367c39bbed1bdb6deefd841a15",
+          "title": "What we know about Andy Burnham's policies",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/clywzj2vk3zo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T09:33:36.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-c6594f1e6c37a59a1b2be33f4ec768a0",
+          "title": "Starmer tells of 'intensely personal' decision to quit and warns Burnham in first interview since resigning",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c0qy2zxjkwvo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-03T21:26:53.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-f9a7b159b72cc8df8ffa7121abfe0bf4",
+          "title": "Burnham's people: MPs and advisers in line for a job if he gains power",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c8621d1egw1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-24T08:42:42.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Burnham",
+        "No 10",
+        "322 Labour MPs"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:18:09.921Z",
+      "updated": "2026-07-12T18:18:09.921Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880289921-3rzn7b",
+      "headline": "McGregor's UFC Return Ends in Loss",
+      "summary": "Conor McGregor's highly anticipated comeback fight against Max Holloway at UFC 329 in Las Vegas concluded with a disappointing loss on Saturday night. The mixed martial artist was described as 'destroyed' following an emotional statement released after the bout, as reported by Connor O'Neill.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "5726bb3c-1bd9-59fb-8770-6e60489afbf4",
+          "title": "Conor McGregor 'destroyed' after UFC return as emotional statement released",
+          "source": "Connor O'Neill",
+          "sourceName": "Wales Online",
+          "url": "https://www.walesonline.co.uk/sport/uk-sport-news/conor-mcgregor-ufc-injury-latest-34277503",
+          "image": "https://i2-prod.walesonline.co.uk/article34277519.ece/ALTERNATES/s1200d/0_GettyImages-2285714159.jpg",
+          "published": "2026-07-12 07:22:48 +0000",
+          "category": [
+            "sports"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "Conor McGregor",
+        "UFC 329",
+        "Max Holloway"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:18:09.921Z",
+      "updated": "2026-07-12T18:18:09.921Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880289921-v0e33o",
+      "headline": "Farage Ally 'Posh George' Faces Fraud Conviction",
+      "summary": "A 32‑year‑old crypto entrepreneur dubbed 'Posh George' is a US‑convicted fraudster and long‑time ally of Nigel Farage, placing him at the centre of a recent controversy. The report outlines his fraud conviction, business activities and close ties to the former UKIP leader.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-265a60dc5f073aa8e83147be5cd06244",
+          "title": "'Posh George': Who is aristocrat and convicted criminal at heart of Farage controversy?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c5yzzw5vk8vo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-07T08:49:07.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Posh George",
+        "Farage",
+        "crypto entrepreneur"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:18:09.921Z",
+      "updated": "2026-07-12T18:18:09.921Z",
       "contentVersion": 1
     }
   ],
