@@ -242,21 +242,28 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   margin: 0;
 }
 
-/* In-place content swap: summary and links share the same box */
+/* In-place content swap: summary and links share the same box.
+   Use visibility so the summary keeps its height — links can grow the box
+   but never shrink it, preventing masonry relayout on toggle. */
 .article-body {
   position: relative;
 }
 
 .article-body .story-links {
-  display: none;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .article-body.show-links .article-summary {
-  display: none;
+  visibility: hidden;
 }
 
 .article-body.show-links .story-links {
-  display: block;
+  visibility: visible;
+  position: relative;
 }
 
 .story-links {
