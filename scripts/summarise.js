@@ -116,6 +116,7 @@ function buildTranches(stories, existingClusters) {
   const clusterData = (existingClusters || []).map(c => ({
     cluster: c,
     keywords: extractKeywords(c.headline + ' ' + (c.summary || '')),
+    triggerWords: (c.triggerWords || []).map(w => w.toLowerCase()),
     cat: (c.category || '').toLowerCase(),
   }));
 
@@ -126,9 +127,23 @@ function buildTranches(stories, existingClusters) {
   for (const sd of storyData) {
     let bestMatch = null;
     let bestScore = 0;
+    const storyText = (sd.story.title + ' ' + sd.story.description + ' ' + sd.story.content).toLowerCase();
 
     for (const cd of clusterData) {
-      // Same category bonus
+      // Trigger word match — strong signal, any hit is enough
+      if (cd.triggerWords.length) {
+        const triggerHit = cd.triggerWords.some(tw => storyText.includes(tw));
+        if (triggerHit) {
+          const score = 100; // trigger words trump everything
+          if (score > bestScore) {
+            bestScore = score;
+            bestMatch = cd.cluster;
+          }
+          continue;
+        }
+      }
+
+      // Keyword overlap fallback
       const catBonus = sd.cat === cd.cat ? 2 : 0;
       const overlap = keywordOverlap(sd.keywords, cd.keywords);
       const score = overlap + catBonus;
@@ -336,6 +351,12 @@ function mergeClusters(newClusters, chunkStories, digest) {
         existingCluster.summary = cluster.summary;
         contentChanged = true;
       }
+      if (cluster.trigger_words && Array.isArray(cluster.trigger_words)) {
+        existingCluster.triggerWords = cluster.trigger_words;
+      }
+      if (cluster.impact && ['low','medium','high'].includes(cluster.impact.toLowerCase())) {
+        existingCluster.impact = cluster.impact.toLowerCase();
+      }
       if (contentChanged || stories.some(s => s._updated)) {
         existingCluster.contentVersion = (existingCluster.contentVersion || 0) + 1;
       }
@@ -349,6 +370,8 @@ function mergeClusters(newClusters, chunkStories, digest) {
         summary: cluster.summary || '',
         category: cluster.category || 'Other',
         stories: storyData,
+        triggerWords: Array.isArray(cluster.trigger_words) ? cluster.trigger_words : [],
+        impact: ['low','medium','high'].includes((cluster.impact||'').toLowerCase()) ? cluster.impact.toLowerCase() : 'medium',
         created: new Date().toISOString(),
         updated: new Date().toISOString(),
         contentVersion: 1
@@ -472,6 +495,8 @@ async function main() {
             published: story.published, category: story.category,
             plugin: story.plugin || null, pluginPriority: story.pluginPriority ?? null
           }],
+          triggerWords: [],
+          impact: 'medium',
           created: new Date().toISOString(),
           updated: new Date().toISOString(),
           contentVersion: 1

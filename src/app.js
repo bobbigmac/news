@@ -712,6 +712,17 @@ function renderChangelog(log) {
   html += `<div><span class="changelog-stat-label">Oldest cluster</span><span class="changelog-stat-val">${fmtTime(oldestCluster)}</span></div>`;
   html += `<div><span class="changelog-stat-label">Total stories</span><span class="changelog-stat-val">${stories.length}</span></div>`;
   html += `<div><span class="changelog-stat-label">Total clusters</span><span class="changelog-stat-val">${clusters.length}</span></div>`;
+
+  // Pipeline stats
+  const ps = digest.pipelineStats;
+  if (ps) {
+    html += `<div><span class="changelog-stat-label">Stories in store</span><span class="changelog-stat-val">${ps.totalStories}</span></div>`;
+    html += `<div><span class="changelog-stat-label">Summarised</span><span class="changelog-stat-val">${ps.summarised}</span></div>`;
+    if (ps.unsummarised > 0) {
+      html += `<div><span class="changelog-stat-label">Pending summary</span><span class="changelog-stat-val">${ps.unsummarised}</span></div>`;
+    }
+  }
+
   html += `</div></div>`;
 
   // Sources section

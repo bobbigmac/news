@@ -1358,6 +1358,1070 @@
       "created": "2026-07-12T17:32:37.419Z",
       "updated": "2026-07-12T17:32:37.419Z",
       "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879238580-vr5qis",
+      "headline": "Life experience fuels funded business ventures",
+      "summary": "Individuals are converting life experiences into business ideas through funding and support programmes. The initiative showcases how personal insights and challenges translate into entrepreneurial ventures, with participants receiving financial backing and resources to develop their concepts into marketable solutions.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-4091fb2eab3c3306598c45e4ed713232",
+          "title": "People Fixing The World",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/w3ct8t0z?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-07T07:30:00.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "life experience business",
+        "funded ventures",
+        "entrepreneurial support"
+      ],
+      "created": "2026-07-12T18:00:38.580Z",
+      "updated": "2026-07-12T18:00:38.580Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879374309-jc5iv4",
+      "headline": "Police arrest 28‑year‑old in Rotherham for Widdecombe murder",
+      "summary": "Police in South Yorkshire arrested a 28‑year‑old man in Rotherham on suspicion of murdering former MP Ann Widdecombe, stating they are not seeking anyone else and see no political motive. The 78‑year‑old was found dead in her Devon bungalow, prompting comments from the prime minister and opposition leader.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "rss-aHR0cHM6Ly93d3cuYmJj",
+          "title": "Police say no suggestion of political motive in Widdecombe killing after new arrest",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c8628q3eqdeo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T13:06:22.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Ann Widdecombe",
+        "Rotherham"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:02:54.309Z",
+      "updated": "2026-07-12T18:02:54.309Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879374310-9t034a",
+      "headline": "Sapporo man arrested for hammer killing",
+      "summary": "Police in Sapporo have arrested a 33‑year‑old man on suspicion of murder after he allegedly beat a woman to death with a hammer. The suspect is in custody and police say they are not looking for anyone else in connection with the incident.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "0c94d020-9936-5134-ae89-f5ea91ece7b4",
+          "title": "Woman dies after being beaten with hammer; suspect arrested",
+          "source": "",
+          "sourceName": "Japan Today",
+          "url": "https://japantoday.com/category/crime/woman-dies-after-being-beaten-with-hammer-suspect-arrested",
+          "image": "None",
+          "published": "2026-07-12 07:46:12 +0000",
+          "category": [
+            "politics"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "Sapporo",
+        "hammer"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:02:54.310Z",
+      "updated": "2026-07-12T18:02:54.310Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879374310-oapmgs",
+      "headline": "Bayeux Tapestry arrives at British Museum under guard",
+      "summary": "The 70‑metre Bayeux Tapestry arrived at the British Museum in the dead of night under police guard. The historic embroidery, depicting the Norman conquest of England, is now on display for public viewing.",
+      "category": "Entertainment",
+      "stories": [
+        {
+          "id": "rss-748740a3b5fd0979a489e27c43d7252a",
+          "title": "Watch: Historic Bayeux Tapestry arrives at British Museum",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/cj3gd4ldejxo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T07:59:48.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Bayeux Tapestry",
+        "British Museum"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:02:54.310Z",
+      "updated": "2026-07-12T18:02:54.310Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879374310-jibvhr",
+      "headline": "Restore Britain leader calls Dunblane tragedy 'one murder'",
+      "summary": "Rupert Lowe, leader of the Restore Britain party, criticised the UK's ban on handguns, stating it was enacted 'because there was a murder in Dunblane'. He argued the ban disproportionately affects law‑abiding citizens.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-ae119a8d4b28c24a91df5bb5ac005d27",
+          "title": "Restore Britain leader describes Dunblane tragedy as 'one murder'",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cj3gdj300lyo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T15:02:30.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Restore Britain",
+        "Dunblane"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:02:54.310Z",
+      "updated": "2026-07-12T18:02:54.310Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879374310-r9hjg5",
+      "headline": "Air India flight 171 crash investigation remains inconclusive",
+      "summary": "The final conclusions of the investigation into the crash of Air India flight 171 have not yet been published, although further details may emerge in the coming days. Officials say the cause remains disputed among experts.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-75c03b7dbf25b263822ef280c5a3be3c",
+          "title": "The furious dispute over what caused Air India flight 171 to crash",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cwyk9exxp2qo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-10T23:10:11.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Air India flight 171"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:02:54.310Z",
+      "updated": "2026-07-12T18:02:54.310Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879438340-5xr5br",
+      "headline": "Antiques Roadshow expert dies from brain tumour",
+      "summary": "Theo Burrell, a presenter on Antiques Roadshow, died at 39 after being diagnosed with glioblastoma, an aggressive brain tumour, in 2022. Her death highlights the challenges of treating such cancers.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-b51f1dafc41c0ff7af75c994fb530a93",
+          "title": "Antiques Roadshow expert Theo Burrell dies aged 39",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c0ky6v64ny1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T12:49:15.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "glioblastoma",
+        "Theo Burrell"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T18:03:58.340Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879438340-taaf4q",
+      "headline": "UK faces 'exceptional' wildfire risk",
+      "summary": "Parts of the UK are under heat health alerts as temperatures exceed heatwave thresholds for a second consecutive week. The warnings follow prolonged high temperatures increasing wildfire dangers.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-c23b252094920f97a95b108214f684d8",
+          "title": "'Exceptional' wildfire risk for parts of UK as heat health alerts issued",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/weather/articles/ce8mrn49gndo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T06:07:51.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "wildfire",
+        "UK"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T18:03:58.340Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879438340-qze7ki",
+      "headline": "Foreigners' long-term work interest in Japan declines",
+      "summary": "A survey indicates a drop in foreigners' desire to work long-term in Japan, despite the country's growing popularity as a tourist destination. The trend contrasts with rising visitor numbers.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "c1bd764d-86f6-5399-96e0-0220c2a22088",
+          "title": "Survey shows foreigners’ desire to work in Japan long-term dropping",
+          "source": "",
+          "sourceName": "Japan Today",
+          "url": "https://japantoday.com/category/national/survey-shows-foreigners%E2%80%99-desire-to-work-in-japan-long-term-dropping-but-that%E2%80%99s-not-the-whole-story",
+          "image": "None",
+          "published": "2026-07-12 07:44:48 +0000",
+          "category": [
+            "politics"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "Japan",
+        "work"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T18:03:58.340Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879438340-1j0fow",
+      "headline": "Trump subpoenas NYT journalists over Air Force One",
+      "summary": "The Trump administration has subpoenaed New York Times journalists for reporting on security concerns related to the president's new plane, gifted by Qatar. The journalists face legal action over their coverage.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-2bfa21b061700315dc52653d6270e1f2",
+          "title": "Trump administration subpoenas New York Times journalists over Air Force One reporting",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cpd3g8q51g7o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T16:11:33.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Trump",
+        "Air Force One"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T18:03:58.340Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879438340-jbqam6",
+      "headline": "Bowel cancer screening uptake low in 50s",
+      "summary": "Health officials report that less than half of 54-year-olds completed free at-home bowel cancer screening tests. The low participation rate raises concerns about early detection efforts.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-ab32adbc0c61f54d23b2a22e6f11d8be",
+          "title": "People in 50s urged to complete bowel cancer screening",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cql1n6gl273o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T03:03:46.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "bowel cancer",
+        "screening"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T18:03:58.340Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879438340-l0wz0t",
+      "headline": "Ambulance services strained during heatwave",
+      "summary": "Ambulance crews in Exeter reported increased demand during a prolonged heatwave, highlighting public unawareness of heat-related risks. The incident underscores the need for better heatwave preparedness.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-c8d1b8904c4168d3e1accda7408f6018",
+          "title": "'People don't realise how at risk they are': A day with an ambulance service in a heatwave",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cvg4y289ppjo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T10:18:28.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "heatwave",
+        "ambulance"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T18:03:58.340Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879438340-ad7p7c",
+      "headline": "Burnham plans return to No 10 for at least a year",
+      "summary": "A key political ally states that former transport secretary Burnham is not unprepared for a potential return to government, despite his time away from Westminster. The statement suggests ongoing political considerations.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-d6f80ec5a2045ca63ae99cb22c2c058d",
+          "title": "Burnham planning for No 10 for at least a year, key ally says",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c0lyr660p8zo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T14:18:50.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Burnham",
+        "No 10"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T18:03:58.340Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879438340-2v7rtv",
+      "headline": "MenB vaccine ineffective against gonorrhoea",
+      "summary": "A major study found the MenB vaccine does not protect against gonorrhoea infections, despite being administered to at-risk men. The findings challenge its effectiveness for this specific condition.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-d7740a80aa5d8c7b4f7299c1ec116492",
+          "title": "MenB vaccine offers men no protection from gonorrhoea, claims major study",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/crel4yyxwd1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T21:06:53.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "MenB vaccine",
+        "gonorrhoea"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T18:03:58.340Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879438340-nwces4",
+      "headline": "Virgin Media fined for mishandling cancellation calls",
+      "summary": "The regulator fined Virgin Media after millions of customer calls to cancel contracts were mishandled over three years. The incident raises concerns about customer service practices.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-f4e903ad7814ff374ef861af6be13980",
+          "title": "Virgin Media fined after hanging up on customers trying to cancel contracts",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c982vm2jzl1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T11:24:05.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Virgin Media",
+        "cancellation"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T18:03:58.340Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879438341-4sy9bz",
+      "headline": "Shadow banning limits health advice access",
+      "summary": "Concerns are raised that shadow banning on social media platforms is restricting women's access to health-related information. The issue highlights potential censorship of critical health content.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-c026cb0ef5fd40269a8c61dd5379ef20",
+          "title": "Tech Life",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/w3ct8jy2?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-30T19:30:00.000Z",
+          "category": "Technology",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "shadow banning",
+        "health advice"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:03:58.341Z",
+      "updated": "2026-07-12T18:03:58.341Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879438341-hrbg3n",
+      "headline": "Pupil isolated for half a school year",
+      "summary": "A pupil in Yorkshire was placed in an isolation booth for over half a school year, drawing attention to zero-tolerance behaviour policies. The case raises questions about disciplinary practices in schools.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "rss-35b494dceb3eabc517d12acef465173c",
+          "title": "Pupil put in isolation booth for more than half a school year, BBC learns",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c5yzlnp6p52o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-30T05:00:16.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "isolation booth",
+        "zero-tolerance"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:03:58.341Z",
+      "updated": "2026-07-12T18:03:58.341Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879477259-j72bwy",
+      "headline": "KB Financial chief cites money move opportunity",
+      "summary": "KB Financial Group Chairman Yang Jong-hee said the current money move could provide an opportunity to strengthen the group's competitiveness. The statement was reported by The Korea Times on 12 July 2026.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "d48476ad-c248-59f1-b94c-333f82601eba",
+          "title": "KB Financial chief vows to turn 'money move' into opportunities - The Korea Times",
+          "source": "Lee Yeon-woo",
+          "sourceName": "Korea Times",
+          "url": "https://www.koreatimes.co.kr/business/banking-finance/20260712/kb-financial-chief-vows-to-turn-money-move-into-opportunities",
+          "image": "https://newsimg.koreatimes.co.kr/2026/07/12/a77d7dc8-4e50-4bc2-b168-9856b7f450f9.jpg",
+          "published": "2026-07-12 07:42:03 +0000",
+          "category": [
+            "regional"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "KB Financial",
+        "Yang Jong-hee",
+        "money move"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:04:37.259Z",
+      "updated": "2026-07-12T18:04:37.259Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879477259-4lhnvb",
+      "headline": "FIFA showcases new World Cup technology",
+      "summary": "Shiona McCallum visits FIFA headquarters in Zurich to examine new technology being implemented for the World Cup. The report highlights the latest tech initiatives aimed at enhancing the tournament in upcoming matches.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-b755e97ea8b215665b7e3b9fc1685147",
+          "title": "Tech Now",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/iplayer/episode/m002xbvq?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-05-30T01:00:00.000Z",
+          "category": "Technology",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Shiona McCallum",
+        "FIFA HQ",
+        "Zurich"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:04:37.259Z",
+      "updated": "2026-07-12T18:04:37.259Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879515206-tc23rj",
+      "headline": "Senator Lindsey Graham dies aged 71",
+      "summary": "U.S. Senator Lindsey Graham, a close ally of former President Donald Trump, died on Saturday evening after a brief and sudden illness, his office said. Graham was 71 and had recently returned from a visit to Kyiv where he met President Volodymyr Zelensky.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "c1366d27-9391-5e3e-988d-2c93e01e1bcb",
+          "title": "US Sen. Lindsey Graham has died after a brief and unexpected illness, his office says",
+          "source": "SEUNG MIN KIM and CHRIS MEGERIAN, Associated Press",
+          "sourceName": "KARK",
+          "url": "https://www.kark.com/news/national/ap-us-senator-lindsey-graham-has-died-after-a-brief-and-unexpected-illness-his-office-says/",
+          "image": "None",
+          "published": "2026-07-12 08:00:21 +0000",
+          "category": [
+            "regional",
+            "little-rock",
+            "arkansas"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        },
+        {
+          "id": "8e699fc0-f735-58ea-abdc-b51ac179d80b",
+          "title": "US senator and Trump ally Lindsey Graham dies at 71 - The Korea Times",
+          "source": "",
+          "sourceName": "Korea Times",
+          "url": "https://www.koreatimes.co.kr/world/20260712/us-senator-and-trump-ally-lindsey-graham-dies-at-71",
+          "image": "https://newsimg.koreatimes.co.kr/2026/07/12/99f0cf33-e54c-48fd-8f18-1f9a7454a58f.jpg",
+          "published": "2026-07-12 07:42:03 +0000",
+          "category": [
+            "regional"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "Lindsey Graham",
+        "Trump ally"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:05:15.206Z",
+      "updated": "2026-07-12T18:05:15.206Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879515206-g2dzy5",
+      "headline": "White House launches Trump Accounts scheme for children",
+      "summary": "The White House announced a new \"Trump Accounts\" programme intended to give American children a stake in the nation’s future, describing it as a way to promote the American dream. Critics have questioned the plan’s purpose and implementation.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-ce200fa88551ceab00d58f8c639d8a6e",
+          "title": "Will Trump Accounts deliver for American children?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/ckg55v9e2y9o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T07:41:18.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Trump Accounts",
+        "White House"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:05:15.206Z",
+      "updated": "2026-07-12T18:05:15.206Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879515206-az65m8",
+      "headline": "Starmer says will stay in touch with Trump",
+      "summary": "British Prime Minister Keir Starmer said he will keep communication lines open with U.S. President Donald Trump after the latter’s meeting with NATO leaders in Turkey, noting Trump wished him well at the summit.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-00cf5e37417447bdb354ebbacf7b645f",
+          "title": "Starmer to keep in touch with Trump after No 10",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/crel4gzg94eo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T19:04:36.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Starmer",
+        "Trump",
+        "NATO Turkey"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:05:15.206Z",
+      "updated": "2026-07-12T18:05:15.206Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879567582-en5405",
+      "headline": "Former Qatar Emir dies aged 74",
+      "summary": "The Qatari government announced on Sunday the death of former Emir Sheikh Hamad bin Khalifa Al Thani, aged 74. He took power in 1995 after a bloodless coup and transformed Qatar into a gas-rich nation, shaping its modern development.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "5247f6f2-6700-5735-9b8e-356ac72613c5",
+          "title": "Qatar's former leader Hamad bin Khalifa dies: statement - The Korea Times",
+          "source": "",
+          "sourceName": "Korea Times",
+          "url": "https://www.koreatimes.co.kr/world/20260712/qatars-former-leader-hamad-bin-khalifa-dies-statement",
+          "image": "https://newsimg.koreatimes.co.kr/2026/07/12/02630b72-c280-4829-a676-43529dee5398.jpg",
+          "published": "2026-07-12 07:42:03 +0000",
+          "category": [
+            "regional"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "Hamad bin Khalifa",
+        "Qatar Emir",
+        "Sheikh Hamad Al Thani"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:06:07.582Z",
+      "updated": "2026-07-12T18:06:07.582Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879601072-h5wiof",
+      "headline": "Senegal sacks manager Pape Thiaw",
+      "summary": "Senegal's football federation dismissed manager Pape Thiaw following the team's elimination at the 2026 World Cup last‑32 stage, confirming the decision in the wake of the early exit, marking a change in leadership after a disappointing tournament performance.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "e0bed3f5-532e-5d8f-a542-f38e62843dd5",
+          "title": "Senegal sack manager Pape Thiaw in wake of World Cup exit",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/football/articles/cq81l29lj2zo",
+          "image": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/3690/live/d4ecac00-7dbc-11f1-ad4b-13d0aac581db.jpg",
+          "published": "2026-07-12 07:25:09 +0000",
+          "category": [
+            "sports"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "Senegal sack manager",
+        "Pape Thiaw",
+        "World Cup exit"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:06:41.073Z",
+      "updated": "2026-07-12T18:06:41.073Z",
+      "contentVersion": 2
+    },
+    {
+      "id": "cluster-1783879601073-tlunja",
+      "headline": "Senate inquiry targets telco outage causes",
+      "summary": "The Senate has launched an inquiry, chaired by Greens Senator Sarah Hanson-Young, to examine whether a cheap, outdated device caused recent telecommunications outages. Hanson-Young warned of a crackdown on the telco giants responsible for multiple outages in recent years.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "4fc82ce3-6392-522b-9300-08151bd7ff82",
+          "title": "Senate inquiry to interrogate whether cheap, out of date device caused outage",
+          "source": "Jessica Yun",
+          "sourceName": "Brisbane Times",
+          "url": "https://www.brisbanetimes.com.au/technology/senate-inquiry-to-interrogate-whether-cheap-out-of-date-device-caused-outage-20260712-p60em3.html",
+          "image": "https://static.ffx.io/images/$zoom_0.3293%2C$multiply_0.7554%2C$ratio_1.777778%2C$width_1059%2C$x_110%2C$y_0/t_crop_custom/q_86%2Cf_auto/18420cde17278b925bd57fc24c8283052ba51511",
+          "published": "2026-07-12 08:06:04 +0000",
+          "category": [
+            "sports"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        },
+        {
+          "id": "21306b3d-2f85-54a1-8384-3027cabf63ea",
+          "title": "Senate inquiry to interrogate whether cheap, out of date device caused outage",
+          "source": "Jessica Yun",
+          "sourceName": "The Age",
+          "url": "https://www.theage.com.au/technology/senate-inquiry-to-interrogate-whether-cheap-out-of-date-device-caused-outage-20260712-p60em3.html",
+          "image": "https://static.ffx.io/images/$zoom_0.3293%2C$multiply_0.7554%2C$ratio_1.777778%2C$width_1059%2C$x_110%2C$y_0/t_crop_custom/q_86%2Cf_auto/18420cde17278b925bd57fc24c8283052ba51511",
+          "published": "2026-07-12 08:06:04 +0000",
+          "category": [
+            "technology"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "telco outage",
+        "Senate inquiry",
+        "Sarah Hanson-Young"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:06:41.073Z",
+      "updated": "2026-07-12T18:06:41.073Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879601073-326m7f",
+      "headline": "FIFA mistaken identity rule impacts quarter-final",
+      "summary": "FIFA introduced a 'mistaken identity' rule that influenced a World Cup quarter-final, resulting in Breel Embolo's red card during Switzerland's defeat to Argentina, prompting fury from the Swiss team.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "0c83afc2-706b-5f7b-bd5d-247f52220af1",
+          "title": "New FIFA rule decides World Cup quarter-final after case of mistaken identity",
+          "source": "Glen Williams",
+          "sourceName": "Wales Online",
+          "url": "https://www.walesonline.co.uk/sport/football/football-news/new-fifa-rule-decides-world-34277589",
+          "image": "https://i2-prod.walesonline.co.uk/article34277600.ece/ALTERNATES/s1200d/0_Screenshot-2026-07-12-084519.jpg",
+          "published": "2026-07-12 07:51:38 +0000",
+          "category": [
+            "sports"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "mistaken identity rule",
+        "Breel Embolo",
+        "Switzerland"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:06:41.073Z",
+      "updated": "2026-07-12T18:06:41.073Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879601073-h5xveq",
+      "headline": "Jude Bellingham snaps at Thomas Tuchel in live TV interview as viewers stunned",
+      "summary": "Jude Bellingham snaps at Thomas Tuchel in live TV interview as viewers stunned — Jude Bellingham appeared to hit back at Thomas Tuchel live on TV after England reached the World Cup semi-finals with v",
+      "category": [
+        "sports"
+      ],
+      "stories": [
+        {
+          "id": "0defe6cc-f785-5432-be2a-fa7f48498ccf",
+          "title": "Jude Bellingham snaps at Thomas Tuchel in live TV interview as viewers stunned",
+          "source": "Glen Williams",
+          "sourceName": "Wales Online",
+          "url": "https://www.walesonline.co.uk/sport/football/football-news/jude-bellingham-snaps-back-thomas-34277534",
+          "image": "https://i2-prod.walesonline.co.uk/article34277551.ece/ALTERNATES/s1200d/0_Screenshot-2026-07-12-082328.jpg",
+          "published": "2026-07-12 07:25:42 +0000",
+          "category": [
+            "sports"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [],
+      "impact": "medium",
+      "created": "2026-07-12T18:06:41.073Z",
+      "updated": "2026-07-12T18:06:41.073Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879775935-47za8q",
+      "headline": "Heatwave strains ambulance services and health guidance",
+      "summary": "Ambulance crews in Exeter reported increased demand during a prolonged heatwave, highlighting public unawareness of heat‑related risks. New health guidance clarifies the difference between heat exhaustion and heatstroke, explains how hot weather affects the body, and provides steps to act if someone shows symptoms. The information aims to improve public response and reduce emergency pressure.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-59641ea35ab0215d72f6554121d84e77",
+          "title": "Heat exhaustion or heatstroke: Can you tell the difference?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/cdjk4j1gz2yo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T12:04:39.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-4ae7309d42e1bf5a5893af6d38acff21",
+          "title": "What does hot weather do to the body?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cy7n6m7y6yvo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-22T13:48:18.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-f78e23ba95dd41dbef3fb746a5955309",
+          "title": "What to do if you think someone has heat exhaustion or heatstroke",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/ckgl51jjp3jo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-22T11:05:28.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "heatwave",
+        "ambulance",
+        "Exeter"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:09:35.935Z",
+      "updated": "2026-07-12T18:09:35.935Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879775935-92cr2i",
+      "headline": "US stock surges 795% in 12 months",
+      "summary": "A US stock has risen 795% over the past 12 months, drawing intense interest from American investors. The article questions whether there is a better alternative closer to home for those considering entry. The dramatic surge highlights volatility and opportunity in the current market.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "72ceda1e-c117-5d87-9661-bb6a83b43ef0",
+          "title": "Up 795% in 12 months, is it too late to consider buying this red-hot US stock?",
+          "source": "James Beard",
+          "sourceName": "",
+          "url": "https://www.twelfthmagpie.com/2026/07/12/up-795-in-12-months-is-it-too-late-to-consider-buying-this-red-hot-us-stock/",
+          "image": "https://www.twelfthmagpie.com/wp-content/uploads/2024/03/Buy-button-1200x675.jpg",
+          "published": "2026-07-12 07:15:00 +0000",
+          "category": [
+            "finance",
+            "business",
+            "regional"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "795%",
+        "US stock",
+        "surge"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:09:35.935Z",
+      "updated": "2026-07-12T18:09:35.935Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879775935-gnort8",
+      "headline": "Gen Z plans life without state pension",
+      "summary": "Many younger people doubt the state pension will exist when they reach retirement age, prompting Gen Z to plan for a pension‑free future. The trend reflects growing uncertainty about the sustainability of public retirement schemes. Financial planners note the shift may influence savings behaviour and investment choices.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-7b5c5ea3b6fecd29aead74a6948f8d5b",
+          "title": "Why Gen Z are planning for life without a state pension",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c8e2yp1gg37o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-30T23:05:19.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Gen Z",
+        "state pension"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:09:35.935Z",
+      "updated": "2026-07-12T18:09:35.935Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879793586-mu8fzz",
+      "headline": "Nigel Farage calls Clacton by-election for August",
+      "summary": "Reform UK leader Nigel Farage will contest a by-election in Clacton on 13 August after standing down as MP. Farage intends to frame the contest as the people versus the establishment following a finance row and falling approval ratings. He faces a challenge from candidate Count Binface, while main parties have ruled out standing.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-495ca344b7d68da098d0611772aee2f7",
+          "title": "Clacton by-election date set for 13 August",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c15y85gkkx5o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T10:47:57.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-015e81a06f6429859e60c6a4bccd1bb9",
+          "title": "Chris Mason: Farage called by-election from weak position - and it could backfire on him",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c9d2882jj3yo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T17:14:04.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-756008c42c9ee15e667cabb7abbb91a0",
+          "title": "Farage denies stunt as Reform proposes August by-election date",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cdxd779gkv9o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T16:24:05.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-fdd28b80108b4c59bad0633089844c01",
+          "title": "Who is Count Binface, aiming to face Farage in by-election?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/cp8r70vpj97o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T16:16:30.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-340b4afac2d951410a071281ea933d0f",
+          "title": "Chris Mason: Farage attempts to seize back the agenda after finance row",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c1my1g29gk7o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-07T22:22:27.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Nigel Farage",
+        "Clacton",
+        "Count Binface",
+        "Reform UK"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:09:53.586Z",
+      "updated": "2026-07-12T18:09:53.586Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879793586-qmy3sw",
+      "headline": "BP share price falls 20%",
+      "summary": "BP shares have decreased by approximately 20% since the end of March. Analyst Edward Sheldon suggests the FTSE 100 oil stock now presents an interesting investment opportunity due to this price dip.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "343521c2-2fe8-5de1-836d-21e656288802",
+          "title": "As the BP share price falls, here are 2 reasons the FTSE 100 oil stock could be worth a look",
+          "source": "Edward Sheldon; CFA",
+          "sourceName": "",
+          "url": "https://www.twelfthmagpie.com/2026/07/12/as-the-bp-share-price-falls-here-are-2-reasons-the-ftse-100-oil-stock-could-be-worth-a-look/",
+          "image": "https://www.twelfthmagpie.com/wp-content/uploads/2022/10/Oil-rig-workers.jpg",
+          "published": "2026-07-12 07:15:00 +0000",
+          "category": [
+            "finance",
+            "business",
+            "regional"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "BP",
+        "FTSE 100",
+        "Edward Sheldon"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:09:53.586Z",
+      "updated": "2026-07-12T18:09:53.586Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879793586-2ey2pb",
+      "headline": "Ken Skates likely Welsh Labour leader",
+      "summary": "Ken Skates is expected to become the leader of Welsh Labour as the party brings the leadership contest forward. Skates has served as interim leader since Eluned Morgan resigned following Labour's defeat in the Senedd election.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-8eb0c7f98fb71e09b64eb966a2231458",
+          "title": "Ken Skates likely to become Welsh Labour leader as party brings contest forward",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cnv9l16e227o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T11:34:20.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Ken Skates",
+        "Welsh Labour",
+        "Senedd"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:09:53.586Z",
+      "updated": "2026-07-12T18:09:53.586Z",
+      "contentVersion": 1
     }
-  ]
+  ],
+  "generated": "2026-07-12T18:00:38.582Z"
 }

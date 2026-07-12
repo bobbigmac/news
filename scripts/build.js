@@ -20,6 +20,20 @@ mkdirSync(OUT_DIR, { recursive: true });
 
 const digest = loadJson(DIGEST_FILE, { date: new Date().toISOString().split('T')[0], clusters: [] });
 
+// Gather pipeline stats for the data panel
+const storyStore = loadJson(join(CACHE_DIR, 'stories.json'), { stories: {} });
+const summarisedIds = loadJson(join(CACHE_DIR, 'summarised-ids.json'), []);
+const totalStories = Object.keys(storyStore.stories || {}).length;
+const summarised = summarisedIds.length;
+const inDigest = digest.clusters.reduce((a, c) => a + (c.stories?.length || 0), 0);
+digest.pipelineStats = {
+  totalStories,
+  summarised,
+  unsummarised: totalStories - summarised,
+  inDigest,
+  clusters: digest.clusters.length,
+};
+
 // Sort clusters: most stories first, then by most recent update
 digest.clusters.sort((a, b) => {
   const aCount = a.stories?.length || 0;

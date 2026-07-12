@@ -30,6 +30,8 @@ Rules:
 5. Write a SUMMARY of 30-60 words in block text. Cover the key facts: what happened, who is involved, why it matters. Do NOT repeat the headline. Do NOT list every detail — distil. Name every specific detail the source provides.
 6. Assign a CATEGORY from: Politics, Business, Technology, Science, Health, World, Sports, Entertainment, Environment, Other.
 7. List the story IDs that belong to each cluster. Only include IDs from the stories provided in this batch.
+8. For each cluster, provide a "trigger_words" array of 1-5 specific words or short phrases that uniquely identify this story topic. These words should be precise enough that ONLY stories about this topic would contain them (e.g. "Kabul", "Widdecombe", "Hillsborough Law"). Avoid generic words that could match unrelated stories. These will be used to automatically assign future stories to this cluster without needing the LLM.
+9. For each cluster, assign an "impact" level: "low", "medium", or "high". Low impact = minor/local incidents with limited consequence (e.g. a theft, a single arrest, a human interest story). Medium impact = developments affecting specific groups or sectors (e.g. a company closure, a policy change, a court ruling). High impact = events with broad societal, national, or international consequence (e.g. war, major legislation, natural disaster, pandemic).
 
 Respond ONLY with valid JSON in this exact format:
 {
@@ -38,7 +40,9 @@ Respond ONLY with valid JSON in this exact format:
       "headline": "Short factual headline",
       "summary": "30-60 words of block text facts.",
       "category": "Politics",
-      "story_ids": ["id1", "id2"]
+      "impact": "high",
+      "story_ids": ["id1", "id2"],
+      "trigger_words": ["Kabul", "Widdecombe"]
     }
   ]
 }`;
@@ -53,7 +57,7 @@ export function buildUserPrompt(chunk, existingClusters, matchedCluster) {
 
   // If we have a matched cluster, show it prominently as the primary context
   if (matchedCluster) {
-    context = `\n\n--- EXISTING CLUSTER TO UPDATE ---\nThese stories appear to be developments of this existing cluster. Include their IDs in this cluster's story_ids and rewrite the headline and summary to reflect the current state.\n\n- [cluster: ${matchedCluster.id}] ${matchedCluster.headline} (${matchedCluster.category})\n  Summary: ${(matchedCluster.summary || '(no summary)').slice(0, 300)}\n--- END EXISTING CLUSTER ---\n`;
+    context = `\n\n--- EXISTING CLUSTER TO UPDATE ---\nThese stories appear to be developments of this existing cluster. Include their IDs in this cluster's story_ids and rewrite the headline and summary to reflect the current state. Update the trigger_words if the story has evolved to include new specific entities.\n\n- [cluster: ${matchedCluster.id}] ${matchedCluster.headline} (${matchedCluster.category})\n  Summary: ${(matchedCluster.summary || '(no summary)').slice(0, 300)}\n  Trigger words: ${(matchedCluster.triggerWords || []).join(', ') || 'none yet'}\n--- END EXISTING CLUSTER ---\n`;
   }
 
   // Also show other existing clusters for reference (capped)
