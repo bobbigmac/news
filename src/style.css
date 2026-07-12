@@ -184,20 +184,13 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 
 /* Article (cluster) */
 .article {
-  background: #fff;
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  padding: 1.25rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--rule);
   cursor: pointer;
   position: relative;
-  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.article:hover {
-  border-color: var(--rule-thick);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-
+.article:last-child { border-bottom: none; }
 .article.hidden { display: none; }
 
 .article-header {
@@ -245,7 +238,6 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   height: auto;
   margin-bottom: 0.75rem;
   display: block;
-  border-radius: 4px;
 }
 
 .article-summary {
@@ -725,6 +717,91 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   font-size: 0.8rem;
   color: var(--ink);
   padding: 0.15rem 0;
+}
+
+.changelog-subsection {
+  margin-bottom: 0.75rem;
+}
+
+.changelog-subsection small {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.algo-pref-row {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink);
+  padding: 0.15rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.algo-pref-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  min-width: 4rem;
+}
+
+.algo-signal-group {
+  margin-bottom: 0.5rem;
+}
+
+.algo-signal-direction {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+
+.algo-signal-direction small {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.algo-signal-item {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink);
+  padding: 0.2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.algo-signal-item span {
+  flex: 1;
+  line-height: 1.3;
+}
+
+.algo-orphaned .algo-signal-item span {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.algo-remove-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 0.7rem;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  opacity: 0.5;
+  transition: opacity 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.algo-remove-btn:hover {
+  opacity: 1;
+  color: var(--accent);
 }
 
 .changelog-entry {

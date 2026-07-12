@@ -652,6 +652,7 @@ function initSettings() {
         const res = await fetch('run-log.json');
         const log = res.ok ? await res.json() : [];
         renderChangelog(log);
+        attachAlgoListeners();
       } catch {
         changelogBody.innerHTML = '<div class="loading">No run history available.</div>';
       }
@@ -733,27 +734,61 @@ function renderChangelog(log) {
     html += '</div></div>';
   }
 
-  // Interest profile
+  // Your Algorithm panel
   const stats = getInterestStats();
-  if (stats.total > 0) {
-    html += '<div class="changelog-section"><h4>Your Interest Profile</h4>';
-    html += '<div class="changelog-stats">';
-    html += `<div><span class="changelog-stat-label">Interested</span><span class="changelog-stat-val">${stats.interested}</span></div>`;
-    html += `<div><span class="changelog-stat-label">Not interested</span><span class="changelog-stat-val">${stats.notInterested}</span></div>`;
-    html += `</div>`;
-    // Show interested cluster headlines
-    const interestedClusters = clusters.filter(c => getClusterInterest(c.id) === 'interested');
-    if (interestedClusters.length) {
-      html += '<div class="changelog-interest-list"><small>Interested in:</small>';
-      html += interestedClusters.map(c => `<div class="changelog-interest-item">👍 ${c.headline}</div>`).join('');
+  const hasSignals = stats.total > 0;
+  const hasCatPrefs = Object.values(catPrefs).some(v => v && v !== 'normal');
+
+  if (hasSignals || hasCatPrefs) {
+    html += '<div class="changelog-section"><h4>Your Algorithm</h4>';
+
+    // Category preferences
+    if (hasCatPrefs) {
+      html += '<div class="changelog-subsection"><small>Category preferences</small>';
+      const prefOrder = ['favour', 'demote', 'hide'];
+      for (const pref of prefOrder) {
+        const cats = Object.entries(catPrefs).filter(([_, v]) => v === pref).map(([k]) => k);
+        if (cats.length) {
+          const prefLabel = CAT_PREF_OPTIONS.find(o => o.value === pref)?.label || pref;
+          html += `<div class="algo-pref-row"><span class="algo-pref-label">${prefLabel}</span> ${cats.map(c => `<span class="changelog-tag">${c}</span>`).join(' ')}</div>`;
+        }
+      }
       html += '</div>';
     }
-    const notInterestedClusters = clusters.filter(c => getClusterInterest(c.id) === 'not-interested');
-    if (notInterestedClusters.length) {
-      html += '<div class="changelog-interest-list"><small>Not interested in:</small>';
-      html += notInterestedClusters.map(c => `<div class="changelog-interest-item">👎 ${c.headline}</div>`).join('');
+
+    // Interest signals by direction
+    if (hasSignals) {
+      html += '<div class="changelog-subsection"><small>Interest signals</small>';
+
+      const interestedClusters = clusters.filter(c => getClusterInterest(c.id) === 'interested');
+      if (interestedClusters.length) {
+        html += '<div class="algo-signal-group">';
+        html += `<div class="algo-signal-direction">👍 Interested <small>${interestedClusters.length}</small></div>`;
+        html += interestedClusters.map(c => `<div class="algo-signal-item" data-cluster-id="${c.id}" data-signal="interested"><span>${c.headline}</span><button class="algo-remove-btn" title="Remove signal">✕</button></div>`).join('');
+        html += '</div>';
+      }
+
+      const notInterestedClusters = clusters.filter(c => getClusterInterest(c.id) === 'not-interested');
+      if (notInterestedClusters.length) {
+        html += '<div class="algo-signal-group">';
+        html += `<div class="algo-signal-direction">👎 Not interested <small>${notInterestedClusters.length}</small></div>`;
+        html += notInterestedClusters.map(c => `<div class="algo-signal-item" data-cluster-id="${c.id}" data-signal="not-interested"><span>${c.headline}</span><button class="algo-remove-btn" title="Remove signal">✕</button></div>`).join('');
+        html += '</div>';
+      }
+
+      // Also show signals for clusters no longer in the digest
+      const activeIds = new Set(clusters.map(c => c.id));
+      const orphaned = Object.entries(interestState).filter(([id]) => !activeIds.has(id));
+      if (orphaned.length) {
+        html += '<div class="algo-signal-group algo-orphaned">';
+        html += `<div class="algo-signal-direction">Expired signals <small>${orphaned.length}</small></div>`;
+        html += orphaned.map(([id, info]) => `<div class="algo-signal-item" data-cluster-id="${id}" data-signal="${info.signal}"><span class="algo-orphaned-label">${info.signal === 'interested' ? '👍' : '👎'} (no longer in digest)</span><button class="algo-remove-btn" title="Remove signal">✕</button></div>`).join('');
+        html += '</div>';
+      }
+
       html += '</div>';
     }
+
     html += '</div>';
   }
 
@@ -793,6 +828,25 @@ function renderChangelog(log) {
   html += '</div>';
 
   body.innerHTML = html;
+}
+
+function attachAlgoListeners() {
+  const body = document.getElementById('changelog-body');
+  body.querySelectorAll('.algo-remove-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const item = btn.closest('.algo-signal-item');
+      if (!item) return;
+      const clusterId = item.dataset.clusterId;
+      if (clusterId && interestState[clusterId]) {
+        delete interestState[clusterId];
+        saveInterestState();
+        item.remove();
+        renderDigest(currentDigest, currentSettings);
+        initSearch();
+      }
+    });
+  });
 }
 
 async function init() {
