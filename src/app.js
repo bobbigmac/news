@@ -154,8 +154,6 @@ function markClusterRead(cluster) {
 // Each cluster can be marked 'interested' or 'not-interested' by the user.
 // This is an algorithmic signal, not a like/dislike of the story.
 
-let interestState = {};
-
 function loadInterestState() {
   try {
     interestState = JSON.parse(localStorage.getItem(INTEREST_KEY) || '{}');
