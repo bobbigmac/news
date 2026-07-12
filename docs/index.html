@@ -5,36 +5,35 @@
   <title>The Daily Broadsheet</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="A daily news digest. No clickbait, just the facts. Stories clustered and summarised by AI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=OpenDyslexic:wght@400;700&family=Outfit:wght@200;300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="settings-panel" class="settings-panel hidden">
     <div class="settings-content">
       <h3>Settings</h3>
-      <label class="setting-row">
-        <span>Font size</span>
-        <select id="setting-fontsize">
-          <option value="small">Small</option>
-          <option value="medium" selected>Medium</option>
-          <option value="large">Large</option>
-        </select>
-      </label>
-      <label class="setting-row">
+      <div class="setting-row">
+        <span>Font</span>
+        <button id="setting-font" class="cycle-btn" type="button">Serif</button>
+      </div>
+      <div class="setting-row">
+        <span>Size</span>
+        <button id="setting-fontsize" class="cycle-btn" type="button">Medium</button>
+      </div>
+      <div class="setting-row">
         <span>Columns</span>
-        <select id="setting-columns">
-          <option value="1">1 column</option>
-          <option value="2" selected>2 columns</option>
-          <option value="3">3 columns</option>
-        </select>
-      </label>
-      <label class="setting-row">
-        <span>Sort by</span>
-        <select id="setting-sort">
-          <option value="stories" selected>Most stories</option>
-          <option value="recent">Most recent</option>
-          <option value="category">By category</option>
-        </select>
-      </label>
+        <button id="setting-columns" class="cycle-btn" type="button">3</button>
+      </div>
+      <div class="setting-row">
+        <span>Sort</span>
+        <button id="setting-sort" class="cycle-btn" type="button">Most stories</button>
+      </div>
+      <div class="setting-row">
+        <span>Images</span>
+        <button id="setting-images" class="cycle-btn" type="button">Minimal</button>
+      </div>
       <label class="setting-row checkbox-row">
         <input type="checkbox" id="setting-showsource">
         <span>Show source names</span>
@@ -48,11 +47,25 @@
         <span>Show updated stories</span>
       </label>
       <button id="settings-close" class="settings-close">Close</button>
+      <button id="settings-changelog" class="settings-close">Recent Updates</button>
+    </div>
+  </div>
+
+  <div id="changelog-page" class="changelog-page hidden">
+    <div class="changelog-content">
+      <div class="changelog-header">
+        <h3>Recent Updates</h3>
+        <button id="changelog-close" class="changelog-close">&times;</button>
+      </div>
+      <div id="changelog-body"></div>
     </div>
   </div>
 
   <header class="masthead">
-    <div class="masthead-date" id="masthead-date"></div>
+    <div class="masthead-left">
+      <div class="masthead-date" id="masthead-date"></div>
+      <button id="mode-toggle" class="mode-toggle" type="button">All</button>
+    </div>
     <h1 class="masthead-title">The Daily Broadsheet</h1>
     <button id="settings-toggle" class="settings-toggle" aria-label="Settings">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">

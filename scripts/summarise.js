@@ -7,8 +7,9 @@ const CACHE_DIR = 'cache';
 const RAW_FILE = join(CACHE_DIR, 'raw-new.json');
 const DIGEST_FILE = join(CACHE_DIR, 'digest.json');
 const SUMMARISED_IDS_FILE = join(CACHE_DIR, 'summarised-ids.json');
+const RUN_LOG_FILE = join(CACHE_DIR, 'run-log.json');
 
-const MAX_RETRIES = 8;
+const MAX_RETRIES = 3;
 const BASE_DELAY_MS = 3000;
 const MAX_DELAY_MS = 15000;
 
@@ -68,7 +69,7 @@ function prepareStoryForLLM(story) {
   const desc = truncate(story.description || '', 400);
   const content = truncate(story.content || '', MAX_CONTENT_CHARS);
   const combined = [title, desc, content].filter(Boolean).join(' — ');
-  return { id: story.id, text: combined, source: story.source || '', url: story.url || '', published: story.published || '', category: story.category || 'General', originalTitle: story.title, plugin: story.plugin || null, pluginPriority: story.pluginPriority ?? null };
+  return { id: story.id, text: combined, source: story.source || '', url: story.url || '', image: story.image || '', published: story.published || '', category: story.category || 'General', originalTitle: story.title, plugin: story.plugin || null, pluginPriority: story.pluginPriority ?? null };
 }
 
 function normaliseCategory(raw) {
@@ -146,33 +147,45 @@ async function callOpenRouter(prompt) {
       });
 
       if (!res.ok) {
-        const errText = await res.text();
-        lastError = new Error(`OpenRouter ${res.status}: ${errText.substring(0, 200)}`);
+        const errText = await res.text().catch(() => '');
         const retryable = res.status === 429 || res.status === 503 || res.status === 502;
+        const reason = res.status === 429 ? 'rate limited' : res.status === 503 ? 'service unavailable' : res.status === 502 ? 'bad gateway' : `HTTP ${res.status}`;
+        lastError = new Error(`${PROVIDER.name} ${reason}: ${errText.substring(0, 300)}`);
         if (!retryable) throw lastError;
         const delay = Math.min(BASE_DELAY_MS * Math.pow(1.5, attempt), MAX_DELAY_MS);
-        console.log(`  ${res.status} — retrying in ${Math.round(delay / 1000)}s (attempt ${attempt + 1}/${MAX_RETRIES})`);
+        console.log(`  ${PROVIDER.name} ${reason} — retrying in ${Math.round(delay / 1000)}s (attempt ${attempt + 1}/${MAX_RETRIES})`);
         await new Promise(r => setTimeout(r, delay));
         continue;
       }
 
       const data = await res.json();
       const text = data.choices?.[0]?.message?.content;
-      if (!text) throw new Error('Empty response from LLM');
+      if (!text) {
+        const finish = data.choices?.[0]?.finish_reason;
+        lastError = new Error(`${PROVIDER.name} returned empty response${finish ? ` (finish_reason: ${finish})` : ''}`);
+        if (finish === 'length' || finish === 'content_filter') throw lastError;
+        // Empty with no finish reason — might be transient, retry
+        const delay = Math.min(BASE_DELAY_MS * Math.pow(1.5, attempt), MAX_DELAY_MS);
+        console.log(`  ${lastError.message} — retrying in ${Math.round(delay / 1000)}s (attempt ${attempt + 1}/${MAX_RETRIES})`);
+        await new Promise(r => setTimeout(r, delay));
+        continue;
+      }
       console.log(`  Success (${MODEL})`);
       return text;
     } catch (err) {
       lastError = err;
-      if (attempt < MAX_RETRIES - 1) {
+      // Network-level errors (fetch aborted, connection refused, DNS, timeout)
+      const isNetwork = err.cause?.code || err.name === 'TypeError' || /fetch|network|connection|ECONNREFUSED|ENOTFOUND|ETIMEDOUT|aborted/i.test(err.message);
+      if (isNetwork && attempt < MAX_RETRIES - 1) {
         const delay = Math.min(BASE_DELAY_MS * Math.pow(1.5, attempt), MAX_DELAY_MS);
-        console.log(`  Error: ${err.message} — retrying in ${Math.round(delay / 1000)}s (attempt ${attempt + 1}/${MAX_RETRIES})`);
+        console.log(`  Network error (${err.cause?.code || err.message}) — retrying in ${Math.round(delay / 1000)}s (attempt ${attempt + 1}/${MAX_RETRIES})`);
         await new Promise(r => setTimeout(r, delay));
         continue;
       }
       throw err;
     }
   }
-  throw lastError || new Error('All retries exhausted');
+  throw lastError || new Error(`${PROVIDER.name}: all retries exhausted`);
 }
 
 function loadExistingDigest() {
@@ -210,7 +223,7 @@ function mergeClusters(newClusters, chunkStories, digest) {
 
     const storyData = stories.map(s => ({
       id: s.id, title: s.originalTitle, source: s.source,
-      url: s.url, published: s.published, category: s.category,
+      url: s.url, image: s.image || '', published: s.published, category: s.category,
       plugin: s.plugin || null, pluginPriority: s.pluginPriority ?? null
     }));
 
@@ -345,6 +358,25 @@ async function main() {
   digest.date = new Date().toISOString().split('T')[0];
   digest.generated = new Date().toISOString();
   saveJson(DIGEST_FILE, digest);
+
+  // Write run log
+  const runLog = loadJson(RUN_LOG_FILE, []);
+  const clustersBefore = runLog.length ? (runLog[0].totalClusters || 0) : 0;
+  runLog.unshift({
+    timestamp: new Date().toISOString(),
+    provider: PROVIDER.name,
+    model: MODEL,
+    storiesProcessed: toProcess.length,
+    storiesSkipped: rawStories.length - toProcess.length,
+    storiesAdded: totalAdded,
+    clustersUpdated: totalUpdated,
+    clustersCreated: Math.max(0, digest.clusters.length - clustersBefore),
+    totalClusters: digest.clusters.length,
+    chunks: chunks.length,
+    chunksFailed: chunks.length - (totalAdded > 0 || totalUpdated > 0 ? 1 : 0),
+    filteredTooShort: toProcess.length - chunks.reduce((sum, c) => sum + c.length, 0),
+  });
+  saveJson(RUN_LOG_FILE, runLog.slice(0, 10));
 
   console.log(`\nSummarisation complete: ${totalAdded} stories added, ${totalUpdated} clusters updated.`);
   console.log(`Digest: ${digest.clusters.length} total clusters in ${DIGEST_FILE}`);

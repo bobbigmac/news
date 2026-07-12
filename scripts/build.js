@@ -3,6 +3,7 @@ import { join } from 'path';
 
 const CACHE_DIR = 'cache';
 const DIGEST_FILE = join(CACHE_DIR, 'digest.json');
+const RUN_LOG_FILE = join(CACHE_DIR, 'run-log.json');
 const OUT_DIR = 'docs';
 
 function loadJson(path, fallback) {
@@ -31,6 +32,10 @@ digest.clusters.sort((a, b) => {
 
 // Write digest.json for client-side consumption
 writeFileSync(join(OUT_DIR, 'digest.json'), JSON.stringify(digest, null, 2));
+
+// Write run-log.json if it exists
+const runLog = loadJson(RUN_LOG_FILE, []);
+writeFileSync(join(OUT_DIR, 'run-log.json'), JSON.stringify(runLog, null, 2));
 
 // Copy static assets
 copyStatic('index.html');
