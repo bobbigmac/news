@@ -1,6 +1,6 @@
 # The Daily Broadsheet
 
-An automated, ad-free news digest that fetches stories from the [Currents API](https://currentsapi.services), de-clickbaitifies headlines, clusters related coverage, and summarises it all via [OpenRouter](https://openrouter.ai) LLMs. The result is a single-page broadsheet newspaper — no clickbait, no infinite scroll, no engagement metrics, just the news.
+An automated, ad-free news digest that fetches stories from the [Currents API](https://currentsapi.services), de-clickbaitifies headlines, clusters related coverage, and summarises it all via LLM (OpenRouter, Featherless, or OpenAI — whichever key you have). The result is a single-page broadsheet newspaper — no clickbait, no infinite scroll, no engagement metrics, just the news.
 
 ## How It Works
 
@@ -8,27 +8,19 @@ Three scripts run in sequence, n times daily via GitHub Actions:
 
 1. **`fetch-news.js`** — Pulls latest English-language news (general + UK-specific) from Currents API. Runs optional search plugins for topic-specific queries (local news, gaming, etc.) using spare API quota. Deduplicates and stores stories in a JSON datastore with 30-day retention.
 
-2. **`summarise.js`** — Sends new/updated stories to a free OpenRouter LLM in chunks. The LLM de-clickbaits headlines, clusters related stories together, and writes concise summaries. Falls back through multiple free models on rate limits.
+2. **`summarise.js`** — Sends new/updated stories to an LLM in chunks. The LLM de-clickbaits headlines, clusters related stories together, and writes concise summaries. Auto-detects the cheapest available provider (OpenRouter > Featherless > OpenAI) from env vars. Prompts are in `scripts/prompts.js` for easy tweaking.
 
 3. **`build.js`** — Reads the digest and writes static files (`index.html`, `app.js`, `style.css`, `digest.json`) to `docs/` for GitHub Pages.
 
 ## Search Plugins
 
-Defined in `search-plugins.json`. Each plugin specifies keywords (pipe-separated, ordered by priority) and optional country/language filters. Plugins run using spare API quota after fixed calls, round-robin based on last-run time so all plugins get fair coverage.
+Defined in `.env` as a single `SEARCH_PLUGINS` string. Semicolons separate plugin groups, pipes separate keywords within a group (ordered by priority — first term surfaces highest, last term lowest).
 
-```json
-[
-  {
-    "name": "local-news",
-    "keywords": "longsight|levenshulme|gorton|manchester",
-    "country": "gb",
-    "language": "en",
-    "description": "Local Manchester news"
-  }
-]
+```
+SEARCH_PLUGINS=longsight|levenshulme|gorton|manchester;xbox|dark souls|dwarf fortress|metal gear solid|game pass
 ```
 
-Keyword order matters — stories matching the first term surface higher, last term lower.
+Plugins run using spare API quota after fixed calls, round-robin based on last-run time so all plugins get fair coverage.
 
 ## API Quota Management
 
@@ -52,8 +44,9 @@ Keyword order matters — stories matching the first term surface higher, last t
 - Node.js 18+
 - A `.env` file with:
   ```
-  currentsapi_services_key=your_key
-  openrouter_api_key=your_key
+  CURRENTSAPI_SERVICES_KEY=your_key
+  OPENROUTER_API_KEY=your_key         # or FEATHERLESS_API_KEY / OPENAI_API_KEY
+  SEARCH_PLUGINS=longsight|levenshulme|gorton|manchester;xbox|dark souls|dwarf fortress|metal gear solid|game pass
   ```
 
 ### Local Development
@@ -72,7 +65,7 @@ npm run watch  # serve docs/ with live reload
 
 ### GitHub Actions Deployment
 1. Push to `main`
-2. Set repository secrets: `CURRENTSAPI_SERVICES_KEY`, `OPENROUTER_API_KEY`
+2. Set repository secrets: `CURRENTSAPI_SERVICES_KEY`, `OPENROUTER_API_KEY` (or `FEATHERLESS_API_KEY` / `OPENAI_API_KEY`), `SEARCH_PLUGINS`
 3. Enable GitHub Pages (deploy from Actions)
 4. The workflow runs on push and on schedule (3x daily)
 
@@ -83,11 +76,11 @@ scripts/
   fetch-news.js    # API fetching, plugins, story store
   summarise.js     # LLM clustering & summarisation
   build.js         # Static site generation
+  prompts.js       # LLM system & user prompts (tweakable)
 src/
   index.html       # Broadsheet layout
   style.css        # Newspaper aesthetic
   app.js           # Client-side rendering, read state, settings
-search-plugins.json  # Plugin definitions
 cache/               # Story store, digest, run state (gitignored)
 docs/                # Built output for GitHub Pages (gitignored)
 ```

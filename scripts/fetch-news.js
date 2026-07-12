@@ -7,7 +7,6 @@ const CACHE_FILE = join(CACHE_DIR, 'currents-api.json');
 const CACHE_TTL_MS = 6 * 60 * 60 * 1000;
 const STORY_STORE_FILE = join(CACHE_DIR, 'stories.json');
 const RETENTION_DAYS = 30;
-const PLUGINS_FILE = 'search-plugins.json';
 const RUN_STATE_FILE = join(CACHE_DIR, 'run-state.json');
 const DAILY_QUOTA = 20;
 const FIXED_CALLS_PER_RUN = 2;
@@ -53,8 +52,14 @@ async function fetchFromApi(endpoint, label) {
 }
 
 function loadPlugins() {
-  if (!existsSync(PLUGINS_FILE)) return [];
-  try { return JSON.parse(readFileSync(PLUGINS_FILE, 'utf8')); } catch { return []; }
+  const raw = (process.env.SEARCH_PLUGINS || '').trim();
+  if (!raw) return [];
+  return raw.split(';').map((group, i) => {
+    const keywords = group.split('|').map(t => t.trim()).filter(Boolean);
+    if (!keywords.length) return null;
+    const name = keywords[0].toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    return { name, keywords: group.trim() };
+  }).filter(Boolean);
 }
 
 function loadRunState() {

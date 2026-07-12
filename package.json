@@ -3,11 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.js",
     "fetch-news": "node scripts/fetch-news.js",
     "summarise": "node scripts/summarise.js",
-    "dev": "npm run fetch-news && npm run summarise && npm run build && live-server docs --port=8000 --open=/",
-    "watch": "live-server docs --port=8000 --open=/ --watch=src"
+    "build": "node scripts/build.js",
+    "pipeline": "npm run fetch-news && npm run summarise && npm run build",
+    "dev": "npm run pipeline && live-server docs --port=8000 --open=/",
+    "watch": "node scripts/watch.js & live-server docs --port=8000 --open=/"
   },
   "dependencies": {},
   "devDependencies": {

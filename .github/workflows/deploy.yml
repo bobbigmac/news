@@ -32,6 +32,7 @@ jobs:
       - name: Fetch latest news
         env:
           CURRENTSAPI_SERVICES_KEY: ${{ secrets.CURRENTSAPI_SERVICES_KEY }}
+          SEARCH_PLUGINS: ${{ secrets.SEARCH_PLUGINS }}
         run: node scripts/fetch-news.js
 
       - name: Summarise with LLM

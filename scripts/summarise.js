@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import { SYSTEM_PROMPT, buildUserPrompt } from './prompts.js';
+import { extractJson } from './extract-json.js';
 
 const CACHE_DIR = 'cache';
 const RAW_FILE = join(CACHE_DIR, 'raw-new.json');
@@ -10,6 +11,16 @@ const SUMMARISED_IDS_FILE = join(CACHE_DIR, 'summarised-ids.json');
 const MAX_RETRIES = 8;
 const BASE_DELAY_MS = 3000;
 const MAX_DELAY_MS = 15000;
+
+function loadEnv() {
+  const envPath = join(process.cwd(), '.env');
+  if (!existsSync(envPath)) return;
+  for (const line of readFileSync(envPath, 'utf8').split('\n')) {
+    const m = line.match(/^(\w+)=(.*)$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim();
+  }
+}
+loadEnv();
 
 const PROVIDERS = [
   { name: 'OpenRouter', keyEnv: 'OPENROUTER_API_KEY', baseUrl: 'https://openrouter.ai/api/v1', model: process.env.OPENROUTER_MODEL || 'openrouter/free', headers: (key) => ({ 'Authorization': `Bearer ${key}`, 'HTTP-Referer': 'https://github.com/bobbigmac/news', 'X-Title': 'News Dashboard' }) },
@@ -30,16 +41,6 @@ const CHUNK_MAX_STORIES = 12;
 const CHUNK_MAX_CHARS = 12000;
 const MIN_STORY_WORDS = 15;
 const MAX_CONTENT_CHARS = 800;
-
-function loadEnv() {
-  const envPath = join(process.cwd(), '.env');
-  if (!existsSync(envPath)) return;
-  for (const line of readFileSync(envPath, 'utf8').split('\n')) {
-    const m = line.match(/^(\w+)=(.*)$/);
-    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim();
-  }
-}
-loadEnv();
 
 
 function loadJson(path, fallback) {
@@ -70,30 +71,57 @@ function prepareStoryForLLM(story) {
   return { id: story.id, text: combined, source: story.source || '', url: story.url || '', published: story.published || '', category: story.category || 'General', originalTitle: story.title, plugin: story.plugin || null, pluginPriority: story.pluginPriority ?? null };
 }
 
+function normaliseCategory(raw) {
+  const cat = Array.isArray(raw) ? raw.join(' ') : (raw || 'general');
+  const lower = cat.toLowerCase();
+  if (/sport|football|cricket|rugby|tennis|olympic/.test(lower)) return 'sports';
+  if (/politic|election|government|parliament|minister/.test(lower)) return 'politics';
+  if (/business|finance|economy|market|bank|trade/.test(lower)) return 'business';
+  if (/tech|ai|software|digital|cyber|internet/.test(lower)) return 'technology';
+  if (/health|medical|disease|hospital|drug|vaccine/.test(lower)) return 'health';
+  if (/science|space|research|climate|environment/.test(lower)) return 'science';
+  if (/entertainment|celebrity|film|music|tv|gaming|game/.test(lower)) return 'entertainment';
+  if (/local|regional|wales|scotland|ireland|manchester|london/.test(lower)) return 'regional';
+  return 'general';
+}
+
 function buildChunks(stories) {
   const filtered = stories.filter(s => wordCount(s.description + ' ' + s.content) >= MIN_STORY_WORDS);
   const tooShort = stories.length - filtered.length;
   if (tooShort) console.log(`Filtered out ${tooShort} stories with < ${MIN_STORY_WORDS} words`);
 
-  const chunks = [];
-  let current = [];
-  let currentChars = 0;
-
+  // Group by normalised category so related stories land in the same chunk
+  const byCategory = new Map();
   for (const story of filtered) {
-    const prepared = prepareStoryForLLM(story);
-    const storyChars = prepared.text.length;
-
-    if (current.length >= CHUNK_MAX_STORIES || (current.length > 0 && currentChars + storyChars > CHUNK_MAX_CHARS)) {
-      chunks.push(current);
-      current = [];
-      currentChars = 0;
-    }
-
-    current.push(prepared);
-    currentChars += storyChars;
+    const cat = normaliseCategory(story.category);
+    if (!byCategory.has(cat)) byCategory.set(cat, []);
+    byCategory.get(cat).push(story);
   }
 
-  if (current.length > 0) chunks.push(current);
+  console.log(`Category groups: ${[...byCategory.entries()].map(([k, v]) => `${k}(${v.length})`).join(', ')}`);
+
+  const chunks = [];
+  for (const [, group] of byCategory) {
+    let current = [];
+    let currentChars = 0;
+
+    for (const story of group) {
+      const prepared = prepareStoryForLLM(story);
+      const storyChars = prepared.text.length;
+
+      if (current.length >= CHUNK_MAX_STORIES || (current.length > 0 && currentChars + storyChars > CHUNK_MAX_CHARS)) {
+        chunks.push(current);
+        current = [];
+        currentChars = 0;
+      }
+
+      current.push(prepared);
+      currentChars += storyChars;
+    }
+
+    if (current.length > 0) chunks.push(current);
+  }
+
   return chunks;
 }
 
@@ -113,8 +141,7 @@ async function callOpenRouter(prompt) {
             { role: 'system', content: SYSTEM_PROMPT },
             { role: 'user', content: prompt }
           ],
-          temperature: 0.3,
-          max_tokens: 4000
+          temperature: 0.3
         })
       });
 
@@ -148,31 +175,6 @@ async function callOpenRouter(prompt) {
   throw lastError || new Error('All retries exhausted');
 }
 
-function extractJson(text) {
-  const fenceMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
-  let raw = fenceMatch ? fenceMatch[1] : text;
-  let jsonStart = raw.indexOf('{');
-  let jsonEnd = raw.lastIndexOf('}');
-  if (jsonStart === -1) return null;
-  if (jsonEnd === -1) {
-    // Truncated response — try to close braces
-    const openBraces = (raw.match(/\{/g) || []).length;
-    const closeBraces = (raw.match(/}/g) || []).length;
-    for (let i = 0; i < openBraces - closeBraces; i++) raw += '}';
-    jsonEnd = raw.lastIndexOf('}');
-  }
-  try {
-    return JSON.parse(raw.substring(jsonStart, jsonEnd + 1));
-  } catch (e) {
-    // Try fixing trailing commas
-    try {
-      return JSON.parse(raw.substring(jsonStart, jsonEnd + 1).replace(/,\s*([}\]])/g, '$1'));
-    } catch { /* give up */ }
-    console.log(`  JSON parse error: ${e.message}`);
-    return null;
-  }
-}
-
 function loadExistingDigest() {
   return loadJson(DIGEST_FILE, { date: new Date().toISOString().split('T')[0], clusters: [] });
 }
@@ -187,9 +189,13 @@ function mergeClusters(newClusters, chunkStories, digest) {
   let updated = 0;
 
   for (const cluster of newClusters) {
-    if (!cluster.story_ids || !cluster.story_ids.length) continue;
+    let ids = cluster.story_ids;
+    if (!ids) continue;
+    if (typeof ids === 'string') ids = ids.split(',').map(s => s.trim()).filter(Boolean);
+    if (!Array.isArray(ids)) ids = [String(ids)];
+    if (!ids.length) continue;
 
-    const stories = cluster.story_ids
+    const stories = ids
       .map(id => storyMap.get(id))
       .filter(Boolean);
 
@@ -300,7 +306,7 @@ async function main() {
     const chunk = chunks[i];
     console.log(`\nProcessing chunk ${i + 1}/${chunks.length} (${chunk.length} stories)...`);
 
-    const prompt = buildUserPrompt(chunk);
+    const prompt = buildUserPrompt(chunk, digest.clusters);
     let responseText;
     try {
       responseText = await callOpenRouter(prompt);
@@ -310,10 +316,8 @@ async function main() {
     }
 
     const parsed = extractJson(responseText);
-    if (!parsed || !parsed.clusters) {
-      console.error(`  Chunk ${i + 1}: could not parse LLM response. Skipping.`);
-      console.log(`  Raw response (first 500 chars): ${responseText.substring(0, 500)}`);
-      console.log(`  Raw response (last 200 chars): ${responseText.substring(responseText.length - 200)}`);
+    if (!parsed || !parsed.clusters || !parsed.clusters.length) {
+      console.error(`  Chunk ${i + 1}: could not extract clusters from LLM response. Will retry next run.`);
       continue;
     }
 
@@ -323,7 +327,7 @@ async function main() {
     totalUpdated += updated;
     console.log(`  Merged: ${added} stories added, ${updated} clusters updated`);
 
-    // Mark these story IDs as summarised
+    // Only mark as summarised if we actually processed clusters
     for (const story of chunk) summarisedIds.add(story.id);
 
     // Save progress after each chunk
