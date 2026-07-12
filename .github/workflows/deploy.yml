@@ -3,6 +3,11 @@ name: Build & Deploy
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'scripts/build.js'
+      - 'package.json'
+      - 'package-lock.json'
   schedule:
     - cron: '0 7,13,19 * * *'
 
@@ -29,7 +34,26 @@ jobs:
             git checkout cache-data -- cache/ 2>/dev/null || true
           fi
 
+      - name: Check cache freshness
+        id: cache-check
+        run: |
+          if [ -f cache/currents-api.json ]; then
+            AGE=$(( $(date +%s) - $(node -e "console.log(Math.floor(JSON.parse(require('fs').readFileSync('cache/currents-api.json')).fetchedAt/1000))") ))
+            TTL=21600
+            if [ "$AGE" -lt "$TTL" ]; then
+              echo "fresh=true" >> $GITHUB_OUTPUT
+              echo "Cache is fresh (${AGE}s old), skipping fetch"
+            else
+              echo "fresh=false" >> $GITHUB_OUTPUT
+              echo "Cache is stale (${AGE}s old), will fetch"
+            fi
+          else
+            echo "fresh=false" >> $GITHUB_OUTPUT
+            echo "No cache file, will fetch"
+          fi
+
       - name: Fetch latest news
+        if: steps.cache-check.outputs.fresh != 'true' || github.event_name == 'schedule'
         env:
           CURRENTSAPI_SERVICES_KEY: ${{ secrets.CURRENTSAPI_SERVICES_KEY }}
           SEARCH_PLUGINS: ${{ secrets.SEARCH_PLUGINS }}

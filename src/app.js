@@ -8,6 +8,7 @@ const DEFAULT_SETTINGS = {
   sort: 'stories',
   images: 'minimal',
   mode: 'all',
+  watchWords: '',
   showSource: false,
   expandAll: false,
   showUpdated: false
@@ -112,6 +113,24 @@ function getAllKnownCategories(clusters) {
   return [...fromDigest].sort();
 }
 
+function getWatchWords() {
+  return (currentSettings.watchWords || '')
+    .split(',')
+    .map(w => w.trim().toLowerCase())
+    .filter(Boolean);
+}
+
+function matchesWatchWords(cluster) {
+  const words = getWatchWords();
+  if (!words.length) return false;
+  const haystack = [
+    cluster.headline || '',
+    cluster.summary || '',
+    ...(cluster.stories || []).map(s => s.title || ''),
+  ].join(' ').toLowerCase();
+  return words.some(w => haystack.includes(w));
+}
+
 function isClusterRead(cluster) {
   const entry = readState[cluster.id];
   if (!entry) return false;
@@ -164,7 +183,6 @@ function pickLeadImage(cluster) {
 }
 
 function renderArticle(cluster, settings, isLead, isPluginLead) {
-  const storyCount = cluster.stories?.length || 0;
   const category = cluster.category || 'Other';
   const headline = cluster.headline || 'Untitled';
   const summary = cluster.summary || '';
@@ -185,6 +203,7 @@ function renderArticle(cluster, settings, isLead, isPluginLead) {
   article.dataset.category = category.toLowerCase();
   if (wasUpdated) article.classList.add('has-updates');
   if (isLead) article.classList.add('is-lead');
+  if (matchesWatchWords(cluster)) article.classList.add('watch-match');
 
   let imageHtml = '';
   if (settings.images !== 'none') {
@@ -203,14 +222,11 @@ function renderArticle(cluster, settings, isLead, isPluginLead) {
   }
 
   article.innerHTML = `
-    <div class="article-category">${category}${wasUpdated ? ' <span class="updated-badge">updated</span>' : ''}</div>
+    <div class="article-category">${category}</div>
     ${imageHtml}
     <h2 class="article-headline">${headline}</h2>
     <p class="article-summary">${summary}</p>
-    <div class="article-meta">
-      <span class="article-story-count">${storyCount}</span>
-      <button class="mark-read-btn" title="Mark as read">✓</button>
-    </div>
+    <button class="mark-read-btn" title="Mark as read">✓</button>
     <div class="story-links${settings.expandAll ? ' expanded' : ''}">
       <ul>${linksHtml}</ul>
     </div>
@@ -315,9 +331,52 @@ function renderDigest(digest, settings) {
   sheet.appendChild(fragment);
 }
 
+const SEARCH_HISTORY_KEY = 'broadsheet-search-history';
+const MAX_RECENT_SEARCHES = 8;
+
+function loadSearchHistory() {
+  try { return JSON.parse(localStorage.getItem(SEARCH_HISTORY_KEY) || '[]'); } catch { return []; }
+}
+
+function saveSearchHistory(history) {
+  localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(history.slice(0, MAX_RECENT_SEARCHES)));
+}
+
+function addSearchTerm(term) {
+  const trimmed = term.trim();
+  if (!trimmed) return;
+  let history = loadSearchHistory();
+  history = history.filter(h => h.toLowerCase() !== trimmed.toLowerCase());
+  history.unshift(trimmed);
+  saveSearchHistory(history);
+}
+
+function renderRecentSearches() {
+  const container = document.getElementById('recent-searches');
+  if (!container) return;
+  const history = loadSearchHistory();
+  if (!history.length) {
+    container.innerHTML = '';
+    return;
+  }
+  container.innerHTML = history.map(term =>
+    `<button class="recent-search-item" type="button">${term}</button>`
+  ).join('');
+  container.querySelectorAll('.recent-search-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = document.getElementById('filter');
+      filter.value = btn.textContent;
+      filter.dispatchEvent(new Event('input'));
+      addSearchTerm(btn.textContent);
+      renderRecentSearches();
+    });
+  });
+}
+
 function initSearch() {
   const filter = document.getElementById('filter');
   if (!filter) return;
+
   filter.addEventListener('input', () => {
     const q = filter.value.trim().toLowerCase();
     const articles = document.querySelectorAll('.article');
@@ -328,6 +387,14 @@ function initSearch() {
         a.dataset.category.includes(q);
       a.classList.toggle('hidden', !match);
     });
+    renderRecentSearches();
+  });
+
+  filter.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      addSearchTerm(filter.value);
+      renderRecentSearches();
+    }
   });
 }
 
@@ -347,6 +414,46 @@ function makeCycleHandler(btn, options, currentValue, onChange) {
   });
 }
 
+function renderCategoryPrefs() {
+  const container = document.getElementById('category-prefs');
+  if (!container) return;
+
+  const clusters = currentDigest?.clusters || [];
+  const categories = getAllKnownCategories(clusters);
+
+  container.innerHTML = '';
+  for (const cat of categories) {
+    const row = document.createElement('div');
+    row.className = 'setting-row cat-pref-row';
+
+    const label = document.createElement('span');
+    label.textContent = cat;
+
+    const btn = document.createElement('button');
+    btn.className = 'cycle-btn cat-pref-btn';
+    btn.type = 'button';
+    const current = getCatPref(cat);
+    const opt = CAT_PREF_OPTIONS.find(o => o.value === current) || CAT_PREF_OPTIONS[1];
+    btn.textContent = opt.label;
+    btn.dataset.category = cat;
+
+    btn.addEventListener('click', () => {
+      const cur = catPrefs[cat] || 'normal';
+      const idx = CAT_PREF_OPTIONS.findIndex(o => o.value === cur);
+      const next = CAT_PREF_OPTIONS[(idx + 1) % CAT_PREF_OPTIONS.length];
+      catPrefs[cat] = next.value;
+      saveCatPrefs();
+      btn.textContent = next.label;
+      if (currentDigest) renderDigest(currentDigest, currentSettings);
+      initSearch();
+    });
+
+    row.appendChild(label);
+    row.appendChild(btn);
+    container.appendChild(row);
+  }
+}
+
 function initSettings() {
   const panel = document.getElementById('settings-panel');
   const toggle = document.getElementById('settings-toggle');
@@ -360,6 +467,7 @@ function initSettings() {
   const showSourceCheck = document.getElementById('setting-showsource');
   const expandAllCheck = document.getElementById('setting-expandall');
   const showUpdatedCheck = document.getElementById('setting-showupdated');
+  const watchWordsInput = document.getElementById('setting-watchwords');
 
   function syncControls() {
     const fontTheme = FONT_THEMES.find(f => f.value === currentSettings.font) || FONT_THEMES[0];
@@ -375,6 +483,7 @@ function initSettings() {
     showSourceCheck.checked = currentSettings.showSource;
     expandAllCheck.checked = currentSettings.expandAll;
     showUpdatedCheck.checked = currentSettings.showUpdated;
+    watchWordsInput.value = currentSettings.watchWords || '';
   }
 
   function updateCheckboxes() {
@@ -395,11 +504,24 @@ function initSettings() {
 
   [showSourceCheck, expandAllCheck, showUpdatedCheck].forEach(el => el.addEventListener('change', updateCheckboxes));
 
+  // Watch words — debounce input
+  let watchTimer = null;
+  watchWordsInput.addEventListener('input', () => {
+    clearTimeout(watchTimer);
+    watchTimer = setTimeout(() => {
+      currentSettings.watchWords = watchWordsInput.value;
+      saveSettings(currentSettings);
+      if (currentDigest) renderDigest(currentDigest, currentSettings);
+      initSearch();
+    }, 400);
+  });
+
   toggle.addEventListener('click', () => panel.classList.toggle('hidden'));
   close.addEventListener('click', () => panel.classList.add('hidden'));
 
   syncControls();
   applySettings(currentSettings);
+  renderCategoryPrefs();
 
   // Changelog page
   const changelogBtn = document.getElementById('settings-changelog');
@@ -472,12 +594,34 @@ async function init() {
     });
   }
 
-  // Escape closes sidebar / changelog
+  // Search toggle
+  const searchToggle = document.getElementById('search-toggle');
+  const searchPanel = document.getElementById('search-panel');
+  const searchInput = document.getElementById('filter');
+  if (searchToggle && searchPanel) {
+    searchToggle.addEventListener('click', () => {
+      searchPanel.classList.toggle('hidden');
+      if (!searchPanel.classList.contains('hidden')) {
+        searchInput.focus();
+        renderRecentSearches();
+      }
+    });
+  }
+
+  // Escape closes sidebar / changelog / search
+  function closeAllOverlays() {
+    document.getElementById('settings-panel')?.classList.add('hidden');
+    document.getElementById('changelog-page')?.classList.add('hidden');
+    document.getElementById('search-panel')?.classList.add('hidden');
+  }
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      document.getElementById('settings-panel')?.classList.add('hidden');
-      document.getElementById('changelog-page')?.classList.add('hidden');
-    }
+    if (e.key === 'Escape') closeAllOverlays();
+  });
+
+  // Back button closes overlays on mobile
+  window.addEventListener('popstate', () => {
+    closeAllOverlays();
   });
 
   try {
@@ -494,6 +638,7 @@ async function init() {
     }
 
     renderDigest(currentDigest, currentSettings);
+    renderCategoryPrefs();
     initSearch();
   } catch (err) {
     document.getElementById('broadsheet').innerHTML =

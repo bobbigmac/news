@@ -79,22 +79,6 @@ function saveRunState(state) {
   writeFileSync(RUN_STATE_FILE, JSON.stringify(state, null, 2));
 }
 
-function rankByKeywords(items, keywordsStr) {
-  const terms = keywordsStr.split('|').map(t => t.trim().toLowerCase()).filter(Boolean);
-  return items.map(item => {
-    const text = ((item.title || '') + ' ' + (item.description || '')).toLowerCase();
-    let priority = -1;
-    for (let i = 0; i < terms.length; i++) {
-      if (text.includes(terms[i])) { priority = i; break; }
-    }
-    return { ...item, _pluginPriority: priority };
-  }).sort((a, b) => {
-    if (a._pluginPriority === -1) return 1;
-    if (b._pluginPriority === -1) return -1;
-    return a._pluginPriority - b._pluginPriority;
-  });
-}
-
 async function runSearchPlugins(runState) {
   const plugins = loadPlugins();
   if (!plugins.length) return [];
@@ -127,31 +111,47 @@ async function runSearchPlugins(runState) {
     }
 
     const terms = plugin.keywords.split('|').map(t => t.trim()).filter(Boolean);
-    const queryParams = [`keywords=${encodeURIComponent(terms.join(' '))}`];
-    if (plugin.country) queryParams.push(`country=${plugin.country}`);
-    if (plugin.language) queryParams.push(`language=${plugin.language}`);
-    const endpoint = `search?${queryParams.join('&')}`;
+    const seenIds = new Set();
+    const pluginResults = [];
 
-    try {
-      const results = await fetchFromApi(endpoint, `plugin:${plugin.name}`);
-      const ranked = rankByKeywords(results, plugin.keywords);
-      for (const item of ranked) {
-        item._plugin = plugin.name;
-        item._pluginPriority = item._pluginPriority ?? 0;
+    for (const term of terms) {
+      if (pluginCalls >= pluginBudget) {
+        console.log(`Plugin budget exhausted mid-plugin, deferring remaining terms for ${plugin.name}`);
+        break;
       }
-      allResults.push(...ranked);
-      runState.callsToday++;
-      pluginCalls++;
-      runState.pluginLastRun[plugin.name] = Date.now();
-    } catch (err) {
-      console.error(`Plugin ${plugin.name} failed: ${err.message}`);
+      const queryParams = [`keywords=${encodeURIComponent(term)}`];
+      if (plugin.country) queryParams.push(`country=${plugin.country}`);
+      if (plugin.language) queryParams.push(`language=${plugin.language}`);
+      const endpoint = `search?${queryParams.join('&')}`;
+
+      try {
+        const results = await fetchFromApi(endpoint, `plugin:${plugin.name}/${term}`);
+        for (const item of results) {
+          if (item.id && !seenIds.has(item.id)) {
+            seenIds.add(item.id);
+            item._plugin = plugin.name;
+            item._pluginPriority = terms.indexOf(term);
+            pluginResults.push(item);
+          }
+        }
+        runState.callsToday++;
+        pluginCalls++;
+      } catch (err) {
+        console.error(`Plugin ${plugin.name}/${term} failed: ${err.message}`);
+        break;
+      }
     }
+
+    // Sort by priority (first keyword match = highest)
+    pluginResults.sort((a, b) => (a._pluginPriority ?? 99) - (b._pluginPriority ?? 99));
+    allResults.push(...pluginResults);
+    runState.pluginLastRun[plugin.name] = Date.now();
   }
 
   return allResults;
 }
 
-async function fetchLatestNews() {
+async function fetchLatestNews(runState) {
   const cached = readCache();
   if (cached) { console.log(`Using cached API response (${cached.length} items)`); return cached; }
 
@@ -159,6 +159,7 @@ async function fetchLatestNews() {
     fetchFromApi('latest-news?language=en', 'general'),
     fetchFromApi('latest-news?language=en&country=gb', 'GB'),
   ]);
+  runState.callsToday += FIXED_CALLS_PER_RUN;
 
   const deduped = new Map();
   for (const item of general) if (item.id) deduped.set(item.id, item);
@@ -214,9 +215,8 @@ async function main() {
   runState.runCount++;
   console.log(`Run #${runState.runCount} today, ${runState.callsToday}/${DAILY_QUOTA} API calls used so far`);
 
-  const newsItems = await fetchLatestNews();
+  const newsItems = await fetchLatestNews(runState);
   if (!newsItems.length) { console.error('No news fetched. Aborting.'); return; }
-  runState.callsToday += FIXED_CALLS_PER_RUN;
 
   // Run search plugins (budget-aware)
   const pluginResults = await runSearchPlugins(runState);
