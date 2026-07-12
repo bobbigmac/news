@@ -51,10 +51,7 @@ writeFileSync(join(OUT_DIR, 'digest.json'), JSON.stringify(digest, null, 2));
 const runLog = loadJson(RUN_LOG_FILE, []);
 writeFileSync(join(OUT_DIR, 'run-log.json'), JSON.stringify(runLog, null, 2));
 
-// Copy static assets
-copyStatic('index.html');
-copyStatic('style.css');
-copyStatic('app.js');
+// Copy static assets that Vite doesn't process
 copyStatic('og-image.jpg');
 copyStatic('sw.js');
 

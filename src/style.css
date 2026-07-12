@@ -10,6 +10,16 @@
   --sans: 'Helvetica Neue', 'Arial', sans-serif;
 }
 
+[data-theme="night"] {
+  --ink: #d8d4ce;
+  --paper: #1a1a1a;
+  --paper-light: #242424;
+  --rule: #3a3a3a;
+  --rule-thick: #555;
+  --accent: #c44;
+  --muted: #8a8275;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {

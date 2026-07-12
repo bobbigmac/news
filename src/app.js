@@ -1,3 +1,5 @@
+import Masonry from 'masonry-layout';
+
 const SETTINGS_KEY = 'broadsheet-settings';
 const READ_KEY = 'broadsheet-read';
 const CAT_PREFS_KEY = 'broadsheet-cat-prefs';
@@ -12,8 +14,15 @@ const DEFAULT_SETTINGS = {
   categoryFilter: 'all',
   watchWords: '',
   expandAll: false,
-  showUpdated: false
+  showUpdated: false,
+  theme: 'auto'
 };
+
+const THEME_OPTIONS = [
+  { value: 'auto', label: 'Auto' },
+  { value: 'day', label: 'Day' },
+  { value: 'night', label: 'Night' },
+];
 
 const CAT_PREF_OPTIONS = [
   { value: 'favour', label: 'Favour' },
@@ -72,10 +81,19 @@ function applySettings(settings) {
   document.body.classList.add(fontTheme.className);
   // Font size — applied to :root so rem units scale
   document.documentElement.className = `font-${settings.fontsize}`;
+  // Theme
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const effective = settings.theme === 'auto' ? (prefersDark ? 'night' : 'day') : settings.theme;
+  document.documentElement.setAttribute('data-theme', effective);
   // Columns
   const sheet = document.getElementById('broadsheet');
   sheet.className = `broadsheet cols-${settings.columns}`;
 }
+
+// Auto-switch theme when system preference changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+  if (currentSettings.theme === 'auto') applySettings(currentSettings);
+});
 
 let currentDigest = null;
 let currentSettings = loadSettings();
@@ -616,6 +634,7 @@ function initSettings() {
   const columnsBtn = document.getElementById('setting-columns');
   const sortBtn = document.getElementById('setting-sort');
   const imagesBtn = document.getElementById('setting-images');
+  const themeBtn = document.getElementById('setting-theme');
   const expandAllCheck = document.getElementById('setting-expandall');
   const showUpdatedCheck = document.getElementById('setting-showupdated');
   const watchWordsInput = document.getElementById('setting-watchwords');
@@ -631,6 +650,8 @@ function initSettings() {
     sortBtn.textContent = sortOpt.label;
     const imgOpt = IMAGE_OPTIONS.find(o => o.value === currentSettings.images) || IMAGE_OPTIONS[1];
     imagesBtn.textContent = imgOpt.label;
+    const themeOpt = THEME_OPTIONS.find(o => o.value === currentSettings.theme) || THEME_OPTIONS[0];
+    themeBtn.textContent = themeOpt.label;
     expandAllCheck.checked = currentSettings.expandAll;
     showUpdatedCheck.checked = currentSettings.showUpdated;
     watchWordsInput.value = currentSettings.watchWords || '';
@@ -650,6 +671,7 @@ function initSettings() {
   makeCycleHandler(columnsBtn, COLUMN_OPTIONS, currentSettings.columns, { key: 'columns' });
   makeCycleHandler(sortBtn, SORT_OPTIONS, currentSettings.sort, { key: 'sort' });
   makeCycleHandler(imagesBtn, IMAGE_OPTIONS, currentSettings.images, { key: 'images' });
+  makeCycleHandler(themeBtn, THEME_OPTIONS, currentSettings.theme, { key: 'theme' });
 
   [expandAllCheck, showUpdatedCheck].forEach(el => el.addEventListener('change', updateCheckboxes));
 
