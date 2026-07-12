@@ -1,89 +1,96 @@
 # The Daily Broadsheet
 
-An automated, ad-free news digest that fetches stories from the [Currents API](https://currentsapi.services), de-clickbaitifies headlines, clusters related coverage, and summarises it all via LLM (OpenRouter, Featherless, or OpenAI — whichever key you have). The result is a single-page broadsheet newspaper — no clickbait, no infinite scroll, no engagement metrics, just the news.
+An automated, ad-free news digest. Fetches stories from [Currents API](https://currentsapi.services) and [BBC RSS](https://www.bbc.co.uk/news), groups related coverage into superstory clusters, and summarises each cluster via LLM. The result is a single-page broadsheet newspaper — no clickbait, no infinite scroll, no engagement metrics, just the news.
 
 ## How It Works
 
-Three scripts run in sequence, n times daily via GitHub Actions:
+Three scripts run in sequence, several times daily via GitHub Actions:
 
-1. **`fetch-news.js`** — Pulls latest English-language news (general + UK-specific) from Currents API. Runs optional search plugins for topic-specific queries (local news, gaming, etc.) using spare API quota. Deduplicates and stores stories in a JSON datastore with 30-day retention.
+1. **`fetch-news.js`** — Pulls stories from Currents API and BBC RSS feeds. Optional search plugins surface topic-specific coverage using spare API quota. Stories are deduplicated, filtered against reject rules (by title pattern or category), and stored with 30-day retention.
 
-2. **`summarise.js`** — Sends new/updated stories to an LLM in chunks. The LLM de-clickbaits headlines, clusters related stories together, and writes concise summaries. Auto-detects the cheapest available provider (OpenRouter > Featherless > OpenAI) from env vars. Prompts are in `scripts/prompts.js` for easy tweaking.
+2. **`summarise.js`** — Groups stories into clusters using heuristic keyword analysis and trigger-word matching against existing clusters. Confident matches go straight to the LLM for headline/summary updates. Unmatched stories are grouped by keyword overlap. Singletons are sent to the LLM with existing cluster headlines for allocation. When the LLM fails (rate limits, etc.), heuristic groups still become clusters with fallback headlines — nothing is lost. Trigger words from each cluster enable fast matching of future stories without needing the LLM.
 
-3. **`build.js`** — Reads the digest and writes static files (`index.html`, `app.js`, `style.css`, `digest.json`) to `docs/` for GitHub Pages.
+3. **`build.js`** — Vite bundles the client, then the digest and run log are copied to `docs/` for GitHub Pages.
+
+## Reject Filters
+
+Defined in `.env`. Stories matching these patterns are filtered out before summarisation and purged from the digest on every run:
+
+```
+REJECT_CATEGORIES=Sports
+REJECT_TITLES=Trump|White House|World Cup|Football|Soccer
+```
 
 ## Search Plugins
 
-Defined in `.env` as a single `SEARCH_PLUGINS` string. Semicolons separate plugin groups, pipes separate keywords within a group (ordered by priority — first term surfaces highest, last term lowest).
+Defined in `.env` as `SEARCH_PLUGINS`. Semicolons separate plugin groups, pipes separate keywords within a group:
 
 ```
 SEARCH_PLUGINS=longsight|levenshulme|gorton|manchester;xbox|dark souls|dwarf fortress|metal gear solid|game pass
 ```
 
-Plugins run using spare API quota after fixed calls, round-robin based on last-run time so all plugins get fair coverage.
-
-## API Quota Management
-
-- Currents API allows 20 queries/day
-- 3 runs/day × 2 fixed calls = 6 queries reserved for general + UK news
-- Remaining 14 queries spread across plugins, with budget reserved for future fixed calls each day
-- Run state tracked in `cache/run-state.json` (reset daily)
+Plugins run using spare API quota, round-robin based on last-run time so all plugins get fair coverage.
 
 ## Client Features
 
-- **Broadsheet layout**: Newspaper-style columns with serif typography
-- **Interest signals**: ✓/✕ buttons on each story mark it as read and signal relevance. "Relevant" stories rank higher in the feed; "Ignore" stories get strongly downranked. Buttons only appear on hover. Tooltips clearly label them as "Relevant — show more like this" and "Ignore — show less like this" to avoid confusion with liking/disliking. Signals are stored locally (no accounts) and visible in the Recent Updates panel as your algorithm profile.
-- **Show updated toggle**: Resurfaces read stories that have new information since you last saw them
-- **Search**: Real-time filtering across headlines, summaries, and categories
-- **Settings**: Font size, column count, sort order, source visibility, expand all links — all persisted locally
-- **Recent Updates panel**: Dataset freshness, source list, category breakdown, interest profile, and run history — full transparency without polluting the main page
+- **Broadsheet layout**: Masonry grid with serif typography, configurable column count
+- **Night/day mode**: Auto-detects system preference, manual override in settings
+- **Interest signals**: ✓/✕ buttons on each story mark it as read and signal relevance. Relevant stories rank higher; ignored stories get downranked. Stored locally, no accounts.
+- **Search**: Ctrl+F or F3 opens search. Real-time filtering across headlines, summaries, and categories — non-matching stories are removed from the grid, not just hidden.
+- **Settings**: Font, font size, columns, sort order, image density, theme, expand all links — all persisted locally
+- **Recent Updates panel**: Dataset freshness, source list, category breakdown, interest profile, and run history
 - **No dark patterns**: No unread counts, no badges, no engagement baiting
 
 ## Setup
 
 ### Prerequisites
-- Node.js 18+
+- Node.js 22+
 - A `.env` file with:
   ```
   CURRENTSAPI_SERVICES_KEY=your_key
   OPENROUTER_API_KEY=your_key         # or FEATHERLESS_API_KEY / OPENAI_API_KEY
   SEARCH_PLUGINS=longsight|levenshulme|gorton|manchester;xbox|dark souls|dwarf fortress|metal gear solid|game pass
+  REJECT_CATEGORIES=Sports
+  REJECT_TITLES=Trump|White House|World Cup|Football|Soccer
   ```
 
 ### Local Development
 ```bash
 npm ci
-npm run dev    # fetch + summarise + build + serve
+npm run dev        # Vite dev server on port 8000
+npm run pipeline   # fetch + summarise + build (full pipeline)
 ```
 
 Or run individual steps:
 ```bash
 npm run fetch-news
 npm run summarise
-npm run build
-npm run watch  # serve docs/ with live reload
+npm run build      # Vite build + copy digest to docs/
 ```
 
 ### GitHub Actions Deployment
 1. Push to `main`
 2. Set repository secrets: `CURRENTSAPI_SERVICES_KEY`, `OPENROUTER_API_KEY` (or `FEATHERLESS_API_KEY` / `OPENAI_API_KEY`), `SEARCH_PLUGINS`
 3. Enable GitHub Pages (deploy from Actions)
-4. The workflow runs on push and on schedule (3x daily)
+4. The workflow runs on push and on schedule
 
 ## Project Structure
 
 ```
 scripts/
-  fetch-news.js    # API fetching, plugins, story store
-  summarise.js     # LLM clustering & summarisation
-  build.js         # Static site generation
-  prompts.js       # LLM system & user prompts (tweakable)
+  fetch-news.js     # API fetching, RSS, plugins, reject filters, story store
+  summarise.js      # Heuristic grouping + LLM summarisation
+  prompts.js        # LLM prompts per tranche type (update, new, allocate)
+  extract-json.js   # LLM response parsing
+  build.js          # Copy digest + static assets to docs/
 src/
-  index.html       # Broadsheet layout
-  style.css        # Newspaper aesthetic
-  app.js           # Client-side rendering, read state, settings
-cache/               # Story store, digest, run state (gitignored)
-docs/                # Built output for GitHub Pages (gitignored)
+  index.html        # Broadsheet layout, inline theme detection
+  style.css         # Newspaper aesthetic, night/day themes
+  app.js            # Client rendering, Masonry, search, settings
+  sw.js             # Service worker (network-first for content)
+vite.config.js      # Vite config, dev server, cache middleware
+cache/              # Story store, digest, run state (gitignored, on cache-data branch)
+docs/               # Built output for GitHub Pages
 ```
 
 ## License
