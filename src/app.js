@@ -81,6 +81,7 @@ let currentDigest = null;
 let currentSettings = loadSettings();
 let readState = loadReadState();
 let catPrefs = loadCatPrefs();
+let interestState = {};
 loadInterestState();
 
 function loadReadState() {
