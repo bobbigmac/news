@@ -38,6 +38,14 @@ function readCache() {
   return null;
 }
 
+function readCacheAnyAge() {
+  if (!existsSync(CACHE_FILE)) return null;
+  try {
+    const raw = JSON.parse(readFileSync(CACHE_FILE, 'utf8'));
+    return raw.news || null;
+  } catch { return null; }
+}
+
 function writeCache(news) {
   mkdirSync(CACHE_DIR, { recursive: true });
   writeFileSync(CACHE_FILE, JSON.stringify({ fetchedAt: Date.now(), news }, null, 2));
@@ -158,20 +166,29 @@ async function fetchLatestNews(runState) {
   const cached = readCache();
   if (cached) { console.log(`Using cached API response (${cached.length} items)`); return cached; }
 
-  const [general, gb] = await Promise.all([
-    fetchFromApi('latest-news?language=en', 'general'),
-    fetchFromApi('latest-news?language=en&country=gb', 'GB'),
-  ]);
-  runState.callsToday += FIXED_CALLS_PER_RUN;
+  try {
+    const general = await fetchFromApi('latest-news?language=en', 'general');
+    const gb = await fetchFromApi('latest-news?language=en&country=gb', 'GB');
+    runState.callsToday += FIXED_CALLS_PER_RUN;
 
-  const deduped = new Map();
-  for (const item of general) if (item.id) deduped.set(item.id, item);
-  for (const item of gb) if (item.id && !deduped.has(item.id)) deduped.set(item.id, item);
+    const deduped = new Map();
+    for (const item of general) if (item.id) deduped.set(item.id, item);
+    for (const item of gb) if (item.id && !deduped.has(item.id)) deduped.set(item.id, item);
 
-  const news = [...deduped.values()];
-  writeCache(news);
-  console.log(`Combined: ${news.length} unique items (general: ${general.length}, GB: ${gb.length}), cached to ${CACHE_FILE}`);
-  return news;
+    const news = [...deduped.values()];
+    writeCache(news);
+    console.log(`Combined: ${news.length} unique items (general: ${general.length}, GB: ${gb.length}), cached to ${CACHE_FILE}`);
+    return news;
+  } catch (err) {
+    console.error(`API fetch failed: ${err.message}`);
+    const stale = readCacheAnyAge();
+    if (stale) {
+      console.log(`Falling back to cached data (${stale.length} items, may be stale)`);
+      return stale;
+    }
+    console.error('No cache available, cannot continue.');
+    throw err;
+  }
 }
 
 function loadStoryStore() {
