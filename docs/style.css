@@ -193,6 +193,13 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 .article:last-child { border-bottom: none; }
 .article.hidden { display: none; }
 
+.article-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.35rem;
+}
+
 .article-category {
   font-family: var(--sans);
   font-size: 0.65rem;
@@ -200,7 +207,13 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   letter-spacing: 2px;
   color: var(--accent);
   font-weight: 700;
-  margin-bottom: 0.35rem;
+}
+
+.article-age {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  color: var(--muted);
+  white-space: nowrap;
 }
 
 .article-headline {
@@ -524,25 +537,38 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   text-decoration: underline;
 }
 
-/* Mark-read button */
-.mark-read-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: none;
-  border: none;
-  color: var(--muted);
-  font-size: 0.9rem;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.2s;
+/* Article actions (interest buttons) */
+.article-actions {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0.5rem 0;
 }
 
-.article:hover .mark-read-btn { opacity: 0.5; }
-.mark-read-btn:hover { opacity: 1; color: var(--ink); }
+.interest-btn {
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--muted);
+  opacity: 0.4;
+  transition: opacity 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.article:hover .interest-btn { opacity: 0.7; }
+.interest-btn:hover { opacity: 1; color: var(--ink); border-color: var(--ink); }
+.interest-btn.active { opacity: 1; border-color: var(--ink); }
+.interested-btn.active { color: var(--accent); border-color: var(--accent); }
+.not-interested-btn.active { color: var(--muted); border-color: var(--muted); }
 
 .article.is-read {
   opacity: 0.35;
+  transition: opacity 0.3s;
+}
+
+.article.downranked {
+  opacity: 0.3;
   transition: opacity 0.3s;
 }
 
@@ -603,6 +629,90 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 }
 
 .changelog-close:hover { color: var(--ink); }
+
+.changelog-overview {
+  margin-bottom: 1rem;
+}
+
+.changelog-section {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.changelog-section:last-child { border-bottom: none; }
+
+.changelog-section h4 {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  margin: 0 0 0.75rem 0;
+}
+
+.changelog-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1rem;
+}
+
+.changelog-stat-label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-bottom: 0.1rem;
+}
+
+.changelog-stat-val {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+.changelog-stat-val small {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.changelog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.changelog-tag {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: var(--ink);
+}
+
+.changelog-tag small {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.changelog-interest-list {
+  margin-top: 0.5rem;
+}
+
+.changelog-interest-list small {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.changelog-interest-item {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink);
+  padding: 0.15rem 0;
+}
 
 .changelog-entry {
   padding: 1rem 0;

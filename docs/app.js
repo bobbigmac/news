@@ -1,6 +1,7 @@
 const SETTINGS_KEY = 'broadsheet-settings';
 const READ_KEY = 'broadsheet-read';
 const CAT_PREFS_KEY = 'broadsheet-cat-prefs';
+const INTEREST_KEY = 'broadsheet-interest';
 const DEFAULT_SETTINGS = {
   font: 'serif',
   fontsize: 'medium',
@@ -80,6 +81,7 @@ let currentDigest = null;
 let currentSettings = loadSettings();
 let readState = loadReadState();
 let catPrefs = loadCatPrefs();
+loadInterestState();
 
 function loadReadState() {
   try { return JSON.parse(localStorage.getItem(READ_KEY) || '{}'); } catch { return {}; }
@@ -147,6 +149,43 @@ function markClusterRead(cluster) {
   saveReadState();
 }
 
+// --- Interest signals (Steam discovery queue style) ---
+// Each cluster can be marked 'interested' or 'not-interested' by the user.
+// This is an algorithmic signal, not a like/dislike of the story.
+
+let interestState = {};
+
+function loadInterestState() {
+  try {
+    interestState = JSON.parse(localStorage.getItem(INTEREST_KEY) || '{}');
+  } catch { interestState = {}; }
+}
+
+function saveInterestState() {
+  localStorage.setItem(INTEREST_KEY, JSON.stringify(interestState));
+}
+
+function getClusterInterest(clusterId) {
+  return interestState[clusterId]?.signal || null;
+}
+
+function setClusterInterest(cluster, signal) {
+  const existing = interestState[cluster.id];
+  // Toggle off if clicking the same signal again
+  if (existing?.signal === signal) {
+    delete interestState[cluster.id];
+  } else {
+    interestState[cluster.id] = { signal, at: Date.now() };
+  }
+  saveInterestState();
+}
+
+function getInterestStats() {
+  const interested = Object.values(interestState).filter(i => i.signal === 'interested').length;
+  const notInterested = Object.values(interestState).filter(i => i.signal === 'not-interested').length;
+  return { interested, notInterested, total: interested + notInterested };
+}
+
 function formatDate(dateStr) {
   try {
     return new Date(dateStr).toLocaleDateString('en-GB', {
@@ -155,17 +194,55 @@ function formatDate(dateStr) {
   } catch { return dateStr || ''; }
 }
 
+function relativeAge(dateStr) {
+  if (!dateStr) return '';
+  try {
+    const ts = new Date(dateStr).getTime();
+    if (!ts) return '';
+    const diff = Date.now() - ts;
+    const mins = Math.floor(diff / 60000);
+    if (mins < 1) return 'just now';
+    if (mins < 60) return `${mins}m ago`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs}h ago`;
+    const days = Math.floor(hrs / 24);
+    if (days < 7) return `${days}d ago`;
+    const weeks = Math.floor(days / 7);
+    if (weeks < 5) return `${weeks}w ago`;
+    const months = Math.floor(days / 30);
+    if (months < 12) return `${months}mo ago`;
+    return `${Math.floor(days / 365)}y ago`;
+  } catch { return ''; }
+}
+
+function getNewestStoryDate(cluster) {
+  const dates = (cluster.stories || [])
+    .map(s => s.published)
+    .filter(Boolean)
+    .map(d => { try { return new Date(d).getTime(); } catch { return 0; } })
+    .filter(Boolean);
+  if (!dates.length) return cluster.updated || cluster.created || '';
+  return new Date(Math.max(...dates)).toISOString();
+}
+
 function sortClusters(clusters, sortMode) {
   const sorted = [...clusters];
   sorted.sort((a, b) => {
-    // Category preference takes priority
+    // Interest signal: interested ranks above all, not-interested ranks below all
+    const aInterest = getClusterInterest(a.id);
+    const bInterest = getClusterInterest(b.id);
+    const aRank = aInterest === 'interested' ? 0 : aInterest === 'not-interested' ? 2 : 1;
+    const bRank = bInterest === 'interested' ? 0 : bInterest === 'not-interested' ? 2 : 1;
+    if (aRank !== bRank) return aRank - bRank;
+
+    // Category preference takes priority within same interest tier
     const aPref = CAT_PREF_ORDER[getCatPref(a.category)] ?? 1;
     const bPref = CAT_PREF_ORDER[getCatPref(b.category)] ?? 1;
     if (aPref !== bPref) return aPref - bPref;
 
     // Within same preference tier, apply the selected sort mode
     if (sortMode === 'recent') {
-      return (b.updated || b.created || '').localeCompare(a.updated || a.created || '');
+      return getNewestStoryDate(b).localeCompare(getNewestStoryDate(a));
     } else {
       return (b.stories?.length || 0) - (a.stories?.length || 0);
     }
@@ -219,34 +296,52 @@ function renderArticle(cluster, settings, isPluginLead) {
     }
   }
 
+  const interest = getClusterInterest(cluster.id);
+
   article.innerHTML = `
-    <div class="article-category">${category}</div>
+    <div class="article-header">
+      <div class="article-category">${category}</div>
+      <div class="article-age">${relativeAge(getNewestStoryDate(cluster))}</div>
+    </div>
     ${imageHtml}
     <h2 class="article-headline">${headline}</h2>
     <p class="article-summary">${summary}</p>
-    <button class="mark-read-btn" title="Mark as read">✓</button>
+    <div class="article-actions">
+      <button class="interest-btn interested-btn ${interest === 'interested' ? 'active' : ''}" data-signal="interested" title="Interested — show more like this">👍</button>
+      <button class="interest-btn not-interested-btn ${interest === 'not-interested' ? 'active' : ''}" data-signal="not-interested" title="Not interested — show less like this">👎</button>
+    </div>
     <div class="story-links${settings.expandAll ? ' expanded' : ''}">
       <ul>${linksHtml}</ul>
     </div>
   `;
 
+  // Apply interest-based visibility class
+  if (interest === 'not-interested') article.classList.add('downranked');
+
   // Whole article panel is clickable to toggle story links
   article.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A' || e.target.closest('.mark-read-btn')) return;
+    if (e.target.tagName === 'A' || e.target.closest('.interest-btn')) return;
     article.querySelector('.story-links').classList.toggle('expanded');
   });
 
-  const readBtn = article.querySelector('.mark-read-btn');
-  readBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    markClusterRead(cluster);
-    article.classList.remove('has-updates');
-    article.classList.add('is-read');
-    setTimeout(() => {
-      if (!currentSettings.showUpdated || !isClusterUpdatedSinceRead(cluster)) {
-        article.classList.add('hidden');
-      }
-    }, 300);
+  // Interest signal buttons — both mark as read and set signal
+  article.querySelectorAll('.interest-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const signal = btn.dataset.signal;
+      setClusterInterest(cluster, signal);
+      markClusterRead(cluster);
+      article.classList.remove('has-updates');
+      article.classList.add('is-read');
+      const newInterest = getClusterInterest(cluster.id);
+      // Toggle downrank class
+      article.classList.toggle('downranked', newInterest === 'not-interested');
+      // Re-render to apply new sort order and hide read
+      setTimeout(() => {
+        renderDigest(currentDigest, currentSettings);
+        initSearch();
+      }, 300);
+    });
   });
 
   return article;
@@ -568,36 +663,137 @@ function initSettings() {
 
 function renderChangelog(log) {
   const body = document.getElementById('changelog-body');
-  if (!log || !log.length) {
-    body.innerHTML = '<div class="loading">The summariser has never been run. No digest history available.</div>';
+  const digest = currentDigest;
+  if (!digest) {
+    body.innerHTML = '<div class="loading">No digest loaded.</div>';
     return;
   }
 
-  body.innerHTML = log.map(entry => {
-    const date = new Date(entry.timestamp);
-    const time = date.toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
-    const parts = [];
-    if (entry.skipped) {
-      parts.push('No new stories — cache only');
-    } else {
-      if (entry.storiesAdded) parts.push(`+${entry.storiesAdded} stories`);
-      if (entry.clustersCreated) parts.push(`${entry.clustersCreated} new clusters`);
-      if (entry.clustersUpdated) parts.push(`${entry.clustersUpdated} updated`);
-      if (entry.storiesProcessed) parts.push(`${entry.storiesProcessed} processed`);
-      if (entry.chunksFailed > 0) parts.push(`${entry.chunksFailed} chunks failed`);
+  const clusters = digest.clusters || [];
+  const stories = clusters.flatMap(c => c.stories || []);
+
+  // Dataset overview
+  const sources = {};
+  stories.forEach(s => { const name = s.sourceName || 'Unknown'; sources[name] = (sources[name]||0)+1; });
+  const sourceList = Object.entries(sources).sort((a,b) => b[1]-a[1]);
+
+  const cats = {};
+  clusters.forEach(c => { cats[c.category] = (cats[c.category]||0)+1; });
+  const catList = Object.entries(cats).sort((a,b) => b[1]-a[1]);
+
+  const plugins = {};
+  stories.forEach(s => { if (s.plugin) plugins[s.plugin] = (plugins[s.plugin]||0)+1; });
+  const pluginList = Object.entries(plugins).sort((a,b) => b[1]-a[1]);
+
+  // Freshness
+  const pubDates = stories.map(s => s.published).filter(Boolean).map(d => { try { return new Date(d).getTime(); } catch { return 0; } }).filter(Boolean);
+  const newestPub = pubDates.length ? Math.max(...pubDates) : null;
+  const clusterDates = clusters.map(c => c.updated || c.created).filter(Boolean).map(d => { try { return new Date(d).getTime(); } catch { return 0; } }).filter(Boolean);
+  const newestCluster = clusterDates.length ? Math.max(...clusterDates) : null;
+  const oldestCluster = clusterDates.length ? Math.min(...clusterDates) : null;
+
+  const fmtTime = (ts) => ts ? new Date(ts).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '—';
+  const relTime = (ts) => {
+    if (!ts) return '—';
+    const diff = Date.now() - ts;
+    const hrs = Math.floor(diff / 3600000);
+    if (hrs < 1) return `${Math.floor(diff/60000)}m ago`;
+    if (hrs < 24) return `${hrs}h ago`;
+    return `${Math.floor(hrs/24)}d ago`;
+  };
+
+  let html = '<div class="changelog-overview">';
+
+  // Freshness section
+  html += '<div class="changelog-section"><h4>Dataset Freshness</h4>';
+  html += `<div class="changelog-stats">`;
+  html += `<div><span class="changelog-stat-label">Newest story</span><span class="changelog-stat-val">${fmtTime(newestPub)} <small>(${relTime(newestPub)})</small></span></div>`;
+  html += `<div><span class="changelog-stat-label">Last summarised</span><span class="changelog-stat-val">${fmtTime(newestCluster)} <small>(${relTime(newestCluster)})</small></span></div>`;
+  html += `<div><span class="changelog-stat-label">Oldest cluster</span><span class="changelog-stat-val">${fmtTime(oldestCluster)}</span></div>`;
+  html += `<div><span class="changelog-stat-label">Total stories</span><span class="changelog-stat-val">${stories.length}</span></div>`;
+  html += `<div><span class="changelog-stat-label">Total clusters</span><span class="changelog-stat-val">${clusters.length}</span></div>`;
+  html += `</div></div>`;
+
+  // Sources section
+  html += '<div class="changelog-section"><h4>Sources</h4>';
+  html += '<div class="changelog-tags">';
+  html += sourceList.map(([name, count]) => `<span class="changelog-tag">${name} <small>${count}</small></span>`).join('');
+  html += '</div></div>';
+
+  // Categories section
+  html += '<div class="changelog-section"><h4>Categories</h4>';
+  html += '<div class="changelog-tags">';
+  html += catList.map(([name, count]) => `<span class="changelog-tag">${name} <small>${count}</small></span>`).join('');
+  html += '</div></div>';
+
+  // Plugins section (if any)
+  if (pluginList.length) {
+    html += '<div class="changelog-section"><h4>Search Plugins</h4>';
+    html += '<div class="changelog-tags">';
+    html += pluginList.map(([name, count]) => `<span class="changelog-tag">${name} <small>${count}</small></span>`).join('');
+    html += '</div></div>';
+  }
+
+  // Interest profile
+  const stats = getInterestStats();
+  if (stats.total > 0) {
+    html += '<div class="changelog-section"><h4>Your Interest Profile</h4>';
+    html += '<div class="changelog-stats">';
+    html += `<div><span class="changelog-stat-label">Interested</span><span class="changelog-stat-val">${stats.interested}</span></div>`;
+    html += `<div><span class="changelog-stat-label">Not interested</span><span class="changelog-stat-val">${stats.notInterested}</span></div>`;
+    html += `</div>`;
+    // Show interested cluster headlines
+    const interestedClusters = clusters.filter(c => getClusterInterest(c.id) === 'interested');
+    if (interestedClusters.length) {
+      html += '<div class="changelog-interest-list"><small>Interested in:</small>';
+      html += interestedClusters.map(c => `<div class="changelog-interest-item">👍 ${c.headline}</div>`).join('');
+      html += '</div>';
     }
-    parts.push(`${entry.totalClusters} total clusters`);
+    const notInterestedClusters = clusters.filter(c => getClusterInterest(c.id) === 'not-interested');
+    if (notInterestedClusters.length) {
+      html += '<div class="changelog-interest-list"><small>Not interested in:</small>';
+      html += notInterestedClusters.map(c => `<div class="changelog-interest-item">👎 ${c.headline}</div>`).join('');
+      html += '</div>';
+    }
+    html += '</div>';
+  }
 
-    const metaParts = [];
-    if (entry.provider && entry.provider !== 'unknown') metaParts.push(entry.provider);
-    if (entry.model && entry.model !== 'unknown') metaParts.push(entry.model);
+  html += '</div>'; // end overview
 
-    return `<div class="changelog-entry">
-      <div class="changelog-time">${time}</div>
-      <div class="changelog-details">${parts.join(' · ')}</div>
-      ${metaParts.length ? `<div class="changelog-meta">${metaParts.join(' / ')}</div>` : ''}
-    </div>`;
-  }).join('');
+  // Run history
+  html += '<div class="changelog-section"><h4>Run History</h4>';
+  if (!log || !log.length) {
+    html += '<div class="loading">The summariser has never been run. No digest history available.</div>';
+  } else {
+    html += log.map(entry => {
+      const date = new Date(entry.timestamp);
+      const time = date.toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+      const parts = [];
+      if (entry.skipped) {
+        parts.push('No new stories — cache only');
+      } else {
+        if (entry.storiesAdded) parts.push(`+${entry.storiesAdded} stories`);
+        if (entry.clustersCreated) parts.push(`${entry.clustersCreated} new clusters`);
+        if (entry.clustersUpdated) parts.push(`${entry.clustersUpdated} updated`);
+        if (entry.storiesProcessed) parts.push(`${entry.storiesProcessed} processed`);
+        if (entry.chunksFailed > 0) parts.push(`${entry.chunksFailed} chunks failed`);
+      }
+      parts.push(`${entry.totalClusters} total clusters`);
+
+      const metaParts = [];
+      if (entry.provider && entry.provider !== 'unknown') metaParts.push(entry.provider);
+      if (entry.model && entry.model !== 'unknown') metaParts.push(entry.model);
+
+      return `<div class="changelog-entry">
+        <div class="changelog-time">${time}</div>
+        <div class="changelog-details">${parts.join(' · ')}</div>
+        ${metaParts.length ? `<div class="changelog-meta">${metaParts.join(' / ')}</div>` : ''}
+      </div>`;
+    }).join('');
+  }
+  html += '</div>';
+
+  body.innerHTML = html;
 }
 
 async function init() {

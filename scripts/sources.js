@@ -4,6 +4,13 @@
 const DOMAIN_MAP = {
   'bbc.co.uk': 'BBC',
   'www.bbc.co.uk': 'BBC',
+  'bbc.com': 'BBC',
+  'www.bbc.com': 'BBC',
+  'bbci.co.uk': 'BBC',
+  'feeds.bbci.co.uk': 'BBC',
+  'theguardian.com': 'The Guardian',
+  'www.theguardian.com': 'The Guardian',
+  'guardianapis.com': 'The Guardian',
   'belfastlive.co.uk': 'Belfast Live',
   'www.belfastlive.co.uk': 'Belfast Live',
   'bernama.com': 'Bernama',

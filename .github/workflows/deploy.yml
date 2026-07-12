@@ -57,6 +57,8 @@ jobs:
         env:
           CURRENTSAPI_SERVICES_KEY: ${{ secrets.CURRENTSAPI_SERVICES_KEY }}
           SEARCH_PLUGINS: ${{ secrets.SEARCH_PLUGINS }}
+          RSS_FEEDS: ${{ secrets.RSS_FEEDS }}
+          GUARDIAN_API_KEY: ${{ secrets.GUARDIAN_API_KEY }}
         run: node scripts/fetch-news.js
 
       - name: Summarise with LLM

@@ -32,11 +32,14 @@ Plugins run using spare API quota after fixed calls, round-robin based on last-r
 ## Client Features
 
 - **Broadsheet layout**: Newspaper-style columns with serif typography
-- **Mark as read**: Hover and click ✓ to dismiss stories from the feed (stored in localStorage, no accounts)
+- **Interest signals**: 👍/👎 buttons on each story mark it as read and signal your interest. Interested stories rank higher in the feed; not-interested stories get strongly downranked. Signals are stored locally (no accounts) and visible in the Recent Updates panel as your interest profile.
 - **Show updated toggle**: Resurfaces read stories that have new information since you last saw them
 - **Search**: Real-time filtering across headlines, summaries, and categories
 - **Settings**: Font size, column count, sort order, source visibility, expand all links — all persisted locally
+- **Recent Updates panel**: Dataset freshness, source list, category breakdown, interest profile, and run history — full transparency without polluting the main page
 - **No dark patterns**: No unread counts, no badges, no engagement baiting
+
+> **TODO**: The 👍/👎 icons are placeholders. They are not "like/dislike" buttons — they are algorithmic interest signals telling the system what the user finds important vs. not worth their time. Replace with more appropriate icons (e.g. bookmark/hide, or a custom "more like this"/"less like this" pair) that don't carry social-media connotations.
 
 ## Setup
 

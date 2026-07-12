@@ -1,6 +1,8 @@
 import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import { getSourceName } from './sources.js';
+import { fetchRssFeeds } from './fetch-rss.js';
+import { fetchGuardianNews } from './fetch-guardian.js';
 
 const API_BASE_URL = 'https://api.currentsapi.services/v1';
 const CACHE_DIR = 'cache';
@@ -227,6 +229,22 @@ async function main() {
     const unique = pluginResults.filter(r => r.id && !newsItems.some(n => n.id === r.id));
     newsItems.push(...unique);
     console.log(`Plugins contributed ${unique.length} unique stories`);
+  }
+
+  // Fetch from optional RSS feeds (BBC, etc.) — no API quota impact
+  const rssItems = await fetchRssFeeds();
+  if (rssItems.length) {
+    const unique = rssItems.filter(r => r.id && !newsItems.some(n => n.id === r.id));
+    newsItems.push(...unique);
+    console.log(`RSS feeds contributed ${unique.length} unique stories`);
+  }
+
+  // Fetch from Guardian API (optional, separate quota)
+  const guardianItems = await fetchGuardianNews();
+  if (guardianItems.length) {
+    const unique = guardianItems.filter(r => r.id && !newsItems.some(n => n.id === r.id));
+    newsItems.push(...unique);
+    console.log(`Guardian contributed ${unique.length} unique stories`);
   }
 
   saveRunState(runState);
