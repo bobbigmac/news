@@ -18,6 +18,11 @@ const BBC_FEEDS = [
   // { url: 'https://feeds.bbci.co.uk/sport/rss.xml', category: 'Sports' }, // disabled — re-enable if needed
 ];
 
+const GAMING_FEEDS = [
+  { url: 'https://www.eurogamer.net/feed/news', category: 'Gaming', maxItems: 20 },
+  { url: 'https://kotaku.com/feed', category: 'Gaming' },
+];
+
 function makeId(url) {
   return 'rss-' + createHash('md5').update(url).digest('hex');
 }
@@ -39,7 +44,7 @@ function normalizeRssItem(item, feed, pluginName) {
     url,
     image,
     source: item.creator || item.author || '',
-    sourceName: getSourceName(url) || 'BBC',
+    sourceName: getSourceName(url) || (feed.pluginName === 'gaming' ? feed.url.includes('eurogamer') ? 'Eurogamer' : feed.url.includes('kotaku') ? 'Kotaku' : 'RSS' : 'BBC'),
     published: parseDate(item.isoDate || item.pubDate),
     category: feed.category,
     keywords: '',
@@ -59,6 +64,10 @@ export async function fetchRssFeeds() {
     feeds.push(...BBC_FEEDS.map(f => ({ ...f, pluginName: 'bbc' })));
   }
 
+  if (enabledNames.includes('gaming')) {
+    feeds.push(...GAMING_FEEDS.map(f => ({ ...f, pluginName: 'gaming' })));
+  }
+
   if (!feeds.length) return [];
 
   console.log(`RSS: Fetching ${feeds.length} feeds (enabled: ${enabledNames.join(', ')})`);
@@ -68,8 +77,10 @@ export async function fetchRssFeeds() {
 
   const results = await Promise.allSettled(feeds.map(async feed => {
     const parsed = await parser.parseURL(feed.url);
-    console.log(`  RSS ${feed.url}: ${parsed.items?.length || 0} items`);
-    return (parsed.items || []).map(item => normalizeRssItem(item, feed, feed.pluginName));
+    const items = parsed.items || [];
+    const limited = feed.maxItems ? items.slice(0, feed.maxItems) : items;
+    console.log(`  RSS ${feed.url}: ${items.length} items${feed.maxItems ? ` (using ${limited.length})` : ''}`);
+    return limited.map(item => normalizeRssItem(item, feed, feed.pluginName));
   }));
 
   for (const result of results) {
