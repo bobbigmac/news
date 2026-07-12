@@ -43,8 +43,9 @@ Respond ONLY with valid JSON in this exact format:
 }`;
 
 export function buildUserPrompt(chunk, existingClusters, matchedCluster) {
-  const storyLines = chunk.map((s, i) =>
-    `[${i + 1}] ID: ${s.id}\n    Source headline (may be clickbait — do not emulate its style): ${s.originalTitle}\n    Byline: ${s.source}\n    Content: ${s.text}`
+  const sorted = [...chunk].sort((a, b) => (b.published || '').localeCompare(a.published || ''));
+  const storyLines = sorted.map((s, i) =>
+    `[${i + 1}] ID: ${s.id}\n    Published: ${s.published || 'unknown'}\n    Source headline (may be clickbait — do not emulate its style): ${s.originalTitle}\n    Byline: ${s.source}\n    Content: ${s.text}`
   ).join('\n\n');
 
   let context = '';
@@ -68,5 +69,5 @@ export function buildUserPrompt(chunk, existingClusters, matchedCluster) {
     }
   }
 
-  return `Here are ${chunk.length} news stories. Integrate them into the existing digest — update existing clusters where stories are developments, and create new clusters only for genuinely new stories. Every story must appear in at least one cluster.${context}\n\n${storyLines}`;
+  return `Here are ${sorted.length} news stories (newest first). Integrate them into the existing digest — update existing clusters where stories are developments, and create new clusters only for genuinely new stories. Every story must appear in at least one cluster.${context}\n\n${storyLines}`;
 }
