@@ -4,6 +4,7 @@ published_date: "2025-07-06"
 summary: "1 Institutional barriers and ballot rules The United States’ winner-take-all electoral system is not welcoming to third parties. Hans Noel, a professor who teaches political history and political me..."
 category: "Technology"
 tags: ["technology"]
+archived: true
 story_id: "ef833938-b0a0-4888-aa0a-ff4facad6b48"
 image: "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/KNV6GHUMTLVNCI54NACSKFVI6I.jpg&w=1440"
 external_links:

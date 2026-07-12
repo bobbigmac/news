@@ -1,248 +1,312 @@
-import { writeFileSync, readdirSync, existsSync, unlinkSync, readFileSync } from 'fs';
+import { writeFileSync, readFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'fs';
 import { join } from 'path';
 
-// curl "https://api.currentsapi.services/v1/latest-news?language=us&apiKey=lCOF86JDor85-nGp2pjExpsDbnxjW5nP3JK7w1w2KB6P7UKL"
-const API_KEY = 'lCOF86JDor85-nGp2pjExpsDbnxjW5nP3JK7w1w2KB6P7UKL';
 const API_BASE_URL = 'https://api.currentsapi.services/v1';
+const CACHE_DIR = 'cache';
+const CACHE_FILE = join(CACHE_DIR, 'currents-api.json');
+const CACHE_TTL_MS = 6 * 60 * 60 * 1000;
+const NEWS_DIR = 'news';
+const MAX_STORIES = 200;
+const PLUGINS_FILE = 'search-plugins.json';
+const RUN_STATE_FILE = join(CACHE_DIR, 'run-state.json');
+const DAILY_QUOTA = 20;
+const FIXED_CALLS_PER_RUN = 2;
+const RUNS_PER_DAY = 3;
 
-// Fetch latest news across all categories
-const LATEST_NEWS_LIMIT = 100;
-const MAX_STORIES_TO_KEEP = 100; // Keep last 100 stories
-
-// Generate a slug from title
-function generateSlug(title) {
-  return title
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .trim()
-    .substring(0, 50);
-}
-
-function yamlEscape(str) {
-  if (!str) return '';
-  return str.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-}
-
-function yamlSummary(summary) {
-  if (!summary) return 'summary: ""';
-  if (summary.includes('\n')) {
-    return `summary: |\n  ${summary.replace(/\n/g, '\n  ')}`;
+function loadEnv() {
+  const envPath = join(process.cwd(), '.env');
+  if (!existsSync(envPath)) return;
+  for (const line of readFileSync(envPath, 'utf8').split('\n')) {
+    const m = line.match(/^(\w+)=(.*)$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim();
   }
-  return `summary: "${yamlEscape(summary)}"`;
 }
+loadEnv();
 
-async function fetchLatestNews(limit = LATEST_NEWS_LIMIT, country = null) {
+const API_KEY = process.env.currentsapi_services_key || process.env.CURRENTSAPI_SERVICES_KEY || '';
+if (!API_KEY) { console.error('No API key found in .env or env'); process.exit(1); }
+
+function readCache() {
+  if (!existsSync(CACHE_FILE)) return null;
   try {
-    let url = `${API_BASE_URL}/latest-news?language=en&apiKey=${encodeURIComponent(API_KEY)}`;
-    if (country) {
-      url += `&country=${country}`;
-    }
-    
-    console.log(`Fetching: ${url}`);
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    const data = await response.json();
-    return data.news || [];
-  } catch (error) {
-    console.error(`Error fetching latest news${country ? ` for ${country}` : ''}:`, error.message);
-    return null; // null signals a hard failure
-  }
+    const raw = JSON.parse(readFileSync(CACHE_FILE, 'utf8'));
+    if (Date.now() - raw.fetchedAt < CACHE_TTL_MS) return raw.news;
+    console.log('Cache expired, will fetch fresh.');
+  } catch { /* invalid cache */ }
+  return null;
 }
 
-function newsToMarkdown(newsItem, isArchived = false) {
-  const publishedDate = new Date(newsItem.published).toISOString().split('T')[0];
-  const slug = generateSlug(newsItem.title);
-  
-  // Use category from API or default to 'General'
-  const category = (newsItem.category || 'General').toString();
-  
+function writeCache(news) {
+  mkdirSync(CACHE_DIR, { recursive: true });
+  writeFileSync(CACHE_FILE, JSON.stringify({ fetchedAt: Date.now(), news }, null, 2));
+}
+
+async function fetchFromApi(endpoint, label) {
+  const url = `${API_BASE_URL}/${endpoint}&apiKey=${encodeURIComponent(API_KEY)}`;
+  console.log(`Fetching ${label} from Currents API...`);
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`API error ${res.status} for ${label}`);
+  const data = await res.json();
+  const news = data.news || [];
+  console.log(`  ${label}: ${news.length} items`);
+  return news;
+}
+
+function loadPlugins() {
+  if (!existsSync(PLUGINS_FILE)) return [];
+  try { return JSON.parse(readFileSync(PLUGINS_FILE, 'utf8')); } catch { return []; }
+}
+
+function loadRunState() {
+  const today = new Date().toISOString().split('T')[0];
+  const fresh = { runCount: 0, date: today, callsToday: 0, pluginLastRun: {} };
+  if (!existsSync(RUN_STATE_FILE)) return fresh;
+  try {
+    const state = JSON.parse(readFileSync(RUN_STATE_FILE, 'utf8'));
+    if (state.date !== today) return fresh;
+    if (!state.pluginLastRun) state.pluginLastRun = {};
+    return state;
+  } catch { return fresh; }
+}
+
+function saveRunState(state) {
+  mkdirSync(CACHE_DIR, { recursive: true });
+  writeFileSync(RUN_STATE_FILE, JSON.stringify(state, null, 2));
+}
+
+function rankByKeywords(items, keywordsStr) {
+  const terms = keywordsStr.split('|').map(t => t.trim().toLowerCase()).filter(Boolean);
+  return items.map(item => {
+    const text = ((item.title || '') + ' ' + (item.description || '')).toLowerCase();
+    let priority = -1;
+    for (let i = 0; i < terms.length; i++) {
+      if (text.includes(terms[i])) { priority = i; break; }
+    }
+    return { ...item, _pluginPriority: priority };
+  }).sort((a, b) => {
+    if (a._pluginPriority === -1) return 1;
+    if (b._pluginPriority === -1) return -1;
+    return a._pluginPriority - b._pluginPriority;
+  });
+}
+
+async function runSearchPlugins(runState) {
+  const plugins = loadPlugins();
+  if (!plugins.length) return [];
+
+  // Reserve budget for remaining fixed calls today
+  const remainingRuns = Math.max(0, RUNS_PER_DAY - runState.runCount);
+  const reservedForFixed = remainingRuns * FIXED_CALLS_PER_RUN;
+  const pluginBudget = DAILY_QUOTA - runState.callsToday - reservedForFixed;
+
+  if (pluginBudget <= 0) {
+    console.log(`No spare budget for plugins (${runState.callsToday} used, ${reservedForFixed} reserved for fixed calls). Skipping.`);
+    return [];
+  }
+
+  // Sort plugins by oldest last-run first (never-run = highest priority)
+  const queue = [...plugins].sort((a, b) => {
+    const aLast = runState.pluginLastRun[a.name] || 0;
+    const bLast = runState.pluginLastRun[b.name] || 0;
+    return aLast - bLast;
+  });
+
+  console.log(`Plugin budget: ${pluginBudget} spare calls (after reserving ${reservedForFixed} for fixed), ${queue.length} plugins queued`);
+
+  const allResults = [];
+  let pluginCalls = 0;
+  for (const plugin of queue) {
+    if (pluginCalls >= pluginBudget) {
+      console.log(`Plugin budget exhausted, deferring remaining plugins`);
+      break;
+    }
+
+    const terms = plugin.keywords.split('|').map(t => t.trim()).filter(Boolean);
+    const queryParams = [`keywords=${encodeURIComponent(terms.join(' '))}`];
+    if (plugin.country) queryParams.push(`country=${plugin.country}`);
+    if (plugin.language) queryParams.push(`language=${plugin.language}`);
+    const endpoint = `search?${queryParams.join('&')}`;
+
+    try {
+      const results = await fetchFromApi(endpoint, `plugin:${plugin.name}`);
+      const ranked = rankByKeywords(results, plugin.keywords);
+      for (const item of ranked) {
+        item._plugin = plugin.name;
+        item._pluginPriority = item._pluginPriority ?? 0;
+      }
+      allResults.push(...ranked);
+      runState.callsToday++;
+      pluginCalls++;
+      runState.pluginLastRun[plugin.name] = Date.now();
+    } catch (err) {
+      console.error(`Plugin ${plugin.name} failed: ${err.message}`);
+    }
+  }
+
+  return allResults;
+}
+
+async function fetchLatestNews() {
+  const cached = readCache();
+  if (cached) { console.log(`Using cached API response (${cached.length} items)`); return cached; }
+
+  const [general, gb] = await Promise.all([
+    fetchFromApi('latest-news?language=en', 'general'),
+    fetchFromApi('latest-news?language=en&country=gb', 'GB'),
+  ]);
+
+  const deduped = new Map();
+  for (const item of general) if (item.id) deduped.set(item.id, item);
+  for (const item of gb) if (item.id && !deduped.has(item.id)) deduped.set(item.id, item);
+
+  const news = [...deduped.values()];
+  writeCache(news);
+  console.log(`Combined: ${news.length} unique items (general: ${general.length}, GB: ${gb.length}), cached to ${CACHE_FILE}`);
+  return news;
+}
+
+function generateSlug(title) {
+  return title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim().substring(0, 60);
+}
+
+function loadProcessedIds() {
+  const idsFile = join(CACHE_DIR, 'processed-ids.json');
+  if (!existsSync(idsFile)) return new Set();
+  try { return new Set(JSON.parse(readFileSync(idsFile, 'utf8'))); } catch { return new Set(); }
+}
+
+function saveProcessedIds(ids) {
+  mkdirSync(CACHE_DIR, { recursive: true });
+  writeFileSync(join(CACHE_DIR, 'processed-ids.json'), JSON.stringify([...ids], null, 2));
+}
+
+function loadExistingStories() {
+  if (!existsSync(NEWS_DIR)) return new Map();
+  const map = new Map();
+  for (const file of readdirSync(NEWS_DIR)) {
+    if (!file.endsWith('.md')) continue;
+    try {
+      const content = readFileSync(join(NEWS_DIR, file), 'utf8');
+      const idMatch = content.match(/story_id:\s*"([^"]+)"/);
+      if (idMatch) map.set(idMatch[1], { file, content, slug: file.replace('.md', '') });
+    } catch {}
+  }
+  return map;
+}
+
+function newsToMarkdown(item) {
+  const date = new Date(item.published).toISOString().split('T')[0];
+  const slug = generateSlug(item.title);
+  const category = (item.category || 'General').toString();
   const tags = [category.toLowerCase()];
-  if (newsItem.keywords) {
-    const keywords = newsItem.keywords.split(',').slice(0, 3).map(k => k.trim().toLowerCase());
-    tags.push(...keywords.filter(k => k.length > 0));
-  }
-  
-  const cleanTitle = yamlEscape(newsItem.title);
-  const cleanSummary = newsItem.description ? newsItem.description.replace(/\r/g, '').replace(/\n+/g, ' ').trim() : `Latest breaking news`;
-  const cleanImage = newsItem.image ? yamlEscape(newsItem.image) : '';
-  const cleanUrl = newsItem.url ? yamlEscape(newsItem.url) : '';
-  
-  let yaml = `---\n`;
-  yaml += `title: "${cleanTitle}"\n`;
-  yaml += `published_date: "${publishedDate}"\n`;
-  yaml += `${yamlSummary(cleanSummary)}\n`;
-  yaml += `category: "${category.charAt(0).toUpperCase() + category.slice(1)}"\n`;
-  yaml += `tags: ${JSON.stringify(tags)}\n`;
-  yaml += `story_id: "${newsItem.id || ''}"\n`;
-  if (isArchived) yaml += `archived: true\n`;
-  if (cleanImage) yaml += `image: "${cleanImage}"\n`;
-  yaml += `external_links:\n  - title: "Read full article"\n    url: "${cleanUrl}"\n`;
-  yaml += `---\n\n`;
-
-  const markdown = `${yaml}# ${newsItem.title}\n\n## Overview\n\n${newsItem.description || 'Latest breaking news.'}\n\n## Key Details\n\n${newsItem.content || newsItem.description || 'For more information, please refer to the full article linked below.'}\n\n## Source\n\nThis story was originally published by ${newsItem.author || newsItem.source || 'various sources'}.\n\n---\n\n*This article was automatically generated from current news sources. For the most up-to-date information, please refer to the original source.*\n`;
-
-  return { slug, markdown, storyId: newsItem.id };
+  if (item.keywords) item.keywords.split(',').slice(0, 3).forEach(k => { const t = k.trim().toLowerCase(); if (t) tags.push(t); });
+  const esc = (s) => (s || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  const summary = item.description ? item.description.replace(/\r/g, '').replace(/\n+/g, ' ').trim() : '';
+  const yaml = [
+    '---',
+    `title: "${esc(item.title)}"`,
+    `published_date: "${date}"`,
+    `summary: "${esc(summary)}"`,
+    `category: "${category.charAt(0).toUpperCase() + category.slice(1)}"`,
+    `tags: ${JSON.stringify(tags)}`,
+    `story_id: "${item.id || ''}"`,
+    item.image ? `image: "${esc(item.image)}"` : null,
+    `source: "${esc(item.author || item.source || '')}"`,
+    `external_links:`,
+    `  - title: "Read full article"`,
+    `    url: "${esc(item.url || '')}"`,
+    '---',
+    '',
+    `# ${item.title}`,
+    '',
+    item.description || '',
+    '',
+    item.content || '',
+    '---',
+    ''
+  ].filter(Boolean).join('\n');
+  return { slug, markdown: yaml, storyId: item.id };
 }
 
-// Load existing stories and their IDs
-function loadExistingStories(newsDir) {
-  if (!existsSync(newsDir)) return new Map();
-  
-  const existingStories = new Map();
-  const files = readdirSync(newsDir);
-  
-  for (const file of files) {
-    if (file.endsWith('.md')) {
-      try {
-        const content = readFileSync(join(newsDir, file), 'utf8');
-        const storyIdMatch = content.match(/story_id:\s*"([^"]+)"/);
-        if (storyIdMatch) {
-          existingStories.set(storyIdMatch[1], {
-            file,
-            content,
-            slug: file.replace('.md', '')
-          });
-        }
-      } catch (error) {
-        console.warn(`Could not read ${file}:`, error.message);
-      }
-    }
-  }
-  
-  return existingStories;
-}
+async function main() {
+  console.log('=== Fetch News ===');
+  const runState = loadRunState();
+  runState.runCount++;
+  console.log(`Run #${runState.runCount} today, ${runState.callsToday}/${DAILY_QUOTA} API calls used so far`);
 
-// Delete stories that are no longer in our keep list
-function deleteOldStories(newsDir, keepStoryIds) {
-  if (!existsSync(newsDir)) return;
-  
-  const files = readdirSync(newsDir);
-  for (const file of files) {
-    if (file.endsWith('.md')) {
-      try {
-        const content = readFileSync(join(newsDir, file), 'utf8');
-        const storyIdMatch = content.match(/story_id:\s*"([^"]+)"/);
-        if (storyIdMatch && !keepStoryIds.has(storyIdMatch[1])) {
-          unlinkSync(join(newsDir, file));
-          console.log(`Deleted old story: ${file}`);
-        }
-      } catch (error) {
-        console.warn(`Could not process ${file}:`, error.message);
-      }
-    }
-  }
-}
+  const newsItems = await fetchLatestNews();
+  if (!newsItems.length) { console.error('No news fetched. Aborting.'); return; }
+  runState.callsToday += FIXED_CALLS_PER_RUN;
 
-async function generateNewsFiles() {
-  console.log('Fetching latest news from Currents API...');
-  const newsDir = 'news';
-  
-  // Test with just one request first
-  console.log('Fetching global latest news...');
-  const globalNews = await fetchLatestNews(LATEST_NEWS_LIMIT);
-  if (globalNews === null) {
-    console.error('API failure or quota exceeded. Aborting. No files will be modified.');
-    return;
+  // Run search plugins (budget-aware)
+  const pluginResults = await runSearchPlugins(runState);
+  if (pluginResults.length) {
+    const pluginIds = new Set(pluginResults.map(r => r.id).filter(Boolean));
+    for (const item of newsItems) pluginIds.delete(item.id);
+    const unique = pluginResults.filter(r => r.id && !newsItems.some(n => n.id === r.id));
+    newsItems.push(...unique);
+    console.log(`Plugins contributed ${unique.length} unique stories`);
   }
-  
-  // Add delay between requests to avoid rate limiting
-  console.log('Waiting 2 seconds before fetching UK news...');
-  await new Promise(resolve => setTimeout(resolve, 10000));
-  
-  console.log('Fetching UK latest news...');
-  const ukNews = await fetchLatestNews(LATEST_NEWS_LIMIT, 'gb');
-  if (ukNews === null) {
-    console.error('UK news API failure. Continuing with global news only.');
-  }
-  
-  // Combine and deduplicate by story ID
-  const allNews = new Map();
-  
-  // Add global news first
-  for (const newsItem of globalNews) {
-    if (newsItem.id) {
-      allNews.set(newsItem.id, newsItem);
-    }
-  }
-  
-  // Add UK news (will overwrite duplicates, keeping UK version if same story)
-  if (ukNews) {
-    for (const newsItem of ukNews) {
-      if (newsItem.id) {
-        allNews.set(newsItem.id, newsItem);
-      }
-    }
-  }
-  
-  const newsItems = Array.from(allNews.values());
-  
-  if (newsItems.length === 0) {
-    console.error('No latest news fetched. Aborting. No files will be modified.');
-    return;
-  }
-  
-  console.log(`Combined ${globalNews.length} global + ${ukNews ? ukNews.length : 0} UK stories = ${newsItems.length} unique stories`);
-  
-  // Load existing stories
-  const existingStories = loadExistingStories(newsDir);
-  console.log(`Found ${existingStories.size} existing stories`);
-  
-  // Process new stories and track which ones to keep
-  const keepStoryIds = new Set();
-  const newStories = [];
-  const updatedStories = [];
-  
-  for (const newsItem of newsItems) {
-    const storyId = newsItem.id;
-    if (!storyId) {
-      console.warn('Story missing ID, skipping:', newsItem.title);
-      continue;
-    }
-    
-    keepStoryIds.add(storyId);
-    
-    if (existingStories.has(storyId)) {
-      // Update existing story (might have new metadata)
-      const { slug, markdown } = newsToMarkdown(newsItem, false);
-      updatedStories.push({ storyId, slug, markdown });
-      console.log(`Updated existing story: ${slug}.md`);
+
+  saveRunState(runState);
+
+  const existing = loadExistingStories();
+  const processedIds = loadProcessedIds();
+  const keepIds = new Set();
+  const newRaw = [];
+  const updatedRaw = [];
+
+  for (const item of newsItems) {
+    if (!item.id) continue;
+    keepIds.add(item.id);
+    if (existing.has(item.id)) {
+      if (processedIds.has(item.id)) continue;
+      updatedRaw.push(item);
     } else {
-      // New story
-      const { slug, markdown } = newsToMarkdown(newsItem, false);
-      newStories.push({ storyId, slug, markdown });
-      console.log(`New story: ${slug}.md`);
+      newRaw.push(item);
     }
   }
-  
-  // Mark old stories as archived (but keep them)
-  for (const [storyId, story] of existingStories) {
-    if (!keepStoryIds.has(storyId)) {
-      // This story is no longer in latest news, mark as archived
-      const content = story.content;
-      if (!content.includes('archived: true')) {
-        const updatedContent = content.replace('story_id:', 'archived: true\nstory_id:');
-        writeFileSync(join(newsDir, story.file), updatedContent);
-        console.log(`Marked as archived: ${story.file}`);
-      }
+
+  // Archive stories no longer in feed
+  for (const [id, story] of existing) {
+    if (!keepIds.has(id) && !story.content.includes('archived: true')) {
+      writeFileSync(join(NEWS_DIR, story.file), story.content.replace('story_id:', 'archived: true\nstory_id:'));
+      console.log(`Archived: ${story.file}`);
     }
   }
-  
-  // Write new and updated stories
-  for (const { slug, markdown } of [...newStories, ...updatedStories]) {
-    const filePath = join(newsDir, `${slug}.md`);
-    writeFileSync(filePath, markdown);
+
+  // Write new + updated markdown
+  let written = 0;
+  for (const item of [...newRaw, ...updatedRaw]) {
+    const { slug, markdown } = newsToMarkdown(item);
+    writeFileSync(join(NEWS_DIR, `${slug}.md`), markdown);
+    written++;
   }
-  
-  // Clean up very old stories if we exceed the limit
-  const totalStories = existingStories.size + newStories.length;
-  if (totalStories > MAX_STORIES_TO_KEEP) {
-    console.log(`Total stories (${totalStories}) exceeds limit (${MAX_STORIES_TO_KEEP}), cleaning up oldest...`);
-    deleteOldStories(newsDir, keepStoryIds);
+
+  // Save raw JSON for summarise.js to consume
+  const rawForSummariser = [...newRaw, ...updatedRaw].map(item => ({
+    id: item.id, title: item.title, description: item.description || '',
+    content: item.content || '', url: item.url || '', image: item.image || '',
+    source: item.author || item.source || '', published: item.published,
+    category: item.category || 'General', keywords: item.keywords || '',
+    plugin: item._plugin || null, pluginPriority: item._pluginPriority ?? null
+  }));
+  mkdirSync(CACHE_DIR, { recursive: true });
+  writeFileSync(join(CACHE_DIR, 'raw-new.json'), JSON.stringify(rawForSummariser, null, 2));
+
+  // Update processed IDs (only items we actually wrote)
+  for (const item of [...newRaw, ...updatedRaw]) processedIds.add(item.id);
+  saveProcessedIds(processedIds);
+
+  // Cleanup old stories
+  if (existing.size + newRaw.length > MAX_STORIES) {
+    for (const [id, story] of existing) {
+      if (!keepIds.has(id)) { try { unlinkSync(join(NEWS_DIR, story.file)); } catch {} }
+    }
   }
-  
-  console.log(`\nNews generation complete! Added ${newStories.length} new stories, updated ${updatedStories.length} existing stories.`);
+
+  console.log(`Done. ${newRaw.length} new, ${updatedRaw.length} updated, ${written} files written.`);
+  console.log(`Raw for summariser: ${rawForSummariser.length} items in cache/raw-new.json`);
 }
 
-generateNewsFiles().catch(console.error); 
+main().catch(err => { console.error(err); process.exit(1); });

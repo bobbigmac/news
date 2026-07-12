@@ -4,6 +4,7 @@ published_date: "2025-07-06"
 summary: "Pittsburgh Pirates ace Paul Skenes, the reigning National League rookie of the year, isn’t just avoiding a sophomore slump; he’s dominating the majors. He attacks hitters with confidence, demonstratin..."
 category: "Sports"
 tags: ["sports"]
+archived: true
 story_id: "b80a75a0-e184-4c7e-8e08-448d694548ee"
 image: "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/UA6J43CYXAPIMH6WGFLNPX6AJE.jpg&w=1440"
 external_links:

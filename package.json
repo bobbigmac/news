@@ -5,13 +5,11 @@
   "scripts": {
     "build": "node scripts/build.js",
     "fetch-news": "node scripts/fetch-news.js",
-    "dev": "npm run fetch-news && npm run build && live-server docs --port=8000 --open=/",
-    "watch": "live-server docs --port=8000 --open=/ --watch=src,news"
+    "summarise": "node scripts/summarise.js",
+    "dev": "npm run fetch-news && npm run summarise && npm run build && live-server docs --port=8000 --open=/",
+    "watch": "live-server docs --port=8000 --open=/ --watch=src"
   },
-  "dependencies": {
-    "gray-matter": "^4.0.3",
-    "markdown-it": "^14.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "live-server": "^1.2.2"
   },

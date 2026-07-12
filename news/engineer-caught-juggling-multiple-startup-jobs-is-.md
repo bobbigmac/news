@@ -4,6 +4,7 @@ published_date: "2025-07-06"
 summary: "The tech industry is reeling after a software engineer was exposed as working at several Silicon Valley startups at the same time — and experts say it's a lesson on hustle culture gone too far. Soham..."
 category: "General"
 tags: ["general"]
+archived: true
 story_id: "d3149eea-95fa-432b-be5b-a09a189e6db1"
 image: "https://image.cnbcfm.com/api/v1/image/108168013-1751702931145-gettyimages-1607307473-a0104111.jpeg?v=1751703003&w=1920&h=1080"
 external_links:

@@ -4,6 +4,7 @@ published_date: "2025-07-06"
 summary: "Former University of Pennsylvania swimmer Monika Burzynska said she was assigned the locker next to Lia Thomas when the transgender athlete joined the women's swim team in 2021. Burzynska previously knew the athlete as Will Thomas, a member of the men's swimming team at UPenn. \"He wasn't very social..."
 category: "Sports"
 tags: ["sports"]
+archived: true
 story_id: "903f7467-afe1-4f4d-ab1d-7e6dd0a45aa1"
 image: "https://static.foxnews.com/foxnews.com/content/uploads/2025/07/lia-sports.jpg"
 external_links:

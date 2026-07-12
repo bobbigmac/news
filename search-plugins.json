@@ -1,0 +1,15 @@
+[
+  {
+    "name": "local-news",
+    "keywords": "longsight|levenshulme|gorton|manchester",
+    "country": "gb",
+    "language": "en",
+    "description": "Local Manchester news"
+  },
+  {
+    "name": "gaming",
+    "keywords": "xbox|dark souls|dwarf fortress|metal gear solid|game pass",
+    "language": "en",
+    "description": "Gaming news of interest"
+  }
+]

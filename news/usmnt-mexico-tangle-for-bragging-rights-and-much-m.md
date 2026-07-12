@@ -4,6 +4,7 @@ published_date: "2025-07-06"
 summary: "HOUSTON — Sixteen summers ago, in the aching moments after a 5-0 mishap against Mexico in the Concacaf Gold Cup final, the U.S. players could not wait to seek peace at New Jersey’s Giants Stadium. Bob..."
 category: "Sports"
 tags: ["sports"]
+archived: true
 story_id: "35f4aac5-38c3-41b5-9612-49e44e9bd67b"
 image: "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/5ESM7ASISLIZPQXU4HH56MKUMQ_size-normalized.jpg&w=1440"
 external_links:

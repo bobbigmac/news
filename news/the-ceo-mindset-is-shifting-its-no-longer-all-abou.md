@@ -4,6 +4,7 @@ published_date: "2025-07-06"
 summary: "Ayrton Senna driving the Marlboro McLaren during the Belgian Grand Prix in 1992. Pascal Rondeau | Hulton Archive | Getty Images CEOs today aren't just steering companies — they're navigating a minefi..."
 category: "Auto"
 tags: ["auto"]
+archived: true
 story_id: "e9961a6f-5386-4e32-85bb-04a7e4c6de14"
 image: "https://image.cnbcfm.com/api/v1/image/108167957-1751623526748-gettyimages-1485136059-huty3278525.jpeg?v=1751623569&w=1920&h=1080"
 external_links:

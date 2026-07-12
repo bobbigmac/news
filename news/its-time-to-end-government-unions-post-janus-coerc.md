@@ -4,6 +4,7 @@ published_date: "2025-07-06"
 summary: "The Supreme Court has a chance to put some teeth on its ruling that workers can't be compelled to pay dues."
 category: "Opinion,politics"
 tags: ["opinion,politics"]
+archived: true
 story_id: "40b09cfd-da69-49b5-97f6-5e81c0a0b47b"
 image: "None"
 external_links:

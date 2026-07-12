@@ -4,6 +4,7 @@ published_date: "2025-07-06"
 summary: "Two hundred and forty-nine years ago, 56 men met in the Pennsylvania State House in Philadelphia to commit treason against the most powerful empire on Earth. Representing 13 colonies of that empire, these men – a mix of landowners, entrepreneurs, politicians and others – had become enamored with a n..."
 category: "Opinion"
 tags: ["opinion"]
+archived: true
 story_id: "c17cf8e1-c1de-45b8-8873-2ccc39b52fde"
 image: "https://static.foxnews.com/foxnews.com/content/uploads/2022/03/GettyImages-517212810.jpg"
 external_links:

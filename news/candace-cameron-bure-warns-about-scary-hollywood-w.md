@@ -4,6 +4,7 @@ published_date: "2025-07-06"
 summary: "Candace Cameron Bure is opening up about the various weight-loss trends taking over Hollywood. In an exclusive interview with Fox News Digital, Bure – who released a new devotional, \"100 Days of Joy and Strength: A Daily Devotional Journey\" last week – got candid about the \"scary\" way certain fads a..."
 category: "Entertainment"
 tags: ["entertainment"]
+archived: true
 story_id: "97d6713b-3382-4472-a08c-1605517acecb"
 image: "https://static.foxnews.com/foxnews.com/content/uploads/2025/07/candace-cameron-bure.jpg"
 external_links:

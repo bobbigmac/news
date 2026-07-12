@@ -4,6 +4,7 @@ published_date: "2025-07-06"
 summary: "Before he died, Lynyrd Skynyrd guitarist and founding member Gary Rossington told fellow band members Johnny Van Zant and Rickey Medlocke that he wanted the band to continue after he was gone.\"He knew his health was getting bad and he had told me, he said… 'I've spent my life carrying on this legacy..."
 category: "Entertainment"
 tags: ["entertainment"]
+archived: true
 story_id: "c7aedaf6-9c87-4652-b2ce-88acd87de358"
 image: "https://static.foxnews.com/foxnews.com/content/uploads/2025/06/lynyrd-skynyrd.jpg"
 external_links:

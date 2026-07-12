@@ -4,6 +4,7 @@ published_date: "2025-07-06"
 summary: "By Joseph Ataman, CNN PARIS (CNN) — Foreign leaders' visits to the White House used to be occasions for face-to-face diplomacy, allied backslapping and polite photo ops. But President Donald Trump's public pillorying of Ukraine President Volodymyr Zelensky in February has upended Oval Office norms, ..."
 category: "Regional,el-paso,texas,politics"
 tags: ["regional,el-paso,texas,politics"]
+archived: true
 story_id: "43e2aed1-2f6c-49e8-a859-6ad4c3333868"
 image: "https://kvia.b-cdn.net/2023/04/thumbnail_KVIA-Masthead.png"
 external_links:

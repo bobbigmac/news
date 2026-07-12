@@ -4,6 +4,7 @@ published_date: "2025-07-06"
 summary: "Flags of the European Union and the United States. Sean Gallup | Getty Images News | Getty Images CNBC's assignment desk has a conundrum this week: how to approach July, 9. Why does this specific dat..."
 category: "General"
 tags: ["general"]
+archived: true
 story_id: "4108abce-dea3-43cc-a868-4045c3363810"
 image: "https://image.cnbcfm.com/api/v1/image/108167974-1751630561160-gettyimages-2199623404-2s4a0170_awnchytw.jpeg?v=1751630745&w=1920&h=1080"
 external_links:

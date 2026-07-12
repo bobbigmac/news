@@ -4,6 +4,7 @@ published_date: "2025-07-06"
 summary: "https://www.nationalreview.com/feed/..."
 category: "Opinion,politics"
 tags: ["opinion,politics"]
+archived: true
 story_id: "c7813379-51cf-4376-ab38-0320a43d28f0"
 image: "None"
 external_links:
