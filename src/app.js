@@ -1012,6 +1012,17 @@ async function init() {
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeAllOverlays();
+    if ((e.ctrlKey || e.metaKey) && e.key === 'f' || e.key === 'F3') {
+      e.preventDefault();
+      const sp = document.getElementById('search-panel');
+      const si = document.getElementById('filter');
+      if (sp && si) {
+        sp.classList.remove('hidden');
+        si.focus();
+        si.select();
+        renderRecentSearches();
+      }
+    }
   });
 
   // Back button closes overlays on mobile
