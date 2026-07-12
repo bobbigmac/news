@@ -55,6 +55,6 @@ writeFileSync(join(OUT_DIR, 'run-log.json'), JSON.stringify(runLog, null, 2));
 copyStatic('index.html');
 copyStatic('style.css');
 copyStatic('app.js');
-copyStatic('og-image.svg');
+copyStatic('og-image.jpg');
 
 console.log(`Build complete. ${digest.clusters.length} clusters written to ${OUT_DIR}/digest.json`);
