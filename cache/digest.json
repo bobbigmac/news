@@ -1277,6 +1277,18 @@
           "category": "General",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-1f1e8ee37f0103a9dda3ccc649e37631",
+          "title": "At least 27 killed in Bangkok bar fire",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c24yev53q06o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T20:13:14.000Z",
+          "category": "general",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
@@ -1286,7 +1298,7 @@
       ],
       "impact": "medium",
       "created": "2026-07-12T18:03:58.340Z",
-      "updated": "2026-07-12T20:26:20.419Z",
+      "updated": "2026-07-12T21:35:22.594Z",
       "contentVersion": 1
     },
     {
@@ -2751,7 +2763,7 @@
     {
       "id": "cluster-1783880245688-9a8b84",
       "headline": "Screen time impacts younger children",
-      "summary": "The piece analyses how screen time influences younger children’s behaviour, sleep patterns and social development, citing research on the effects of digital exposure. It highlights concerns about attention spans, mental health and family interactions in relation to screen use.",
+      "summary": "Tech Life reports on the impact of screen time on younger children. The coverage analyses how digital exposure influences behaviour, sleep patterns and social development, citing research. It highlights concerns about attention spans, mental health and family interactions. The ongoing discussion reflects sustained public health interest in children's technology use.",
       "category": "Health",
       "stories": [
         {
@@ -2765,6 +2777,18 @@
           "category": "Technology",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-851ce7bcf9a1fc7f00c43b082fbf20c5",
+          "title": "Tech Life",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/live:bbc_world_service_news_internet?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-07T20:00:00.000Z",
+          "category": "technology",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
@@ -2773,8 +2797,8 @@
       ],
       "impact": "medium",
       "created": "2026-07-12T18:17:25.688Z",
-      "updated": "2026-07-12T18:17:25.688Z",
-      "contentVersion": 1
+      "updated": "2026-07-12T21:36:53.798Z",
+      "contentVersion": 2
     },
     {
       "id": "cluster-1783880245688-vtoi9a",
@@ -3697,7 +3721,7 @@
     },
     {
       "id": "cluster-1783880739459-x9nwjp",
-      "headline": "London low‑income households pay £600 poverty premium",
+      "headline": "London low-income households pay £600 poverty premium",
       "summary": "A study found that low‑income households in London incur an additional cost of more than £600 per year to obtain standard goods and services, creating a hidden poverty premium that deepens financial strain.",
       "category": "Business",
       "stories": [
@@ -3721,8 +3745,8 @@
       ],
       "impact": "medium",
       "created": "2026-07-12T18:25:39.459Z",
-      "updated": "2026-07-12T18:25:39.459Z",
-      "contentVersion": 1
+      "updated": "2026-07-12T21:35:59.518Z",
+      "contentVersion": 2
     },
     {
       "id": "cluster-1783880739459-xs2y1n",
@@ -6491,6 +6515,37 @@
       "impact": "medium",
       "created": "2026-07-12T19:34:20.070Z",
       "updated": "2026-07-12T19:34:20.070Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783892159518-9amr3z",
+      "headline": "More than 100 firefighters respond to east London fire",
+      "summary": "More than 100 firefighters respond to east London fire — London Fire Brigade says a fire in Walthamstow has affected a house, gardens and a railway embankment. — London Fire Brigade says a fire in Wal",
+      "category": "general",
+      "stories": [
+        {
+          "id": "rss-1e22ba1da15e184798b5765472437ef2",
+          "title": "More than 100 firefighters respond to east London fire",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cy5vxw7dgx9o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T21:09:23.000Z",
+          "category": "general",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "100",
+        "firefighters",
+        "respond",
+        "east",
+        "london"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T21:35:59.519Z",
+      "updated": "2026-07-12T21:35:59.519Z",
       "contentVersion": 1
     }
   ],

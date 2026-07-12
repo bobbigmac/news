@@ -41,6 +41,10 @@ Plugins run using spare API quota, round-robin based on last-run time so all plu
 - **Recent Updates panel**: Dataset freshness, source list, category breakdown, interest profile, and run history
 - **No dark patterns**: No unread counts, no badges, no engagement baiting
 
+### TODO
+
+- The client-side logs relevant/irrelevant on clicks, but it doesn't affect the display yet. The objective is to make 'the algorithm' something you control transparently, limited to the client-side experience, because the news is max of a couple hundred things a day anyway. 
+
 ## Setup
 
 ### Prerequisites
