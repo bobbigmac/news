@@ -557,6 +557,7 @@ function initSearch() {
         a.dataset.category.includes(q);
       a.classList.toggle('hidden', !match);
     });
+    if (masonryInstance) masonryInstance.layout();
     renderRecentSearches();
   });
 
