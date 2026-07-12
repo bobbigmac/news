@@ -152,57 +152,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783845254048-zlmp2s",
-      "headline": "Footage shows death of World Cup star",
-      "summary": "Footage of 25‑year‑old footballer Adams, who had played twice in the World Cup, surfaced after his death in Schotschekloof, Cape Town. The cause of death remains unconfirmed.",
-      "category": "Sports",
-      "stories": [
-        {
-          "id": "4f86e6b1-5597-5b42-addc-9d0b57a4654d",
-          "title": "Heartbreaking footage of tragic World Cup star emerges",
-          "source": "Luke Power",
-          "url": "https://www.dailymail.com/sport/football/article-15971413/jayden-adams-world-cup-south-africa.html",
-          "published": "2026-07-12 07:42:53 +0000",
-          "category": [
-            "national"
-          ],
-          "plugin": null,
-          "pluginPriority": null,
-          "image": "https://i.dailymail.com/1s/2026/07/12/08/109965447-0-image-m-19_1783840403039.jpg",
-          "sourceName": "Daily Mail"
-        }
-      ],
-      "created": "2026-07-12T08:34:14.048Z",
-      "updated": "2026-07-12T08:34:14.048Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783845254048-b674xb",
-      "headline": "FIFA to consider 64‑team World Cup",
-      "summary": "FIFA President Gianni Infantino said the governing body is exploring expanding the World Cup to 64 teams, arguing that every nation should have the opportunity to participate. The proposal would increase the tournament’s size beyond the current 32 teams.",
-      "category": "Sports",
-      "stories": [
-        {
-          "id": "7b781bae-42ee-56cd-837a-9a19be0fd85e",
-          "title": "FIFA considers expanding World Cup to 64 teams, Infantino says",
-          "source": "",
-          "url": "https://tass.com/sports/2159133",
-          "published": "2026-07-12 07:42:13 +0000",
-          "category": [
-            "general",
-            "world"
-          ],
-          "plugin": null,
-          "pluginPriority": null,
-          "image": "https://tass.com/img/blocks/common/tass_logo_share_eng.png",
-          "sourceName": "TASS"
-        }
-      ],
-      "created": "2026-07-12T08:34:14.048Z",
-      "updated": "2026-07-12T08:34:14.048Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783845254048-mj6gc6",
       "headline": "Farage rating falls to lowest level",
       "summary": "An Opinium survey showed former UKIP leader Nigel Farage’s approval rating dropped to –27, the lowest since the general election. More than half of voters disapproved of him, while only a quarter approved.",
@@ -292,73 +241,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783845318424-5c72y7",
-      "headline": "England advance past Norway in World Cup quarter-final",
-      "summary": "England progressed to the World Cup semi-finals with a dramatic victory over Norway, though manager Thomas Tuchel criticised his team's performance. Jude Bellingham responded dismissively to Tuchel's comments, while celebrations in Piccadilly Circus led to multiple arrests. Bellingham also shared a lighthearted moment with Erling Haaland before the match.",
-      "category": "Sports",
-      "stories": [
-        {
-          "id": "3bb44f6c-7fe7-5825-9e17-1f654815a429",
-          "title": "Thomas Tuchel's criticism of England stars and what Jude Bellingham said on ITV",
-          "source": "Ben Crawford",
-          "url": "https://www.mirror.co.uk/sport/football/news/england-norway-tuchel-bellingham-itv-37420008",
-          "published": "2026-07-12 07:12:28 +0000",
-          "category": [
-            "general"
-          ],
-          "plugin": null,
-          "pluginPriority": null,
-          "image": "https://i2-prod.mirror.co.uk/article37419718.ece/ALTERNATES/s1200d/1_TT-2.jpg",
-          "sourceName": "Mirror"
-        },
-        {
-          "id": "50aec67d-ec73-5908-91a8-e5ed13471190",
-          "title": "Jude Bellingham attacks manager Thomas Tuchel's England interview",
-          "source": "Oliver Todd",
-          "url": "https://www.dailymail.com/sport/football/article-15971397/jude-bellingham-thomas-tuchel-england-argentina.html",
-          "published": "2026-07-12 07:07:44 +0000",
-          "category": [
-            "general"
-          ],
-          "plugin": null,
-          "pluginPriority": null,
-          "image": "https://i.dailymail.com/1s/2026/07/12/06/109964973-0-image-m-13_1783833904326.jpg",
-          "sourceName": "Daily Mail"
-        },
-        {
-          "id": "bd5e26b5-6bc4-567f-9a37-1f2e462c461e",
-          "title": "Police arrest fans in Piccadilly Circus after England beat Norway",
-          "source": "Noor Qurashi; Olivia Christie",
-          "url": "https://www.dailymail.com/news/article-15971447/police-arrest-fans-Piccadilly-Circus-celebrations-chaotic-England-beat-Norway.html",
-          "published": "2026-07-12 08:05:08 +0000",
-          "category": [
-            "general"
-          ],
-          "plugin": null,
-          "pluginPriority": null,
-          "image": "https://i.dailymail.com/1s/2026/07/12/09/109965755-0-image-m-23_1783843206536.jpg",
-          "sourceName": "Daily Mail"
-        },
-        {
-          "id": "130cd552-8fc6-54b7-bbd2-0a45d54358b7",
-          "title": "Jude Bellingham's 'cheeky' act towards Erling Haaland before England match",
-          "source": "Paige Freshwater",
-          "url": "https://www.mirror.co.uk/sport/england-fans-spot-jude-bellinghams-37420102",
-          "published": "2026-07-12 08:00:18 +0000",
-          "category": [
-            "general"
-          ],
-          "plugin": null,
-          "pluginPriority": null,
-          "image": "https://i2-prod.mirror.co.uk/article37419444.ece/ALTERNATES/s1200d/1_Norway-v-England-Quarter-Final-FIFA-World-Cup-2026.jpg",
-          "sourceName": "Mirror"
-        }
-      ],
-      "created": "2026-07-12T08:35:18.424Z",
-      "updated": "2026-07-12T08:35:18.424Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783845318424-99207e",
       "headline": "Melbourne thrash Richmond in AFL clash",
       "summary": "Melbourne extended their perfect MCG record to 9-0 with a 46-point victory over Richmond in wet conditions, with Van Rooyen starring for the Demons. The win strengthened Melbourne's position in the top four of the AFL ladder.",
@@ -402,31 +284,6 @@
           "pluginPriority": null,
           "image": "https://images.thewest.com.au/publication/C-22566963/923a5ac07ec04a6ba02dc9b744f88b9d9760af85-16x9-x0y135w1440h810.jpg?imwidth=1200",
           "sourceName": "The West Australian"
-        }
-      ],
-      "created": "2026-07-12T08:35:18.424Z",
-      "updated": "2026-07-12T08:35:18.424Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783845318424-ol8cip",
-      "headline": "Football transfer window updates dominate headlines",
-      "summary": "Transfer activity continues across European football with Joao Gomes linked to Manchester United, Bradley Barcola's future under discussion, and Liverpool responding to market movements. Updates also cover Marcus Rashford and Bruno Guimaraes situations.",
-      "category": "Sports",
-      "stories": [
-        {
-          "id": "0601b12c-f967-5c05-a0aa-7c4bc8c0df71",
-          "title": "Transfer news LIVE Joao Gomes to Man Utd, Barcola updates, Liverpool response",
-          "source": "Amie Wilson",
-          "url": "https://www.mirror.co.uk/sport/football/transfer-news/transfer-news-live-joao-gomes-37419958",
-          "published": "2026-07-12 08:04:06 +0000",
-          "category": [
-            "general"
-          ],
-          "plugin": null,
-          "pluginPriority": null,
-          "image": "https://i2-prod.mirror.co.uk/article37420021.ece/ALTERNATES/s1200d/0_France-v-Morocco-Quarter-Final-FIFA-World-Cup-2026.jpg",
-          "sourceName": "Mirror"
         }
       ],
       "created": "2026-07-12T08:35:18.424Z",
@@ -542,31 +399,6 @@
           "pluginPriority": null,
           "image": "https://i2-prod.mirror.co.uk/article37420126.ece/ALTERNATES/s1200d/0_GettyImages-2285142512.jpg",
           "sourceName": "Mirror"
-        }
-      ],
-      "created": "2026-07-12T08:36:18.710Z",
-      "updated": "2026-07-12T08:36:18.710Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783845378710-01u1tp",
-      "headline": "New footage emerges of deceased World Cup star",
-      "summary": "Heartbreaking footage shows the tragic World Cup star Adams, 25, found dead in Cape Town weeks after playing in the tournament; cause of death remains unconfirmed, adding to existing coverage of the player's death.",
-      "category": "Sports",
-      "stories": [
-        {
-          "id": "10e9928c-f79c-5d81-b78a-81db0503be49",
-          "title": "Heartbreaking footage of tragic World Cup star emerges",
-          "source": "Luke Power",
-          "url": "https://www.dailymail.com/sport/football/article-15971413/jayden-adams-world-cup-south-africa.html",
-          "published": "2026-07-12 07:51:49 +0000",
-          "category": [
-            "general"
-          ],
-          "plugin": null,
-          "pluginPriority": null,
-          "image": "https://i.dailymail.com/1s/2026/07/12/08/109965447-0-image-m-19_1783840403039.jpg",
-          "sourceName": "Daily Mail"
         }
       ],
       "created": "2026-07-12T08:36:18.710Z",
@@ -804,125 +636,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783877200749-fjtquy",
-      "headline": "England reach World Cup semi-finals after Norway win",
-      "summary": "England defeated Norway to reach the World Cup semi-finals against Argentina. Manager Thomas Tuchel criticised the performance, calling the win \"lucky,\" but match-winner Jude Bellingham defended the team. Declan Rice played after three days ill with a virus. Fans celebrated in London while Prime Minister Keir Starmer hinted at a bank holiday if England win the tournament.",
-      "category": "Sports",
-      "stories": [
-        {
-          "id": "rss-98947aabd7a15c5b4ce78a7106bb68ef",
-          "title": "Tuchel wasn't happy with the performance. So why do England keep winning?",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/sport/football/articles/c7vy25lqll6o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T12:19:03.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-9e89a0dde79e99c4289083941d39918d",
-          "title": "Tuchel angry at 'lucky' England - but Bellingham defends players",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/sport/football/articles/ckg474ekv58o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T03:08:42.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-e2c833ca678f994956ff6f5685261a86",
-          "title": "'Animals', Hand of God and Beckham: Argentina and England's World Cup rivalry",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/sport/football/articles/c621y75w2x2o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T10:10:33.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-e82a2050ab5596664941cc70abf42086",
-          "title": "Declan Rice was in bed ill for nearly three days before Norway game, Tuchel reveals",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/sport/football/articles/cpd3wv3v1eeo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T11:15:14.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-1a6967186c3e979de45a8d97ab1605f9",
-          "title": "'Argentina get ready': Fans in London react to England win",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/videos/ckg5kz7qp31o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T11:17:05.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-8bb2128bb3fbff4e8c40931fed29f776",
-          "title": "Watch fans react to every goal of England v Norway",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/videos/cvgqxx912dro?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T00:33:04.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-64949330425b9ae79a83c4094364e8a8",
-          "title": "How to get through World Cup-induced sleep deprivation",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cx2kkrndr00o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-06T13:09:31.000Z",
-          "category": "Health",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-7f139e3114d6ece6fb50adb764e655a7",
-          "title": "Starmer hints at bank holiday if England win World Cup",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/c20y9g2v2wvo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-09T01:25:24.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-7b0807a77e1a810a09a8aa0de306ebbd",
-          "title": "Will we get a bank holiday if England wins World Cup?",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/videos/cdx781xqn01o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-08T21:30:34.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "created": "2026-07-12T17:26:40.749Z",
-      "updated": "2026-07-12T17:26:40.749Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783877200749-cf3skh",
       "headline": "Hillsborough Law bill set for MPs approval",
       "summary": "MPs are set to approve the Hillsborough Law bill, addressing the 1989 FA Cup semi-final crush that killed 97 Liverpool fans. The legislation aims to ensure public authorities cooperate with investigations and provide legal representation for bereaved families.",
@@ -989,29 +702,6 @@
       ],
       "created": "2026-07-12T17:26:40.749Z",
       "updated": "2026-07-12T17:26:40.749Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783877250053-1wvcxs",
-      "headline": "Senator Lindsey Graham dies after brief illness",
-      "summary": "Senator Lindsey Graham, 71, died after a brief and sudden illness, his office said. He had returned from Kyiv, meeting Ukrainian President Volodymyr Zelensky on Friday. Donald Trump paid tribute, calling Graham a true American patriot who will be greatly missed.",
-      "category": "Politics",
-      "stories": [
-        {
-          "id": "rss-b2e44540b8de5a08f02eb6fb80ca474e",
-          "title": "US senator and close Trump ally Lindsey Graham dies after 'brief and sudden illness'",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cvgj25j6nmeo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T15:34:45.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "created": "2026-07-12T17:27:30.053Z",
-      "updated": "2026-07-12T17:27:30.053Z",
       "contentVersion": 1
     },
     {
@@ -1127,52 +817,6 @@
       ],
       "created": "2026-07-12T17:29:52.599Z",
       "updated": "2026-07-12T17:29:52.599Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783877443499-x18ttp",
-      "headline": "Jayden Adams death confirmed after footage emerges",
-      "summary": "Footage of 25‑year‑old South African midfielder Jayden Adams surfaced after his death in Schotschekloof, Cape Town. Adams, who played for Mamelodi Sundowns and featured for South Africa at the World Cup weeks earlier, was found dead; the cause remains unconfirmed.",
-      "category": "Sports",
-      "stories": [
-        {
-          "id": "rss-0a622d2e9922bb9ad8781ab34ceb305c",
-          "title": "South Africa World Cup midfielder Adams dies aged 25",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/sport/football/articles/cr47y5nvrqlo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-11T14:47:47.000Z",
-          "category": "World",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "created": "2026-07-12T17:30:43.499Z",
-      "updated": "2026-07-12T17:30:43.499Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783877443499-2djfri",
-      "headline": "World Cup and Wimbledon fashion quiz launched",
-      "summary": "An interactive fashion test invites users to compare the style of the World Cup and Wimbledon, highlighting the high‑stakes attire associated with both events and encouraging participants to choose their favourite looks.",
-      "category": "Entertainment",
-      "stories": [
-        {
-          "id": "rss-a58dd513284bfa78e9ab5b3c41953171",
-          "title": "Is the World Cup or Wimbledon more stylish? Take our fashion test to find out",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cx2vz37z7v3o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T00:39:45.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "created": "2026-07-12T17:30:43.499Z",
-      "updated": "2026-07-12T17:30:43.499Z",
       "contentVersion": 1
     },
     {
@@ -1673,48 +1317,6 @@
       "impact": "low",
       "created": "2026-07-12T18:03:58.340Z",
       "updated": "2026-07-12T18:03:58.340Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783879438340-1j0fow",
-      "headline": "Starmer says will stay in touch with Trump",
-      "summary": "British Prime Minister Keir Starmer said he will keep communication lines open with U.S. President Donald Trump after the latter’s meeting with NATO leaders in Turkey, noting Trump wished him well at the summit.",
-      "category": "Politics",
-      "stories": [
-        {
-          "id": "rss-2bfa21b061700315dc52653d6270e1f2",
-          "title": "Trump administration subpoenas New York Times journalists over Air Force One reporting",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cpd3g8q51g7o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-11T16:11:33.000Z",
-          "category": "World",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-00cf5e37417447bdb354ebbacf7b645f",
-          "title": "Starmer to keep in touch with Trump after No 10",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/crel4gzg94eo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-08T19:04:36.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "trump",
-        "air force one",
-        "starmer",
-        "nato turkey"
-      ],
-      "impact": "high",
-      "created": "2026-07-12T18:03:58.340Z",
-      "updated": "2026-07-12T20:26:20.427Z",
       "contentVersion": 1
     },
     {
@@ -2289,20 +1891,6 @@
           ],
           "plugin": null,
           "pluginPriority": null
-        },
-        {
-          "id": "8e699fc0-f735-58ea-abdc-b51ac179d80b",
-          "title": "US senator and Trump ally Lindsey Graham dies at 71 - The Korea Times",
-          "source": "",
-          "sourceName": "Korea Times",
-          "url": "https://www.koreatimes.co.kr/world/20260712/us-senator-and-trump-ally-lindsey-graham-dies-at-71",
-          "image": "https://newsimg.koreatimes.co.kr/2026/07/12/99f0cf33-e54c-48fd-8f18-1f9a7454a58f.jpg",
-          "published": "2026-07-12 07:42:03 +0000",
-          "category": [
-            "regional"
-          ],
-          "plugin": null,
-          "pluginPriority": null
         }
       ],
       "triggerWords": [
@@ -2310,34 +1898,6 @@
         "Trump ally"
       ],
       "impact": "high",
-      "created": "2026-07-12T18:05:15.206Z",
-      "updated": "2026-07-12T18:05:15.206Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783879515206-g2dzy5",
-      "headline": "White House launches Trump Accounts scheme for children",
-      "summary": "The White House announced a new \"Trump Accounts\" programme intended to give American children a stake in the nation’s future, describing it as a way to promote the American dream. Critics have questioned the plan’s purpose and implementation.",
-      "category": "Politics",
-      "stories": [
-        {
-          "id": "rss-ce200fa88551ceab00d58f8c639d8a6e",
-          "title": "Will Trump Accounts deliver for American children?",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/ckg55v9e2y9o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-11T07:41:18.000Z",
-          "category": "Business",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "Trump Accounts",
-        "White House"
-      ],
-      "impact": "medium",
       "created": "2026-07-12T18:05:15.206Z",
       "updated": "2026-07-12T18:05:15.206Z",
       "contentVersion": 1
@@ -2374,56 +1934,11 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783879601072-h5wiof",
-      "headline": "Senegal sacks manager Pape Thiaw",
-      "summary": "Senegal's football federation dismissed manager Pape Thiaw following the team's elimination at the 2026 World Cup last‑32 stage, confirming the decision in the wake of the early exit, marking a change in leadership after a disappointing tournament performance.",
-      "category": "Sports",
-      "stories": [
-        {
-          "id": "e0bed3f5-532e-5d8f-a542-f38e62843dd5",
-          "title": "Senegal sack manager Pape Thiaw in wake of World Cup exit",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/sport/football/articles/cq81l29lj2zo",
-          "image": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/3690/live/d4ecac00-7dbc-11f1-ad4b-13d0aac581db.jpg",
-          "published": "2026-07-12 07:25:09 +0000",
-          "category": [
-            "sports"
-          ],
-          "plugin": null,
-          "pluginPriority": null
-        }
-      ],
-      "triggerWords": [
-        "Senegal sack manager",
-        "Pape Thiaw",
-        "World Cup exit"
-      ],
-      "impact": "low",
-      "created": "2026-07-12T18:06:41.073Z",
-      "updated": "2026-07-12T18:06:41.073Z",
-      "contentVersion": 2
-    },
-    {
       "id": "cluster-1783879601073-tlunja",
       "headline": "Senate inquiry targets telco outage causes",
       "summary": "The Senate has launched an inquiry, chaired by Greens Senator Sarah Hanson-Young, to examine whether a cheap, outdated device caused recent telecommunications outages. Hanson-Young warned of a crackdown on the telco giants responsible for multiple outages in recent years.",
       "category": "Politics",
       "stories": [
-        {
-          "id": "4fc82ce3-6392-522b-9300-08151bd7ff82",
-          "title": "Senate inquiry to interrogate whether cheap, out of date device caused outage",
-          "source": "Jessica Yun",
-          "sourceName": "Brisbane Times",
-          "url": "https://www.brisbanetimes.com.au/technology/senate-inquiry-to-interrogate-whether-cheap-out-of-date-device-caused-outage-20260712-p60em3.html",
-          "image": "https://static.ffx.io/images/$zoom_0.3293%2C$multiply_0.7554%2C$ratio_1.777778%2C$width_1059%2C$x_110%2C$y_0/t_crop_custom/q_86%2Cf_auto/18420cde17278b925bd57fc24c8283052ba51511",
-          "published": "2026-07-12 08:06:04 +0000",
-          "category": [
-            "sports"
-          ],
-          "plugin": null,
-          "pluginPriority": null
-        },
         {
           "id": "21306b3d-2f85-54a1-8384-3027cabf63ea",
           "title": "Senate inquiry to interrogate whether cheap, out of date device caused outage",
@@ -2444,66 +1959,6 @@
         "Senate inquiry",
         "Sarah Hanson-Young"
       ],
-      "impact": "medium",
-      "created": "2026-07-12T18:06:41.073Z",
-      "updated": "2026-07-12T18:06:41.073Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783879601073-326m7f",
-      "headline": "FIFA mistaken identity rule impacts quarter-final",
-      "summary": "FIFA introduced a 'mistaken identity' rule that influenced a World Cup quarter-final, resulting in Breel Embolo's red card during Switzerland's defeat to Argentina, prompting fury from the Swiss team.",
-      "category": "Sports",
-      "stories": [
-        {
-          "id": "0c83afc2-706b-5f7b-bd5d-247f52220af1",
-          "title": "New FIFA rule decides World Cup quarter-final after case of mistaken identity",
-          "source": "Glen Williams",
-          "sourceName": "Wales Online",
-          "url": "https://www.walesonline.co.uk/sport/football/football-news/new-fifa-rule-decides-world-34277589",
-          "image": "https://i2-prod.walesonline.co.uk/article34277600.ece/ALTERNATES/s1200d/0_Screenshot-2026-07-12-084519.jpg",
-          "published": "2026-07-12 07:51:38 +0000",
-          "category": [
-            "sports"
-          ],
-          "plugin": null,
-          "pluginPriority": null
-        }
-      ],
-      "triggerWords": [
-        "mistaken identity rule",
-        "Breel Embolo",
-        "Switzerland"
-      ],
-      "impact": "low",
-      "created": "2026-07-12T18:06:41.073Z",
-      "updated": "2026-07-12T18:06:41.073Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783879601073-h5xveq",
-      "headline": "Jude Bellingham snaps at Thomas Tuchel in live TV interview as viewers stunned",
-      "summary": "Jude Bellingham snaps at Thomas Tuchel in live TV interview as viewers stunned — Jude Bellingham appeared to hit back at Thomas Tuchel live on TV after England reached the World Cup semi-finals with v",
-      "category": [
-        "sports"
-      ],
-      "stories": [
-        {
-          "id": "0defe6cc-f785-5432-be2a-fa7f48498ccf",
-          "title": "Jude Bellingham snaps at Thomas Tuchel in live TV interview as viewers stunned",
-          "source": "Glen Williams",
-          "sourceName": "Wales Online",
-          "url": "https://www.walesonline.co.uk/sport/football/football-news/jude-bellingham-snaps-back-thomas-34277534",
-          "image": "https://i2-prod.walesonline.co.uk/article34277551.ece/ALTERNATES/s1200d/0_Screenshot-2026-07-12-082328.jpg",
-          "published": "2026-07-12 07:25:42 +0000",
-          "category": [
-            "sports"
-          ],
-          "plugin": null,
-          "pluginPriority": null
-        }
-      ],
-      "triggerWords": [],
       "impact": "medium",
       "created": "2026-07-12T18:06:41.073Z",
       "updated": "2026-07-12T18:06:41.073Z",
@@ -3496,37 +2951,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880289921-3rzn7b",
-      "headline": "McGregor's UFC Return Ends in Loss",
-      "summary": "Conor McGregor's highly anticipated comeback fight against Max Holloway at UFC 329 in Las Vegas concluded with a disappointing loss on Saturday night. The mixed martial artist was described as 'destroyed' following an emotional statement released after the bout, as reported by Connor O'Neill.",
-      "category": "Sports",
-      "stories": [
-        {
-          "id": "5726bb3c-1bd9-59fb-8770-6e60489afbf4",
-          "title": "Conor McGregor 'destroyed' after UFC return as emotional statement released",
-          "source": "Connor O'Neill",
-          "sourceName": "Wales Online",
-          "url": "https://www.walesonline.co.uk/sport/uk-sport-news/conor-mcgregor-ufc-injury-latest-34277503",
-          "image": "https://i2-prod.walesonline.co.uk/article34277519.ece/ALTERNATES/s1200d/0_GettyImages-2285714159.jpg",
-          "published": "2026-07-12 07:22:48 +0000",
-          "category": [
-            "sports"
-          ],
-          "plugin": null,
-          "pluginPriority": null
-        }
-      ],
-      "triggerWords": [
-        "Conor McGregor",
-        "UFC 329",
-        "Max Holloway"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:18:09.921Z",
-      "updated": "2026-07-12T18:18:09.921Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783880289921-v0e33o",
       "headline": "Farage Ally 'Posh George' Faces Fraud Conviction",
       "summary": "A 32‑year‑old crypto entrepreneur dubbed 'Posh George' is a US‑convicted fraudster and long‑time ally of Nigel Farage, placing him at the centre of a recent controversy. The report outlines his fraud conviction, business activities and close ties to the former UKIP leader.",
@@ -3614,20 +3038,6 @@
       "summary": "Linda Noskova produced one of the all-time greatest efforts on Centre Court to win Wimbledon. The tennis player dedicated the victory to her late mother, Ivana, who inspired her. The match featured a notable fightback.",
       "category": "Sports",
       "stories": [
-        {
-          "id": "1fafdc63-efe1-507c-9a73-1fa48ba96df4",
-          "title": "Wimbledon men's final start time changed as organisers make decision",
-          "source": "Jon Doel",
-          "sourceName": "Wales Online",
-          "url": "https://www.walesonline.co.uk/sport/other-sport/tennis/wimbledon-mens-final-start-time-34275389",
-          "image": "https://i2-prod.walesonline.co.uk/article34206764.ece/ALTERNATES/s1200d/1_Day-Fourteen-The-Championships-Wimbledon-2025.jpg",
-          "published": "2026-07-12 07:12:00 +0000",
-          "category": [
-            "sports"
-          ],
-          "plugin": null,
-          "pluginPriority": null
-        },
         {
           "id": "rss-dc1c05eef61b97bb6e8d21936359fa6d",
           "title": "Noskova, an astonishing Wimbledon fightback - and a kiss to the sky",
@@ -4697,34 +4107,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783881324056-ag28t6",
-      "headline": "African nations reject Trump aid money",
-      "summary": "Several African nations are declining aid from the Trump administration, which views the assistance as transactional. Recipient countries argue the terms are not a fair trade. The refusals highlight tensions over US foreign aid conditions.",
-      "category": "World",
-      "stories": [
-        {
-          "id": "rss-3dcf154437b3d6541f8f52106e719069",
-          "title": "Why some African nations are turning down Trump aid money",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/ckg0921y8kdo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-07T00:49:08.000Z",
-          "category": "Health",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "Trump aid",
-        "African nations"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:35:24.056Z",
-      "updated": "2026-07-12T18:35:24.056Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783881343929-xwat08",
       "headline": "Man almost sucked out of Ryanair window mid‑flight",
       "summary": "A passenger on a Ryanair flight was nearly pulled out of a cabin window while the aircraft was at altitude. The man's wife grasped his legs and held him for about five minutes until the crew secured the opening, officials said.",
@@ -4781,73 +4163,6 @@
       "created": "2026-07-12T18:37:26.500Z",
       "updated": "2026-07-12T18:37:26.500Z",
       "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783881812314-cequce",
-      "headline": "Kane backs Tuchel as England eye World Cup glory",
-      "summary": "Captain Harry Kane said England can reach a higher level under manager Julian Tuchel as the team prepares for the World Cup semi‑final against Mexico. Kane’s comments come after England’s quarter‑final win over Norway, with the squad aiming for their first title since 1966.",
-      "category": "Sports",
-      "stories": [
-        {
-          "id": "rss-f0f5699e14de45c7cfffa220bcffef64",
-          "title": "Tuchel wants young England fans to stay up for 1am World Cup clash - but should they?",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/ckg40qedq57o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-03T09:10:32.000Z",
-          "category": "Education",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-88421ad51f301183e1cbce31cc1bbdb9",
-          "title": "The schools starting late after 01:00 England kick-off to 'reduce pressure' on parents",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/c621j2qj50do?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-04T02:46:58.000Z",
-          "category": "Education",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-7d0af7d59ea4e2ea19d3889233966ecd",
-          "title": "School suspensions fall in England for the first time since Covid",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/c8j2d7v480eo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-09T14:10:31.000Z",
-          "category": "Education",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-0308e498f0bbb99a6f340f15b6808da5",
-          "title": "'We have another level we can reach' - Kane defends frustrated Tuchel",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/sport/football/articles/cy04xjlg5p4o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T18:18:22.000Z",
-          "category": "general",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "Kane",
-        "Tuchel",
-        "World Cup",
-        "England",
-        "semi‑final"
-      ],
-      "impact": "high",
-      "created": "2026-07-12T18:43:32.314Z",
-      "updated": "2026-07-12T20:47:44.535Z",
-      "contentVersion": 2
     },
     {
       "id": "cluster-1783881812314-1fs79i",

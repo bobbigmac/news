@@ -286,10 +286,12 @@ async function main() {
     // Purge existing stories from the store that match reject filters
     const store = loadStoryStore();
     let purged = 0;
+    const purgedIds = new Set();
     for (const id of Object.keys(store.stories)) {
       if (matchesReject(store.stories[id])) {
         delete store.stories[id];
         purged++;
+        purgedIds.add(id);
       }
     }
     if (purged) {
@@ -305,6 +307,30 @@ async function main() {
           writeFileSync(summarisedIdsPath, JSON.stringify(cleaned, null, 2));
           console.log(`  Also removed ${summarisedIds.length - cleaned.length} purged IDs from summarised-ids`);
         }
+      }
+    }
+
+    // Always purge from digest — stories may be in digest but not in store
+    const digestPath = join(CACHE_DIR, 'digest.json');
+    if (existsSync(digestPath)) {
+      const digest = JSON.parse(readFileSync(digestPath, 'utf8'));
+      let storiesPurged = 0;
+      for (const cluster of (digest.clusters || [])) {
+        if (!cluster.stories) continue;
+        cluster.stories = cluster.stories.filter(s => {
+          if (purgedIds.has(s.id)) { storiesPurged++; return false; }
+          if (rejectRegex && rejectRegex.test(s.title || '')) { storiesPurged++; return false; }
+          const cat = Array.isArray(s.category) ? s.category.join(' ') : (s.category || '');
+          if (rejectCategories.length && rejectCategories.includes(cat.toLowerCase())) { storiesPurged++; return false; }
+          return true;
+        });
+      }
+      const beforeClusters = digest.clusters.length;
+      digest.clusters = digest.clusters.filter(c => (c.stories || []).length > 0);
+      const clustersPurged = beforeClusters - digest.clusters.length;
+      if (storiesPurged || clustersPurged) {
+        writeFileSync(digestPath, JSON.stringify(digest, null, 2));
+        console.log(`  Digest purge: removed ${storiesPurged} stories, ${clustersPurged} empty clusters`);
       }
     }
   }
