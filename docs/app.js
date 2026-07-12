@@ -81,6 +81,7 @@ let currentDigest = null;
 let currentSettings = loadSettings();
 let readState = loadReadState();
 let catPrefs = loadCatPrefs();
+let interestState = {};
 loadInterestState();
 
 function loadReadState() {
@@ -152,8 +153,6 @@ function markClusterRead(cluster) {
 // --- Interest signals (Steam discovery queue style) ---
 // Each cluster can be marked 'interested' or 'not-interested' by the user.
 // This is an algorithmic signal, not a like/dislike of the story.
-
-let interestState = {};
 
 function loadInterestState() {
   try {
