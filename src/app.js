@@ -43,9 +43,8 @@ const COLUMN_OPTIONS = [
 ];
 
 const SORT_OPTIONS = [
-  { value: 'stories', label: 'Most stories' },
   { value: 'recent', label: 'Most recent' },
-  { value: 'category', label: 'By category' },
+  { value: 'stories', label: 'Most stories' },
 ];
 
 const IMAGE_OPTIONS = [
