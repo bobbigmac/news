@@ -4544,6 +4544,34 @@
       "created": "2026-07-12T18:31:54.247Z",
       "updated": "2026-07-12T18:31:54.247Z",
       "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881198391-r3moth",
+      "headline": "Toronto festival shooting kills at least two",
+      "summary": "An exchange of gunfire between two individuals at a street festival in Toronto killed at least two people. Police recovered two firearms from the scene. The shooting at a public event raises public safety concerns. No information on motive has been disclosed.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-57ac54e4380c78c706b016b5cb9ff09a",
+          "title": "At least two killed in Toronto street festival shooting",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/ce3e66e1x3go?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T03:56:02.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Toronto street festival",
+        "Toronto festival shooting"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:33:18.391Z",
+      "updated": "2026-07-12T18:33:18.391Z",
+      "contentVersion": 1
     }
   ],
   "generated": "2026-07-12T18:00:38.582Z"

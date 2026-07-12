@@ -220,7 +220,7 @@ function getNewestStoryDate(cluster) {
     .filter(Boolean)
     .map(d => { try { return new Date(d).getTime(); } catch { return 0; } })
     .filter(Boolean);
-  if (!dates.length) return cluster.updated || cluster.created || '';
+  if (!dates.length) return String(cluster.updated || cluster.created || '');
   return new Date(Math.max(...dates)).toISOString();
 }
 
@@ -241,7 +241,7 @@ function sortClusters(clusters, sortMode) {
 
     // Within same preference tier, apply the selected sort mode
     if (sortMode === 'recent') {
-      return getNewestStoryDate(b).localeCompare(getNewestStoryDate(a));
+      return String(getNewestStoryDate(b)).localeCompare(String(getNewestStoryDate(a)));
     } else {
       return (b.stories?.length || 0) - (a.stories?.length || 0);
     }
