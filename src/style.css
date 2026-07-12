@@ -242,29 +242,27 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   margin: 0;
 }
 
-/* In-place content swap: summary and links share the same grid cell.
-   Box height is always max(summary, links) — never shrinks on toggle,
-   never grows unless links are taller than summary. */
-.article-body {
+/* In-place content swap: when showing summary, only summary is in flow
+   (links display:none, zero height). When showing links, grid stacks them
+   so box height = max(summary, links) — never shrinks below summary height. */
+.article-body .story-links {
+  display: none;
+}
+
+.article-body.show-links {
   display: grid;
   grid-template-areas: "stack";
 }
 
-.article-body .article-summary {
+.article-body.show-links .article-summary {
   grid-area: stack;
+  visibility: hidden;
   margin: 0;
 }
 
-.article-body .story-links {
-  grid-area: stack;
-  visibility: hidden;
-}
-
-.article-body.show-links .article-summary {
-  visibility: hidden;
-}
-
 .article-body.show-links .story-links {
+  grid-area: stack;
+  display: block;
   visibility: visible;
 }
 

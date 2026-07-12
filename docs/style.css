@@ -242,28 +242,28 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   margin: 0;
 }
 
-/* In-place content swap: summary and links share the same box.
-   Use visibility so the summary keeps its height — links can grow the box
-   but never shrink it, preventing masonry relayout on toggle. */
-.article-body {
-  position: relative;
+/* In-place content swap: when showing summary, only summary is in flow
+   (links display:none, zero height). When showing links, grid stacks them
+   so box height = max(summary, links) — never shrinks below summary height. */
+.article-body .story-links {
+  display: none;
 }
 
-.article-body .story-links {
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+.article-body.show-links {
+  display: grid;
+  grid-template-areas: "stack";
 }
 
 .article-body.show-links .article-summary {
+  grid-area: stack;
   visibility: hidden;
+  margin: 0;
 }
 
 .article-body.show-links .story-links {
+  grid-area: stack;
+  display: block;
   visibility: visible;
-  position: relative;
 }
 
 .story-links {
