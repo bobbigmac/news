@@ -169,9 +169,11 @@ function extractClusters(text) {
   const clusterRegex = /\{[^{}]*?"headline"\s*[:=]\s*["']?[^"'}]+["']?[^{}]*?\}/gs;
   let match;
   while ((match = clusterRegex.exec(raw)) !== null) {
-    const parsed = tryParseJson(match[0])
+    const parsed = tryJsonParse(match[0])
       || tryJsonParse(repairTrailingCommas(match[0]))
-      || tryJsonParse(repairSingleQuotes(match[0]));
+      || tryJsonParse(repairSingleQuotes(match[0]))
+      || tryJsonParse(repairUnquotedKeys(match[0]))
+      || tryJsonParse(repairTrailingCommas(repairUnquotedKeys(match[0])));
     if (parsed && parsed.headline) {
       normaliseClusterIds(parsed);
       clusters.push(parsed);
@@ -183,7 +185,7 @@ function extractClusters(text) {
     for (const line of raw.split('\n')) {
       const trimmed = line.trim();
       if (!trimmed.startsWith('{') || !trimmed.includes('headline')) continue;
-      const parsed = tryParseJson(trimmed)
+      const parsed = tryJsonParse(trimmed)
         || tryJsonParse(repairTrailingCommas(trimmed));
       if (parsed && parsed.headline) {
         normaliseClusterIds(parsed);

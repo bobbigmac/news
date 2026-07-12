@@ -117,7 +117,7 @@ function buildTranches(stories, existingClusters) {
     cluster: c,
     keywords: extractKeywords(c.headline + ' ' + (c.summary || '')),
     triggerWords: (c.triggerWords || []).map(w => w.toLowerCase()),
-    cat: (c.category || '').toLowerCase(),
+    cat: (Array.isArray(c.category) ? c.category.join(' ') : (c.category || '')).toLowerCase(),
   }));
 
   // Step 1: Match stories to existing clusters

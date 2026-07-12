@@ -2421,6 +2421,67 @@
       "created": "2026-07-12T18:09:53.586Z",
       "updated": "2026-07-12T18:09:53.586Z",
       "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879934841-l9lydj",
+      "headline": "Jasmine Sandlas announces engagement at Delhi concert",
+      "summary": "Jasmine Sandlas, the Dhurandhar singer, announced her engagement during the opening night of The Dream Girl Tour in Delhi. She introduced her fiancé to the audience, sharing the news live on stage. The surprise revelation delighted fans and attracted media attention.",
+      "category": "Entertainment",
+      "stories": [
+        {
+          "id": "e6bf9c7a-7a3b-5e9b-ae78-6a456a1272d5",
+          "title": "Dhurandhar singer Jasmine Sandlas drops big surprise, annouces engagement during Delhi concert",
+          "source": "Simran Singh",
+          "sourceName": "DNA India",
+          "url": "https://www.dnaindia.com/bollywood/report-dhurandhar-singer-jasmine-sandlas-drops-big-surprise-annouces-engagement-during-delhi-concert-3215904",
+          "image": "https://cdn.dnaindia.com/sites/default/files/styles/full/public/2026/07/12/2753927-jsmine.jpg",
+          "published": "2026-07-12 07:46:32 +0000",
+          "category": [
+            "regional",
+            "india"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "Jasmine Sandlas",
+        "Dream Girl Tour",
+        "Delhi"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:12:14.841Z",
+      "updated": "2026-07-12T18:12:14.842Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783879934842-xqjkum",
+      "headline": "Islanders' lifestyle views to inform government planning",
+      "summary": "Officials say that collected lifestyle views from islanders will assist the government in planning and delivering public services. The feedback, gathered through a survey, is intended to shape future policy decisions affecting island communities. The initiative aims to align services with residents' needs and preferences.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-020f095bb736e619f42d8bfcb1dff520",
+          "title": "Islanders' lifestyle views could help shape future",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cp8r3534eelo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-14T11:09:32.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "islanders",
+        "lifestyle views",
+        "government plan"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:12:14.842Z",
+      "updated": "2026-07-12T18:12:14.842Z",
+      "contentVersion": 1
     }
   ],
   "generated": "2026-07-12T18:00:38.582Z"
