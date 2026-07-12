@@ -79,6 +79,42 @@ function applySettings(settings) {
 
 let currentDigest = null;
 let currentSettings = loadSettings();
+let masonryInstance = null;
+
+function initMasonry() {
+  if (masonryInstance) masonryInstance.destroy();
+  const sheet = document.getElementById('broadsheet');
+  if (typeof Masonry !== 'undefined' && sheet.querySelector('.grid-item')) {
+    let cols = parseInt(currentSettings?.columns, 10) || 2;
+    if (window.innerWidth <= 768) cols = 1;
+    else if (window.innerWidth <= 1024 && cols > 3) cols = 3;
+
+    const gutter = 20;
+    const style = getComputedStyle(sheet);
+    const padL = parseFloat(style.paddingLeft) || 0;
+    const padR = parseFloat(style.paddingRight) || 0;
+    const contentWidth = sheet.clientWidth - padL - padR;
+    const colWidth = (contentWidth - (cols - 1) * gutter) / cols;
+
+    // Set explicit item widths so Masonry positions correctly
+    sheet.querySelectorAll('.grid-item').forEach(item => {
+      item.style.width = colWidth + 'px';
+    });
+
+    masonryInstance = new Masonry(sheet, {
+      itemSelector: '.grid-item',
+      columnWidth: colWidth,
+      gutter: gutter,
+    });
+    // Re-layout when images load (they change item heights)
+    sheet.querySelectorAll('img').forEach(img => {
+      if (!img.complete) {
+        img.addEventListener('load', () => masonryInstance?.layout());
+        img.addEventListener('error', () => masonryInstance?.layout());
+      }
+    });
+  }
+}
 let readState = loadReadState();
 let catPrefs = loadCatPrefs();
 let interestState = {};
@@ -101,13 +137,17 @@ function saveCatPrefs() {
 }
 
 function getCatPref(category) {
-  return catPrefs[category] || 'normal';
+  const cat = Array.isArray(category) ? category[0] : category;
+  return catPrefs[cat] || 'normal';
 }
 
 function getAllKnownCategories(clusters) {
   const fromDigest = new Set();
   for (const c of clusters) {
-    if (c.category) fromDigest.add(c.category);
+    if (c.category) {
+      const cat = Array.isArray(c.category) ? c.category[0] : c.category;
+      if (cat) fromDigest.add(cat);
+    }
   }
   for (const cat of Object.keys(catPrefs)) {
     fromDigest.add(cat);
@@ -220,7 +260,7 @@ function getNewestStoryDate(cluster) {
     .filter(Boolean)
     .map(d => { try { return new Date(d).getTime(); } catch { return 0; } })
     .filter(Boolean);
-  if (!dates.length) return cluster.updated || cluster.created || '';
+  if (!dates.length) return String(cluster.updated || cluster.created || '');
   return new Date(Math.max(...dates)).toISOString();
 }
 
@@ -241,7 +281,7 @@ function sortClusters(clusters, sortMode) {
 
     // Within same preference tier, apply the selected sort mode
     if (sortMode === 'recent') {
-      return getNewestStoryDate(b).localeCompare(getNewestStoryDate(a));
+      return String(getNewestStoryDate(b)).localeCompare(String(getNewestStoryDate(a)));
     } else {
       return (b.stories?.length || 0) - (a.stories?.length || 0);
     }
@@ -256,7 +296,7 @@ function pickLeadImage(cluster) {
 }
 
 function renderArticle(cluster, settings, isPluginLead) {
-  const category = cluster.category || 'Other';
+  const category = Array.isArray(cluster.category) ? cluster.category[0] || 'Other' : (cluster.category || 'Other');
   const headline = cluster.headline || 'Untitled';
   const summary = cluster.summary || '';
   const wasUpdated = isClusterUpdatedSinceRead(cluster);
@@ -271,7 +311,7 @@ function renderArticle(cluster, settings, isPluginLead) {
   }).join('');
 
   const article = document.createElement('article');
-  article.className = 'article';
+  article.className = 'article grid-item';
   article.dataset.clusterId = cluster.id;
   article.dataset.headline = headline.toLowerCase();
   article.dataset.summary = summary.toLowerCase();
@@ -308,19 +348,23 @@ function renderArticle(cluster, settings, isPluginLead) {
     </div>
     ${imageHtml}
     <h2 class="article-headline">${headline}</h2>
-    <p class="article-summary">${summary}</p>
-    <div class="story-links${settings.expandAll ? ' expanded' : ''}">
-      <ul>${linksHtml}</ul>
+    <div class="article-body${settings.expandAll ? ' show-links' : ''}">
+      <p class="article-summary">${summary}</p>
+      <div class="story-links">
+        <ul>${linksHtml}</ul>
+      </div>
     </div>
   `;
 
   // Apply interest-based visibility class
   if (interest === 'not-interested') article.classList.add('downranked');
 
-  // Whole article panel is clickable to toggle story links
+  // Click toggles between summary and source links in-place
+  const body = article.querySelector('.article-body');
   article.addEventListener('click', (e) => {
     if (e.target.tagName === 'A' || e.target.closest('.interest-btn')) return;
-    article.querySelector('.story-links').classList.toggle('expanded');
+    body.classList.toggle('show-links');
+    if (masonryInstance) masonryInstance.layout();
   });
 
   // Interest signal buttons — both mark as read and set signal
@@ -372,14 +416,17 @@ function filterByMode(clusters, mode) {
 function getAvailableCategories(clusters) {
   const cats = new Set();
   for (const c of clusters) {
-    if (getCatPref(c.category) !== 'hide') cats.add(c.category || 'Other');
+    if (getCatPref(c.category) !== 'hide') {
+      const cat = Array.isArray(c.category) ? c.category[0] || 'Other' : (c.category || 'Other');
+      cats.add(cat);
+    }
   }
   // Sort by category preference priority, then alphabetical
   return [...cats].sort((a, b) => {
     const pa = CAT_PREF_ORDER[getCatPref(a)] ?? 1;
     const pb = CAT_PREF_ORDER[getCatPref(b)] ?? 1;
     if (pa !== pb) return pa - pb;
-    return a.localeCompare(b);
+    return String(a).localeCompare(String(b));
   });
 }
 
@@ -433,6 +480,7 @@ function renderDigest(digest, settings) {
     fragment.appendChild(renderArticle(cluster, settings, isPluginLead));
   }
   sheet.appendChild(fragment);
+  initMasonry();
 }
 
 const SEARCH_HISTORY_KEY = 'broadsheet-search-history';
@@ -948,6 +996,15 @@ async function init() {
     closeAllOverlays();
   });
 
+  // Re-layout Masonry on resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (currentDigest) renderDigest(currentDigest, currentSettings);
+    }, 250);
+  });
+
   try {
     const res = await fetch('digest.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -966,6 +1023,7 @@ async function init() {
     renderCategoryPrefs();
     initSearch();
   } catch (err) {
+    console.error('Failed to load news:', err);
     document.getElementById('broadsheet').innerHTML =
       `<div class="loading">Failed to load news: ${err.message}</div>`;
   }

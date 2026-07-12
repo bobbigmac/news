@@ -56,5 +56,6 @@ copyStatic('index.html');
 copyStatic('style.css');
 copyStatic('app.js');
 copyStatic('og-image.jpg');
+copyStatic('sw.js');
 
 console.log(`Build complete. ${digest.clusters.length} clusters written to ${OUT_DIR}/digest.json`);

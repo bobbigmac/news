@@ -340,7 +340,8 @@ function mergeClusters(newClusters, chunkStories, digest) {
 
     const storyData = stories.map(s => ({
       id: s.id, title: s.originalTitle, source: s.source, sourceName: s.sourceName || '',
-      url: s.url, image: s.image || '', published: s.published, category: s.category,
+      url: s.url, image: s.image || '', published: s.published,
+      category: normaliseCategory(Array.isArray(s.category) ? s.category[0] : (s.category || 'Other')),
       plugin: s.plugin || null, pluginPriority: s.pluginPriority ?? null
     }));
 
@@ -366,6 +367,13 @@ function mergeClusters(newClusters, chunkStories, digest) {
       if (cluster.trigger_words && Array.isArray(cluster.trigger_words)) {
         existingCluster.triggerWords = cluster.trigger_words;
       }
+      if (cluster.category) {
+        const newCat = normaliseCategory(Array.isArray(cluster.category) ? cluster.category[0] : cluster.category);
+        if (newCat !== existingCluster.category) {
+          existingCluster.category = newCat;
+          contentChanged = true;
+        }
+      }
       if (cluster.impact && ['low','medium','high'].includes(cluster.impact.toLowerCase())) {
         existingCluster.impact = cluster.impact.toLowerCase();
       }
@@ -380,7 +388,7 @@ function mergeClusters(newClusters, chunkStories, digest) {
         id: `cluster-${Date.now()}-${Math.random().toString(36).substring(2, 8)}`,
         headline: cluster.headline || 'Untitled',
         summary: cluster.summary || '',
-        category: cluster.category || 'Other',
+        category: normaliseCategory(Array.isArray(cluster.category) ? cluster.category[0] : (cluster.category || 'Other')),
         stories: storyData,
         triggerWords: Array.isArray(cluster.trigger_words) ? cluster.trigger_words : [],
         impact: ['low','medium','high'].includes((cluster.impact||'').toLowerCase()) ? cluster.impact.toLowerCase() : 'medium',
@@ -503,11 +511,11 @@ async function main() {
           id: `cluster-${Date.now()}-${Math.random().toString(36).substring(2, 8)}`,
           headline: story.originalTitle || 'Untitled',
           summary: story.text.slice(0, 200),
-          category: story.category || 'Other',
+          category: normaliseCategory(Array.isArray(story.category) ? story.category[0] : (story.category || 'Other')),
           stories: [{
             id: story.id, title: story.originalTitle, source: story.source,
             sourceName: story.sourceName || '', url: story.url, image: story.image || '',
-            published: story.published, category: story.category,
+            published: story.published, category: normaliseCategory(Array.isArray(story.category) ? story.category[0] : (story.category || 'Other')),
             plugin: story.plugin || null, pluginPriority: story.pluginPriority ?? null
           }],
           triggerWords: [],

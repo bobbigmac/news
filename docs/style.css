@@ -160,20 +160,15 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   color: var(--ink);
 }
 
-/* Broadsheet layout */
+/* Broadsheet layout — Masonry handles positioning */
 .broadsheet {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1.5rem 1rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-  align-items: start;
+  position: relative;
 }
 
-.broadsheet.cols-1 { grid-template-columns: 1fr; max-width: 700px; }
-.broadsheet.cols-3 { grid-template-columns: repeat(3, 1fr); }
-.broadsheet.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.broadsheet.cols-1 { max-width: 700px; }
 
 .loading {
   text-align: center;
@@ -244,22 +239,35 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   font-size: 0.95rem;
   line-height: 1.7;
   color: var(--ink);
-  margin: 0 0 0.75rem 0;
+  margin: 0;
 }
 
-/* Story links (expandable) */
+/* In-place content swap: summary and links share the same box */
+.article-body {
+  position: relative;
+}
+
+.article-body .story-links {
+  display: none;
+}
+
+.article-body.show-links .article-summary {
+  display: none;
+}
+
+.article-body.show-links .story-links {
+  display: block;
+}
+
 .story-links {
-  margin-top: 0.5rem;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.3s ease;
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
-
-.story-links.expanded { max-height: 500px; }
 
 .story-links ul {
   list-style: none;
-  padding-top: 0.5rem;
+  padding: 0;
+  margin: 0;
 }
 
 .story-links li {
@@ -831,14 +839,9 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   margin-top: 0.25rem;
 }
 
-/* Responsive — scale down columns on narrower screens */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .broadsheet.cols-4 { grid-template-columns: repeat(3, 1fr); }
-  .broadsheet.cols-3 { grid-template-columns: repeat(2, 1fr); }
-}
-
+/* Responsive — Masonry handles column count via JS */
 @media (max-width: 768px) {
-  .broadsheet { grid-template-columns: 1fr !important; max-width: 600px; }
+  .broadsheet { max-width: 600px; }
   .masthead { flex-direction: column; gap: 0.5rem; }
   .masthead-title { font-size: 2rem; }
   .masthead-left { align-items: center; min-width: 0; }

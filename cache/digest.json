@@ -4572,6 +4572,956 @@
       "created": "2026-07-12T18:33:18.391Z",
       "updated": "2026-07-12T18:33:18.391Z",
       "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881226578-xqao95",
+      "headline": "High Court finds car makers did not install emissions‑cheating devices",
+      "summary": "A High Court judge concluded that several major car manufacturers did not fit devices designed to manipulate emissions tests. The ruling clarifies that the firms complied with testing regulations, countering earlier allegations of systematic cheating.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-6e2610021fe8a84929f96a3c96bb97c0",
+          "title": "Major car firms found not to have installed emissions-cheating devices",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c0mye0d1297o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T16:18:08.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "emissions‑cheating devices",
+        "High Court"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:33:46.579Z",
+      "updated": "2026-07-12T18:33:46.579Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881226579-4kbbzu",
+      "headline": "Bird flu vaccine trial launches against H5N1 pandemic strain",
+      "summary": "A clinical trial of a vaccine targeting the H5N1 avian influenza strain has begun. The strain has caused severe outbreaks in birds worldwide but has not yet achieved sustained human‑to‑human transmission. Researchers aim to assess safety and efficacy as a pre‑emptive pandemic measure.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-615b155b96ebd365962ac33d95f526f1",
+          "title": "Bird flu vaccine trial against potential pandemic strain begins",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cy41z0yj8mjo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-04-21T23:00:08.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "bird flu",
+        "H5N1",
+        "vaccine trial"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:33:46.579Z",
+      "updated": "2026-07-12T18:33:46.579Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881324056-7pochc",
+      "headline": "Endometriosis groups call for faster diagnosis",
+      "summary": "Endometriosis groups are calling for a reduction in diagnosis times, proposing two new non-invasive tests be made available from GPs. The tests aim to speed up detection of the condition, which currently faces long delays for patients. The groups say faster diagnosis is urgently needed.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-e64f05ca3d818bfe65416c84c89ba7a3",
+          "title": "Endometriosis groups 'crying out' for cut in diagnosis time",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/ce3e4909qqzo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T06:15:23.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "endometriosis",
+        "non-invasive tests",
+        "diagnosis time"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:35:24.056Z",
+      "updated": "2026-07-12T18:35:24.056Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881324056-yrwf45",
+      "headline": "EasyJet agrees to Apollo takeover bid",
+      "summary": "EasyJet has agreed to a takeover bid from US firm Apollo, which surpassed a previous offer from Castlelake. The airline said Apollo's bid had trumped the recent Castlelake proposal. The deal would change ownership of the UK carrier.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-0835e3774411dfa6d0ccbfa34a94475b",
+          "title": "EasyJet agrees to surprise takeover bid as rival US firm swoops in",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cgjxqq9jg8yo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T15:02:45.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "EasyJet",
+        "Apollo",
+        "Castlelake"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:35:24.056Z",
+      "updated": "2026-07-12T18:35:24.056Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881324056-ag28t6",
+      "headline": "African nations reject Trump aid money",
+      "summary": "Several African nations are declining aid from the Trump administration, which views the assistance as transactional. Recipient countries argue the terms are not a fair trade. The refusals highlight tensions over US foreign aid conditions.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-3dcf154437b3d6541f8f52106e719069",
+          "title": "Why some African nations are turning down Trump aid money",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/ckg0921y8kdo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-07T00:49:08.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Trump aid",
+        "African nations"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:35:24.056Z",
+      "updated": "2026-07-12T18:35:24.056Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881343929-xwat08",
+      "headline": "Man almost sucked out of Ryanair window mid‑flight",
+      "summary": "A passenger on a Ryanair flight was nearly pulled out of a cabin window while the aircraft was at altitude. The man's wife grasped his legs and held him for about five minutes until the crew secured the opening, officials said.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-0983b925d0745b010203fcc24624249c",
+          "title": "Man nearly sucked out of window mid-air on Ryanair plane, passengers say",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cgk65knkyzdo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T16:42:24.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Ryanair",
+        "sucked out",
+        "window"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:35:43.929Z",
+      "updated": "2026-07-12T18:35:43.929Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881430359-b3tv18",
+      "headline": "SK Hynix $26.5bn listing sees 17% surge",
+      "summary": "SK Hynix raised $26.5bn in a record-breaking Nasdaq listing, with shares surging up to 17% on their Friday trading debut. The chip giant's stock has risen 795% over the past 12 months, drawing intense interest from American investors amid market volatility.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-864f257908a9d83f05185d1c88aca578",
+          "title": "Chip giant SK Hynix raises $26.5bn as shares surge in bumper US listing",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c4gym70r0y4o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T16:42:35.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "SK Hynix",
+        "$26.5bn",
+        "Nasdaq",
+        "795%"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:37:10.359Z",
+      "updated": "2026-07-12T18:37:10.359Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881446500-j9c4b9",
+      "headline": "Oil and cargo ships avoid Hormuz after strikes",
+      "summary": "Data shows a sharp decline in oil, gas and cargo vessels using the US‑backed Hormuz shipping lane after a series of attacks this week. The reduced traffic indicates heightened risk for vessels transiting the strategic waterway, affecting global energy shipments.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-8cca221c4f9ac831bf54507d53a39b48",
+          "title": "Big fall in oil, gas and cargo ships taking US-backed Hormuz route after new strikes",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c621k5r8764o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T14:41:54.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Hormuz",
+        "oil ships",
+        "strikes"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:37:26.500Z",
+      "updated": "2026-07-12T18:37:26.500Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881812314-cequce",
+      "headline": "England set for World Cup clash with Mexico",
+      "summary": "England defeated Norway to reach the World Cup semi-finals, with Jude Bellingham scoring and Declan Rice playing despite illness. Manager Thomas Tuchel called the win lucky. England now face Mexico in a must-win match at 01:00 BST on Monday; Tuchel urged young fans to stay up.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "rss-f0f5699e14de45c7cfffa220bcffef64",
+          "title": "Tuchel wants young England fans to stay up for 1am World Cup clash - but should they?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/ckg40qedq57o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-03T09:10:32.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Tuchel",
+        "Mexico",
+        "England World Cup"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:43:32.314Z",
+      "updated": "2026-07-12T18:43:32.314Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881812314-1fs79i",
+      "headline": "Bank of England economist warns rates may rise",
+      "summary": "The chief economist at the Bank of England said slower growth and inflationary pressures mean interest rates may need to rise this year. The comments signal a potential shift in the central bank's monetary policy stance amid economic uncertainty.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-7992a7425dd0a4565d7316405fd2dc0e",
+          "title": "Interest rates may need to rise this year, says Bank of England economist",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c932ed8nv75o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T17:37:11.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Bank of England",
+        "interest rates",
+        "inflationary pressures"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:43:32.314Z",
+      "updated": "2026-07-12T18:43:32.314Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881812314-1pmyrr",
+      "headline": "Minister says PIP not fit for purpose",
+      "summary": "Sir Stephen Timms, the minister leading the review, said Personal Independence Payments in England and Wales need changing because the disability benefit is not fit for purpose. The assessment could lead to reforms of the welfare system for claimants.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-aaab4493de82bd11f229b853f3f8ffa5",
+          "title": "Disability benefit not fit for purpose, minister leading review says",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/czrxj5vvey0o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T14:56:57.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Sir Stephen Timms",
+        "Personal Independence Payments",
+        "fit for purpose"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:43:32.314Z",
+      "updated": "2026-07-12T18:43:32.314Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882185967-jyb3oi",
+      "headline": "Sizewell B plant life extended by 20 years",
+      "summary": "Sizewell B power plant will continue operating until 2055, a 20-year extension from its previously planned end of life in 2035. The prolongation maintains the station's electricity generation beyond its original decommissioning schedule.",
+      "category": "Environment",
+      "stories": [
+        {
+          "id": "rss-70eb947dec0777c878e5ca2795df35dc",
+          "title": "Life of Sizewell B extended by another 20 years",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c1dy1rdv17lo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T05:27:18.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Sizewell B",
+        "2055"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:49:45.967Z",
+      "updated": "2026-07-12T18:49:45.967Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882252632-bexefe",
+      "headline": "Weight-loss jabs change mouthwash, hair dye sales",
+      "summary": "The BBC examined consumer spending among users of weight-loss jabs. Users reported feeling less hungry, prompting changed purchases of products including mouthwash and hair dye. The shift illustrates wider retail effects of appetite-suppressing treatments.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-e65d25816c709657ea60eb0ff3be7c8e",
+          "title": "From mouthwash to hair dye: How weight-loss jabs are changing shopping habits",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cy49w2knlrdo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T09:31:56.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "weight-loss jabs",
+        "mouthwash",
+        "hair dye"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:50:52.632Z",
+      "updated": "2026-07-12T18:50:52.632Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882342855-jo7jvm",
+      "headline": "Heatwave strains ambulances, grids and health guidance",
+      "summary": "Ambulance crews in Exeter reported increased demand during a prolonged heatwave, highlighting public unawareness of heat-related risks. New health guidance clarifies heat exhaustion and heatstroke and steps to act. Energy grids and train services are among vital infrastructure vulnerable to very hot weather, extending the heatwave's impact beyond health.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-554c171d46bad1c96f925945f2c06807",
+          "title": "Why is crucial tech vulnerable to the heat?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cj0gez6d50ro?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-01T07:23:12.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "heatwave",
+        "Exeter",
+        "ambulance",
+        "energy grids",
+        "train services"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:52:22.855Z",
+      "updated": "2026-07-12T18:52:22.855Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882342855-3t6na0",
+      "headline": "England in World Cup semis; schools open late",
+      "summary": "England defeated Norway to reach the World Cup semi-finals, with Jude Bellingham scoring and Declan Rice playing despite illness. The team is set to face Mexico. Following a 01:00 England kick-off, some schools have opted to open late to reduce pressure on parents, a decision many parents backed.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "rss-88421ad51f301183e1cbce31cc1bbdb9",
+          "title": "The schools starting late after 01:00 England kick-off to 'reduce pressure' on parents",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c621j2qj50do?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-04T02:46:58.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "England",
+        "World Cup",
+        "Bellingham",
+        "Mexico",
+        "schools"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:52:22.855Z",
+      "updated": "2026-07-12T18:52:22.855Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882342855-epvlj4",
+      "headline": "Laughter Lab launched to study health",
+      "summary": "Researchers have launched a Laughter Lab to investigate how laughing can improve wellbeing and health. The programme seeks to examine potential physiological and psychological benefits of laughter. No details on participating institutions, funding or timeline were disclosed in the announcement.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-d567fe296f2a5a9369d7c6397ff4c61e",
+          "title": "Is laughter really the best medicine?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/c74y1wn09n3o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-26T05:27:32.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Laughter Lab",
+        "laughing",
+        "wellbeing"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:52:22.855Z",
+      "updated": "2026-07-12T18:52:22.855Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882361004-uque8k",
+      "headline": "People turn life experience into funded business ideas",
+      "summary": "Individuals are converting personal life experiences into business concepts, receiving funding and other support to develop their ventures. The initiative showcases how lived insights can be monetised through financial backing and resources.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-824c30738dfef04bdc2c964691be6243",
+          "title": "People Fixing The World",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/live:bbc_world_service?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-07T07:30:00.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "life experience",
+        "business ideas",
+        "funding",
+        "support"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:52:41.004Z",
+      "updated": "2026-07-12T18:52:41.004Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882375959-xejn9p",
+      "headline": "Assassin's Creed Black Flag remake released",
+      "summary": "The BBC's Tom Gerken reviewed the long‑awaited remake of Assassin's Creed Black Flag, a pirate‑themed action‑adventure game rebuilt from the ground up after a 13‑year interval. The review assesses the updated graphics, gameplay changes and overall value of the new version.",
+      "category": "Entertainment",
+      "stories": [
+        {
+          "id": "rss-4befa9b745651799abc094700ecdcd40",
+          "title": "Is the Assassin's Creed Black Flag remake worth the 13 year wait? ",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cjrg9r80908o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T00:08:51.000Z",
+          "category": "Technology",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Assassin's Creed",
+        "Black Flag",
+        "remake"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:52:55.959Z",
+      "updated": "2026-07-12T18:52:55.959Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882425791-v768ra",
+      "headline": "Report says phone contracts mis‑sold to students",
+      "summary": "A parliamentary report finds that phone‑contract comparison sites mis‑sold products to student loan borrowers, failing to explain that loan terms could be altered retrospectively. MPs say the practice left students poorly informed about potential financial changes.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-15a86df16b4675b868b757eebdbdac8e",
+          "title": "Phone contract comparisons 'amounted to mis-selling' student loans, MPs say",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c4gy9lpylz9o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-06T23:08:51.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "phone contracts",
+        "student loans",
+        "mis‑selling"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:53:45.791Z",
+      "updated": "2026-07-12T18:53:45.791Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882425792-bsfkvs",
+      "headline": "Swedish team uses tech to preserve historic warship",
+      "summary": "A Swedish conservation team employs advanced scanning, 3D modelling and robotics to stabilise and restore a 17th‑century warship. The technology creates a digital twin and guides precise repairs, aiming to extend the vessel’s lifespan for future generations.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-a5160d3e527101564fc266f4f43256d3",
+          "title": "Tech Now",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/iplayer/episode/m002ysd5?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-04T01:00:00.000Z",
+          "category": "Technology",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "historic warship",
+        "Sweden",
+        "digital twin"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:53:45.792Z",
+      "updated": "2026-07-12T18:53:45.792Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882425792-7jpfi9",
+      "headline": "Shiona McCallum tests next‑generation prosthetics",
+      "summary": "Shiona McCallum meets a medical specialist developing prosthetic limbs that integrate neural interfaces and AI‑driven movement control. The collaboration aims to produce limbs that respond to users’ intentions with near‑natural precision, advancing rehabilitation technology.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-a6981e3d53f1584bd2271d2e66f2f5ac",
+          "title": "Tech Now",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/iplayer/episode/m002x058?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-05-23T01:00:00.000Z",
+          "category": "Technology",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Shiona McCallum",
+        "prosthetics",
+        "neural interface"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:53:45.792Z",
+      "updated": "2026-07-12T18:53:45.792Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882459574-s07snx",
+      "headline": "Fetal therapy saves identical twins",
+      "summary": "Identical twins Nancy and Margo survived a rare pregnancy condition after receiving a world‑first in‑utero treatment during a clinical trial. The pioneering procedure, performed while the twins were still in the womb, marks a breakthrough in prenatal medicine.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-5dbf11d7b505fc19f9f90e9dcbcdc191",
+          "title": "Pioneering treatment saves twins in early pregnancy",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/c3ry5xl4qr1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T16:04:37.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-ba12e1a73f7060944e1a86fe824f85d4",
+          "title": "Pioneering treatment saves identical twins from rare pregnancy condition",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c2eyl3zkpwko?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T01:37:23.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "identical twins",
+        "in‑utero treatment",
+        "pregnancy condition"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:54:19.574Z",
+      "updated": "2026-07-12T18:54:19.574Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882459574-2n36kg",
+      "headline": "German doctor sentenced for killing patients",
+      "summary": "A German palliative‑care physician received a life sentence after being convicted of murdering 15 patients and suspected of additional killings. The court found he deliberately administered lethal doses, breaching medical ethics and criminal law.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "rss-f511114ca38f4d56b69be8f67f729530",
+          "title": "German doctor jailed for murder of 15 patients and suspected of more",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cq819jyp2g7o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T14:25:25.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "German doctor",
+        "life imprisonment",
+        "patient murders"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:54:19.574Z",
+      "updated": "2026-07-12T18:54:19.574Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882459574-u9b1vf",
+      "headline": "Hot flush study explores new treatment",
+      "summary": "Journalist James Gallagher investigates the sensation of hot flushes and evaluates a newly developed therapy aimed at alleviating symptoms. The report details the treatment’s mechanism and early trial results, highlighting potential benefits for menopausal women.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-93a287b773d288dba9b99594c6bf14dd",
+          "title": "Inside Health",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/m002tbkd?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-03-31T09:00:00.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "hot flush",
+        "new treatment",
+        "menopausal"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:54:19.574Z",
+      "updated": "2026-07-12T18:54:19.574Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882502258-lf46mv",
+      "headline": "Heatwave strains ambulances, women and children at greater risk",
+      "summary": "During a recent heatwave, ambulance services were stretched thin as demand rose. Experts highlight that women suffer more from heat-related illnesses and children are especially vulnerable. Calls for targeted protection and increased public awareness have intensified.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-f7185bab6eed9fa6a357d2284f8a57dd",
+          "title": "Why women suffer more in the heat",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/cpwelvv5zgwo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T15:25:03.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-69a2019b577fb5c8e46e9c302f9db8c3",
+          "title": "Why heatwaves hit women harder",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c4gyp1knzzxo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T23:49:12.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-da62c56c4f1dd38fb9dda4db767f61a2",
+          "title": "More protein or less? The foods to get you through a heatwave ",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/clyw89g3443o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T09:05:56.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-73a085fad6ec7f65ac0f67380bbb10aa",
+          "title": "Five tips to keep your kids cool in a heatwave",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c862j9vy746o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-19T00:07:22.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "heatwave",
+        "ambulance",
+        "women",
+        "children"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:55:02.258Z",
+      "updated": "2026-07-12T18:55:02.258Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882502258-5ni5y6",
+      "headline": "Covid vaccine rollout praised, but report calls for better support for harmed",
+      "summary": "An inquiry report praised the Covid vaccine rollout for saving hundreds of thousands of lives but warned that a small minority of recipients were harmed and require improved support. The report recommends enhanced monitoring and care for those affected.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-dcd68584bbbdce0aa5a7132b01dff3e6",
+          "title": "Rollout of Covid vaccines extraordinary feat - inquiry report",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cp8dpjx1yvmo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-04-16T14:39:07.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Covid vaccines",
+        "rollout",
+        "inquiry report"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:55:02.258Z",
+      "updated": "2026-07-12T18:55:02.258Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882519692-qun36f",
+      "headline": "Baroness Casey launches social care funding review",
+      "summary": "Baroness Louise Casey, leading a major review of England's social care system, announced that the public will be consulted on who should fund care services. She described the current arrangement as \"impossible\" and seeks reforms to financing and delivery.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-4b66639927abe07b206f8375b5041739",
+          "title": "Public to be asked who should pay for social care as part of major review",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cvg49lq1jw6o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-07T11:05:01.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Baroness Casey",
+        "social care",
+        "funding review"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:55:19.692Z",
+      "updated": "2026-07-12T18:55:19.692Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882584144-d1slvb",
+      "headline": "Dr Cyriac Abby Philips clashes with traditional medicine",
+      "summary": "Dr Cyriac Abby Philips, a liver doctor based in India, has built a large online following. He regularly clashes with practitioners of India's traditional medicine systems. The conflict reflects broader tensions between conventional medical science and traditional remedies within the Indian healthcare landscape.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-79221d13f3240a337c26d13e1fddeb49",
+          "title": "Loved and loathed: The making of India's viral liver doctor",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c39y7w901vdo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-28T23:11:12.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Cyriac Abby Philips",
+        "liver doctor",
+        "traditional medicine"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:56:24.144Z",
+      "updated": "2026-07-12T18:56:24.144Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882597567-woo9dv",
+      "headline": "NHS to roll out two rapid endometriosis tests",
+      "summary": "The National Health Service will introduce two rapid diagnostic tests for endometriosis, aiming to shorten the time to diagnosis for women. Health officials say the tests will be available across NHS facilities later this year, improving early detection and treatment pathways.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-8eb6dcdc9d6439a6ede02e9252e372d0",
+          "title": "'Endometriosis tests would have given me years back'",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cx2vzxe02dxo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T06:29:22.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "endometriosis",
+        "rapid tests",
+        "NHS"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:56:37.567Z",
+      "updated": "2026-07-12T18:56:37.567Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882674304-nuriwi",
+      "headline": "Rural Kenya faces 2,000 primary school closures",
+      "summary": "More than 2,000 primary schools in rural Kenya face closure as enrolment numbers plummet, with some areas recording more cows than pupils. The closures threaten education access for children in affected communities.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-4c9cbb31dd1ffa6507680d02afde6f08",
+          "title": "More cows than pupils - what is behind mass school closures in rural Kenya?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cy72mn3m7l3o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-04T00:51:44.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "rural Kenya",
+        "primary school closures",
+        "2,000 primary schools"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:57:54.304Z",
+      "updated": "2026-07-12T18:57:54.304Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882674305-1fejsq",
+      "headline": "Water Safety Forum to launch in schools",
+      "summary": "A swim club has called for expanded water safety lessons in schools. From the autumn, a new Water Safety Forum will be introduced to primary and secondary schools across the country. The programme aims to improve pupil awareness of water hazards.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "rss-57c8e213db551e65e31760ac7a61a9fb",
+          "title": "Swim club calls for more school water safety lessons",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cx2xq1pz393o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-22T05:08:04.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Water Safety Forum",
+        "water safety lessons"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:57:54.305Z",
+      "updated": "2026-07-12T18:57:54.305Z",
+      "contentVersion": 1
     }
   ],
   "generated": "2026-07-12T18:00:38.582Z"
