@@ -1,0 +1,807 @@
+{
+  "date": "2026-07-12",
+  "clusters": [
+    {
+      "id": "cluster-1783845254048-54741s",
+      "headline": "PostNL seeks looser postal delivery rules",
+      "summary": "PostNL, the Dutch postal operator, has requested changes to the country's Universal Postal Service regulations, arguing that the legal obligations no longer reflect the shrinking postal market. The company reported a €35 million loss on the statutory service last year, citing the burden as unfair.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "d9a83403-e200-566d-b0ff-35d0c23a5ae3",
+          "title": "PostNL wants laxer rules for statutory postal delivery task",
+          "source": "",
+          "url": "https://nltimes.nl/2026/07/12/postnl-wants-laxer-rules-statutory-postal-delivery-task",
+          "published": "2026-07-12 07:48:20 +0000",
+          "category": [
+            "national"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://nltimes.nl/sites/nltimes.nl/files/styles/news_article_full_desktop_2x/public/2023-02/Depositphotos_578932860_XL.jpg?h=71976bb4",
+          "sourceName": "NL Times"
+        }
+      ],
+      "created": "2026-07-12T08:34:14.048Z",
+      "updated": "2026-07-12T08:34:14.048Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845254048-uvb9s1",
+      "headline": "Suspect arrested after Wassenaar shooting",
+      "summary": "Two people were injured when a shooting broke out at a home in Wassenaar early Sunday. Police arrested a suspect while investigating the incident. No further details on motive or weapon were provided.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "a9dd9f9a-df65-5c09-9119-cc596872ec94",
+          "title": "Video: Two injured in Wassenaar shooting; Suspect arrested",
+          "source": "",
+          "url": "https://nltimes.nl/2026/07/12/video-two-injured-wassenaar-shooting-suspect-arrested",
+          "published": "2026-07-12 07:48:20 +0000",
+          "category": [
+            "national"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://nltimes.nl/sites/nltimes.nl/files/styles/news_article_full_desktop_2x/public/2021-04/Depositphotos_22308831_s-2019%20%281%29.jpg?h=82f92a78",
+          "sourceName": "NL Times"
+        }
+      ],
+      "created": "2026-07-12T08:34:14.048Z",
+      "updated": "2026-07-12T08:34:14.048Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845254048-w341a5",
+      "headline": "Violence erupts at Ter Apel asylum centre",
+      "summary": "Fights broke out at the entrance of the Ter Apel asylum application centre on the first evening after the Red Cross and VluchtelingenWerk withdrew assistance due to safety concerns. An individual was taken to hospital after becoming unwell.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "7d566a22-3949-5212-8545-648e2570ab44",
+          "title": "Video: Fights break out outside Ter Apel center on first night after aid groups pull out",
+          "source": "",
+          "url": "https://nltimes.nl/2026/07/12/video-fights-break-outside-ter-apel-center-first-night-aid-groups-pull",
+          "published": "2026-07-12 07:48:20 +0000",
+          "category": [
+            "national"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://nltimes.nl/sites/nltimes.nl/files/styles/news_article_full_desktop_2x/public/2024-06/16553049764_e95d362155_c%20%281%29.jpg?h=c9f93661",
+          "sourceName": "NL Times"
+        }
+      ],
+      "created": "2026-07-12T08:34:14.048Z",
+      "updated": "2026-07-12T08:34:14.048Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845254048-avmiqn",
+      "headline": "Persistent stink confirmed at Amsterdam prison",
+      "summary": "Police confirmed that strong odours persist in the detention cells at the Elandsgracht police station in Amsterdam’s Centrum district. The facility, which houses around 45 cells, serves detainees from the Centrum, Noord and West boroughs, and cleaning crews have been unable to eliminate the smell.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "6a192419-d8af-5eea-857a-fca2cf934feb",
+          "title": "Police confirm persistent stink at Amsterdam prison",
+          "source": "",
+          "url": "https://nltimes.nl/2026/07/12/police-confirm-persistent-stink-amsterdam-prison",
+          "published": "2026-07-12 07:45:00 +0000",
+          "category": [
+            "national"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://nltimes.nl/sites/nltimes.nl/files/styles/news_article_full_desktop_2x/public/2025-07/Depositphotos_24076091_XL.jpg?h=7685ba0d",
+          "sourceName": "NL Times"
+        }
+      ],
+      "created": "2026-07-12T08:34:14.048Z",
+      "updated": "2026-07-12T08:34:14.048Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845254048-8nmv1i",
+      "headline": "Injection linked to higher brain tumour risk",
+      "summary": "A study found that women who received the contraceptive injection for at least one year were 5.6 times more likely to develop meningioma brain tumours. The research highlights a potential health risk associated with long‑term use of the injection.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "d36e3cdd-c682-52e5-90ff-510d6304f048",
+          "title": "‘I have an inoperable brain tumour after having the contraceptive jab’",
+          "source": "Rebecca Whittaker",
+          "url": "https://www.independent.co.uk/news/health/brain-tumour-contraceptive-injection-depo-provera-b3011322.html",
+          "published": "2026-07-12 07:43:27 +0000",
+          "category": [
+            "national"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://static.independent.co.uk/2026/07/09/14/53/Lauren-Lewington.jpeg?trim=0,0,0,0&width=1200&height=800&crop=1200:800",
+          "sourceName": "The Independent"
+        }
+      ],
+      "created": "2026-07-12T08:34:14.048Z",
+      "updated": "2026-07-12T08:34:14.048Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845254048-nqbbqt",
+      "headline": "Swans claim upset win over East Perth",
+      "summary": "Swan Districts forward Leigh Kohlmann praised the club’s 19‑point victory over East Perth as its best win in two years. He said the result indicates significant progress for the team in Bassendean.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "c43bfdf9-6040-54ed-b0bc-70f51a61c38f",
+          "title": "Something’s brewing in Bassendean as Kohlmann hails Swans",
+          "source": "Aaron Kirby",
+          "url": "https://thewest.com.au/sport/wafl/wafl-2026-swan-districts-forward-leigh-kohlmann-labels-win-over-east-perth-best-of-past-two-years-c-22566454",
+          "published": "2026-07-12 07:43:26 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://images.thewest.com.au/publication/C-22566454/0466fb3493667f3fdab2999841fe751bebe44075-16x9-x0y209w4000h2250.jpg?imwidth=1200",
+          "sourceName": "The West Australian"
+        }
+      ],
+      "created": "2026-07-12T08:34:14.048Z",
+      "updated": "2026-07-12T08:34:14.048Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845254048-zlmp2s",
+      "headline": "Footage shows death of World Cup star",
+      "summary": "Footage of 25‑year‑old footballer Adams, who had played twice in the World Cup, surfaced after his death in Schotschekloof, Cape Town. The cause of death remains unconfirmed.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "4f86e6b1-5597-5b42-addc-9d0b57a4654d",
+          "title": "Heartbreaking footage of tragic World Cup star emerges",
+          "source": "Luke Power",
+          "url": "https://www.dailymail.com/sport/football/article-15971413/jayden-adams-world-cup-south-africa.html",
+          "published": "2026-07-12 07:42:53 +0000",
+          "category": [
+            "national"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i.dailymail.com/1s/2026/07/12/08/109965447-0-image-m-19_1783840403039.jpg",
+          "sourceName": "Daily Mail"
+        }
+      ],
+      "created": "2026-07-12T08:34:14.048Z",
+      "updated": "2026-07-12T08:34:14.048Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845254048-b674xb",
+      "headline": "FIFA to consider 64‑team World Cup",
+      "summary": "FIFA President Gianni Infantino said the governing body is exploring expanding the World Cup to 64 teams, arguing that every nation should have the opportunity to participate. The proposal would increase the tournament’s size beyond the current 32 teams.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "7b781bae-42ee-56cd-837a-9a19be0fd85e",
+          "title": "FIFA considers expanding World Cup to 64 teams, Infantino says",
+          "source": "",
+          "url": "https://tass.com/sports/2159133",
+          "published": "2026-07-12 07:42:13 +0000",
+          "category": [
+            "general",
+            "world"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://tass.com/img/blocks/common/tass_logo_share_eng.png",
+          "sourceName": "TASS"
+        }
+      ],
+      "created": "2026-07-12T08:34:14.048Z",
+      "updated": "2026-07-12T08:34:14.048Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845254048-mj6gc6",
+      "headline": "Farage rating falls to lowest level",
+      "summary": "An Opinium survey showed former UKIP leader Nigel Farage’s approval rating dropped to –27, the lowest since the general election. More than half of voters disapproved of him, while only a quarter approved.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "17b4d7d0-55d9-5746-bd6f-e3dab84b0a5c",
+          "title": "Farage's ratings plummet to lowest level since the general election",
+          "source": "Greg Heffer",
+          "url": "https://www.dailymail.com/news/article-15971461/Nigel-Farages-ratings-plummet-lowest-level-general-election-amid-finances-row-Reform-UKs-popularity-sinks.html",
+          "published": "2026-07-12 07:39:59 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i.dailymail.com/1s/2026/07/12/08/109965603-0-image-m-6_1783841752262.jpg",
+          "sourceName": "Daily Mail"
+        }
+      ],
+      "created": "2026-07-12T08:34:14.048Z",
+      "updated": "2026-07-12T08:34:14.048Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845254048-kvr5cu",
+      "headline": "Senator Lindsey Graham dies at 71",
+      "summary": "US Senator Lindsey Graham died at 71 after a brief and sudden illness, according to his office. The senator had returned from Kyiv, where he met Ukrainian President Volodymyr Zelensky on Friday.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "7c270961-adff-575d-8817-8862d3a19c60",
+          "title": "US Senator Lindsey Graham dies after 'brief and sudden illness', his office says",
+          "source": "Gabriela Pomeroy",
+          "url": "https://www.bbc.co.uk/news/articles/cvgj25j6nmeo",
+          "published": "2026-07-12 07:33:12 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/0992/live/576e9b70-7dc2-11f1-b976-0b9c15b0ccfc.jpg",
+          "sourceName": "BBC"
+        },
+        {
+          "id": "f27a1a81-40e7-5006-9e90-faf84da7088a",
+          "title": "Lindsey Graham dead at 71",
+          "source": "Bethan Sexton; Perkin Amalaraj",
+          "url": "https://www.dailymail.com/news/article-15971431/US-Senator-Lindsey-Graham-dies-brief-sudden-illness.html",
+          "published": "2026-07-12 07:27:34 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i.dailymail.com/1s/2026/07/12/07/109965345-0-image-a-14_1783837505874.jpg",
+          "sourceName": "Daily Mail"
+        }
+      ],
+      "created": "2026-07-12T08:34:14.048Z",
+      "updated": "2026-07-12T08:34:14.048Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845254048-qgy0gb",
+      "headline": "New COPD treatment offers hope to patients",
+      "summary": "Samuel Maclean, a long‑term COPD patient, is among the first to benefit from a new treatment that claims to improve lung function and quality of life. The therapy is being promoted as a significant advance for sufferers.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "0069747e-0a7d-5f52-8323-9ab7f773b8c9",
+          "title": "'This new COPD treatment could make a real difference to patients like me'",
+          "source": "Lauren Harte",
+          "url": "https://www.belfastlive.co.uk/news/northern-ireland/this-breakthrough-copd-treatment-could-34258452",
+          "published": "2026-07-12 07:21:06 +0000",
+          "category": [
+            "national"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i2-prod.belfastlive.co.uk/article34258505.ece/ALTERNATES/s1200d/0_Photo-2-1.jpg",
+          "sourceName": "Belfast Live"
+        }
+      ],
+      "created": "2026-07-12T08:34:14.048Z",
+      "updated": "2026-07-12T08:34:14.049Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845318424-5c72y7",
+      "headline": "England advance past Norway in World Cup quarter-final",
+      "summary": "England progressed to the World Cup semi-finals with a dramatic victory over Norway, though manager Thomas Tuchel criticised his team's performance. Jude Bellingham responded dismissively to Tuchel's comments, while celebrations in Piccadilly Circus led to multiple arrests. Bellingham also shared a lighthearted moment with Erling Haaland before the match.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "3bb44f6c-7fe7-5825-9e17-1f654815a429",
+          "title": "Thomas Tuchel's criticism of England stars and what Jude Bellingham said on ITV",
+          "source": "Ben Crawford",
+          "url": "https://www.mirror.co.uk/sport/football/news/england-norway-tuchel-bellingham-itv-37420008",
+          "published": "2026-07-12 07:12:28 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i2-prod.mirror.co.uk/article37419718.ece/ALTERNATES/s1200d/1_TT-2.jpg",
+          "sourceName": "Mirror"
+        },
+        {
+          "id": "50aec67d-ec73-5908-91a8-e5ed13471190",
+          "title": "Jude Bellingham attacks manager Thomas Tuchel's England interview",
+          "source": "Oliver Todd",
+          "url": "https://www.dailymail.com/sport/football/article-15971397/jude-bellingham-thomas-tuchel-england-argentina.html",
+          "published": "2026-07-12 07:07:44 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i.dailymail.com/1s/2026/07/12/06/109964973-0-image-m-13_1783833904326.jpg",
+          "sourceName": "Daily Mail"
+        },
+        {
+          "id": "bd5e26b5-6bc4-567f-9a37-1f2e462c461e",
+          "title": "Police arrest fans in Piccadilly Circus after England beat Norway",
+          "source": "Noor Qurashi; Olivia Christie",
+          "url": "https://www.dailymail.com/news/article-15971447/police-arrest-fans-Piccadilly-Circus-celebrations-chaotic-England-beat-Norway.html",
+          "published": "2026-07-12 08:05:08 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i.dailymail.com/1s/2026/07/12/09/109965755-0-image-m-23_1783843206536.jpg",
+          "sourceName": "Daily Mail"
+        },
+        {
+          "id": "130cd552-8fc6-54b7-bbd2-0a45d54358b7",
+          "title": "Jude Bellingham's 'cheeky' act towards Erling Haaland before England match",
+          "source": "Paige Freshwater",
+          "url": "https://www.mirror.co.uk/sport/england-fans-spot-jude-bellinghams-37420102",
+          "published": "2026-07-12 08:00:18 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i2-prod.mirror.co.uk/article37419444.ece/ALTERNATES/s1200d/1_Norway-v-England-Quarter-Final-FIFA-World-Cup-2026.jpg",
+          "sourceName": "Mirror"
+        }
+      ],
+      "created": "2026-07-12T08:35:18.424Z",
+      "updated": "2026-07-12T08:35:18.424Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845318424-99207e",
+      "headline": "Melbourne thrash Richmond in AFL clash",
+      "summary": "Melbourne extended their perfect MCG record to 9-0 with a 46-point victory over Richmond in wet conditions, with Van Rooyen starring for the Demons. The win strengthened Melbourne's position in the top four of the AFL ladder.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "a0b953d2-8906-54d0-8fc1-6be3dffe543d",
+          "title": "Van Rooyen stars as Dees dismantle struggling Tigers",
+          "source": "Oliver Caffrey AAP Premium",
+          "url": "https://thewest.com.au/sport/afl/van-rooyen-stars-as-dees-dismantle-struggling-tigers-c-22566983",
+          "published": "2026-07-12 08:10:43 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://images.thewest.com.au/publication/C-22566983/5b6a3321d6b4b3e93c8f0aface232326bff2ad99-16x9-x0y0w1280h720.jpg?imwidth=1200",
+          "sourceName": "The West Australian"
+        }
+      ],
+      "created": "2026-07-12T08:35:18.424Z",
+      "updated": "2026-07-12T08:35:18.424Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845318424-6ks766",
+      "headline": "Elderly couple disappear during shopping trip",
+      "summary": "Police are investigating the unexplained disappearance of an elderly couple who vanished during a routine shopping trip. Family members and authorities have expressed growing concern for the couple's welfare as searches continue.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "8bedbf3a-f8c2-594b-824a-58929c2553ec",
+          "title": "Couple vanish in shopping trip mystery",
+          "source": "Andrew Hedgman NewsWire Premium",
+          "url": "https://thewest.com.au/news/police-search-for-elderly-melbourne-couple-missing-after-shopping-trip-to-the-glen-c-22566963",
+          "published": "2026-07-12 08:05:16 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://images.thewest.com.au/publication/C-22566963/923a5ac07ec04a6ba02dc9b744f88b9d9760af85-16x9-x0y135w1440h810.jpg?imwidth=1200",
+          "sourceName": "The West Australian"
+        }
+      ],
+      "created": "2026-07-12T08:35:18.424Z",
+      "updated": "2026-07-12T08:35:18.424Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845318424-ol8cip",
+      "headline": "Football transfer window updates dominate headlines",
+      "summary": "Transfer activity continues across European football with Joao Gomes linked to Manchester United, Bradley Barcola's future under discussion, and Liverpool responding to market movements. Updates also cover Marcus Rashford and Bruno Guimaraes situations.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "0601b12c-f967-5c05-a0aa-7c4bc8c0df71",
+          "title": "Transfer news LIVE Joao Gomes to Man Utd, Barcola updates, Liverpool response",
+          "source": "Amie Wilson",
+          "url": "https://www.mirror.co.uk/sport/football/transfer-news/transfer-news-live-joao-gomes-37419958",
+          "published": "2026-07-12 08:04:06 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i2-prod.mirror.co.uk/article37420021.ece/ALTERNATES/s1200d/0_France-v-Morocco-Quarter-Final-FIFA-World-Cup-2026.jpg",
+          "sourceName": "Mirror"
+        }
+      ],
+      "created": "2026-07-12T08:35:18.424Z",
+      "updated": "2026-07-12T08:35:18.424Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845318424-5zlq34",
+      "headline": "Family dispute erupts over baby name spelling",
+      "summary": "A woman sparked controversy after laughing at her cousin's baby daughter's unconventional name, leading to a heated family argument. The cousin responded sharply to the criticism, igniting debate about the chosen name's appearance.",
+      "category": "Entertainment",
+      "stories": [
+        {
+          "id": "21301f45-5402-50b6-af57-d65fd62e7852",
+          "title": "'My cousin's baby name looks like a spelling mistake - it makes me laugh'",
+          "source": "Paige Freshwater",
+          "url": "https://www.mirror.co.uk/lifestyle/my-cousins-baby-name-looks-37399308",
+          "published": "2026-07-12 08:03:41 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i2-prod.mirror.co.uk/article37381118.ece/ALTERNATES/s1200d/0_Portrait-of-newborn-baby.jpg",
+          "sourceName": "Mirror"
+        }
+      ],
+      "created": "2026-07-12T08:35:18.424Z",
+      "updated": "2026-07-12T08:35:18.424Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845318424-mr813z",
+      "headline": "Minneapolis restaurant adopts pay-what-you-can model",
+      "summary": "Restaurant owner Dylan Alverson transformed Post Modern Times in Minneapolis to a pay-what-you-can pricing system after struggling to make traditional numbers work. The model has proven financially successful while serving the community.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "bee42b1a-2e45-558e-9edb-a28b5f699a02",
+          "title": "I couldn't make my restaurant's numbers work. So I took prices off the menu.",
+          "source": "Katherine Tangalakis-Lippert",
+          "url": "https://www.businessinsider.com/minneapolis-cafe-revived-by-pay-what-you-can-approach-2026-7",
+          "published": "2026-07-12 08:01:01 +0000",
+          "category": [
+            "food",
+            "lifestyle"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i.insider.com/6a4d68a85dc133dbf310dda0?width=1200&format=jpeg",
+          "sourceName": "Business Insider"
+        }
+      ],
+      "created": "2026-07-12T08:35:18.424Z",
+      "updated": "2026-07-12T08:35:18.424Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845378710-fjaei9",
+      "headline": "Wimbledon curfew change and prize purse revealed",
+      "summary": "Wimbledon's curfew rule, in place for 17 years, was changed for the singles final timing, causing issues; meanwhile the men's singles champion will receive a record prize purse as Jannik Sinner faces Alexander Zverev in the 2026 final.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "6e50f57b-c7b2-5afa-91e8-0fb951fe7f3d",
+          "title": "Wimbledon curfew explained as rule change causes issue for final",
+          "source": "Fasika Zelealem",
+          "url": "https://www.mirror.co.uk/sport/tennis/wimbledon-rule-grand-slam-final-37415533",
+          "published": "2026-07-12 08:00:00 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i2-prod.mirror.co.uk/article37412995.ece/ALTERNATES/s1200d/0_Day-Nine-The-Championships-Wimbledon-2026.jpg",
+          "sourceName": "Mirror"
+        },
+        {
+          "id": "6753e4ab-792e-571c-bfcc-8c3245e94bf5",
+          "title": "How much the Wimbledon men's singles champion earns for winning final",
+          "source": "Tom Sunderland",
+          "url": "https://www.mirror.co.uk/sport/tennis/wimbledon-final-sinner-zverev-money-37417835",
+          "published": "2026-07-12 08:00:00 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i2-prod.mirror.co.uk/article37349271.ece/ALTERNATES/s1200d/2_Jannik-Sinner-kisses-the-Wimbledon-trophy.jpg",
+          "sourceName": "Mirror"
+        }
+      ],
+      "created": "2026-07-12T08:36:18.710Z",
+      "updated": "2026-07-12T08:36:18.710Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845378710-uitp01",
+      "headline": "Messi sends X-rated message to England players",
+      "summary": "Lionel Messi's Argentina side will face England in the 2026 World Cup semi-finals after beating Switzerland; following the win, Messi posted an X-rated message directed at England players, sparking controversy ahead of the clash.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "444c7eb6-6097-516e-8367-87ac324d1b06",
+          "title": "Lionel Messi sends X-rated message to England players after Argentina win",
+          "source": "Connor O'Neill",
+          "url": "https://www.mirror.co.uk/sport/football/news/lionel-messi-argentina-world-cup-37420114",
+          "published": "2026-07-12 07:56:56 +0000",
+          "category": [
+            "national"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i2-prod.mirror.co.uk/article37420126.ece/ALTERNATES/s1200d/0_GettyImages-2285142512.jpg",
+          "sourceName": "Mirror"
+        }
+      ],
+      "created": "2026-07-12T08:36:18.710Z",
+      "updated": "2026-07-12T08:36:18.710Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845378710-01u1tp",
+      "headline": "New footage emerges of deceased World Cup star",
+      "summary": "Heartbreaking footage shows the tragic World Cup star Adams, 25, found dead in Cape Town weeks after playing in the tournament; cause of death remains unconfirmed, adding to existing coverage of the player's death.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "10e9928c-f79c-5d81-b78a-81db0503be49",
+          "title": "Heartbreaking footage of tragic World Cup star emerges",
+          "source": "Luke Power",
+          "url": "https://www.dailymail.com/sport/football/article-15971413/jayden-adams-world-cup-south-africa.html",
+          "published": "2026-07-12 07:51:49 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i.dailymail.com/1s/2026/07/12/08/109965447-0-image-m-19_1783840403039.jpg",
+          "sourceName": "Daily Mail"
+        }
+      ],
+      "created": "2026-07-12T08:36:18.710Z",
+      "updated": "2026-07-12T08:36:18.710Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845378710-l5l3w6",
+      "headline": "High street offers cooling fashion for heatwave",
+      "summary": "Shoppers can keep cool in the heat with breezy buys from Monsoon and other high street retailers, with items starting from as little as £18, as advice is given for dressing during the current heatwave.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "1a7c2c3c-9389-551d-a605-d950345cf869",
+          "title": "Dress for the heatwave with our top cooling fashion buys from Monsoon and more",
+          "source": "Grace Salmon",
+          "url": "https://www.mirror.co.uk/3am/style/gallery/dress-heatwave-top-cooling-fashion-37411023",
+          "published": "2026-07-12 08:00:00 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i2-prod.ok.co.uk/incoming/article37411296.ece/ALTERNATES/s1200/0_MIRROR-TEMPLATE-121.jpg",
+          "sourceName": "Mirror"
+        }
+      ],
+      "created": "2026-07-12T08:36:18.710Z",
+      "updated": "2026-07-12T08:36:18.710Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845378710-dvf4t3",
+      "headline": "Eco-friendly liquid tackles stubborn weeds without vinegar",
+      "summary": "Gardening expert Simon Akeroyd shares a simple, eco-friendly method to remove impossible-to-dig weeds from patios, driveways and gravel surfaces by pouring an effective liquid rather than using vinegar, offering a sustainable solution for gardeners.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "7c49d652-3477-58de-8820-e6c1a39ed528",
+          "title": "Kill 'impossible' weeds when pouring effective liquid – not vinegar",
+          "source": "Alan Johnson",
+          "url": "https://www.mirror.co.uk/lifestyle/kill-impossible-weeds-pouring-effective-37399436",
+          "published": "2026-07-12 07:53:49 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i2-prod.mirror.co.uk/article37399435.ece/ALTERNATES/s1200d/0_Weeds-growing-up-through-bricks-in-a-garden.jpg",
+          "sourceName": "Mirror"
+        }
+      ],
+      "created": "2026-07-12T08:36:18.710Z",
+      "updated": "2026-07-12T08:36:18.710Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845378710-18hctf",
+      "headline": "Tourist shocked by Tenerife meal prices",
+      "summary": "Ruben Chorlton-Owen, 25, from North Wales, visited Tenerife with his girlfriend and was taken aback by the high cost of food relative to prices back home, sharing his experience online to highlight the price disparity.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "382237ff-2e65-557a-85d1-b24825f044cc",
+          "title": "Man orders meal in Tenerife but is floored by price of food",
+          "source": "Katie-Ann Gupwell",
+          "url": "https://www.mirror.co.uk/travel/europe/man-orders-meal-tenerife-floored-37396402",
+          "published": "2026-07-12 07:52:12 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://i2-prod.mirror.co.uk/article37021741.ece/ALTERNATES/s1200d/0_Image.jpg",
+          "sourceName": "Mirror"
+        }
+      ],
+      "created": "2026-07-12T08:36:18.710Z",
+      "updated": "2026-07-12T08:36:18.710Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783845378710-bowdvv",
+      "headline": "Details released on Ann Widdecombe murder investigation",
+      "summary": "Investigators say the 78-year-old former politician was found in a pool of her own blood inside the kitchen of her remote Dartmoor bungalow; police continue to examine the scene as they seek to establish the circumstances surrounding her death.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "315b83d1-7336-5342-83ee-b47e9e7dc4b7",
+          "title": "Everything we know so far about Ann Widdecombe's murder",
+          "source": "Brooke Davies",
+          "url": "https://metro.co.uk/2026/07/12/everything-we-know-so-far-about-ann-widdecombes-murder-29116069/",
+          "published": "2026-07-12 07:45:49 +0000",
+          "category": [
+            "general"
+          ],
+          "plugin": null,
+          "pluginPriority": null,
+          "image": "https://metro.co.uk/wp-content/uploads/2026/07/SEI_304859040-7143_1783842354.jpg?quality=90&strip=all&w=1200&h=630&crop=1",
+          "sourceName": "Metro"
+        }
+      ],
+      "created": "2026-07-12T08:36:18.710Z",
+      "updated": "2026-07-12T08:36:18.710Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877141719-64veyc",
+      "headline": "Wid​decombe murder investigation updates",
+      "summary": "Police have arrested a 26‑year‑old man in Rotherham on suspicion of murdering former MP Ann Widdecombe, ruling out a political motive. The 78‑year‑old former minister was found dead in her Devon bungalow, prompting reactions from the prime minister and opposition leader. Additional coverage includes a recap of her career, her final public appearance on TalkTV, and a detailed timeline of the probe.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "rss-c2d991b793811faf08ed275ad097cbd8",
+          "title": "Police say no suggestion of political motive in Widdecombe killing after new arrest",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c8628q3eqdeo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T13:06:22.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-5957ad851aef2ca819ae5c3471e876ae",
+          "title": "Ann Widdecombe murder probe: What we know so far",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c3vyqkqkvr9o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T11:42:20.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-0d2da935f8d42b47db43832ab28930d2",
+          "title": "Ann Widdecombe's 'extraordinary' character",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/cjeg57jdxnvo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T02:09:53.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-fb6821242317b649172eae1b917d6f2a",
+          "title": "Pugnacious, charismatic and she always answered the question - Chris Mason on Ann Widdecombe",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/czrxdnmlk5no?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T21:27:28.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-ca868ce969e52084031bba9bb7e98298",
+          "title": "Watch: Police confirm 26 year-old suspect in custody",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/c1ly3glepr1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T17:18:02.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-eed3f90bdf43300436d816af78ba9d1e",
+          "title": "Watch: Ann Widdecombe's last public appearance",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/ckg47dkwz14o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T17:07:21.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-ed641edf98896fe9bbd648c4550e053a",
+          "title": "Shocked and upset - Politicians react to Ann Widdecombe's death",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/c0lydpe9722o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T16:47:24.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-b1947ae71d90e27f5d3f6761c832de5a",
+          "title": "Ann Widdecombe: strictly, politics and performance",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/c30ye3dry31o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T12:48:00.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:25:41.719Z",
+      "updated": "2026-07-12T17:25:41.719Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877141719-4jelz7",
+      "headline": "Two charged as body found in suitcase in woods",
+      "summary": "Two charged as body found in suitcase in woods — A man from London is charged with murder after a man's body is found in woods in Kent. — A man from London is charged with murder after a man's body is",
+      "category": "General",
+      "stories": [
+        {
+          "id": "rss-f0a2226c523397e06e6a0badcb7ca12f",
+          "title": "Two charged as body found in suitcase in woods",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cx2dwngx23lo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T11:54:52.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:25:41.719Z",
+      "updated": "2026-07-12T17:25:41.719Z",
+      "contentVersion": 1
+    }
+  ]
+}

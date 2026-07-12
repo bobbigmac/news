@@ -86,44 +86,134 @@ function normaliseCategory(raw) {
   return 'general';
 }
 
-function buildChunks(stories) {
+function extractKeywords(text) {
+  const stop = new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','by','from','as','is','are','was','were','be','been','being','have','has','had','do','does','did','will','would','could','should','may','might','must','can','this','that','these','those','it','its','they','them','their','there','here','who','whom','whose','which','what','when','where','why','how','all','any','both','each','few','more','most','other','some','such','no','nor','not','only','own','same','so','than','too','very','s','t','just','don','now','said','says','say','said','after','before','during','while','about','against','between','into','through','during','above','below','up','down','out','off','over','under','again','further','then','once','uk','us','mr','mrs','ms']);
+  const words = (text || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(w => w.length > 2 && !stop.has(w));
+  return [...new Set(words)];
+}
+
+function keywordOverlap(a, b) {
+  const setA = new Set(a);
+  const setB = new Set(b);
+  let shared = 0;
+  for (const w of setA) if (setB.has(w)) shared++;
+  return shared;
+}
+
+function buildTranches(stories, existingClusters) {
   const filtered = stories.filter(s => wordCount(s.description + ' ' + s.content) >= MIN_STORY_WORDS);
   const tooShort = stories.length - filtered.length;
   if (tooShort) console.log(`Filtered out ${tooShort} stories with < ${MIN_STORY_WORDS} words`);
 
-  // Group by normalised category so related stories land in the same chunk
-  const byCategory = new Map();
-  for (const story of filtered) {
-    const cat = normaliseCategory(story.category);
-    if (!byCategory.has(cat)) byCategory.set(cat, []);
-    byCategory.get(cat).push(story);
+  // Pre-compute keywords for each story
+  const storyData = filtered.map(s => ({
+    story: s,
+    keywords: extractKeywords(s.title + ' ' + s.description + ' ' + s.content),
+    cat: normaliseCategory(s.category),
+  }));
+
+  // Pre-compute keywords for existing clusters
+  const clusterData = (existingClusters || []).map(c => ({
+    cluster: c,
+    keywords: extractKeywords(c.headline + ' ' + (c.summary || '')),
+    cat: (c.category || '').toLowerCase(),
+  }));
+
+  // Step 1: Match stories to existing clusters
+  const matchedToCluster = new Map(); // clusterId -> [storyData]
+  const unmatched = [];
+
+  for (const sd of storyData) {
+    let bestMatch = null;
+    let bestScore = 0;
+
+    for (const cd of clusterData) {
+      // Same category bonus
+      const catBonus = sd.cat === cd.cat ? 2 : 0;
+      const overlap = keywordOverlap(sd.keywords, cd.keywords);
+      const score = overlap + catBonus;
+      if (score > bestScore && overlap >= 2) {
+        bestScore = score;
+        bestMatch = cd.cluster;
+      }
+    }
+
+    if (bestMatch) {
+      if (!matchedToCluster.has(bestMatch.id)) matchedToCluster.set(bestMatch.id, []);
+      matchedToCluster.get(bestMatch.id).push(sd);
+    } else {
+      unmatched.push(sd);
+    }
   }
 
-  console.log(`Category groups: ${[...byCategory.entries()].map(([k, v]) => `${k}(${v.length})`).join(', ')}`);
+  console.log(`Heuristic matching: ${storyData.length - unmatched.length} stories matched to existing clusters, ${unmatched.length} unmatched`);
 
-  const chunks = [];
-  for (const [, group] of byCategory) {
+  // Step 2: Group unmatched stories with each other by keyword overlap
+  const groups = [];
+  const used = new Set();
+
+  for (let i = 0; i < unmatched.length; i++) {
+    if (used.has(i)) continue;
+    const group = [unmatched[i]];
+    used.add(i);
+
+    for (let j = i + 1; j < unmatched.length; j++) {
+      if (used.has(j)) continue;
+      const overlap = keywordOverlap(unmatched[i].keywords, unmatched[j].keywords);
+      const catBonus = unmatched[i].cat === unmatched[j].cat ? 2 : 0;
+      if (overlap + catBonus >= 3) {
+        group.push(unmatched[j]);
+        used.add(j);
+      }
+    }
+
+    groups.push(group);
+  }
+
+  console.log(`Unmatched stories grouped into ${groups.length} topic groups`);
+
+  // Step 3: Build tranches
+  const tranches = [];
+
+  // Tranches for stories matched to existing clusters
+  for (const [clusterId, sds] of matchedToCluster) {
+    const cluster = existingClusters.find(c => c.id === clusterId);
+    const prepared = sds.map(sd => prepareStoryForLLM(sd.story));
+
+    // Split into LLM-sized chunks
     let current = [];
     let currentChars = 0;
-
-    for (const story of group) {
-      const prepared = prepareStoryForLLM(story);
-      const storyChars = prepared.text.length;
-
-      if (current.length >= CHUNK_MAX_STORIES || (current.length > 0 && currentChars + storyChars > CHUNK_MAX_CHARS)) {
-        chunks.push(current);
+    for (const p of prepared) {
+      if (current.length >= CHUNK_MAX_STORIES || (current.length > 0 && currentChars + p.text.length > CHUNK_MAX_CHARS)) {
+        tranches.push({ stories: current, matchedCluster: cluster });
         current = [];
         currentChars = 0;
       }
-
-      current.push(prepared);
-      currentChars += storyChars;
+      current.push(p);
+      currentChars += p.text.length;
     }
-
-    if (current.length > 0) chunks.push(current);
+    if (current.length > 0) tranches.push({ stories: current, matchedCluster: cluster });
   }
 
-  return chunks;
+  // Tranches for unmatched story groups
+  for (const group of groups) {
+    const prepared = group.map(sd => prepareStoryForLLM(sd.story));
+    let current = [];
+    let currentChars = 0;
+    for (const p of prepared) {
+      if (current.length >= CHUNK_MAX_STORIES || (current.length > 0 && currentChars + p.text.length > CHUNK_MAX_CHARS)) {
+        tranches.push({ stories: current, matchedCluster: null });
+        current = [];
+        currentChars = 0;
+      }
+      current.push(p);
+      currentChars += p.text.length;
+    }
+    if (current.length > 0) tranches.push({ stories: current, matchedCluster: null });
+  }
+
+  console.log(`Built ${tranches.length} tranches (${[...matchedToCluster.values()].reduce((s,v)=>s+v.length,0)} matched, ${unmatched.length} new)`);
+  return tranches;
 }
 
 async function callOpenRouter(prompt) {
@@ -325,48 +415,78 @@ async function main() {
   }
   if (metadataUpdated) console.log(`Updated metadata for ${metadataUpdated} existing stories`);
 
-  // Build chunks
-  const chunks = buildChunks(toProcess);
-  console.log(`Built ${chunks.length} chunks from ${toProcess.length} stories`);
+  // Build tranches with heuristic pre-grouping
+  const tranches = buildTranches(toProcess, digest.clusters);
+  console.log(`Built ${tranches.length} tranches from ${toProcess.length} stories`);
 
-  // Process each chunk
+  // Process each tranche
   let totalAdded = 0;
   let totalUpdated = 0;
-  for (let i = 0; i < chunks.length; i++) {
-    const chunk = chunks[i];
-    console.log(`\nProcessing chunk ${i + 1}/${chunks.length} (${chunk.length} stories)...`);
+  for (let i = 0; i < tranches.length; i++) {
+    const tranche = tranches[i];
+    console.log(`\nProcessing tranche ${i + 1}/${tranches.length} (${tranche.stories.length} stories${tranche.matchedCluster ? `, matched: ${tranche.matchedCluster.headline}` : ', new'})`);
 
-    const prompt = buildUserPrompt(chunk, digest.clusters);
+    const prompt = buildUserPrompt(tranche.stories, digest.clusters, tranche.matchedCluster);
     let responseText;
     try {
       responseText = await callOpenRouter(prompt);
     } catch (err) {
-      console.error(`  Chunk ${i + 1} failed: ${err.message}. Skipping.`);
+      console.error(`  Tranche ${i + 1} failed: ${err.message}. Skipping.`);
       continue;
     }
 
     const parsed = extractJson(responseText);
     if (!parsed || !parsed.clusters || !parsed.clusters.length) {
-      console.error(`  Chunk ${i + 1}: could not extract clusters from LLM response. Will retry next run.`);
+      console.error(`  Tranche ${i + 1}: could not extract clusters from LLM response. Will retry next run.`);
       continue;
     }
 
     console.log(`  LLM returned ${parsed.clusters.length} clusters`);
-    const { added, updated } = mergeClusters(parsed.clusters, chunk, digest);
+    const { added, updated } = mergeClusters(parsed.clusters, tranche.stories, digest);
     totalAdded += added;
     totalUpdated += updated;
     console.log(`  Merged: ${added} stories added, ${updated} clusters updated`);
 
     // Only mark as summarised if we actually processed clusters
-    for (const story of chunk) summarisedIds.add(story.id);
+    for (const story of tranche.stories) summarisedIds.add(story.id);
 
-    // Save progress after each chunk
+    // Check for stories the LLM dropped
+    const clusterIds = new Set();
+    for (const c of (parsed.clusters || [])) {
+      let ids = c.story_ids;
+      if (typeof ids === 'string') ids = ids.split(',').map(s => s.trim()).filter(Boolean);
+      if (Array.isArray(ids)) ids.forEach(id => clusterIds.add(id));
+    }
+    const dropped = tranche.stories.filter(s => !clusterIds.has(s.id));
+    if (dropped.length) {
+      console.log(`  WARNING: LLM dropped ${dropped.length} stories. Adding as single-story clusters.`);
+      for (const story of dropped) {
+        digest.clusters.push({
+          id: `cluster-${Date.now()}-${Math.random().toString(36).substring(2, 8)}`,
+          headline: story.originalTitle || 'Untitled',
+          summary: story.text.slice(0, 200),
+          category: story.category || 'Other',
+          stories: [{
+            id: story.id, title: story.originalTitle, source: story.source,
+            sourceName: story.sourceName || '', url: story.url, image: story.image || '',
+            published: story.published, category: story.category,
+            plugin: story.plugin || null, pluginPriority: story.pluginPriority ?? null
+          }],
+          created: new Date().toISOString(),
+          updated: new Date().toISOString(),
+          contentVersion: 1
+        });
+        totalAdded++;
+      }
+    }
+
+    // Save progress after each tranche
     saveJson(SUMMARISED_IDS_FILE, [...summarisedIds]);
     saveJson(DIGEST_FILE, digest);
 
-    // Small delay between chunks
-    if (i < chunks.length - 1) {
-      console.log('  Pausing 2s between chunks...');
+    // Small delay between tranches
+    if (i < tranches.length - 1) {
+      console.log('  Pausing 2s between tranches...');
       await new Promise(r => setTimeout(r, 2000));
     }
   }
@@ -389,9 +509,9 @@ async function main() {
     clustersUpdated: totalUpdated,
     clustersCreated: Math.max(0, digest.clusters.length - clustersBefore),
     totalClusters: digest.clusters.length,
-    chunks: chunks.length,
-    chunksFailed: chunks.length - (totalAdded > 0 || totalUpdated > 0 ? 1 : 0),
-    filteredTooShort: toProcess.length - chunks.reduce((sum, c) => sum + c.length, 0),
+    chunks: tranches.length,
+    chunksFailed: tranches.length - (totalAdded > 0 || totalUpdated > 0 ? 1 : 0),
+    filteredTooShort: toProcess.length - tranches.reduce((sum, t) => sum + t.stories.length, 0),
   });
   saveJson(RUN_LOG_FILE, runLog.slice(0, 10));
 

@@ -1,7 +1,8 @@
 import Parser from 'rss-parser';
+import { createHash } from 'crypto';
 import { getSourceName } from './sources.js';
 
-const parser = new Parser({ timeout: 10000 });
+const parser = new Parser({ timeout: 5000 });
 
 // Feed definitions. Each feed has a URL and a category mapping.
 // Add more feeds here as needed.
@@ -11,7 +12,6 @@ const BBC_FEEDS = [
   { url: 'https://feeds.bbci.co.uk/news/world/rss.xml', category: 'World' },
   { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', category: 'Business' },
   { url: 'https://feeds.bbci.co.uk/news/technology/rss.xml', category: 'Technology' },
-  { url: 'https://feeds.bbci.co.uk/news/science/rss.xml', category: 'Science' },
   { url: 'https://feeds.bbci.co.uk/news/health/rss.xml', category: 'Health' },
   { url: 'https://feeds.bbci.co.uk/news/politics/rss.xml', category: 'Politics' },
   { url: 'https://feeds.bbci.co.uk/news/education/rss.xml', category: 'Education' },
@@ -19,7 +19,7 @@ const BBC_FEEDS = [
 ];
 
 function makeId(url) {
-  return 'rss-' + Buffer.from(url).toString('base64url').slice(0, 20);
+  return 'rss-' + createHash('md5').update(url).digest('hex');
 }
 
 function parseDate(dateStr) {
@@ -66,19 +66,22 @@ export async function fetchRssFeeds() {
   const allItems = [];
   const seenIds = new Set();
 
-  for (const feed of feeds) {
-    try {
-      const parsed = await parser.parseURL(feed.url);
-      console.log(`  RSS ${feed.url}: ${parsed.items?.length || 0} items`);
-      for (const item of (parsed.items || [])) {
-        const normalized = normalizeRssItem(item, feed, feed.pluginName);
-        if (normalized.url && !seenIds.has(normalized.id)) {
-          seenIds.add(normalized.id);
-          allItems.push(normalized);
-        }
+  const results = await Promise.allSettled(feeds.map(async feed => {
+    const parsed = await parser.parseURL(feed.url);
+    console.log(`  RSS ${feed.url}: ${parsed.items?.length || 0} items`);
+    return (parsed.items || []).map(item => normalizeRssItem(item, feed, feed.pluginName));
+  }));
+
+  for (const result of results) {
+    if (result.status !== 'fulfilled') {
+      console.error(`  RSS feed failed: ${result.reason?.message || result.reason}`);
+      continue;
+    }
+    for (const item of result.value) {
+      if (item.url && !seenIds.has(item.id)) {
+        seenIds.add(item.id);
+        allItems.push(item);
       }
-    } catch (err) {
-      console.error(`  RSS ${feed.url} failed: ${err.message}`);
     }
   }
 
