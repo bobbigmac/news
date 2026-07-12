@@ -302,8 +302,8 @@ function renderArticle(cluster, settings, isPluginLead) {
       <div class="article-category">${category}</div>
       <div class="article-header-right">
         <div class="article-age">${relativeAge(getNewestStoryDate(cluster))}</div>
-        <button class="interest-btn interested-btn ${interest === 'interested' ? 'active' : ''}" data-signal="interested" title="Interested — show more like this">👍</button>
-        <button class="interest-btn not-interested-btn ${interest === 'not-interested' ? 'active' : ''}" data-signal="not-interested" title="Not interested — show less like this">👎</button>
+        <button class="interest-btn interested-btn ${interest === 'interested' ? 'active' : ''}" data-signal="interested" title="Relevant — show more like this">✓</button>
+        <button class="interest-btn not-interested-btn ${interest === 'not-interested' ? 'active' : ''}" data-signal="not-interested" title="Ignore — show less like this">✕</button>
       </div>
     </div>
     ${imageHtml}
@@ -763,7 +763,7 @@ function renderChangelog(log) {
       const interestedClusters = clusters.filter(c => getClusterInterest(c.id) === 'interested');
       if (interestedClusters.length) {
         html += '<div class="algo-signal-group">';
-        html += `<div class="algo-signal-direction">👍 Interested <small>${interestedClusters.length}</small></div>`;
+        html += `<div class="algo-signal-direction">✓ Relevant <small>${interestedClusters.length}</small></div>`;
         html += interestedClusters.map(c => `<div class="algo-signal-item" data-cluster-id="${c.id}" data-signal="interested"><span>${c.headline}</span><button class="algo-remove-btn" title="Remove signal">✕</button></div>`).join('');
         html += '</div>';
       }
@@ -771,7 +771,7 @@ function renderChangelog(log) {
       const notInterestedClusters = clusters.filter(c => getClusterInterest(c.id) === 'not-interested');
       if (notInterestedClusters.length) {
         html += '<div class="algo-signal-group">';
-        html += `<div class="algo-signal-direction">👎 Not interested <small>${notInterestedClusters.length}</small></div>`;
+        html += `<div class="algo-signal-direction">✕ Ignore <small>${notInterestedClusters.length}</small></div>`;
         html += notInterestedClusters.map(c => `<div class="algo-signal-item" data-cluster-id="${c.id}" data-signal="not-interested"><span>${c.headline}</span><button class="algo-remove-btn" title="Remove signal">✕</button></div>`).join('');
         html += '</div>';
       }
@@ -782,7 +782,7 @@ function renderChangelog(log) {
       if (orphaned.length) {
         html += '<div class="algo-signal-group algo-orphaned">';
         html += `<div class="algo-signal-direction">Expired signals <small>${orphaned.length}</small></div>`;
-        html += orphaned.map(([id, info]) => `<div class="algo-signal-item" data-cluster-id="${id}" data-signal="${info.signal}"><span class="algo-orphaned-label">${info.signal === 'interested' ? '👍' : '👎'} (no longer in digest)</span><button class="algo-remove-btn" title="Remove signal">✕</button></div>`).join('');
+        html += orphaned.map(([id, info]) => `<div class="algo-signal-item" data-cluster-id="${id}" data-signal="${info.signal}"><span class="algo-orphaned-label">${info.signal === 'interested' ? '✓' : '✕'} (no longer in digest)</span><button class="algo-remove-btn" title="Remove signal">✕</button></div>`).join('');
         html += '</div>';
       }
 
