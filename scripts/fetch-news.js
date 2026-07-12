@@ -270,15 +270,43 @@ async function main() {
   const rejectCategories = (process.env.REJECT_CATEGORIES || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
   const rejectTitles = (process.env.REJECT_TITLES || '').split('|').map(s => s.trim()).filter(Boolean);
   if (rejectCategories.length || rejectTitles.length) {
-    const before = newsItems.length;
     const rejectRegex = rejectTitles.length ? new RegExp(rejectTitles.join('|'), 'i') : null;
-    newsItems = newsItems.filter(item => {
+    const matchesReject = (item) => {
       const cat = Array.isArray(item.category) ? item.category.join(' ') : (item.category || '');
-      if (rejectCategories.length && rejectCategories.includes(cat.toLowerCase())) return false;
-      if (rejectRegex && rejectRegex.test(item.title || '')) return false;
-      return true;
-    });
-    console.log(`Pre-filter: removed ${before - newsItems.length} stories (REJECT_CATEGORIES=${rejectCategories.join(',')}, REJECT_TITLES=${rejectTitles.join('|')})`);
+      if (rejectCategories.length && rejectCategories.includes(cat.toLowerCase())) return true;
+      if (rejectRegex && rejectRegex.test(item.title || '')) return true;
+      return false;
+    };
+
+    // Filter incoming stories
+    const before = newsItems.length;
+    newsItems = newsItems.filter(item => !matchesReject(item));
+    console.log(`Pre-filter: removed ${before - newsItems.length} incoming stories (REJECT_CATEGORIES=${rejectCategories.join(',')}, REJECT_TITLES=${rejectTitles.join('|')})`);
+
+    // Purge existing stories from the store that match reject filters
+    const store = loadStoryStore();
+    let purged = 0;
+    for (const id of Object.keys(store.stories)) {
+      if (matchesReject(store.stories[id])) {
+        delete store.stories[id];
+        purged++;
+      }
+    }
+    if (purged) {
+      console.log(`Retroactive purge: removed ${purged} existing stories from store`);
+      saveStoryStore(store);
+
+      // Also remove from summarised-ids so they don't linger
+      const summarisedIdsPath = join(CACHE_DIR, 'summarised-ids.json');
+      if (existsSync(summarisedIdsPath)) {
+        const summarisedIds = JSON.parse(readFileSync(summarisedIdsPath, 'utf8'));
+        const cleaned = summarisedIds.filter(id => store.stories[id]);
+        if (cleaned.length !== summarisedIds.length) {
+          writeFileSync(summarisedIdsPath, JSON.stringify(cleaned, null, 2));
+          console.log(`  Also removed ${summarisedIds.length - cleaned.length} purged IDs from summarised-ids`);
+        }
+      }
+    }
   }
 
   // Update story store
