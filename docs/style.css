@@ -260,7 +260,6 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 .story-links ul {
   list-style: none;
   padding-top: 0.5rem;
-  border-top: 1px solid var(--rule);
 }
 
 .story-links li {
