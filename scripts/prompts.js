@@ -47,30 +47,35 @@ Respond ONLY with valid JSON in this exact format:
   ]
 }`;
 
-export function buildUserPrompt(chunk, existingClusters, matchedCluster) {
+export function buildUserPrompt(chunk, existingClusters, matchedClusters) {
   const sorted = [...chunk].sort((a, b) => (b.published || '').localeCompare(a.published || ''));
   const storyLines = sorted.map((s, i) =>
     `[${i + 1}] ID: ${s.id}\n    Published: ${s.published || 'unknown'}\n    Source headline (may be clickbait — do not emulate its style): ${s.originalTitle}\n    Byline: ${s.source}\n    Content: ${s.text}`
   ).join('\n\n');
 
   let context = '';
+  const matchedIds = new Set();
 
-  // If we have a matched cluster, show it prominently as the primary context
-  if (matchedCluster) {
-    context = `\n\n--- EXISTING CLUSTER TO UPDATE ---\nThese stories appear to be developments of this existing cluster. Include their IDs in this cluster's story_ids and rewrite the headline and summary to reflect the current state. Update the trigger_words if the story has evolved to include new specific entities.\n\n- [cluster: ${matchedCluster.id}] ${matchedCluster.headline} (${matchedCluster.category})\n  Summary: ${(matchedCluster.summary || '(no summary)').slice(0, 300)}\n  Trigger words: ${(matchedCluster.triggerWords || []).join(', ') || 'none yet'}\n--- END EXISTING CLUSTER ---\n`;
+  // If we have matched clusters, show them prominently as the primary context
+  if (matchedClusters && matchedClusters.length) {
+    const clusterLines = matchedClusters.map(c => {
+      matchedIds.add(c.id);
+      return `- [cluster: ${c.id}] ${c.headline} (${c.category})\n  Summary: ${(c.summary || '(no summary)').slice(0, 300)}\n  Trigger words: ${(c.triggerWords || []).join(', ') || 'none yet'}`;
+    }).join('\n');
+    context = `\n\n--- EXISTING CLUSTERS TO UPDATE (${matchedClusters.length}) ---\nSome stories in this batch appear to be developments of these existing clusters. Include their IDs in the relevant cluster's story_ids and rewrite the headline and summary to reflect the current state. Update the trigger_words if the story has evolved to include new specific entities. You may also regroup or reassign stories between these clusters if the grouping is wrong.\n\n${clusterLines}\n--- END EXISTING CLUSTERS ---\n`;
   }
 
   // Also show other existing clusters for reference (capped)
   if (existingClusters && existingClusters.length) {
     const recent = [...existingClusters]
-      .filter(c => !matchedCluster || c.id !== matchedCluster.id)
+      .filter(c => !matchedIds.has(c.id))
       .sort((a, b) => (b.updated || b.created || '').localeCompare(a.updated || a.created || ''))
       .slice(0, 20);
     if (recent.length) {
-      const clusterLines = recent.map(c =>
+      const refLines = recent.map(c =>
         `- [cluster: ${c.id}] ${c.headline} (${c.category})\n  Summary: ${(c.summary || '(no summary)').slice(0, 150)}`
       ).join('\n');
-      context += `\n\n--- OTHER EXISTING CLUSTERS (${recent.length}) ---\nFor reference — only update these if a story is clearly a development of one of them.\n\n${clusterLines}\n--- END EXISTING CLUSTERS ---\n`;
+      context += `\n\n--- OTHER EXISTING CLUSTERS (${recent.length}) ---\nFor reference — only update these if a story is clearly a development of one of them.\n\n${refLines}\n--- END EXISTING CLUSTERS ---\n`;
     }
   }
 

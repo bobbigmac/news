@@ -4130,6 +4130,420 @@
       "created": "2026-07-12T18:23:40.484Z",
       "updated": "2026-07-12T18:23:40.484Z",
       "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880693890-xkz144",
+      "headline": "McCullum sacked as England Test head coach",
+      "summary": "Brendon McCullum has been sacked as England Test head coach after four years in the role, leaving England without a head coach. His aggressive Bazball approach brought initial success before his departure, with BBC Sport examining the tenure's highs and lows.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "rss-e0ce19665e0699b29f9ee46dd274586e",
+          "title": "McCullum sacked as England Test head coach",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/cricket/articles/c8028vm2g9ro?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T14:03:13.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Brendon McCullum",
+        "Bazball",
+        "England Test head coach"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:24:53.890Z",
+      "updated": "2026-07-12T18:24:53.890Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880693890-tnn3zj",
+      "headline": "Nigerian army frees 40 kidnapped children, teachers",
+      "summary": "The Nigerian army freed more than 40 kidnapped children and teachers in an operation. The head of the local teachers' union told the BBC he felt happy and elated with joy at the release. The rescue follows a kidnapping that had raised security concerns in the region.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-53a4d8c425b707e79ac1aa338489b724",
+          "title": "More than 40 kidnapped children and teachers freed after Nigerian army operation",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cly9lnjlp1eo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T14:19:34.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Nigerian army",
+        "kidnapped children",
+        "teachers freed"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:24:53.890Z",
+      "updated": "2026-07-12T18:24:53.890Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880739459-azx1ta",
+      "headline": "Severn Trent records record water demand",
+      "summary": "Severn Trent reported that water demand reached almost 2.4 billion litres over the past few days, the highest level ever recorded for the company. The surge reflects increased consumption across its service area.",
+      "category": "Environment",
+      "stories": [
+        {
+          "id": "rss-34c93eb775e45838b49b80488ff833ad",
+          "title": "Water company records highest ever level of demand",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c78y2w1vlvlo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T13:37:40.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Severn Trent",
+        "water demand",
+        "2.4 billion litres"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:25:39.459Z",
+      "updated": "2026-07-12T18:25:39.459Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880739459-x9nwjp",
+      "headline": "London low‑income households pay £600 poverty premium",
+      "summary": "A study found that low‑income households in London incur an additional cost of more than £600 per year to obtain standard goods and services, creating a hidden poverty premium that deepens financial strain.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-672995c4a8d9ede9a17925e51dbb03df",
+          "title": "Londoners face hidden poverty premium, study says",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c33yxe2ey22o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T07:02:17.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "London",
+        "poverty premium",
+        "£600"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:25:39.459Z",
+      "updated": "2026-07-12T18:25:39.459Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880739459-xs2y1n",
+      "headline": "67‑million‑year‑old T. rex to be auctioned for $30m",
+      "summary": "A 67 million‑year‑old Tyrannosaurus rex specimen is scheduled for sale in New York, with a pre‑sale valuation of $30 million. The auction highlights how wealthy collectors are acquiring major dinosaur fossils, raising concerns for scientific research.",
+      "category": "Science",
+      "stories": [
+        {
+          "id": "rss-1130b60a0f7c9038df302b4cbadbd3c2",
+          "title": "Super-rich buying up big dinosaurs is creating a bigger problem for science",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c4gykgyn1r4o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T23:58:40.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Tyrannosaurus rex",
+        "auction",
+        "$30 million"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:25:39.459Z",
+      "updated": "2026-07-12T18:25:39.459Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880790659-4h0kri",
+      "headline": "BBC News app offers top and breaking news",
+      "summary": "The BBC News app provides users with top stories, breaking news and live reporting. The application allows individuals to follow news topics that match their interests. The BBC operates the service as a digital news delivery platform. The described features outline the app's core functionality for news consumption.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-22092209a83473ca0cae0f325cca301c",
+          "title": "BBC News app",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/10628994?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2025-04-30T14:04:28.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "BBC News app"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:26:30.659Z",
+      "updated": "2026-07-12T18:26:30.659Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880813187-dbzd54",
+      "headline": "Haeran Ryu wins second major at Evian Championship",
+      "summary": "South Korea's Haeran Ryu defeated Brooke Henderson in a playoff to claim her second major title of the season at the Evian Championship. Ryu described the victory as feeling like an \"unreal dream\" and highlighted her rapid success within two weeks.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "rss-962f4a3eaf2e964d7079ca95de53173c",
+          "title": "Ryu claims second major of season at Evian Championship",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/golf/articles/cvg42en7d3go?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T15:54:48.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Haeran Ryu",
+        "Evian Championship"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:26:53.187Z",
+      "updated": "2026-07-12T18:26:53.187Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880860291-zsgwxx",
+      "headline": "Heatwave: Monsoon fashion, ice cream vans, food saving",
+      "summary": "Monsoon and other high street retailers offer cooling fashion from £18 during the heatwave. Gussy the Ice Cream Man has shared tips for keeping cool and described his family legacy. Separately, two community groups reported record attendances and said they have saved 34 tonnes of food and a carpet while giving away random items.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "rss-06f0bea294bbe5f738bffb69e027c419",
+          "title": "The inside scoop: How ice cream vans handle the heat",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c9q298l3zw1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T07:04:09.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-cd19e91803f4f703284d6d0079adad11",
+          "title": "'We've saved 34 tonnes of food and a carpet'",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c5yznlrxeyeo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T05:48:13.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Monsoon",
+        "Gussy the Ice Cream Man",
+        "34 tonnes of food"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T18:27:40.291Z",
+      "updated": "2026-07-12T18:27:40.291Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880969509-3qxodv",
+      "headline": "Murder arrest after west London stabbing",
+      "summary": "A 24-year-old woman and a man aged in his 20s were stabbed in west London. A murder arrest has been made following the incident. The victims' conditions and the suspect's identity have not been disclosed. The Metropolitan Police are investigating the double stabbing.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "rss-41856940a6d83b86cd06ace96d9802b1",
+          "title": "Murder arrest as woman stabbed in west London",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cgk6ljx3vv4o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T13:42:08.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "west London stabbing",
+        "24-year-old woman"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:29:29.509Z",
+      "updated": "2026-07-12T18:29:29.509Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783880969509-opycxi",
+      "headline": "Police release Falconio killer questioning video",
+      "summary": "Australian police have released bodycam footage showing officers questioning Bradley Murdoch, the convicted killer of Peter Falconio, on the 25th anniversary of the 2001 murder. The video captures one of the final attempts to persuade Murdoch to disclose the location of Falconio's remains. The case remains unresolved regarding the body.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-2a09893dd5ccebb51db949181ee28b98",
+          "title": "Newly-released video shows Peter Falconio's killer questioned",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/c0rylp72p9ro?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T08:35:33.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Peter Falconio",
+        "Bradley Murdoch"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:29:29.509Z",
+      "updated": "2026-07-12T18:29:29.509Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881074900-05v5bb",
+      "headline": "Smaller music festivals survive recent closures",
+      "summary": "Scores of music festivals have closed in recent years. The article examines how smaller festivals continue to operate amid the downturn. The sustainability of these events is significant for the live music industry and local economies.",
+      "category": "Entertainment",
+      "stories": [
+        {
+          "id": "rss-b06abbe87b59835588a61e96081c212b",
+          "title": "How smaller music festivals keep the show on the road",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c1ky12zezr9o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T06:39:03.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "smaller music festivals",
+        "festival closures"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:31:14.900Z",
+      "updated": "2026-07-12T18:31:14.900Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881114247-1y2wyt",
+      "headline": "Full list of candidates for Clacton by-election released",
+      "summary": "The candidate roster for the Clacton by-election includes Reform UK leader Nigel Farage, satirical contender Count Binface, and novelty candidates described as a bin, two foxes and a fish finger. The election is set for 13 August following Farage’s resignation as MP.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-57991d5306d49b883024f029934f4100",
+          "title": "A bin, two foxes and a fish finger: The candidates fighting Clacton",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/crlw69p6lyeo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T16:16:18.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Clacton",
+        "Nigel Farage",
+        "Count Binface",
+        "candidates list"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T18:31:54.247Z",
+      "updated": "2026-07-12T18:31:54.247Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881114247-3fliok",
+      "headline": "Reform MSP condemns Glasgow door‑to‑door protests",
+      "summary": "Glasgow Reform Party MSP Thomas Kerr criticised recent door‑to‑door protests, stating they target individuals unfairly and urging demonstrators to avoid private residences. Kerr’s comments come amid heightened tensions over local political activism.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-bfb6f426d6cfffeeeebd8b6a522ab7a5",
+          "title": "Glasgow protesters 'wrong to turn up at someone's door', says Reform MSP ",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cp9ldn0874po?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T12:18:04.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Glasgow",
+        "Thomas Kerr",
+        "door‑to‑door protest"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:31:54.247Z",
+      "updated": "2026-07-12T18:31:54.247Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783881114247-9vhj7b",
+      "headline": "ADHD benefit claims rise 40% under Labour government",
+      "summary": "Official data show more than 100,000 people receive Personal Independence Payment for ADHD, a 40% increase since the Labour party assumed power. The surge adds pressure to the welfare budget and fuels debate over disability benefit policy.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-bf04de833f7d0ae4edbc6b4e8adde88a",
+          "title": "How a rise in ADHD benefits claims is adding to welfare spending challenge",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c24ym9yd8p6o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T08:35:18.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "ADHD",
+        "PIP",
+        "benefit claims",
+        "Labour"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T18:31:54.247Z",
+      "updated": "2026-07-12T18:31:54.247Z",
+      "contentVersion": 1
     }
   ],
   "generated": "2026-07-12T18:00:38.582Z"

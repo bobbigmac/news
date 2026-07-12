@@ -187,47 +187,59 @@ function buildTranches(stories, existingClusters) {
 
   console.log(`Unmatched stories grouped into ${groups.length} topic groups`);
 
-  // Step 3: Build tranches
+  // Step 3: Build tranches — concatenate multiple groups into larger batches
+  const TRANCHE_MAX_STORIES = 10;
   const tranches = [];
+  let current = [];
+  let currentChars = 0;
+  let currentClusters = [];
 
-  // Tranches for stories matched to existing clusters
+  const flushTranche = () => {
+    if (current.length > 0) {
+      tranches.push({
+        stories: current,
+        matchedClusters: currentClusters,
+      });
+      current = [];
+      currentChars = 0;
+      currentClusters = [];
+    }
+  };
+
+  // Add matched groups first — each group contributes its cluster as context
   for (const [clusterId, sds] of matchedToCluster) {
     const cluster = existingClusters.find(c => c.id === clusterId);
     const prepared = sds.map(sd => prepareStoryForLLM(sd.story));
 
-    // Split into LLM-sized chunks
-    let current = [];
-    let currentChars = 0;
     for (const p of prepared) {
-      if (current.length >= CHUNK_MAX_STORIES || (current.length > 0 && currentChars + p.text.length > CHUNK_MAX_CHARS)) {
-        tranches.push({ stories: current, matchedCluster: cluster });
-        current = [];
-        currentChars = 0;
+      if (current.length >= TRANCHE_MAX_STORIES || (current.length > 0 && currentChars + p.text.length > CHUNK_MAX_CHARS)) {
+        flushTranche();
       }
       current.push(p);
       currentChars += p.text.length;
+      if (cluster && !currentClusters.some(c => c.id === cluster.id)) {
+        currentClusters.push(cluster);
+      }
     }
-    if (current.length > 0) tranches.push({ stories: current, matchedCluster: cluster });
   }
 
-  // Tranches for unmatched story groups
+  // Add unmatched groups
   for (const group of groups) {
     const prepared = group.map(sd => prepareStoryForLLM(sd.story));
-    let current = [];
-    let currentChars = 0;
+
     for (const p of prepared) {
-      if (current.length >= CHUNK_MAX_STORIES || (current.length > 0 && currentChars + p.text.length > CHUNK_MAX_CHARS)) {
-        tranches.push({ stories: current, matchedCluster: null });
-        current = [];
-        currentChars = 0;
+      if (current.length >= TRANCHE_MAX_STORIES || (current.length > 0 && currentChars + p.text.length > CHUNK_MAX_CHARS)) {
+        flushTranche();
       }
       current.push(p);
       currentChars += p.text.length;
     }
-    if (current.length > 0) tranches.push({ stories: current, matchedCluster: null });
   }
 
-  console.log(`Built ${tranches.length} tranches (${[...matchedToCluster.values()].reduce((s,v)=>s+v.length,0)} matched, ${unmatched.length} new)`);
+  flushTranche();
+
+  const matchedCount = [...matchedToCluster.values()].reduce((s, v) => s + v.length, 0);
+  console.log(`Built ${tranches.length} tranches (${matchedCount} matched, ${unmatched.length} new)`);
   return tranches;
 }
 
@@ -447,9 +459,12 @@ async function main() {
   let totalUpdated = 0;
   for (let i = 0; i < tranches.length; i++) {
     const tranche = tranches[i];
-    console.log(`\nProcessing tranche ${i + 1}/${tranches.length} (${tranche.stories.length} stories${tranche.matchedCluster ? `, matched: ${tranche.matchedCluster.headline}` : ', new'})`);
+    const matchedInfo = tranche.matchedClusters && tranche.matchedClusters.length
+      ? `, matched: ${tranche.matchedClusters.map(c => c.headline).join(' | ')}`
+      : ', new';
+    console.log(`\nProcessing tranche ${i + 1}/${tranches.length} (${tranche.stories.length} stories${matchedInfo})`);
 
-    const prompt = buildUserPrompt(tranche.stories, digest.clusters, tranche.matchedCluster);
+    const prompt = buildUserPrompt(tranche.stories, digest.clusters, tranche.matchedClusters);
     let responseText;
     try {
       responseText = await callOpenRouter(prompt);
