@@ -8,6 +8,7 @@ const DEFAULT_SETTINGS = {
   sort: 'stories',
   images: 'minimal',
   mode: 'all',
+  categoryFilter: 'all',
   watchWords: '',
   expandAll: false,
   showUpdated: false
@@ -188,8 +189,11 @@ function renderArticle(cluster, settings, isPluginLead) {
   const wasUpdated = isClusterUpdatedSinceRead(cluster);
 
   const linksHtml = (cluster.stories || []).map(s => {
-    const sourceHtml = s.source
-      ? `<span class="story-source">— ${s.source}</span>` : '';
+    const sourceParts = [];
+    if (s.source) sourceParts.push(s.source);
+    if (s.sourceName) sourceParts.push(s.sourceName);
+    const sourceHtml = sourceParts.length
+      ? `<span class="story-source">— ${sourceParts.join(' · ')}</span>` : '';
     return `<li><a href="${s.url || '#'}" target="_blank" rel="noopener">${s.title || 'Untitled'}</a>${sourceHtml}</li>`;
   }).join('');
 
@@ -274,6 +278,20 @@ function filterByMode(clusters, mode) {
   return clusters;
 }
 
+function getAvailableCategories(clusters) {
+  const cats = new Set();
+  for (const c of clusters) {
+    if (getCatPref(c.category) !== 'hide') cats.add(c.category || 'Other');
+  }
+  // Sort by category preference priority, then alphabetical
+  return [...cats].sort((a, b) => {
+    const pa = CAT_PREF_ORDER[getCatPref(a)] ?? 1;
+    const pb = CAT_PREF_ORDER[getCatPref(b)] ?? 1;
+    if (pa !== pb) return pa - pb;
+    return a.localeCompare(b);
+  });
+}
+
 function renderDigest(digest, settings) {
   const sheet = document.getElementById('broadsheet');
   sheet.innerHTML = '';
@@ -290,7 +308,12 @@ function renderDigest(digest, settings) {
   // Filter out hidden categories
   const visibleCats = modeFiltered.filter(c => getCatPref(c.category) !== 'hide');
 
-  const visible = visibleCats.filter(c => {
+  // Apply category filter (secondary filter)
+  const catFiltered = settings.categoryFilter === 'all'
+    ? visibleCats
+    : visibleCats.filter(c => (c.category || 'Other') === settings.categoryFilter);
+
+  const visible = catFiltered.filter(c => {
     if (!isClusterRead(c)) return true;
     if (settings.showUpdated && isClusterUpdatedSinceRead(c)) return true;
     return false;
@@ -588,6 +611,22 @@ async function init() {
 
   // Mode toggle (in masthead)
   const modeBtn = document.getElementById('mode-toggle');
+  const catBtn = document.getElementById('category-toggle');
+
+  function syncCategoryToggle() {
+    if (!catBtn || !currentDigest) return;
+    const modeFiltered = filterByMode(sortClusters(currentDigest.clusters || [], currentSettings.sort), currentSettings.mode);
+    const cats = getAvailableCategories(modeFiltered);
+    const all = [{ value: 'all', label: 'Categories' }, ...cats.map(c => ({ value: c, label: c }))];
+    // If current filter is no longer available, reset to 'all'
+    if (!all.find(o => o.value === currentSettings.categoryFilter)) {
+      currentSettings.categoryFilter = 'all';
+      saveSettings(currentSettings);
+    }
+    const current = all.find(o => o.value === currentSettings.categoryFilter) || all[0];
+    catBtn.textContent = current.label;
+  }
+
   if (modeBtn) {
     modeBtn.addEventListener('click', () => {
       if (!currentDigest) return;
@@ -595,8 +634,27 @@ async function init() {
       const idx = modes.findIndex(m => m.value === currentSettings.mode);
       const next = modes[(idx + 1) % modes.length];
       currentSettings.mode = next.value;
+      // Reset category filter when mode changes
+      currentSettings.categoryFilter = 'all';
       saveSettings(currentSettings);
       modeBtn.textContent = next.label;
+      syncCategoryToggle();
+      renderDigest(currentDigest, currentSettings);
+      initSearch();
+    });
+  }
+
+  if (catBtn) {
+    catBtn.addEventListener('click', () => {
+      if (!currentDigest) return;
+      const modeFiltered = filterByMode(sortClusters(currentDigest.clusters || [], currentSettings.sort), currentSettings.mode);
+      const cats = getAvailableCategories(modeFiltered);
+      const all = [{ value: 'all', label: 'Categories' }, ...cats.map(c => ({ value: c, label: c }))];
+      const idx = all.findIndex(o => o.value === currentSettings.categoryFilter);
+      const next = all[(idx + 1) % all.length];
+      currentSettings.categoryFilter = next.value;
+      saveSettings(currentSettings);
+      catBtn.textContent = next.label;
       renderDigest(currentDigest, currentSettings);
       initSearch();
     });
@@ -646,6 +704,7 @@ async function init() {
       modeBtn.textContent = current.label;
     }
 
+    syncCategoryToggle();
     renderDigest(currentDigest, currentSettings);
     renderCategoryPrefs();
     initSearch();

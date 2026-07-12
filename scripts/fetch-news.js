@@ -1,5 +1,6 @@
 import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
+import { getSourceName } from './sources.js';
 
 const API_BASE_URL = 'https://api.currentsapi.services/v1';
 const CACHE_DIR = 'cache';
@@ -193,6 +194,7 @@ function pruneOldStories(store) {
 }
 
 function normalizeStory(item) {
+  const sourceName = getSourceName(item.url);
   return {
     id: item.id,
     title: item.title || '',
@@ -201,6 +203,7 @@ function normalizeStory(item) {
     url: item.url || '',
     image: item.image || '',
     source: item.author || item.source || '',
+    sourceName: sourceName || '',
     published: item.published || '',
     category: item.category || 'General',
     keywords: item.keywords || '',

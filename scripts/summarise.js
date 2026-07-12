@@ -69,7 +69,7 @@ function prepareStoryForLLM(story) {
   const desc = truncate(story.description || '', 400);
   const content = truncate(story.content || '', MAX_CONTENT_CHARS);
   const combined = [title, desc, content].filter(Boolean).join(' — ');
-  return { id: story.id, text: combined, source: story.source || '', url: story.url || '', image: story.image || '', published: story.published || '', category: story.category || 'General', originalTitle: story.title, plugin: story.plugin || null, pluginPriority: story.pluginPriority ?? null };
+  return { id: story.id, text: combined, source: story.source || '', sourceName: story.sourceName || '', url: story.url || '', image: story.image || '', published: story.published || '', category: story.category || 'General', originalTitle: story.title, plugin: story.plugin || null, pluginPriority: story.pluginPriority ?? null };
 }
 
 function normaliseCategory(raw) {
@@ -222,7 +222,7 @@ function mergeClusters(newClusters, chunkStories, digest) {
     }
 
     const storyData = stories.map(s => ({
-      id: s.id, title: s.originalTitle, source: s.source,
+      id: s.id, title: s.originalTitle, source: s.source, sourceName: s.sourceName || '',
       url: s.url, image: s.image || '', published: s.published, category: s.category,
       plugin: s.plugin || null, pluginPriority: s.pluginPriority ?? null
     }));
