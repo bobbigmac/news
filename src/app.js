@@ -9,7 +9,6 @@ const DEFAULT_SETTINGS = {
   images: 'minimal',
   mode: 'all',
   watchWords: '',
-  showSource: false,
   expandAll: false,
   showUpdated: false
 };
@@ -70,8 +69,8 @@ function applySettings(settings) {
   // Font theme
   const fontTheme = FONT_THEMES.find(f => f.value === settings.font) || FONT_THEMES[0];
   document.body.classList.add(fontTheme.className);
-  // Font size
-  document.body.classList.add(`font-${settings.fontsize}`);
+  // Font size — applied to :root so rem units scale
+  document.documentElement.className = `font-${settings.fontsize}`;
   // Columns
   const sheet = document.getElementById('broadsheet');
   sheet.className = `broadsheet cols-${settings.columns}`;
@@ -182,16 +181,15 @@ function pickLeadImage(cluster) {
   return withImage[0];
 }
 
-function renderArticle(cluster, settings, isLead, isPluginLead) {
+function renderArticle(cluster, settings, isPluginLead) {
   const category = cluster.category || 'Other';
   const headline = cluster.headline || 'Untitled';
   const summary = cluster.summary || '';
   const wasUpdated = isClusterUpdatedSinceRead(cluster);
 
-  const showSources = settings.showSource || settings.expandAll;
   const linksHtml = (cluster.stories || []).map(s => {
     const sourceHtml = s.source
-      ? `<span class="story-source${showSources ? '' : ' hidden'}">— ${s.source}</span>` : '';
+      ? `<span class="story-source">— ${s.source}</span>` : '';
     return `<li><a href="${s.url || '#'}" target="_blank" rel="noopener">${s.title || 'Untitled'}</a>${sourceHtml}</li>`;
   }).join('');
 
@@ -202,7 +200,6 @@ function renderArticle(cluster, settings, isLead, isPluginLead) {
   article.dataset.summary = summary.toLowerCase();
   article.dataset.category = category.toLowerCase();
   if (wasUpdated) article.classList.add('has-updates');
-  if (isLead) article.classList.add('is-lead');
   if (matchesWatchWords(cluster)) article.classList.add('watch-match');
 
   let imageHtml = '';
@@ -211,7 +208,7 @@ function renderArticle(cluster, settings, isLead, isPluginLead) {
     if (settings.images === 'all') {
       showImage = true;
     } else if (settings.images === 'minimal') {
-      showImage = isLead || isPluginLead;
+      showImage = isPluginLead;
     }
     if (showImage) {
       const imgStory = pickLeadImage(cluster);
@@ -235,12 +232,7 @@ function renderArticle(cluster, settings, isLead, isPluginLead) {
   // Whole article panel is clickable to toggle story links
   article.addEventListener('click', (e) => {
     if (e.target.tagName === 'A' || e.target.closest('.mark-read-btn')) return;
-    const links = article.querySelector('.story-links');
-    const isExpanded = links.classList.toggle('expanded');
-    // Show source names when expanded (if not already shown by setting)
-    if (isExpanded && !showSources) {
-      article.querySelectorAll('.story-source.hidden').forEach(el => el.classList.remove('hidden'));
-    }
+    article.querySelector('.story-links').classList.toggle('expanded');
   });
 
   const readBtn = article.querySelector('.mark-read-btn');
@@ -309,8 +301,7 @@ function renderDigest(digest, settings) {
     return;
   }
 
-  // Determine lead cluster (most stories) and plugin-lead clusters (first per plugin)
-  const leadId = visible[0]?.id;
+  // Determine plugin-lead clusters (first per plugin, for minimal image display)
   const seenPlugins = new Set();
   const pluginLeadIds = new Set();
 
@@ -324,9 +315,8 @@ function renderDigest(digest, settings) {
 
   const fragment = document.createDocumentFragment();
   for (const cluster of visible) {
-    const isLead = cluster.id === leadId;
     const isPluginLead = pluginLeadIds.has(cluster.id);
-    fragment.appendChild(renderArticle(cluster, settings, isLead, isPluginLead));
+    fragment.appendChild(renderArticle(cluster, settings, isPluginLead));
   }
   sheet.appendChild(fragment);
 }
@@ -464,7 +454,6 @@ function initSettings() {
   const columnsBtn = document.getElementById('setting-columns');
   const sortBtn = document.getElementById('setting-sort');
   const imagesBtn = document.getElementById('setting-images');
-  const showSourceCheck = document.getElementById('setting-showsource');
   const expandAllCheck = document.getElementById('setting-expandall');
   const showUpdatedCheck = document.getElementById('setting-showupdated');
   const watchWordsInput = document.getElementById('setting-watchwords');
@@ -480,14 +469,12 @@ function initSettings() {
     sortBtn.textContent = sortOpt.label;
     const imgOpt = IMAGE_OPTIONS.find(o => o.value === currentSettings.images) || IMAGE_OPTIONS[1];
     imagesBtn.textContent = imgOpt.label;
-    showSourceCheck.checked = currentSettings.showSource;
     expandAllCheck.checked = currentSettings.expandAll;
     showUpdatedCheck.checked = currentSettings.showUpdated;
     watchWordsInput.value = currentSettings.watchWords || '';
   }
 
   function updateCheckboxes() {
-    currentSettings.showSource = showSourceCheck.checked;
     currentSettings.expandAll = expandAllCheck.checked;
     currentSettings.showUpdated = showUpdatedCheck.checked;
     saveSettings(currentSettings);
@@ -502,7 +489,7 @@ function initSettings() {
   makeCycleHandler(sortBtn, SORT_OPTIONS, currentSettings.sort, { key: 'sort' });
   makeCycleHandler(imagesBtn, IMAGE_OPTIONS, currentSettings.images, { key: 'images' });
 
-  [showSourceCheck, expandAllCheck, showUpdatedCheck].forEach(el => el.addEventListener('change', updateCheckboxes));
+  [expandAllCheck, showUpdatedCheck].forEach(el => el.addEventListener('change', updateCheckboxes));
 
   // Watch words — debounce input
   let watchTimer = null;
@@ -518,6 +505,19 @@ function initSettings() {
 
   toggle.addEventListener('click', () => panel.classList.toggle('hidden'));
   close.addEventListener('click', () => panel.classList.add('hidden'));
+
+  // Manage categories panel
+  const manageCatBtn = document.getElementById('manage-categories');
+  const catPanel = document.getElementById('category-panel');
+  const catClose = document.getElementById('category-close');
+  if (manageCatBtn && catPanel) {
+    manageCatBtn.addEventListener('click', () => {
+      panel.classList.add('hidden');
+      catPanel.classList.remove('hidden');
+      renderCategoryPrefs();
+    });
+  }
+  if (catClose) catClose.addEventListener('click', () => catPanel.classList.add('hidden'));
 
   syncControls();
   applySettings(currentSettings);
@@ -549,7 +549,7 @@ function initSettings() {
 function renderChangelog(log) {
   const body = document.getElementById('changelog-body');
   if (!log || !log.length) {
-    body.innerHTML = '<div class="loading">No run history yet.</div>';
+    body.innerHTML = '<div class="loading">The summariser has never been run. No digest history available.</div>';
     return;
   }
 
@@ -557,17 +557,25 @@ function renderChangelog(log) {
     const date = new Date(entry.timestamp);
     const time = date.toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
     const parts = [];
-    if (entry.storiesAdded) parts.push(`+${entry.storiesAdded} stories`);
-    if (entry.clustersCreated) parts.push(`${entry.clustersCreated} new clusters`);
-    if (entry.clustersUpdated) parts.push(`${entry.clustersUpdated} updated`);
-    if (entry.storiesProcessed) parts.push(`${entry.storiesProcessed} processed`);
-    if (entry.chunksFailed > 0) parts.push(`${entry.chunksFailed} chunks failed`);
-    parts.push(`${entry.totalClusters} total`);
+    if (entry.skipped) {
+      parts.push('No new stories — cache only');
+    } else {
+      if (entry.storiesAdded) parts.push(`+${entry.storiesAdded} stories`);
+      if (entry.clustersCreated) parts.push(`${entry.clustersCreated} new clusters`);
+      if (entry.clustersUpdated) parts.push(`${entry.clustersUpdated} updated`);
+      if (entry.storiesProcessed) parts.push(`${entry.storiesProcessed} processed`);
+      if (entry.chunksFailed > 0) parts.push(`${entry.chunksFailed} chunks failed`);
+    }
+    parts.push(`${entry.totalClusters} total clusters`);
+
+    const metaParts = [];
+    if (entry.provider && entry.provider !== 'unknown') metaParts.push(entry.provider);
+    if (entry.model && entry.model !== 'unknown') metaParts.push(entry.model);
 
     return `<div class="changelog-entry">
       <div class="changelog-time">${time}</div>
       <div class="changelog-details">${parts.join(' · ')}</div>
-      <div class="changelog-meta">${entry.provider} / ${entry.model}</div>
+      ${metaParts.length ? `<div class="changelog-meta">${metaParts.join(' / ')}</div>` : ''}
     </div>`;
   }).join('');
 }
@@ -613,6 +621,7 @@ async function init() {
     document.getElementById('settings-panel')?.classList.add('hidden');
     document.getElementById('changelog-page')?.classList.add('hidden');
     document.getElementById('search-panel')?.classList.add('hidden');
+    document.getElementById('category-panel')?.classList.add('hidden');
   }
 
   document.addEventListener('keydown', (e) => {

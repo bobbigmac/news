@@ -16,11 +16,10 @@
       <h3>Settings</h3>
       <div class="setting-row">
         <span>Font</span>
-        <button id="setting-font" class="cycle-btn" type="button">Serif</button>
-      </div>
-      <div class="setting-row">
-        <span>Size</span>
-        <button id="setting-fontsize" class="cycle-btn" type="button">Medium</button>
+        <div class="cycle-group">
+          <button id="setting-font" class="cycle-btn" type="button">Serif</button>
+          <button id="setting-fontsize" class="cycle-btn" type="button">Medium</button>
+        </div>
       </div>
       <div class="setting-row">
         <span>Columns</span>
@@ -34,17 +33,15 @@
         <span>Images</span>
         <button id="setting-images" class="cycle-btn" type="button">Minimal</button>
       </div>
-      <label class="setting-row checkbox-row">
-        <input type="checkbox" id="setting-showsource">
-        <span>Show source names</span>
-      </label>
-      <label class="setting-row checkbox-row">
+      <label class="setting-row toggle-row">
         <input type="checkbox" id="setting-expandall">
-        <span>Expand all story links</span>
+        <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        <span class="toggle-label">Expand all story links</span>
       </label>
-      <label class="setting-row checkbox-row">
+      <label class="setting-row toggle-row">
         <input type="checkbox" id="setting-showupdated">
-        <span>Show updated stories</span>
+        <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        <span class="toggle-label">Re-show read for updates</span>
       </label>
 
       <div class="settings-divider"></div>
@@ -53,11 +50,20 @@
       <p class="settings-hint">Comma-separated. Stories matching any word are highlighted.</p>
 
       <div class="settings-divider"></div>
-      <h4 class="settings-subhead">Categories</h4>
-      <div id="category-prefs" class="category-prefs"></div>
+      <button id="manage-categories" class="settings-link" type="button">Manage Categories</button>
 
       <button id="settings-close" class="settings-close">Close</button>
       <button id="settings-changelog" class="settings-close">Recent Updates</button>
+    </div>
+  </div>
+
+  <div id="category-panel" class="category-panel hidden">
+    <div class="category-panel-content">
+      <div class="category-panel-header">
+        <h3>Manage Categories</h3>
+        <button id="category-close" class="changelog-close">&times;</button>
+      </div>
+      <div id="category-prefs" class="category-prefs"></div>
     </div>
   </div>
 

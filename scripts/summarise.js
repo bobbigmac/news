@@ -287,6 +287,23 @@ async function main() {
   const toProcess = rawStories.filter(s => !summarisedIds.has(s.id));
   if (!toProcess.length) {
     console.log('All stories already summarised. Exiting.');
+    // Still log the run for audit trail
+    const runLog = loadJson(RUN_LOG_FILE, []);
+    runLog.unshift({
+      timestamp: new Date().toISOString(),
+      provider: PROVIDER.name,
+      model: MODEL,
+      storiesProcessed: 0,
+      storiesAdded: 0,
+      clustersCreated: 0,
+      clustersUpdated: 0,
+      totalClusters: digest.clusters.length,
+      chunks: 0,
+      chunksFailed: 0,
+      filteredTooShort: 0,
+      skipped: true,
+    });
+    saveJson(RUN_LOG_FILE, runLog.slice(0, 10));
     return;
   }
 

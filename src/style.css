@@ -25,10 +25,10 @@ body.font-sans { font-family: "Helvetica Neue", Arial, sans-serif; }
 body.font-modern { font-family: 'Outfit', system-ui, sans-serif; }
 body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 
-body { font-size: 16px; }
-body.font-small { font-size: 14px; }
-body.font-medium { font-size: 16px; }
-body.font-large { font-size: 18px; }
+:root { font-size: 16px; }
+:root.font-small { font-size: 14px; }
+:root.font-medium { font-size: 16px; }
+:root.font-large { font-size: 18px; }
 
 /* Masthead */
 .masthead {
@@ -188,30 +188,6 @@ body.font-large { font-size: 18px; }
 .article:last-child { border-bottom: none; }
 .article.hidden { display: none; }
 
-/* Lead article — spans full width, larger type */
-.article.is-lead {
-  column-span: all;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 2px solid var(--ink);
-}
-
-.article.is-lead .article-headline {
-  font-size: 2.2rem;
-  line-height: 1.15;
-}
-
-.article.is-lead .article-summary {
-  font-size: 1.1rem;
-}
-
-.article.is-lead .article-image {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
 .article-category {
   font-family: var(--sans);
   font-size: 0.65rem;
@@ -304,6 +280,8 @@ body.font-large { font-size: 18px; }
 
 .settings-content {
   padding: 2rem 1.5rem;
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 .settings-content h3 {
@@ -323,8 +301,52 @@ body.font-large { font-size: 18px; }
   font-size: 0.85rem;
 }
 
-.setting-row.checkbox-row {
+/* Toggle switch rows */
+.toggle-row {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.toggle-row input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggle-track {
+  width: 32px;
+  height: 18px;
+  background: var(--rule);
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: var(--paper);
+  transition: transform 0.2s;
+}
+
+.toggle-row input:checked + .toggle-track {
+  background: var(--ink);
+}
+
+.toggle-row input:checked + .toggle-track .toggle-thumb {
+  transform: translateX(14px);
+}
+
+.toggle-label {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--ink);
 }
 
 .setting-row select {
@@ -348,8 +370,9 @@ body.font-large { font-size: 18px; }
   background: var(--paper-light);
 }
 
-.setting-row input[type="checkbox"] {
-  margin-right: 0.5rem;
+.cycle-group {
+  display: flex;
+  gap: 0.4rem;
 }
 
 .settings-close {
@@ -365,6 +388,60 @@ body.font-large { font-size: 18px; }
 }
 
 .settings-close:hover { background: var(--paper-light); }
+
+/* Settings link (e.g. Manage Categories) */
+.settings-link {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  text-decoration: underline;
+}
+
+.settings-link:hover { color: var(--accent); }
+
+/* Category panel — full overlay */
+.category-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 100vh;
+  background: var(--paper);
+  box-shadow: -4px 0 16px rgba(0,0,0,0.08);
+  z-index: 110;
+  transition: transform 0.3s ease;
+}
+
+.category-panel.hidden {
+  transform: translateX(100%);
+}
+
+.category-panel-content {
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.category-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.category-panel-header h3 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+}
 
 /* Settings divider and subhead */
 .settings-divider {
@@ -475,9 +552,6 @@ body.font-large { font-size: 18px; }
   vertical-align: middle;
 }
 
-/* Hidden source (shown when article expanded) */
-.story-source.hidden { display: none; }
-
 /* Changelog page */
 .changelog-page {
   position: fixed;
@@ -567,5 +641,5 @@ body.font-large { font-size: 18px; }
   .masthead-left { flex-direction: row; align-items: center; min-width: 0; }
   .masthead-right { min-width: 0; }
   .settings-panel { width: 100%; }
-  .article.is-lead .article-headline { font-size: 1.8rem; }
+  .category-panel { width: 100%; }
 }
