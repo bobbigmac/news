@@ -1320,6 +1320,66 @@
           ],
           "plugin": null,
           "pluginPriority": null
+        },
+        {
+          "id": "rss-9c6e4df33122eca0d3e8b4f9d62bfe10",
+          "title": "Obsidian game director reacts to people \"spouting off\" about the studio and how it's not what it \"used to be\"",
+          "source": "Vikki Blake",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/obsidian-director-disputes-studio-not-what-it-used-to-be",
+          "image": "",
+          "published": "2026-07-11T13:33:09.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-df5cfbc711fcd5e82a58bb73a1df024e",
+          "title": "Dragon Age creator reckons the series is dead following Veilguard flop, but that doesn't mean he wouldn't have another go at it if given the chance",
+          "source": "Matt Wales",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/dragon-age-future-david-gaider-bioware",
+          "image": "",
+          "published": "2026-07-09T16:36:46.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-62696dd90e8fed6507d88393dcc19e68",
+          "title": "Microsoft Responds To Racist Conspiracy Theories About Layoffs: ‘They Were Not Made To Replace Employees With Foreign Workers’",
+          "source": "Zack Kotzer",
+          "sourceName": "",
+          "url": "https://kotaku.com/xbox-responds-to-racist-conspiracy-theories-about-layoffs-they-were-not-made-to-replace-employees-with-foreign-workers-2000714977",
+          "image": "https://kotaku.com/app/uploads/2026/03/satyanadella.jpg",
+          "published": "2026-07-11T19:08:14.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-f96e5964ef34d7fe89af9ec0a05bc70a",
+          "title": "Obsidian Game Director Hits Back At ‘Cold Take Artists’ ‘Running Their Mouths’ About The Studio In The Wake Of Layoffs",
+          "source": "Ethan Gach",
+          "sourceName": "",
+          "url": "https://kotaku.com/obsidian-game-director-hits-back-at-cold-take-artists-making-up-stuff-about-the-studio-in-the-wake-of-layoffs-2000714963",
+          "image": "https://kotaku.com/app/uploads/2026/07/AVowed-1.jpg",
+          "published": "2026-07-11T16:00:47.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-aacdc2888ba820b24ba1b79647e2fde2",
+          "title": "Everything We Know About Marvel Tōkon: Fighting Souls, The Next Big Marvel Fighter",
+          "source": "Kenneth Shepard",
+          "sourceName": "",
+          "url": "https://kotaku.com/marvel-tokon-fighting-souls-release-date-characters-pc-ps5-2000714734",
+          "image": "https://kotaku.com/app/uploads/2025/08/captain-america-vs-iron-man-in-m-1280x640.jpg",
+          "published": "2026-07-10T20:00:57.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
@@ -1328,7 +1388,7 @@
       ],
       "impact": "low",
       "created": "2026-07-12T18:03:58.340Z",
-      "updated": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T21:43:16.034Z",
       "contentVersion": 1
     },
     {
@@ -1361,8 +1421,8 @@
     },
     {
       "id": "cluster-1783879438340-l0wz0t",
-      "headline": "Women's Test Cricket",
-      "summary": "Women's Test Cricket — Highlights of day three of the Lord's Test match between England Women and India Women. — Highlights of day three of the Lord's Test match between England Women and India Women.",
+      "headline": "England Women v India Women Test",
+      "summary": "The Lord's Test match between England Women and India Women reached its third day, with highlights published covering the day's play. The fixture forms part of the women's international Test cricket programme. The supplied stories contained no further developments to this match.",
       "category": "World",
       "stories": [
         {
@@ -1499,24 +1559,15 @@
         }
       ],
       "triggerWords": [
-        "heatwave",
-        "ambulance",
-        "exeter",
-        "energy grids",
-        "train services",
-        "women",
-        "children",
-        "vape",
-        "flavour",
-        "test",
-        "cricket",
-        "highlights",
-        "day"
+        "Lord's",
+        "England Women",
+        "India Women",
+        "Test cricket"
       ],
-      "impact": "medium",
+      "impact": "low",
       "created": "2026-07-12T18:03:58.340Z",
-      "updated": "2026-07-12T20:48:34.430Z",
-      "contentVersion": 2
+      "updated": "2026-07-12T21:46:35.535Z",
+      "contentVersion": 3
     },
     {
       "id": "cluster-1783879438340-ad7p7c",
@@ -2164,6 +2215,162 @@
           ],
           "plugin": null,
           "pluginPriority": null
+        },
+        {
+          "id": "rss-a485f30593d1ef83dd99e42fc9d0da38",
+          "title": "Summer Games Done Quick 2026 raises another $2.4 million for Doctors Without Borders",
+          "source": "Vikki Blake",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/sgdq-2026-raises-24-m",
+          "image": "",
+          "published": "2026-07-12T16:24:43.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-45f298d23027636f82cc082256fd27cc",
+          "title": "Steam's \"no questions asked\" refund policy makes it \"super easy for players to abuse this rule\", says indie developer",
+          "source": "Vikki Blake",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/indie-dev-steam-refund-policy",
+          "image": "",
+          "published": "2026-07-12T16:03:57.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-604b90ac6d2570d98bb1617cb5235151",
+          "title": "God of War Laufey studio hints at 2027 release window following tweet that assures players it \"will be available on disc\"",
+          "source": "Vikki Blake",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/god-of-war-laufey-disc-confirmed",
+          "image": "",
+          "published": "2026-07-12T15:18:51.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-70b0bd2cb47b167517980f805a76ce54",
+          "title": "Marvel Tōkon: Fighting Souls' single-player Episode Modes have been written by legendary writer, Kieron Gillen",
+          "source": "Vikki Blake",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/marvel-tokon-fighting-souls-episode-modes-kieron-gillen",
+          "image": "",
+          "published": "2026-07-12T14:53:41.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-f5068c729910d4e127e5f3d90dfdcef3",
+          "title": "Tomb Raider: Legacy of Atlantis actor wraps up \"on the last official session\" of recording",
+          "source": "Vikki Blake",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/tomb-raider-legacy-of-atlantis-wraps-recording",
+          "image": "",
+          "published": "2026-07-12T13:23:34.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-813831e204db6ac7e35fe1637c1cb1c1",
+          "title": "Warframe's next major update blends Blade Runner, The Sopranos, and film noir in a whole new solar system, coming later this year",
+          "source": "Connor Makar",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/warframe-tau-tennocon-reveal-blade-runner-sopranos",
+          "image": "",
+          "published": "2026-07-11T22:22:20.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-6e2902d1e21d6ad9fc748c084459f6e6",
+          "title": "\"This is our Spider-Man 3\" - Soulfame's Warsong update adds \"edgelord\" progression path later this year",
+          "source": "Connor Makar",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/soulframe-warsong-trailer-spiderman-3-edgy-mount-fishing",
+          "image": "",
+          "published": "2026-07-11T21:27:08.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-cdcdfef3862528aa3a6ca32597591aee",
+          "title": "id Software insists in new statement that it still has \"the crew we need to build the games and tech we're known for\"",
+          "source": "Vikki Blake",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/id-software-can-still-build-games",
+          "image": "",
+          "published": "2026-07-11T16:01:00.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-a5e5cc0f66b087f32684f6663bf6308f",
+          "title": "\"I sued their asses and won!\" Gamer wins legal battle to get hacked Xbox account back after they were told to rebuy all their digital games",
+          "source": "Vikki Blake",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/court-demands-xbox-restore-suspended-hacked-account",
+          "image": "",
+          "published": "2026-07-11T15:04:22.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-4f5f96c1c78f3e4b019723fff9932008",
+          "title": "EU admits it cannot stop Sony killing physical discs – \"companies are free to offer games and services in the manner that they see fit\"",
+          "source": "Vikki Blake",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/eu-cannot-stop-sony-killing-physical-discs",
+          "image": "",
+          "published": "2026-07-11T14:10:55.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-6a7a0f3d041871cb0f2ddd0f8b2503fc",
+          "title": "\"Just too gay\" - Robert Yang is battling censorship to launch a collection of his award-winning games on Steam and Itch, and it's completely free",
+          "source": "Matt Wales",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/robert-yang-radiator-forever-collection-steam-itch-free",
+          "image": "",
+          "published": "2026-07-10T16:50:45.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-7b52f68289f6b6d3225fa803e87ded13",
+          "title": "As Xbox and PlayStation flounder, Steam is reportedly having another record year",
+          "source": "Dom Peppiatt",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/valve-steam-revenue-2026-record",
+          "image": "",
+          "published": "2026-07-10T15:52:57.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-05a9aba7a70bdd63ee498e75e907bb52",
+          "title": "\"It was like being back in 2016\" Pokémon Go celebrates 10th anniversary by recreating the original trailer's Times Square Mewtwo raid",
+          "source": "Lottie Lynn",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/pokemon-go-10th-anniversary-mewtwo-times-square",
+          "image": "",
+          "published": "2026-07-10T09:54:27.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
@@ -2173,7 +2380,7 @@
       ],
       "impact": "medium",
       "created": "2026-07-12T18:09:53.586Z",
-      "updated": "2026-07-12T18:09:53.586Z",
+      "updated": "2026-07-12T21:42:35.394Z",
       "contentVersion": 1
     },
     {
@@ -2481,8 +2688,8 @@
     },
     {
       "id": "cluster-1783880122508-q4rci9",
-      "headline": "Microsoft cuts 4,800 jobs, shrinks Xbox",
-      "summary": "Microsoft is cutting 4,800 jobs, 2.1% of its workforce, in a significant restructure that shrinks Xbox. Immediate losses include 1,600 positions at Xbox. The move reflects broader consolidation in the tech sector.",
+      "headline": "Microsoft Xbox cuts spark protest, Sharma taskforce",
+      "summary": "Microsoft has cut 4,800 jobs, 2.1% of its workforce, in a restructuring that shrinks Xbox, with 3,200 Xbox positions lost under CEO Asha Sharma. Bethesda Game Studios union workers plan to protest the cuts. id Software co-founder John Carmack criticised the move. Sharma joined the US Federal Reserve for Productivity and Jobs task force on employment.",
       "category": "Technology",
       "stories": [
         {
@@ -2496,17 +2703,53 @@
           "category": "Technology",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-58ad57c92809896abbdbb72d93bac2d4",
+          "title": "\"We mean business\" - Bethesda union members to march in protest of sweeping Xbox job cuts",
+          "source": "Matt Wales",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/xbox-layoffs-bethesda-union-protest-plans",
+          "image": "",
+          "published": "2026-07-10T13:52:02.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-2fc78275b03a842ecac6d8b28f3de955",
+          "title": "\"My 'Microsoft will probably be a good steward of the brand' statement isn't aging well\" - id Software co-founder John Carmack speaks out after devastating Xbox layoffs",
+          "source": "Matt Wales",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/xbox-layoffs-id-software-john-carmack",
+          "image": "",
+          "published": "2026-07-10T11:02:56.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-aa72987b920bb05719a92e754040018d",
+          "title": "Xbox leader Asha Sharma has joined a US government task force for employment, days after announcing restructuring that has left thousands of people without jobs",
+          "source": "Dom Peppiatt",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/asha-sharma-xbox-us-government-employment-task-force",
+          "image": "",
+          "published": "2026-07-10T09:12:22.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
-        "Microsoft",
-        "Xbox",
-        "4,800 jobs"
+        "Xbox layoffs",
+        "Microsoft job cuts",
+        "Asha Sharma"
       ],
-      "impact": "medium",
+      "impact": "high",
       "created": "2026-07-12T18:15:22.508Z",
-      "updated": "2026-07-12T18:15:22.508Z",
-      "contentVersion": 1
+      "updated": "2026-07-12T21:44:30.189Z",
+      "contentVersion": 2
     },
     {
       "id": "cluster-1783880122508-cqh1lz",
@@ -2554,6 +2797,18 @@
           "category": "Education",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-d03eba4eb8e7b58a1a8a5cfa9d48512c",
+          "title": "Christopher Nolan Says Young People Absolutely Hate AI: ‘In Filmmaking It’s Hitting At Exactly The Wrong Time’",
+          "source": "Ethan Gach",
+          "sourceName": "",
+          "url": "https://kotaku.com/christopher-nolan-points-out-that-everyone-hates-ai-2000714998",
+          "image": "https://kotaku.com/app/uploads/2026/07/batman.jpg",
+          "published": "2026-07-12T14:29:27.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
@@ -2563,7 +2818,7 @@
       ],
       "impact": "medium",
       "created": "2026-07-12T18:15:22.508Z",
-      "updated": "2026-07-12T18:15:22.508Z",
+      "updated": "2026-07-12T21:45:38.683Z",
       "contentVersion": 1
     },
     {
@@ -2718,8 +2973,8 @@
     },
     {
       "id": "cluster-1783880245688-akpxdk",
-      "headline": "Meta removes AI image editing tool after backlash",
-      "summary": "Meta withdrew an AI-powered feature that allowed users to alter images on Instagram after several days of public criticism. The tool, introduced earlier in the week, faced backlash over concerns it could facilitate misinformation and deep‑fake content, prompting the company to discontinue it.",
+      "headline": "Meta withdraws Muse Image tool after SAG-AFTRA backlash",
+      "summary": "Meta has withdrawn its Muse Image tool on Instagram, which used users' posts for AI training material without permission. The withdrawal follows backlash from SAG-AFTRA and earlier public criticism over misinformation and deep-fake risks. The feature was introduced earlier in the week and allowed users to alter images before being discontinued.",
       "category": "Technology",
       "stories": [
         {
@@ -2745,20 +3000,29 @@
           "category": "Technology",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-b8dc6e88709e215477e63c8634af2b06",
+          "title": "Meta Removes Latest AI Integration On Instagram Following SAG-AFTRA Backlash",
+          "source": "Zack Kotzer",
+          "sourceName": "",
+          "url": "https://kotaku.com/meta-removes-latest-ai-integration-on-instagram-following-sag-aftra-backlash-2000714982",
+          "image": "https://kotaku.com/app/uploads/2026/05/zuckerberg-1280x720.jpg",
+          "published": "2026-07-11T20:38:23.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
-        "meta",
-        "ai images",
-        "instagram profile pics",
-        "ai image",
-        "instagram",
-        "backlash"
+        "Muse Image",
+        "SAG-AFTRA",
+        "Instagram AI"
       ],
       "impact": "medium",
       "created": "2026-07-12T18:17:25.688Z",
-      "updated": "2026-07-12T20:26:20.491Z",
-      "contentVersion": 1
+      "updated": "2026-07-12T21:47:25.527Z",
+      "contentVersion": 2
     },
     {
       "id": "cluster-1783880245688-9a8b84",
@@ -3721,8 +3985,8 @@
     },
     {
       "id": "cluster-1783880739459-x9nwjp",
-      "headline": "London low-income households pay £600 poverty premium",
-      "summary": "A study found that low‑income households in London incur an additional cost of more than £600 per year to obtain standard goods and services, creating a hidden poverty premium that deepens financial strain.",
+      "headline": "More than 100 firefighters respond to east London fire",
+      "summary": "More than 100 firefighters respond to east London fire — London Fire Brigade says a fire in Walthamstow has affected a house, gardens and a railway embankment. — London Fire Brigade says a fire in Wal",
       "category": "Business",
       "stories": [
         {
@@ -3736,16 +4000,32 @@
           "category": "Business",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-1e22ba1da15e184798b5765472437ef2",
+          "title": "More than 100 firefighters respond to east London fire",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cy5vxw7dgx9o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T21:09:23.000Z",
+          "category": "general",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
-        "London",
+        "london",
         "poverty premium",
-        "£600"
+        "£600",
+        "100",
+        "firefighters",
+        "respond",
+        "east"
       ],
       "impact": "medium",
       "created": "2026-07-12T18:25:39.459Z",
-      "updated": "2026-07-12T21:35:59.518Z",
+      "updated": "2026-07-12T21:48:12.905Z",
       "contentVersion": 2
     },
     {
@@ -3780,7 +4060,7 @@
     {
       "id": "cluster-1783880790659-4h0kri",
       "headline": "BBC News app offers top and breaking news",
-      "summary": "The BBC News app provides users with top stories, breaking news and live reporting. The application allows individuals to follow news topics that match their interests. The BBC operates the service as a digital news delivery platform. The described features outline the app's core functionality for news consumption.",
+      "summary": "The BBC News app provides users with top stories, breaking news and live reporting. The application allows individuals to follow news topics that match their interests. The BBC operates the service as a digital news delivery platform. The described features outline the app's core functionality for delivering news to mobile users.",
       "category": "Technology",
       "stories": [
         {
@@ -3801,8 +4081,8 @@
       ],
       "impact": "low",
       "created": "2026-07-12T18:26:30.659Z",
-      "updated": "2026-07-12T18:26:30.659Z",
-      "contentVersion": 1
+      "updated": "2026-07-12T21:45:31.214Z",
+      "contentVersion": 2
     },
     {
       "id": "cluster-1783880813187-dbzd54",
@@ -4364,8 +4644,8 @@
     },
     {
       "id": "cluster-1783882375959-xejn9p",
-      "headline": "Assassin's Creed Black Flag remake released",
-      "summary": "The BBC's Tom Gerken reviewed the long‑awaited remake of Assassin's Creed Black Flag, a pirate‑themed action‑adventure game rebuilt from the ground up after a 13‑year interval. The review assesses the updated graphics, gameplay changes and overall value of the new version.",
+      "headline": "Assassin's Creed Black Flag Resynced launches amid controversy",
+      "summary": "Ubisoft released Assassin's Creed Black Flag Resynced, selling two million copies on launch day and generating roughly $14 million in revenue. The publisher asserts the game offers a complete experience with no content locked behind microtransactions, but negative Steam reviews cite single‑player microtransaction practices. An internal report also warned against prolonged development cycles and defended monetisation as enhancing fun.",
       "category": "Entertainment",
       "stories": [
         {
@@ -4379,17 +4659,65 @@
           "category": "Technology",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-5b2c337b03b26022550b993755852093",
+          "title": "Assassin's Creed Black Flag Resynced opens to 2 million sales on launch day",
+          "source": "Vikki Blake",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/assassins-creed-black-flag-resynced-2-million-sales",
+          "image": "",
+          "published": "2026-07-11T15:32:39.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-d40ba6f5bc17ce49ab17b10c20dde5b3",
+          "title": "\"No thanks!\" - Assassin's Creed Black Flag remake Resynced being review bombed on Steam for single-player microtransactions",
+          "source": "Dom Peppiatt",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/assassins-creed-black-flag-resynced-steam-review-bomb-dlc",
+          "image": "",
+          "published": "2026-07-10T09:26:46.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-9bd56cbd65d26c78f226d3ad19060c4f",
+          "title": "Ubisoft Drops Claim That Monetization Makes Games ‘More Fun’ From Annual Report",
+          "source": "Zack Kotzer",
+          "sourceName": "",
+          "url": "https://kotaku.com/ubisoft-drops-claim-that-monetization-makes-games-more-fun-from-annual-report-2000715026",
+          "image": "https://kotaku.com/app/uploads/2026/07/ubisoftfun.jpg",
+          "published": "2026-07-12T20:21:40.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-8442373b646c36ef53ec97b10278a70b",
+          "title": "Ubisoft Says Assassin’s Creed Black Flag Resynced Is The ‘Full, Complete Experience’ As Negative Steam Reviews Pile Up Over Microtransactions",
+          "source": "Ethan Gach",
+          "sourceName": "",
+          "url": "https://kotaku.com/ubisoft-says-assassins-creed-black-flag-resynced-is-the-full-complete-experience-as-negative-steam-reviews-pile-up-over-microtransactions-2000714755",
+          "image": "https://kotaku.com/app/uploads/2026/07/acblackflag2-1280x720.jpg",
+          "published": "2026-07-10T21:00:36.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
         "Assassin's Creed",
         "Black Flag",
-        "remake"
+        "Resynced"
       ],
-      "impact": "low",
+      "impact": "medium",
       "created": "2026-07-12T18:52:55.959Z",
-      "updated": "2026-07-12T18:52:55.959Z",
-      "contentVersion": 1
+      "updated": "2026-07-12T21:43:01.612Z",
+      "contentVersion": 2
     },
     {
       "id": "cluster-1783882425791-v768ra",
@@ -5630,8 +5958,8 @@
       ],
       "impact": "medium",
       "created": "2026-07-12T19:20:00.720Z",
-      "updated": "2026-07-12T19:20:00.720Z",
-      "contentVersion": 1
+      "updated": "2026-07-12T21:44:53.255Z",
+      "contentVersion": 2
     },
     {
       "id": "cluster-1783884000720-eztcuu",
@@ -6518,36 +6846,350 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783892159518-9amr3z",
-      "headline": "More than 100 firefighters respond to east London fire",
-      "summary": "More than 100 firefighters respond to east London fire — London Fire Brigade says a fire in Walthamstow has affected a house, gardens and a railway embankment. — London Fire Brigade says a fire in Wal",
-      "category": "general",
+      "id": "cluster-1783892581612-dscyz0",
+      "headline": "God Of War Laufey Promises Physical Disc Version, All But Confirming 2027 Launch",
+      "summary": "God Of War Laufey Promises Physical Disc Version, All But Confirming 2027 Launch — The action game doesn't currently have a release date — <img width=\"1920\" height=\"1080\" src=\"https://kotaku.com/app/u",
+      "category": "entertainment",
       "stories": [
         {
-          "id": "rss-1e22ba1da15e184798b5765472437ef2",
-          "title": "More than 100 firefighters respond to east London fire",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cy5vxw7dgx9o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T21:09:23.000Z",
-          "category": "general",
-          "plugin": "bbc",
+          "id": "rss-74cd02f0c97ac33cc663e334748a08cb",
+          "title": "God Of War Laufey Promises Physical Disc Version, All But Confirming 2027 Launch",
+          "source": "Ethan Gach",
+          "sourceName": "",
+          "url": "https://kotaku.com/god-of-war-laufey-promises-physical-disc-version-all-but-confirming-2027-launch-2000714778",
+          "image": "https://kotaku.com/app/uploads/2026/06/topgod2-1280x720.jpg",
+          "published": "2026-07-10T20:29:38.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
           "pluginPriority": 0
         }
       ],
       "triggerWords": [
-        "100",
-        "firefighters",
-        "respond",
-        "east",
-        "london"
+        "god",
+        "war",
+        "laufey",
+        "promises",
+        "physical"
       ],
       "impact": "medium",
-      "created": "2026-07-12T21:35:59.519Z",
-      "updated": "2026-07-12T21:35:59.519Z",
+      "created": "2026-07-12T21:43:01.612Z",
+      "updated": "2026-07-12T21:43:01.612Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783892670189-rfipnv",
+      "headline": "Brazilian Court Forces Xbox To Restore Hacked Account And Pay Damages As Players Grapple With An All-Digital Future",
+      "summary": "Brazilian Court Forces Xbox To Restore Hacked Account And Pay Damages As Players Grapple With An All-Digital Future — Microsoft reportedly assigned 12 lawyers to argue over $400 and some video games —",
+      "category": "entertainment",
+      "stories": [
+        {
+          "id": "rss-cd87b38c44b84cd5a654e87082e316bc",
+          "title": "Brazilian Court Forces Xbox To Restore Hacked Account And Pay Damages As Players Grapple With An All-Digital Future",
+          "source": "Zack Kotzer",
+          "sourceName": "",
+          "url": "https://kotaku.com/brazilian-courts-force-xbox-to-restore-hacked-account-and-pay-damages-2000715020",
+          "image": "https://kotaku.com/app/uploads/2019/05/l5dyuzkmobnf1sreh4n8-1280x718.jpg",
+          "published": "2026-07-12T18:47:30.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "brazilian",
+        "court",
+        "forces",
+        "xbox",
+        "restore"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T21:44:30.189Z",
+      "updated": "2026-07-12T21:44:30.189Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783892693255-30y6zv",
+      "headline": "Steam bundle removed over censorship concerns",
+      "summary": "A game bundle dubbed “Gay As A Service” disappeared from Steam after Valve cited compliance issues. Critics argue the platform’s pre‑emptive censorship reflects a broader trend of restricting sexual content in video games.",
+      "category": "entertainment",
+      "stories": [
+        {
+          "id": "rss-64a4f8e75999dec1d43522955a7986a2",
+          "title": "Expensive Games Are Fueling Steam’s Most Lucrative Year Despite Players Trending Towards Older Releases",
+          "source": "Zack Kotzer",
+          "sourceName": "",
+          "url": "https://kotaku.com/expensive-games-are-fueling-steams-most-lucrative-year-despite-players-trending-towards-older-releases-2000715030",
+          "image": "https://kotaku.com/app/uploads/2026/07/steamrequiem-1280x746.jpg",
+          "published": "2026-07-12T21:21:27.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-a18c349447a69ff96f3310fb7e357551",
+          "title": "‘Gay As A Service’ Game Bundle Impossible To Find On Steam Because ‘Compliance-In-Advance Is Never Enough To Appease A Zealous Censor’",
+          "source": "Ash Parrish",
+          "sourceName": "",
+          "url": "https://kotaku.com/robert-yang-radiator-forever-steam-censorship-collective-shout-2000714776",
+          "image": "https://kotaku.com/app/uploads/2026/07/radiator-forever-1280x720.jpg",
+          "published": "2026-07-10T21:26:09.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "expensive",
+        "games",
+        "fueling",
+        "steam",
+        "lucrative",
+        "gay as a service",
+        "censorship"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T21:44:53.256Z",
+      "updated": "2026-07-12T21:48:12.990Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783892731214-vg0c3i",
+      "headline": "Warframe Dev Calls The Sudden Death Of Destiny 2 Horrible News And Says It’s Terrifying To Not Be In Charge Of Your Own ‘Goodbye’",
+      "summary": "Warframe Dev Calls The Sudden Death Of Destiny 2 Horrible News And Says It’s Terrifying To Not Be In Charge Of Your Own ‘Goodbye’ — Business realities remain an existential threat to live service art ",
+      "category": "entertainment",
+      "stories": [
+        {
+          "id": "rss-909034564abf1d0332cfed24f39388c8",
+          "title": "Warframe Dev Calls The Sudden Death Of Destiny 2 Horrible News And Says It’s Terrifying To Not Be In Charge Of Your Own ‘Goodbye’",
+          "source": "Ethan Gach",
+          "sourceName": "",
+          "url": "https://kotaku.com/warframe-dev-calls-the-sudden-death-of-destiny-2-horrible-news-and-says-its-terrifying-to-not-be-in-charge-of-your-own-goodbye-2000715006",
+          "image": "https://kotaku.com/app/uploads/2026/07/warframe-1280x719.jpg",
+          "published": "2026-07-12T17:10:22.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "warframe",
+        "dev",
+        "calls",
+        "sudden",
+        "death"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T21:45:31.216Z",
+      "updated": "2026-07-12T21:45:31.216Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783892795535-4kibnf",
+      "headline": "Official Avengers: Doomsday Art Gives Clearest Look At Returning X-Men, Mystique’s Awful New Haircut",
+      "summary": "Official Avengers: Doomsday Art Gives Clearest Look At Returning X-Men, Mystique’s Awful New Haircut — Raven, Magneto is a fake friend he should not have let you leave the house looking like that — <i",
+      "category": "entertainment",
+      "stories": [
+        {
+          "id": "rss-965330374e5a9365e9d6d415bd2ea7ce",
+          "title": "Official Avengers: Doomsday Art Gives Clearest Look At Returning X-Men, Mystique’s Awful New Haircut",
+          "source": "Zack Kotzer",
+          "sourceName": "",
+          "url": "https://kotaku.com/official-avengers-doomsday-art-gives-clearest-look-at-returning-x-men-mystiques-awful-new-haircut-2000714986",
+          "image": "https://kotaku.com/app/uploads/2026/07/doomsday-1280x744.jpg",
+          "published": "2026-07-11T21:27:26.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "official",
+        "avengers",
+        "doomsday",
+        "art",
+        "gives"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T21:46:35.535Z",
+      "updated": "2026-07-12T21:46:35.535Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783892795535-ntiwjb",
+      "headline": "Rotta The Hutt Is Ready To Be The Hottest Halloween Costume Of The Year",
+      "summary": "Rotta The Hutt Is Ready To Be The Hottest Halloween Costume Of The Year — Everyone, please stop calling me Jabba the Hutt, okay? I spent like $80 on this thing — <img width=\"1280\" height=\"720\" src=\"ht",
+      "category": "entertainment",
+      "stories": [
+        {
+          "id": "rss-1ac7924310c2b9c32f67f254ead5d8c9",
+          "title": "Rotta The Hutt Is Ready To Be The Hottest Halloween Costume Of The Year",
+          "source": "Zack Zwiezen",
+          "sourceName": "",
+          "url": "https://kotaku.com/rotta-the-hutt-is-ready-to-be-the-hottest-halloween-costume-of-the-year-2000714805",
+          "image": "https://kotaku.com/app/uploads/2026/07/Rhotta1.jpg",
+          "published": "2026-07-10T22:01:09.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "rotta",
+        "hutt",
+        "ready",
+        "hottest",
+        "halloween"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T21:46:35.536Z",
+      "updated": "2026-07-12T21:46:35.536Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783892892826-nfz3p6",
+      "headline": "Vanillaware artist creates RPG in mountains",
+      "summary": "Artist Yoshio Nishimura spent six years living in a remote mountain cabin to develop Veritas Tales: Witch of the Dark Castle, a retro‑style role‑playing game that pays homage to classic titles such as Grailquest and Deathtrap Dungeon.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "rss-a54cb00c47f091a416ef029e93660ff8",
+          "title": "Vanillaware Artist Moved Into The Mountains For Six Years To Create Lush Love Letter To Old School RPGs",
+          "source": "Zack Kotzer",
+          "sourceName": "",
+          "url": "https://kotaku.com/vanillaware-artist-moved-into-the-mountains-for-six-years-to-create-lush-love-letter-to-old-school-rpgs-2000715013",
+          "image": "https://kotaku.com/app/uploads/2026/07/vanillaso1-1280x667.jpg",
+          "published": "2026-07-12T17:57:11.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Yoshio Nishimura",
+        "Veritas Tales",
+        "mountain cabin"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T21:48:12.826Z",
+      "updated": "2026-07-12T21:48:12.826Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783892892826-yp62xu",
+      "headline": "Minecraft adds sitting mechanic after 17 years",
+      "summary": "Mojang released an update that lets players make their characters sit, a feature absent since the game’s launch in 2011. The addition has sparked discussion among the community about its impact on gameplay and future design choices.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "rss-9f827bf674bc0b5db197755b6196f778",
+          "title": "Minecraft Adds The Ability To Sit 17 Years Later And It’s Reinventing Everything",
+          "source": "Amelia Zollner",
+          "sourceName": "",
+          "url": "https://kotaku.com/minecraft-adds-the-ability-to-sit-17-years-later-and-its-reinventing-everything-2000714330",
+          "image": "https://kotaku.com/app/uploads/2026/07/sitting.jpg",
+          "published": "2026-07-12T15:30:56.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Minecraft",
+        "sitting",
+        "Mojang update"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T21:48:12.826Z",
+      "updated": "2026-07-12T21:48:12.826Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783892892826-8zo6lv",
+      "headline": "Palworld 1.0 update removes Pokémon‑like designs",
+      "summary": "Palworld’s 1.0 release altered several creature designs that previously resembled Pokémon, responding to criticism from players and the broader community. The changes form part of the game’s transition from early‑access to a full commercial launch.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "rss-989b2a7b1446ffae0e39cbfe10acf4d3",
+          "title": "Palworld’s Massively Popular 1.0 Update Has Altered Several Designs To Make Them Less Pokémon-Like",
+          "source": "Lewis Parker",
+          "sourceName": "",
+          "url": "https://kotaku.com/palworlds-massively-popular-1-0-update-has-altered-several-designs-to-make-them-less-pokemon-like-2000714636",
+          "image": "https://kotaku.com/app/uploads/2026/07/Palworld-new-design-from-Razmos-ResetEra-thread-Pocketpair-1280x755.jpg",
+          "published": "2026-07-11T15:45:37.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Palworld",
+        "1.0 update",
+        "Pokémon‑like"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T21:48:12.826Z",
+      "updated": "2026-07-12T21:48:12.826Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783892892826-yd9w09",
+      "headline": "Former PlayStation exec laments disc removal",
+      "summary": "Former PlayStation chief comments that Sony’s decision to abandon physical game discs makes him “kind of sad as a fan”, noting the move likely stems from financial analysis despite nostalgic concerns among consumers.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "rss-e2f2fa76d5e9f628136ac200cf627843",
+          "title": "Former PlayStation Boss Says Sony Getting Rid Of Game Discs Makes Him ‘Kind Of Sad, As A Fan’",
+          "source": "Rebekah Valentine",
+          "sourceName": "",
+          "url": "https://kotaku.com/former-playstation-boss-sony-game-discs-sad-2000714799",
+          "image": "https://kotaku.com/app/uploads/2021/06/554f2d880cae9dbbafd2dabfd6ad16ab-1280x720.jpg",
+          "published": "2026-07-11T15:08:54.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "PlayStation",
+        "disc removal",
+        "former boss"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T21:48:12.826Z",
+      "updated": "2026-07-12T21:48:12.826Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783892892826-09oqfz",
+      "headline": "Roku update draws widespread user anger",
+      "summary": "Roku’s latest software update introduced additional advertisements and algorithmic changes, prompting a wave of complaints from users who describe the changes as “horrible” and disruptive to the viewing experience.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "rss-dec378c55d8c130f78bf8f8d18019bbb",
+          "title": "It’s Not Just You, Everyone Is Mad At Roku’s Horrible Update",
+          "source": "Zack Zwiezen",
+          "sourceName": "",
+          "url": "https://kotaku.com/its-not-just-you-everyone-is-mad-at-rokus-horrible-update-2000714762",
+          "image": "https://kotaku.com/app/uploads/2026/07/Roku-bad.jpg",
+          "published": "2026-07-10T20:48:34.000Z",
+          "category": "entertainment",
+          "plugin": "gaming",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Roku",
+        "update",
+        "ads"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T21:48:12.826Z",
+      "updated": "2026-07-12T21:48:12.826Z",
       "contentVersion": 1
     }
   ],
-  "generated": "2026-07-12T20:48:34.471Z"
+  "generated": "2026-07-12T21:48:13.062Z"
 }
