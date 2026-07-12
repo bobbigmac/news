@@ -5,7 +5,7 @@ const DEFAULT_SETTINGS = {
   font: 'serif',
   fontsize: 'medium',
   columns: '3',
-  sort: 'stories',
+  sort: 'recent',
   images: 'minimal',
   mode: 'all',
   categoryFilter: 'all',
@@ -43,9 +43,8 @@ const COLUMN_OPTIONS = [
 ];
 
 const SORT_OPTIONS = [
-  { value: 'stories', label: 'Most stories' },
   { value: 'recent', label: 'Most recent' },
-  { value: 'category', label: 'By category' },
+  { value: 'stories', label: 'Most stories' },
 ];
 
 const IMAGE_OPTIONS = [
@@ -167,8 +166,6 @@ function sortClusters(clusters, sortMode) {
     // Within same preference tier, apply the selected sort mode
     if (sortMode === 'recent') {
       return (b.updated || b.created || '').localeCompare(a.updated || a.created || '');
-    } else if (sortMode === 'category') {
-      return (a.category || 'Other').localeCompare(b.category || 'Other');
     } else {
       return (b.stories?.length || 0) - (a.stories?.length || 0);
     }

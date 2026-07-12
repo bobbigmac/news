@@ -10,7 +10,9 @@
     "dev": "npm run pipeline && live-server docs --port=8000 --open=/",
     "watch": "node scripts/watch.js & live-server docs --port=8000 --open=/"
   },
-  "dependencies": {},
+  "dependencies": {
+    "rss-parser": "^3.13.0"
+  },
   "devDependencies": {
     "live-server": "^1.2.2"
   },
