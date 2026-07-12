@@ -114,7 +114,11 @@ function repairSingleQuotes(text) {
 }
 
 function repairUnquotedKeys(text) {
-  return text.replace(/(\w+)\s*:/g, '"$1":');
+  // Match keys that are either fully unquoted (word followed by colon)
+  // or have a stray quote before the key but no opening quote ("key: instead of "key":)
+  return text
+    .replace(/"(\w+)\s*:/g, '"$1":')  // "key: -> "key":
+    .replace(/(?<!["\w])(\w+)\s*:/g, '"$1":'); // key: -> "key":
 }
 
 function repairComments(text) {
@@ -229,8 +233,11 @@ export function extractJson(text) {
     allCandidates.push(repairSingleQuotes(candidate));
     allCandidates.push(repairTrailingCommas(repairSingleQuotes(candidate)));
     allCandidates.push(repairComments(candidate));
+    allCandidates.push(repairUnquotedKeys(candidate));
+    allCandidates.push(repairTrailingCommas(repairUnquotedKeys(candidate)));
     allCandidates.push(closeOpenJsonContainers(candidate));
     allCandidates.push(closeOpenJsonContainers(repairTrailingCommas(candidate)));
+    allCandidates.push(closeOpenJsonContainers(repairUnquotedKeys(candidate)));
   }
 
   // Try each candidate

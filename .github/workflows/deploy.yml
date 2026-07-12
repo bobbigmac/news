@@ -67,6 +67,8 @@ jobs:
           SEARCH_PLUGINS: ${{ secrets.SEARCH_PLUGINS }}
           RSS_FEEDS: ${{ secrets.RSS_FEEDS }}
           GUARDIAN_API_KEY: ${{ secrets.GUARDIAN_API_KEY }}
+          REJECT_CATEGORIES: ${{ secrets.REJECT_CATEGORIES }}
+          REJECT_TITLES: ${{ secrets.REJECT_TITLES }}
         run: node scripts/fetch-news.js
 
       - name: Summarise with LLM

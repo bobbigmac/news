@@ -802,6 +802,562 @@
       "created": "2026-07-12T17:25:41.719Z",
       "updated": "2026-07-12T17:25:41.719Z",
       "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877200749-fjtquy",
+      "headline": "England reach World Cup semi-finals after Norway win",
+      "summary": "England defeated Norway to reach the World Cup semi-finals against Argentina. Manager Thomas Tuchel criticised the performance, calling the win \"lucky,\" but match-winner Jude Bellingham defended the team. Declan Rice played after three days ill with a virus. Fans celebrated in London while Prime Minister Keir Starmer hinted at a bank holiday if England win the tournament.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "rss-98947aabd7a15c5b4ce78a7106bb68ef",
+          "title": "Tuchel wasn't happy with the performance. So why do England keep winning?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/football/articles/c7vy25lqll6o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T12:19:03.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-9e89a0dde79e99c4289083941d39918d",
+          "title": "Tuchel angry at 'lucky' England - but Bellingham defends players",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/football/articles/ckg474ekv58o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T03:08:42.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-e2c833ca678f994956ff6f5685261a86",
+          "title": "'Animals', Hand of God and Beckham: Argentina and England's World Cup rivalry",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/football/articles/c621y75w2x2o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T10:10:33.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-e82a2050ab5596664941cc70abf42086",
+          "title": "Declan Rice was in bed ill for nearly three days before Norway game, Tuchel reveals",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/football/articles/cpd3wv3v1eeo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T11:15:14.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-1a6967186c3e979de45a8d97ab1605f9",
+          "title": "'Argentina get ready': Fans in London react to England win",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/ckg5kz7qp31o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T11:17:05.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-8bb2128bb3fbff4e8c40931fed29f776",
+          "title": "Watch fans react to every goal of England v Norway",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/cvgqxx912dro?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T00:33:04.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-64949330425b9ae79a83c4094364e8a8",
+          "title": "How to get through World Cup-induced sleep deprivation",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cx2kkrndr00o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-06T13:09:31.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-7f139e3114d6ece6fb50adb764e655a7",
+          "title": "Starmer hints at bank holiday if England win World Cup",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c20y9g2v2wvo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T01:25:24.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-7b0807a77e1a810a09a8aa0de306ebbd",
+          "title": "Will we get a bank holiday if England wins World Cup?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/cdx781xqn01o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T21:30:34.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:26:40.749Z",
+      "updated": "2026-07-12T17:26:40.749Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877200749-cf3skh",
+      "headline": "Hillsborough Law bill set for MPs approval",
+      "summary": "MPs are set to approve the Hillsborough Law bill, addressing the 1989 FA Cup semi-final crush that killed 97 Liverpool fans. The legislation aims to ensure public authorities cooperate with investigations and provide legal representation for bereaved families.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-26f09857eb55a21729da7ce4a561833c",
+          "title": "Bill for Hillsborough Law set to be approved by MPs",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cz754eey3xeo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T17:03:39.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:26:40.749Z",
+      "updated": "2026-07-12T17:26:40.749Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877200749-o99fsj",
+      "headline": "BBC reviews Brendon McCullum's Bazball era",
+      "summary": "BBC Sport examines the highs and lows of Brendon McCullum's tenure as England Test head coach following his sacking. The aggressive \"Bazball\" approach brought initial success but ultimately led to his departure.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "rss-c7c4a80b0c9b9786815ad6afbdc32feb",
+          "title": "The highs and lows of Bazball",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/cricket/articles/c4grpj0lz7ro?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T13:05:24.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:26:40.749Z",
+      "updated": "2026-07-12T17:26:40.749Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877200749-yrdtl3",
+      "headline": "Exam board apologises for Sats results delay",
+      "summary": "An exam board has apologised for delays to Sats results in England. A school leaders' union demands cast-iron assurances that final results will be accurate following the disruption.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "rss-cbfbb00ee42614d10218e743359f2623",
+          "title": "Exam board sorry for delay to Sats results in England",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cewq7d4yxq2o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-02T12:40:14.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:26:40.749Z",
+      "updated": "2026-07-12T17:26:40.749Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877250053-1wvcxs",
+      "headline": "Senator Lindsey Graham dies after brief illness",
+      "summary": "Senator Lindsey Graham, 71, died after a brief and sudden illness, his office said. He had returned from Kyiv, meeting Ukrainian President Volodymyr Zelensky on Friday. Donald Trump paid tribute, calling Graham a true American patriot who will be greatly missed.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-b2e44540b8de5a08f02eb6fb80ca474e",
+          "title": "US senator and close Trump ally Lindsey Graham dies after 'brief and sudden illness'",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cvgj25j6nmeo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T15:34:45.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:27:30.053Z",
+      "updated": "2026-07-12T17:27:30.053Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877250053-h2yj07",
+      "headline": "BBC correspondent David Willey dies aged 93",
+      "summary": "BBC foreign correspondent David Willey died aged 93. He reported on five popes and was best known for extensive Vatican coverage throughout his decades-long career, delivering authoritative international news globally.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "rss-7a0a643aabbe21063bd084cb3c34c070",
+          "title": "David Willey, esteemed BBC foreign correspondent, dies aged 93",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cn9403518jro?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T15:22:52.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:27:30.053Z",
+      "updated": "2026-07-12T17:27:30.053Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877250053-ab0nrx",
+      "headline": "Former Qatar Emir dies aged 74",
+      "summary": "Former Emir of Qatar Sheikh Hamad bin Khalifa Al Thani died aged 74. He assumed power in 1996 after a bloodless coup and transformed Qatar into a gas‑rich nation shaping its modern development.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-5543115b7cdacd53f8e4e3b630af432d",
+          "title": "Former Emir of Qatar Sheikh Hamad bin Khalifa Al Thani dies aged 74",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cql1qdq14xro?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T16:35:50.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:27:30.053Z",
+      "updated": "2026-07-12T17:27:30.053Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877250053-2hvde6",
+      "headline": "Polish PM pledges WW2 genocide memorial",
+      "summary": "Polish Prime Minister pledged a memorial to victims of World War Two, describing the killings as genocide by Ukrainian nationalists. Warsaw and Kyiv have long disputed the scale of civilian deaths during the war.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-2ea87ab9a50f6cf384d75dbf0a4228ef",
+          "title": "Polish PM pledges memorial to victims of WW2 'genocide by Ukrainian nationalists' ",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cze94x4361po?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T21:56:52.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:27:30.053Z",
+      "updated": "2026-07-12T17:27:30.053Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877250053-xlym6f",
+      "headline": "Met police probe Reform election donations",
+      "summary": "Metropolitan Police are investigating Reform UK over alleged election donation breaches involving the mother of convicted fraudster George Cottrell, according to media reports, raising concerns about party financing within the UK.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-757c306e5574887aaf2a85410b84705c",
+          "title": "Met police investigating Reform over election donations - reports",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c3eyq2np7qgo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T11:46:03.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:27:30.053Z",
+      "updated": "2026-07-12T17:27:30.053Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877392599-clzbbs",
+      "headline": "France face Spain, England play Argentina in semi-finals",
+      "summary": "The 2026 World Cup semi-finals will feature France against Spain and England against Argentina. The preview outlines key players, tactics, and expectations for the heavyweight matchups. Both matches are scheduled for July 2026 at the Los Angeles stadium, with the winner advancing to the final.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "rss-197491eeb11214390b2292716ca300ad",
+          "title": "What to expect in the semi-finals",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/football/articles/cd6ed5x95ygo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T12:29:10.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:29:52.599Z",
+      "updated": "2026-07-12T17:29:52.599Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877443499-x18ttp",
+      "headline": "Jayden Adams death confirmed after footage emerges",
+      "summary": "Footage of 25‑year‑old South African midfielder Jayden Adams surfaced after his death in Schotschekloof, Cape Town. Adams, who played for Mamelodi Sundowns and featured for South Africa at the World Cup weeks earlier, was found dead; the cause remains unconfirmed.",
+      "category": "Sports",
+      "stories": [
+        {
+          "id": "rss-0a622d2e9922bb9ad8781ab34ceb305c",
+          "title": "South Africa World Cup midfielder Adams dies aged 25",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/football/articles/cr47y5nvrqlo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T14:47:47.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:30:43.499Z",
+      "updated": "2026-07-12T17:30:43.499Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877443499-2djfri",
+      "headline": "World Cup and Wimbledon fashion quiz launched",
+      "summary": "An interactive fashion test invites users to compare the style of the World Cup and Wimbledon, highlighting the high‑stakes attire associated with both events and encouraging participants to choose their favourite looks.",
+      "category": "Entertainment",
+      "stories": [
+        {
+          "id": "rss-a58dd513284bfa78e9ab5b3c41953171",
+          "title": "Is the World Cup or Wimbledon more stylish? Take our fashion test to find out",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cx2vz37z7v3o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T00:39:45.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:30:43.499Z",
+      "updated": "2026-07-12T17:30:43.499Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877443499-g2bi1v",
+      "headline": "Jordan Bardella photo shows Le Pen party hierarchy",
+      "summary": "A photograph reveals the internal ranking within Marine Le Pen's party, showing 30‑year‑old Jordan Bardella, previously groomed as the next hard‑right leader, now required to wait longer for a leadership role.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-fbc04936ff14c9cf7a93bf6b406b3640",
+          "title": "The photo that shows who's really on top in Le Pen's party",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cn7558gdvjro?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T23:02:59.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:30:43.499Z",
+      "updated": "2026-07-12T17:30:43.499Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877443499-1n1bs0",
+      "headline": "Elephant seal Neil sparks Australian mayhem",
+      "summary": "Five‑year‑old elephant seal Neil attracted global attention during his recent haul ashore on southern Tasmania, where his presence caused disruptions and widespread media coverage across Australia.",
+      "category": "Environment",
+      "stories": [
+        {
+          "id": "rss-edce0b190bdad60bb059c42c52ab67f0",
+          "title": "How a viral seal called Neil caused mayhem in Australia",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/c05yr465yyro?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T21:19:05.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:30:43.499Z",
+      "updated": "2026-07-12T17:30:43.499Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877443499-94typi",
+      "headline": "Australian telecom outage disrupts trains, emergency calls",
+      "summary": "A major outage at Australia's largest telecommunications provider, traced to servers in Sydney and Melbourne data centres, halted train services and impeded emergency call handling, with the precise cause still unknown.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-7f6b5662f6d161875f9d8d6557c83eff",
+          "title": "Trains and emergency calls affected after major outage at Australia's largest telecoms company",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cgevw0d95pdo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T07:53:37.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:30:43.499Z",
+      "updated": "2026-07-12T17:30:43.499Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877557419-kuz8au",
+      "headline": "Young wine drinkers chill red wine in heatwave",
+      "summary": "Young wine drinkers are abandoning the convention of serving red wine only at room temperature. The heatwave has prompted many to chill red wine. The long-held belief that red wine should be drunk at room temperature is being overturned by younger consumers seeking refreshment in hot weather.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "rss-a0311a697fb0f01526d8025bc3da77a4",
+          "title": "Why young wine drinkers are breaking the 'room temperature' red rule",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c5yzjlgr7zlo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T00:47:46.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:32:37.419Z",
+      "updated": "2026-07-12T17:32:37.419Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877557419-g4gb70",
+      "headline": "Judge Tabassum Khan threatened after convicting cow vigilantes",
+      "summary": "Muslim judge Tabassum Khan faces online abuse and death threats in India after convicting 14 Hindu men in a lynching case involving 'cow vigilantes'. The convictions sparked the threats. The case relates to mob violence against those accused of cow slaughter, a sensitive issue in India.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-9b66494561352183029253d7dc4e12bf",
+          "title": "Muslim judge in India faces death threats after convicting 'cow vigilantes'",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cd6e9zq87xvo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T00:49:24.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:32:37.419Z",
+      "updated": "2026-07-12T17:32:37.419Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877557419-kcu7wk",
+      "headline": "Kenyan men challenge female surname ridicule",
+      "summary": "In Kenya, men who inherit their father's first name as a surname are standing up to ridicule as naming traditions change. Children traditionally take the father's first name as a surname, but shifting customs are causing upset. Those with female-associated surnames are confronting mockery.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-8ccda7a16d557b135f3943da3c0a2164",
+          "title": "How men with female surnames are standing up to ridicule in Kenya",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c75ygy71wdgo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T23:27:45.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:32:37.419Z",
+      "updated": "2026-07-12T17:32:37.419Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877557419-89jiw8",
+      "headline": "Next prime minister faces same fiscal issues",
+      "summary": "The next prime minister will confront unchanged fiscal challenges despite a change in leadership. The person in charge of the country will change but the economic problems remain the same. Persistent budgetary constraints and stale growth outlooks define the inherited position.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-94538a48d5d86fd363ee0ee3f683b08c",
+          "title": "The economic challenges facing the next prime minister",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/crkvj0ngzexo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-23T23:01:55.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:32:37.419Z",
+      "updated": "2026-07-12T17:32:37.419Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783877557419-y7u8hg",
+      "headline": "Starmer faces overseas war and party division",
+      "summary": "In 2026, Prime Minister Keir Starmer faces war overseas while his party remains divided at home. British politicians traditionally unite during foreign crises, but this cohesion is absent. The Labour Party cannot find internal peace as international conflict intensifies.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-abb673dbdbffd46a850b291ebd9ac070",
+          "title": "As Starmer faces war overseas, his party can't find peace at home",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cwyxy54pv9po?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-03-21T11:27:14.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "created": "2026-07-12T17:32:37.419Z",
+      "updated": "2026-07-12T17:32:37.419Z",
+      "contentVersion": 1
     }
   ]
 }

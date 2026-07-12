@@ -237,7 +237,7 @@ async function main() {
   runState.runCount++;
   console.log(`Run #${runState.runCount} today, ${runState.callsToday}/${DAILY_QUOTA} API calls used so far`);
 
-  const newsItems = await fetchLatestNews(runState);
+  let newsItems = await fetchLatestNews(runState);
   if (!newsItems.length) { console.error('No news fetched. Aborting.'); return; }
 
   // Run search plugins (budget-aware)
@@ -265,6 +265,21 @@ async function main() {
   }
 
   saveRunState(runState);
+
+  // Pre-filter: reject stories by category or title pattern
+  const rejectCategories = (process.env.REJECT_CATEGORIES || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+  const rejectTitles = (process.env.REJECT_TITLES || '').split('|').map(s => s.trim()).filter(Boolean);
+  if (rejectCategories.length || rejectTitles.length) {
+    const before = newsItems.length;
+    const rejectRegex = rejectTitles.length ? new RegExp(rejectTitles.join('|'), 'i') : null;
+    newsItems = newsItems.filter(item => {
+      const cat = Array.isArray(item.category) ? item.category.join(' ') : (item.category || '');
+      if (rejectCategories.length && rejectCategories.includes(cat.toLowerCase())) return false;
+      if (rejectRegex && rejectRegex.test(item.title || '')) return false;
+      return true;
+    });
+    console.log(`Pre-filter: removed ${before - newsItems.length} stories (REJECT_CATEGORIES=${rejectCategories.join(',')}, REJECT_TITLES=${rejectTitles.join('|')})`);
+  }
 
   // Update story store
   const store = loadStoryStore();
