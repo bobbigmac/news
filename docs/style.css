@@ -167,11 +167,11 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   padding: 1.5rem 1rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 1.25rem;
   align-items: start;
 }
 
-.broadsheet.cols-1 { grid-template-columns: 1fr; }
+.broadsheet.cols-1 { grid-template-columns: 1fr; max-width: 700px; }
 .broadsheet.cols-3 { grid-template-columns: repeat(3, 1fr); }
 .broadsheet.cols-4 { grid-template-columns: repeat(4, 1fr); }
 
@@ -184,13 +184,20 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 
 /* Article (cluster) */
 .article {
-  padding-bottom: 1.75rem;
-  border-bottom: 1px solid var(--rule);
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.25rem;
   cursor: pointer;
   position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.article:last-child { border-bottom: none; }
+.article:hover {
+  border-color: var(--rule-thick);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
 .article.hidden { display: none; }
 
 .article-header {
@@ -202,11 +209,17 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 
 .article-category {
   font-family: var(--sans);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--accent);
-  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.article-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .article-age {
@@ -214,6 +227,7 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   font-size: 0.65rem;
   color: var(--muted);
   white-space: nowrap;
+  margin-right: 0.2rem;
 }
 
 .article-headline {
@@ -231,6 +245,7 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   height: auto;
   margin-bottom: 0.75rem;
   display: block;
+  border-radius: 4px;
 }
 
 .article-summary {
@@ -253,6 +268,7 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 .story-links ul {
   list-style: none;
   padding-top: 0.5rem;
+  border-top: 1px solid var(--rule);
 }
 
 .story-links li {
@@ -537,39 +553,36 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   text-decoration: underline;
 }
 
-/* Article actions (interest buttons) */
-.article-actions {
-  display: flex;
-  gap: 0.4rem;
-  margin: 0.5rem 0;
-}
-
+/* Interest buttons (in header) */
 .interest-btn {
   background: none;
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.9rem;
+  border: none;
+  padding: 0;
+  font-size: 0.7rem;
   cursor: pointer;
-  color: var(--muted);
-  opacity: 0.4;
-  transition: opacity 0.2s, color 0.2s, border-color 0.2s;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+  line-height: 1;
 }
 
-.article:hover .interest-btn { opacity: 0.7; }
-.interest-btn:hover { opacity: 1; color: var(--ink); border-color: var(--ink); }
-.interest-btn.active { opacity: 1; border-color: var(--ink); }
-.interested-btn.active { color: var(--accent); border-color: var(--accent); }
-.not-interested-btn.active { color: var(--muted); border-color: var(--muted); }
+.article:hover .interest-btn { opacity: 0.5; }
+.interest-btn:hover { opacity: 1; }
+.interest-btn.active { opacity: 1; }
+.interested-btn.active { opacity: 1; }
+.not-interested-btn.active { opacity: 1; }
 
 .article.is-read {
-  opacity: 0.35;
+  opacity: 0.4;
   transition: opacity 0.3s;
 }
 
 .article.downranked {
   opacity: 0.3;
   transition: opacity 0.3s;
+}
+
+.article.is-read:hover, .article.downranked:hover {
+  opacity: 0.7;
 }
 
 .article.has-updates .article-headline::after {
@@ -746,10 +759,11 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 /* Responsive — scale down columns on narrower screens */
 @media (max-width: 1024px) and (min-width: 769px) {
   .broadsheet.cols-4 { grid-template-columns: repeat(3, 1fr); }
+  .broadsheet.cols-3 { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .broadsheet { grid-template-columns: 1fr !important; }
+  .broadsheet { grid-template-columns: 1fr !important; max-width: 600px; }
   .masthead { flex-direction: column; gap: 0.5rem; }
   .masthead-title { font-size: 2rem; }
   .masthead-left { align-items: center; min-width: 0; }

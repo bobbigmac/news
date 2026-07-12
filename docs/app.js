@@ -300,15 +300,15 @@ function renderArticle(cluster, settings, isPluginLead) {
   article.innerHTML = `
     <div class="article-header">
       <div class="article-category">${category}</div>
-      <div class="article-age">${relativeAge(getNewestStoryDate(cluster))}</div>
+      <div class="article-header-right">
+        <div class="article-age">${relativeAge(getNewestStoryDate(cluster))}</div>
+        <button class="interest-btn interested-btn ${interest === 'interested' ? 'active' : ''}" data-signal="interested" title="Interested — show more like this">👍</button>
+        <button class="interest-btn not-interested-btn ${interest === 'not-interested' ? 'active' : ''}" data-signal="not-interested" title="Not interested — show less like this">👎</button>
+      </div>
     </div>
     ${imageHtml}
     <h2 class="article-headline">${headline}</h2>
     <p class="article-summary">${summary}</p>
-    <div class="article-actions">
-      <button class="interest-btn interested-btn ${interest === 'interested' ? 'active' : ''}" data-signal="interested" title="Interested — show more like this">👍</button>
-      <button class="interest-btn not-interested-btn ${interest === 'not-interested' ? 'active' : ''}" data-signal="not-interested" title="Not interested — show less like this">👎</button>
-    </div>
     <div class="story-links${settings.expandAll ? ' expanded' : ''}">
       <ul>${linksHtml}</ul>
     </div>
