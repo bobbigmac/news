@@ -31,12 +31,14 @@ jobs:
 
       - name: Fetch latest news
         env:
-          currentsapi_services_key: ${{ secrets.CURRENTSAPI_SERVICES_KEY }}
+          CURRENTSAPI_SERVICES_KEY: ${{ secrets.CURRENTSAPI_SERVICES_KEY }}
         run: node scripts/fetch-news.js
 
-      - name: Summarise with OpenRouter
+      - name: Summarise with LLM
         env:
-          openrouter_api_key: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          FEATHERLESS_API_KEY: ${{ secrets.FEATHERLESS_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: node scripts/summarise.js
 
       - run: npm run build

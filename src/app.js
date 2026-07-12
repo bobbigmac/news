@@ -1,10 +1,12 @@
 const SETTINGS_KEY = 'broadsheet-settings';
+const READ_KEY = 'broadsheet-read';
 const DEFAULT_SETTINGS = {
   fontsize: 'medium',
   columns: '2',
   sort: 'stories',
   showSource: false,
-  expandAll: false
+  expandAll: false,
+  showUpdated: false
 };
 
 function loadSettings() {
@@ -27,6 +29,32 @@ function applySettings(settings) {
 
 let currentDigest = null;
 let currentSettings = loadSettings();
+let readState = loadReadState();
+
+function loadReadState() {
+  try { return JSON.parse(localStorage.getItem(READ_KEY) || '{}'); } catch { return {}; }
+}
+
+function saveReadState() {
+  localStorage.setItem(READ_KEY, JSON.stringify(readState));
+}
+
+function isClusterRead(cluster) {
+  const entry = readState[cluster.id];
+  if (!entry) return false;
+  return entry.contentVersion >= (cluster.contentVersion || 1);
+}
+
+function isClusterUpdatedSinceRead(cluster) {
+  const entry = readState[cluster.id];
+  if (!entry) return false;
+  return (cluster.contentVersion || 1) > entry.contentVersion;
+}
+
+function markClusterRead(cluster) {
+  readState[cluster.id] = { contentVersion: cluster.contentVersion || 1, at: Date.now() };
+  saveReadState();
+}
 
 function formatDate(dateStr) {
   try {
@@ -53,6 +81,7 @@ function renderArticle(cluster, settings) {
   const category = cluster.category || 'Other';
   const headline = cluster.headline || 'Untitled';
   const summary = cluster.summary || '';
+  const wasUpdated = isClusterUpdatedSinceRead(cluster);
 
   const linksHtml = (cluster.stories || []).map(s => {
     const sourceHtml = settings.showSource && s.source
@@ -62,16 +91,19 @@ function renderArticle(cluster, settings) {
 
   const article = document.createElement('article');
   article.className = 'article';
+  article.dataset.clusterId = cluster.id;
   article.dataset.headline = headline.toLowerCase();
   article.dataset.summary = summary.toLowerCase();
   article.dataset.category = category.toLowerCase();
+  if (wasUpdated) article.classList.add('has-updates');
 
   article.innerHTML = `
-    <div class="article-category">${category}</div>
+    <div class="article-category">${category}${wasUpdated ? ' <span class="updated-badge">updated</span>' : ''}</div>
     <h2 class="article-headline">${headline}</h2>
     <p class="article-summary">${summary}</p>
     <div class="article-meta">
       <span class="article-story-count">${storyCount} source${storyCount !== 1 ? 's' : ''}</span>
+      <button class="mark-read-btn" title="Mark as read">✓</button>
     </div>
     <div class="story-links${settings.expandAll ? ' expanded' : ''}">
       <ul>${linksHtml}</ul>
@@ -84,6 +116,19 @@ function renderArticle(cluster, settings) {
     links.classList.toggle('expanded');
   });
 
+  const readBtn = article.querySelector('.mark-read-btn');
+  readBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    markClusterRead(cluster);
+    article.classList.remove('has-updates');
+    article.classList.add('is-read');
+    setTimeout(() => {
+      if (!currentSettings.showUpdated || !isClusterUpdatedSinceRead(cluster)) {
+        article.classList.add('hidden');
+      }
+    }, 300);
+  });
+
   return article;
 }
 
@@ -91,15 +136,26 @@ function renderDigest(digest, settings) {
   const sheet = document.getElementById('broadsheet');
   sheet.innerHTML = '';
 
-  const clusters = sortClusters(digest.clusters || [], settings.sort);
+  const allClusters = sortClusters(digest.clusters || [], settings.sort);
 
-  if (!clusters.length) {
+  if (!allClusters.length) {
     sheet.innerHTML = '<div class="loading">No news available yet. Check back later.</div>';
     return;
   }
 
+  const visible = allClusters.filter(c => {
+    if (!isClusterRead(c)) return true;
+    if (settings.showUpdated && isClusterUpdatedSinceRead(c)) return true;
+    return false;
+  });
+
+  if (!visible.length) {
+    sheet.innerHTML = '<div class="loading">All caught up. Toggle "Show updated" in settings to see stories with new information.</div>';
+    return;
+  }
+
   const fragment = document.createDocumentFragment();
-  for (const cluster of clusters) {
+  for (const cluster of visible) {
     fragment.appendChild(renderArticle(cluster, settings));
   }
   sheet.appendChild(fragment);
@@ -131,6 +187,7 @@ function initSettings() {
   const sortSelect = document.getElementById('setting-sort');
   const showSourceCheck = document.getElementById('setting-showsource');
   const expandAllCheck = document.getElementById('setting-expandall');
+  const showUpdatedCheck = document.getElementById('setting-showupdated');
 
   function syncControls() {
     fontsizeSelect.value = currentSettings.fontsize;
@@ -138,6 +195,7 @@ function initSettings() {
     sortSelect.value = currentSettings.sort;
     showSourceCheck.checked = currentSettings.showSource;
     expandAllCheck.checked = currentSettings.expandAll;
+    showUpdatedCheck.checked = currentSettings.showUpdated;
   }
 
   function update() {
@@ -146,7 +204,8 @@ function initSettings() {
       columns: columnsSelect.value,
       sort: sortSelect.value,
       showSource: showSourceCheck.checked,
-      expandAll: expandAllCheck.checked
+      expandAll: expandAllCheck.checked,
+      showUpdated: showUpdatedCheck.checked
     };
     saveSettings(currentSettings);
     applySettings(currentSettings);
@@ -158,7 +217,7 @@ function initSettings() {
   close.addEventListener('click', () => panel.classList.add('hidden'));
 
   [fontsizeSelect, columnsSelect, sortSelect].forEach(el => el.addEventListener('change', update));
-  [showSourceCheck, expandAllCheck].forEach(el => el.addEventListener('change', update));
+  [showSourceCheck, expandAllCheck, showUpdatedCheck].forEach(el => el.addEventListener('change', update));
 
   syncControls();
   applySettings(currentSettings);

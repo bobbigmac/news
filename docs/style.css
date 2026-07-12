@@ -299,3 +299,48 @@ body.font-large { font-size: 18px; }
   .settings-toggle { position: static; margin-top: 0.5rem; }
   .settings-panel { width: 100%; }
 }
+
+/* Mark-read button */
+.mark-read-btn {
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.7rem;
+  padding: 0.1rem 0.35rem;
+  cursor: pointer;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.article:hover .mark-read-btn { opacity: 0.6; }
+.mark-read-btn:hover { opacity: 1; color: var(--ink); border-color: var(--ink); }
+
+.article.is-read {
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+/* Updated badge */
+.updated-badge {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  padding: 0.05rem 0.3rem;
+  border-radius: 2px;
+  margin-left: 0.3rem;
+}
+
+.article.has-updates .article-headline::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent, #c44);
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}

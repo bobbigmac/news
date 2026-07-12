@@ -1,12 +1,12 @@
-import { writeFileSync, readFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'fs';
+import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
 
 const API_BASE_URL = 'https://api.currentsapi.services/v1';
 const CACHE_DIR = 'cache';
 const CACHE_FILE = join(CACHE_DIR, 'currents-api.json');
 const CACHE_TTL_MS = 6 * 60 * 60 * 1000;
-const NEWS_DIR = 'news';
-const MAX_STORIES = 200;
+const STORY_STORE_FILE = join(CACHE_DIR, 'stories.json');
+const RETENTION_DAYS = 30;
 const PLUGINS_FILE = 'search-plugins.json';
 const RUN_STATE_FILE = join(CACHE_DIR, 'run-state.json');
 const DAILY_QUOTA = 20;
@@ -23,7 +23,7 @@ function loadEnv() {
 }
 loadEnv();
 
-const API_KEY = process.env.currentsapi_services_key || process.env.CURRENTSAPI_SERVICES_KEY || '';
+const API_KEY = process.env.CURRENTSAPI_SERVICES_KEY || '';
 if (!API_KEY) { console.error('No API key found in .env or env'); process.exit(1); }
 
 function readCache() {
@@ -165,67 +165,42 @@ async function fetchLatestNews() {
   return news;
 }
 
-function generateSlug(title) {
-  return title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim().substring(0, 60);
+function loadStoryStore() {
+  if (!existsSync(STORY_STORE_FILE)) return { stories: {} };
+  try { return JSON.parse(readFileSync(STORY_STORE_FILE, 'utf8')); } catch { return { stories: {} }; }
 }
 
-function loadProcessedIds() {
-  const idsFile = join(CACHE_DIR, 'processed-ids.json');
-  if (!existsSync(idsFile)) return new Set();
-  try { return new Set(JSON.parse(readFileSync(idsFile, 'utf8'))); } catch { return new Set(); }
-}
-
-function saveProcessedIds(ids) {
+function saveStoryStore(store) {
   mkdirSync(CACHE_DIR, { recursive: true });
-  writeFileSync(join(CACHE_DIR, 'processed-ids.json'), JSON.stringify([...ids], null, 2));
+  writeFileSync(STORY_STORE_FILE, JSON.stringify(store, null, 2));
 }
 
-function loadExistingStories() {
-  if (!existsSync(NEWS_DIR)) return new Map();
-  const map = new Map();
-  for (const file of readdirSync(NEWS_DIR)) {
-    if (!file.endsWith('.md')) continue;
-    try {
-      const content = readFileSync(join(NEWS_DIR, file), 'utf8');
-      const idMatch = content.match(/story_id:\s*"([^"]+)"/);
-      if (idMatch) map.set(idMatch[1], { file, content, slug: file.replace('.md', '') });
-    } catch {}
+function pruneOldStories(store) {
+  const cutoff = Date.now() - RETENTION_DAYS * 24 * 60 * 60 * 1000;
+  let pruned = 0;
+  for (const id of Object.keys(store.stories)) {
+    const s = store.stories[id];
+    const lastSeen = new Date(s.lastSeen || s.firstSeen || 0).getTime();
+    if (lastSeen < cutoff) { delete store.stories[id]; pruned++; }
   }
-  return map;
+  if (pruned) console.log(`Pruned ${pruned} stories older than ${RETENTION_DAYS} days`);
 }
 
-function newsToMarkdown(item) {
-  const date = new Date(item.published).toISOString().split('T')[0];
-  const slug = generateSlug(item.title);
-  const category = (item.category || 'General').toString();
-  const tags = [category.toLowerCase()];
-  if (item.keywords) item.keywords.split(',').slice(0, 3).forEach(k => { const t = k.trim().toLowerCase(); if (t) tags.push(t); });
-  const esc = (s) => (s || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-  const summary = item.description ? item.description.replace(/\r/g, '').replace(/\n+/g, ' ').trim() : '';
-  const yaml = [
-    '---',
-    `title: "${esc(item.title)}"`,
-    `published_date: "${date}"`,
-    `summary: "${esc(summary)}"`,
-    `category: "${category.charAt(0).toUpperCase() + category.slice(1)}"`,
-    `tags: ${JSON.stringify(tags)}`,
-    `story_id: "${item.id || ''}"`,
-    item.image ? `image: "${esc(item.image)}"` : null,
-    `source: "${esc(item.author || item.source || '')}"`,
-    `external_links:`,
-    `  - title: "Read full article"`,
-    `    url: "${esc(item.url || '')}"`,
-    '---',
-    '',
-    `# ${item.title}`,
-    '',
-    item.description || '',
-    '',
-    item.content || '',
-    '---',
-    ''
-  ].filter(Boolean).join('\n');
-  return { slug, markdown: yaml, storyId: item.id };
+function normalizeStory(item) {
+  return {
+    id: item.id,
+    title: item.title || '',
+    description: item.description || '',
+    content: item.content || '',
+    url: item.url || '',
+    image: item.image || '',
+    source: item.author || item.source || '',
+    published: item.published || '',
+    category: item.category || 'General',
+    keywords: item.keywords || '',
+    plugin: item._plugin || null,
+    pluginPriority: item._pluginPriority ?? null
+  };
 }
 
 async function main() {
@@ -241,8 +216,6 @@ async function main() {
   // Run search plugins (budget-aware)
   const pluginResults = await runSearchPlugins(runState);
   if (pluginResults.length) {
-    const pluginIds = new Set(pluginResults.map(r => r.id).filter(Boolean));
-    for (const item of newsItems) pluginIds.delete(item.id);
     const unique = pluginResults.filter(r => r.id && !newsItems.some(n => n.id === r.id));
     newsItems.push(...unique);
     console.log(`Plugins contributed ${unique.length} unique stories`);
@@ -250,63 +223,42 @@ async function main() {
 
   saveRunState(runState);
 
-  const existing = loadExistingStories();
-  const processedIds = loadProcessedIds();
-  const keepIds = new Set();
-  const newRaw = [];
-  const updatedRaw = [];
+  // Update story store
+  const store = loadStoryStore();
+  pruneOldStories(store);
+
+  const now = new Date().toISOString();
+  const newForSummariser = [];
 
   for (const item of newsItems) {
     if (!item.id) continue;
-    keepIds.add(item.id);
-    if (existing.has(item.id)) {
-      if (processedIds.has(item.id)) continue;
-      updatedRaw.push(item);
+    const existing = store.stories[item.id];
+    const normalized = normalizeStory(item);
+
+    if (existing) {
+      // Check if content actually changed
+      const changed = existing.title !== normalized.title ||
+        existing.description !== normalized.description ||
+        existing.content !== normalized.content;
+      if (changed) {
+        store.stories[item.id] = { ...normalized, firstSeen: existing.firstSeen, lastSeen: now, lastUpdated: now };
+        newForSummariser.push({ ...store.stories[item.id], _updated: true });
+      } else {
+        store.stories[item.id] = { ...existing, lastSeen: now };
+      }
     } else {
-      newRaw.push(item);
+      store.stories[item.id] = { ...normalized, firstSeen: now, lastSeen: now, lastUpdated: now };
+      newForSummariser.push(store.stories[item.id]);
     }
   }
 
-  // Archive stories no longer in feed
-  for (const [id, story] of existing) {
-    if (!keepIds.has(id) && !story.content.includes('archived: true')) {
-      writeFileSync(join(NEWS_DIR, story.file), story.content.replace('story_id:', 'archived: true\nstory_id:'));
-      console.log(`Archived: ${story.file}`);
-    }
-  }
+  saveStoryStore(store);
 
-  // Write new + updated markdown
-  let written = 0;
-  for (const item of [...newRaw, ...updatedRaw]) {
-    const { slug, markdown } = newsToMarkdown(item);
-    writeFileSync(join(NEWS_DIR, `${slug}.md`), markdown);
-    written++;
-  }
-
-  // Save raw JSON for summarise.js to consume
-  const rawForSummariser = [...newRaw, ...updatedRaw].map(item => ({
-    id: item.id, title: item.title, description: item.description || '',
-    content: item.content || '', url: item.url || '', image: item.image || '',
-    source: item.author || item.source || '', published: item.published,
-    category: item.category || 'General', keywords: item.keywords || '',
-    plugin: item._plugin || null, pluginPriority: item._pluginPriority ?? null
-  }));
+  // Write new/updated stories for summarise.js
   mkdirSync(CACHE_DIR, { recursive: true });
-  writeFileSync(join(CACHE_DIR, 'raw-new.json'), JSON.stringify(rawForSummariser, null, 2));
+  writeFileSync(join(CACHE_DIR, 'raw-new.json'), JSON.stringify(newForSummariser, null, 2));
 
-  // Update processed IDs (only items we actually wrote)
-  for (const item of [...newRaw, ...updatedRaw]) processedIds.add(item.id);
-  saveProcessedIds(processedIds);
-
-  // Cleanup old stories
-  if (existing.size + newRaw.length > MAX_STORIES) {
-    for (const [id, story] of existing) {
-      if (!keepIds.has(id)) { try { unlinkSync(join(NEWS_DIR, story.file)); } catch {} }
-    }
-  }
-
-  console.log(`Done. ${newRaw.length} new, ${updatedRaw.length} updated, ${written} files written.`);
-  console.log(`Raw for summariser: ${rawForSummariser.length} items in cache/raw-new.json`);
+  console.log(`Done. ${Object.keys(store.stories).length} stories in store, ${newForSummariser.length} new/updated for summariser.`);
 }
 
 main().catch(err => { console.error(err); process.exit(1); });

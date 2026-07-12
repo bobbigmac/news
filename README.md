@@ -1,89 +1,97 @@
-# World News
+# The Daily Broadsheet
 
-A clean, ad-free news site focused on major world stories. No clickbait, no fluff, just the facts you need to know. Built for GitHub Pages with automatic deployment via GitHub Actions.
+An automated, ad-free news digest that fetches stories from the [Currents API](https://currentsapi.services), de-clickbaitifies headlines, clusters related coverage, and summarises it all via [OpenRouter](https://openrouter.ai) LLMs. The result is a single-page broadsheet newspaper — no clickbait, no infinite scroll, no engagement metrics, just the news.
 
-## Adding News Stories
+## How It Works
 
-Drop a new `story-name.md` in `/news/` with:
+Three scripts run in sequence, n times daily via GitHub Actions:
 
-```md
----
-title: "Story Title"
-published_date: "2024-01-15"
-summary: "Brief summary of the story for the homepage"
-category: "Politics"
-tags: ["elections", "democracy", "international"]
-image: "/assets/images/story-image.jpg"
-external_links:
-  - title: "Related Article"
-    url: "https://example.com/article"
----
+1. **`fetch-news.js`** — Pulls latest English-language news (general + UK-specific) from Currents API. Runs optional search plugins for topic-specific queries (local news, gaming, etc.) using spare API quota. Deduplicates and stores stories in a JSON datastore with 30-day retention.
 
-# Story Title
+2. **`summarise.js`** — Sends new/updated stories to a free OpenRouter LLM in chunks. The LLM de-clickbaits headlines, clusters related stories together, and writes concise summaries. Falls back through multiple free models on rate limits.
 
-## Overview
+3. **`build.js`** — Reads the digest and writes static files (`index.html`, `app.js`, `style.css`, `digest.json`) to `docs/` for GitHub Pages.
 
-Your story content here...
+## Search Plugins
 
-## Key Developments
+Defined in `search-plugins.json`. Each plugin specifies keywords (pipe-separated, ordered by priority) and optional country/language filters. Plugins run using spare API quota after fixed calls, round-robin based on last-run time so all plugins get fair coverage.
 
-More content...
-
-## Analysis
-
-Further analysis...
+```json
+[
+  {
+    "name": "local-news",
+    "keywords": "longsight|levenshulme|gorton|manchester",
+    "country": "gb",
+    "language": "en",
+    "description": "Local Manchester news"
+  }
+]
 ```
 
-Push to main → GitHub Action builds and deploys automatically.
+Keyword order matters — stories matching the first term surface higher, last term lower.
 
-## Story Front Matter
+## API Quota Management
 
-- `title`: The story headline
-- `published_date`: When the story was first published (YYYY-MM-DD)
-- `summary`: Brief description for homepage cards
-- `category`: Story category (Politics, Technology, etc.)
-- `tags`: Array of relevant tags for search
-- `image`: Optional featured image URL
-- `external_links`: Array of related external links
+- Currents API allows 20 queries/day
+- 3 runs/day × 2 fixed calls = 6 queries reserved for general + UK news
+- Remaining 14 queries spread across plugins, with budget reserved for future fixed calls each day
+- Run state tracked in `cache/run-state.json` (reset daily)
+
+## Client Features
+
+- **Broadsheet layout**: Newspaper-style columns with serif typography
+- **Mark as read**: Hover and click ✓ to dismiss stories from the feed (stored in localStorage, no accounts)
+- **Show updated toggle**: Resurfaces read stories that have new information since you last saw them
+- **Search**: Real-time filtering across headlines, summaries, and categories
+- **Settings**: Font size, column count, sort order, source visibility, expand all links — all persisted locally
+- **No dark patterns**: No unread counts, no badges, no engagement baiting
 
 ## Setup
 
-1. `npm ci` → `npm run build` locally
-2. Push to main
-3. Configure GitHub Pages to deploy from Actions workflow
+### Prerequisites
+- Node.js 18+
+- A `.env` file with:
+  ```
+  currentsapi_services_key=your_key
+  openrouter_api_key=your_key
+  ```
 
-# Features
+### Local Development
+```bash
+npm ci
+npm run dev    # fetch + summarise + build + serve
+```
 
-## 🚀 Current Features
+Or run individual steps:
+```bash
+npm run fetch-news
+npm run summarise
+npm run build
+npm run watch  # serve docs/ with live reload
+```
 
-### News Management
-- **Story Cards**: Clean homepage with story panels
-- **Search & Filter**: Real-time search across titles, content, and tags
-- **Categories**: Organize stories by topic
-- **Living Documents**: Update stories as events develop
+### GitHub Actions Deployment
+1. Push to `main`
+2. Set repository secrets: `CURRENTSAPI_SERVICES_KEY`, `OPENROUTER_API_KEY`
+3. Enable GitHub Pages (deploy from Actions)
+4. The workflow runs on push and on schedule (3x daily)
 
-### User Experience
-- **Responsive Design**: Works on all devices
-- **Clean Typography**: Easy to read news content
-- **No Ads**: Distraction-free reading experience
-- **Fast Loading**: Static site generation
+## Project Structure
 
-## 📋 Development Tasks
+```
+scripts/
+  fetch-news.js    # API fetching, plugins, story store
+  summarise.js     # LLM clustering & summarisation
+  build.js         # Static site generation
+src/
+  index.html       # Broadsheet layout
+  style.css        # Newspaper aesthetic
+  app.js           # Client-side rendering, read state, settings
+search-plugins.json  # Plugin definitions
+cache/               # Story store, digest, run state (gitignored)
+docs/                # Built output for GitHub Pages (gitignored)
+```
 
-### Phase 2: Enhanced Features
-1. Add story images and media support
-2. Implement story categories and filtering
-3. Add social sharing functionality
-4. Create RSS feed generation
+## License
 
-### Phase 3: Advanced Features
-1. Add story timestamps and update tracking
-2. Implement related stories suggestions
-3. Add dark mode support
-4. Create story archives by date
-
-### Phase 4: Scale & Optimize
-1. Add service worker for offline access
-2. Generate SEO files (sitemap, robots.txt)
-3. Implement analytics (privacy-focused)
-4. Add story submission workflow
+DBAD (Do Whatever You Want, Just Don't Be A Dick)

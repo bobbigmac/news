@@ -1,22 +1,30 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
+import { SYSTEM_PROMPT, buildUserPrompt } from './prompts.js';
 
 const CACHE_DIR = 'cache';
 const RAW_FILE = join(CACHE_DIR, 'raw-new.json');
 const DIGEST_FILE = join(CACHE_DIR, 'digest.json');
 const SUMMARISED_IDS_FILE = join(CACHE_DIR, 'summarised-ids.json');
 
-const OPENROUTER_BASE = 'https://openrouter.ai/api/v1';
-const FREE_MODELS = [
-  process.env.OPENROUTER_MODEL || 'openrouter/free',
-  'meta-llama/llama-3.3-70b-instruct:free',
-  'qwen/qwen3-next-80b-a3b-instruct:free',
-  'openai/gpt-oss-120b:free',
-  'openai/gpt-oss-20b:free',
-  'google/gemma-4-31b-it:free',
-  'nvidia/nemotron-3-nano-30b-a3b:free',
-].filter(Boolean);
-let currentModelIndex = 0;
+const MAX_RETRIES = 8;
+const BASE_DELAY_MS = 3000;
+const MAX_DELAY_MS = 15000;
+
+const PROVIDERS = [
+  { name: 'OpenRouter', keyEnv: 'OPENROUTER_API_KEY', baseUrl: 'https://openrouter.ai/api/v1', model: process.env.OPENROUTER_MODEL || 'openrouter/free', headers: (key) => ({ 'Authorization': `Bearer ${key}`, 'HTTP-Referer': 'https://github.com/bobbigmac/news', 'X-Title': 'News Dashboard' }) },
+  { name: 'Featherless', keyEnv: 'FEATHERLESS_API_KEY', baseUrl: 'https://api.featherless.ai/v1', model: process.env.FEATHERLESS_MODEL || 'meta-llama/Llama-3.3-70B-Instruct', headers: (key) => ({ 'Authorization': `Bearer ${key}` }) },
+  { name: 'OpenAI', keyEnv: 'OPENAI_API_KEY', baseUrl: 'https://api.openai.com/v1', model: process.env.OPENAI_MODEL || 'gpt-4o-mini', headers: (key) => ({ 'Authorization': `Bearer ${key}` }) },
+];
+
+const PROVIDER = PROVIDERS.find(p => process.env[p.keyEnv]);
+if (!PROVIDER) {
+  console.error('No LLM API key found. Set one of: OPENROUTER_API_KEY, FEATHERLESS_API_KEY, OPENAI_API_KEY');
+  process.exit(0);
+}
+const API_KEY = process.env[PROVIDER.keyEnv];
+const LLM_BASE = PROVIDER.baseUrl;
+const MODEL = PROVIDER.model;
 
 const CHUNK_MAX_STORIES = 12;
 const CHUNK_MAX_CHARS = 12000;
@@ -33,8 +41,6 @@ function loadEnv() {
 }
 loadEnv();
 
-const API_KEY = process.env.openrouter_api_key || process.env.OPENROUTER_API_KEY || '';
-if (!API_KEY) { console.error('No OPENROUTER_API_KEY found. Skipping summarisation.'); process.exit(0); }
 
 function loadJson(path, fallback) {
   if (!existsSync(path)) return fallback;
@@ -91,50 +97,18 @@ function buildChunks(stories) {
   return chunks;
 }
 
-const SYSTEM_PROMPT = `You are a news editor for a serious broadsheet newspaper. Your job is to take raw news stories and produce a clean, non-sensational news digest.
-
-Rules:
-1. Group related stories together into clusters. Stories about the same event or topic go in one cluster.
-2. For each cluster, write a SHORT factual headline (max 8 words). No clickbait, no sensationalism, no question marks. Just the facts.
-3. Write a SUMMARY of 2-4 sentences in block text. State the key facts clearly. Do NOT repeat information. Do NOT use phrases like "according to reports" or "it is said". Be direct.
-4. Assign a CATEGORY from: Politics, Business, Technology, Science, Health, World, Sports, Entertainment, Environment, Other.
-5. List the story IDs that belong to each cluster.
-
-Respond ONLY with valid JSON in this exact format:
-{
-  "clusters": [
-    {
-      "headline": "Short factual headline",
-      "summary": "2-4 sentences of block text facts.",
-      "category": "Politics",
-      "story_ids": ["id1", "id2"]
-    }
-  ]
-}`;
-
-function buildUserPrompt(chunk) {
-  const storyLines = chunk.map((s, i) =>
-    `[${i + 1}] ID: ${s.id}\n    Title: ${s.originalTitle}\n    Source: ${s.source}\n    Content: ${s.text}`
-  ).join('\n\n');
-
-  return `Here are ${chunk.length} news stories. Group related ones together, write factual headlines and summaries.\n\n${storyLines}`;
-}
-
-async function callOpenRouter(prompt, retries = 3) {
+async function callOpenRouter(prompt) {
   let lastError = null;
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    const model = FREE_MODELS[currentModelIndex % FREE_MODELS.length];
+  for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
     try {
-      const res = await fetch(`${OPENROUTER_BASE}/chat/completions`, {
+      const res = await fetch(`${LLM_BASE}/chat/completions`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${API_KEY}`,
+          ...PROVIDER.headers(API_KEY),
           'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://github.com/bobbigmac/news',
-          'X-Title': 'News Dashboard'
         },
         body: JSON.stringify({
-          model,
+          model: MODEL,
           messages: [
             { role: 'system', content: SYSTEM_PROMPT },
             { role: 'user', content: prompt }
@@ -147,38 +121,25 @@ async function callOpenRouter(prompt, retries = 3) {
       if (!res.ok) {
         const errText = await res.text();
         lastError = new Error(`OpenRouter ${res.status}: ${errText.substring(0, 200)}`);
-        console.log(`  Model ${model} error: ${res.status}`);
-        if (currentModelIndex < FREE_MODELS.length - 1) {
-          currentModelIndex++;
-          continue;
-        }
-        if (attempt < retries) {
-          const wait = 5000 * (attempt + 1);
-          console.log(`  All models tried, waiting ${wait / 1000}s before retry...`);
-          currentModelIndex = 0;
-          await new Promise(r => setTimeout(r, wait));
-          continue;
-        }
-        throw lastError;
+        const retryable = res.status === 429 || res.status === 503 || res.status === 502;
+        if (!retryable) throw lastError;
+        const delay = Math.min(BASE_DELAY_MS * Math.pow(1.5, attempt), MAX_DELAY_MS);
+        console.log(`  ${res.status} — retrying in ${Math.round(delay / 1000)}s (attempt ${attempt + 1}/${MAX_RETRIES})`);
+        await new Promise(r => setTimeout(r, delay));
+        continue;
       }
 
       const data = await res.json();
       const text = data.choices?.[0]?.message?.content;
       if (!text) throw new Error('Empty response from LLM');
-      console.log(`  Success with model: ${model}`);
+      console.log(`  Success (${MODEL})`);
       return text;
     } catch (err) {
       lastError = err;
-      if (currentModelIndex < FREE_MODELS.length - 1) {
-        currentModelIndex++;
-        console.log(`  Trying next model: ${FREE_MODELS[currentModelIndex]}...`);
-        continue;
-      }
-      if (attempt < retries) {
-        const wait = 3000 * (attempt + 1);
-        console.log(`  Attempt ${attempt + 1} failed, waiting ${wait / 1000}s...`);
-        currentModelIndex = 0;
-        await new Promise(r => setTimeout(r, wait));
+      if (attempt < MAX_RETRIES - 1) {
+        const delay = Math.min(BASE_DELAY_MS * Math.pow(1.5, attempt), MAX_DELAY_MS);
+        console.log(`  Error: ${err.message} — retrying in ${Math.round(delay / 1000)}s (attempt ${attempt + 1}/${MAX_RETRIES})`);
+        await new Promise(r => setTimeout(r, delay));
         continue;
       }
       throw err;
@@ -256,12 +217,18 @@ function mergeClusters(newClusters, chunkStories, digest) {
           added++;
         }
       }
-      // Update headline/summary if the new one is better/different
+      // Update headline/summary if the new one is different
+      let contentChanged = false;
       if (cluster.headline && cluster.headline !== existingCluster.headline) {
         existingCluster.headline = cluster.headline;
+        contentChanged = true;
       }
       if (cluster.summary && cluster.summary !== existingCluster.summary) {
         existingCluster.summary = cluster.summary;
+        contentChanged = true;
+      }
+      if (contentChanged || stories.some(s => s._updated)) {
+        existingCluster.contentVersion = (existingCluster.contentVersion || 0) + 1;
       }
       existingCluster.updated = new Date().toISOString();
       updated++;
@@ -274,7 +241,8 @@ function mergeClusters(newClusters, chunkStories, digest) {
         category: cluster.category || 'Other',
         stories: storyData,
         created: new Date().toISOString(),
-        updated: new Date().toISOString()
+        updated: new Date().toISOString(),
+        contentVersion: 1
       });
       added += storyData.length;
     }
@@ -285,7 +253,7 @@ function mergeClusters(newClusters, chunkStories, digest) {
 
 async function main() {
   console.log('=== Summarise News ===');
-  console.log(`Models: ${FREE_MODELS.join(', ')}`);
+  console.log(`Provider: ${PROVIDER.name} | Model: ${MODEL}`);
 
   const rawStories = loadJson(RAW_FILE, []);
   if (!rawStories.length) {
