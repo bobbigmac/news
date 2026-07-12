@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
-import { SYSTEM_PROMPT, buildUserPrompt } from './prompts.js';
+import { SYSTEM_PROMPT, buildUpdatePrompt, buildNewPrompt, buildAllocatePrompt } from './prompts.js';
 import { extractJson } from './extract-json.js';
 
 const CACHE_DIR = 'cache';
@@ -9,9 +9,10 @@ const DIGEST_FILE = join(CACHE_DIR, 'digest.json');
 const SUMMARISED_IDS_FILE = join(CACHE_DIR, 'summarised-ids.json');
 const RUN_LOG_FILE = join(CACHE_DIR, 'run-log.json');
 
-const MAX_RETRIES = 3;
-const BASE_DELAY_MS = 3000;
-const MAX_DELAY_MS = 15000;
+const MAX_RETRIES = 5;
+const BASE_DELAY_MS = 5000;
+const MAX_DELAY_MS = 60000;
+const INTER_TRANCHE_DELAY_MS = 3000; // pause between tranches to avoid rate limiting
 
 function loadEnv() {
   const envPath = join(process.cwd(), '.env');
@@ -112,7 +113,7 @@ function buildTranches(stories, existingClusters) {
     cat: normaliseCategory(s.category),
   }));
 
-  // Pre-compute keywords for existing clusters
+  // Pre-compute data for existing clusters
   const clusterData = (existingClusters || []).map(c => ({
     cluster: c,
     keywords: extractKeywords(c.headline + ' ' + (c.summary || '')),
@@ -121,6 +122,7 @@ function buildTranches(stories, existingClusters) {
   }));
 
   // Step 1: Match stories to existing clusters
+  // Trigger word hit = confident match. High keyword overlap = confident match.
   const matchedToCluster = new Map(); // clusterId -> [storyData]
   const unmatched = [];
 
@@ -130,11 +132,11 @@ function buildTranches(stories, existingClusters) {
     const storyText = (sd.story.title + ' ' + sd.story.description + ' ' + sd.story.content).toLowerCase();
 
     for (const cd of clusterData) {
-      // Trigger word match — strong signal, any hit is enough
+      // Trigger word match — strong signal
       if (cd.triggerWords.length) {
-        const triggerHit = cd.triggerWords.some(tw => storyText.includes(tw));
-        if (triggerHit) {
-          const score = 100; // trigger words trump everything
+        const triggerHits = cd.triggerWords.filter(tw => storyText.includes(tw));
+        if (triggerHits.length) {
+          const score = 100 + triggerHits.length * 10;
           if (score > bestScore) {
             bestScore = score;
             bestMatch = cd.cluster;
@@ -143,11 +145,11 @@ function buildTranches(stories, existingClusters) {
         }
       }
 
-      // Keyword overlap fallback
+      // Keyword overlap fallback — need decent overlap to be confident
       const catBonus = sd.cat === cd.cat ? 2 : 0;
       const overlap = keywordOverlap(sd.keywords, cd.keywords);
       const score = overlap + catBonus;
-      if (score > bestScore && overlap >= 2) {
+      if (score > bestScore && overlap >= 3) {
         bestScore = score;
         bestMatch = cd.cluster;
       }
@@ -161,9 +163,12 @@ function buildTranches(stories, existingClusters) {
     }
   }
 
-  console.log(`Heuristic matching: ${storyData.length - unmatched.length} stories matched to existing clusters, ${unmatched.length} unmatched`);
+  const matchedCount = [...matchedToCluster.values()].reduce((s, v) => s + v.length, 0);
+  console.log(`Heuristic matching: ${matchedCount} stories matched to existing clusters, ${unmatched.length} unmatched`);
 
-  // Step 2: Group unmatched stories with each other by keyword overlap
+  // Step 2: Group unmatched stories by keyword overlap
+  // Groups of 2+ with good overlap = confident new groups
+  // Singletons (no overlap with anything) = need LLM allocation
   const groups = [];
   const used = new Set();
 
@@ -185,61 +190,68 @@ function buildTranches(stories, existingClusters) {
     groups.push(group);
   }
 
-  console.log(`Unmatched stories grouped into ${groups.length} topic groups`);
+  const confidentNewGroups = groups.filter(g => g.length >= 2);
+  const singletons = groups.filter(g => g.length === 1).map(g => g[0]);
+  console.log(`Unmatched: ${confidentNewGroups.length} confident new groups (${confidentNewGroups.reduce((s,g)=>s+g.length,0)} stories), ${singletons.length} singletons for allocation`);
 
-  // Step 3: Build tranches — concatenate multiple groups into larger batches
-  const TRANCHE_MAX_STORIES = 10;
+  // Step 3: Build typed tranches
   const tranches = [];
-  let current = [];
-  let currentChars = 0;
-  let currentClusters = [];
 
-  const flushTranche = () => {
-    if (current.length > 0) {
-      tranches.push({
-        stories: current,
-        matchedClusters: currentClusters,
-      });
-      current = [];
-      currentChars = 0;
-      currentClusters = [];
-    }
-  };
-
-  // Add matched groups first — each group contributes its cluster as context
+  // Update tranches — stories confidently matched to an existing cluster
   for (const [clusterId, sds] of matchedToCluster) {
     const cluster = existingClusters.find(c => c.id === clusterId);
     const prepared = sds.map(sd => prepareStoryForLLM(sd.story));
-
-    for (const p of prepared) {
-      if (current.length >= TRANCHE_MAX_STORIES || (current.length > 0 && currentChars + p.text.length > CHUNK_MAX_CHARS)) {
-        flushTranche();
-      }
-      current.push(p);
-      currentChars += p.text.length;
-      if (cluster && !currentClusters.some(c => c.id === cluster.id)) {
-        currentClusters.push(cluster);
-      }
+    // Split if too many stories for one LLM call
+    for (let i = 0; i < prepared.length; i += CHUNK_MAX_STORIES) {
+      const chunk = prepared.slice(i, i + CHUNK_MAX_STORIES);
+      tranches.push({
+        type: 'update',
+        stories: chunk,
+        matchedCluster: cluster,
+      });
     }
   }
 
-  // Add unmatched groups
-  for (const group of groups) {
+  // New group tranches — confident heuristic groups of 2+ unmatched stories
+  for (const group of confidentNewGroups) {
     const prepared = group.map(sd => prepareStoryForLLM(sd.story));
+    tranches.push({
+      type: 'new',
+      stories: prepared,
+      matchedCluster: null,
+    });
+  }
 
-    for (const p of prepared) {
-      if (current.length >= TRANCHE_MAX_STORIES || (current.length > 0 && currentChars + p.text.length > CHUNK_MAX_CHARS)) {
-        flushTranche();
-      }
-      current.push(p);
-      currentChars += p.text.length;
+  // Allocation tranches — singletons sent with existing cluster headlines for LLM to assign
+  // Only do this if there are existing clusters with trigger words to match against
+  const allocatableClusters = (existingClusters || [])
+    .filter(c => c.triggerWords && c.triggerWords.length)
+    .map(c => ({ id: c.id, headline: c.headline, triggerWords: c.triggerWords, category: c.category }));
+
+  if (singletons.length && allocatableClusters.length) {
+    // Batch singletons into tranches of up to CHUNK_MAX_STORIES
+    const prepared = singletons.map(sd => prepareStoryForLLM(sd.story));
+    for (let i = 0; i < prepared.length; i += CHUNK_MAX_STORIES) {
+      const chunk = prepared.slice(i, i + CHUNK_MAX_STORIES);
+      tranches.push({
+        type: 'allocate',
+        stories: chunk,
+        candidates: allocatableClusters,
+      });
+    }
+  } else if (singletons.length) {
+    // No existing clusters to match against — treat singletons as new groups
+    for (const sd of singletons) {
+      const prepared = prepareStoryForLLM(sd.story);
+      tranches.push({
+        type: 'new',
+        stories: [prepared],
+        matchedCluster: null,
+      });
     }
   }
 
-  flushTranche();
-
-  const matchedCount = [...matchedToCluster.values()].reduce((s, v) => s + v.length, 0);
-  console.log(`Built ${tranches.length} tranches (${matchedCount} matched, ${unmatched.length} new)`);
+  console.log(`Built ${tranches.length} tranches: ${tranches.filter(t=>t.type==='update').length} update, ${tranches.filter(t=>t.type==='new').length} new, ${tranches.filter(t=>t.type==='allocate').length} allocate`);
   return tranches;
 }
 
@@ -313,10 +325,61 @@ function findClusterForStory(digest, storyId) {
   return digest.clusters.find(c => c.stories?.some(s => s.id === storyId));
 }
 
+function consolidateClusters(digest) {
+  let merged = 0;
+  let changed = true;
+
+  while (changed) {
+    changed = false;
+    for (let i = 0; i < digest.clusters.length; i++) {
+      const a = digest.clusters[i];
+      if (!a.triggerWords || !a.triggerWords.length) continue;
+
+      for (let j = i + 1; j < digest.clusters.length; j++) {
+        const b = digest.clusters[j];
+        if (!b.triggerWords || !b.triggerWords.length) continue;
+
+        // Check trigger word overlap (case-insensitive)
+        const aTriggers = new Set(a.triggerWords.map(w => w.toLowerCase()));
+        const bTriggers = new Set(b.triggerWords.map(w => w.toLowerCase()));
+        const overlap = [...aTriggers].filter(t => bTriggers.has(t));
+
+        if (overlap.length >= 1) {
+          // Merge b into a
+          const existingIds = new Set(a.stories.map(s => s.id));
+          for (const s of b.stories) {
+            if (!existingIds.has(s.id)) a.stories.push(s);
+          }
+          // Merge trigger words
+          const allTriggers = new Set([...aTriggers, ...bTriggers]);
+          a.triggerWords = [...allTriggers];
+          // Keep the more recent headline/summary
+          const aDate = a.updated || a.created || '';
+          const bDate = b.updated || b.created || '';
+          if (bDate > aDate) {
+            a.headline = b.headline;
+            a.summary = b.summary;
+          }
+          a.updated = new Date().toISOString();
+          // Remove b
+          digest.clusters.splice(j, 1);
+          merged++;
+          changed = true;
+          break;
+        }
+      }
+      if (changed) break;
+    }
+  }
+
+  return merged;
+}
+
 function mergeClusters(newClusters, chunkStories, digest) {
   const storyMap = new Map(chunkStories.map(s => [s.id, s]));
   let added = 0;
   let updated = 0;
+  const assignedIds = new Set(); // prevent same story in multiple clusters within one tranche
 
   for (const cluster of newClusters) {
     let ids = cluster.story_ids;
@@ -325,7 +388,11 @@ function mergeClusters(newClusters, chunkStories, digest) {
     if (!Array.isArray(ids)) ids = [String(ids)];
     if (!ids.length) continue;
 
-    const stories = ids
+    // Filter out IDs already assigned to another cluster in this tranche
+    const uniqueIds = ids.filter(id => !assignedIds.has(id));
+    uniqueIds.forEach(id => assignedIds.add(id));
+
+    const stories = uniqueIds
       .map(id => storyMap.get(id))
       .filter(Boolean);
 
@@ -403,6 +470,50 @@ function mergeClusters(newClusters, chunkStories, digest) {
   return { added, updated };
 }
 
+function makeStoryData(s) {
+  return {
+    id: s.id, title: s.originalTitle, source: s.source, sourceName: s.sourceName || '',
+    url: s.url, image: s.image || '', published: s.published,
+    category: normaliseCategory(Array.isArray(s.category) ? s.category[0] : (s.category || 'Other')),
+    plugin: s.plugin || null, pluginPriority: s.pluginPriority ?? null
+  };
+}
+
+function makeFallbackCluster(stories, headline) {
+  return {
+    id: `cluster-${Date.now()}-${Math.random().toString(36).substring(2, 8)}`,
+    headline: headline || stories[0]?.originalTitle || 'Untitled',
+    summary: stories[0]?.text?.slice(0, 200) || '',
+    category: normaliseCategory(Array.isArray(stories[0]?.category) ? stories[0].category[0] : (stories[0]?.category || 'Other')),
+    stories: stories.map(makeStoryData),
+    triggerWords: extractKeywords((headline || '') + ' ' + (stories[0]?.text || '')).slice(0, 5),
+    impact: 'medium',
+    created: new Date().toISOString(),
+    updated: new Date().toISOString(),
+    contentVersion: 1
+  };
+}
+
+function applyFallback(tranche, digest) {
+  if (tranche.type === 'update' && tranche.matchedCluster) {
+    const existingIds = new Set(tranche.matchedCluster.stories.map(s => s.id));
+    for (const s of tranche.stories) {
+      if (!existingIds.has(s.id)) tranche.matchedCluster.stories.push(makeStoryData(s));
+    }
+    tranche.matchedCluster.updated = new Date().toISOString();
+  } else {
+    const headline = tranche.stories[0]?.originalTitle || 'Untitled';
+    digest.clusters.push(makeFallbackCluster(tranche.stories, headline));
+  }
+}
+
+function countFallback(tranche) {
+  if (tranche.type === 'update' && tranche.matchedCluster) {
+    return { added: tranche.stories.length, updated: 1 };
+  }
+  return { added: tranche.stories.length, updated: 0 };
+}
+
 async function main() {
   console.log('=== Summarise News ===');
   console.log(`Provider: ${PROVIDER.name} | Model: ${MODEL}`);
@@ -458,86 +569,148 @@ async function main() {
   }
   if (metadataUpdated) console.log(`Updated metadata for ${metadataUpdated} existing stories`);
 
-  // Build tranches with heuristic pre-grouping
+  // Build typed tranches with heuristic pre-grouping
   const tranches = buildTranches(toProcess, digest.clusters);
-  console.log(`Built ${tranches.length} tranches from ${toProcess.length} stories`);
 
   // Process each tranche
   let totalAdded = 0;
   let totalUpdated = 0;
+  let chunksFailed = 0;
+
   for (let i = 0; i < tranches.length; i++) {
     const tranche = tranches[i];
-    const matchedInfo = tranche.matchedClusters && tranche.matchedClusters.length
-      ? `, matched: ${tranche.matchedClusters.map(c => c.headline).join(' | ')}`
-      : ', new';
-    console.log(`\nProcessing tranche ${i + 1}/${tranches.length} (${tranche.stories.length} stories${matchedInfo})`);
+    const typeLabel = tranche.type === 'update'
+      ? `update: ${tranche.matchedCluster?.headline?.slice(0, 50)}`
+      : tranche.type === 'allocate'
+        ? `allocate (${tranche.candidates?.length || 0} candidates)`
+        : 'new';
+    console.log(`\nTranche ${i + 1}/${tranches.length} [${tranche.type}] (${tranche.stories.length} stories, ${typeLabel})`);
 
-    const prompt = buildUserPrompt(tranche.stories, digest.clusters, tranche.matchedClusters);
+    // Build the appropriate prompt
+    let prompt;
+    if (tranche.type === 'update') {
+      prompt = buildUpdatePrompt(tranche.stories, tranche.matchedCluster);
+    } else if (tranche.type === 'allocate') {
+      prompt = buildAllocatePrompt(tranche.stories, tranche.candidates);
+    } else {
+      prompt = buildNewPrompt(tranche.stories);
+    }
+
+    // Call LLM
     let responseText;
     try {
       responseText = await callOpenRouter(prompt);
     } catch (err) {
-      console.error(`  Tranche ${i + 1} failed: ${err.message}. Skipping.`);
+      console.error(`  LLM failed: ${err.message}. Using heuristic fallback.`);
+      chunksFailed++;
+      applyFallback(tranche, digest);
+      const { added, updated } = countFallback(tranche);
+      totalAdded += added; totalUpdated += updated;
+      for (const story of tranche.stories) summarisedIds.add(story.id);
+      saveJson(SUMMARISED_IDS_FILE, [...summarisedIds]);
+      saveJson(DIGEST_FILE, digest);
+      if (i < tranches.length - 1) await new Promise(r => setTimeout(r, INTER_TRANCHE_DELAY_MS));
       continue;
     }
 
     const parsed = extractJson(responseText);
     if (!parsed || !parsed.clusters || !parsed.clusters.length) {
-      console.error(`  Tranche ${i + 1}: could not extract clusters from LLM response. Will retry next run.`);
+      console.error(`  Could not extract clusters from LLM response. Using heuristic fallback.`);
+      chunksFailed++;
+      applyFallback(tranche, digest);
+      const { added, updated } = countFallback(tranche);
+      totalAdded += added; totalUpdated += updated;
+      for (const story of tranche.stories) summarisedIds.add(story.id);
+      saveJson(SUMMARISED_IDS_FILE, [...summarisedIds]);
+      saveJson(DIGEST_FILE, digest);
+      if (i < tranches.length - 1) await new Promise(r => setTimeout(r, INTER_TRANCHE_DELAY_MS));
       continue;
     }
 
     console.log(`  LLM returned ${parsed.clusters.length} clusters`);
-    const { added, updated } = mergeClusters(parsed.clusters, tranche.stories, digest);
-    totalAdded += added;
-    totalUpdated += updated;
-    console.log(`  Merged: ${added} stories added, ${updated} clusters updated`);
 
-    // Only mark as summarised if we actually processed clusters
-    for (const story of tranche.stories) summarisedIds.add(story.id);
-
-    // Check for stories the LLM dropped
-    const clusterIds = new Set();
-    for (const c of (parsed.clusters || [])) {
-      let ids = c.story_ids;
-      if (typeof ids === 'string') ids = ids.split(',').map(s => s.trim()).filter(Boolean);
-      if (Array.isArray(ids)) ids.forEach(id => clusterIds.add(id));
-    }
-    const dropped = tranche.stories.filter(s => !clusterIds.has(s.id));
-    if (dropped.length) {
-      console.log(`  WARNING: LLM dropped ${dropped.length} stories. Adding as single-story clusters.`);
-      for (const story of dropped) {
+    // For 'update' tranches, always merge into the matched cluster
+    if (tranche.type === 'update' && tranche.matchedCluster) {
+      const llmCluster = parsed.clusters[0];
+      const rejectedIds = new Set(parsed.rejected_ids || []);
+      const existingIds = new Set(tranche.matchedCluster.stories.map(s => s.id));
+      for (const s of tranche.stories) {
+        if (rejectedIds.has(s.id)) continue;
+        if (!existingIds.has(s.id)) {
+          tranche.matchedCluster.stories.push(makeStoryData(s));
+          totalAdded++;
+        }
+      }
+      if (llmCluster.headline) tranche.matchedCluster.headline = llmCluster.headline;
+      if (llmCluster.summary) tranche.matchedCluster.summary = llmCluster.summary;
+      if (llmCluster.trigger_words && Array.isArray(llmCluster.trigger_words)) tranche.matchedCluster.triggerWords = llmCluster.trigger_words;
+      if (llmCluster.impact && ['low','medium','high'].includes(llmCluster.impact.toLowerCase())) tranche.matchedCluster.impact = llmCluster.impact.toLowerCase();
+      tranche.matchedCluster.updated = new Date().toISOString();
+      tranche.matchedCluster.contentVersion = (tranche.matchedCluster.contentVersion || 0) + 1;
+      totalUpdated++;
+      // Handle rejected stories as their own clusters
+      const rejected = tranche.stories.filter(s => rejectedIds.has(s.id));
+      for (const s of rejected) {
+        digest.clusters.push(makeFallbackCluster([s], s.originalTitle));
+        totalAdded++;
+      }
+      console.log(`  Updated: ${tranche.matchedCluster.headline?.slice(0, 50)} (${tranche.stories.length - rejected.length} in, ${rejected.length} rejected)`);
+    } else {
+      // 'new' and 'allocate' tranches
+      for (const cluster of parsed.clusters) {
+        // Check if LLM assigned to existing cluster (allocate type)
+        if (cluster.existing_cluster_id) {
+          const existing = digest.clusters.find(c => c.id === cluster.existing_cluster_id);
+          if (existing) {
+            let ids = cluster.story_ids;
+            if (typeof ids === 'string') ids = ids.split(',').map(s => s.trim()).filter(Boolean);
+            if (!Array.isArray(ids)) ids = ids ? [String(ids)] : [];
+            const stories = ids.map(id => tranche.stories.find(s => s.id === id)).filter(Boolean);
+            const existingIds = new Set(existing.stories.map(s => s.id));
+            for (const s of stories) {
+              if (!existingIds.has(s.id)) { existing.stories.push(makeStoryData(s)); totalAdded++; }
+            }
+            if (cluster.headline) existing.headline = cluster.headline;
+            if (cluster.summary) existing.summary = cluster.summary;
+            if (cluster.trigger_words && Array.isArray(cluster.trigger_words)) existing.triggerWords = cluster.trigger_words;
+            existing.updated = new Date().toISOString();
+            totalUpdated++;
+            continue;
+          }
+        }
+        // New cluster
+        let ids = cluster.story_ids;
+        if (typeof ids === 'string') ids = ids.split(',').map(s => s.trim()).filter(Boolean);
+        if (!Array.isArray(ids)) ids = ids ? [String(ids)] : [];
+        const stories = ids.map(id => tranche.stories.find(s => s.id === id)).filter(Boolean);
+        if (!stories.length) continue;
         digest.clusters.push({
           id: `cluster-${Date.now()}-${Math.random().toString(36).substring(2, 8)}`,
-          headline: story.originalTitle || 'Untitled',
-          summary: story.text.slice(0, 200),
-          category: normaliseCategory(Array.isArray(story.category) ? story.category[0] : (story.category || 'Other')),
-          stories: [{
-            id: story.id, title: story.originalTitle, source: story.source,
-            sourceName: story.sourceName || '', url: story.url, image: story.image || '',
-            published: story.published, category: normaliseCategory(Array.isArray(story.category) ? story.category[0] : (story.category || 'Other')),
-            plugin: story.plugin || null, pluginPriority: story.pluginPriority ?? null
-          }],
-          triggerWords: [],
-          impact: 'medium',
-          created: new Date().toISOString(),
-          updated: new Date().toISOString(),
-          contentVersion: 1
+          headline: cluster.headline || stories[0]?.originalTitle || 'Untitled',
+          summary: cluster.summary || '',
+          category: normaliseCategory(Array.isArray(cluster.category) ? cluster.category[0] : (cluster.category || 'Other')),
+          stories: stories.map(makeStoryData),
+          triggerWords: Array.isArray(cluster.trigger_words) ? cluster.trigger_words : [],
+          impact: ['low','medium','high'].includes((cluster.impact||'').toLowerCase()) ? cluster.impact.toLowerCase() : 'medium',
+          created: new Date().toISOString(), updated: new Date().toISOString(), contentVersion: 1
         });
-        totalAdded++;
+        totalAdded += stories.length;
       }
     }
 
-    // Save progress after each tranche
+    for (const story of tranche.stories) summarisedIds.add(story.id);
     saveJson(SUMMARISED_IDS_FILE, [...summarisedIds]);
     saveJson(DIGEST_FILE, digest);
 
-    // Small delay between tranches
     if (i < tranches.length - 1) {
-      console.log('  Pausing 2s between tranches...');
-      await new Promise(r => setTimeout(r, 2000));
+      console.log(`  Pausing ${INTER_TRANCHE_DELAY_MS / 1000}s...`);
+      await new Promise(r => setTimeout(r, INTER_TRANCHE_DELAY_MS));
     }
   }
+
+  // Consolidate clusters with overlapping trigger words
+  const mergedCount = consolidateClusters(digest);
+  if (mergedCount) console.log(`\nConsolidated ${mergedCount} duplicate clusters`);
 
   // Update digest date
   digest.date = new Date().toISOString().split('T')[0];
@@ -558,12 +731,12 @@ async function main() {
     clustersCreated: Math.max(0, digest.clusters.length - clustersBefore),
     totalClusters: digest.clusters.length,
     chunks: tranches.length,
-    chunksFailed: tranches.length - (totalAdded > 0 || totalUpdated > 0 ? 1 : 0),
+    chunksFailed,
     filteredTooShort: toProcess.length - tranches.reduce((sum, t) => sum + t.stories.length, 0),
   });
   saveJson(RUN_LOG_FILE, runLog.slice(0, 10));
 
-  console.log(`\nSummarisation complete: ${totalAdded} stories added, ${totalUpdated} clusters updated.`);
+  console.log(`\nSummarisation complete: ${totalAdded} stories added, ${totalUpdated} clusters updated, ${chunksFailed} tranches fell back to heuristic.`);
   console.log(`Digest: ${digest.clusters.length} total clusters in ${DIGEST_FILE}`);
 }
 

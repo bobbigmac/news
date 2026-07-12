@@ -5,17 +5,19 @@
   "scripts": {
     "fetch-news": "node scripts/fetch-news.js",
     "summarise": "node scripts/summarise.js",
-    "build": "node scripts/build.js",
+    "build": "vite build && node scripts/build.js",
     "pipeline": "npm run fetch-news && npm run summarise && npm run build",
-    "dev": "npm run pipeline && live-server docs --port=8000 --open=/",
-    "watch": "node scripts/watch.js & live-server docs --port=8000 --open=/"
+    "dev": "vite",
+    "preview": "vite preview",
+    "watch": "node scripts/watch.js & vite"
   },
   "dependencies": {
+    "masonry-layout": "^4.2.2",
     "rss-parser": "^3.13.0",
     "sharp": "^0.35.3"
   },
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "vite": "^8.1.4"
   },
   "license": "DBAD"
 }

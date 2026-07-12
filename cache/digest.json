@@ -1558,8 +1558,8 @@
     },
     {
       "id": "cluster-1783879438340-taaf4q",
-      "headline": "UK faces 'exceptional' wildfire risk",
-      "summary": "Parts of the UK are under heat health alerts as temperatures exceed heatwave thresholds for a second consecutive week. The warnings follow prolonged high temperatures increasing wildfire dangers.",
+      "headline": "UK and Spain confront escalating wildfires",
+      "summary": "A major incident has been declared in Wales as firefighters tackle at least 11 blazes across the UK, including the Conwy fire which forced evacuations. In Spain a village at the epicentre is charred, a British couple was rescued with 40% burns in Almería, and hundreds of firefighters battle a deadly southern wildfire that has claimed lives.",
       "category": "World",
       "stories": [
         {
@@ -1573,15 +1573,76 @@
           "category": "General",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-da4780814674c2185500c7104657609b",
+          "title": "Major incident declared in Wales as firefighters tackle wildfires across UK",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cy8w67l642no?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T17:02:57.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-be6eda5e8a9b22dc2ca86ea709d2a4d5",
+          "title": "Major incident declared as mountain wildfire evacuates residents",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cvg7280qwxpo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T16:41:39.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-cd1501c5c13fcded146fe247947e6975",
+          "title": "'This landscape is completely charred': Inside the village at epicentre of Spain's wildfires",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/cddl1yrldelo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T15:33:27.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-7e9bd59636b95b5a605a3ae11cde6a23",
+          "title": "Badly burned British couple rescued from ravine during Spain wildfires, reports say ",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cx2x7441762o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T13:35:01.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-31faa46d003563914fbdba92025f9c92",
+          "title": "Watch: 'We escaped Spanish wildfire, but our friends lost their lives'",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/c07y357zvl1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T11:45:55.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
         "wildfire",
-        "UK"
+        "uk",
+        "spain"
       ],
       "impact": "medium",
       "created": "2026-07-12T18:03:58.340Z",
-      "updated": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T20:26:20.419Z",
       "contentVersion": 1
     },
     {
@@ -1616,8 +1677,8 @@
     },
     {
       "id": "cluster-1783879438340-1j0fow",
-      "headline": "Trump subpoenas NYT journalists over Air Force One",
-      "summary": "The Trump administration has subpoenaed New York Times journalists for reporting on security concerns related to the president's new plane, gifted by Qatar. The journalists face legal action over their coverage.",
+      "headline": "Starmer says will stay in touch with Trump",
+      "summary": "British Prime Minister Keir Starmer said he will keep communication lines open with U.S. President Donald Trump after the latter’s meeting with NATO leaders in Turkey, noting Trump wished him well at the summit.",
       "category": "Politics",
       "stories": [
         {
@@ -1631,15 +1692,29 @@
           "category": "World",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-00cf5e37417447bdb354ebbacf7b645f",
+          "title": "Starmer to keep in touch with Trump after No 10",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/crel4gzg94eo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T19:04:36.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
-        "Trump",
-        "Air Force One"
+        "trump",
+        "air force one",
+        "starmer",
+        "nato turkey"
       ],
       "impact": "high",
       "created": "2026-07-12T18:03:58.340Z",
-      "updated": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T20:26:20.427Z",
       "contentVersion": 1
     },
     {
@@ -1672,8 +1747,8 @@
     },
     {
       "id": "cluster-1783879438340-l0wz0t",
-      "headline": "Ambulance services strained during heatwave",
-      "summary": "Ambulance crews in Exeter reported increased demand during a prolonged heatwave, highlighting public unawareness of heat-related risks. The incident underscores the need for better heatwave preparedness.",
+      "headline": "Women's Test Cricket",
+      "summary": "Women's Test Cricket — Highlights of day three of the Lord's Test match between England Women and India Women. — Highlights of day three of the Lord's Test match between England Women and India Women.",
       "category": "World",
       "stories": [
         {
@@ -1687,21 +1762,152 @@
           "category": "Health",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-59641ea35ab0215d72f6554121d84e77",
+          "title": "Heat exhaustion or heatstroke: Can you tell the difference?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/cdjk4j1gz2yo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T12:04:39.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-4ae7309d42e1bf5a5893af6d38acff21",
+          "title": "What does hot weather do to the body?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cy7n6m7y6yvo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-22T13:48:18.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-f78e23ba95dd41dbef3fb746a5955309",
+          "title": "What to do if you think someone has heat exhaustion or heatstroke",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/ckgl51jjp3jo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-22T11:05:28.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-554c171d46bad1c96f925945f2c06807",
+          "title": "Why is crucial tech vulnerable to the heat?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cj0gez6d50ro?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-01T07:23:12.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-f7185bab6eed9fa6a357d2284f8a57dd",
+          "title": "Why women suffer more in the heat",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/cpwelvv5zgwo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T15:25:03.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-69a2019b577fb5c8e46e9c302f9db8c3",
+          "title": "Why heatwaves hit women harder",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c4gyp1knzzxo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T23:49:12.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-da62c56c4f1dd38fb9dda4db767f61a2",
+          "title": "More protein or less? The foods to get you through a heatwave ",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/clyw89g3443o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T09:05:56.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-73a085fad6ec7f65ac0f67380bbb10aa",
+          "title": "Five tips to keep your kids cool in a heatwave",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c862j9vy746o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-19T00:07:22.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-fc31a1f587a6af5dce6f99083c82946d",
+          "title": "Vapes to have less enticing names and flavours to protect children",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c9v29d7vml7o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T09:54:49.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-0ea53af53fa9e597847e2a89cfa54f63",
+          "title": "Women's Test Cricket",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/iplayer/episode/m002z0y1?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T18:45:40.000Z",
+          "category": "general",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
         "heatwave",
-        "ambulance"
+        "ambulance",
+        "exeter",
+        "energy grids",
+        "train services",
+        "women",
+        "children",
+        "vape",
+        "flavour",
+        "test",
+        "cricket",
+        "highlights",
+        "day"
       ],
       "impact": "medium",
       "created": "2026-07-12T18:03:58.340Z",
-      "updated": "2026-07-12T18:03:58.340Z",
-      "contentVersion": 1
+      "updated": "2026-07-12T20:48:34.430Z",
+      "contentVersion": 2
     },
     {
       "id": "cluster-1783879438340-ad7p7c",
-      "headline": "Burnham plans return to No 10 for at least a year",
-      "summary": "A key political ally states that former transport secretary Burnham is not unprepared for a potential return to government, despite his time away from Westminster. The statement suggests ongoing political considerations.",
+      "headline": "Reeves tells BBC Burnham needs plan",
+      "summary": "Chancellor Rachel Reeves told BBC's Laura Kuenssberg that Andy Burnham must have a worked-through plan to govern from the start. Reeves said she would hand over a stable economy to the incoming prime minister.",
       "category": "Politics",
       "stories": [
         {
@@ -1715,15 +1921,150 @@
           "category": "Politics",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-07f6aaeb347aca17165b6194ea879dd6",
+          "title": "Reeves tells BBC: Burnham needs worked-through plan to govern from the start",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cwykdvgv4d4o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T12:00:16.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-90cd06dafaef8b40d25e0dc8de1f3c43",
+          "title": "Does Andy Burnham Have A New Plan For Tax?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/p0nx5fzl?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T14:13:00.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-b775ad05a57cf60b485856dc9335e81e",
+          "title": "Burnham will deal with living costs in short term, key adviser says",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cdr41drnvjzo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T11:32:57.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-864b42c18bcc722a5d65a7f85538b057",
+          "title": "Labour under Burnham will be faster and bolder, says minister ",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cvgeyx1e4kno?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T15:50:06.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-00f4377dba7417b3bce258d8c6612bad",
+          "title": "Andy Burnham's path to becoming prime minister",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/crm0r94mv7jo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T15:38:38.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-b20a437244b4957689f9715f068b68f1",
+          "title": "Who is Andy Burnham? Ex-Manchester mayor set to be the next prime minister",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cp8pml5z8p6o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T15:12:27.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-82c99c1a8c02172334167ef3dff71aa2",
+          "title": "Burnham set to be next PM as 322 Labour MPs back him in first nomination tally",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c77y0n7k801o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T07:30:39.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-0a0c7214484dbbaa3c08fe5f56ba7d8f",
+          "title": "Burnham apologises for Labour's initial response to Gaza war",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cvg5yrkeed1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T17:56:04.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-02111a367c39bbed1bdb6deefd841a15",
+          "title": "What we know about Andy Burnham's policies",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/clywzj2vk3zo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T09:33:36.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-c6594f1e6c37a59a1b2be33f4ec768a0",
+          "title": "Starmer tells of 'intensely personal' decision to quit and warns Burnham in first interview since resigning",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c0qy2zxjkwvo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-03T21:26:53.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-f9a7b159b72cc8df8ffa7121abfe0bf4",
+          "title": "Burnham's people: MPs and advisers in line for a job if he gains power",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c8621d1egw1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-24T08:42:42.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
-        "Burnham",
-        "No 10"
+        "burnham",
+        "no 10",
+        "reeves",
+        "laura kuenssberg",
+        "322 labour mps"
       ],
       "impact": "low",
       "created": "2026-07-12T18:03:58.340Z",
-      "updated": "2026-07-12T18:03:58.340Z",
+      "updated": "2026-07-12T20:26:20.452Z",
       "contentVersion": 1
     },
     {
@@ -1840,8 +2181,8 @@
     },
     {
       "id": "cluster-1783879477259-j72bwy",
-      "headline": "KB Financial chief cites money move opportunity",
-      "summary": "KB Financial Group Chairman Yang Jong-hee said the current money move could provide an opportunity to strengthen the group's competitiveness. The statement was reported by The Korea Times on 12 July 2026.",
+      "headline": "KB Financial Group explores strategic opportunities",
+      "summary": "KB Financial Group Chairman Yang Jong-hee stated that the current money move could strengthen the group's competitiveness, as reported by The Korea Times on 12 July 2026. The statement reflects ongoing strategic planning amid market dynamics.",
       "category": "Business",
       "stories": [
         {
@@ -1857,22 +2198,37 @@
           ],
           "plugin": null,
           "pluginPriority": null
+        },
+        {
+          "id": "e8f9a93c-a223-54b6-bbc6-a8a888fe1a52",
+          "title": "[PHOTO] Lotte Mart Tay Ninh opens - The Korea Times",
+          "source": "Ko Dong-hwan",
+          "sourceName": "Korea Times",
+          "url": "https://www.koreatimes.co.kr/business/companies/20260712/photo-lotte-mart-tay-ninh-opens",
+          "image": "https://newsimg.koreatimes.co.kr/2026/07/12/973fd98b-abcf-413d-9572-a7b3e2a96118.jpg",
+          "published": "2026-07-12 07:42:03 +0000",
+          "category": [
+            "regional"
+          ],
+          "plugin": null,
+          "pluginPriority": null
         }
       ],
       "triggerWords": [
-        "KB Financial",
-        "Yang Jong-hee",
-        "money move"
+        "kb financial",
+        "yang jong-hee",
+        "money move",
+        "lotte mart"
       ],
       "impact": "medium",
       "created": "2026-07-12T18:04:37.259Z",
-      "updated": "2026-07-12T18:04:37.259Z",
+      "updated": "2026-07-12T20:26:20.456Z",
       "contentVersion": 1
     },
     {
       "id": "cluster-1783879477259-4lhnvb",
-      "headline": "FIFA showcases new World Cup technology",
-      "summary": "Shiona McCallum visits FIFA headquarters in Zurich to examine new technology being implemented for the World Cup. The report highlights the latest tech initiatives aimed at enhancing the tournament in upcoming matches.",
+      "headline": "Shiona McCallum tests next‑generation prosthetics",
+      "summary": "Shiona McCallum meets a medical specialist developing prosthetic limbs that integrate neural interfaces and AI‑driven movement control. The collaboration aims to produce limbs that respond to users’ intentions with near‑natural precision, advancing rehabilitation technology.",
       "category": "Technology",
       "stories": [
         {
@@ -1886,16 +2242,30 @@
           "category": "Technology",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-a6981e3d53f1584bd2271d2e66f2f5ac",
+          "title": "Tech Now",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/iplayer/episode/m002x058?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-05-23T01:00:00.000Z",
+          "category": "Technology",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
-        "Shiona McCallum",
-        "FIFA HQ",
-        "Zurich"
+        "shiona mccallum",
+        "fifa hq",
+        "zurich",
+        "prosthetics",
+        "neural interface"
       ],
       "impact": "medium",
       "created": "2026-07-12T18:04:37.259Z",
-      "updated": "2026-07-12T18:04:37.259Z",
+      "updated": "2026-07-12T20:26:20.461Z",
       "contentVersion": 1
     },
     {
@@ -1966,35 +2336,6 @@
       "triggerWords": [
         "Trump Accounts",
         "White House"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:05:15.206Z",
-      "updated": "2026-07-12T18:05:15.206Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783879515206-az65m8",
-      "headline": "Starmer says will stay in touch with Trump",
-      "summary": "British Prime Minister Keir Starmer said he will keep communication lines open with U.S. President Donald Trump after the latter’s meeting with NATO leaders in Turkey, noting Trump wished him well at the summit.",
-      "category": "Politics",
-      "stories": [
-        {
-          "id": "rss-00cf5e37417447bdb354ebbacf7b645f",
-          "title": "Starmer to keep in touch with Trump after No 10",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/crel4gzg94eo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-08T19:04:36.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "Starmer",
-        "Trump",
-        "NATO Turkey"
       ],
       "impact": "medium",
       "created": "2026-07-12T18:05:15.206Z",
@@ -2169,62 +2510,9 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783879775935-47za8q",
-      "headline": "Heatwave strains ambulance services and health guidance",
-      "summary": "Ambulance crews in Exeter reported increased demand during a prolonged heatwave, highlighting public unawareness of heat‑related risks. New health guidance clarifies the difference between heat exhaustion and heatstroke, explains how hot weather affects the body, and provides steps to act if someone shows symptoms. The information aims to improve public response and reduce emergency pressure.",
-      "category": "World",
-      "stories": [
-        {
-          "id": "rss-59641ea35ab0215d72f6554121d84e77",
-          "title": "Heat exhaustion or heatstroke: Can you tell the difference?",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/videos/cdjk4j1gz2yo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-10T12:04:39.000Z",
-          "category": "Health",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-4ae7309d42e1bf5a5893af6d38acff21",
-          "title": "What does hot weather do to the body?",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cy7n6m7y6yvo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-06-22T13:48:18.000Z",
-          "category": "Health",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-f78e23ba95dd41dbef3fb746a5955309",
-          "title": "What to do if you think someone has heat exhaustion or heatstroke",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/ckgl51jjp3jo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-06-22T11:05:28.000Z",
-          "category": "Health",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "heatwave",
-        "ambulance",
-        "Exeter"
-      ],
-      "impact": "high",
-      "created": "2026-07-12T18:09:35.935Z",
-      "updated": "2026-07-12T18:09:35.935Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783879775935-92cr2i",
-      "headline": "US stock surges 795% in 12 months",
-      "summary": "A US stock has risen 795% over the past 12 months, drawing intense interest from American investors. The article questions whether there is a better alternative closer to home for those considering entry. The dramatic surge highlights volatility and opportunity in the current market.",
+      "headline": "SK Hynix $26.5bn listing sees 17% surge",
+      "summary": "SK Hynix raised $26.5bn in a record-breaking Nasdaq listing, with shares surging up to 17% on their Friday trading debut. The chip giant's stock has risen 795% over the past 12 months, drawing intense interest from American investors amid market volatility.",
       "category": "Business",
       "stories": [
         {
@@ -2242,16 +2530,31 @@
           ],
           "plugin": null,
           "pluginPriority": null
+        },
+        {
+          "id": "rss-864f257908a9d83f05185d1c88aca578",
+          "title": "Chip giant SK Hynix raises $26.5bn as shares surge in bumper US listing",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c4gym70r0y4o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T16:42:35.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
         "795%",
-        "US stock",
-        "surge"
+        "us stock",
+        "surge",
+        "sk hynix",
+        "$26.5bn",
+        "nasdaq"
       ],
       "impact": "high",
       "created": "2026-07-12T18:09:35.935Z",
-      "updated": "2026-07-12T18:09:35.935Z",
+      "updated": "2026-07-12T20:26:20.468Z",
       "contentVersion": 1
     },
     {
@@ -2284,8 +2587,8 @@
     },
     {
       "id": "cluster-1783879793586-mu8fzz",
-      "headline": "Nigel Farage calls Clacton by-election for August",
-      "summary": "Reform UK leader Nigel Farage will contest a by-election in Clacton on 13 August after standing down as MP. Farage intends to frame the contest as the people versus the establishment following a finance row and falling approval ratings. He faces a challenge from candidate Count Binface, while main parties have ruled out standing.",
+      "headline": "Full list of candidates for Clacton by-election released",
+      "summary": "The candidate roster for the Clacton by-election includes Reform UK leader Nigel Farage, satirical contender Count Binface, and novelty candidates described as a bin, two foxes and a fish finger. The election is set for 13 August following Farage’s resignation as MP.",
       "category": "Politics",
       "stories": [
         {
@@ -2347,17 +2650,30 @@
           "category": "Politics",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-57991d5306d49b883024f029934f4100",
+          "title": "A bin, two foxes and a fish finger: The candidates fighting Clacton",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/crlw69p6lyeo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T16:16:18.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
-        "Nigel Farage",
-        "Clacton",
-        "Count Binface",
-        "Reform UK"
+        "nigel farage",
+        "clacton",
+        "count binface",
+        "reform uk",
+        "candidates list"
       ],
       "impact": "medium",
       "created": "2026-07-12T18:09:53.586Z",
-      "updated": "2026-07-12T18:09:53.586Z",
+      "updated": "2026-07-12T20:26:20.476Z",
       "contentVersion": 1
     },
     {
@@ -2610,35 +2926,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880122508-lp1177",
-      "headline": "Reeves tells BBC Burnham needs plan",
-      "summary": "Chancellor Rachel Reeves told BBC's Laura Kuenssberg that Andy Burnham must have a worked-through plan to govern from the start. Reeves said she would hand over a stable economy to the incoming prime minister.",
-      "category": "Politics",
-      "stories": [
-        {
-          "id": "rss-07f6aaeb347aca17165b6194ea879dd6",
-          "title": "Reeves tells BBC: Burnham needs worked-through plan to govern from the start",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cwykdvgv4d4o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-11T12:00:16.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "Reeves",
-        "Burnham",
-        "Laura Kuenssberg"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:15:22.508Z",
-      "updated": "2026-07-12T18:15:22.508Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783880122508-bzcti6",
       "headline": "Home swaps save £6,000 on holidays",
       "summary": "The BBC reports a growing trend of strangers swapping homes to cut holiday costs, with one family saving £6,000. The practice avoids accommodation expenses by exchanging houses for set periods.",
@@ -2842,38 +3129,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880137957-97w3h4",
-      "headline": "KB Financial Group explores strategic opportunities",
-      "summary": "KB Financial Group Chairman Yang Jong-hee stated that the current money move could strengthen the group's competitiveness, as reported by The Korea Times on 12 July 2026. The statement reflects ongoing strategic planning amid market dynamics.",
-      "category": "Business",
-      "stories": [
-        {
-          "id": "e8f9a93c-a223-54b6-bbc6-a8a888fe1a52",
-          "title": "[PHOTO] Lotte Mart Tay Ninh opens - The Korea Times",
-          "source": "Ko Dong-hwan",
-          "sourceName": "Korea Times",
-          "url": "https://www.koreatimes.co.kr/business/companies/20260712/photo-lotte-mart-tay-ninh-opens",
-          "image": "https://newsimg.koreatimes.co.kr/2026/07/12/973fd98b-abcf-413d-9572-a7b3e2a96118.jpg",
-          "published": "2026-07-12 07:42:03 +0000",
-          "category": [
-            "regional"
-          ],
-          "plugin": null,
-          "pluginPriority": null
-        }
-      ],
-      "triggerWords": [
-        "KB Financial",
-        "Yang Jong-hee",
-        "money move",
-        "Lotte Mart"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:15:37.957Z",
-      "updated": "2026-07-12T18:15:37.957Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783880137957-rs32v2",
       "headline": "Korea issues first heat wave emergency warning",
       "summary": "A heat wave emergency warning, the highest alert level, was issued for Gyeongsan and Pohang in North Gyeongsang Province at 10 a.m. Sunday, marking Korea's first such alert. The measure aims to address extreme weather risks.",
@@ -2967,35 +3222,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783880245688-av0kkt",
-      "headline": "Vapes to drop appealing flavour names",
-      "summary": "The government is consulting on rules that would restrict vape manufacturers from using attractive flavour names and descriptions that appeal to children, aiming to reduce youth vaping rates. The proposal seeks to limit enticing flavour branding that could attract younger users.",
-      "category": "Health",
-      "stories": [
-        {
-          "id": "rss-fc31a1f587a6af5dce6f99083c82946d",
-          "title": "Vapes to have less enticing names and flavours to protect children",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/c9v29d7vml7o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-10T09:54:49.000Z",
-          "category": "Business",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "vape",
-        "flavour",
-        "children"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:17:25.688Z",
-      "updated": "2026-07-12T18:17:25.688Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783880245688-bsmv6b",
       "headline": "Drivers urged to compare fuel prices",
       "summary": "The RAC warns that an 11p per litre fuel price gap exists, urging drivers to use price comparison tools to save money. Many motorists fail to shop around for the cheapest fuel, missing potential savings.",
@@ -3025,8 +3251,8 @@
     },
     {
       "id": "cluster-1783880245688-akpxdk",
-      "headline": "Meta allows AI images from public Instagram pics",
-      "summary": "Meta has introduced a feature that lets users create AI‑generated images from public Instagram profile pictures, prompting privacy concerns. Campaigners describe the move as a “recipe for disaster,” while Meta says users can opt out of the functionality.",
+      "headline": "Meta removes AI image editing tool after backlash",
+      "summary": "Meta withdrew an AI-powered feature that allowed users to alter images on Instagram after several days of public criticism. The tool, introduced earlier in the week, faced backlash over concerns it could facilitate misinformation and deep‑fake content, prompting the company to discontinue it.",
       "category": "Technology",
       "stories": [
         {
@@ -3040,16 +3266,31 @@
           "category": "Business",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-d30a0e3a6028d85c55584e3d882b6606",
+          "title": "Meta pulls new AI image feature after days of backlash",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c2dy6e8klw0o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T01:45:59.000Z",
+          "category": "Technology",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
-        "Meta",
-        "AI images",
-        "Instagram profile pics"
+        "meta",
+        "ai images",
+        "instagram profile pics",
+        "ai image",
+        "instagram",
+        "backlash"
       ],
       "impact": "medium",
       "created": "2026-07-12T18:17:25.688Z",
-      "updated": "2026-07-12T18:17:25.688Z",
+      "updated": "2026-07-12T20:26:20.491Z",
       "contentVersion": 1
     },
     {
@@ -3082,8 +3323,8 @@
     },
     {
       "id": "cluster-1783880245688-vtoi9a",
-      "headline": "NHS fails mothers and babies without cultural shift",
-      "summary": "A report warns that the NHS will continue to fail mothers and babies unless a cultural shift occurs, as families risk further failures without meaningful changes. BBC’s Michael Buchanan argues that systemic reforms are essential to improve maternity and neonatal care outcomes.",
+      "headline": "NHS faces decline in UK healthy life expectancy",
+      "summary": "The UK is experiencing a decline in healthy life expectancy, prompting debate over the NHS's role. Analysts examine factors such as healthcare access, lifestyle changes, and socioeconomic conditions that may be reducing years lived in good health.",
       "category": "Politics",
       "stories": [
         {
@@ -3097,17 +3338,72 @@
           "category": "Health",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-a9e6e0a01f198f6551177d863ad3f222",
+          "title": "We are living fewer years in good health: Is the NHS part of the problem?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c8r2nz82z3vo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T00:42:35.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-8eb6dcdc9d6439a6ede02e9252e372d0",
+          "title": "'Endometriosis tests would have given me years back'",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cx2vzxe02dxo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T06:29:22.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-e64f05ca3d818bfe65416c84c89ba7a3",
+          "title": "Endometriosis groups 'crying out' for cut in diagnosis time",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/ce3e4909qqzo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T06:15:23.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-2aeb83c540a744780a74f467729c45aa",
+          "title": "Endometriosis could be diagnosed by blood test, research suggests",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c9d22n9y608o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-07T05:15:59.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
-        "NHS",
+        "nhs",
         "mothers",
         "babies",
-        "cultural shift"
+        "cultural shift",
+        "healthy life expectancy",
+        "endometriosis",
+        "rapid tests",
+        "non-invasive tests",
+        "diagnosis time",
+        "blood test",
+        "university of edinburgh"
       ],
       "impact": "medium",
       "created": "2026-07-12T18:17:25.688Z",
-      "updated": "2026-07-12T18:17:25.688Z",
+      "updated": "2026-07-12T20:26:20.544Z",
       "contentVersion": 1
     },
     {
@@ -3197,143 +3493,6 @@
       "impact": "medium",
       "created": "2026-07-12T18:17:25.688Z",
       "updated": "2026-07-12T18:17:25.688Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783880289921-y6pl3q",
-      "headline": "Burnham positioned for No 10 after Labour support",
-      "summary": "Andy Burnham, former Greater Manchester mayor, has secured the support of 322 Labour MPs and is poised to become prime minister. He outlines a new tax plan, pledges to ease living costs, apologised for his early Gaza response, and has appointed key advisors and MPs to his future government.",
-      "category": "Politics",
-      "stories": [
-        {
-          "id": "rss-90cd06dafaef8b40d25e0dc8de1f3c43",
-          "title": "Does Andy Burnham Have A New Plan For Tax?",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/sounds/play/p0nx5fzl?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T14:13:00.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-b775ad05a57cf60b485856dc9335e81e",
-          "title": "Burnham will deal with living costs in short term, key adviser says",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cdr41drnvjzo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T11:32:57.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-864b42c18bcc722a5d65a7f85538b057",
-          "title": "Labour under Burnham will be faster and bolder, says minister ",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cvgeyx1e4kno?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-10T15:50:06.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-00f4377dba7417b3bce258d8c6612bad",
-          "title": "Andy Burnham's path to becoming prime minister",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/crm0r94mv7jo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-10T15:38:38.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-b20a437244b4957689f9715f068b68f1",
-          "title": "Who is Andy Burnham? Ex-Manchester mayor set to be the next prime minister",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cp8pml5z8p6o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-10T15:12:27.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-82c99c1a8c02172334167ef3dff71aa2",
-          "title": "Burnham set to be next PM as 322 Labour MPs back him in first nomination tally",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/c77y0n7k801o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-10T07:30:39.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-0a0c7214484dbbaa3c08fe5f56ba7d8f",
-          "title": "Burnham apologises for Labour's initial response to Gaza war",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cvg5yrkeed1o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-09T17:56:04.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-02111a367c39bbed1bdb6deefd841a15",
-          "title": "What we know about Andy Burnham's policies",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/clywzj2vk3zo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-09T09:33:36.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-c6594f1e6c37a59a1b2be33f4ec768a0",
-          "title": "Starmer tells of 'intensely personal' decision to quit and warns Burnham in first interview since resigning",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/c0qy2zxjkwvo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-03T21:26:53.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-f9a7b159b72cc8df8ffa7121abfe0bf4",
-          "title": "Burnham's people: MPs and advisers in line for a job if he gains power",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/c8621d1egw1o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-06-24T08:42:42.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "Burnham",
-        "No 10",
-        "322 Labour MPs"
-      ],
-      "impact": "high",
-      "created": "2026-07-12T18:18:09.921Z",
-      "updated": "2026-07-12T18:18:09.921Z",
       "contentVersion": 1
     },
     {
@@ -3451,8 +3610,8 @@
     },
     {
       "id": "cluster-1783880346896-bzgqn7",
-      "headline": "Wimbledon changes men's final start time",
-      "summary": "Wimbledon organisers have changed the traditional 2pm start time for the men's singles final. This decision follows a change to the tournament's 17-year-old curfew rule. The men's singles champion will receive a record prize purse as Jannik Sinner faces Alexander Zverev in the 2026 final.",
+      "headline": "Linda Noskova wins Wimbledon after Centre Court fightback",
+      "summary": "Linda Noskova produced one of the all-time greatest efforts on Centre Court to win Wimbledon. The tennis player dedicated the victory to her late mother, Ivana, who inspired her. The match featured a notable fightback.",
       "category": "Sports",
       "stories": [
         {
@@ -3468,17 +3627,30 @@
           ],
           "plugin": null,
           "pluginPriority": null
+        },
+        {
+          "id": "rss-dc1c05eef61b97bb6e8d21936359fa6d",
+          "title": "Noskova, an astonishing Wimbledon fightback - and a kiss to the sky",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/tennis/articles/ckg85p1dp12o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T20:41:53.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
-        "Wimbledon",
-        "Jannik Sinner",
-        "Alexander Zverev",
-        "curfew"
+        "wimbledon",
+        "jannik sinner",
+        "alexander zverev",
+        "curfew",
+        "linda noskova"
       ],
       "impact": "medium",
       "created": "2026-07-12T18:19:06.896Z",
-      "updated": "2026-07-12T18:19:06.896Z",
+      "updated": "2026-07-12T20:26:20.556Z",
       "contentVersion": 1
     },
     {
@@ -3510,83 +3682,6 @@
       "impact": "low",
       "created": "2026-07-12T18:19:33.785Z",
       "updated": "2026-07-12T18:19:33.785Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783880464311-zcc61a",
-      "headline": "UK and Spain confront escalating wildfires",
-      "summary": "A major incident has been declared in Wales as firefighters tackle at least 11 blazes across the UK, including the Conwy fire which forced evacuations. In Spain a village at the epicentre is charred, a British couple was rescued with 40% burns in Almería, and hundreds of firefighters battle a deadly southern wildfire that has claimed lives.",
-      "category": "World",
-      "stories": [
-        {
-          "id": "rss-da4780814674c2185500c7104657609b",
-          "title": "Major incident declared in Wales as firefighters tackle wildfires across UK",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cy8w67l642no?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T17:02:57.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-be6eda5e8a9b22dc2ca86ea709d2a4d5",
-          "title": "Major incident declared as mountain wildfire evacuates residents",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cvg7280qwxpo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T16:41:39.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-cd1501c5c13fcded146fe247947e6975",
-          "title": "'This landscape is completely charred': Inside the village at epicentre of Spain's wildfires",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/videos/cddl1yrldelo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T15:33:27.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-7e9bd59636b95b5a605a3ae11cde6a23",
-          "title": "Badly burned British couple rescued from ravine during Spain wildfires, reports say ",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cx2x7441762o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T13:35:01.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-31faa46d003563914fbdba92025f9c92",
-          "title": "Watch: 'We escaped Spanish wildfire, but our friends lost their lives'",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/videos/c07y357zvl1o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-11T11:45:55.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "wildfire",
-        "UK",
-        "Spain"
-      ],
-      "impact": "high",
-      "created": "2026-07-12T18:21:04.311Z",
-      "updated": "2026-07-12T18:21:04.311Z",
       "contentVersion": 1
     },
     {
@@ -3641,34 +3736,6 @@
         "Ukraine",
         "strike",
         "coffee shop"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:21:04.311Z",
-      "updated": "2026-07-12T18:21:04.311Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783880464311-pkb08j",
-      "headline": "NHS faces decline in UK healthy life expectancy",
-      "summary": "The UK is experiencing a decline in healthy life expectancy, prompting debate over the NHS's role. Analysts examine factors such as healthcare access, lifestyle changes, and socioeconomic conditions that may be reducing years lived in good health.",
-      "category": "Health",
-      "stories": [
-        {
-          "id": "rss-a9e6e0a01f198f6551177d863ad3f222",
-          "title": "We are living fewer years in good health: Is the NHS part of the problem?",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/c8r2nz82z3vo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T00:42:35.000Z",
-          "category": "General",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "NHS",
-        "healthy life expectancy"
       ],
       "impact": "medium",
       "created": "2026-07-12T18:21:04.311Z",
@@ -4457,36 +4524,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783881114247-1y2wyt",
-      "headline": "Full list of candidates for Clacton by-election released",
-      "summary": "The candidate roster for the Clacton by-election includes Reform UK leader Nigel Farage, satirical contender Count Binface, and novelty candidates described as a bin, two foxes and a fish finger. The election is set for 13 August following Farage’s resignation as MP.",
-      "category": "Politics",
-      "stories": [
-        {
-          "id": "rss-57991d5306d49b883024f029934f4100",
-          "title": "A bin, two foxes and a fish finger: The candidates fighting Clacton",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/crlw69p6lyeo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T16:16:18.000Z",
-          "category": "Politics",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "Clacton",
-        "Nigel Farage",
-        "Count Binface",
-        "candidates list"
-      ],
-      "impact": "high",
-      "created": "2026-07-12T18:31:54.247Z",
-      "updated": "2026-07-12T18:31:54.247Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783881114247-3fliok",
       "headline": "Reform MSP condemns Glasgow door‑to‑door protests",
       "summary": "Glasgow Reform Party MSP Thomas Kerr criticised recent door‑to‑door protests, stating they target individuals unfairly and urging demonstrators to avoid private residences. Kerr’s comments come amid heightened tensions over local political activism.",
@@ -4631,35 +4668,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783881324056-7pochc",
-      "headline": "Endometriosis groups call for faster diagnosis",
-      "summary": "Endometriosis groups are calling for a reduction in diagnosis times, proposing two new non-invasive tests be made available from GPs. The tests aim to speed up detection of the condition, which currently faces long delays for patients. The groups say faster diagnosis is urgently needed.",
-      "category": "Health",
-      "stories": [
-        {
-          "id": "rss-e64f05ca3d818bfe65416c84c89ba7a3",
-          "title": "Endometriosis groups 'crying out' for cut in diagnosis time",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/ce3e4909qqzo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-12T06:15:23.000Z",
-          "category": "Health",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "endometriosis",
-        "non-invasive tests",
-        "diagnosis time"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:35:24.056Z",
-      "updated": "2026-07-12T18:35:24.056Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783881324056-yrwf45",
       "headline": "EasyJet agrees to Apollo takeover bid",
       "summary": "EasyJet has agreed to a takeover bid from US firm Apollo, which surpassed a previous offer from Castlelake. The airline said Apollo's bid had trumped the recent Castlelake proposal. The deal would change ownership of the UK carrier.",
@@ -4746,36 +4754,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783881430359-b3tv18",
-      "headline": "SK Hynix $26.5bn listing sees 17% surge",
-      "summary": "SK Hynix raised $26.5bn in a record-breaking Nasdaq listing, with shares surging up to 17% on their Friday trading debut. The chip giant's stock has risen 795% over the past 12 months, drawing intense interest from American investors amid market volatility.",
-      "category": "Business",
-      "stories": [
-        {
-          "id": "rss-864f257908a9d83f05185d1c88aca578",
-          "title": "Chip giant SK Hynix raises $26.5bn as shares surge in bumper US listing",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/c4gym70r0y4o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-10T16:42:35.000Z",
-          "category": "Business",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "SK Hynix",
-        "$26.5bn",
-        "Nasdaq",
-        "795%"
-      ],
-      "impact": "high",
-      "created": "2026-07-12T18:37:10.359Z",
-      "updated": "2026-07-12T18:37:10.359Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783881446500-j9c4b9",
       "headline": "Oil and cargo ships avoid Hormuz after strikes",
       "summary": "Data shows a sharp decline in oil, gas and cargo vessels using the US‑backed Hormuz shipping lane after a series of attacks this week. The reduced traffic indicates heightened risk for vessels transiting the strategic waterway, affecting global energy shipments.",
@@ -4806,8 +4784,8 @@
     },
     {
       "id": "cluster-1783881812314-cequce",
-      "headline": "England set for World Cup clash with Mexico",
-      "summary": "England defeated Norway to reach the World Cup semi-finals, with Jude Bellingham scoring and Declan Rice playing despite illness. Manager Thomas Tuchel called the win lucky. England now face Mexico in a must-win match at 01:00 BST on Monday; Tuchel urged young fans to stay up.",
+      "headline": "Kane backs Tuchel as England eye World Cup glory",
+      "summary": "Captain Harry Kane said England can reach a higher level under manager Julian Tuchel as the team prepares for the World Cup semi‑final against Mexico. Kane’s comments come after England’s quarter‑final win over Norway, with the squad aiming for their first title since 1966.",
       "category": "Sports",
       "stories": [
         {
@@ -4821,17 +4799,55 @@
           "category": "Education",
           "plugin": "bbc",
           "pluginPriority": 0
+        },
+        {
+          "id": "rss-88421ad51f301183e1cbce31cc1bbdb9",
+          "title": "The schools starting late after 01:00 England kick-off to 'reduce pressure' on parents",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c621j2qj50do?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-04T02:46:58.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-7d0af7d59ea4e2ea19d3889233966ecd",
+          "title": "School suspensions fall in England for the first time since Covid",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c8j2d7v480eo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T14:10:31.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-0308e498f0bbb99a6f340f15b6808da5",
+          "title": "'We have another level we can reach' - Kane defends frustrated Tuchel",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sport/football/articles/cy04xjlg5p4o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T18:18:22.000Z",
+          "category": "general",
+          "plugin": "bbc",
+          "pluginPriority": 0
         }
       ],
       "triggerWords": [
+        "Kane",
         "Tuchel",
-        "Mexico",
-        "England World Cup"
+        "World Cup",
+        "England",
+        "semi‑final"
       ],
       "impact": "high",
       "created": "2026-07-12T18:43:32.314Z",
-      "updated": "2026-07-12T18:43:32.314Z",
-      "contentVersion": 1
+      "updated": "2026-07-12T20:47:44.535Z",
+      "contentVersion": 2
     },
     {
       "id": "cluster-1783881812314-1fs79i",
@@ -4946,68 +4962,6 @@
       "impact": "medium",
       "created": "2026-07-12T18:50:52.632Z",
       "updated": "2026-07-12T18:50:52.632Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783882342855-jo7jvm",
-      "headline": "Heatwave strains ambulances, grids and health guidance",
-      "summary": "Ambulance crews in Exeter reported increased demand during a prolonged heatwave, highlighting public unawareness of heat-related risks. New health guidance clarifies heat exhaustion and heatstroke and steps to act. Energy grids and train services are among vital infrastructure vulnerable to very hot weather, extending the heatwave's impact beyond health.",
-      "category": "World",
-      "stories": [
-        {
-          "id": "rss-554c171d46bad1c96f925945f2c06807",
-          "title": "Why is crucial tech vulnerable to the heat?",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cj0gez6d50ro?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-01T07:23:12.000Z",
-          "category": "Business",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "heatwave",
-        "Exeter",
-        "ambulance",
-        "energy grids",
-        "train services"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:52:22.855Z",
-      "updated": "2026-07-12T18:52:22.855Z",
-      "contentVersion": 1
-    },
-    {
-      "id": "cluster-1783882342855-3t6na0",
-      "headline": "England in World Cup semis; schools open late",
-      "summary": "England defeated Norway to reach the World Cup semi-finals, with Jude Bellingham scoring and Declan Rice playing despite illness. The team is set to face Mexico. Following a 01:00 England kick-off, some schools have opted to open late to reduce pressure on parents, a decision many parents backed.",
-      "category": "Sports",
-      "stories": [
-        {
-          "id": "rss-88421ad51f301183e1cbce31cc1bbdb9",
-          "title": "The schools starting late after 01:00 England kick-off to 'reduce pressure' on parents",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/c621j2qj50do?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-04T02:46:58.000Z",
-          "category": "Education",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "England",
-        "World Cup",
-        "Bellingham",
-        "Mexico",
-        "schools"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:52:22.855Z",
-      "updated": "2026-07-12T18:52:22.855Z",
       "contentVersion": 1
     },
     {
@@ -5157,35 +5111,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783882425792-7jpfi9",
-      "headline": "Shiona McCallum tests next‑generation prosthetics",
-      "summary": "Shiona McCallum meets a medical specialist developing prosthetic limbs that integrate neural interfaces and AI‑driven movement control. The collaboration aims to produce limbs that respond to users’ intentions with near‑natural precision, advancing rehabilitation technology.",
-      "category": "Technology",
-      "stories": [
-        {
-          "id": "rss-a6981e3d53f1584bd2271d2e66f2f5ac",
-          "title": "Tech Now",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/iplayer/episode/m002x058?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-05-23T01:00:00.000Z",
-          "category": "Technology",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "Shiona McCallum",
-        "prosthetics",
-        "neural interface"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:53:45.792Z",
-      "updated": "2026-07-12T18:53:45.792Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783882459574-s07snx",
       "headline": "Fetal therapy saves identical twins",
       "summary": "Identical twins Nancy and Margo survived a rare pregnancy condition after receiving a world‑first in‑utero treatment during a clinical trial. The pioneering procedure, performed while the twins were still in the womb, marks a breakthrough in prenatal medicine.",
@@ -5285,72 +5210,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783882502258-lf46mv",
-      "headline": "Heatwave strains ambulances, women and children at greater risk",
-      "summary": "During a recent heatwave, ambulance services were stretched thin as demand rose. Experts highlight that women suffer more from heat-related illnesses and children are especially vulnerable. Calls for targeted protection and increased public awareness have intensified.",
-      "category": "World",
-      "stories": [
-        {
-          "id": "rss-f7185bab6eed9fa6a357d2284f8a57dd",
-          "title": "Why women suffer more in the heat",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/videos/cpwelvv5zgwo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-09T15:25:03.000Z",
-          "category": "Health",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-69a2019b577fb5c8e46e9c302f9db8c3",
-          "title": "Why heatwaves hit women harder",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/c4gyp1knzzxo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-08T23:49:12.000Z",
-          "category": "Health",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-da62c56c4f1dd38fb9dda4db767f61a2",
-          "title": "More protein or less? The foods to get you through a heatwave ",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/clyw89g3443o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-08T09:05:56.000Z",
-          "category": "Health",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        },
-        {
-          "id": "rss-73a085fad6ec7f65ac0f67380bbb10aa",
-          "title": "Five tips to keep your kids cool in a heatwave",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/c862j9vy746o?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-06-19T00:07:22.000Z",
-          "category": "Education",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "heatwave",
-        "ambulance",
-        "women",
-        "children"
-      ],
-      "impact": "high",
-      "created": "2026-07-12T18:55:02.258Z",
-      "updated": "2026-07-12T18:55:02.258Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783882502258-5ni5y6",
       "headline": "Covid vaccine rollout praised, but report calls for better support for harmed",
       "summary": "An inquiry report praised the Covid vaccine rollout for saving hundreds of thousands of lives but warned that a small minority of recipients were harmed and require improved support. The report recommends enhanced monitoring and care for those affected.",
@@ -5438,35 +5297,6 @@
       "contentVersion": 1
     },
     {
-      "id": "cluster-1783882597567-woo9dv",
-      "headline": "NHS to roll out two rapid endometriosis tests",
-      "summary": "The National Health Service will introduce two rapid diagnostic tests for endometriosis, aiming to shorten the time to diagnosis for women. Health officials say the tests will be available across NHS facilities later this year, improving early detection and treatment pathways.",
-      "category": "Health",
-      "stories": [
-        {
-          "id": "rss-8eb6dcdc9d6439a6ede02e9252e372d0",
-          "title": "'Endometriosis tests would have given me years back'",
-          "source": "",
-          "sourceName": "BBC",
-          "url": "https://www.bbc.co.uk/news/articles/cx2vzxe02dxo?at_medium=RSS&at_campaign=rss",
-          "image": "",
-          "published": "2026-07-11T06:29:22.000Z",
-          "category": "Health",
-          "plugin": "bbc",
-          "pluginPriority": 0
-        }
-      ],
-      "triggerWords": [
-        "endometriosis",
-        "rapid tests",
-        "NHS"
-      ],
-      "impact": "medium",
-      "created": "2026-07-12T18:56:37.567Z",
-      "updated": "2026-07-12T18:56:37.567Z",
-      "contentVersion": 1
-    },
-    {
       "id": "cluster-1783882674304-nuriwi",
       "headline": "Rural Kenya faces 2,000 primary school closures",
       "summary": "More than 2,000 primary schools in rural Kenya face closure as enrolment numbers plummet, with some areas recording more cows than pupils. The closures threaten education access for children in affected communities.",
@@ -5522,7 +5352,1832 @@
       "created": "2026-07-12T18:57:54.305Z",
       "updated": "2026-07-12T18:57:54.305Z",
       "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882819798-5mtwe4",
+      "headline": "Resident doctors cancel strike after pay offer",
+      "summary": "Resident doctors cancelled a planned walkout that was due to start at 07:00 BST on Monday and last until Friday after the government made a new pay offer. The strike is paused while doctors consider the offer, and A&E departments remain open.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-12cb457c154950857b88f3340abbda8a",
+          "title": "Resident doctors take strike action over pay",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cpv31erm387o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-29T10:45:58.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-039152d9a7ffbba938b9f99697e9ae3d",
+          "title": "A&E to remain open as doctors' strike called off",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cy8wpz316lgo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-14T14:15:17.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-7b1e307cab81e26e2305ac4bd2879e4e",
+          "title": "Resident doctors cancel strike after new offer from government",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cj9g1wgxng2o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-13T20:46:11.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "resident doctors",
+        "bma",
+        "pay strike",
+        "walkout",
+        "07:00 bst",
+        "pay offer"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:00:19.798Z",
+      "updated": "2026-07-12T20:26:20.608Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882946402-8v0ujr",
+      "headline": "Starmer gripped by Gaza, defence and Mandelson rows",
+      "summary": "Prime Minister Keir Starmer faces Deputy Prime Minister Angela Lammy's criticism of Labour's Gaza response as 'problematic'. Starmer's extra defence spending leaves a £4.7bn gap for his successor amid a Whitehall job scramble. The Mandelson Washington scandal and Scotland-Wales polls add pressure. Starmer earlier pledged to stay in touch with Trump.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-494fb9b2c847c9d5615f385d88f2bfbd",
+          "title": "Starmer got Labour off to bad start on Gaza, Lammy says",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cddl84lvqe4o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T15:21:17.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-bfa4ff6ee1fa44649c0fa0ebd51acf5f",
+          "title": "The massive scramble behind the scenes before the new PM arrives",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cj4g0n0p15xo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-04T12:19:05.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-3826bf76d0ca038c3e41bed62c22eefe",
+          "title": "Why Starmer's defence plan leaves next PM with £4.7bn headache",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c9q250511neo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-01T07:34:48.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-b771c6e6124132d999fff9841651fa45",
+          "title": "Relish and dread as Starmer 'shambles' hangs over Scotland and Wales elections",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cq59xvdzjv7o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-04-25T12:07:54.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-03966cb0c0b6d30a880f38e2718335a9",
+          "title": "Why Starmer still can't move on from the Mandelson mess",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c4gd7kxdk37o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-04-18T12:32:35.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Lammy Gaza",
+        "£4.7bn defence",
+        "Mandelson Washington",
+        "Whitehall bunfight",
+        "Starmer Trump"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T19:02:26.402Z",
+      "updated": "2026-07-12T19:02:26.402Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882961973-lceswq",
+      "headline": "Hillsborough Law bill delayed beyond summer",
+      "summary": "Deputy Prime Minister David Lammy said the Hillsborough Law bill will not reach Parliament before the end of summer, contrary to earlier expectations of a swift passage. The delay postpones reforms intended to improve cooperation with investigations and legal support for families of the 1989 FA Cup disaster.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-0167b00c893309117dffbfa1f001acf9",
+          "title": "Hillsborough Law not likely until after summer",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c8r26xp4xv4o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T20:05:47.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Hillsborough Law",
+        "David Lammy"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:02:41.973Z",
+      "updated": "2026-07-12T19:02:41.973Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783882982286-k7fwcp",
+      "headline": "Nowak murder sparks transatlantic political debate",
+      "summary": "The killing of Henry Nowak has provoked a heated debate between the United Kingdom and its transatlantic partners over police procedures and political ramifications. Officials in both regions are scrutinising the response, linking the case to broader security and governance concerns.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-692a893401445b571f56c2b1b32bc217",
+          "title": "The Nowak murder has lit a match under British politics. This is how we got here",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c39297vxmw2o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-06T11:08:22.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Nowak murder",
+        "Henry Nowak",
+        "transatlantic debate"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T19:03:02.286Z",
+      "updated": "2026-07-12T19:03:02.286Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883308883-9wg5ni",
+      "headline": "Russians post horse videos over fuel shortages",
+      "summary": "A meme featuring horse videos is spreading across Russian social media platforms in response to nationwide fuel shortages. Users are posting the videos as commentary on the fuel supply crisis affecting the country. The trend reflects public reaction to the shortages.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-0409034e1e21e83b3001c4c0dfd81927",
+          "title": "Why are Russians posting horse videos on social media?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/c0myj9jy3rko?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-02T10:52:59.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "horse videos",
+        "Russian fuel shortages"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T19:08:28.883Z",
+      "updated": "2026-07-12T19:08:28.883Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883308883-9xlkvl",
+      "headline": "Kendall announces social media ban for under-16s",
+      "summary": "Technology Secretary Liz Kendall addressed the Commons after the government announced a social media ban for under-16s. Kendall described the measure as a defining moment for children. The policy restricts social media access for users below 16 years of age.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-a319fabeb9d00df078a43008095d087a",
+          "title": "Social media ban 'a defining moment for our children'",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/c1wy0l1e9yno?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-15T16:30:08.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Liz Kendall",
+        "under-16s social media ban"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:08:28.883Z",
+      "updated": "2026-07-12T19:08:28.883Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883354493-gbd524",
+      "headline": "India condemns GFS Galaxy attack off Oman",
+      "summary": "India condemned an attack on the commercial vessel GFS Galaxy off the coast of Oman. Ten of the 11 Indian nationals on board were rescued. A search continues for the missing crew member. The incident occurred in waters off Oman.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "df61986f-92d6-554a-860d-ee6b97601524",
+          "title": "India Condemns Attack On Commercial Vessel GFS Galaxy Off Oman Coast, 10 Of 11 Indians Rescued As Search Continues For Missing Crew Member",
+          "source": "Swarajya Staff",
+          "sourceName": "Swarajya",
+          "url": "https://swarajyamag.com/world/india-condemns-attack-on-commercial-vessel-gfs-galaxy-off-oman-coast-10-of-11-indians-rescued-as-search-continues-for-missing-crew-member",
+          "image": "https://swarajya.gumlet.io/swarajya/2024-11-02/wgnckyjh/MEA-spokesperson-Randhir-Jaiswal.png?w=600&h=315&format=jpg",
+          "published": "2026-07-12 08:04:16 +0000",
+          "category": [
+            "politics"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "GFS Galaxy",
+        "Oman coast"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:09:14.493Z",
+      "updated": "2026-07-12T19:09:14.493Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883390949-wetyra",
+      "headline": "India and Canada finish third CEPA negotiation round",
+      "summary": "India and Canada concluded their third round of Comprehensive Economic Partnership Agreement talks in Ottawa, aiming to finalise the pact within the year. Negotiations covered goods, services and intellectual property, with a target bilateral trade volume of fifty billion US dollars.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "5096034a-63d9-5380-b42a-8635dbbdfe74",
+          "title": "India, Canada conclude third round of talks on proposed trade pact",
+          "source": "SECTIONS India; Canada conclude third round",
+          "sourceName": "Economic Times",
+          "url": "https://economictimes.indiatimes.com/news/economy/foreign-trade/india-canada-conclude-third-round-of-talks-on-proposed-trade-pact/articleshow/132342465.cms",
+          "image": "https://img.etimg.com/thumb/msid-132342476,width-1200,height-630,imgsize-174594,overlay-economictimes/articleshow.jpg",
+          "published": "2026-07-12 08:03:10 +0000",
+          "category": [
+            "business"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "CEPA",
+        "India Canada trade",
+        "third round"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T19:09:50.949Z",
+      "updated": "2026-07-12T19:09:50.949Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883390949-g8irzj",
+      "headline": "John Lewis plans autumn service cuts risking hundreds of jobs",
+      "summary": "John Lewis has outlined plans to cut several services in the autumn, putting hundreds of jobs at risk. The redundancies await final approval, signalling a significant restructuring of the retailer’s operations.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-4eac29ff6f58580910729a1cca813c25",
+          "title": "Hundreds of jobs at risk as John Lewis plans to cut some services",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c30y4vqq4p6o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T01:04:44.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "John Lewis",
+        "service cuts",
+        "job risk"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:09:50.949Z",
+      "updated": "2026-07-12T19:09:50.949Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883390949-s50z8r",
+      "headline": "Artificial ice pyramids provide water for Himalayan farms",
+      "summary": "Villages in the Indian Himalayas are constructing artificial glaciers, shaped as ice pyramids, to store winter meltwater for spring irrigation. The community‑led projects aim to secure water supplies for crops amid climate variability.",
+      "category": "Environment",
+      "stories": [
+        {
+          "id": "rss-ce442a054ee25e6fcc64b2bd3e04265e",
+          "title": "The artificial ice pyramids saving India's mountain villages",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c072414183go?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-18T23:11:07.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "artificial glaciers",
+        "Himalayan villages",
+        "ice pyramids"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:09:50.949Z",
+      "updated": "2026-07-12T19:09:50.949Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883390949-4ocfzu",
+      "headline": "Agave‑based spirits launch new Indian drinks market",
+      "summary": "Distillers in India are harvesting wild agave plants to produce a novel spirits category dubbed ‘blue gold’. The emerging industry seeks to establish a domestic market for agave‑derived alcoholic beverages.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-0091e77b59be0034f05ba93573a74ac0",
+          "title": "India's 'blue gold' starts a new drinks industry",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cdrpe4vly5mo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-11T23:01:48.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "agave",
+        "blue gold",
+        "Indian spirits"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:09:50.949Z",
+      "updated": "2026-07-12T19:09:50.949Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883402715-wty4ab",
+      "headline": "List ranks 18 greatest Irish guitarists",
+      "summary": "The article ranks the 18 greatest Irish guitarists, naming Rory Gallagher, The Edge and Gary Moore among the top performers and detailing the remaining fifteen musicians. It reflects on their influence on Irish music and the author's personal inspiration from seeing Taste on television at age eleven.",
+      "category": "Entertainment",
+      "stories": [
+        {
+          "id": "f0f8cfb7-6851-59df-9ad3-e3e63a257938",
+          "title": "“I saw Taste on TV when I was 11 – this noise just transfixed me. I decided there and then that I wanted to be Rory Gallagher”: 18 of the greatest Irish guitarists of all time",
+          "source": "Mark McStea",
+          "sourceName": "",
+          "url": "https://www.guitarworld.com/artists/guitarists/18-of-the-greatest-irish-guitarists-of-all-time",
+          "image": "https://cdn.mos.cms.futurecdn.net/5HVpNeo2PpFvfwUeKscTtd-2400-80.jpg",
+          "published": "2026-07-12 08:00:00 +0000",
+          "category": [
+            "regional",
+            "northen"
+          ],
+          "plugin": null,
+          "pluginPriority": null
+        }
+      ],
+      "triggerWords": [
+        "Irish guitarists",
+        "Rory Gallagher",
+        "Taste"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T19:10:02.715Z",
+      "updated": "2026-07-12T19:10:02.715Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883445461-lkaczh",
+      "headline": "US and Iran exchange strikes over Hormuz",
+      "summary": "The United States insists the Strait of Hormuz remains open after Iranian forces claimed to have closed it and launched wide-ranging attacks on US allies and bases in the region. The two countries are exchanging strikes. The strait is a critical global oil shipping route, making the escalation a major international security concern.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-34a40f33ff0f3f176b6606e215779e14",
+          "title": "US insists Strait of Hormuz is open as it exchanges strikes with Iran",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cj9gkpp0dkeo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T16:46:24.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Strait of Hormuz",
+        "Iranian forces"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T19:10:45.461Z",
+      "updated": "2026-07-12T19:10:45.461Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883516059-zqkobz",
+      "headline": "Flintoff crash passenger sues BBC Studios",
+      "summary": "Paul Rees, an expert driver and passenger in Andrew Flintoff's Top Gear crash, is suing BBC Studios for personal injury. BBC Studios is disputing the claim. The legal action follows the incident involving the television programme's filming.",
+      "category": "Entertainment",
+      "stories": [
+        {
+          "id": "rss-1729a75b5cc6bf5ce4f26bb6fc4e54f4",
+          "title": "Andrew Flintoff's Top Gear crash passenger sues BBC Studios",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c4gy59p5gz6o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T16:11:20.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Paul Rees",
+        "Top Gear crash",
+        "Andrew Flintoff"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T19:11:56.059Z",
+      "updated": "2026-07-12T19:11:56.059Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883516059-ue6syf",
+      "headline": "Lorry driver arrested after child dies in collision",
+      "summary": "A lorry driver has been arrested after a child died in a collision. Detectives are appealing for any witnesses to the incident to come forward. The circumstances of the crash and the child's identity have not been disclosed.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "rss-1ee40e799dce2dbb3201e0e673e41321",
+          "title": "Lorry driver arrested as child dies in collision",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c70y247vd2do?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T09:27:36.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "lorry driver arrested",
+        "child dies collision"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T19:11:56.059Z",
+      "updated": "2026-07-12T19:11:56.059Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883571455-2cc6x8",
+      "headline": "Aldi targets US supermarkets with $4 almond butter",
+      "summary": "Aldi, the German supermarket, is investing $9bn to expand in the United States, targeting urban hubs including Manhattan. The retailer is selling $4 almond butter as part of its discount model to compete with Walmart and other US supermarkets. The expansion marks a significant challenge to established US grocery chains.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-29c49c0186e2f3ce469809aa937ec496",
+          "title": "How Aldi is taking on US supermarkets with its $4 almond butter",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cly0l5d5xn7o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T05:00:15.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Aldi",
+        "$4 almond butter",
+        "$9bn US push",
+        "Manhattan"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:12:51.455Z",
+      "updated": "2026-07-12T19:12:51.455Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883635661-9scg56",
+      "headline": "Men adopt unproven sperm count hacks",
+      "summary": "Men are using unproven fertility 'hacks' promoted by social media influencers to increase sperm counts, as male fertility receives greater public attention. The methods lack scientific backing, raising concerns about misinformation around reproductive health.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-753acd5eaa7bb69d7151bbf8a52d1e31",
+          "title": "The myths sold to men trying to boost their sperm",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c8921982pgzo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T23:27:31.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "sperm counts",
+        "unproven hacks"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T19:13:55.661Z",
+      "updated": "2026-07-12T19:13:55.661Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883635661-yy8fxk",
+      "headline": "Crypto billionaires set up own nations",
+      "summary": "Crypto billionaires are creating independent nations, arguing that democracy has failed. The individuals are promoting systems where financial contribution determines voting rights. The movement signals a shift towards privatised governance models outside traditional state structures.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-ef14cebb0f2e05c01c33af5ce90d7111",
+          "title": "Meet the crypto billionaires building a world where money buys you a vote",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cly8eqyj8e2o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T23:03:11.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "crypto billionaires",
+        "own nations"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T19:13:55.661Z",
+      "updated": "2026-07-12T19:13:55.661Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883737245-41gvyn",
+      "headline": "Record 128 people cross Channel in small boat",
+      "summary": "On Friday, a single small boat carried 128 people across the Channel, a record number for one vessel. A total of 225 people made the crossing that day on three boats. The journeys highlight ongoing irregular migration from France to the UK.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-0764d27b3ebaa1e4507e2a0bc7e15142",
+          "title": "Record 128 people cross Channel in one small boat",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cj9gmjx998xo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T09:26:22.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Channel crossing",
+        "small boat",
+        "128 people"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:15:37.245Z",
+      "updated": "2026-07-12T19:15:37.245Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883737245-5hwku3",
+      "headline": "15 die as speedboat capsizes off south Vietnam",
+      "summary": "A speedboat overturned in rough seas near an island in south Vietnam, killing 15 people including Indian tourists. Local media report 21 individuals were rescued. The incident raises maritime safety concerns in the region.",
+      "category": "World",
+      "stories": [
+        {
+          "id": "rss-1cbe693286c6efcdab58d8e8c8bbac59",
+          "title": "Indian tourists among 15 killed as speedboat capsizes in Vietnam",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cwyd7x22lp1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T13:44:03.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Vietnam speedboat",
+        "south Vietnam"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:15:37.245Z",
+      "updated": "2026-07-12T19:15:37.245Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883737245-j2ioz1",
+      "headline": "Charlie Kirk death sparks Republican legacy battle",
+      "summary": "Charlie Kirk has died, prompting a battle over his political legacy within the Republican Party. Questions have emerged over whether young voters he mobilised will continue to support Republican candidates. The dispute concerns conservative youth outreach.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-3a553f6a8678c12f360a650839ba89c3",
+          "title": "The battle for Charlie Kirk’s legacy",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/w3ct8lzb?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T06:00:00.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Charlie Kirk"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:15:37.245Z",
+      "updated": "2026-07-12T19:15:37.245Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883787829-d0ldyc",
+      "headline": "Dyslexic reader launches book club after BookTok",
+      "summary": "A dyslexic individual avoided reading until BookTok, a book-focused TikTok community, prompted engagement, and now runs a book club. Romance novels are enjoying a boom and have dedicated bookshops. The account highlights social media's influence on reading.",
+      "category": "Entertainment",
+      "stories": [
+        {
+          "id": "rss-058484b73f795076a4c320b4f885a462",
+          "title": "I'm dyslexic and avoided reading until BookTok got me hooked - now I run a book club",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cg744p7ddyko?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T06:05:16.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "BookTok",
+        "dyslexic book club",
+        "romance novels"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T19:16:27.829Z",
+      "updated": "2026-07-12T19:16:27.829Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883804170-8muhcq",
+      "headline": "Great‑grandfather says everything is gone after house fire",
+      "summary": "A great‑grandfather reported that his house was destroyed after a fire that firefighters believe was most likely caused by embers from a nearby bonfire. The blaze left the property in ruins, with the victim stating that everything was gone.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "rss-628091c96136e9931f428c398ec53398",
+          "title": "Great-grandfather says 'everything is gone' after house fire",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c70yp7d917eo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-12T14:59:43.000Z",
+          "category": "General",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "great‑grandfather",
+        "house fire",
+        "bonfire embers"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T19:16:44.170Z",
+      "updated": "2026-07-12T19:16:44.170Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883813925-wdbk37",
+      "headline": "US Democrat Ro Khanna detained by Israeli settlers",
+      "summary": "US Representative Ro Khanna, 49, said he was held for 90 minutes by armed Israeli settlers while visiting the occupied West Bank. Khanna reported the incident on 11 July 2026, raising concerns about settler intimidation of foreign officials.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-4136d57febe37dea481328cc67ecd48b",
+          "title": "US Democrat Ro Khanna says he was detained by armed Israeli settlers",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c0qyk9jwq9no?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T18:00:09.000Z",
+          "category": "World",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Ro Khanna",
+        "Israeli settlers"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:16:53.925Z",
+      "updated": "2026-07-12T19:16:53.925Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883884291-mtdex2",
+      "headline": "ASA warns over fake portable air conditioners",
+      "summary": "The ASA has ruled that adverts for portable air conditioners claiming to cool rooms in 90 seconds are misleading. The small devices have spread across the internet as fake cooling solutions. The regulator said the claims were too good to be true, warning consumers against false advertising.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-cacf79fa60300361594acf7764e01ee6",
+          "title": "'Cool in 90 seconds' - the fake portable air conditioners sweeping the internet",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cj6g41pzy41o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T01:33:45.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "ASA",
+        "portable air conditioners",
+        "Cool in 90 seconds"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T19:18:04.291Z",
+      "updated": "2026-07-12T19:18:04.291Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883913403-90h7i2",
+      "headline": "Port of Rotterdam sued over fossil fuel ties",
+      "summary": "Environmental groups have filed a lawsuit demanding that the Port of Rotterdam accelerate the reduction of its reliance on fossil‑fuel companies. The case seeks to force the Europe’s largest port to adopt greener operations and align with climate targets.",
+      "category": "Environment",
+      "stories": [
+        {
+          "id": "rss-860c5a021c600081c3e1821e9c1fbbf3",
+          "title": "Pressure builds on Europe's biggest port to be greener",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c39y78rwrmno?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T23:00:51.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Rotterdam",
+        "fossil fuel",
+        "lawsuit"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T19:18:33.404Z",
+      "updated": "2026-07-12T19:18:33.404Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883913404-saukbb",
+      "headline": "Germany re‑examines coal‑powered electricity",
+      "summary": "The German government is reviewing its plan to phase out coal after natural‑gas price spikes made coal‑fired power appear more economical. Officials are assessing whether to keep coal plants operating to ensure energy security while balancing climate commitments.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-549f1565293ff31d8be622abbbfc4efc",
+          "title": "Is Germany looking again at coal-powered electricity?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cy04ykxrj5eo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-21T23:27:11.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Germany",
+        "coal electricity",
+        "natural gas"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:18:33.404Z",
+      "updated": "2026-07-12T19:18:33.404Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883913404-7pukaf",
+      "headline": "Jet fuel shortage threatens summer travel",
+      "summary": "A looming shortage of jet fuel is expected to disrupt airline schedules and raise ticket prices for the upcoming summer holiday season. Analysts warn that supply constraints could lead to flight cancellations and reduced capacity across major routes.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-04fbd5a3d88189348327a57fe4072aa7",
+          "title": "The threat to summer holidays looming from jet fuel shortages",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c86d9v28qxxo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-05-03T23:03:41.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "jet fuel",
+        "summer holidays",
+        "airline"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:18:33.404Z",
+      "updated": "2026-07-12T19:18:33.404Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783883968123-xj4rpp",
+      "headline": "EU threatens Meta with fines over Facebook Instagram",
+      "summary": "The European Union has threatened Meta with fines over Facebook and Instagram. Regulators state that features including infinite scroll cause compulsive use and unhealthy habits on the platforms. The warning targets the design of the social networks and their user protection standards.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-64a6478c00f6ca0cd4ff9e56fe5b9ca4",
+          "title": "EU threatens Meta with fines over 'addictive' Facebook and Instagram",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c8j2dje3pldo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T12:02:40.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "EU threatens Meta",
+        "addictive Facebook Instagram"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:19:28.123Z",
+      "updated": "2026-07-12T19:19:28.123Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884000720-fx71u0",
+      "headline": "Electric vehicle insurance premiums remain high",
+      "summary": "Insurance premiums for electric cars are significantly higher than for conventional vehicles, discouraging potential buyers. Industry analysts note that repair costs, battery valuation and limited data contribute to the price gap, prompting calls for regulatory review and insurer reforms.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-0191bedbbdd1cf2ebf9c2ce0d299a70e",
+          "title": "Why electric cars cost more to insure - and what's being done about it",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cgk6606j6zeo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T23:09:55.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "electric car insurance",
+        "EV premiums"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:20:00.720Z",
+      "updated": "2026-07-12T19:20:00.720Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884000720-eztcuu",
+      "headline": "Online marketplaces sell unsafe baby products",
+      "summary": "Consumer group Which? identified dozens of baby items, including pillows, sleeping bags and feeders, listed on major platforms such as Amazon and TikTok that breach safety notices. The findings highlight ongoing risks for parents and pressure retailers to tighten product vetting.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-52d2c86c832ae64642f41ae2a8648c44",
+          "title": "Online marketplaces still selling dozens of unsafe baby products, Which? finds",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c1dy11vvwk1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T19:23:33.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "unsafe baby products",
+        "Which?"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:20:00.720Z",
+      "updated": "2026-07-12T19:20:00.720Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884000720-iv917b",
+      "headline": "Robots for rent face growing public backlash",
+      "summary": "Companies offering rental robots for tasks such as deliveries encounter increasing opposition, with protests and municipal bans emerging across US cities. Critics argue the machines obstruct pedestrians and raise safety concerns, while providers stress efficiency gains and propose regulatory frameworks.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-e8add58ad65cf16588d5e97dcd18cdad",
+          "title": "Robots available for rent: But what can they do?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c4gymkg9lr2o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-06T23:48:55.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-62461f7e26e9c51e72805f0fdb69ad85",
+          "title": "'We had to get out of the way': The backlash over delivery robots",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c0rygp005wjo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-17T23:02:05.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "robot rental",
+        "delivery robots backlash"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:20:00.720Z",
+      "updated": "2026-07-12T19:20:00.720Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884015162-wgpzyn",
+      "headline": "Ofcom fines porn site £630,000 for age‑check failures",
+      "summary": "Ofcom fined a pornographic website operator £630,000 after it failed to prevent children from accessing adult content. The penalty is part of a broader crackdown on sites that do not meet age‑verification standards.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-89e4ff026ec5c41cae03551b39389b4f",
+          "title": "Porn site company fined £630,000 over failed age checks",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c07ylddnvmyo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T11:29:31.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Ofcom",
+        "porn site",
+        "age checks",
+        "£630,000"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:20:15.162Z",
+      "updated": "2026-07-12T19:20:15.163Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884041078-2sgaq2",
+      "headline": "23andMe ordered to pay $47m to breach victims",
+      "summary": "A U.S. judge ruled that 23andMe must pay $47 million in compensation to individuals affected by the 2023 hack of its DNA testing database. The settlement addresses claims that the company failed to protect genetic data, marking the largest payout for a consumer genetic‑data breach.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-c9c0e5394bd9a14f03cde94510cf0bf4",
+          "title": "Victims of 23andMe data breach to get $47m payout, judge rules",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cn0vnx2192vo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-07T23:47:33.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "23andMe",
+        "data breach",
+        "$47m"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:20:41.078Z",
+      "updated": "2026-07-12T19:20:41.078Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884041078-pqsfyt",
+      "headline": "Helium‑3 mining on the Moon gains interest",
+      "summary": "Scientists and commercial firms are evaluating the extraction of helium‑3 from the lunar surface, citing the isotope’s high price and projected surge in demand for fusion energy. Plans involve robotic mining operations, though technical and regulatory challenges remain.",
+      "category": "Science",
+      "stories": [
+        {
+          "id": "rss-bd230a3530619f47c6ce5f05e8d14bb0",
+          "title": "What is Helium-3 and could we get it from the moon?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/ce8jmg2e4kro?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-16T00:11:13.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Helium-3",
+        "moon mining"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:20:41.078Z",
+      "updated": "2026-07-12T19:20:41.078Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884053866-tah2n9",
+      "headline": "LeCun launches flexible AI start‑up",
+      "summary": "Computer scientist Yan LeCun has founded a start‑up that is developing a more flexible artificial‑intelligence system. The venture aims to move beyond current narrow AI models, seeking broader applicability across tasks. The company is positioned to influence future AI research and commercial deployment.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-44bf46b8f721d41e5d5ed2ad9dc6ebda",
+          "title": "AI is 'not smart' so what's next in artificial intelligence?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cj6gr0xkyr3o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-02T23:02:09.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Yan LeCun",
+        "flexible AI system"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:20:53.866Z",
+      "updated": "2026-07-12T19:20:53.866Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884074196-uxla45",
+      "headline": "Martin Lewis advises on switching bank accounts",
+      "summary": "Financial adviser Martin Lewis outlines factors consumers should consider before changing bank accounts, including fees, interest rates, service quality and potential impact on direct debits and standing orders. He recommends comparing offers and reviewing terms to avoid hidden costs.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-83bf4af159e1666b7091e7014a277e44",
+          "title": "Should you be switching bank accounts?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/c24yjeze14mo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T13:38:50.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Martin Lewis",
+        "bank accounts",
+        "switching"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T19:21:14.196Z",
+      "updated": "2026-07-12T19:21:14.196Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884074196-e3opzj",
+      "headline": "Hydration‑tracking gadgets proliferate market",
+      "summary": "New wearable devices measure users' sweat composition and volume to calculate a personalised ‘sweat score’. Companies market the data as a tool for optimizing fluid intake during exercise and daily life, raising questions about data privacy and the necessity of constant monitoring.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-4acfff696b27adf910db5bfde4a49806",
+          "title": "Do you know your 'sweat score'? The rise of hydration tech",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c5yz5z72lqgo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-22T23:01:11.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "sweat score",
+        "hydration tech",
+        "wearable"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:21:14.196Z",
+      "updated": "2026-07-12T19:21:14.196Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884086737-y9vjg8",
+      "headline": "Candy stores multiply in New York City",
+      "summary": "New confectionery retailers are opening across New York City despite historically low US consumer confidence. Analysts note the expansion reflects niche market growth and shifting consumer spending towards affordable indulgences.",
+      "category": "Business",
+      "stories": [
+        {
+          "id": "rss-e6ad5930bf9b242dd6553ca91c0dccc2",
+          "title": "New candy stores are popping up across NYC. Why?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c30ylzlygngo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-10T23:01:54.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "candy stores",
+        "NYC"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:21:26.737Z",
+      "updated": "2026-07-12T19:21:26.737Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884136300-cdaqgd",
+      "headline": "Armed forces experiment with humanoid robots",
+      "summary": "Armed forces are experimenting with humanoid robots, but battlefield deployment remains some way off. The trials indicate military interest in robotic systems for potential combat roles. No specific nations or platforms were named in the report. Operational use of humanoid machines in warfare is not imminent.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-584d959f91f86152344775421d4e0619",
+          "title": "Could humanoid robots be heading for the battlefield?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cedpxwe26l1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-08T23:06:30.000Z",
+          "category": "Business",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "humanoid robots",
+        "battlefield deployment"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:22:16.300Z",
+      "updated": "2026-07-12T19:22:16.300Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884194611-eo726l",
+      "headline": "NCA warns AI misuse of children's images",
+      "summary": "The National Crime Agency cautions that publicly shared photos of children can be processed by artificial‑intelligence tools to create child‑abuse material. Researchers also revealed a specific prompt that caused ChatGPT to generate disturbing images, underscoring broader risks of generative AI misuse.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-eefc5716aaf5871b32fe1576f16ae105",
+          "title": "Parents warned not to publicly share children’s images amid AI abuse risks",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cd7wj7d0jzzo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-03T15:57:42.000Z",
+          "category": "Technology",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-a9474a34309bbf34808548976b796542",
+          "title": "Tech Life",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/w3ct8jy0?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-16T19:30:00.000Z",
+          "category": "Technology",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "children's images",
+        "ChatGPT disturbing images"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T19:23:14.611Z",
+      "updated": "2026-07-12T19:23:14.611Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884210386-8go0xe",
+      "headline": "Microsoft Quantum Lab in Denmark visited",
+      "summary": "Adrienne Murray gained rare access to Microsoft’s Quantum Lab in Denmark, observing ongoing research into quantum computing hardware and algorithms. The visit highlights Microsoft’s European research footprint and its push to advance quantum technologies ahead of commercial rollout.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-c7d3c797765720db0d2eaddcd4ed9650",
+          "title": "Tech Now",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/iplayer/episode/m002z2l5?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T01:00:00.000Z",
+          "category": "Technology",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Microsoft Quantum Lab",
+        "Denmark"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:23:30.386Z",
+      "updated": "2026-07-12T19:23:30.386Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884210386-eqetkc",
+      "headline": "Report from Europe’s largest tech exhibition",
+      "summary": "Reporters attended one of Europe’s biggest technology events, showcasing new hardware, AI applications and sustainability initiatives from leading firms. Exhibitors demonstrated next‑generation chips, cloud services and green‑tech solutions, underscoring the sector’s growth trajectory.",
+      "category": "Technology",
+      "stories": [
+        {
+          "id": "rss-a82fe2ffc55e59ab4ea7768b027c58ec",
+          "title": "Tech Life",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/w3ct8jy1?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-23T20:00:00.000Z",
+          "category": "Technology",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Europe’s biggest tech event",
+        "technology exhibition"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:23:30.386Z",
+      "updated": "2026-07-12T19:23:30.386Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884247814-q8amhm",
+      "headline": "US pays $3 million to Havana Syndrome victims",
+      "summary": "The United States has paid $3 million to victims of the Havana Syndrome, a mysterious illness first reported by US officials and diplomats a decade ago. The compensation covers medical costs and related expenses for affected families. The payout follows investigations into the condition’s origins and impact on embassy staff.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-d4caf9f879602f204f37c6ad64409231",
+          "title": "US pays out $3m to victims of mystery Havana Syndrome condition reported by spies",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cr7xyl78vnko?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T13:11:52.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Havana Syndrome",
+        "US pays",
+        "3 million"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T19:24:07.814Z",
+      "updated": "2026-07-12T19:24:07.814Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884271469-khst29",
+      "headline": "Ride for Rori raises £61,000 for Oxford Hospitals",
+      "summary": "Cyclists completing the Paris‑to‑London Ride for Rori raised £61,000 for the Oxford Hospitals Charity. The event combined long‑distance cycling with fundraising, supporting the charity’s work in patient care and research.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-b63aa2f9e6bed3cc3f753ed9a3c3fb6d",
+          "title": "Cycling from Paris to London for Rori",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/cj3gdz1vpmvo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T05:07:03.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Ride for Rori",
+        "Oxford Hospitals Charity"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:24:31.469Z",
+      "updated": "2026-07-12T19:24:31.469Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884271469-iapvmf",
+      "headline": "Bangladesh records 120,000 measles cases, children dying",
+      "summary": "Bangladesh, previously praised for measles control, reported 120,000 measles cases as hospitals become overwhelmed. Hundreds of children have died, prompting urgent calls for vaccination campaigns and international aid.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-68412270d6f725222e74321d970813a4",
+          "title": "A country that made huge progress on measles now reports 120,000 cases",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cj0gel72mlgo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-08T22:03:05.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Bangladesh measles",
+        "120,000 cases"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T19:24:31.469Z",
+      "updated": "2026-07-12T19:24:31.469Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884284167-9fb01a",
+      "headline": "UV levels explained and protection advice",
+      "summary": "Health experts outline that moderate ultraviolet exposure supports wellbeing, but excessive exposure raises skin cancer risk. They advise using sunscreen, wearing protective clothing and limiting time outdoors during peak UV periods to reduce harm.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-4db03976cc6819b7b148d118c99ce32b",
+          "title": "What are UV levels and how can you protect yourself?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/ckmg1572e8ko?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-22T13:43:26.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "UV levels",
+        "skin cancer",
+        "protect yourself"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:24:44.167Z",
+      "updated": "2026-07-12T19:24:44.167Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884310280-4o5dri",
+      "headline": "Meningitis B vaccine limited to select teens",
+      "summary": "Health officials are offering the meningitis B vaccine only to specific groups of teenagers and young adults, citing risk‑based criteria. Cambridge scientists have tested a world‑first vaccine designed by artificial intelligence. Experts on BBC's Inside Health discussed the ongoing bacterial meningitis outbreak in Kent and the targeted vaccination strategy.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-f937f7a30c025e3c086bfbf53c1f759a",
+          "title": "What is meningitis B and why is a vaccine only being offered to some teenagers?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c3rzg0vg947o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-12T10:40:50.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-c7419356da434b1e261da22f16b8e6ab",
+          "title": "'World-first' vaccine designed by artificial intelligence",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/crrpggegwe0o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-04T23:29:06.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-3c5e286dc651308f7319205c9b400b8e",
+          "title": "Inside Health",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/m002t18t?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-03-24T10:00:00.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        },
+        {
+          "id": "rss-ddcf2ea5848be12d372e5b8e631a09b6",
+          "title": "Inside Health",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/m002sn3q?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-03-17T10:00:00.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "meningitis B",
+        "AI-designed vaccine"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:25:10.280Z",
+      "updated": "2026-07-12T19:25:10.280Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884382268-z594x2",
+      "headline": "Consultants strike over pay with emergency cover",
+      "summary": "On 25 June 2026, consultants and specialist doctors took strike action over pay. Full emergency cover remained in place and patients were told to attend all scheduled appointments unless advised otherwise. The dispute concerns remuneration for senior medical staff.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-a5f661ee8b7f862ea418eb9de1626ce7",
+          "title": "Consultants and specialist doctors take strike action over pay",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c14y72vkv3yo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-25T18:26:34.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "consultants",
+        "specialist doctors",
+        "strike action"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:26:22.268Z",
+      "updated": "2026-07-12T19:26:22.268Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884382268-wh9k97",
+      "headline": "BMA votes for strike against Manx Care",
+      "summary": "The British Medical Association voted to take strike action against Manx Care over pay erosion since 2008. The dispute concerns doctors' earnings on the Isle of Man. The vote marks an escalation in the pay row between the union and the health employer.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-0c18cb0e810d977ee3ee95848a1e81be",
+          "title": "Doctors vote to take strike action in row over pay",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c24y8jlvy2vo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-03T10:08:16.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "British Medical Association",
+        "Manx Care",
+        "pay erosion"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:26:22.268Z",
+      "updated": "2026-07-12T19:26:22.268Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884397431-ra465s",
+      "headline": "Mosquitoes now bite earlier, sperm optimisation tips released",
+      "summary": "Health experts report that mosquito activity is shifting to earlier hours, potentially increasing bite risk in mornings. The same source provides guidance on lifestyle changes to improve male sperm health, including diet and temperature management.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-c70b80014be7d5655c51a37237ae5852",
+          "title": "Inside Health",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/sounds/play/m002ym1k?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-07T09:00:00.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "mosquitoes biting earlier",
+        "optimise sperm"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T19:26:37.431Z",
+      "updated": "2026-07-12T19:26:37.431Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884428866-cg7b91",
+      "headline": "Kit Birks walks Europe for suicide prevention",
+      "summary": "Kit Birks has walked the entire length of Europe to raise money and awareness for suicide prevention. The expedition, described as surviving in the wild, aimed to highlight mental health and reduce stigma. No specific fundraising total was disclosed.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-509ec20cb7f8169e392b4c27c54a9edc",
+          "title": "Surviving in the wild for suicide awareness",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/videos/clyek61k4kgo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-11T06:07:00.000Z",
+          "category": "Health",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "Kit Birks",
+        "suicide prevention"
+      ],
+      "impact": "low",
+      "created": "2026-07-12T19:27:08.866Z",
+      "updated": "2026-07-12T19:27:08.866Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884492552-q71z48",
+      "headline": "Disability benefit review considers non-cash help",
+      "summary": "A minister said a review of disability benefits is looking at whether some claimants could be pointed to other kinds of help rather than cash payments. The government review is assessing alternatives to cash for disabled claimants. No further details on specific benefits or groups were provided.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-3d738d0df3a6efa69f54a89a63844e1d",
+          "title": "Disability benefit review considers alternatives to cash payments",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cy9r3e05qvno?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-10T14:18:58.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "disability benefit review"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:28:12.552Z",
+      "updated": "2026-07-12T19:28:12.552Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884507605-6lof6i",
+      "headline": "MPs demand veto on political ambassador appointments",
+      "summary": "The Foreign Affairs Committee reported that the appointment process for Lord Mandelson was improvised and called for MPs to have a veto over political ambassador selections. The committee’s findings aim to tighten scrutiny of diplomatic appointments and prevent similar controversies.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-7b6bf079a8cffa16b9288a9a7641b10c",
+          "title": "MPs seek veto over political ambassadors after Mandelson row",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c9q2rgx9qglo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-09T02:22:15.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "political ambassadors",
+        "Mandelson",
+        "veto"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:28:27.606Z",
+      "updated": "2026-07-12T19:28:27.606Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884520159-xw05lc",
+      "headline": "Government moves to abolish leasehold system",
+      "summary": "The government announced plans to abolish the leasehold property system in England and Wales, aiming to end the practice of selling homes on long‑term leases. Officials acknowledge that replacing leasehold with alternative ownership models will be complex and require extensive legislative changes.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-4d77b7b6511950ec057f666492f4e918",
+          "title": "How the leasehold revolution could transform neighbourly relations",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cp8llpp67l1o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-07T23:13:38.000Z",
+          "category": "Politics",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "leasehold",
+        "abolish",
+        "government",
+        "property"
+      ],
+      "impact": "high",
+      "created": "2026-07-12T19:28:40.159Z",
+      "updated": "2026-07-12T19:28:40.159Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884782860-y1apop",
+      "headline": "England teachers receive 3.5% pay rise",
+      "summary": "The government has approved a 3.5% salary increase for teachers in England. Schools must fund part of the rise, which unions warn will further stretch already tight budgets.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-ae8d851ecb939ae1ce21aaa4117629b3",
+          "title": "Teachers in England to get 3.5% pay rise",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cx2d41vlvzlo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-07-01T14:54:38.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "teachers pay rise",
+        "3.5%"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:33:02.860Z",
+      "updated": "2026-07-12T19:33:02.860Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884782860-6jty5n",
+      "headline": "English schools to enforce full‑day smartphone ban",
+      "summary": "New government guidance requires English schools to keep students' smartphones away for the entire school day. The policy replaces earlier partial restrictions and applies to all state‑funded schools.",
+      "category": "Politics",
+      "stories": [
+        {
+          "id": "rss-2e4e713bf7d969089387f68d2841f2d1",
+          "title": "A smartphone ban in English schools is coming into force. What's changing?",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cy8wjv3x81qo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-27T00:52:45.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "smartphone ban",
+        "phone‑free"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:33:02.860Z",
+      "updated": "2026-07-12T19:33:02.860Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884860070-zlzyk6",
+      "headline": "New data ranks university degrees by earnings",
+      "summary": "New data indicates that university degrees vary in lifetime financial return, with some offering the highest and others the lowest earnings. The analysis compares expected earnings across degree subjects over a working life. The findings may inform student choices and higher education funding policy.",
+      "category": "Other",
+      "stories": [
+        {
+          "id": "rss-0576a904f2a0c4c5a8cb5391f1e0e0ca",
+          "title": "Find out which university degrees could earn you most across your lifetime ",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c892dv0qy2jo?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-25T08:32:12.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "university degree earnings",
+        "lifetime financial returns"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:34:20.070Z",
+      "updated": "2026-07-12T19:34:20.070Z",
+      "contentVersion": 1
+    },
+    {
+      "id": "cluster-1783884860070-g7u1xm",
+      "headline": "UCL study links smacking to lower GCSE grades",
+      "summary": "A University College London study concludes that smacking children does no good whatsoever and is associated with lower GCSE grades. The research adds to evidence on physical punishment’s impact on educational outcomes. The findings may shape parenting guidance and school support strategies.",
+      "category": "Health",
+      "stories": [
+        {
+          "id": "rss-6fc4d5367a65b72d6d4e6e62b8165b75",
+          "title": "Smacking children could lead to lower GCSE grades, study suggests",
+          "source": "",
+          "sourceName": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/c2eyke83yz9o?at_medium=RSS&at_campaign=rss",
+          "image": "",
+          "published": "2026-06-10T23:33:07.000Z",
+          "category": "Education",
+          "plugin": "bbc",
+          "pluginPriority": 0
+        }
+      ],
+      "triggerWords": [
+        "smacking",
+        "GCSE grades",
+        "University College London"
+      ],
+      "impact": "medium",
+      "created": "2026-07-12T19:34:20.070Z",
+      "updated": "2026-07-12T19:34:20.070Z",
+      "contentVersion": 1
     }
   ],
-  "generated": "2026-07-12T18:00:38.582Z"
+  "generated": "2026-07-12T20:48:34.471Z"
 }

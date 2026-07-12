@@ -47,37 +47,38 @@ Respond ONLY with valid JSON in this exact format:
   ]
 }`;
 
-export function buildUserPrompt(chunk, existingClusters, matchedClusters) {
-  const sorted = [...chunk].sort((a, b) => (b.published || '').localeCompare(a.published || ''));
-  const storyLines = sorted.map((s, i) =>
+function storyLines(stories) {
+  const sorted = [...stories].sort((a, b) => (b.published || '').localeCompare(a.published || ''));
+  return sorted.map((s, i) =>
     `[${i + 1}] ID: ${s.id}\n    Published: ${s.published || 'unknown'}\n    Source headline (may be clickbait — do not emulate its style): ${s.originalTitle}\n    Byline: ${s.source}\n    Content: ${s.text}`
   ).join('\n\n');
+}
 
-  let context = '';
-  const matchedIds = new Set();
+// Prompt for 'update' tranches: stories confidently matched to an existing cluster.
+// LLM writes a new headline/summary reflecting the latest state, confirms membership.
+export function buildUpdatePrompt(stories, cluster) {
+  const lines = storyLines(stories);
+  const clusterContext = `--- EXISTING CLUSTER TO UPDATE ---\n[cluster: ${cluster.id}] ${cluster.headline} (${cluster.category})\nSummary: ${(cluster.summary || '(no summary)').slice(0, 300)}\nTrigger words: ${(cluster.triggerWords || []).join(', ') || 'none yet'}\n--- END EXISTING CLUSTER ---\n`;
 
-  // If we have matched clusters, show them prominently as the primary context
-  if (matchedClusters && matchedClusters.length) {
-    const clusterLines = matchedClusters.map(c => {
-      matchedIds.add(c.id);
-      return `- [cluster: ${c.id}] ${c.headline} (${c.category})\n  Summary: ${(c.summary || '(no summary)').slice(0, 300)}\n  Trigger words: ${(c.triggerWords || []).join(', ') || 'none yet'}`;
-    }).join('\n');
-    context = `\n\n--- EXISTING CLUSTERS TO UPDATE (${matchedClusters.length}) ---\nSome stories in this batch appear to be developments of these existing clusters. Include their IDs in the relevant cluster's story_ids and rewrite the headline and summary to reflect the current state. Update the trigger_words if the story has evolved to include new specific entities. You may also regroup or reassign stories between these clusters if the grouping is wrong.\n\n${clusterLines}\n--- END EXISTING CLUSTERS ---\n`;
-  }
+  return `These ${stories.length} stories have been identified as developments of an existing news cluster. Your job: write an updated headline and summary that reflects the CURRENT state of this story incorporating all developments. Confirm which story IDs belong to this cluster. If any story is clearly NOT about this topic, exclude it and list it under "rejected_ids".\n\n${clusterContext}\n${lines}\n\nRespond ONLY with valid JSON:\n{\n  "clusters": [\n    {\n      "headline": "Updated factual headline (max 8 words)",\n      "summary": "30-60 words reflecting the current state of the story,\n      "category": "${cluster.category}",\n      "impact": "low|medium|high",\n      "story_ids": ["id1", "id2"],\n      "trigger_words": ["specific", "unique", "words"]\n    }\n  ],\n  "rejected_ids": ["id-of-story-that-doesnt-belong"]\n}`;
+}
 
-  // Also show other existing clusters for reference (capped)
-  if (existingClusters && existingClusters.length) {
-    const recent = [...existingClusters]
-      .filter(c => !matchedIds.has(c.id))
-      .sort((a, b) => (b.updated || b.created || '').localeCompare(a.updated || a.created || ''))
-      .slice(0, 20);
-    if (recent.length) {
-      const refLines = recent.map(c =>
-        `- [cluster: ${c.id}] ${c.headline} (${c.category})\n  Summary: ${(c.summary || '(no summary)').slice(0, 150)}`
-      ).join('\n');
-      context += `\n\n--- OTHER EXISTING CLUSTERS (${recent.length}) ---\nFor reference — only update these if a story is clearly a development of one of them.\n\n${refLines}\n--- END EXISTING CLUSTERS ---\n`;
-    }
-  }
+// Prompt for 'new' tranches: confident heuristic group of 2+ unmatched stories.
+// LLM writes headline/summary/trigger_words for this pre-formed group.
+export function buildNewPrompt(stories) {
+  const lines = storyLines(stories);
 
-  return `Here are ${sorted.length} news stories (newest first). Integrate them into the existing digest — update existing clusters where stories are developments, and create new clusters only for genuinely new stories. Every story must appear in at least one cluster.${context}\n\n${storyLines}`;
+  return `These ${stories.length} stories appear to be about the same topic. Your job: write a single headline and summary that covers the overall story. Confirm which story IDs belong together — if the stories are actually about different topics, split them into separate clusters. Every story must appear in at least one cluster.\n\n${lines}\n\nRespond ONLY with valid JSON in this exact format:\n{\n  "clusters": [\n    {\n      "headline": "Short factual headline (max 8 words)",\n      "summary": "30-60 words of block text facts",\n      "category": "Politics|Business|Technology|Science|Health|World|Sports|Entertainment|Environment|Other",\n      "impact": "low|medium|high",\n      "story_ids": ["id1", "id2"],\n      "trigger_words": ["specific", "unique", "words"]\n    }\n  ]\n}`;
+}
+
+// Prompt for 'allocate' tranches: singletons that need LLM to check against existing clusters.
+// LLM sees story headlines + existing cluster headlines/trigger words, assigns or creates new.
+export function buildAllocatePrompt(stories, candidates) {
+  const lines = storyLines(stories);
+  const candidateLines = candidates.map(c =>
+    `- [${c.id}] ${c.headline} (${c.category}) — trigger: ${(c.triggerWords || []).join(', ')}`
+  ).join('\n');
+
+  return `These ${stories.length} stories could not be confidently matched to existing clusters by keyword analysis. Below are the stories and the existing clusters with their trigger words. For each story, either assign it to an existing cluster (by including its ID in that cluster's story_ids) or create a new cluster for it. Every story must appear in at least one cluster.\n\n--- EXISTING CLUSTERS ---\n${candidateLines}\n--- END EXISTING CLUSTERS ---\n\n${lines}\n\nRespond ONLY with valid JSON in this exact format:\n{\n  "clusters": [\n    {\n      "headline": "Short factual headline (max 8 words)",\n      "summary": "30-60 words of block text facts",\n      "category": "Politics|Business|Technology|Science|Health|World|Sports|Entertainment|Environment|Other",\n      "impact": "low|medium|high",\n      "story_ids": ["id1", "id2"],\n      "trigger_words": ["specific", "unique", "words"],\n      "existing_cluster_id": "id-of-existing-cluster-if-updating,-or-omit-if-new"
+    }\n  ]\n}`;
 }
