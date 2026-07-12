@@ -10,6 +10,7 @@ on:
       - 'package-lock.json'
   schedule:
     - cron: '0 7,13,19 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
