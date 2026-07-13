@@ -9,7 +9,8 @@ on:
       - 'package.json'
       - 'package-lock.json'
   schedule:
-    - cron: '0 6,12,18 * * *'
+    - cron: '23 6,12,18 * * *'
+      timezone: "Europe/London"
   workflow_dispatch:
 
 permissions:
