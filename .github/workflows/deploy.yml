@@ -102,6 +102,6 @@ jobs:
           git checkout --orphan cache-data 2>/dev/null || git checkout cache-data
           git rm -rf . --quiet 2>/dev/null || true
           mkdir -p cache
-          git add cache/
+          git add -f cache/
           git commit -m "Update cache data $(date -u +%Y-%m-%dT%H:%M)" --allow-empty
           git push origin cache-data --force
