@@ -511,13 +511,15 @@ function renderArticle(cluster, settings, isPluginLead) {
       markClusterRead(cluster);
       article.classList.remove('has-updates');
       article.classList.add('is-read');
-      // Update visual state without reordering — next render will apply new weights
       const newInterest = getClusterInterest(cluster.id);
       article.classList.toggle('downranked', newInterest === 'not-interested');
-      // Update button active states
-      article.querySelectorAll('.interest-btn').forEach(b => {
-        b.classList.toggle('active', b.dataset.signal === newInterest);
-      });
+      // Remove the article from the DOM after brief visual feedback
+      // We don't re-render the digest — the cached signal profile keeps
+      // remaining articles in their current order
+      setTimeout(() => {
+        article.remove();
+        if (masonryInstance) masonryInstance.layout();
+      }, 300);
     });
   });
 
