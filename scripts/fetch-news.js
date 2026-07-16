@@ -10,6 +10,7 @@ const CACHE_FILE = join(CACHE_DIR, 'currents-api.json');
 const CACHE_TTL_MS = 6 * 60 * 60 * 1000;
 const STORY_STORE_FILE = join(CACHE_DIR, 'stories.json');
 const RETENTION_DAYS = 30;
+const MAX_PUBLISHED_AGE_DAYS = 90;
 const RUN_STATE_FILE = join(CACHE_DIR, 'run-state.json');
 const DAILY_QUOTA = 20;
 const FIXED_CALLS_PER_RUN = 2;
@@ -209,7 +210,28 @@ function pruneOldStories(store) {
     const lastSeen = new Date(s.lastSeen || s.firstSeen || 0).getTime();
     if (lastSeen < cutoff) { delete store.stories[id]; pruned++; }
   }
-  if (pruned) console.log(`Pruned ${pruned} stories older than ${RETENTION_DAYS} days`);
+  if (pruned) console.log(`Pruned ${pruned} stories not seen in ${RETENTION_DAYS} days`);
+}
+
+function isPublishedTooOld(published) {
+  if (!published) return false;
+  try {
+    const ts = new Date(published).getTime();
+    if (!ts) return false;
+    return ts < Date.now() - MAX_PUBLISHED_AGE_DAYS * 24 * 60 * 60 * 1000;
+  } catch { return false; }
+}
+
+function cullOldPublished(store) {
+  let culled = 0;
+  for (const id of Object.keys(store.stories)) {
+    if (isPublishedTooOld(store.stories[id].published)) {
+      delete store.stories[id];
+      culled++;
+    }
+  }
+  if (culled) console.log(`Culled ${culled} stories published more than ${MAX_PUBLISHED_AGE_DAYS} days ago`);
+  return culled;
 }
 
 function normalizeStory(item) {
@@ -265,6 +287,13 @@ async function main() {
   }
 
   saveRunState(runState);
+
+  // Filter out stories published more than MAX_PUBLISHED_AGE_DAYS ago
+  const beforeAgeFilter = newsItems.length;
+  newsItems = newsItems.filter(item => !isPublishedTooOld(item.published));
+  if (beforeAgeFilter !== newsItems.length) {
+    console.log(`Age filter: rejected ${beforeAgeFilter - newsItems.length} incoming stories older than ${MAX_PUBLISHED_AGE_DAYS} days`);
+  }
 
   // Pre-filter: reject stories by category or title pattern
   const rejectCategories = (process.env.REJECT_CATEGORIES || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
@@ -338,6 +367,7 @@ async function main() {
   // Update story store
   const store = loadStoryStore();
   pruneOldStories(store);
+  cullOldPublished(store);
 
   const now = new Date().toISOString();
   const newForSummariser = [];

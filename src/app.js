@@ -10,6 +10,7 @@ const DEFAULT_SETTINGS = {
   columns: '3',
   sort: 'recent',
   images: 'minimal',
+  ageLimit: '30',
   mode: 'all',
   categoryFilter: 'all',
   watchWords: '',
@@ -61,6 +62,12 @@ const IMAGE_OPTIONS = [
   { value: 'none', label: 'None' },
   { value: 'minimal', label: 'Minimal' },
   { value: 'all', label: 'All' },
+];
+
+const AGE_OPTIONS = [
+  { value: '7', label: '7 days' },
+  { value: '30', label: '30 days' },
+  { value: '60', label: '60 days' },
 ];
 
 function loadSettings() {
@@ -461,8 +468,16 @@ function renderDigest(digest, settings) {
 
   const modeFiltered = filterByMode(allClusters, settings.mode);
 
+  // Filter out clusters older than the age limit
+  const ageDays = parseInt(settings.ageLimit, 10) || 30;
+  const ageCutoff = Date.now() - ageDays * 24 * 60 * 60 * 1000;
+  const ageFiltered = modeFiltered.filter(c => {
+    const newest = getNewestStoryDate(c);
+    try { return new Date(newest).getTime() >= ageCutoff; } catch { return true; }
+  });
+
   // Filter out hidden categories
-  const visibleCats = modeFiltered.filter(c => getCatPref(c.category) !== 'hide');
+  const visibleCats = ageFiltered.filter(c => getCatPref(c.category) !== 'hide');
 
   // Apply category filter (secondary filter)
   const catFiltered = settings.categoryFilter === 'all'
@@ -635,6 +650,7 @@ function initSettings() {
   const columnsBtn = document.getElementById('setting-columns');
   const sortBtn = document.getElementById('setting-sort');
   const imagesBtn = document.getElementById('setting-images');
+  const ageBtn = document.getElementById('setting-age');
   const themeBtn = document.getElementById('setting-theme');
   const expandAllCheck = document.getElementById('setting-expandall');
   const showUpdatedCheck = document.getElementById('setting-showupdated');
@@ -651,6 +667,8 @@ function initSettings() {
     sortBtn.textContent = sortOpt.label;
     const imgOpt = IMAGE_OPTIONS.find(o => o.value === currentSettings.images) || IMAGE_OPTIONS[1];
     imagesBtn.textContent = imgOpt.label;
+    const ageOpt = AGE_OPTIONS.find(o => o.value === currentSettings.ageLimit) || AGE_OPTIONS[1];
+    ageBtn.textContent = ageOpt.label;
     const themeOpt = THEME_OPTIONS.find(o => o.value === currentSettings.theme) || THEME_OPTIONS[0];
     themeBtn.textContent = themeOpt.label;
     expandAllCheck.checked = currentSettings.expandAll;
@@ -672,6 +690,7 @@ function initSettings() {
   makeCycleHandler(columnsBtn, COLUMN_OPTIONS, currentSettings.columns, { key: 'columns' });
   makeCycleHandler(sortBtn, SORT_OPTIONS, currentSettings.sort, { key: 'sort' });
   makeCycleHandler(imagesBtn, IMAGE_OPTIONS, currentSettings.images, { key: 'images' });
+  makeCycleHandler(ageBtn, AGE_OPTIONS, currentSettings.ageLimit, { key: 'ageLimit' });
   makeCycleHandler(themeBtn, THEME_OPTIONS, currentSettings.theme, { key: 'theme' });
 
   [expandAllCheck, showUpdatedCheck].forEach(el => el.addEventListener('change', updateCheckboxes));

@@ -1,4 +1,4 @@
-const CACHE = 'broadsheet-v2';
+const CACHE = 'broadsheet-v3';
 
 self.addEventListener('install', (e) => {
   self.skipWaiting();
@@ -19,8 +19,9 @@ self.addEventListener('fetch', (e) => {
   // Only handle same-origin requests
   if (url.origin !== self.location.origin) return;
 
-  // Network-first for HTML, CSS, JS, JSON — always get fresh content
-  const isFreshAsset = /\.(html|css|js|json)$/.test(url.pathname) || url.pathname === '/';
+  // Network-first for HTML navigations and CSS/JS/JSON — always get fresh content
+  const isNavigation = e.request.mode === 'navigate' || url.pathname.endsWith('/') || /\.(html)$/.test(url.pathname);
+  const isFreshAsset = isNavigation || /\.(css|js|json)$/.test(url.pathname);
   if (isFreshAsset) {
     e.respondWith(
       fetch(e.request).then((res) => {
