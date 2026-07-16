@@ -218,6 +218,39 @@ function markClusterRead(cluster) {
 // --- Interest signals (Steam discovery queue style) ---
 // Each cluster can be marked 'interested' or 'not-interested' by the user.
 // This is an algorithmic signal, not a like/dislike of the story.
+// Signals store compact metadata so we can build a local interest profile.
+
+// --- Tag extraction ---
+// Tags are computed server-side at build time (compromise NER + TF-IDF) and
+// embedded in the digest as cluster.tags. We just read them here.
+// Fallback uses trigger words + category for old digests without tags.
+
+function extractTags(cluster) {
+  if (cluster.tags && Array.isArray(cluster.tags)) return cluster.tags;
+
+  // Fallback for clusters without pre-computed tags
+  const tags = [];
+  const cat = Array.isArray(cluster.category) ? cluster.category[0] : cluster.category;
+  if (cat && cat !== 'Other' && cat !== 'General') tags.push(cat.toLowerCase());
+  for (const tw of (cluster.triggerWords || [])) {
+    const lt = tw.toLowerCase().trim();
+    if (lt && lt.length >= 2) tags.push(lt);
+  }
+  const plugin = cluster.stories?.find(s => s.plugin)?.plugin;
+  if (plugin) tags.push(plugin.toLowerCase());
+  return [...new Set(tags)].slice(0, 12);
+}
+
+function buildSignalMeta(cluster) {
+  const cat = Array.isArray(cluster.category) ? cluster.category[0] || 'Other' : (cluster.category || 'Other');
+  const sources = [...new Set((cluster.stories || []).map(s => s.sourceName).filter(Boolean))].slice(0, 3);
+  return {
+    h: (cluster.headline || '').slice(0, 120),
+    cat,
+    tags: extractTags(cluster),
+    src: sources,
+  };
+}
 
 function loadInterestState() {
   try {
@@ -239,7 +272,11 @@ function setClusterInterest(cluster, signal) {
   if (existing?.signal === signal) {
     delete interestState[cluster.id];
   } else {
-    interestState[cluster.id] = { signal, at: Date.now() };
+    interestState[cluster.id] = {
+      signal,
+      at: Date.now(),
+      ...buildSignalMeta(cluster),
+    };
   }
   saveInterestState();
 }
@@ -248,6 +285,52 @@ function getInterestStats() {
   const interested = Object.values(interestState).filter(i => i.signal === 'interested').length;
   const notInterested = Object.values(interestState).filter(i => i.signal === 'not-interested').length;
   return { interested, notInterested, total: interested + notInterested };
+}
+
+// --- Signal-based scoring ---
+// Scores a cluster against past interest signals by tag overlap.
+// Returns { score, matchedTags, signalType } where signalType is the strongest matching signal.
+
+function getSignalProfile() {
+  const interested = {};
+  const notInterested = {};
+  for (const entry of Object.values(interestState)) {
+    const bucket = entry.signal === 'interested' ? interested : notInterested;
+    for (const tag of (entry.tags || [])) {
+      bucket[tag] = (bucket[tag] || 0) + 1;
+    }
+  }
+  return { interested, notInterested };
+}
+
+function scoreClusterAgainstSignals(cluster) {
+  const tags = new Set(extractTags(cluster));
+  const profile = getSignalProfile();
+  let posScore = 0, negScore = 0;
+  const matchedTags = [];
+
+  for (const tag of tags) {
+    if (profile.interested[tag]) {
+      posScore += profile.interested[tag];
+      matchedTags.push({ tag, weight: profile.interested[tag], signal: 'interested' });
+    }
+    if (profile.notInterested[tag]) {
+      negScore += profile.notInterested[tag];
+      matchedTags.push({ tag, weight: profile.notInterested[tag], signal: 'not-interested' });
+    }
+  }
+
+  const score = posScore - negScore;
+  const signalType = score > 0 ? 'interested' : score < 0 ? 'not-interested' : null;
+  return { score, posScore, negScore, matchedTags, signalType };
+}
+
+function getTopSignalTags(signalType, limit = 10) {
+  const profile = getSignalProfile();
+  const bucket = signalType === 'interested' ? profile.interested : profile.notInterested;
+  return Object.entries(bucket)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, limit);
 }
 
 function formatDate(dateStr) {
@@ -741,6 +824,7 @@ function initSettings() {
       try {
         const res = await fetch('run-log.json');
         const log = res.ok ? await res.json() : [];
+        window._lastLog = log;
         renderChangelog(log);
         attachAlgoListeners();
       } catch {
@@ -857,34 +941,31 @@ function renderChangelog(log) {
       html += '</div>';
     }
 
-    // Interest signals by direction
+    // Interest profile — derived tags, not raw signals
     if (hasSignals) {
-      html += '<div class="changelog-subsection"><small>Interest signals</small>';
+      html += '<div class="changelog-subsection"><small>Your interest profile</small>';
 
-      const interestedClusters = clusters.filter(c => getClusterInterest(c.id) === 'interested');
-      if (interestedClusters.length) {
-        html += '<div class="algo-signal-group">';
-        html += `<div class="algo-signal-direction">✓ Relevant <small>${interestedClusters.length}</small></div>`;
-        html += interestedClusters.map(c => `<div class="algo-signal-item" data-cluster-id="${c.id}" data-signal="interested"><span>${c.headline}</span><button class="algo-remove-btn" title="Remove signal">✕</button></div>`).join('');
-        html += '</div>';
+      const posTags = getTopSignalTags('interested', 15);
+      const negTags = getTopSignalTags('not-interested', 15);
+
+      if (posTags.length) {
+        html += '<div class="algo-profile-group">';
+        html += `<div class="algo-profile-label">✓ You seem interested in</div>`;
+        html += '<div class="algo-profile-tags">';
+        html += posTags.map(([t, c]) => `<span class="changelog-tag algo-tag-pos algo-tag-removable" data-tag="${t}" data-signal="interested">${t} <small>${c}</small><button class="algo-tag-remove" title="Remove">&times;</button></span>`).join(' ');
+        html += '</div></div>';
       }
 
-      const notInterestedClusters = clusters.filter(c => getClusterInterest(c.id) === 'not-interested');
-      if (notInterestedClusters.length) {
-        html += '<div class="algo-signal-group">';
-        html += `<div class="algo-signal-direction">✕ Ignore <small>${notInterestedClusters.length}</small></div>`;
-        html += notInterestedClusters.map(c => `<div class="algo-signal-item" data-cluster-id="${c.id}" data-signal="not-interested"><span>${c.headline}</span><button class="algo-remove-btn" title="Remove signal">✕</button></div>`).join('');
-        html += '</div>';
+      if (negTags.length) {
+        html += '<div class="algo-profile-group">';
+        html += `<div class="algo-profile-label">✕ You seem uninterested in</div>`;
+        html += '<div class="algo-profile-tags">';
+        html += negTags.map(([t, c]) => `<span class="changelog-tag algo-tag-neg algo-tag-removable" data-tag="${t}" data-signal="not-interested">${t} <small>${c}</small><button class="algo-tag-remove" title="Remove">&times;</button></span>`).join(' ');
+        html += '</div></div>';
       }
 
-      // Also show signals for clusters no longer in the digest
-      const activeIds = new Set(clusters.map(c => c.id));
-      const orphaned = Object.entries(interestState).filter(([id]) => !activeIds.has(id));
-      if (orphaned.length) {
-        html += '<div class="algo-signal-group algo-orphaned">';
-        html += `<div class="algo-signal-direction">Expired signals <small>${orphaned.length}</small></div>`;
-        html += orphaned.map(([id, info]) => `<div class="algo-signal-item" data-cluster-id="${id}" data-signal="${info.signal}"><span class="algo-orphaned-label">${info.signal === 'interested' ? '✓' : '✕'} (no longer in digest)</span><button class="algo-remove-btn" title="Remove signal">✕</button></div>`).join('');
-        html += '</div>';
+      if (!posTags.length && !negTags.length) {
+        html += '<div class="loading">No tags extracted yet. Signal a few stories to build your profile.</div>';
       }
 
       html += '</div>';
@@ -931,8 +1012,42 @@ function renderChangelog(log) {
   body.innerHTML = html;
 }
 
+function removeTagFromSignals(tag, signalType) {
+  for (const id of Object.keys(interestState)) {
+    const entry = interestState[id];
+    if (entry.signal !== signalType) continue;
+    if (entry.tags && entry.tags.includes(tag)) {
+      entry.tags = entry.tags.filter(t => t !== tag);
+      if (entry.tags.length === 0 && !entry.h) {
+        // No metadata left at all — drop the signal entirely
+        delete interestState[id];
+      }
+    }
+  }
+  saveInterestState();
+}
+
 function attachAlgoListeners() {
   const body = document.getElementById('changelog-body');
+  
+  // Tag removal — strips a tag from all signals of that type
+  body.querySelectorAll('.algo-tag-remove').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const tag = btn.closest('.algo-tag-removable')?.dataset.tag;
+      const signalType = btn.closest('.algo-tag-removable')?.dataset.signal;
+      if (!tag || !signalType) return;
+      removeTagFromSignals(tag, signalType);
+      // Re-render the changelog and digest
+      const log = window._lastLog || [];
+      renderChangelog(log);
+      attachAlgoListeners();
+      if (currentDigest) renderDigest(currentDigest, currentSettings);
+      initSearch();
+    });
+  });
+
+  // Signal removal (individual cluster signals)
   body.querySelectorAll('.algo-remove-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -942,8 +1057,10 @@ function attachAlgoListeners() {
       if (clusterId && interestState[clusterId]) {
         delete interestState[clusterId];
         saveInterestState();
-        item.remove();
-        renderDigest(currentDigest, currentSettings);
+        const log = window._lastLog || [];
+        renderChangelog(log);
+        attachAlgoListeners();
+        if (currentDigest) renderDigest(currentDigest, currentSettings);
         initSearch();
       }
     });

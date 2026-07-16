@@ -827,6 +827,56 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   color: var(--accent);
 }
 
+.algo-profile-group {
+  margin-bottom: 0.75rem;
+}
+
+.algo-profile-label {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.algo-profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.algo-tag-pos {
+  background: rgba(34, 139, 34, 0.12);
+  border-color: rgba(34, 139, 34, 0.3);
+}
+
+.algo-tag-neg {
+  background: rgba(178, 34, 34, 0.12);
+  border-color: rgba(178, 34, 34, 0.3);
+}
+
+.algo-tag-removable {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: default;
+}
+
+.algo-tag-remove {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.algo-tag-remove:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
 .changelog-entry {
   padding: 1rem 0;
   border-bottom: 1px solid var(--rule);
