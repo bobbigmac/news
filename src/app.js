@@ -397,10 +397,10 @@ function renderArticle(cluster, settings, isPluginLead) {
       const newInterest = getClusterInterest(cluster.id);
       // Toggle downrank class
       article.classList.toggle('downranked', newInterest === 'not-interested');
-      // Re-render to apply new sort order and hide read
+      // Remove the article from the DOM after a brief delay for visual feedback
       setTimeout(() => {
-        renderDigest(currentDigest, currentSettings);
-        initSearch();
+        article.remove();
+        if (masonryInstance) masonryInstance.layout();
       }, 300);
     });
   });
