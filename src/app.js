@@ -258,6 +258,24 @@ function loadInterestState() {
   } catch { interestState = {}; }
 }
 
+// Backfill tags for signals saved before metadata enrichment was added
+function backfillInterestSignals(clusters) {
+  const clusterMap = new Map(clusters.map(c => [c.id, c]));
+  let changed = false;
+  for (const [id, entry] of Object.entries(interestState)) {
+    if (entry.tags) continue; // already has metadata
+    const cluster = clusterMap.get(id);
+    if (!cluster) continue; // no longer in digest, can't backfill
+    const meta = buildSignalMeta(cluster);
+    entry.h = meta.h;
+    entry.cat = meta.cat;
+    entry.tags = meta.tags;
+    entry.src = meta.src;
+    changed = true;
+  }
+  if (changed) saveInterestState();
+}
+
 function saveInterestState() {
   localStorage.setItem(INTEREST_KEY, JSON.stringify(interestState));
 }
@@ -1107,9 +1125,6 @@ async function init() {
   const dateEl = document.getElementById('masthead-date');
   if (dateEl) dateEl.textContent = formatDate(new Date().toISOString());
 
-  // Cache signal weights for this page session — re-renders use the same weights
-  refreshSignalProfile();
-
   initSettings();
 
   // Mode toggle (in masthead)
@@ -1218,6 +1233,12 @@ async function init() {
     const res = await fetch('digest.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     currentDigest = await res.json();
+
+    // Backfill tags for signals saved before metadata enrichment
+    backfillInterestSignals(currentDigest.clusters || []);
+
+    // Cache signal weights for this page session
+    refreshSignalProfile();
 
     // Sync mode toggle label
     if (modeBtn) {
