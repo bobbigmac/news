@@ -290,8 +290,14 @@ function getInterestStats() {
 // --- Signal-based scoring ---
 // Scores a cluster against past interest signals by tag overlap.
 // Returns { score, matchedTags, signalType } where signalType is the strongest matching signal.
+//
+// The profile is cached at page load so that re-renders (settings changes, resize, etc.)
+// don't recalculate weights and cause discombobulating reordering.
+// The changelog panel uses a fresh profile for management display.
 
-function getSignalProfile() {
+let _cachedProfile = null;
+
+function buildSignalProfile() {
   const interested = {};
   const notInterested = {};
   for (const entry of Object.values(interestState)) {
@@ -301,6 +307,15 @@ function getSignalProfile() {
     }
   }
   return { interested, notInterested };
+}
+
+function getSignalProfile() {
+  if (!_cachedProfile) _cachedProfile = buildSignalProfile();
+  return _cachedProfile;
+}
+
+function refreshSignalProfile() {
+  _cachedProfile = buildSignalProfile();
 }
 
 function scoreClusterAgainstSignals(cluster) {
@@ -326,7 +341,8 @@ function scoreClusterAgainstSignals(cluster) {
 }
 
 function getTopSignalTags(signalType, limit = 10) {
-  const profile = getSignalProfile();
+  // Use fresh profile for changelog display, not the cached page-load one
+  const profile = buildSignalProfile();
   const bucket = signalType === 'interested' ? profile.interested : profile.notInterested;
   return Object.entries(bucket)
     .sort((a, b) => b[1] - a[1])
@@ -374,15 +390,21 @@ function getNewestStoryDate(cluster) {
 
 function sortClusters(clusters, sortMode) {
   const sorted = [...clusters];
+  const profile = getSignalProfile();
   sorted.sort((a, b) => {
-    // Interest signal: interested ranks above all, not-interested ranks below all
+    // Explicit interest signal: interested ranks above all, not-interested ranks below all
     const aInterest = getClusterInterest(a.id);
     const bInterest = getClusterInterest(b.id);
     const aRank = aInterest === 'interested' ? 0 : aInterest === 'not-interested' ? 2 : 1;
     const bRank = bInterest === 'interested' ? 0 : bInterest === 'not-interested' ? 2 : 1;
     if (aRank !== bRank) return aRank - bRank;
 
-    // Category preference takes priority within same interest tier
+    // Signal-derived score: tag overlap with past signals
+    const aSignal = scoreClusterAgainstSignals(a);
+    const bSignal = scoreClusterAgainstSignals(b);
+    if (aSignal.score !== bSignal.score) return bSignal.score - aSignal.score;
+
+    // Category preference takes priority within same signal tier
     const aPref = CAT_PREF_ORDER[getCatPref(a.category)] ?? 1;
     const bPref = CAT_PREF_ORDER[getCatPref(b.category)] ?? 1;
     if (aPref !== bPref) return aPref - bPref;
@@ -426,6 +448,11 @@ function renderArticle(cluster, settings, isPluginLead) {
   article.dataset.category = category.toLowerCase();
   if (wasUpdated) article.classList.add('has-updates');
   if (matchesWatchWords(cluster)) article.classList.add('watch-match');
+
+  // Signal-derived styling (subtle — these are guesses, not explicit signals)
+  const signalScore = scoreClusterAgainstSignals(cluster);
+  if (signalScore.score >= 2) article.classList.add('signal-suggested');
+  else if (signalScore.score <= -2) article.classList.add('signal-demoted');
 
   let imageHtml = '';
   if (settings.images !== 'none') {
@@ -484,14 +511,13 @@ function renderArticle(cluster, settings, isPluginLead) {
       markClusterRead(cluster);
       article.classList.remove('has-updates');
       article.classList.add('is-read');
+      // Update visual state without reordering — next render will apply new weights
       const newInterest = getClusterInterest(cluster.id);
-      // Toggle downrank class
       article.classList.toggle('downranked', newInterest === 'not-interested');
-      // Remove the article from the DOM after a brief delay for visual feedback
-      setTimeout(() => {
-        article.remove();
-        if (masonryInstance) masonryInstance.layout();
-      }, 300);
+      // Update button active states
+      article.querySelectorAll('.interest-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.signal === newInterest);
+      });
     });
   });
 
@@ -562,10 +588,18 @@ function renderDigest(digest, settings) {
   // Filter out hidden categories
   const visibleCats = ageFiltered.filter(c => getCatPref(c.category) !== 'hide');
 
+  // Filter out clusters with strong negative signal score (guessed disinterest)
+  const signalFiltered = visibleCats.filter(c => {
+    const explicit = getClusterInterest(c.id);
+    if (explicit === 'interested') return true; // explicit interest always shows
+    const signal = scoreClusterAgainstSignals(c);
+    return signal.score > -3; // strong negative = hide
+  });
+
   // Apply category filter (secondary filter)
   const catFiltered = settings.categoryFilter === 'all'
-    ? visibleCats
-    : visibleCats.filter(c => (c.category || 'Other') === settings.categoryFilter);
+    ? signalFiltered
+    : signalFiltered.filter(c => (c.category || 'Other') === settings.categoryFilter);
 
   const visible = catFiltered.filter(c => {
     if (!isClusterRead(c)) return true;
@@ -1070,6 +1104,9 @@ function attachAlgoListeners() {
 async function init() {
   const dateEl = document.getElementById('masthead-date');
   if (dateEl) dateEl.textContent = formatDate(new Date().toISOString());
+
+  // Cache signal weights for this page session — re-renders use the same weights
+  refreshSignalProfile();
 
   initSettings();
 

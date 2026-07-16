@@ -554,6 +554,21 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   background: rgba(139, 26, 26, 0.03);
 }
 
+/* Signal-derived hints — subtler than watch-match (these are guesses) */
+.article.signal-suggested {
+  border-left: 2px solid rgba(34, 139, 34, 0.4);
+  padding-left: 0.75rem;
+}
+
+.article.signal-demoted {
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.article.signal-demoted:hover {
+  opacity: 0.75;
+}
+
 /* Footer */
 .broadsheet-footer {
   text-align: center;
