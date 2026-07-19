@@ -620,6 +620,27 @@ async function main() {
   const rawStories = loadJson(RAW_FILE, []);
   if (!rawStories.length) {
     console.log('No new stories to summarise. Exiting.');
+    const digest = loadExistingDigest();
+    computeClusterTags(digest);
+    digest.date = new Date().toISOString().split('T')[0];
+    digest.generated = new Date().toISOString();
+    saveJson(DIGEST_FILE, digest);
+    const runLog = loadJson(RUN_LOG_FILE, []);
+    runLog.unshift({
+      timestamp: new Date().toISOString(),
+      provider: PROVIDER.name,
+      model: MODEL,
+      storiesProcessed: 0,
+      storiesAdded: 0,
+      clustersCreated: 0,
+      clustersUpdated: 0,
+      totalClusters: digest.clusters.length,
+      chunks: 0,
+      chunksFailed: 0,
+      filteredTooShort: 0,
+      skipped: true,
+    });
+    saveJson(RUN_LOG_FILE, runLog.slice(0, 10));
     return;
   }
 

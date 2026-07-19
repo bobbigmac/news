@@ -40,9 +40,9 @@ jobs:
 
       - name: Restore cache branch
         run: |
-          git fetch origin cache-data 2>/dev/null || true
+          git fetch origin cache-data --depth=1 2>/dev/null || true
           if git show-ref --verify --quiet refs/remotes/origin/cache-data; then
-            git checkout cache-data -- cache/ 2>/dev/null || true
+            git checkout origin/cache-data -- cache/ 2>/dev/null || true
           fi
 
       - name: Check cache freshness

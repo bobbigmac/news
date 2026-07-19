@@ -66,22 +66,23 @@ async function fetchFromApi(endpoint, label) {
 function loadPlugins() {
   const raw = (process.env.SEARCH_PLUGINS || '').trim();
   if (!raw) return [];
-  return raw.split(';').map((group, i) => {
+  return raw.split(';').map((group) => {
     const keywords = group.split('|').map(t => t.trim()).filter(Boolean);
     if (!keywords.length) return null;
     const name = keywords[0].toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    return { name, keywords: group.trim() };
+    return { name, keywords };
   }).filter(Boolean);
 }
 
 function loadRunState() {
   const today = new Date().toISOString().split('T')[0];
-  const fresh = { runCount: 0, date: today, callsToday: 0, pluginLastRun: {} };
+  const fresh = { runCount: 0, date: today, callsToday: 0, pluginLastRun: {}, pluginKeywordIndex: {} };
   if (!existsSync(RUN_STATE_FILE)) return fresh;
   try {
     const state = JSON.parse(readFileSync(RUN_STATE_FILE, 'utf8'));
     if (state.date !== today) return fresh;
     if (!state.pluginLastRun) state.pluginLastRun = {};
+    if (!state.pluginKeywordIndex) state.pluginKeywordIndex = {};
     return state;
   } catch { return fresh; }
 }
@@ -122,42 +123,41 @@ async function runSearchPlugins(runState) {
       break;
     }
 
-    const terms = plugin.keywords.split('|').map(t => t.trim()).filter(Boolean);
-    const seenIds = new Set();
-    const pluginResults = [];
+    const terms = plugin.keywords;
+    const kwIdx = (runState.pluginKeywordIndex[plugin.name] || 0) % terms.length;
+    const keyword = terms[kwIdx];
+    const nextIdx = (kwIdx + 1) % terms.length;
+    console.log(`Plugin ${plugin.name}: using keyword "${keyword}" (${kwIdx + 1}/${terms.length})`);
 
-    for (const term of terms) {
-      if (pluginCalls >= pluginBudget) {
-        console.log(`Plugin budget exhausted mid-plugin, deferring remaining terms for ${plugin.name}`);
-        break;
-      }
-      const queryParams = [`keywords=${encodeURIComponent(term)}`];
-      if (plugin.country) queryParams.push(`country=${plugin.country}`);
-      if (plugin.language) queryParams.push(`language=${plugin.language}`);
-      const endpoint = `search?${queryParams.join('&')}`;
+    const queryParams = [`keywords=${encodeURIComponent(keyword)}`];
+    if (plugin.country) queryParams.push(`country=${plugin.country}`);
+    if (plugin.language) queryParams.push(`language=${plugin.language}`);
+    const endpoint = `search?${queryParams.join('&')}`;
 
-      try {
-        const results = await fetchFromApi(endpoint, `plugin:${plugin.name}/${term}`);
-        for (const item of results) {
-          if (item.id && !seenIds.has(item.id)) {
-            seenIds.add(item.id);
-            item._plugin = plugin.name;
-            item._pluginPriority = terms.indexOf(term);
-            pluginResults.push(item);
-          }
-        }
-        runState.callsToday++;
-        pluginCalls++;
-      } catch (err) {
-        console.error(`Plugin ${plugin.name}/${term} failed: ${err.message}`);
-        break;
+    try {
+      const results = await fetchFromApi(endpoint, `plugin:${plugin.name}/${keyword}`);
+      const seenIds = new Set();
+      const pluginResults = [];
+      for (const item of results) {
+        if (!item.id || seenIds.has(item.id)) continue;
+        seenIds.add(item.id);
+        item._plugin = plugin.name;
+        item._pluginPriority = terms.findIndex(t =>
+          (item.title || '').toLowerCase().includes(t.toLowerCase()) ||
+          (item.description || '').toLowerCase().includes(t.toLowerCase())
+        );
+        if (item._pluginPriority < 0) item._pluginPriority = 99;
+        pluginResults.push(item);
       }
+      pluginResults.sort((a, b) => (a._pluginPriority ?? 99) - (b._pluginPriority ?? 99));
+      allResults.push(...pluginResults);
+      runState.callsToday++;
+      pluginCalls++;
+      runState.pluginLastRun[plugin.name] = Date.now();
+      runState.pluginKeywordIndex[plugin.name] = nextIdx;
+    } catch (err) {
+      console.error(`Plugin ${plugin.name} failed: ${err.message}`);
     }
-
-    // Sort by priority (first keyword match = highest)
-    pluginResults.sort((a, b) => (a._pluginPriority ?? 99) - (b._pluginPriority ?? 99));
-    allResults.push(...pluginResults);
-    runState.pluginLastRun[plugin.name] = Date.now();
   }
 
   return allResults;
