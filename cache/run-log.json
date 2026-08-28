@@ -1,5 +1,21 @@
 [
   {
+    "timestamp": "2026-08-28T14:58:39.320Z",
+    "provider": "OpenRouter",
+    "model": "openrouter/free",
+    "storiesProcessed": 0,
+    "storiesAdded": 0,
+    "clustersCreated": 0,
+    "clustersUpdated": 0,
+    "totalClusters": 233,
+    "llmCalls": 0,
+    "llmFailed": 0,
+    "chunks": 0,
+    "chunksFailed": 0,
+    "filteredTooShort": 0,
+    "skipped": true
+  },
+  {
     "timestamp": "2026-08-28T14:40:03.563Z",
     "provider": "OpenRouter",
     "model": "openrouter/free",
@@ -130,17 +146,5 @@
     "chunks": 1,
     "chunksFailed": 0,
     "filteredTooShort": 0
-  },
-  {
-    "timestamp": "2026-07-12T09:28:24.099Z",
-    "storiesProcessed": 0,
-    "storiesAdded": 0,
-    "clustersCreated": 0,
-    "clustersUpdated": 0,
-    "totalClusters": 24,
-    "chunks": 0,
-    "chunksFailed": 0,
-    "filteredTooShort": 0,
-    "skipped": true
   }
 ]

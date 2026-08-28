@@ -158,6 +158,14 @@ eyeballing the multi-story groups for false merges.
   detected, the call throws immediately (no retry) and the cluster falls back to
   heuristic copy. This ensures we can NEVER spend the credit accidentally. See
   `isPaidModel` / `hasCost` in `scripts/summarise.js`.
+- **Model registry** (`cache/model-registry.json`): when `openrouter/free` returns
+  a good `:free` model, its ID is saved. On subsequent calls, known-good models are
+  called directly (still zero cost — the `:free` suffix means free regardless of
+  whether you go through the router or call directly). This eliminates the
+  retry-roulette where the random router keeps picking safety classifier models.
+  The free router is kept as a fallback in the queue to discover new good models.
+  Bad models (safety classifiers, etc.) are remembered and skipped. Must persist
+  between runs (stored on cache-data branch).
 - **Prompt framing matters for the free router.** The original system prompt was
   dominated by "NEVER do X" rules and "strictly enforced" language, which made the
   router's task classifier think the request was content moderation / safety
