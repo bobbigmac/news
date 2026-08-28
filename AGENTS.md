@@ -60,10 +60,18 @@ in a single article and returns 0 results. This is not a bug — it's how the AP
 - **BBC RSS** (8 feeds) — no quota, no key. Enabled via `RSS_FEEDS=bbc` secret.
 - **urgent.news** (5 feeds: UK edition + world/business/science/health desks) — no key,
   no registration, CORS-open cross-source aggregator. Enabled via `RSS_FEEDS=urgent`.
+- **Techmeme** (1 feed: main feed, 30 items max) — human-curated tech news aggregator
+  (editors across 5 continents, led by Gabe Rivera since 2005). Sources from thousands
+  of outlets. The RSS `<link>` is a Techmeme permalink, but we extract the original
+  publisher's URL from the HTML description so we cite the original source (Bloomberg,
+  TechCrunch, Reuters, Wired, etc.), not Techmeme. The title format
+  `"Headline (Author/Publication)"` is parsed to extract the byline and publication name.
+  Enabled via `RSS_FEEDS=tech`.
 - **Eurogamer + Kotaku** (gaming RSS) — enabled via `RSS_FEEDS=gaming`.
 - **Guardian API** — available but disabled (requires registration). urgent.news already
   aggregates Guardian content.
 - `RSS_FEEDS` secret is in the `github-pages` environment (not repo-level).
+  Current value: `bbc,gaming,urgent,tech`.
 
 ### Cross-Source URL Deduplication (`scripts/url-dedup.js`)
 

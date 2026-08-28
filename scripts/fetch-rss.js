@@ -34,6 +34,17 @@ const URGENT_FEEDS = [
   { url: 'https://urgent.news/t/health/rss.xml', category: 'Health', maxItems: 10 },
 ];
 
+// Techmeme — human-curated tech news aggregator (editors across 5 continents,
+// led by Gabe Rivera since 2005). Sources from thousands of outlets and picks
+// the stories that actually matter. The RSS feed's <link> is a Techmeme
+// permalink, but the original publisher's URL is embedded in the HTML
+// description. We extract it so we cite the original source, not Techmeme.
+// The title format is "Headline (Author/Publication)" — we strip the
+// parenthetical and use it as the byline.
+const TECHMEME_FEEDS = [
+  { url: 'https://www.techmeme.com/feed.xml', category: 'Technology', maxItems: 30 },
+];
+
 function makeId(url) {
   return 'rss-' + createHash('md5').update(url).digest('hex');
 }
@@ -55,11 +66,75 @@ function normalizeRssItem(item, feed, pluginName) {
     url,
     image,
     source: item.creator || item.author || '',
-    sourceName: getSourceName(url) || (feed.pluginName === 'gaming' ? feed.url.includes('eurogamer') ? 'Eurogamer' : feed.url.includes('kotaku') ? 'Kotaku' : 'RSS' : feed.pluginName === 'urgent' ? 'Urgent News' : feed.pluginName === 'bbc' ? 'BBC' : 'RSS'),
+    sourceName: getSourceName(url) || (feed.pluginName === 'gaming' ? feed.url.includes('eurogamer') ? 'Eurogamer' : feed.url.includes('kotaku') ? 'Kotaku' : 'RSS' : feed.pluginName === 'urgent' ? 'Urgent News' : feed.pluginName === 'bbc' ? 'BBC' : feed.pluginName === 'tech' ? 'Techmeme' : 'RSS'),
     published: parseDate(item.isoDate || item.pubDate),
     category: feed.category,
     keywords: '',
     _plugin: pluginName,
+    _pluginPriority: 0,
+  };
+}
+
+// Techmeme-specific parser. The feed <link> is a Techmeme permalink; the
+// original publisher's URL is the first non-Techmeme <A HREF> in the HTML
+// description. The title has "(Author/Publication)" appended — we strip it
+// and use the publication name as sourceName, author as source.
+function normalizeTechmemeItem(item, feed) {
+  const html = item.content || item.contentSnippet || '';
+  // Extract the original article URL from the description HTML.
+  // The description has: Techmeme permalink img link, then the real article link.
+  // We want the first <A HREF="..."> that doesn't point to techmeme.com.
+  const hrefMatches = [...html.matchAll(/<A\s+HREF="([^"]+)"/gi)];
+  let originalUrl = item.link || '';
+  for (const m of hrefMatches) {
+    const href = m[1];
+    if (!href.includes('techmeme.com')) {
+      originalUrl = href;
+      break;
+    }
+  }
+
+  // Extract image from the description HTML (Techmeme includes an <IMG SRC>)
+  const imgMatch = html.match(/<IMG[^>]+SRC="([^"]+)"/i);
+  const image = imgMatch?.[1] || '';
+
+  // Title format: "Headline (Author/Publication)" or "Headline (Publication)"
+  // Strip the parenthetical and extract author + publication.
+  const title = item.title || '';
+  const parenMatch = title.match(/\s*\(([^)]+)\)\s*$/);
+  let cleanTitle = title;
+  let author = '';
+  let publication = '';
+  if (parenMatch) {
+    cleanTitle = title.replace(/\s*\(([^)]+)\)\s*$/, '').trim();
+    const inside = parenMatch[1];
+    // Format is "Author/Publication" or just "Publication"
+    if (inside.includes('/')) {
+      const parts = inside.split('/');
+      author = parts[0].trim();
+      publication = parts.slice(1).join('/').trim();
+    } else {
+      publication = inside.trim();
+    }
+  }
+
+  // Extract the text snippet from the HTML (after the links, the — separator)
+  const snippetMatch = html.match(/&mdash;\s*([^<]+)/);
+  const snippet = snippetMatch?.[1]?.trim() || '';
+
+  return {
+    id: makeId(originalUrl || title),
+    title: cleanTitle,
+    description: snippet || item.contentSnippet || '',
+    content: html,
+    url: originalUrl,
+    image,
+    source: author,
+    sourceName: publication || getSourceName(originalUrl) || 'Techmeme',
+    published: parseDate(item.isoDate || item.pubDate),
+    category: feed.category,
+    keywords: '',
+    _plugin: 'tech',
     _pluginPriority: 0,
   };
 }
@@ -83,6 +158,10 @@ export async function fetchRssFeeds() {
     feeds.push(...URGENT_FEEDS.map(f => ({ ...f, pluginName: 'urgent' })));
   }
 
+  if (enabledNames.includes('tech')) {
+    feeds.push(...TECHMEME_FEEDS.map(f => ({ ...f, pluginName: 'tech' })));
+  }
+
   if (!feeds.length) return [];
 
   console.log(`RSS: Fetching ${feeds.length} feeds (enabled: ${enabledNames.join(', ')})`);
@@ -95,7 +174,11 @@ export async function fetchRssFeeds() {
     const items = parsed.items || [];
     const limited = feed.maxItems ? items.slice(0, feed.maxItems) : items;
     console.log(`  RSS ${feed.url}: ${items.length} items${feed.maxItems ? ` (using ${limited.length})` : ''}`);
-    return limited.map(item => normalizeRssItem(item, feed, feed.pluginName));
+    // Techmeme needs custom parsing to extract the original publisher URL
+    const normalize = feed.pluginName === 'tech'
+      ? item => normalizeTechmemeItem(item, feed)
+      : item => normalizeRssItem(item, feed, feed.pluginName);
+    return limited.map(normalize);
   }));
 
   for (const result of results) {
