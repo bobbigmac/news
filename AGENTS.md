@@ -51,6 +51,119 @@ in a single article and returns 0 results. This is not a bug — it's how the AP
 - `scripts/build.js` copies `digest.json` and `run-log.json` from `cache/` to `docs/`.
 - The site reads these from `docs/` (GitHub Pages serves the `docs/` directory).
 
+### Architecture (reworked — local grouping, LLM for summary only)
+
+The pipeline has three stages: **ingest** (fetch-news.js), **comprehend** (summarise.js),
+**publish** (build.js). The reworked comprehend stage does grouping locally and only uses
+the LLM to write editorial copy per cluster — it never asks the LLM to decide which stories
+belong together. This fixed the old problem where 86% of clusters were single-story because
+the free LLM failed constantly and the fallback fragmented everything.
+
+**Comprehend flow** (summarise.js):
+1. Load new stories from `raw-new.json`, filter out already-summarised ids.
+2. **Embed** all stories locally via Transformers.js (`Xenova/all-MiniLM-L6-v2`, 384-dim,
+   CPU-only, no API key). Embeddings cached in `cache/embeddings.json` by story id — only
+   new stories are embedded each run. See `scripts/embeddings.js`.
+3. **Cross-source dedup** — stories with cosine similarity >= 0.92 are the same article
+   from different sources; merged into one representative for clustering. See
+   `scripts/cluster.js`.
+4. **Event clustering** — DBSCAN over embeddings (eps = 1 - 0.65 = 0.35 distance, i.e.
+   cosine sim >= 0.65 to be neighbours). minPts=1 so singletons become their own group
+   (no story is ever dropped). Threshold tuned on the 30-day story store: 0.65 catches
+   all confirmed same-event pairs without false merges. See `scripts/cluster.js`.
+5. **Match to existing clusters** — each new event group is compared to existing digest
+   clusters by centroid similarity. If >= 0.62, the new stories merge into the existing
+   cluster (living cluster that accumulates developments across runs). Otherwise a new
+   cluster is created. See `scripts/cluster.js`.
+6. **LLM summary** — one LLM call per cluster to write headline + summary + impact +
+   trigger words + region. The LLM only writes copy for an already-formed cluster — it
+   never groups. A failed call degrades only that cluster's text (heuristic fallback uses
+   the lead story's title/content). See `scripts/prompts.js` (`buildSummaryPrompt`).
+7. **Annotate** — entities (compromise NER: people/places/orgs, `scripts/entities.js`),
+   tags (TF-IDF over compromise nouns/topics, `scripts/tags.js`), lifecycle fields
+   (`active` flag for updated within 48h, `storyCount`, `firstPublished`/`lastPublished`,
+   stories sorted as a timeline), per-story enrichment (`bodyText`, `wordCount`,
+   `storyType` — see `scripts/story-enrich.js`).
+8. Persist `digest.json` + `run-log.json` + `summarised-ids.json` + `embeddings.json`.
+
+**Publish flow** (build.js):
+- Backfills missing fields on old clusters (triggerWords, impact, contentVersion, category
+  casing) so the frontend never sees an incomplete cluster.
+- Builds the cross-cluster **entity index** (entity name -> cluster ids, `scripts/entities.js`).
+- Builds **topics** — connected components over content-tag overlap (>= 2 shared tags) or
+  shared entities (appearing in 2+ clusters). Structural tags (source names, plugin names,
+  category names) are excluded from topic linking to avoid a giant "bbc" topic. See
+  `buildTopics` in `scripts/build.js`.
+- Builds a **timeline** — all stories across all clusters, chronological, with cluster ref.
+- Computes aggregate **stats** (by category, by source, by impact, by region, by story
+  type, active vs archived).
+- Output shape: `{ date, generated, clusters[], entities[], topics[], timeline[], stats, pipelineStats }`.
+  The frontend reads `clusters` and `pipelineStats` (unchanged contract); `entities`,
+  `topics`, `timeline`, `stats` are additive fields for external consumers.
+
+### Dataset fields for external consumers
+
+The public `docs/digest.json` is designed as a general-purpose news dataset, not just
+for our own frontend. Each cluster has:
+- `region` — geographic scope (place name, "UK", "International", "Global"). Identified
+  by the LLM as part of the summary request — not heuristic, so it handles any location.
+- `entities` — `{ people, places, orgs }` arrays from compromise NER.
+- `tags` — TF-IDF-weighted topic tags.
+- `impact` — low/medium/high.
+- `active` — whether the cluster was updated in the last 48h.
+- `storyCount`, `firstPublished`, `lastPublished` — lifecycle metadata.
+- `stories[]` — each story has `bodyText` (cleaned plain text), `wordCount` (for
+  pagination onto fixed-width displays), and `storyType` (news/analysis/video/feature/
+  opinion, classified by URL pattern heuristics).
+
+The `timeline[]` array flattens all stories chronologically with `region`, `storyType`,
+`wordCount`, and `clusterId`/`clusterHeadline` cross-references — consumers can filter
+and paginate without walking the cluster tree.
+
+The `stats` object includes `byRegion`, `byStoryType`, `byCategory`, `bySource`,
+`byImpact` distributions for consumer-side page assignment.
+
+### Clustering thresholds (scripts/cluster.js)
+
+- `SIM_DEDUP = 0.92` — same article from different sources.
+- `SIM_CLUSTER = 0.65` — same event (lowered from 0.72 to catch same-event pairs that
+  differ in framing; tolerates occasional near-misses per user preference).
+- `SIM_MATCH = 0.62` — new group matches existing cluster (slightly below CLUSTER because
+  centroid-to-centroid is more stable than pairwise, and we want ongoing stories to
+  accumulate across runs as framing shifts).
+
+Do NOT change these without re-running the threshold sweep over the story store and
+eyeballing the multi-story groups for false merges.
+
+### Embeddings cache
+
+- `cache/embeddings.json` maps story id -> 384-dim vector (rounded to 6 decimals).
+- Must persist between runs (stored on cache-data branch, same as other cache files).
+- If lost, all stories re-embed (~0.3s each on CPU, 353 stories ≈ 2 min one-time cost).
+- Model downloads from HF Hub on first run (~22MB, cached by Transformers.js in
+  `node_modules/.cache/` or `~/.cache/huggingface/`). In CI this means a one-time
+  download per run unless the cache is persisted.
+
+### LLM provider
+
+- Same providers as before: OpenRouter, Featherless, OpenAI (first key found wins).
+- **OpenRouter free router** (`openrouter/free`) randomly picks from available free
+  models. The router classifies the request type and filters for models that support
+  the needed features (JSON mode, etc). It does NOT support `excluded_models`.
+- **Prompt framing matters for the free router.** The original system prompt was
+  dominated by "NEVER do X" rules and "strictly enforced" language, which made the
+  router's task classifier think the request was content moderation / safety
+  compliance — so it routed to `nvidia/nemotron-3.5-content-safety:free`, a classifier
+  that returns "User Safety: safe" instead of chat completions. The prompt was reframed
+  to lead with the summarisation task and fold style guidance in as editorial
+  preferences, which fixed the routing. **Do not revert the prompt to enforcement-style
+  language** or the safety classifier will return.
+- `callLLM` detects and retries safety-classifier responses (by model ID and output
+  pattern), and strips markdown fences from models that ignore `response_format`.
+- The pipeline degrades gracefully: every story gets clustered and stored with fallback
+  copy even if all LLM calls fail. Override the model with `OPENROUTER_MODEL` for a
+  pinned model, or use Featherless/OpenAI.
+
 ## SEARCH_PLUGINS Format
 
 Defined in `.env` (local) and GitHub repo secret `SEARCH_PLUGINS` (CI).
