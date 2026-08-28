@@ -36,11 +36,60 @@ Respond with JSON:
   "trigger_words": ["Kabul", "Widdecombe"]
 }`;
 
+function relativeAge(published) {
+  if (!published) return '';
+  const ts = new Date(published).getTime();
+  if (isNaN(ts)) return '';
+  const diff = Date.now() - ts;
+  const hours = Math.floor(diff / 3600000);
+  if (hours < 1) return 'just now';
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  if (days === 1) return '1 day ago';
+  if (days < 7) return `${days} days ago`;
+  if (days < 14) return '1 week ago';
+  return `${Math.floor(days / 7)} weeks ago`;
+}
+
 function storyLines(stories) {
   const sorted = [...stories].sort((a, b) => (b.published || '').localeCompare(a.published || ''));
-  return sorted.map((s, i) =>
-    `[${i + 1}] Published: ${s.published || 'unknown'}\n    Source headline (may be clickbait — do not emulate its style): ${s.originalTitle}\n    Byline: ${s.source}\n    Content: ${s.text}`
-  ).join('\n\n');
+  return sorted.map((s, i) => {
+    const age = relativeAge(s.published);
+    const ageTag = age ? ` (${age})` : '';
+    return `[${i + 1}]${ageTag} Source headline (may be clickbait — do not emulate its style): ${s.originalTitle}\n    Byline: ${s.source}\n    Content: ${s.text}`;
+  }).join('\n\n');
+}
+
+// Build a freshness-aware instruction based on the age spread of stories.
+// If all stories are similarly recent, no special instruction — just summarise.
+// If there's a clear split between old context and new developments, tell the
+// LLM to lead with what's new and treat older stories as background.
+function freshnessGuidance(stories) {
+  const now = Date.now();
+  const ages = stories
+    .map(s => s.published ? new Date(s.published).getTime() : null)
+    .filter(Boolean);
+  if (ages.length < 2) return '';
+
+  // Timestamps: larger = newer (closer to now). Math.max = newest, Math.min = oldest.
+  const newest = Math.max(...ages);
+  const oldest = Math.min(...ages);
+  const spreadHours = (newest - oldest) / 3600000;
+  const newestAgeHours = (now - newest) / 3600000;
+
+  // All stories within 48h of each other — no special guidance needed.
+  if (spreadHours < 48) return '';
+
+  // There's a meaningful age gap. Distinguish "new developments" from "context".
+  // "New" = published within 48h of the newest story. Everything else is context.
+  const newThreshold = newestAgeHours + 48;
+  const newCount = ages.filter(a => (now - a) / 3600000 < newThreshold).length;
+  const oldCount = ages.length - newCount;
+
+  if (newCount >= 1 && oldCount >= 1) {
+    return `\nNote: The most recent ${newCount === 1 ? 'story is' : `${newCount} stories are`} new development${newCount === 1 ? '' : 's'}; the older ${oldCount} ${oldCount === 1 ? 'story provides' : 'stories provide'} background context. The reader may already know the background. Lead with what is new — the latest development should be the focus of the headline and the first sentence of the summary. Use older stories only to add essential context, not to retell the original event.\n`;
+  }
+  return '';
 }
 
 // Summary-only prompt for one already-clustered group of stories.
@@ -49,9 +98,10 @@ function storyLines(stories) {
 // state of an ongoing story rather than just the latest batch.
 export function buildSummaryPrompt(stories, existing) {
   const lines = storyLines(stories);
+  const freshness = freshnessGuidance(stories);
   const ctx = existing
     ? `\n--- EXISTING CLUSTER BEING UPDATED ---\nCurrent headline: ${existing.headline}\nCurrent summary: ${(existing.summary || '(none)').slice(0, 300)}\n--- END EXISTING CLUSTER ---\n\nThese stories are developments of an existing news cluster. Write an updated headline and summary that reflects the CURRENT state of the story incorporating all developments shown below. The reader sees only the latest version.\n`
     : '';
 
-  return `${ctx}These ${stories.length} stor${stories.length === 1 ? 'y' : 'ies'} ${stories.length === 1 ? 'is' : 'are'} about a single news event. Write one headline and one summary that captures the story across all the sources below.\n\n${lines}\n\nRespond ONLY with valid JSON in this exact format:\n{\n  "headline": "Short factual headline (max 8 words)",\n  "summary": "30-60 words of block text facts",\n  "category": "Politics|Business|Technology|Science|Health|World|Sports|Entertainment|Environment|Regional|Other",\n  "region": "Manchester|London|UK|International|Global",\n  "impact": "low|medium|high",\n  "trigger_words": ["specific", "unique", "words"]\n}`;
+  return `${ctx}These ${stories.length} stor${stories.length === 1 ? 'y' : 'ies'} ${stories.length === 1 ? 'is' : 'are'} about a single news event. Write one headline and one summary that captures the story across all the sources below.\n${freshness}\n${lines}\n\nRespond ONLY with valid JSON in this exact format:\n{\n  "headline": "Short factual headline (max 8 words)",\n  "summary": "30-60 words of block text facts",\n  "category": "Politics|Business|Technology|Science|Health|World|Sports|Entertainment|Environment|Regional|Other",\n  "region": "Manchester|London|UK|International|Global",\n  "impact": "low|medium|high",\n  "trigger_words": ["specific", "unique", "words"]\n}`;
 }

@@ -5,9 +5,10 @@ on:
     branches: [ main ]
     paths:
       - 'src/**'
-      - 'scripts/build.js'
+      - 'scripts/**'
       - 'package.json'
       - 'package-lock.json'
+      - '.github/workflows/deploy.yml'
   schedule:
     # 3 runs/day timed to story publish peaks (from 30-day publish-time analysis):
     # 07:23 — catches overnight + early morning filings (peak hour is 08:00 London)
@@ -102,10 +103,17 @@ jobs:
 
       - name: Save cache to cache-data branch
         run: |
+          echo "=== Cache files before save ==="
+          ls -la cache/ 2>/dev/null || echo "No cache/ directory!"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout --orphan cache-data 2>/dev/null || git checkout cache-data
-          git rm -rf . --quiet 2>/dev/null || true
+          # --cached: remove from git index only, NOT from disk.
+          # Without --cached, git rm deletes tracked cache files from disk too,
+          # and if fetch was skipped (cache fresh), they're never recreated.
+          git rm -rf --cached . --quiet 2>/dev/null || true
+          echo "=== Cache files after git rm --cached ==="
+          ls -la cache/ 2>/dev/null || echo "cache/ directory was removed!"
           mkdir -p cache
           git add -f cache/
           git commit -m "Update cache data $(date -u +%Y-%m-%dT%H:%M)" --allow-empty

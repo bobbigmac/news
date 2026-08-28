@@ -37,7 +37,9 @@ const MAX_RETRIES = 5;
 const BASE_DELAY_MS = 5000;
 const MAX_DELAY_MS = 60000;
 const INTER_CALL_DELAY_MS = 2000; // pause between LLM calls to avoid rate limiting
-const ACTIVE_WINDOW_HOURS = 48;   // a cluster is "active" if updated within this window
+const ACTIVE_WINDOW_HOURS = 48;   // a cluster is "active" if last story published within this window
+const STALE_AFTER_DAYS = 7;       // clusters with no new stories in 7 days are stale
+const EXPIRE_AFTER_DAYS = 30;     // clusters with no stories in 30 days are removed from digest
 
 // --- Model registry ---
 // When openrouter/free gives us a good :free model, we remember it. On
@@ -397,10 +399,13 @@ function sortTimeline(stories) {
 }
 
 // Attach lifecycle fields to every cluster: active flag, story count, sorted
-// timeline, and first/last published dates.
+// timeline, and first/last published dates. Also expire clusters whose stories
+// are all older than EXPIRE_AFTER_DAYS — they're dead news taking up space.
 function annotateLifecycle(digest) {
   const now = Date.now();
   const activeCutoff = now - ACTIVE_WINDOW_HOURS * 60 * 60 * 1000;
+  const expireCutoff = now - EXPIRE_AFTER_DAYS * 24 * 60 * 60 * 1000;
+  const before = digest.clusters.length;
   for (const cluster of (digest.clusters || [])) {
     cluster.stories = sortTimeline(cluster.stories || []);
     const dates = cluster.stories
@@ -411,9 +416,24 @@ function annotateLifecycle(digest) {
     cluster.storyCount = cluster.stories.length;
     cluster.firstPublished = dates.length ? new Date(Math.min(...dates)).toISOString() : null;
     cluster.lastPublished = dates.length ? new Date(Math.max(...dates)).toISOString() : null;
-    const updatedTs = cluster.updated ? new Date(cluster.updated).getTime() : 0;
-    cluster.active = updatedTs >= activeCutoff;
+    // Active = last STORY published within the window (not pipeline touch time).
+    // Using lastPublished means a cluster only stays active if real new stories
+    // arrive — the pipeline refreshing metadata doesn't keep dead stories alive.
+    const lastPubTs = cluster.lastPublished ? new Date(cluster.lastPublished).getTime() : 0;
+    cluster.active = lastPubTs >= activeCutoff;
   }
+  // Expire clusters where ALL stories are older than EXPIRE_AFTER_DAYS.
+  // These are dead news — the event is over and no new developments are coming.
+  digest.clusters = digest.clusters.filter(c => {
+    const lastPubTs = c.lastPublished ? new Date(c.lastPublished).getTime() : 0;
+    if (lastPubTs < expireCutoff) {
+      console.log(`  Expiring stale cluster (${Math.floor((now - lastPubTs)/86400000)}d old): ${c.headline?.slice(0,60)}`);
+      return false;
+    }
+    return true;
+  });
+  const expired = before - digest.clusters.length;
+  if (expired) console.log(`  Expired ${expired} stale clusters (>${EXPIRE_AFTER_DAYS}d no new stories)`);
 }
 
 // Merge a group of new stories into an existing cluster (dedup by id).

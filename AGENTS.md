@@ -83,9 +83,11 @@ the free LLM failed constantly and the fallback fragmented everything.
    the lead story's title/content). See `scripts/prompts.js` (`buildSummaryPrompt`).
 7. **Annotate** — entities (compromise NER: people/places/orgs, `scripts/entities.js`),
    tags (TF-IDF over compromise nouns/topics, `scripts/tags.js`), lifecycle fields
-   (`active` flag for updated within 48h, `storyCount`, `firstPublished`/`lastPublished`,
-   stories sorted as a timeline), per-story enrichment (`bodyText`, `wordCount`,
-   `storyType` — see `scripts/story-enrich.js`).
+   (`active` flag based on lastPublished within 48h — NOT pipeline touch time,
+   `storyCount`, `firstPublished`/`lastPublished`, stories sorted as a timeline),
+   per-story enrichment (`bodyText`, `wordCount`, `storyType` — see
+   `scripts/story-enrich.js`), and expiry (clusters with all stories >30 days
+   old are removed from the digest — they're dead news, not current events).
 8. Persist `digest.json` + `run-log.json` + `summarised-ids.json` + `embeddings.json`.
 
 **Publish flow** (build.js):
