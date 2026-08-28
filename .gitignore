@@ -4,4 +4,4 @@ cache/
 docs/
 news/
 logs_*.zip
-logs_extracted/
+logs_extracted/.venv/

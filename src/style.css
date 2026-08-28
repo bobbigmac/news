@@ -238,6 +238,26 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 
 .article-headline:hover { color: var(--accent); }
 
+/* Singleton clusters: headline is a direct link to the source story,
+   with a byline instead of an expandable source list. */
+.article.singleton .article-headline {
+  cursor: default;
+}
+.article.singleton .article-headline a {
+  color: inherit;
+  text-decoration: none;
+}
+.article.singleton .article-headline a:hover {
+  color: var(--accent);
+}
+.singleton-byline {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
 .article-image {
   width: 100%;
   height: auto;

@@ -17,7 +17,7 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
-import { SYSTEM_PROMPT, buildSummaryPrompt, buildBatchPrompt } from './prompts.js';
+import { SYSTEM_PROMPT, buildSummaryPrompt, buildBatchPrompt, buildClickbaitPrompt } from './prompts.js';
 import { TOPIC_SYSTEM_PROMPT, buildTopicPrompt } from './topic-prompt.js';
 import { extractJson } from './extract-json.js';
 import { embedStories, cosineSim, centroid } from './embeddings.js';
@@ -566,9 +566,10 @@ function findClusterForStory(digest, storyId) {
 
 // Heuristic fallback when the LLM fails for a cluster: derive headline/summary
 // from the story text directly. Crude but never loses a story.
-function fallbackClusterCopy(stories) {
+function fallbackClusterCopy(stories, cleanHeadline) {
   const lead = stories[0];
-  const headline = (lead.originalTitle || lead.title || 'Untitled').slice(0, 80);
+  const rawHeadline = lead.originalTitle || lead.title || 'Untitled';
+  const headline = (cleanHeadline || rawHeadline).slice(0, 80);
   const summary = (lead.text || '').slice(0, 200).replace(/\s+\S*$/, '') + '...';
   const triggerWords = extractKeywords(headline + ' ' + summary).slice(0, 5);
   return { headline, summary, triggerWords, impact: 'medium', category: normaliseCategory(lead.category) };
@@ -698,12 +699,16 @@ async function main() {
   const assignments = matchToExisting(mergedGroups, digest.clusters, embeddings);
 
   // --- Summarise clusters (consolidated LLM calls) ---
-  // Three tiers to minimise LLM calls:
+  // Four tiers to minimise LLM calls:
   //   1. SKIP: existing cluster with >= SKIP_MINOR_UPDATE_THRESHOLD stories
   //      getting only 1 new story — don't re-summarise, just add the story.
-  //   2. BATCH: small new clusters (<= BATCH_MAX_STORIES stories) are grouped
+  //   2. SINGLETON: new clusters with only 1 story — no cluster was learned,
+  //      so we don't need an LLM to write a headline. Use the source headline
+  //      as-is, but screen all singletons in ONE LLM call for clickbait/
+  //      sensationalism and get clean replacements where needed.
+  //   3. BATCH: small new clusters (2-BATCH_MAX_STORIES stories) are grouped
   //      into batches of BATCH_SIZE, one LLM call per batch.
-  //   3. SOLO: everything else (large new clusters, existing clusters with
+  //   4. SOLO: everything else (large new clusters, existing clusters with
   //      significant new content) gets a dedicated LLM call.
   let totalAdded = 0;
   let totalUpdated = 0;
@@ -711,10 +716,12 @@ async function main() {
   let llmCalls = 0;
   let llmFailed = 0;
   let skippedMinor = 0;
+  let singletonCount = 0;
 
   // First pass: merge stories into clusters, classify into tiers
   const skipTier = [];      // existing clusters, minor update — no LLM call
-  const batchTier = [];     // small new clusters — batched LLM call
+  const singletonTier = []; // new 1-story clusters — clickbait screen only
+  const batchTier = [];     // small new clusters (2+ stories) — batched LLM call
   const soloTier = [];      // everything else — dedicated LLM call
 
   for (let i = 0; i < assignments.length; i++) {
@@ -759,11 +766,14 @@ async function main() {
       clustersCreated++;
       console.log(`\n[${i + 1}/${assignments.length}] new cluster (${prepared.length} stories): ${prepared[0].originalTitle?.slice(0, 60)}`);
 
-      // Tier 2: batch small new clusters
-      if (BATCH_NEW_CLUSTERS && prepared.length <= BATCH_MAX_STORIES) {
+      if (prepared.length === 1) {
+        // Tier 2: singleton — no LLM summarisation, just clickbait screening
+        singletonTier.push({ prepared, cluster: newCluster });
+      } else if (BATCH_NEW_CLUSTERS && prepared.length <= BATCH_MAX_STORIES) {
+        // Tier 3: batch small new clusters (2+ stories)
         batchTier.push({ prepared, cluster: newCluster });
       } else {
-        // Tier 3: solo for larger new clusters
+        // Tier 4: solo for larger new clusters
         soloTier.push({ prepared, existingCluster: null, cluster: newCluster });
       }
     }
@@ -786,15 +796,72 @@ async function main() {
   }
 
   // Helper: apply fallback copy to a new cluster
-  function applyFallbackToCluster(cluster, prepared) {
-    const fb = fallbackClusterCopy(prepared);
+  function applyFallbackToCluster(cluster, prepared, cleanHeadline) {
+    const fb = fallbackClusterCopy(prepared, cleanHeadline);
     cluster.headline = fb.headline;
     cluster.summary = fb.summary;
     cluster.triggerWords = fb.triggerWords;
     cluster.impact = fb.impact;
   }
 
-  // --- Tier 2: Batch small new clusters ---
+  // --- Tier 2: Singleton clusters — clickbait screening in 1 LLM call ---
+  // Singletons don't need LLM summarisation (no cluster to summarise — just
+  // 1 story). We use the source headline + description as fallback copy.
+  // But first, screen all singleton headlines in ONE LLM call to flag
+  // clickbait/sensationalism and get clean replacements where needed.
+  if (singletonTier.length > 0) {
+    singletonCount = singletonTier.length;
+    console.log(`\n=== Singleton screening: ${singletonTier.length} single-story clusters in 1 LLM call ===`);
+
+    // Build the headlines list for the clickbait prompt
+    const headlines = singletonTier.map(s => ({
+      id: s.cluster.id,
+      headline: s.prepared[0].originalTitle || s.prepared[0].title || 'Untitled',
+      source: s.prepared[0].sourceName || 'Unknown',
+    }));
+
+    // Call LLM to screen headlines (batched in chunks of 50 to stay within context)
+    const CLICKBAIT_BATCH = 50;
+    const cleanHeadlines = new Map(); // cluster.id -> clean headline
+
+    for (let bi = 0; bi < headlines.length; bi += CLICKBAIT_BATCH) {
+      const chunk = headlines.slice(bi, bi + CLICKBAIT_BATCH);
+      llmCalls++;
+      try {
+        const prompt = buildClickbaitPrompt(chunk);
+        const responseText = await callLLM(prompt);
+        const cleaned = stripMarkdownFences(responseText).trim();
+        const parsed = JSON.parse(cleaned);
+        const flagged = Array.isArray(parsed) ? parsed : (parsed.flagged || parsed.results || parsed.data || []);
+        if (Array.isArray(flagged)) {
+          for (const r of flagged) {
+            if (r.id && r.headline) {
+              cleanHeadlines.set(r.id, r.headline);
+              const original = headlines.find(h => h.id === r.id)?.headline;
+              console.log(`  Clickbait: "${original?.slice(0, 50)}" -> "${r.headline?.slice(0, 50)}"`);
+            }
+          }
+        }
+      } catch (err) {
+        console.error(`  Clickbait screening failed: ${err.message}. Using source headlines as-is.`);
+        llmFailed++;
+      }
+      if (bi + CLICKBAIT_BATCH < headlines.length) await new Promise(r => setTimeout(r, INTER_CALL_DELAY_MS));
+    }
+
+    // Apply fallback copy to all singletons, using clean headline where available
+    for (const s of singletonTier) {
+      const cleanHeadline = cleanHeadlines.get(s.cluster.id);
+      applyFallbackToCluster(s.cluster, s.prepared, cleanHeadline);
+      s.cluster.updated = new Date().toISOString();
+      for (const story of s.prepared) summarisedIds.add(story.id);
+    }
+    saveJson(SUMMARISED_IDS_FILE, [...summarisedIds]);
+    saveJson(DIGEST_FILE, digest);
+    console.log(`  Applied ${cleanHeadlines.size} clean headlines, ${singletonTier.length - cleanHeadlines.size} source headlines as-is`);
+  }
+
+  // --- Tier 3: Batch small new clusters (2+ stories) ---
   if (batchTier.length > 0) {
     const batches = [];
     for (let i = 0; i < batchTier.length; i += BATCH_SIZE) {
@@ -847,7 +914,7 @@ async function main() {
     }
   }
 
-  // --- Tier 3: Solo summarisation for significant updates and large new clusters ---
+  // --- Tier 4: Solo summarisation for significant updates and large new clusters ---
   if (soloTier.length > 0) {
     console.log(`\n=== Solo summarisation: ${soloTier.length} clusters (1 LLM call each) ===`);
     for (let i = 0; i < soloTier.length; i++) {
@@ -878,6 +945,7 @@ async function main() {
   }
 
   if (skippedMinor > 0) console.log(`\nSkipped ${skippedMinor} minor updates (existing cluster + 1 new story, no re-summarisation needed)`);
+  if (singletonCount > 0) console.log(`Screened ${singletonCount} singletons (source headline + clickbait check, no per-story LLM call)`);
 
   // --- Annotate: entities, tags, lifecycle, entity index ---
   annotateClusters(digest);
@@ -895,7 +963,7 @@ async function main() {
   const saved = wouldHaveCalled - llmCalls;
   console.log(`\nSummarisation complete: ${totalAdded} stories added, ${clustersCreated} new clusters, ${totalUpdated} clusters updated.`);
   console.log(`LLM: ${llmCalls} calls (would have been ${wouldHaveCalled} without consolidation — saved ${saved}), ${llmFailed} fell back to heuristic.`);
-  console.log(`Skipped ${skippedMinor} minor updates. Digest: ${digest.clusters.length} clusters.`);
+  console.log(`Skipped ${skippedMinor} minor updates, ${singletonCount} singletons screened. Digest: ${digest.clusters.length} clusters.`);
 }
 
 function writeRunLog(digest, processed, added, created, updated, llmCalls, llmFailed, skipped, filteredTooShort = 0, skippedMinor = 0) {

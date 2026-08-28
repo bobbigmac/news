@@ -116,10 +116,15 @@ the free LLM failed constantly and the fallback fragmented everything.
    topic slug: if the new group's slug matches an existing cluster's `topicSlug`, they
    merge even if embedding similarity is below threshold. Otherwise a new cluster is
    created. See `scripts/cluster.js`.
-7. **LLM summary** (consolidated calls) — three tiers to minimise LLM calls:
+7. **LLM summary** (consolidated calls) — four tiers to minimise LLM calls:
    - **SKIP**: existing cluster with >= 3 stories getting only 1 new story — no
      re-summarisation, just add the story. The existing copy is still good.
-   - **BATCH**: small new clusters (<= 2 stories) are grouped into batches of 5,
+   - **SINGLETON**: new cluster with only 1 story — no cluster was learned, so no
+     LLM summarisation needed. Uses the source headline + description as fallback
+     copy. All singleton headlines are screened in ONE LLM call
+     (`buildClickbaitPrompt`) to flag clickbait/sensationalism and get clean
+     factual replacements where needed.
+   - **BATCH**: small new clusters (2-2 stories) are grouped into batches of 5,
      one LLM call per batch (`buildBatchPrompt` in `scripts/prompts.js`).
    - **SOLO**: everything else (large new clusters, existing clusters with significant
      new content) gets a dedicated LLM call (`buildSummaryPrompt`).

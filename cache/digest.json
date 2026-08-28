@@ -1,0 +1,2833 @@
+{
+  "date": "2026-08-28",
+  "clusters": [
+    {
+      "id": "cluster-1787930344882-muvhui",
+      "headline": "New Brunswick approves 500 MW gas plant",
+      "summary": "The New Brunswick government has granted conditional approval for a 500‑megawatt natural gas plant, according to The Canadian Press. The decision, announced in Fredericton, will allow the development of a major energy project in the province.",
+      "category": "business",
+      "stories": [
+        {
+          "id": "49c6ad66-29ab-5cc9-9b54-dc84a973f8eb",
+          "title": "New Brunswick gives green light for 500 MW gas plant",
+          "source": "Eli Ridder, The Canadian Press; Eli Ridder; The Canadian Press; Feedloaderapi",
+          "sourceName": "",
+          "url": "https://www.winnipegfreepress.com/business/2026/08/28/new-brunswick-gives-green-light-for-500-mw-gas-plant",
+          "image": "https://www.winnipegfreepress.com/wp-content/uploads/sites/2/2026/08/6a919a523a0ce8d96915fc70jpeg.jpg?w=1600",
+          "published": "2026-08-28 15:14:01 +0000",
+          "category": "general",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "New Brunswick gives green light for 500 MW gas plant",
+          "wordCount": 10,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "New Brunswick",
+        "gas plant",
+        "500 MW"
+      ],
+      "impact": "high",
+      "created": "2026-08-28T15:19:04.883Z",
+      "updated": "2026-08-28T15:19:10.046Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [
+          "new brunswick"
+        ],
+        "orgs": [
+          "mw gas",
+          "canadian press."
+        ]
+      },
+      "tags": [
+        "business",
+        "mw gas",
+        "canadian",
+        "brunswick",
+        "fredericton",
+        "gas plant"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:14:01.000Z",
+      "lastPublished": "2026-08-28T15:14:01.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930352047-ewjsy3",
+      "headline": "Philadelphia townhouse purchase under consideration",
+      "summary": "Thirty‑five‑year‑old woman, recently separated after a seven‑year engagement, is evaluating a $305,000 Philadelphia twin townhouse—three bedrooms, 1.5 baths, backyard—while currently renting a two‑bedroom apartment for $1,875 per month the rental.",
+      "category": "regional",
+      "stories": [
+        {
+          "id": "e1b08569-c642-5b90-a152-cb9a18a487bc",
+          "title": "Am I ready to buy this house?",
+          "source": "/u/RazzmatazzWinter3079",
+          "sourceName": "",
+          "url": "https://www.reddit.com/r/personalfinance/comments/1w0tb1a/am_i_ready_to_buy_this_house/",
+          "image": "None",
+          "published": "2026-08-28 15:13:07 +0000",
+          "category": "business",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Am I ready to buy this house?",
+          "wordCount": 7,
+          "storyType": "opinion"
+        }
+      ],
+      "triggerWords": [
+        "Philadelphia",
+        "townhouse",
+        "rent"
+      ],
+      "impact": "low",
+      "created": "2026-08-28T15:19:12.047Z",
+      "updated": "2026-08-28T15:19:20.468Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [
+          "philadelphia"
+        ],
+        "orgs": []
+      },
+      "tags": [
+        "regional",
+        "backyard",
+        "townhouse",
+        "rent",
+        "philadelphia"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:07.000Z",
+      "lastPublished": "2026-08-28T15:13:07.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930362469-qocjgl",
+      "headline": "Upper Darby to fine homeowners for maintenance violations",
+      "summary": "Upper Darby township is set to issue quick tickets for property maintenance breaches, including overgrown grass, improper trash disposal, and accumulated rubbish. The proposed fines aim to address neglected properties and encourage compliance with local upkeep standards.",
+      "category": "regional",
+      "stories": [
+        {
+          "id": "aeeac92e-ed22-5948-afa2-e832c3c1cd53",
+          "title": "Upper Darby could soon fine homeowners for property maintenance violations",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.inquirer.com/news/pennsylvania/upper-darby-quick-tickets-property-maintenance-violations-20260828.html",
+          "image": "None",
+          "published": "2026-08-28 15:13:06 +0000",
+          "category": "regional",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Upper Darby could soon fine homeowners for property maintenance violations",
+          "wordCount": 10,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Upper Darby",
+        "fine",
+        "maintenance"
+      ],
+      "impact": "low",
+      "created": "2026-08-28T15:19:22.470Z",
+      "updated": "2026-08-28T15:19:25.388Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "darby"
+        ],
+        "places": [
+          "upper darby township"
+        ],
+        "orgs": []
+      },
+      "tags": [
+        "regional",
+        "upper darby township",
+        "darby",
+        "rubbish",
+        "compliance",
+        "upper darby",
+        "maintenance"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:06.000Z",
+      "lastPublished": "2026-08-28T15:13:06.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930367390-wcom39",
+      "headline": "Eagles finalize 53-man roster with receiver decisions",
+      "summary": "The Philadelphia Eagles must make difficult roster cuts to reach the 53‑player limit by Sunday at 6 p.m., focusing on wide receiver, tight end and defensive line positions. The team will evaluate performance and depth to decide which players to retain.",
+      "category": "sports",
+      "stories": [
+        {
+          "id": "a8accb7f-821d-5368-abb5-098e5db45da8",
+          "title": "Eagles 53-man roster prediction: Tough decisions at wide receiver, tight end and D-line",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.inquirer.com/eagles/2026-roster-prediction-53-man-cuts-depth-chart-20260828.html",
+          "image": "None",
+          "published": "2026-08-28 15:13:06 +0000",
+          "category": "regional",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Eagles 53-man roster prediction: Tough decisions at wide receiver, tight end and D-line",
+          "wordCount": 13,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Eagles",
+        "roster",
+        "wide receiver"
+      ],
+      "impact": "low",
+      "created": "2026-08-28T15:19:27.390Z",
+      "updated": "2026-08-28T15:19:31.939Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [],
+        "orgs": [
+          "philadelphia eagles"
+        ]
+      },
+      "tags": [
+        "sports",
+        "philadelphia eagles",
+        "eagle",
+        "retain",
+        "roster",
+        "wide receiver",
+        "player",
+        "eagles"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:06.000Z",
+      "lastPublished": "2026-08-28T15:13:06.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930373941-5tuuud",
+      "headline": "Camden replaces high school uniforms with dress code",
+      "summary": "Camden has abolished compulsory uniforms in its high schools, introducing a flexible dress code instead. The new policy permits varied attire but prohibits durags, bonnets, hair rollers and pajamas. The change aims to balance personal expression with school standards, affecting all Camden secondary pupils.",
+      "category": "regional",
+      "stories": [
+        {
+          "id": "301e3306-578f-5d7c-b819-fe8d0911b6b2",
+          "title": "Camden drops uniforms in high schools in favor of a dress code",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.inquirer.com/south-jersey/camden-school-district-uniform-dress-code-policy-20260828.html",
+          "image": "None",
+          "published": "2026-08-28 15:13:06 +0000",
+          "category": "regional",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Camden drops uniforms in high schools in favor of a dress code",
+          "wordCount": 12,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Camden",
+        "dress code",
+        "uniforms"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:19:33.941Z",
+      "updated": "2026-08-28T15:19:36.924Z",
+      "contentVersion": 2,
+      "region": "London",
+      "entities": {
+        "people": [],
+        "places": [],
+        "orgs": []
+      },
+      "tags": [
+        "regional",
+        "camden",
+        "durag",
+        "bonnet",
+        "uniform",
+        "dress code",
+        "uniforms"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:06.000Z",
+      "lastPublished": "2026-08-28T15:13:06.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930378926-r54rb9",
+      "headline": "Philadelphia Cycling Classic winners recall race's past",
+      "summary": "Two winners of the Philadelphia Cycling Classic reminisce about the race’s former ‘theater’ atmosphere, highlighting the stadium‑like feel of Ben Franklin Parkway and the grueling half‑mile Manayunk Wall, while discussing its potential revival.",
+      "category": "sports",
+      "stories": [
+        {
+          "id": "e25a27f5-e585-538d-aff2-03823e496a1c",
+          "title": "Winners of the Philadelphia Cycling Classic recall 'the theater' the race once was, and can be again",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.inquirer.com/sports/philadelphia-cycling-classic-eric-heiden-manayunk-bike-race-20260828.html",
+          "image": "None",
+          "published": "2026-08-28 15:13:06 +0000",
+          "category": "regional",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Winners of the Philadelphia Cycling Classic recall 'the theater' the race once was, and can be again",
+          "wordCount": 17,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Philadelphia Cycling Classic",
+        "Manayunk Wall"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:19:38.926Z",
+      "updated": "2026-08-28T15:19:43.777Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "ben franklin parkway"
+        ],
+        "places": [
+          "philadelphia"
+        ],
+        "orgs": []
+      },
+      "tags": [
+        "sports",
+        "ben franklin parkway",
+        "race",
+        "philadelphia cycling classic",
+        "manayunk wall",
+        "philadelphia"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:06.000Z",
+      "lastPublished": "2026-08-28T15:13:06.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930385779-zewjdm",
+      "headline": "Abolish Shackamaxon sheriff's office demanded",
+      "summary": "Shackamaxon's sheriff's office faces calls for abolition, with critics arguing it should be disbanded rather than acting as a babysitter. Meanwhile, Jason Kelce fuels confusion over data centers, and the city's latest property valuations have sparked widespread consternation.",
+      "category": "politics",
+      "stories": [
+        {
+          "id": "e493866b-7ef7-554d-ba09-4b16696a9788",
+          "title": "The sheriff's office doesn't need a babysitter; it needs to be abolished | Shackamaxon",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.inquirer.com/opinion/sheriffs-office-data-centers-jason-kelce-property-taxes-20260828.html",
+          "image": "None",
+          "published": "2026-08-28 15:13:06 +0000",
+          "category": "regional",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "The sheriff's office doesn't need a babysitter; it needs to be abolished | Shackamaxon",
+          "wordCount": 14,
+          "storyType": "opinion"
+        }
+      ],
+      "triggerWords": [
+        "Sheriff's office",
+        "Jason Kelce",
+        "property valuations"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:19:45.779Z",
+      "updated": "2026-08-28T15:19:52.480Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "jason kelce"
+        ],
+        "places": [],
+        "orgs": []
+      },
+      "tags": [
+        "politics",
+        "jason kelce",
+        "shackamaxon",
+        "abolition",
+        "sheriff's office",
+        "property valuations",
+        "calls"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:06.000Z",
+      "lastPublished": "2026-08-28T15:13:06.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930394482-tm4ndf",
+      "headline": "Hazen Talks Phillies Wild‑Card Race and Marte Drama",
+      "summary": "Philadelphia Inquirer reports that Diamondbacks general manager Mike Hazen appeared on Phillies Extra, addressing the current wild‑card race and the ongoing drama surrounding star second baseman Ketel Marte. Hazen shared insights on both teams’ playoff prospects and Marte’s situation.",
+      "category": "sports",
+      "stories": [
+        {
+          "id": "1217e145-af45-532b-a496-fa9c775c9fd5",
+          "title": "Phillies Extra with Mike Hazen - The Philadelphia Inquirer",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.inquirer.com/inquirer-live/phillies-extra-hazen-livestream-gameday-central-20260828.html",
+          "image": "None",
+          "published": "2026-08-28 15:13:06 +0000",
+          "category": "regional",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Phillies Extra with Mike Hazen - The Philadelphia Inquirer",
+          "wordCount": 9,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Mike Hazen",
+        "wild‑card race",
+        "Ketel Marte"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:19:54.482Z",
+      "updated": "2026-08-28T15:20:01.175Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "mike hazen",
+          "mike hazen -"
+        ],
+        "places": [
+          "philadelphia"
+        ],
+        "orgs": [
+          "talks phillies",
+          "phillies"
+        ]
+      },
+      "tags": [
+        "sports",
+        "talks phillies",
+        "mike hazen",
+        "hazen",
+        "wild‑card race",
+        "ketel marte",
+        "phillies",
+        "philadelphia"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:06.000Z",
+      "lastPublished": "2026-08-28T15:13:06.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930403176-frqg56",
+      "headline": "Nepal-China border flood threat after dam burst",
+      "summary": "Nepali police issued a fresh alert on Friday after learning that a dam on the Tibetan side of the Nepal‑China border has burst, raising the death toll and creating a new flood threat from a rapidly rising lake. The disaster now endangers communities along the frontier.",
+      "category": "science",
+      "stories": [
+        {
+          "id": "33c59726-cc1b-5ed0-a8c3-1824619f901b",
+          "title": "Death toll rises in Nepal-China border disaster as a lake poses new flood threat",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.inquirer.com/news/nation-world/nepal-china-flooding-new-threat-20260828.html",
+          "image": "None",
+          "published": "2026-08-28 15:13:06 +0000",
+          "category": "regional",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Death toll rises in Nepal-China border disaster as a lake poses new flood threat",
+          "wordCount": 14,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Nepal",
+        "China",
+        "dam",
+        "flood"
+      ],
+      "impact": "high",
+      "created": "2026-08-28T15:20:03.177Z",
+      "updated": "2026-08-28T15:20:07.626Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [
+          "nepal-china"
+        ],
+        "orgs": [
+          "nepali"
+        ]
+      },
+      "tags": [
+        "science",
+        "nepali",
+        "nepal-china",
+        "lake",
+        "community",
+        "nepal",
+        "dam",
+        "flood",
+        "china"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:06.000Z",
+      "lastPublished": "2026-08-28T15:13:06.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930409628-jqf8a5",
+      "headline": "Makai Lemon fills A.J. Brown role for Eagles",
+      "summary": "Makai Lemon, the Eagles' first‑round pick, is expected to assume a larger role following A.J. Brown’s departure. He must adapt to Sean Mannion’s new offensive system and deliver on the opportunity presented by the star receiver’s exit. The team’s success hinges on his performance.",
+      "category": "sports",
+      "stories": [
+        {
+          "id": "96f1b157-ac97-5313-8c10-0a4719fbf561",
+          "title": "Makai Lemon has all of the opportunity in the world. The Eagles need him to seize it.",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.inquirer.com/sports/eagles-makai-lemon-aj-brown-devonta-smith-20260828.html",
+          "image": "None",
+          "published": "2026-08-28 15:13:06 +0000",
+          "category": "regional",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Makai Lemon has all of the opportunity in the world. The Eagles need him to seize it.",
+          "wordCount": 17,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Makai Lemon",
+        "Eagles",
+        "A.J. Brown"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:20:09.628Z",
+      "updated": "2026-08-28T15:20:16.136Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "brown",
+          "sean"
+        ],
+        "places": [],
+        "orgs": []
+      },
+      "tags": [
+        "sports",
+        "sean",
+        "brown",
+        "makai lemon",
+        "a.j. brown",
+        "eagles"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:06.000Z",
+      "lastPublished": "2026-08-28T15:13:06.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930418138-en5bv2",
+      "headline": "Kim Stoveld forms team for Philly Cycling Classic",
+      "summary": "Kim Stoveld, a nurse, began racing in 2021 after the Philly Cycling Classic’s decade‑long hiatus. She responded to the event’s lack of local representation by forming a local team for the women’s race, giving fans a hometown squad to support. The initiative marks her rapid rise in professional cycling.",
+      "category": "sports",
+      "stories": [
+        {
+          "id": "d00abc14-afdc-58d2-a01d-0c8d67140803",
+          "title": "Kim Stoveld gives the Philly Cycling Classic women's race a local team to root for",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.inquirer.com/sports/philly-cycling-classic-womens-race-kim-stoveld-20260828.html",
+          "image": "None",
+          "published": "2026-08-28 15:13:06 +0000",
+          "category": "regional",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Kim Stoveld gives the Philly Cycling Classic women's race a local team to root for",
+          "wordCount": 15,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Kim Stoveld",
+        "Philly Cycling Classic",
+        "local team"
+      ],
+      "impact": "low",
+      "created": "2026-08-28T15:20:18.138Z",
+      "updated": "2026-08-28T15:20:27.549Z",
+      "contentVersion": 2,
+      "region": "Philadelphia",
+      "entities": {
+        "people": [
+          "kim stoveld",
+          "classic kim stoveld"
+        ],
+        "places": [],
+        "orgs": []
+      },
+      "tags": [
+        "sports",
+        "kim stoveld",
+        "classic kim stoveld",
+        "team",
+        "fan",
+        "philly cycling classic",
+        "local team"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:06.000Z",
+      "lastPublished": "2026-08-28T15:13:06.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930429551-dnmmxj",
+      "headline": "Geriatric ER units reduce hospital stays and costs",
+      "summary": "Specialized geriatric emergency departments are designed to treat older patients more effectively, reducing the need for full hospital admission and thereby lowering healthcare costs. These units focus on age‑specific care, helping to keep elderly patients out of the hospital while delivering appropriate treatment.",
+      "category": "health",
+      "stories": [
+        {
+          "id": "ea3c7c59-47d8-52c3-ac75-b9c46fb67b28",
+          "title": "What geriatric emergency departments do differently - The Philadelphia Inquirer",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.inquirer.com/health/geriatric-ers-lower-costs-improve-healthcare-20260828.html",
+          "image": "None",
+          "published": "2026-08-28 15:13:06 +0000",
+          "category": "regional",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "What geriatric emergency departments do differently - The Philadelphia Inquirer",
+          "wordCount": 10,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "geriatric",
+        "emergency",
+        "departments"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:20:29.551Z",
+      "updated": "2026-08-28T15:20:34.638Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [
+          "philadelphia"
+        ],
+        "orgs": []
+      },
+      "tags": [
+        "health",
+        "geriatric",
+        "emergency",
+        "departments",
+        "philadelphia"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:06.000Z",
+      "lastPublished": "2026-08-28T15:13:06.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930436640-60impu",
+      "headline": "Good Good Golf ad sparks women’s violence outrage",
+      "summary": "An advertisement by the golf brand Good Good Golf depicting violence against women sparked public outrage, prompting delayed corrective action. The incident raises questions about golf culture’s attitudes toward gender violence and whether the sport is addressing such issues adequately.",
+      "category": "sports",
+      "stories": [
+        {
+          "id": "3db041f6-0ad9-58ca-949d-3a6f49227644",
+          "title": "Violence against women in Good Good Golf's ad stains slow responders - The Philadelphia Inquirer",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.inquirer.com/sports/good-good-golf-callaway-domestic-violence-20260828.html",
+          "image": "None",
+          "published": "2026-08-28 15:13:06 +0000",
+          "category": "regional",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Violence against women in Good Good Golf's ad stains slow responders - The Philadelphia Inquirer",
+          "wordCount": 15,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Good Good Golf",
+        "violence",
+        "women",
+        "ad"
+      ],
+      "impact": "high",
+      "created": "2026-08-28T15:20:36.640Z",
+      "updated": "2026-08-28T15:20:46.001Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [
+          "philadelphia"
+        ],
+        "orgs": []
+      },
+      "tags": [
+        "sports",
+        "questions",
+        "good good golf",
+        "violence",
+        "ad",
+        "philadelphia"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:06.000Z",
+      "lastPublished": "2026-08-28T15:13:06.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930448002-bqh1re",
+      "headline": "Judge blocks Postal Service mail-in vote restrictions",
+      "summary": "U.S. District Judge Indira Talwani has again prohibited the Postal Service from imposing restrictions on mail‑in voting. The decision follows a prior clearance for the agency and comes amid ongoing legal battles over ballot access. The ruling ensures voters can continue receiving mail‑in ballots without interference.",
+      "category": "politics",
+      "stories": [
+        {
+          "id": "111215be-b14e-50e0-abb3-2511a170cd4a",
+          "title": "Judge once again bars Postal Service from restricting mail-in vote - The Philadelphia Inquirer",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.inquirer.com/politics/nation/judge-mail-ballots-postal-service-20260828.html",
+          "image": "None",
+          "published": "2026-08-28 15:13:06 +0000",
+          "category": "regional",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Judge once again bars Postal Service from restricting mail-in vote - The Philadelphia Inquirer",
+          "wordCount": 14,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Indira Talwani",
+        "Postal Service",
+        "mail-in vote"
+      ],
+      "impact": "high",
+      "created": "2026-08-28T15:20:48.002Z",
+      "updated": "2026-08-28T15:20:51.537Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "indira talwani"
+        ],
+        "places": [
+          "district judge",
+          "philadelphia"
+        ],
+        "orgs": [
+          "postal service"
+        ]
+      },
+      "tags": [
+        "politics",
+        "postal service",
+        "district",
+        "indira talwani",
+        "restriction",
+        "voter",
+        "interference",
+        "mail-in vote",
+        "philadelphia"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:06.000Z",
+      "lastPublished": "2026-08-28T15:13:06.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930453539-icsb33",
+      "headline": "Phillies and Cubs set 49‑run MLB record",
+      "summary": "Phillies and Cubs combined for 49 runs on August 25, 1922, in a game widely described as ‘weird’. The historic contest remains the highest‑scoring MLB game ever played, and the 49‑run mark continues to stand as an unbroken record.",
+      "category": "sports",
+      "stories": [
+        {
+          "id": "8d37f374-1404-5e54-bbe1-90b70ea18447",
+          "title": "Phillies and Cubs set a record that still stands in a 'weird' game on this week in Philly history",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.inquirer.com/history/phillies-chicago-cubs-run-record-mlb-20260828.html",
+          "image": "None",
+          "published": "2026-08-28 15:13:06 +0000",
+          "category": "regional",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Phillies and Cubs set a record that still stands in a 'weird' game on this week in Philly history",
+          "wordCount": 19,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "49 runs",
+        "1922",
+        "record"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:20:53.539Z",
+      "updated": "2026-08-28T15:21:02.199Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "mark"
+        ],
+        "places": [],
+        "orgs": [
+          "phillies",
+          "mlb"
+        ]
+      },
+      "tags": [
+        "sports",
+        "mlb",
+        "mark",
+        "49 runs",
+        "record",
+        "phillies"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:13:06.000Z",
+      "lastPublished": "2026-08-28T15:13:06.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930464201-6h262j",
+      "headline": "KGM Musso Rhino Pickup Review",
+      "summary": "Sean O'Grady reviews the KGM Musso Rhino, a mid‑range pickup entering a crowded market. The vehicle aims to blend affordability, image and capability, offering a balanced choice for buyers seeking a practical yet stylish ute. The review highlights its competitive positioning.",
+      "category": "business",
+      "stories": [
+        {
+          "id": "d659855e-2330-522c-95d1-a9f305854a86",
+          "title": "Beast in class: KGM Musso Rhino",
+          "source": "Sean O'Grady",
+          "sourceName": "The Independent",
+          "url": "https://www.independent.co.uk/life-style/motoring/kgm-musso-rhino-car-review-b3037039.html",
+          "image": "https://static.independent.co.uk/2026/08/21/12/38/IMG_5057.jpeg?trim=0,0,0,0&width=1200&height=800&crop=1200:800",
+          "published": "2026-08-28 15:10:54 +0000",
+          "category": "general",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Beast in class: KGM Musso Rhino",
+          "wordCount": 6,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "KGM",
+        "Musso",
+        "Rhino"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:21:04.201Z",
+      "updated": "2026-08-28T15:21:12.194Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "review sean o'grady"
+        ],
+        "places": [],
+        "orgs": [
+          "kgm"
+        ]
+      },
+      "tags": [
+        "business",
+        "kgm",
+        "review sean o'grady",
+        "affordability",
+        "buyer",
+        "musso",
+        "rhino"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:10:54.000Z",
+      "lastPublished": "2026-08-28T15:10:54.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930474195-8nxq2v",
+      "headline": "Instagram food trend horrifies holiday visitor",
+      "summary": "Food influencer Milo Boyd tried a new Instagram/TikTok trend on holiday and was horrified. The fad follows three years after acclaimed French pastry chef Philippe Conticini’s “croissant XXL” captured social media, signalling another wave of viral food challenges.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "4dc14d73-9ffc-586a-8147-ff1270222a5c",
+          "title": "I tried newest Instagram food trend on holiday but was left pretty horrified",
+          "source": "Milo Boyd",
+          "sourceName": "Mirror",
+          "url": "https://www.mirror.co.uk/travel/tried-newest-instagram-food-trend-37600565",
+          "image": "https://i2-prod.mirror.co.uk/article37600879.ece/ALTERNATES/s1200d/0_Capture-2JPG.jpg",
+          "published": "2026-08-28 15:08:04 +0000",
+          "category": "general",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "I tried newest Instagram food trend on holiday but was left pretty horrified",
+          "wordCount": 13,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Instagram",
+        "food trend",
+        "croissant XXL"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:21:14.195Z",
+      "updated": "2026-08-28T15:21:22.659Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "milo boyd",
+          "philippe"
+        ],
+        "places": [],
+        "orgs": []
+      },
+      "tags": [
+        "technology",
+        "philippe",
+        "milo boyd",
+        "holiday",
+        "instagram",
+        "food trend",
+        "croissant xxl"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:08:04.000Z",
+      "lastPublished": "2026-08-28T15:08:04.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930484661-kmwofh",
+      "headline": "Poland prankster faces eight-year prison",
+      "summary": "Police in Poland have charged a suspected prankster with ordering hundreds of meals, including 300 pizzas, to strangers, leading to a potential eight‑year prison sentence. The case highlights the legal risks of large‑scale hoaxes and has drawn public attention across the country.",
+      "category": "general",
+      "stories": [
+        {
+          "id": "f8ed236f-983e-5158-99a4-ffd8efdf7d15",
+          "title": "Prankster faces jail over 300 pizza deliveries prank",
+          "source": "Steve Charnock",
+          "sourceName": "Metro",
+          "url": "https://metro.co.uk/2026/08/28/prankster-faces-jail-300-pizza-deliveries-prank-29483366/",
+          "image": "https://metro.co.uk/wp-content/uploads/2026/08/pizza-prank_1787929789.png?w=1200&h=630&crop=1",
+          "published": "2026-08-28 15:06:46 +0000",
+          "category": "general",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Prankster faces jail over 300 pizza deliveries prank",
+          "wordCount": 8,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Poland",
+        "pizza",
+        "prank"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:21:24.661Z",
+      "updated": "2026-08-28T15:21:33.695Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [
+          "poland"
+        ],
+        "orgs": []
+      },
+      "tags": [
+        "general",
+        "poland",
+        "stranger",
+        "prankster",
+        "pizza",
+        "prank"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:06:46.000Z",
+      "lastPublished": "2026-08-28T15:06:46.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930495697-zu51aq",
+      "headline": "Vanessa Feltz starved on ITV's Celebrity Fit Club",
+      "summary": "Vanessa Feltz has revealed she starved herself during ITV’s Celebrity Fit Club in 2004, describing the experience as horrific. The former TV presenter participated alongside other famous contestants who were put through intense weight‑loss regimes. The account comes from a report by Victoria Johns.",
+      "category": "health",
+      "stories": [
+        {
+          "id": "920ed7c9-140a-53af-a6e9-7b5a184e87f3",
+          "title": "Vanessa Feltz says she starved herself on 'horrific' ITV weight loss show",
+          "source": "Victoria Johns",
+          "sourceName": "Mirror",
+          "url": "https://www.mirror.co.uk/tv/tv-news/vanessa-feltz-says-starved-herself-37604145",
+          "image": "https://i2-prod.mirror.co.uk/article37604306.ece/ALTERNATES/s1200d/31_03_CELEBRITY_FIT_CLUB_a.jpg",
+          "published": "2026-08-28 15:06:43 +0000",
+          "category": "general",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Vanessa Feltz says she starved herself on 'horrific' ITV weight loss show",
+          "wordCount": 12,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Vanessa Feltz",
+        "ITV",
+        "Celebrity Fit Club"
+      ],
+      "impact": "low",
+      "created": "2026-08-28T15:21:35.697Z",
+      "updated": "2026-08-28T15:21:45.548Z",
+      "contentVersion": 2,
+      "region": "UK",
+      "entities": {
+        "people": [
+          "vanessa feltz"
+        ],
+        "places": [
+          "victoria"
+        ],
+        "orgs": [
+          "itv's celebrity fit club",
+          "itvs celebrity fit club",
+          "itv"
+        ]
+      },
+      "tags": [
+        "health",
+        "itv",
+        "victoria",
+        "vanessa feltz",
+        "celebrity fit club"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:06:43.000Z",
+      "lastPublished": "2026-08-28T15:06:43.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930507550-sb91ea",
+      "headline": "Thirsk and Bellewstown races cancelled after jockey fall",
+      "summary": "A horse slipped and unseated its jockey at Thirsk, forcing cancellation of the race meeting. At the Bellewstown Festival in Ireland, four races on the round course were also scrapped after similar incidents over successive days. The cancellations disrupted scheduled racing on both days.",
+      "category": "sports",
+      "stories": [
+        {
+          "id": "0b5bd4f3-38af-533f-8d2c-931332839c54",
+          "title": "Thirsk forced to cancel races after horse slips and unships jockey",
+          "source": "Jon Lees",
+          "sourceName": "Mirror",
+          "url": "https://www.mirror.co.uk/sport/horse-racing/thirsk-cancelled-slipping-safety-fall-37604552",
+          "image": "https://i2-prod.mirror.co.uk/article37604602.ece/ALTERNATES/s1200d/1_Thirsk-Racecourse.jpg",
+          "published": "2026-08-28 15:06:31 +0000",
+          "category": "general",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Thirsk forced to cancel races after horse slips and unships jockey",
+          "wordCount": 11,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Thirsk",
+        "Bellewstown",
+        "jockey",
+        "cancellations"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:21:47.550Z",
+      "updated": "2026-08-28T15:22:06.316Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [
+          "ireland"
+        ],
+        "orgs": []
+      },
+      "tags": [
+        "sports",
+        "ireland",
+        "jockey",
+        "thirsk",
+        "races",
+        "bellewstown",
+        "cancellations"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:06:31.000Z",
+      "lastPublished": "2026-08-28T15:06:31.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930528318-ovm920",
+      "headline": "Ricky Gervais undecided on accepting knighthood",
+      "summary": "Comedian Ricky Gervais has said he remains undecided about accepting a knighthood, describing the honour as 'irrelevant' and stating he is not fazed by the prospect of receiving it in the future. His comments come amid ongoing speculation about a possible honour.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "6464e01b-07b8-5514-833e-37421b0cc1a6",
+          "title": "Ricky Gervais reveals indecision over accepting a knighthood",
+          "source": "Lily Jobson",
+          "sourceName": "Daily Mail",
+          "url": "https://www.dailymail.com/tvshowbiz/article-16087643/Ricky-Gervais-indecision-knighthood-marriage-inheritance-tax.html",
+          "image": "https://i.dailymail.com/1s/2026/08/28/16/110911735-0-image-a-206_1787929413075.jpg",
+          "published": "2026-08-28 15:04:36 +0000",
+          "category": "entertainment",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Ricky Gervais reveals indecision over accepting a knighthood",
+          "wordCount": 8,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Ricky Gervais",
+        "knighthood",
+        "irrelevant"
+      ],
+      "impact": "low",
+      "created": "2026-08-28T15:22:08.318Z",
+      "updated": "2026-08-28T15:22:12.051Z",
+      "contentVersion": 2,
+      "region": "UK",
+      "entities": {
+        "people": [
+          "ricky gervais",
+          "comedian ricky gervais"
+        ],
+        "places": [],
+        "orgs": []
+      },
+      "tags": [
+        "technology",
+        "ricky gervais",
+        "comedian ricky gervais",
+        "indecision",
+        "accepting",
+        "knighthood",
+        "irrelevant"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:04:36.000Z",
+      "lastPublished": "2026-08-28T15:04:36.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930534053-gse5o4",
+      "headline": "Celebrities send teens to Reading & Leeds Festival",
+      "summary": "Luisa Zissman and Jenny Powell have sent their teenage children to the Reading and Leeds Festival this weekend, where the youngsters are camping in the pouring rain. The celebrity mothers have left their pampered teens to attend the two‑day event, which runs across Saturday and Sunday.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "22f461cd-c57d-553d-a84e-e442e01be299",
+          "title": "Luisa Zissman and Jenny Powell send their teenagers to Reading Fest",
+          "source": "Kirsten Murray",
+          "sourceName": "Daily Mail",
+          "url": "https://www.dailymail.com/tvshowbiz/article-16087509/Luisa-Zissman-Jenny-Powell-send-teenagers-rain-Reading-Leeds-Festival.html",
+          "image": "https://i.dailymail.com/1s/2026/08/28/15/110909821-0-image-a-58_1787926155004.jpg",
+          "published": "2026-08-28 15:02:03 +0000",
+          "category": "entertainment",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Luisa Zissman and Jenny Powell send their teenagers to Reading Fest",
+          "wordCount": 11,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Luisa Zissman",
+        "Jenny Powell",
+        "Reading & Leeds Festival"
+      ],
+      "impact": "low",
+      "created": "2026-08-28T15:22:14.053Z",
+      "updated": "2026-08-28T15:22:23.179Z",
+      "contentVersion": 2,
+      "region": "Reading",
+      "entities": {
+        "people": [
+          "festival luisa zissman",
+          "jenny powell",
+          "luisa zissman"
+        ],
+        "places": [
+          "leeds"
+        ],
+        "orgs": [
+          "reading  leeds"
+        ]
+      },
+      "tags": [
+        "technology",
+        "reading leeds",
+        "leeds",
+        "jenny powell",
+        "luisa zissman",
+        "festival luisa zissman",
+        "celebrity",
+        "teen",
+        "reading leeds festival"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:02:03.000Z",
+      "lastPublished": "2026-08-28T15:02:03.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930545180-h6p547",
+      "headline": "IT specialist pleads guilty to leaking DIA secrets",
+      "summary": "An IT specialist assigned to the US Defense Intelligence Agency’s Insider Threat Division began contacting a foreign government within days of his appointment. He has now pleaded guilty to leaking state secrets to foreign spies, marking a significant breach of national security.",
+      "category": "politics",
+      "stories": [
+        {
+          "id": "11ab7d68-4d3d-5268-ba33-72afa4dbf86e",
+          "title": "US government snitch-finder pleads guilty to leaking state secrets to foreign spies",
+          "source": "Connor Jones",
+          "sourceName": "",
+          "url": "https://www.theregister.com/security/2026/08/28/us-government-snitch-finder-pleads-guilty-to-leaking-state-secrets-to-foreign-spies/5293248",
+          "image": "https://image.theregister.com/254035.jpg?imageId=254035&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683",
+          "published": "2026-08-28 15:00:00 +0000",
+          "category": "general",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "US government snitch-finder pleads guilty to leaking state secrets to foreign spies",
+          "wordCount": 12,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "US government",
+        "Insider Threat",
+        "DIA"
+      ],
+      "impact": "high",
+      "created": "2026-08-28T15:22:25.180Z",
+      "updated": "2026-08-28T15:22:28.852Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [],
+        "orgs": [
+          "defense intelligence agencys insider threat division"
+        ]
+      },
+      "tags": [
+        "politics",
+        "specialist",
+        "insider threat",
+        "dia"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:00:00.000Z",
+      "lastPublished": "2026-08-28T15:00:00.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930560041-1a0c37",
+      "headline": "Jennifer Lopez shares nude bath selfie amid burnout",
+      "summary": "Jennifer Lopez posted a photograph of herself working while naked in the bath, prompting friends to voice concerns about her workload and warn of potential burnout. The snapshot, shared recently, highlights the singer‑actress’s demanding schedule and the growing worries among her inner circle about her health.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "a3d968a7-34cd-5a7d-b75c-0bddcc88dfd7",
+          "title": "Jennifer Lopez shares snap of herself working while naked in the bath",
+          "source": "Niomi Harris",
+          "sourceName": "Daily Mail",
+          "url": "https://www.dailymail.com/tvshowbiz/article-16087039/Jennifer-Lopez-working-naked-bath-fears-burnout-workload.html",
+          "image": "https://i.dailymail.com/1s/2026/08/28/15/110910681-0-image-m-16_1787928306277.jpg",
+          "published": "2026-08-28 14:59:03 +0000",
+          "category": "entertainment",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Jennifer Lopez shares snap of herself working while naked in the bath",
+          "wordCount": 12,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Jennifer Lopez",
+        "bath",
+        "burnout"
+      ],
+      "impact": "low",
+      "created": "2026-08-28T15:22:40.041Z",
+      "updated": "2026-08-28T15:22:47.584Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "jennifer lopez"
+        ],
+        "places": [],
+        "orgs": []
+      },
+      "tags": [
+        "technology",
+        "jennifer lopez",
+        "concerns",
+        "highlights",
+        "bath",
+        "burnout"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T14:59:03.000Z",
+      "lastPublished": "2026-08-28T14:59:03.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930569586-76hbic",
+      "headline": "Energy Secretary Mattia Fahnbulleh defends private school choice",
+      "summary": "Energy Secretary Mattia Fahnbulleh, 46, defended sending her children to private school, stating that fee‑paying education is acceptable if schools are ‘good’ or provide specific opportunities unavailable at state schools. The remark sparked debate over elite education choices among government officials.",
+      "category": "politics",
+      "stories": [
+        {
+          "id": "a0b30469-4d18-56c7-a2c0-8b80d574349f",
+          "title": "Top Burnham minister defends sending her children to private school",
+          "source": "David Wilcock",
+          "sourceName": "Daily Mail",
+          "url": "https://www.dailymail.com/news/article-16086783/Top-Burnham-minister-Fahnbulleh-defends-sending-children-private-school.html",
+          "image": "https://i.dailymail.com/1s/2026/08/28/11/110903261-0-image-m-18_1787911999591.jpg",
+          "published": "2026-08-28 14:57:27 +0000",
+          "category": "general",
+          "plugin": null,
+          "pluginPriority": null,
+          "bodyText": "Top Burnham minister defends sending her children to private school",
+          "wordCount": 10,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Mattia",
+        "Fahnbulleh",
+        "private school"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:22:49.586Z",
+      "updated": "2026-08-28T15:22:54.922Z",
+      "contentVersion": 2,
+      "region": "UK",
+      "entities": {
+        "people": [
+          "secretary mattia fahnbulleh"
+        ],
+        "places": [],
+        "orgs": []
+      },
+      "tags": [
+        "politics",
+        "secretary mattia fahnbulleh",
+        "school",
+        "mattia",
+        "fahnbulleh",
+        "private school"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T14:57:27.000Z",
+      "lastPublished": "2026-08-28T14:57:27.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930576924-7cxcgm",
+      "headline": "Join Us reveals cult‑member gameplay at Gamescom 2026",
+      "summary": "Join Us has released a gameplay trailer at Gamescom 2026 in which former cult members play and react to the upcoming co‑op open‑world survival game. The title will launch on Xbox Series X/S, PlayStation 5, Steam and Epic Games Store in March 2027.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "7cb4e088-21f7-528c-b948-49effdf31398",
+          "title": "Join Us - Official 'Cult Members Play Join Us' Teaser Trailer | gamescom 2026",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.ign.com/videos/join-us-official-cult-members-play-join-us-teaser-trailer-gamescom-2026",
+          "image": "https://assets-prd.ignimgs.com/2026/08/24/joinus-trailer-blogroll-1787600741702.jpg?width=1280&format=jpg&auto=webp&quality=80",
+          "published": "2026-08-28 13:26:46 +0000",
+          "category": "technology",
+          "plugin": "xbox",
+          "pluginPriority": 0,
+          "bodyText": "Join Us - Official 'Cult Members Play Join Us' Teaser Trailer | gamescom 2026",
+          "wordCount": 14,
+          "storyType": "video"
+        },
+        {
+          "id": "460b7bea-75f3-5336-bbe7-faf1bbf4ca5c",
+          "title": "Join Us - Official 'Cult Members' Gameplay Trailer | gamescom 2026",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.ign.com/videos/join-us-official-cult-members-gameplay-trailer-gamescom-2026",
+          "image": "https://assets-prd.ignimgs.com/2026/08/24/joinus-gameplay-blogroll-1787614094077.jpg?width=1280&format=jpg&auto=webp&quality=80",
+          "published": "2026-08-28 14:26:29 +0000",
+          "category": "technology",
+          "plugin": "xbox",
+          "pluginPriority": 0,
+          "bodyText": "Join Us - Official 'Cult Members' Gameplay Trailer | gamescom 2026",
+          "wordCount": 11,
+          "storyType": "video"
+        }
+      ],
+      "triggerWords": [
+        "Join Us",
+        "cult members",
+        "Gamescom 2026"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:22:56.924Z",
+      "updated": "2026-08-28T15:23:06.476Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [],
+        "orgs": []
+      },
+      "tags": [
+        "technology",
+        "xbox",
+        "join",
+        "cult members"
+      ],
+      "storyCount": 2,
+      "firstPublished": "2026-08-28T13:26:46.000Z",
+      "lastPublished": "2026-08-28T14:26:29.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930588478-g7lbjl",
+      "headline": "Xbox reveals new games for August 31–September 4",
+      "summary": "Will Fulton, XBOX Wire Editor, announced upcoming titles for the Xbox platform scheduled for August 31 to September 4. The lineup includes Onimusha: Way of the Sword, The Blood of Dawnwalker, NBA 2K27, Avatar Legends: The Fighting Game, and additional releases slated for later launch.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "25410cd0-7ad4-5f2c-a547-3346762e97f8",
+          "title": "Next Week on XBOX: New Games for August 31 to September 4",
+          "source": "Will Fulton; XBOX Wire Editor",
+          "sourceName": "",
+          "url": "https://news.xbox.com/en-us/2026/08/28/next-week-on-xbox-new-games-for-august-31-to-september-4/",
+          "image": "https://xboxwire.thesourcemediaassets.com/sites/2/2026/08/nwox-hero-61fed9c0a09f798d44c9.jpg",
+          "published": "2026-08-28 14:00:00 +0000",
+          "category": "entertainment",
+          "plugin": "xbox",
+          "pluginPriority": 0,
+          "bodyText": "Next Week on XBOX: New Games for August 31 to September 4",
+          "wordCount": 12,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "XBOX",
+        "Onimusha",
+        "NBA 2K27"
+      ],
+      "impact": "low",
+      "created": "2026-08-28T15:23:08.478Z",
+      "updated": "2026-08-28T15:23:13.841Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "will fulton"
+        ],
+        "places": [],
+        "orgs": [
+          "nba"
+        ]
+      },
+      "tags": [
+        "technology",
+        "xbox",
+        "nba",
+        "fulton",
+        "onimusha",
+        "title"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T14:00:00.000Z",
+      "lastPublished": "2026-08-28T14:00:00.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930595843-9izuyy",
+      "headline": "Xbox pitches $300M+ gaming IPs for Hollywood deals",
+      "summary": "Microsoft’s Xbox is pitching a dozen high‑budget gaming IPs—including Elder Scrolls, Halo, World of Warcraft and Diablo—to Hollywood studios, seeking over $300 million for a long‑term deal. Netflix, Universal and Paramount are among interested parties, even as Xbox cut 3,200 jobs (20 % of its workforce) in July.",
+      "category": "business",
+      "stories": [
+        {
+          "id": "6e5cfbbe-ae5a-54c3-9818-6d697de97590",
+          "title": "Xbox is now heavily leaning into movie & TV adaptations, quietly pitching Hollywood on a dozen pricey projects like Elder Scrolls, Halo, World of Warcraft, Diablo & more. All IPs could be headed to one studio/streamer, and currently Netflix, Universal & Paramount are among those taking looks.",
+          "source": "/u/ChiefLeef22",
+          "sourceName": "",
+          "url": "https://www.reddit.com/r/gaming/comments/1w0r3gk/xbox_is_now_heavily_leaning_into_movie_tv/",
+          "image": "None",
+          "published": "2026-08-28 13:48:19 +0000",
+          "category": "entertainment",
+          "plugin": "xbox",
+          "pluginPriority": 0,
+          "bodyText": "Xbox is now heavily leaning into movie & TV adaptations, quietly pitching Hollywood on a dozen pricey projects like Elder Scrolls, Halo, World of Warcraft, Diablo & more. All IPs could be headed to one studio/streamer, and currently Netflix, Universal & Paramount are among those taking looks.",
+          "wordCount": 47,
+          "storyType": "opinion"
+        }
+      ],
+      "triggerWords": [
+        "Xbox",
+        "Hollywood",
+        "$300M",
+        "IP"
+      ],
+      "impact": "high",
+      "created": "2026-08-28T15:23:15.843Z",
+      "updated": "2026-08-28T15:23:24.246Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [],
+        "orgs": [
+          "microsofts",
+          "netflix",
+          "movie  tv",
+          "netflix universal  paramount"
+        ]
+      },
+      "tags": [
+        "business",
+        "xbox",
+        "universal paramount",
+        "netflix",
+        "movie tv",
+        "ips",
+        "hollywood",
+        "halo",
+        "july",
+        "diablo",
+        "$300m",
+        "ip"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T13:48:19.000Z",
+      "lastPublished": "2026-08-28T13:48:19.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930606247-rrktwk",
+      "headline": "Zenless Zone Zero releases Version 3.2 teaser trailer",
+      "summary": "Zenless Zone Zero has unveiled a teaser trailer for Version 3.2, titled Their Secret Histories, revealing new agents and upcoming content for the urban fantasy action RPG. The update will launch on PlayStation 5, iOS, Android, PC, Xbox and Steam, expanding the game’s cross‑platform availability.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "ba5643b6-d7a5-5897-9b6f-83dfd72c90f8",
+          "title": "Zenless Zone Zero - Official Version 3.2: Their Secret Histories Teaser Trailer",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.ign.com/videos/zenless-zone-zero-official-version-32-their-secret-histories-teaser-trailer",
+          "image": "https://assets-prd.ignimgs.com/2026/08/28/zenlesszonezeroversion3-2teasertrailer-ign-blogroll-1787923045415.jpg?width=1280&format=jpg&auto=webp&quality=80",
+          "published": "2026-08-28 13:17:29 +0000",
+          "category": "technology",
+          "plugin": "xbox",
+          "pluginPriority": 0,
+          "bodyText": "Zenless Zone Zero - Official Version 3.2: Their Secret Histories Teaser Trailer",
+          "wordCount": 12,
+          "storyType": "video"
+        }
+      ],
+      "triggerWords": [
+        "Zenless Zone Zero",
+        "Version 3.2",
+        "teaser trailer"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:23:26.247Z",
+      "updated": "2026-08-28T15:23:33.127Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [
+          "zone zero",
+          "zenless zone zero"
+        ],
+        "orgs": []
+      },
+      "tags": [
+        "technology",
+        "xbox",
+        "zenless zone zero",
+        "zone zero",
+        "content",
+        "ios",
+        "android",
+        "teaser trailer"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T13:17:29.000Z",
+      "lastPublished": "2026-08-28T13:17:29.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930615128-vz41hq",
+      "headline": "Path of Exile 2 introduces Duelist, 2026 release",
+      "summary": "Path of Exile 2 has introduced a new Duelist class specialising in sword weapons, prompting renewed interest from players. The game’s 1.0 version is scheduled for release on December 11, 2026, according to developer announcements reported by Alexander Cope.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "178a1dbf-7dd0-51c8-ad88-d659ef0f37eb",
+          "title": "Diablo’s rival ARPG just dropped a class so good I’m jumping back in when it hits Xbox",
+          "source": "Alexander Cope",
+          "sourceName": "",
+          "url": "https://www.windowscentral.com/gaming/diablos-biggest-rival-has-convinced-me-to-give-it-a-second-chance-when-it-leaves-early-access-later-this-year-on-xbox-thanks-to-its-amazing-new-class",
+          "image": "https://cdn.mos.cms.futurecdn.net/D4zkoqHnGLaiNPQBRcjbyN-1920-80.jpg",
+          "published": "2026-08-28 12:56:37 +0000",
+          "category": "technology",
+          "plugin": "xbox",
+          "pluginPriority": 0,
+          "bodyText": "Diablo’s rival ARPG just dropped a class so good I’m jumping back in when it hits Xbox",
+          "wordCount": 17,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Path of Exile 2",
+        "Duelist",
+        "December 11, 2026"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:23:35.129Z",
+      "updated": "2026-08-28T15:23:43.771Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "alexander cope."
+        ],
+        "places": [],
+        "orgs": []
+      },
+      "tags": [
+        "technology",
+        "xbox",
+        "alexander cope",
+        "duelist",
+        "i’m",
+        "path exile",
+        "player"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T12:56:37.000Z",
+      "lastPublished": "2026-08-28T12:56:37.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930625772-r9wh1z",
+      "headline": "Rockstar confirms GTA 6 first‑person mode and frame‑rate",
+      "summary": "Rockstar has confirmed that Grand Theft Auto VI will launch in first‑person mode and has set a target frame‑rate for the PlayStation 5 and Xbox Series X|S. The announcement, reported by Brent Koepp, provides the first official details on the game’s perspective and performance goals.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "a21e8e2c-ed9a-57af-828d-b1cb20cd3449",
+          "title": "Will GTA 6 Have First Person? Rockstar Reveals Launch Plans",
+          "source": "Brent Koepp",
+          "sourceName": "",
+          "url": "https://www.vice.com/en/article/will-gta-6-have-first-person-mode/",
+          "image": "https://www.vice.com/wp-content/uploads/sites/2/2026/08/Will-GTA-6-Have-First-Person-Rockstar-Reveals-Launch-Plans.jpg?w=1280",
+          "published": "2026-08-28 12:05:11 +0000",
+          "category": "general",
+          "plugin": "xbox",
+          "pluginPriority": 0,
+          "bodyText": "Will GTA 6 Have First Person? Rockstar Reveals Launch Plans",
+          "wordCount": 10,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "GTA 6",
+        "first person",
+        "Rockstar"
+      ],
+      "impact": "high",
+      "created": "2026-08-28T15:23:45.772Z",
+      "updated": "2026-08-28T15:23:53.898Z",
+      "contentVersion": 2,
+      "region": "Global",
+      "entities": {
+        "people": [
+          "brent koepp",
+          "first person"
+        ],
+        "places": [],
+        "orgs": []
+      },
+      "tags": [
+        "technology",
+        "xbox",
+        "brent koepp",
+        "rockstar",
+        "gta"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T12:05:11.000Z",
+      "lastPublished": "2026-08-28T12:05:11.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930635900-kt0al2",
+      "headline": "GTA 6 console: PS5 vs Xbox Series X",
+      "summary": "Robert Anderson analyses the best console for GTA 6, comparing PS5, PS5 Pro and Xbox Series X pricing, expected frame rates and upcoming hardware deals. He also assesses whether waiting for a PC release is worthwhile for gamers.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "cdcee4b4-5ba4-5047-8018-06312f489162",
+          "title": "What Is the Best Console to Play GTA 6 On? We Break Down PS5 vs. Xbox Pricing, Hardware Deals, Expected Frame Rates, and Waiting for a PC Release",
+          "source": "Robert Anderson",
+          "sourceName": "",
+          "url": "https://www.ign.com/articles/gta-6-best-console-guide-ps5-xbox",
+          "image": "https://assets-prd.ignimgs.com/2026/08/28/gta-6-ps5-vs-xbox-1787918236921.png?width=1280&format=jpg&auto=webp&quality=80",
+          "published": "2026-08-28 11:59:01 +0000",
+          "category": "entertainment",
+          "plugin": "xbox",
+          "pluginPriority": 0,
+          "bodyText": "What Is the Best Console to Play GTA 6 On? We Break Down PS5 vs. Xbox Pricing, Hardware Deals, Expected Frame Rates, and Waiting for a PC Release",
+          "wordCount": 28,
+          "storyType": "analysis"
+        }
+      ],
+      "triggerWords": [
+        "GTA 6",
+        "PS5",
+        "Xbox"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:23:55.900Z",
+      "updated": "2026-08-28T15:24:03.657Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "robert anderson"
+        ],
+        "places": [],
+        "orgs": []
+      },
+      "tags": [
+        "technology",
+        "xbox",
+        "robert anderson",
+        "gamer",
+        "hardware",
+        "ps5",
+        "gta"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T11:59:01.000Z",
+      "lastPublished": "2026-08-28T11:59:01.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930645658-x0xlub",
+      "headline": "Xbox launches Disc to Digital feature next week",
+      "summary": "Microsoft’s Xbox has confirmed the launch of a Disc to Digital conversion feature next week, a development long awaited by industry experts. The new capability is presented as part of Xbox’s commitment to game preservation, offering users a digital alternative to physical discs.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "05e62ad9-4682-51f9-a3f6-f69e40141faa",
+          "title": "Xbox confirms game-changing Disc to Digital feature launching next week",
+          "source": "Liam Ryder",
+          "sourceName": "Mirror",
+          "url": "https://www.mirror.co.uk/gaming/xbox-disc-to-digital-scheme-37603017",
+          "image": "https://i2-prod.mirror.co.uk/article37603004.ece/ALTERNATES/s1200d/0_GettyImages-1229559109.jpg",
+          "published": "2026-08-28 11:53:59 +0000",
+          "category": "general",
+          "plugin": "xbox",
+          "pluginPriority": 0,
+          "bodyText": "Xbox confirms game-changing Disc to Digital feature launching next week",
+          "wordCount": 10,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Disc",
+        "Digital",
+        "Xbox"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:24:05.658Z",
+      "updated": "2026-08-28T15:24:11.917Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [],
+        "orgs": [
+          "microsofts"
+        ]
+      },
+      "tags": [
+        "technology",
+        "xbox",
+        "preservation",
+        "digital",
+        "microsoft",
+        "disc"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T11:53:59.000Z",
+      "lastPublished": "2026-08-28T11:53:59.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930653919-q1lzhd",
+      "headline": "Roco Kingdom Releases Official Trailer at Gamescom 2026",
+      "summary": "Developer Roco Kingdom unveiled an official trailer at Gamescom 2026, showcasing its upcoming open‑world monster‑catching RPG set in a magical kingdom. The game launched in China in March 2026 as “Roco Kingdom: World” and represents a new evolution of creature‑collecting titles.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "48a246b1-6a0c-549a-b1dd-677f42f41e17",
+          "title": "Roco Kingdom - Official Trailer | gamescom 2026",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.ign.com/videos/roco-kingdom-official-trailer-gamescom-2026",
+          "image": "https://assets-prd.ignimgs.com/2026/08/24/gamescom2026-roco-kingdom-blogroll-1787604584828.jpg?width=1280&format=jpg&auto=webp&quality=80",
+          "published": "2026-08-28 15:07:52 +0000",
+          "category": "technology",
+          "plugin": "xbox",
+          "pluginPriority": 99,
+          "bodyText": "Roco Kingdom - Official Trailer | gamescom 2026",
+          "wordCount": 8,
+          "storyType": "video"
+        }
+      ],
+      "triggerWords": [
+        "Roco Kingdom",
+        "Gamescom 2026",
+        "trailer"
+      ],
+      "impact": "low",
+      "created": "2026-08-28T15:24:13.919Z",
+      "updated": "2026-08-28T15:24:22.339Z",
+      "contentVersion": 2,
+      "region": "Cologne",
+      "entities": {
+        "people": [],
+        "places": [
+          "roco kingdom releases",
+          "developer roco kingdom",
+          "china",
+          "roco kingdom",
+          "roco kingdom - official"
+        ],
+        "orgs": []
+      },
+      "tags": [
+        "technology",
+        "xbox",
+        "roco kingdom",
+        "developer roco kingdom",
+        "roco kingdom releases",
+        "open‑world",
+        "rpg",
+        "china",
+        "title",
+        "trailer"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T15:07:52.000Z",
+      "lastPublished": "2026-08-28T15:07:52.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930664341-1eqq8p",
+      "headline": "Cassette Beasts 2002 Trailer Revealed at Gamescom 2026",
+      "summary": "Developer Bytten Studio released an official gameplay trailer for Cassette Beasts 2002, the upcoming monster‑collecting RPG sequel, at Gamescom 2026. Presented by Jay Baylis, the clip showcases opening moments and the city‑street hub area, offering early looks at the game’s mechanics and world.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "51565b96-de0e-549b-ba54-1a2dd701b38c",
+          "title": "Cassette Beasts 2002 - Official Developer Gameplay Trailer | gamescom 2026",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.ign.com/videos/cassette-beasts-2002-official-developer-gameplay-trailer-gamescom-2026",
+          "image": "https://assets-prd.ignimgs.com/2026/08/24/gamescom2026-cassette-beasts-2002-blogroll-1787604371361.jpg?width=1280&format=jpg&auto=webp&quality=80",
+          "published": "2026-08-28 14:55:42 +0000",
+          "category": "technology",
+          "plugin": "xbox",
+          "pluginPriority": 99,
+          "bodyText": "Cassette Beasts 2002 - Official Developer Gameplay Trailer | gamescom 2026",
+          "wordCount": 11,
+          "storyType": "video"
+        }
+      ],
+      "triggerWords": [
+        "Cassette Beasts",
+        "2002",
+        "Gamescom",
+        "trailer"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:24:24.341Z",
+      "updated": "2026-08-28T15:24:29.459Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "jay baylis"
+        ],
+        "places": [],
+        "orgs": []
+      },
+      "tags": [
+        "technology",
+        "xbox",
+        "jay baylis",
+        "cassette beasts",
+        "gamescom",
+        "trailer"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T14:55:42.000Z",
+      "lastPublished": "2026-08-28T14:55:42.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930684890-ibuvy2",
+      "headline": "GTA 6 Confirmed at 30fps, 60fps Unlikely",
+      "summary": "The GTA 6 extended look trailer, captured on PS5, shows the game running at 30 frames per second. Digital Foundry experts say achieving 60fps on current consoles is extremely unlikely and challenging even on PC. Rockstar confirms the 30fps launch but has not ruled out a future performance mode for higher frame rates.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "039a134b-e019-51c3-b181-a3c0953de86a",
+          "title": "GTA 6 will run at only 30fps but Performance mode could still happen",
+          "source": "Adam Starkey",
+          "sourceName": "Metro",
+          "url": "https://metro.co.uk/2026/08/28/gta-6-will-run-30fps-performance-mode-still-happen-29484675/",
+          "image": "https://metro.co.uk/wp-content/uploads/2026/08/SEI_309718950-2be4_1787922558.jpg?quality=90&strip=all&w=1200&h=630&crop=1",
+          "published": "2026-08-28 13:09:13 +0000",
+          "category": "general",
+          "plugin": "xbox",
+          "pluginPriority": 99,
+          "bodyText": "GTA 6 will run at only 30fps but Performance mode could still happen",
+          "wordCount": 13,
+          "storyType": "news"
+        },
+        {
+          "id": "d511d2e3-9dc7-521d-8f13-d622e56f1a0e",
+          "title": "Rockstar says GTA 6 runs at 30 FPS, but it's reportedly yet to \"determine\" whether it'll get a 60 FPS performance mode at launch or beyond",
+          "source": "Robert Purchese",
+          "sourceName": "",
+          "url": "https://www.eurogamer.net/gta-6-frame-rate-ps5-xbox-series-x-s",
+          "image": "https://assetsio.gnwcdn.com/lucia-gta-6-car.jpg?width=1200&height=630&fit=crop&enable=upscale&auto=webp",
+          "published": "2026-08-28 13:20:14 +0000",
+          "category": "entertainment",
+          "plugin": "xbox",
+          "pluginPriority": 99,
+          "bodyText": "Rockstar says GTA 6 runs at 30 FPS, but it's reportedly yet to \"determine\" whether it'll get a 60 FPS performance mode at launch or beyond",
+          "wordCount": 26,
+          "storyType": "news"
+        },
+        {
+          "id": "d0a7cedc-022c-5aa1-bfe2-f96c9f003d2f",
+          "title": "After GTA 6: Extended Look Showed Rockstar's Game Running at 30FPS, Tech Experts Say a 60FPS Console Version Is 'Extremely Unlikely' and 'Genuinely Challenging' Even on PC",
+          "source": "Tom Phillips",
+          "sourceName": "",
+          "url": "https://www.ign.com/articles/after-gta-6-extended-look-showed-rockstars-game-running-at-30fps-tech-experts-say-a-60fps-console-version-is-extremely-unlikely-and-genuinely-challenging-even-on-pc",
+          "image": "https://assets-prd.ignimgs.com/2026/08/27/gta6-satire-news-1787848953836.jpg?width=1280&format=jpg&auto=webp&quality=80",
+          "published": "2026-08-28 13:58:30 +0000",
+          "category": "entertainment",
+          "plugin": "xbox",
+          "pluginPriority": 99,
+          "bodyText": "After GTA 6: Extended Look Showed Rockstar's Game Running at 30FPS, Tech Experts Say a 60FPS Console Version Is 'Extremely Unlikely' and 'Genuinely Challenging' Even on PC",
+          "wordCount": 27,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "GTA 6",
+        "Digital Foundry",
+        "60fps"
+      ],
+      "impact": "high",
+      "created": "2026-08-28T15:24:44.891Z",
+      "updated": "2026-08-28T15:24:51.943Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [],
+        "orgs": [
+          "gta"
+        ]
+      },
+      "tags": [
+        "technology",
+        "xbox",
+        "shows",
+        "it'll",
+        "unlikely",
+        "digital foundry",
+        "ps5",
+        "gta",
+        "rockstar"
+      ],
+      "storyCount": 3,
+      "firstPublished": "2026-08-28T13:09:13.000Z",
+      "lastPublished": "2026-08-28T13:58:30.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930693945-2y4gc2",
+      "headline": "Gears of War: E-Day Campaign Changes Revealed",
+      "summary": "The Coalition’s creative director Matt Searcy and art director Aryan Hanbeck unveiled Gears of War: E-Day’s refreshed campaign at IGN’s Gamescom 2026 studio. The prequel origin story addresses the lore challenge of integrating a Lancer, drawing on the franchise’s best‑selling books. Developers highlighted fresh gameplay changes.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "144d4350-cf02-523a-8637-d7ce354128a4",
+          "title": "Gears Of War: E-Day Had To Solve One Big Lore Problem - How Do You Get A Lancer Into The Game?",
+          "source": "Darryn Bonthuys; S E Doster",
+          "sourceName": "",
+          "url": "https://www.gamespot.com/articles/gears-of-war-e-day-had-to-solve-one-big-lore-problem-how-do-you-get-a-lancer-into-the-game/",
+          "image": "https://www.gamespot.com/wp-content/uploads/2026/08/Gears-E-Day_3b1e3f.jpg",
+          "published": "2026-08-28 12:53:13 +0000",
+          "category": "entertainment",
+          "plugin": "xbox",
+          "pluginPriority": 99,
+          "bodyText": "Gears Of War: E-Day Had To Solve One Big Lore Problem - How Do You Get A Lancer Into The Game?",
+          "wordCount": 21,
+          "storyType": "news"
+        },
+        {
+          "id": "f15c480c-c083-5520-8d80-0ecf8f07ff16",
+          "title": "Gears of War: E-Day - Devs Break Down the Changes That Make the Campaign Feel Fresh | gamescom 2026",
+          "source": "",
+          "sourceName": "",
+          "url": "https://www.ign.com/videos/gears-of-war-e-day-devs-break-down-the-changes-that-make-the-campaign-feel-fresh-gamescom-2026",
+          "image": "https://assets-prd.ignimgs.com/2026/08/28/gearsofwar-e-day-interview-blogroll-1787918652554.jpg?width=1280&format=jpg&auto=webp&quality=80",
+          "published": "2026-08-28 13:14:53 +0000",
+          "category": "technology",
+          "plugin": "xbox",
+          "pluginPriority": 99,
+          "bodyText": "Gears of War: E-Day - Devs Break Down the Changes That Make the Campaign Feel Fresh | gamescom 2026",
+          "wordCount": 19,
+          "storyType": "video"
+        }
+      ],
+      "triggerWords": [
+        "Gears of War",
+        "E-Day",
+        "Campaign"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:24:53.945Z",
+      "updated": "2026-08-28T15:25:01.147Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "matt searcy",
+          "aryan hanbeck"
+        ],
+        "places": [],
+        "orgs": [
+          "campaign changes revealed the coalitions"
+        ]
+      },
+      "tags": [
+        "technology",
+        "xbox",
+        "aryan hanbeck",
+        "matt searcy",
+        "gears",
+        "e-day",
+        "ign",
+        "books",
+        "developer",
+        "you",
+        "gears war",
+        "campaign"
+      ],
+      "storyCount": 2,
+      "firstPublished": "2026-08-28T12:53:13.000Z",
+      "lastPublished": "2026-08-28T13:14:53.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930703150-4q24q1",
+      "headline": "Rockstar reveals extended Grand Theft Auto VI look",
+      "summary": "Rockstar Games has released a new extended look at Grand Theft Auto VI, showcasing the game’s story and a Florida-inspired setting. The footage, reported by UPI, offers players a deeper glimpse into the criminal duo’s exploits in the upcoming title.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "0767e6f0-a352-535c-8209-a556a06467cb",
+          "title": "'Grand Theft Auto VI': Jason, Lucia live a life of crime in new extended look - UPI.com",
+          "source": "Wade Sheridan",
+          "sourceName": "",
+          "url": "https://www.upi.com/Entertainment_News/2026/08/28/Grand-Theft-Auto-extended-look-Jason-Lucia/9471787919465/",
+          "image": "https://cdnph.upi.com/ph/st/th/9471787919465/2026/i/17879199898415/v1.5/Grand-Theft-Auto-VI-Jason-Lucia-live-a-life-of-crime-in-new-video.jpg?lg=5",
+          "published": "2026-08-28 13:10:21 +0000",
+          "category": "technology",
+          "plugin": "xbox",
+          "pluginPriority": 99,
+          "bodyText": "'Grand Theft Auto VI': Jason, Lucia live a life of crime in new extended look - UPI.com",
+          "wordCount": 17,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Grand Theft Auto VI",
+        "Florida"
+      ],
+      "impact": "medium",
+      "created": "2026-08-28T15:25:03.150Z",
+      "updated": "2026-08-28T15:25:12.459Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [
+          "jason",
+          "lucia"
+        ],
+        "places": [
+          "florida-"
+        ],
+        "orgs": []
+      },
+      "tags": [
+        "technology",
+        "xbox",
+        "florida-",
+        "lucia",
+        "jason",
+        "upi",
+        "florida",
+        "rockstar"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T13:10:21.000Z",
+      "lastPublished": "2026-08-28T13:10:21.000Z",
+      "active": true
+    },
+    {
+      "id": "cluster-1787930714461-ib7mqc",
+      "headline": "Sony to end disc sales at Gamescom 2028",
+      "summary": "Video game fans are outraged after Sony announced it will stop selling physical discs at Germany’s Gamescom trade show from 2028, prompting calls for a boycott. The decision, described as ‘the end of an era’, marks a shift to digital-only formats at the major gaming event.",
+      "category": "technology",
+      "stories": [
+        {
+          "id": "6e07f7e2-1ad7-52fd-8d9f-6e5934e147ba",
+          "title": "'End of an era': Players lament decline of the disc at Gamescom",
+          "source": "Kilian FICHOU",
+          "sourceName": "",
+          "url": "https://www.thestar.com.my/tech/tech-news/2026/08/28/039end-of-an-era039-players-lament-decline-of-the-disc-at-gamescom",
+          "image": "https://apicms.thestar.com.my/uploads/images/2026/08/28/4082183.jpg",
+          "published": "2026-08-28 13:04:27 +0000",
+          "category": "technology",
+          "plugin": "xbox",
+          "pluginPriority": 99,
+          "bodyText": "'End of an era': Players lament decline of the disc at Gamescom",
+          "wordCount": 12,
+          "storyType": "news"
+        }
+      ],
+      "triggerWords": [
+        "Sony",
+        "Gamescom",
+        "disc"
+      ],
+      "impact": "high",
+      "created": "2026-08-28T15:25:14.461Z",
+      "updated": "2026-08-28T15:25:19.773Z",
+      "contentVersion": 2,
+      "region": "International",
+      "entities": {
+        "people": [],
+        "places": [
+          "germanys"
+        ],
+        "orgs": [
+          "sony"
+        ]
+      },
+      "tags": [
+        "technology",
+        "xbox",
+        "sony",
+        "germany",
+        "calls",
+        "gamescom",
+        "disc"
+      ],
+      "storyCount": 1,
+      "firstPublished": "2026-08-28T13:04:27.000Z",
+      "lastPublished": "2026-08-28T13:04:27.000Z",
+      "active": true
+    }
+  ],
+  "entityIndex": [
+    {
+      "name": "philadelphia",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930352047-ewjsy3",
+        "cluster-1787930378926-r54rb9",
+        "cluster-1787930394482-tm4ndf",
+        "cluster-1787930429551-dnmmxj",
+        "cluster-1787930436640-60impu",
+        "cluster-1787930448002-bqh1re"
+      ],
+      "count": 6
+    },
+    {
+      "name": "microsofts",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930595843-9izuyy",
+        "cluster-1787930645658-x0xlub"
+      ],
+      "count": 2
+    },
+    {
+      "name": "phillies",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930394482-tm4ndf",
+        "cluster-1787930453539-icsb33"
+      ],
+      "count": 2
+    },
+    {
+      "name": "al nassr",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930671461-liglaa"
+      ],
+      "count": 1
+    },
+    {
+      "name": "al taawoun",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930671461-liglaa"
+      ],
+      "count": 1
+    },
+    {
+      "name": "alexander cope.",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930615128-vz41hq"
+      ],
+      "count": 1
+    },
+    {
+      "name": "aryan hanbeck",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930693945-2y4gc2"
+      ],
+      "count": 1
+    },
+    {
+      "name": "aston villa",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930550853-d57u6f"
+      ],
+      "count": 1
+    },
+    {
+      "name": "aston villa -",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930550853-d57u6f"
+      ],
+      "count": 1
+    },
+    {
+      "name": "ben franklin parkway",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930378926-r54rb9"
+      ],
+      "count": 1
+    },
+    {
+      "name": "brent koepp",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930625772-r9wh1z"
+      ],
+      "count": 1
+    },
+    {
+      "name": "brown",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930409628-jqf8a5"
+      ],
+      "count": 1
+    },
+    {
+      "name": "campaign changes revealed the coalitions",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930693945-2y4gc2"
+      ],
+      "count": 1
+    },
+    {
+      "name": "canadian press.",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930344882-muvhui"
+      ],
+      "count": 1
+    },
+    {
+      "name": "china",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930653919-q1lzhd"
+      ],
+      "count": 1
+    },
+    {
+      "name": "classic kim stoveld",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930418138-en5bv2"
+      ],
+      "count": 1
+    },
+    {
+      "name": "comedian ricky gervais",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930528318-ovm920"
+      ],
+      "count": 1
+    },
+    {
+      "name": "darby",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930362469-qocjgl"
+      ],
+      "count": 1
+    },
+    {
+      "name": "defense intelligence agencys insider threat division",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930545180-h6p547"
+      ],
+      "count": 1
+    },
+    {
+      "name": "developer roco kingdom",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930653919-q1lzhd"
+      ],
+      "count": 1
+    },
+    {
+      "name": "district judge",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930448002-bqh1re"
+      ],
+      "count": 1
+    },
+    {
+      "name": "festival luisa zissman",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930534053-gse5o4"
+      ],
+      "count": 1
+    },
+    {
+      "name": "first person",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930625772-r9wh1z"
+      ],
+      "count": 1
+    },
+    {
+      "name": "florida-",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930703150-4q24q1"
+      ],
+      "count": 1
+    },
+    {
+      "name": "germanys",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930714461-ib7mqc"
+      ],
+      "count": 1
+    },
+    {
+      "name": "gta",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930684890-ibuvy2"
+      ],
+      "count": 1
+    },
+    {
+      "name": "indira talwani",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930448002-bqh1re"
+      ],
+      "count": 1
+    },
+    {
+      "name": "ireland",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930507550-sb91ea"
+      ],
+      "count": 1
+    },
+    {
+      "name": "itv",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930495697-zu51aq"
+      ],
+      "count": 1
+    },
+    {
+      "name": "itv's celebrity fit club",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930495697-zu51aq"
+      ],
+      "count": 1
+    },
+    {
+      "name": "itvs celebrity fit club",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930495697-zu51aq"
+      ],
+      "count": 1
+    },
+    {
+      "name": "jason",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930703150-4q24q1"
+      ],
+      "count": 1
+    },
+    {
+      "name": "jason kelce",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930385779-zewjdm"
+      ],
+      "count": 1
+    },
+    {
+      "name": "jay baylis",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930664341-1eqq8p"
+      ],
+      "count": 1
+    },
+    {
+      "name": "jennifer lopez",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930560041-1a0c37"
+      ],
+      "count": 1
+    },
+    {
+      "name": "jenny powell",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930534053-gse5o4"
+      ],
+      "count": 1
+    },
+    {
+      "name": "kgm",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930464201-6h262j"
+      ],
+      "count": 1
+    },
+    {
+      "name": "kim stoveld",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930418138-en5bv2"
+      ],
+      "count": 1
+    },
+    {
+      "name": "leeds",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930534053-gse5o4"
+      ],
+      "count": 1
+    },
+    {
+      "name": "lucia",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930703150-4q24q1"
+      ],
+      "count": 1
+    },
+    {
+      "name": "luisa zissman",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930534053-gse5o4"
+      ],
+      "count": 1
+    },
+    {
+      "name": "mark",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930453539-icsb33"
+      ],
+      "count": 1
+    },
+    {
+      "name": "matt searcy",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930693945-2y4gc2"
+      ],
+      "count": 1
+    },
+    {
+      "name": "mike hazen",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930394482-tm4ndf"
+      ],
+      "count": 1
+    },
+    {
+      "name": "mike hazen -",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930394482-tm4ndf"
+      ],
+      "count": 1
+    },
+    {
+      "name": "milo boyd",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930474195-8nxq2v"
+      ],
+      "count": 1
+    },
+    {
+      "name": "mlb",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930453539-icsb33"
+      ],
+      "count": 1
+    },
+    {
+      "name": "movie  tv",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930595843-9izuyy"
+      ],
+      "count": 1
+    },
+    {
+      "name": "mw gas",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930344882-muvhui"
+      ],
+      "count": 1
+    },
+    {
+      "name": "nba",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930588478-g7lbjl"
+      ],
+      "count": 1
+    },
+    {
+      "name": "nepal-china",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930403176-frqg56"
+      ],
+      "count": 1
+    },
+    {
+      "name": "nepali",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930403176-frqg56"
+      ],
+      "count": 1
+    },
+    {
+      "name": "netflix",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930595843-9izuyy"
+      ],
+      "count": 1
+    },
+    {
+      "name": "netflix universal  paramount",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930595843-9izuyy"
+      ],
+      "count": 1
+    },
+    {
+      "name": "new brunswick",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930344882-muvhui"
+      ],
+      "count": 1
+    },
+    {
+      "name": "philadelphia eagles",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930367390-wcom39"
+      ],
+      "count": 1
+    },
+    {
+      "name": "philippe",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930474195-8nxq2v"
+      ],
+      "count": 1
+    },
+    {
+      "name": "poland",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930484661-kmwofh"
+      ],
+      "count": 1
+    },
+    {
+      "name": "postal service",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930448002-bqh1re"
+      ],
+      "count": 1
+    },
+    {
+      "name": "rafael leao",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930550853-d57u6f"
+      ],
+      "count": 1
+    },
+    {
+      "name": "reading  leeds",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930534053-gse5o4"
+      ],
+      "count": 1
+    },
+    {
+      "name": "review sean o'grady",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930464201-6h262j"
+      ],
+      "count": 1
+    },
+    {
+      "name": "ricky gervais",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930528318-ovm920"
+      ],
+      "count": 1
+    },
+    {
+      "name": "robert anderson",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930635900-kt0al2"
+      ],
+      "count": 1
+    },
+    {
+      "name": "roco kingdom",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930653919-q1lzhd"
+      ],
+      "count": 1
+    },
+    {
+      "name": "roco kingdom - official",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930653919-q1lzhd"
+      ],
+      "count": 1
+    },
+    {
+      "name": "roco kingdom releases",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930653919-q1lzhd"
+      ],
+      "count": 1
+    },
+    {
+      "name": "sean",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930409628-jqf8a5"
+      ],
+      "count": 1
+    },
+    {
+      "name": "secretary mattia fahnbulleh",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930569586-76hbic"
+      ],
+      "count": 1
+    },
+    {
+      "name": "sony",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930714461-ib7mqc"
+      ],
+      "count": 1
+    },
+    {
+      "name": "talks phillies",
+      "type": "orgs",
+      "clusterIds": [
+        "cluster-1787930394482-tm4ndf"
+      ],
+      "count": 1
+    },
+    {
+      "name": "united states",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930671461-liglaa"
+      ],
+      "count": 1
+    },
+    {
+      "name": "upper darby township",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930362469-qocjgl"
+      ],
+      "count": 1
+    },
+    {
+      "name": "usa live stream",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930671461-liglaa"
+      ],
+      "count": 1
+    },
+    {
+      "name": "vanessa feltz",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930495697-zu51aq"
+      ],
+      "count": 1
+    },
+    {
+      "name": "victoria",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930495697-zu51aq"
+      ],
+      "count": 1
+    },
+    {
+      "name": "will fulton",
+      "type": "people",
+      "clusterIds": [
+        "cluster-1787930588478-g7lbjl"
+      ],
+      "count": 1
+    },
+    {
+      "name": "zenless zone zero",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930606247-rrktwk"
+      ],
+      "count": 1
+    },
+    {
+      "name": "zone zero",
+      "type": "places",
+      "clusterIds": [
+        "cluster-1787930606247-rrktwk"
+      ],
+      "count": 1
+    }
+  ],
+  "generated": "2026-08-28T17:54:01.987Z"
+}

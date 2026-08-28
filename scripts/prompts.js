@@ -141,3 +141,37 @@ export function buildBatchPrompt(clusters) {
 
   return `You are summarising ${clusters.length} separate news clusters. Each cluster below is a distinct news event — do NOT merge them. For EACH cluster, write one headline and one summary.\n\n${entries}\n\nRespond ONLY with valid JSON in this exact format (a JSON object with a "clusters" array, one entry per cluster, in the same order as above):\n{\n  "clusters": [\n    {\n      "id": "${clusters[0]?.id}",\n      "headline": "Short factual headline (max 8 words)",\n      "summary": "30-60 words of block text facts",\n      "category": "Politics|Business|Technology|Science|Health|World|Sport|Gaming|Entertainment|Celebrity|Environment|Energy|Disaster|Defence|Crime|Local|Education|Motoring|Personal Finance|Royal|Other",\n      "region": "Manchester|London|UK|International|Global",\n      "impact": "low|medium|high",\n      "trigger_words": ["specific", "unique", "proper nouns"]\n    }\n  ]\n}\n\nThe "id" field must match the cluster id given above. Write exactly ${clusters.length} entries in the clusters array, one per cluster, in order. Expected ids: ${exampleIds}.`;
 }
+
+// Clickbait screening prompt for singleton clusters.
+// Instead of summarising each singleton with its own LLM call, we send all
+// singleton headlines in ONE call and ask the LLM to flag only the ones with
+// quality problems and suggest clean factual replacements. Headlines that
+// aren't flagged just use their source headline as-is.
+//
+// `headlines` is an array of { id, headline, source }
+export function buildClickbaitPrompt(headlines) {
+  const lines = headlines.map((h, i) =>
+    `[${i + 1}] id: ${h.id}\n    headline: ${h.headline}\n    source: ${h.source}`
+  ).join('\n\n');
+
+  return `You are a news editor reviewing ${headlines.length} headlines. Some may be clickbait, sensationalised, misleading, or use engagement-bait tactics (curiosity gaps, ALL CAPS, listicle numbering, trailing questions, exaggerated claims, emotional manipulation).
+
+Only flag headlines that genuinely mislead or sensationalise. A punchy or engaging headline is not automatically clickbait. Opinion pieces and reviews are fine.
+
+Headlines:
+
+${lines}
+
+Respond ONLY with valid JSON listing ONLY the headlines you flag as clickbait. Omit clean headlines entirely — no need to list them. If none are clickbait, return an empty array.
+
+{
+  "flagged": [
+    {
+      "id": "the cluster id",
+      "headline": "a clean factual replacement headline (max 8 words, no question marks, no exclamation marks, no ALL CAPS)"
+    }
+  ]
+}
+
+Only include entries for clickbait headlines. Include the "id" so we can match it back.`;
+}

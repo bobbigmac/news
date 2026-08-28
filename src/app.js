@@ -575,18 +575,35 @@ function renderArticle(cluster, settings, isPluginLead) {
   const headline = cluster.headline || 'Untitled';
   const summary = cluster.summary || '';
   const wasUpdated = isClusterUpdatedSinceRead(cluster);
+  const storyCount = (cluster.stories || []).length;
+  const isSingleton = storyCount === 1;
+  const singletonStory = isSingleton ? cluster.stories[0] : null;
 
-  const linksHtml = (cluster.stories || []).map(s => {
+  // For multi-story clusters, build the expandable source list.
+  // For singletons, the headline itself links to the source — no list needed.
+  let linksHtml = '';
+  let headlineHtml = '';
+  if (isSingleton && singletonStory) {
     const sourceParts = [];
-    if (s.source) sourceParts.push(s.source);
-    if (s.sourceName) sourceParts.push(s.sourceName);
-    const sourceHtml = sourceParts.length
-      ? `<span class="story-source">— ${sourceParts.join(' · ')}</span>` : '';
-    return `<li><a href="${s.url || '#'}" target="_blank" rel="noopener">${s.title || 'Untitled'}</a>${sourceHtml}</li>`;
-  }).join('');
+    if (singletonStory.source) sourceParts.push(singletonStory.source);
+    if (singletonStory.sourceName) sourceParts.push(singletonStory.sourceName);
+    const byline = sourceParts.length ? ` — ${sourceParts.join(' · ')}` : '';
+    headlineHtml = `<h2 class="article-headline"><a href="${singletonStory.url || '#'}" target="_blank" rel="noopener">${headline}</a><span class="singleton-byline">${byline}</span></h2>`;
+  } else {
+    linksHtml = (cluster.stories || []).map(s => {
+      const sourceParts = [];
+      if (s.source) sourceParts.push(s.source);
+      if (s.sourceName) sourceParts.push(s.sourceName);
+      const sourceHtml = sourceParts.length
+        ? `<span class="story-source">— ${sourceParts.join(' · ')}</span>` : '';
+      return `<li><a href="${s.url || '#'}" target="_blank" rel="noopener">${s.title || 'Untitled'}</a>${sourceHtml}</li>`;
+    }).join('');
+    headlineHtml = `<h2 class="article-headline">${headline}</h2>`;
+  }
 
   const article = document.createElement('article');
   article.className = 'article grid-item';
+  if (isSingleton) article.classList.add('singleton');
   article.dataset.clusterId = cluster.id;
   article.dataset.headline = headline.toLowerCase();
   article.dataset.summary = summary.toLowerCase();
@@ -617,6 +634,17 @@ function renderArticle(cluster, settings, isPluginLead) {
 
   const interest = getClusterInterest(cluster.id);
 
+  // For singletons, no expandable source list — the headline is the link.
+  // For multi-story clusters, keep the expandable list behaviour.
+  const bodyHtml = isSingleton
+    ? `<p class="article-summary">${summary}</p>`
+    : `<div class="article-body${settings.expandAll ? ' show-links' : ''}">
+         <p class="article-summary">${summary}</p>
+         <div class="story-links">
+           <ul>${linksHtml}</ul>
+         </div>
+       </div>`;
+
   article.innerHTML = `
     <div class="article-header">
       <div class="article-category">${category}</div>
@@ -627,25 +655,23 @@ function renderArticle(cluster, settings, isPluginLead) {
       </div>
     </div>
     ${imageHtml}
-    <h2 class="article-headline">${headline}</h2>
-    <div class="article-body${settings.expandAll ? ' show-links' : ''}">
-      <p class="article-summary">${summary}</p>
-      <div class="story-links">
-        <ul>${linksHtml}</ul>
-      </div>
-    </div>
+    ${headlineHtml}
+    ${bodyHtml}
   `;
 
   // Apply interest-based visibility class
   if (interest === 'not-interested') article.classList.add('downranked');
 
-  // Click toggles between summary and source links in-place
-  const body = article.querySelector('.article-body');
-  article.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A' || e.target.closest('.interest-btn')) return;
-    body.classList.toggle('show-links');
-    if (masonryInstance) masonryInstance.layout();
-  });
+  // Click toggles between summary and source links (multi-story only).
+  // Singletons don't have an expandable list — the headline links directly.
+  if (!isSingleton) {
+    const body = article.querySelector('.article-body');
+    article.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A' || e.target.closest('.interest-btn')) return;
+      body.classList.toggle('show-links');
+      if (masonryInstance) masonryInstance.layout();
+    });
+  }
 
   // Interest signal buttons — both mark as read and set signal
   article.querySelectorAll('.interest-btn').forEach(btn => {
