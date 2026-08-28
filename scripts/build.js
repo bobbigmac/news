@@ -3,6 +3,7 @@ import { join } from 'path';
 import { annotateClusters, buildEntityIndex } from './entities.js';
 import { computeClusterTagsIfMissing } from './tags.js';
 import { enrichAllStories } from './story-enrich.js';
+import { recategoriseCluster } from './categories.js';
 
 const CACHE_DIR = 'cache';
 const DIGEST_FILE = join(CACHE_DIR, 'digest.json');
@@ -38,6 +39,11 @@ for (const c of digest.clusters) {
     const cat = Array.isArray(c.category) ? c.category[0] : c.category;
     c.category = cat.charAt(0).toUpperCase() + cat.slice(1).toLowerCase();
   }
+  // Recategorise using keyword graph — more accurate than the LLM's
+  // single-shot categorisation. Catches gaming != technology, celebrity !=
+  // entertainment, energy != business, etc. Only overrides when the keyword
+  // graph is confident (score >= 5).
+  recategoriseCluster(c);
 }
 
 // Enrich all stories with bodyText, wordCount, storyType for external consumers.

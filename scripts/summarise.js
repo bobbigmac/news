@@ -168,13 +168,17 @@ function makeStoryData(s) {
 function normaliseCategory(raw) {
   const cat = Array.isArray(raw) ? raw.join(' ') : (raw || 'general');
   const lower = cat.toLowerCase();
+  // Gaming must be checked BEFORE technology — gaming stories are often
+  // mislabelled as "Technology" by the LLM, but they're a distinct category.
+  if (/gaming|game|console|xbox|playstation|nintendo|steam|video game|esports|mmorpg|rpg|fps/.test(lower)) return 'gaming';
   if (/sport|football|cricket|rugby|tennis|olympic/.test(lower)) return 'sports';
   if (/politic|election|government|parliament|minister/.test(lower)) return 'politics';
   if (/business|finance|economy|market|bank|trade/.test(lower)) return 'business';
-  if (/tech|ai|software|digital|cyber|internet/.test(lower)) return 'technology';
+  // Technology = hardware, software, AI, processors — NOT gaming (gaming is above)
+  if (/tech|ai|software|digital|cyber|internet|processor|chip|cpu|gpu|semiconductor/.test(lower)) return 'technology';
   if (/health|medical|disease|hospital|drug|vaccine/.test(lower)) return 'health';
   if (/science|space|research|climate|environment/.test(lower)) return 'science';
-  if (/entertainment|celebrity|film|music|tv|gaming|game/.test(lower)) return 'entertainment';
+  if (/entertainment|celebrity|film|music|tv|television/.test(lower)) return 'entertainment';
   if (/local|regional|wales|scotland|ireland|manchester|london/.test(lower)) return 'regional';
   return 'general';
 }

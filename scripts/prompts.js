@@ -21,7 +21,7 @@ Editorial style:
 Output:
 1. "headline" — 8 words max, factual, no question marks.
 2. "summary" — 30-60 words, block text, key facts only. Do not repeat the headline.
-3. "category" — one of: Politics, Business, Technology, Science, Health, World, Sports, Entertainment, Environment, Regional, Other.
+3. "category" — one of: Politics, Business, Technology, Science, Health, World, Sports, Gaming, Entertainment, Environment, Regional, Other. Use Gaming for video games, consoles, game releases, esports, game industry news. Use Technology for hardware, software, AI, processors, tech industry — NOT gaming. Use Entertainment for film, TV, music, celebrity — NOT gaming.
 4. "region" — the geographic scope of the story. Use a place name if the story is tied to a specific location (e.g. "Manchester", "London", "Bangkok", "Gaza"). Use "UK" for national British stories with no specific locality. Use "International" for cross-border or non-UK stories. Use "Global" for worldwide-scope stories (climate, pandemics).
 5. "trigger_words" — 1-5 specific words that identify this topic (e.g. "Kabul", "Widdecombe").
 6. "impact" — "low" (local/minor), "medium" (sector/group level), or "high" (broad societal/national consequence).
@@ -103,5 +103,5 @@ export function buildSummaryPrompt(stories, existing) {
     ? `\n--- EXISTING CLUSTER BEING UPDATED ---\nCurrent headline: ${existing.headline}\nCurrent summary: ${(existing.summary || '(none)').slice(0, 300)}\n--- END EXISTING CLUSTER ---\n\nThese stories are developments of an existing news cluster. Write an updated headline and summary that reflects the CURRENT state of the story incorporating all developments shown below. The reader sees only the latest version.\n`
     : '';
 
-  return `${ctx}These ${stories.length} stor${stories.length === 1 ? 'y' : 'ies'} ${stories.length === 1 ? 'is' : 'are'} about a single news event. Write one headline and one summary that captures the story across all the sources below.\n${freshness}\n${lines}\n\nRespond ONLY with valid JSON in this exact format:\n{\n  "headline": "Short factual headline (max 8 words)",\n  "summary": "30-60 words of block text facts",\n  "category": "Politics|Business|Technology|Science|Health|World|Sports|Entertainment|Environment|Regional|Other",\n  "region": "Manchester|London|UK|International|Global",\n  "impact": "low|medium|high",\n  "trigger_words": ["specific", "unique", "words"]\n}`;
+  return `${ctx}These ${stories.length} stor${stories.length === 1 ? 'y' : 'ies'} ${stories.length === 1 ? 'is' : 'are'} about a single news event. Write one headline and one summary that captures the story across all the sources below.\n${freshness}\n${lines}\n\nRespond ONLY with valid JSON in this exact format:\n{\n  "headline": "Short factual headline (max 8 words)",\n  "summary": "30-60 words of block text facts",\n  "category": "Politics|Business|Technology|Science|Health|World|Sports|Gaming|Entertainment|Environment|Regional|Other",\n  "region": "Manchester|London|UK|International|Global",\n  "impact": "low|medium|high",\n  "trigger_words": ["specific", "unique", "words"]\n}`;
 }

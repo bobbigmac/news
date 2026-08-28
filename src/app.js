@@ -305,26 +305,104 @@ function getInterestStats() {
   return { interested, notInterested, total: interested + notInterested };
 }
 
-// --- Signal-based scoring ---
-// Scores a cluster against past interest signals by tag overlap.
-// Returns { score, matchedTags, signalType } where signalType is the strongest matching signal.
+// --- Signal-based scoring (v2: specificity-weighted, category-aware) ---
 //
-// The profile is cached at page load so that re-renders (settings changes, resize, etc.)
-// don't recalculate weights and cause discombobulating reordering.
-// The changelog panel uses a fresh profile for management display.
+// Problems with the old algorithm:
+//   1. No tag specificity — "technology" (in 17 clusters) counted the same
+//      as "gta 6" (in 1 cluster). Generic tags dominated the score.
+//   2. Sources mixed with topics — downvoting BBC sports downranked all BBC.
+//   3. No category signal — the category itself is a strong indicator but
+//      wasn't used in scoring.
+//   4. Competing pool problem — downvoting boring non-gaming news suppressed
+//      everything non-gaming because shared generic tags accumulated negative
+//      weight, accidentally boosting gaming by default.
+//   5. Linear scoring — up and down were treated as opposite ends of one
+//      axis, but they're independent dimensions.
+//
+// New approach:
+//   - Tags are weighted by IDF (rarity). A tag in 1 cluster is worth more
+//     than one in 15 clusters.
+//   - Category is a first-class signal, separate from tags.
+//   - Structural tags (category name, plugin name) have capped weight — they're
+//     broad buckets, not topic identifiers.
+//   - Positive and negative scores are independent dimensions. A story can
+//     be "interesting topic" AND "disliked source" — these don't cancel.
+//   - The final score is positive - negative, but the filter threshold is
+//     asymmetric: it takes more negative signal to hide a story than positive
+//     signal to boost it (avoids accidental suppression).
 
 let _cachedProfile = null;
+let _cachedTagDF = null; // document frequency for IDF calculation
+let _allClusters = [];   // set during render, used for IDF calculation
 
-function buildSignalProfile() {
-  const interested = {};
-  const notInterested = {};
-  for (const entry of Object.values(interestState)) {
-    const bucket = entry.signal === 'interested' ? interested : notInterested;
-    for (const tag of (entry.tags || [])) {
-      bucket[tag] = (bucket[tag] || 0) + 1;
+// Build a tag document-frequency map from the current digest.
+// This lets us weight rare tags higher than common ones.
+function buildTagDF(clusters) {
+  const df = new Map();
+  for (const c of clusters) {
+    for (const tag of extractTags(c)) {
+      df.set(tag, (df.get(tag) || 0) + 1);
     }
   }
-  return { interested, notInterested };
+  return df;
+}
+
+function getTagDF() {
+  if (!_cachedTagDF && _allClusters.length) {
+    _cachedTagDF = buildTagDF(_allClusters);
+  }
+  return _cachedTagDF || new Map();
+}
+
+// Structural tags are broad buckets (category names, plugin names) — they
+// should have lower weight than specific topic tags.
+const STRUCTURAL_TAG_PREFIXES = ['xbox', 'playstation', 'nintendo', 'steam'];
+
+function isStructuralTag(tag, cluster) {
+  const cat = Array.isArray(cluster.category) ? cluster.category[0] : cluster.category;
+  if (cat && tag === cat.toLowerCase()) return true;
+  const plugin = cluster.stories?.find(s => s.plugin)?.plugin;
+  if (plugin && tag === plugin.toLowerCase()) return true;
+  if (STRUCTURAL_TAG_PREFIXES.includes(tag)) return true;
+  return false;
+}
+
+// Compute the weight of a tag: IDF * count, capped for structural tags.
+function tagWeight(tag, count, cluster, df) {
+  const docCount = df.size || 1;
+  const idf = Math.log(docCount / (df.get(tag) || 1));
+  // Clamp IDF to [0.1, 3] — very rare tags get max 3x, very common get min 0.1x
+  const clampedIdf = Math.max(0.1, Math.min(3, idf));
+  let weight = count * clampedIdf;
+  // Cap structural tags at 0.5 — they're broad buckets, not topic identifiers
+  if (isStructuralTag(tag, cluster)) weight = Math.min(weight, 0.5);
+  return weight;
+}
+
+function buildSignalProfile() {
+  const interested = {};   // tag -> count
+  const notInterested = {}; // tag -> count
+  const catInterested = {}; // category -> count
+  const catNotInterested = {}; // category -> count
+  let totalInterested = 0;
+  let totalNotInterested = 0;
+
+  for (const entry of Object.values(interestState)) {
+    if (entry.signal === 'interested') {
+      totalInterested++;
+      if (entry.cat) catInterested[entry.cat.toLowerCase()] = (catInterested[entry.cat.toLowerCase()] || 0) + 1;
+      for (const tag of (entry.tags || [])) {
+        interested[tag] = (interested[tag] || 0) + 1;
+      }
+    } else if (entry.signal === 'not-interested') {
+      totalNotInterested++;
+      if (entry.cat) catNotInterested[entry.cat.toLowerCase()] = (catNotInterested[entry.cat.toLowerCase()] || 0) + 1;
+      for (const tag of (entry.tags || [])) {
+        notInterested[tag] = (notInterested[tag] || 0) + 1;
+      }
+    }
+  }
+  return { interested, notInterested, catInterested, catNotInterested, totalInterested, totalNotInterested };
 }
 
 function getSignalProfile() {
@@ -334,37 +412,86 @@ function getSignalProfile() {
 
 function refreshSignalProfile() {
   _cachedProfile = buildSignalProfile();
+  _cachedTagDF = null;
 }
 
 function scoreClusterAgainstSignals(cluster) {
-  const tags = new Set(extractTags(cluster));
+  const tags = extractTags(cluster);
+  const tagSet = new Set(tags);
   const profile = getSignalProfile();
+  const df = getTagDF();
+  const cat = (Array.isArray(cluster.category) ? cluster.category[0] : cluster.category || '').toLowerCase();
+
   let posScore = 0, negScore = 0;
   const matchedTags = [];
 
-  for (const tag of tags) {
+  // --- Tag-based scoring (IDF-weighted) ---
+  for (const tag of tagSet) {
     if (profile.interested[tag]) {
-      posScore += profile.interested[tag];
-      matchedTags.push({ tag, weight: profile.interested[tag], signal: 'interested' });
+      const w = tagWeight(tag, profile.interested[tag], cluster, df);
+      posScore += w;
+      matchedTags.push({ tag, weight: w, signal: 'interested' });
     }
     if (profile.notInterested[tag]) {
-      negScore += profile.notInterested[tag];
-      matchedTags.push({ tag, weight: profile.notInterested[tag], signal: 'not-interested' });
+      const w = tagWeight(tag, profile.notInterested[tag], cluster, df);
+      negScore += w;
+      matchedTags.push({ tag, weight: w, signal: 'not-interested' });
     }
   }
 
+  // --- Category-based scoring ---
+  // Category is a strong signal but has lower max weight than specific tags.
+  // This catches "I like sport" even when individual sport stories don't share
+  // many tags, and "I don't like celebrity" without needing every celebrity
+  // name to be downvoted.
+  if (cat && profile.catInterested[cat]) {
+    const catWeight = Math.min(profile.catInterested[cat] * 0.5, 2);
+    posScore += catWeight;
+    matchedTags.push({ tag: `[category: ${cat}]`, weight: catWeight, signal: 'interested' });
+  }
+  if (cat && profile.catNotInterested[cat]) {
+    const catWeight = Math.min(profile.catNotInterested[cat] * 0.5, 2);
+    negScore += catWeight;
+    matchedTags.push({ tag: `[category: ${cat}]`, weight: catWeight, signal: 'not-interested' });
+  }
+
+  // --- Competing pool compensation ---
+  // If the user has downvoted a LOT of stories (e.g. 20+), the negative
+  // weights accumulate across many tags and can swamp any story that shares
+  // even one generic tag with a downvoted story. To compensate, we scale down
+  // the negative score when the user has downvoted many stories — the more
+  // they've downvoted, the more we discount the negative signal, because
+  // at high volumes it's more about filtering noise than expressing topic
+  // preferences.
+  if (profile.totalNotInterested > 10) {
+    const dampening = Math.max(0.3, 1 - (profile.totalNotInterested - 10) * 0.05);
+    negScore *= dampening;
+  }
+
+  // The final score is positive - negative, but with asymmetric thresholds:
+  // it takes more negative signal to hide a story (threshold -5) than
+  // positive signal to boost it (threshold +2). This prevents accidental
+  // suppression from accumulated generic-tag negative weight.
   const score = posScore - negScore;
-  const signalType = score > 0 ? 'interested' : score < 0 ? 'not-interested' : null;
+  const signalType = score > 1 ? 'interested' : score < -3 ? 'not-interested' : null;
   return { score, posScore, negScore, matchedTags, signalType };
 }
 
 function getTopSignalTags(signalType, limit = 10) {
   // Use fresh profile for changelog display, not the cached page-load one
   const profile = buildSignalProfile();
+  const df = getTagDF();
   const bucket = signalType === 'interested' ? profile.interested : profile.notInterested;
+  // Sort by IDF-weighted count (rare + frequent = strongest signal)
   return Object.entries(bucket)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, limit);
+    .map(([tag, count]) => {
+      const idf = Math.log((df.size || 1) / (df.get(tag) || 1));
+      const clampedIdf = Math.max(0.1, Math.min(3, idf));
+      return [tag, count, count * clampedIdf];
+    })
+    .sort((a, b) => b[2] - a[2])
+    .slice(0, limit)
+    .map(([tag, count]) => [tag, count]);
 }
 
 function formatDate(dateStr) {
@@ -469,8 +596,8 @@ function renderArticle(cluster, settings, isPluginLead) {
 
   // Signal-derived styling (subtle — these are guesses, not explicit signals)
   const signalScore = scoreClusterAgainstSignals(cluster);
-  if (signalScore.score >= 2) article.classList.add('signal-suggested');
-  else if (signalScore.score <= -2) article.classList.add('signal-demoted');
+  if (signalScore.score >= 1) article.classList.add('signal-suggested');
+  else if (signalScore.score <= -3) article.classList.add('signal-demoted');
 
   let imageHtml = '';
   if (settings.images !== 'none') {
@@ -589,6 +716,8 @@ function renderDigest(digest, settings) {
   sheet.innerHTML = '';
 
   const allClusters = sortClusters(digest.clusters || [], settings.sort);
+  _allClusters = allClusters; // make available for IDF calculation
+  _cachedTagDF = null; // invalidate IDF cache on re-render
 
   if (!allClusters.length) {
     sheet.innerHTML = '<div class="loading">No news available yet. Check back later.</div>';
@@ -608,12 +737,15 @@ function renderDigest(digest, settings) {
   // Filter out hidden categories
   const visibleCats = ageFiltered.filter(c => getCatPref(c.category) !== 'hide');
 
-  // Filter out clusters with strong negative signal score (guessed disinterest)
+  // Filter out clusters with strong negative signal score (guessed disinterest).
+  // Asymmetric threshold: requires -5 to hide (harder than the old -3) because
+  // the new IDF-weighted scoring produces smaller absolute scores for generic
+  // tag matches, and we want to avoid accidental suppression.
   const signalFiltered = visibleCats.filter(c => {
     const explicit = getClusterInterest(c.id);
     if (explicit === 'interested') return true; // explicit interest always shows
     const signal = scoreClusterAgainstSignals(c);
-    return signal.score > -3; // strong negative = hide
+    return signal.score > -5; // strong negative = hide
   });
 
   // Apply category filter (secondary filter)
