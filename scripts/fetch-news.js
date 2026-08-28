@@ -3,6 +3,7 @@ import { join } from 'path';
 import { getSourceName } from './sources.js';
 import { fetchRssFeeds } from './fetch-rss.js';
 import { fetchGuardianNews } from './fetch-guardian.js';
+import { dedupStories } from './url-dedup.js';
 
 const API_BASE_URL = 'https://api.currentsapi.services/v1';
 const CACHE_DIR = 'cache';
@@ -265,25 +266,33 @@ async function main() {
   // Run search plugins (budget-aware)
   const pluginResults = await runSearchPlugins(runState);
   if (pluginResults.length) {
-    const unique = pluginResults.filter(r => r.id && !newsItems.some(n => n.id === r.id));
-    newsItems.push(...unique);
-    console.log(`Plugins contributed ${unique.length} unique stories`);
+    newsItems.push(...pluginResults);
+    console.log(`Plugins contributed ${pluginResults.length} stories`);
   }
 
-  // Fetch from optional RSS feeds (BBC, etc.) — no API quota impact
+  // Fetch from optional RSS feeds (BBC, urgent.news, etc.) — no API quota impact
   const rssItems = await fetchRssFeeds();
   if (rssItems.length) {
-    const unique = rssItems.filter(r => r.id && !newsItems.some(n => n.id === r.id));
-    newsItems.push(...unique);
-    console.log(`RSS feeds contributed ${unique.length} unique stories`);
+    newsItems.push(...rssItems);
+    console.log(`RSS feeds contributed ${rssItems.length} stories`);
   }
 
   // Fetch from Guardian API (optional, separate quota)
   const guardianItems = await fetchGuardianNews();
   if (guardianItems.length) {
-    const unique = guardianItems.filter(r => r.id && !newsItems.some(n => n.id === r.id));
-    newsItems.push(...unique);
-    console.log(`Guardian contributed ${unique.length} unique stories`);
+    newsItems.push(...guardianItems);
+    console.log(`Guardian contributed ${guardianItems.length} stories`);
+  }
+
+  // Cross-source deduplication: first by ID, then by normalised URL.
+  // This catches the same story appearing via multiple aggregators (e.g.
+  // a BBC story via BBC RSS and via urgent.news, or a Guardian story via
+  // urgent.news and via the Guardian API).
+  const beforeDedup = newsItems.length;
+  const { items: dedupedItems, droppedById, droppedByUrl } = dedupStories(newsItems);
+  newsItems = dedupedItems;
+  if (droppedById > 0 || droppedByUrl > 0) {
+    console.log(`Cross-source dedup: ${beforeDedup} -> ${newsItems.length} (${droppedById} by ID, ${droppedByUrl} by URL)`);
   }
 
   saveRunState(runState);

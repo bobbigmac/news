@@ -53,6 +53,28 @@ in a single article and returns 0 results. This is not a bug — it's how the AP
 - `scripts/build.js` copies `digest.json` and `run-log.json` from `cache/` to `docs/`.
 - The site reads these from `docs/` (GitHub Pages serves the `docs/` directory).
 
+## News Sources
+
+- **Currents API** — 4 calls/run × 3 runs = 12/day (under 20 free quota). General + GB +
+  2 plugin searches. See quota constraints above.
+- **BBC RSS** (8 feeds) — no quota, no key. Enabled via `RSS_FEEDS=bbc` secret.
+- **urgent.news** (5 feeds: UK edition + world/business/science/health desks) — no key,
+  no registration, CORS-open cross-source aggregator. Enabled via `RSS_FEEDS=urgent`.
+- **Eurogamer + Kotaku** (gaming RSS) — enabled via `RSS_FEEDS=gaming`.
+- **Guardian API** — available but disabled (requires registration). urgent.news already
+  aggregates Guardian content.
+- `RSS_FEEDS` secret is in the `github-pages` environment (not repo-level).
+
+### Cross-Source URL Deduplication (`scripts/url-dedup.js`)
+
+Multiple aggregators can deliver the same story (e.g. a BBC story via BBC RSS and via
+urgent.news). URL-based dedup normalises URLs before comparison:
+- Strip tracking params (`utm_*`, `at_*`, `ns_*`, `syn-*`, `fbclid`, `gclid`, etc.)
+- Normalise domains (`bbc.com` → `bbc.co.uk`, strip `www.`, mobile subdomains)
+- Strip `.html` suffix, trailing slashes, fragments
+- Sort remaining query params for stable comparison
+- Dedup by ID first (existing behaviour), then by normalised URL
+
 ### Architecture (reworked — local grouping, LLM for summary only)
 
 The pipeline has three stages: **ingest** (fetch-news.js), **comprehend** (summarise.js),

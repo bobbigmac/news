@@ -23,6 +23,17 @@ const GAMING_FEEDS = [
   { url: 'https://kotaku.com/feed', category: 'Gaming' },
 ];
 
+// urgent.news — cross-source aggregator, no API key needed, CORS-open.
+// Already deduplicates across outlets and provides AI summaries.
+// UK edition + topic desks give broad coverage without registration.
+const URGENT_FEEDS = [
+  { url: 'https://urgent.news/geo/gb/rss.xml', category: 'General', maxItems: 30 },
+  { url: 'https://urgent.news/t/world/rss.xml', category: 'World', maxItems: 15 },
+  { url: 'https://urgent.news/t/business/rss.xml', category: 'Business', maxItems: 10 },
+  { url: 'https://urgent.news/t/science/rss.xml', category: 'Science', maxItems: 10 },
+  { url: 'https://urgent.news/t/health/rss.xml', category: 'Health', maxItems: 10 },
+];
+
 function makeId(url) {
   return 'rss-' + createHash('md5').update(url).digest('hex');
 }
@@ -44,7 +55,7 @@ function normalizeRssItem(item, feed, pluginName) {
     url,
     image,
     source: item.creator || item.author || '',
-    sourceName: getSourceName(url) || (feed.pluginName === 'gaming' ? feed.url.includes('eurogamer') ? 'Eurogamer' : feed.url.includes('kotaku') ? 'Kotaku' : 'RSS' : 'BBC'),
+    sourceName: getSourceName(url) || (feed.pluginName === 'gaming' ? feed.url.includes('eurogamer') ? 'Eurogamer' : feed.url.includes('kotaku') ? 'Kotaku' : 'RSS' : feed.pluginName === 'urgent' ? 'Urgent News' : feed.pluginName === 'bbc' ? 'BBC' : 'RSS'),
     published: parseDate(item.isoDate || item.pubDate),
     category: feed.category,
     keywords: '',
@@ -66,6 +77,10 @@ export async function fetchRssFeeds() {
 
   if (enabledNames.includes('gaming')) {
     feeds.push(...GAMING_FEEDS.map(f => ({ ...f, pluginName: 'gaming' })));
+  }
+
+  if (enabledNames.includes('urgent')) {
+    feeds.push(...URGENT_FEEDS.map(f => ({ ...f, pluginName: 'urgent' })));
   }
 
   if (!feeds.length) return [];
