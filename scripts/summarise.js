@@ -17,7 +17,7 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
-import { SYSTEM_PROMPT, buildSummaryPrompt } from './prompts.js';
+import { SYSTEM_PROMPT, buildSummaryPrompt, buildBatchPrompt } from './prompts.js';
 import { TOPIC_SYSTEM_PROMPT, buildTopicPrompt } from './topic-prompt.js';
 import { extractJson } from './extract-json.js';
 import { embedStories, cosineSim, centroid } from './embeddings.js';
@@ -41,6 +41,17 @@ const INTER_CALL_DELAY_MS = 2000; // pause between LLM calls to avoid rate limit
 const ACTIVE_WINDOW_HOURS = 48;   // a cluster is "active" if last story published within this window
 const STALE_AFTER_DAYS = 7;       // clusters with no new stories in 7 days are stale
 const EXPIRE_AFTER_DAYS = 30;     // clusters with no stories in 30 days are removed from digest
+
+// --- LLM call consolidation ---
+// Free LLM calls are not unlimited. OpenRouter :free models have rate limits
+// (typically 20 requests/minute, 1000/day). With 336+ stories per run, we
+// could easily have 50-100 clusters needing summarisation. These settings
+// reduce the number of LLM calls per run:
+const SKIP_MINOR_UPDATE_THRESHOLD = 3;  // Don't re-summarise existing clusters with >= this many stories
+                                        // if only 1 new story is added (the existing copy is still good)
+const BATCH_NEW_CLUSTERS = true;        // Batch small new clusters into one LLM call
+const BATCH_SIZE = 5;                   // Max clusters per batch LLM call
+const BATCH_MAX_STORIES = 2;            // Only batch clusters with <= this many stories
 
 // --- Model registry ---
 // When openrouter/free gives us a good :free model, we remember it. On
@@ -662,12 +673,25 @@ async function main() {
   // --- Match to existing clusters ---
   const assignments = matchToExisting(mergedGroups, digest.clusters, embeddings);
 
-  // --- Summarise each cluster (one LLM call each) ---
+  // --- Summarise clusters (consolidated LLM calls) ---
+  // Three tiers to minimise LLM calls:
+  //   1. SKIP: existing cluster with >= SKIP_MINOR_UPDATE_THRESHOLD stories
+  //      getting only 1 new story — don't re-summarise, just add the story.
+  //   2. BATCH: small new clusters (<= BATCH_MAX_STORIES stories) are grouped
+  //      into batches of BATCH_SIZE, one LLM call per batch.
+  //   3. SOLO: everything else (large new clusters, existing clusters with
+  //      significant new content) gets a dedicated LLM call.
   let totalAdded = 0;
   let totalUpdated = 0;
   let clustersCreated = 0;
   let llmCalls = 0;
   let llmFailed = 0;
+  let skippedMinor = 0;
+
+  // First pass: merge stories into clusters, classify into tiers
+  const skipTier = [];      // existing clusters, minor update — no LLM call
+  const batchTier = [];     // small new clusters — batched LLM call
+  const soloTier = [];      // everything else — dedicated LLM call
 
   for (let i = 0; i < assignments.length; i++) {
     const { stories, existingCluster } = assignments[i];
@@ -677,10 +701,20 @@ async function main() {
       const added = mergeIntoCluster(existingCluster, prepared);
       totalAdded += added;
       totalUpdated++;
-      // Update topic slug if new stories have one
       const newSlug = stories.find(s => s._topicSlug)?._topicSlug;
       if (newSlug && !existingCluster.topicSlug) existingCluster.topicSlug = newSlug;
+
+      // Tier 1: skip if existing cluster is well-established and only 1 new story
+      const existingStoryCount = (existingCluster.stories || []).length - added;
+      if (added === 1 && existingStoryCount >= SKIP_MINOR_UPDATE_THRESHOLD) {
+        skippedMinor++;
+        console.log(`\n[${i + 1}/${assignments.length}] skip minor: ${existingCluster.headline?.slice(0, 60)} (+${added} new, ${existingStoryCount} existing)`);
+        existingCluster.updated = new Date().toISOString();
+        for (const s of prepared) summarisedIds.add(s.id);
+        continue;
+      }
       console.log(`\n[${i + 1}/${assignments.length}] update: ${existingCluster.headline?.slice(0, 60)} (+${added} new)`);
+      soloTier.push({ prepared, existingCluster, cluster: existingCluster });
     } else {
       const newSlug = stories.find(s => s._topicSlug)?._topicSlug;
       const newCluster = {
@@ -700,52 +734,122 @@ async function main() {
       totalAdded += prepared.length;
       clustersCreated++;
       console.log(`\n[${i + 1}/${assignments.length}] new cluster (${prepared.length} stories): ${prepared[0].originalTitle?.slice(0, 60)}`);
-    }
 
-    const cluster = existingCluster || digest.clusters[digest.clusters.length - 1];
-
-    // One LLM call to write the cluster's editorial copy.
-    llmCalls++;
-    let prompt;
-    try {
-      prompt = buildSummaryPrompt(prepared, existingCluster);
-      const responseText = await callLLM(prompt);
-      const parsed = parseSummaryResponse(responseText);
-      if (parsed && parsed.headline) {
-        cluster.headline = parsed.headline;
-        cluster.summary = parsed.summary || cluster.summary;
-        if (parsed.category) cluster.category = normaliseCategory(parsed.category);
-        if (parsed.trigger_words && Array.isArray(parsed.trigger_words)) cluster.triggerWords = parsed.trigger_words;
-        if (parsed.region) cluster.region = parsed.region;
-        if (parsed.impact && ['low', 'medium', 'high'].includes(parsed.impact.toLowerCase())) cluster.impact = parsed.impact.toLowerCase();
-        cluster.contentVersion = (cluster.contentVersion || 0) + 1;
-        console.log(`  LLM ok: "${parsed.headline?.slice(0, 60)}"`);
+      // Tier 2: batch small new clusters
+      if (BATCH_NEW_CLUSTERS && prepared.length <= BATCH_MAX_STORIES) {
+        batchTier.push({ prepared, cluster: newCluster });
       } else {
-        console.log(`  LLM returned unparseable JSON — using fallback copy`);
-        llmFailed++;
-        const fb = fallbackClusterCopy(prepared);
-        if (!existingCluster) { cluster.headline = fb.headline; cluster.summary = fb.summary; cluster.triggerWords = fb.triggerWords; }
-      }
-    } catch (err) {
-      console.error(`  LLM failed: ${err.message}. Using fallback copy.`);
-      llmFailed++;
-      if (!existingCluster) {
-        const fb = fallbackClusterCopy(prepared);
-        cluster.headline = fb.headline;
-        cluster.summary = fb.summary;
-        cluster.triggerWords = fb.triggerWords;
-        cluster.impact = fb.impact;
+        // Tier 3: solo for larger new clusters
+        soloTier.push({ prepared, existingCluster: null, cluster: newCluster });
       }
     }
-
-    cluster.updated = new Date().toISOString();
-    for (const s of prepared) summarisedIds.add(s.id);
-    // Persist progress after each cluster so a mid-run crash keeps prior work.
-    saveJson(SUMMARISED_IDS_FILE, [...summarisedIds]);
-    saveJson(DIGEST_FILE, digest);
-
-    if (i < assignments.length - 1) await new Promise(r => setTimeout(r, INTER_CALL_DELAY_MS));
   }
+
+  // Helper: apply parsed LLM response to a cluster
+  function applySummaryToCluster(cluster, parsed, existingCluster) {
+    if (parsed && parsed.headline) {
+      cluster.headline = parsed.headline;
+      cluster.summary = parsed.summary || cluster.summary;
+      if (parsed.category) cluster.category = normaliseCategory(parsed.category);
+      if (parsed.trigger_words && Array.isArray(parsed.trigger_words)) cluster.triggerWords = parsed.trigger_words;
+      if (parsed.region) cluster.region = parsed.region;
+      if (parsed.impact && ['low', 'medium', 'high'].includes(parsed.impact.toLowerCase())) cluster.impact = parsed.impact.toLowerCase();
+      cluster.contentVersion = (cluster.contentVersion || 0) + 1;
+      console.log(`  LLM ok: "${parsed.headline?.slice(0, 60)}"`);
+      return true;
+    }
+    return false;
+  }
+
+  // Helper: apply fallback copy to a new cluster
+  function applyFallbackToCluster(cluster, prepared) {
+    const fb = fallbackClusterCopy(prepared);
+    cluster.headline = fb.headline;
+    cluster.summary = fb.summary;
+    cluster.triggerWords = fb.triggerWords;
+    cluster.impact = fb.impact;
+  }
+
+  // --- Tier 2: Batch small new clusters ---
+  if (batchTier.length > 0) {
+    const batches = [];
+    for (let i = 0; i < batchTier.length; i += BATCH_SIZE) {
+      batches.push(batchTier.slice(i, i + BATCH_SIZE));
+    }
+    console.log(`\n=== Batch summarisation: ${batchTier.length} small clusters in ${batches.length} LLM call(s) ===`);
+
+    for (const batch of batches) {
+      llmCalls++;
+      const batchClusters = batch.map(b => ({ id: b.cluster.id, stories: b.prepared }));
+      try {
+        const prompt = buildBatchPrompt(batchClusters);
+        const responseText = await callLLM(prompt);
+        const cleaned = stripMarkdownFences(responseText).trim();
+        const parsed = JSON.parse(cleaned);
+        if (Array.isArray(parsed)) {
+          // Match responses to clusters by id
+          const byId = new Map(parsed.map(p => [p.id, p]));
+          for (const b of batch) {
+            const result = byId.get(b.cluster.id);
+            if (!applySummaryToCluster(b.cluster, result, null)) {
+              console.log(`  Batch: unparseable result for ${b.cluster.id} — using fallback`);
+              llmFailed++;
+              applyFallbackToCluster(b.cluster, b.prepared);
+            }
+          }
+        } else {
+          console.log(`  Batch: response was not an array — using fallback for all`);
+          llmFailed++;
+          for (const b of batch) applyFallbackToCluster(b.cluster, b.prepared);
+        }
+      } catch (err) {
+        console.error(`  Batch LLM failed: ${err.message}. Using fallback for all.`);
+        llmFailed++;
+        for (const b of batch) applyFallbackToCluster(b.cluster, b.prepared);
+      }
+
+      // Persist after each batch
+      for (const b of batch) {
+        b.cluster.updated = new Date().toISOString();
+        for (const s of b.prepared) summarisedIds.add(s.id);
+      }
+      saveJson(SUMMARISED_IDS_FILE, [...summarisedIds]);
+      saveJson(DIGEST_FILE, digest);
+      if (batches.indexOf(batch) < batches.length - 1) await new Promise(r => setTimeout(r, INTER_CALL_DELAY_MS));
+    }
+  }
+
+  // --- Tier 3: Solo summarisation for significant updates and large new clusters ---
+  if (soloTier.length > 0) {
+    console.log(`\n=== Solo summarisation: ${soloTier.length} clusters (1 LLM call each) ===`);
+    for (let i = 0; i < soloTier.length; i++) {
+      const { prepared, existingCluster, cluster } = soloTier[i];
+      llmCalls++;
+      try {
+        const prompt = buildSummaryPrompt(prepared, existingCluster);
+        const responseText = await callLLM(prompt);
+        const parsed = parseSummaryResponse(responseText);
+        if (!applySummaryToCluster(cluster, parsed, existingCluster)) {
+          console.log(`  LLM returned unparseable JSON — using fallback copy`);
+          llmFailed++;
+          if (!existingCluster) applyFallbackToCluster(cluster, prepared);
+        }
+      } catch (err) {
+        console.error(`  LLM failed: ${err.message}. Using fallback copy.`);
+        llmFailed++;
+        if (!existingCluster) applyFallbackToCluster(cluster, prepared);
+      }
+
+      cluster.updated = new Date().toISOString();
+      for (const s of prepared) summarisedIds.add(s.id);
+      saveJson(SUMMARISED_IDS_FILE, [...summarisedIds]);
+      saveJson(DIGEST_FILE, digest);
+
+      if (i < soloTier.length - 1) await new Promise(r => setTimeout(r, INTER_CALL_DELAY_MS));
+    }
+  }
+
+  if (skippedMinor > 0) console.log(`\nSkipped ${skippedMinor} minor updates (existing cluster + 1 new story, no re-summarisation needed)`);
 
   // --- Annotate: entities, tags, lifecycle, entity index ---
   annotateClusters(digest);
@@ -757,13 +861,16 @@ async function main() {
   digest.generated = new Date().toISOString();
   saveJson(DIGEST_FILE, digest);
 
-  writeRunLog(digest, filtered.length, totalAdded, clustersCreated, totalUpdated, llmCalls, llmFailed, false, tooShort);
+  writeRunLog(digest, filtered.length, totalAdded, clustersCreated, totalUpdated, llmCalls, llmFailed, false, tooShort, skippedMinor);
 
+  const wouldHaveCalled = assignments.length;
+  const saved = wouldHaveCalled - llmCalls;
   console.log(`\nSummarisation complete: ${totalAdded} stories added, ${clustersCreated} new clusters, ${totalUpdated} clusters updated.`);
-  console.log(`LLM: ${llmCalls} calls, ${llmFailed} fell back to heuristic. Digest: ${digest.clusters.length} clusters.`);
+  console.log(`LLM: ${llmCalls} calls (would have been ${wouldHaveCalled} without consolidation — saved ${saved}), ${llmFailed} fell back to heuristic.`);
+  console.log(`Skipped ${skippedMinor} minor updates. Digest: ${digest.clusters.length} clusters.`);
 }
 
-function writeRunLog(digest, processed, added, created, updated, llmCalls, llmFailed, skipped, filteredTooShort = 0) {
+function writeRunLog(digest, processed, added, created, updated, llmCalls, llmFailed, skipped, filteredTooShort = 0, skippedMinor = 0) {
   const runLog = loadJson(RUN_LOG_FILE, []);
   runLog.unshift({
     timestamp: new Date().toISOString(),
@@ -776,6 +883,7 @@ function writeRunLog(digest, processed, added, created, updated, llmCalls, llmFa
     totalClusters: digest.clusters.length,
     llmCalls,
     llmFailed,
+    skippedMinor,
     chunks: llmCalls, // retained for frontend compatibility
     chunksFailed: llmFailed, // retained for frontend compatibility
     filteredTooShort,

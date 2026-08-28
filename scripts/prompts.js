@@ -105,3 +105,20 @@ export function buildSummaryPrompt(stories, existing) {
 
   return `${ctx}These ${stories.length} stor${stories.length === 1 ? 'y' : 'ies'} ${stories.length === 1 ? 'is' : 'are'} about a single news event. Write one headline and one summary that captures the story across all the sources below.\n${freshness}\n${lines}\n\nRespond ONLY with valid JSON in this exact format:\n{\n  "headline": "Short factual headline (max 8 words)",\n  "summary": "30-60 words of block text facts",\n  "category": "Politics|Business|Technology|Science|Health|World|Sports|Gaming|Entertainment|Environment|Regional|Other",\n  "region": "Manchester|London|UK|International|Global",\n  "impact": "low|medium|high",\n  "trigger_words": ["specific", "unique", "words"]\n}`;
 }
+
+// Batch prompt for multiple small new clusters in a single LLM call.
+// Each cluster gets its own entry in the response. This saves LLM calls
+// when there are many 1-2 story clusters that would otherwise each need
+// a separate call.
+//
+// `clusters` is an array of { id, stories } where stories is the prepared
+// story array for that cluster.
+export function buildBatchPrompt(clusters) {
+  const entries = clusters.map((c, i) => {
+    const lines = storyLines(c.stories);
+    const freshness = freshnessGuidance(c.stories);
+    return `=== CLUSTER ${i + 1} (id: ${c.id}) ===\n${freshness}\n${lines}`;
+  }).join('\n\n');
+
+  return `You are summarising ${clusters.length} separate news clusters. Each cluster below is a distinct news event — do NOT merge them. For EACH cluster, write one headline and one summary.\n\n${entries}\n\nRespond ONLY with a valid JSON array, one object per cluster, in the same order:\n[\n  {\n    "id": "${clusters[0]?.id}",\n    "headline": "Short factual headline (max 8 words)",\n    "summary": "30-60 words of block text facts",\n    "category": "Politics|Business|Technology|Science|Health|World|Sports|Gaming|Entertainment|Environment|Regional|Other",\n    "region": "Manchester|London|UK|International|Global",\n    "impact": "low|medium|high",\n    "trigger_words": ["specific", "unique", "words"]\n  }\n]\n\nThe "id" field must match the cluster id given above. Write one array entry per cluster, in order.`;
+}

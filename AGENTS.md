@@ -108,10 +108,16 @@ the free LLM failed constantly and the fallback fragmented everything.
    topic slug: if the new group's slug matches an existing cluster's `topicSlug`, they
    merge even if embedding similarity is below threshold. Otherwise a new cluster is
    created. See `scripts/cluster.js`.
-7. **LLM summary** — one LLM call per cluster to write headline + summary + impact +
-   trigger words + region. The LLM only writes copy for an already-formed cluster — it
-   never groups. A failed call degrades only that cluster's text (heuristic fallback uses
-   the lead story's title/content). See `scripts/prompts.js` (`buildSummaryPrompt`).
+7. **LLM summary** (consolidated calls) — three tiers to minimise LLM calls:
+   - **SKIP**: existing cluster with >= 3 stories getting only 1 new story — no
+     re-summarisation, just add the story. The existing copy is still good.
+   - **BATCH**: small new clusters (<= 2 stories) are grouped into batches of 5,
+     one LLM call per batch (`buildBatchPrompt` in `scripts/prompts.js`).
+   - **SOLO**: everything else (large new clusters, existing clusters with significant
+     new content) gets a dedicated LLM call (`buildSummaryPrompt`).
+   The LLM only writes copy for an already-formed cluster — it never groups. A failed
+   call degrades only that cluster's text (heuristic fallback uses the lead story's
+   title/content). Run log tracks `skippedMinor` and `llmCalls` for monitoring.
 8. **Annotate** — entities (compromise NER: people/places/orgs, `scripts/entities.js`),
    tags (TF-IDF over compromise nouns/topics, `scripts/tags.js`), lifecycle fields
    (`active` flag based on lastPublished within 48h — NOT pipeline touch time,
@@ -124,6 +130,12 @@ the free LLM failed constantly and the fallback fragmented everything.
 **Publish flow** (build.js):
 - Backfills missing fields on old clusters (triggerWords, impact, contentVersion, category
   casing) so the frontend never sees an incomplete cluster.
+- **Recategorises** clusters using a keyword graph (`scripts/categories.js`) that overrides
+  the LLM's category when the graph is confident (score >= 5). Categories are more specific
+  than newspaper conventions: Gaming, Sport, Celebrity, Entertainment, Politics, Crime,
+  Business, Personal Finance, Health, Science, Environment, Technology, Motoring, Energy,
+  Disaster, Defence, World, Local, Education, Royal, Odd News. The graph excludes the LLM's
+  own category label from matching (to avoid reinforcing mislabelling).
 - Builds the cross-cluster **entity index** (entity name -> cluster ids, `scripts/entities.js`).
 - Builds **topics** — connected components over content-tag overlap (>= 2 shared tags) or
   shared entities (appearing in 2+ clusters). Structural tags (source names, plugin names,
