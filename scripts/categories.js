@@ -185,7 +185,8 @@ const CATEGORY_GRAPH = {
     keywords: {
       'current account': 5, 'regular saver': 5, 'savings rate': 5,
       'savings account': 5, mortgage: 5, 'mortgage rate': 5,
-      'house purchase': 4, 'townhouse': 2, 'first-time buyer': 5,
+      'house purchase': 5, 'home buyer': 5, 'homebuyer': 5, 'home purchase': 5,
+      'townhouse': 2, 'first-time buyer': 5,
       'rental': 3, rent: 2, 'renting crisis': 5, 'retirement crisis': 5,
       'pension': 4, 'pension pot': 5, 'retirement': 3,
       'fuel prices': 4, 'petrol prices': 5, 'gas prices': 3,

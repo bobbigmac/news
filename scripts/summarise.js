@@ -178,20 +178,44 @@ function makeStoryData(s) {
 
 function normaliseCategory(raw) {
   const cat = Array.isArray(raw) ? raw.join(' ') : (raw || 'general');
-  const lower = cat.toLowerCase();
-  // Gaming must be checked BEFORE technology — gaming stories are often
-  // mislabelled as "Technology" by the LLM, but they're a distinct category.
+  const lower = cat.toLowerCase().trim();
+  // Direct match against our known categories (case-insensitive)
+  const knownCategories = [
+    'politics', 'business', 'technology', 'science', 'health', 'world',
+    'sport', 'sports', 'gaming', 'entertainment', 'celebrity',
+    'environment', 'energy', 'disaster', 'defence', 'defense',
+    'crime', 'local', 'education', 'motoring', 'personal finance',
+    'royal', 'other', 'general', 'regional',
+  ];
+  if (knownCategories.includes(lower)) {
+    // Normalise plural and variants
+    if (lower === 'sports') return 'sport';
+    if (lower === 'defense') return 'defence';
+    if (lower === 'general') return 'other';
+    if (lower === 'regional') return 'local';
+    return lower;
+  }
+  // Fuzzy match for common variants
   if (/gaming|game|console|xbox|playstation|nintendo|steam|video game|esports|mmorpg|rpg|fps/.test(lower)) return 'gaming';
-  if (/sport|football|cricket|rugby|tennis|olympic/.test(lower)) return 'sports';
+  if (/sport|football|cricket|rugby|tennis|olympic/.test(lower)) return 'sport';
   if (/politic|election|government|parliament|minister/.test(lower)) return 'politics';
   if (/business|finance|economy|market|bank|trade/.test(lower)) return 'business';
-  // Technology = hardware, software, AI, processors — NOT gaming (gaming is above)
   if (/tech|ai|software|digital|cyber|internet|processor|chip|cpu|gpu|semiconductor/.test(lower)) return 'technology';
   if (/health|medical|disease|hospital|drug|vaccine/.test(lower)) return 'health';
-  if (/science|space|research|climate|environment/.test(lower)) return 'science';
-  if (/entertainment|celebrity|film|music|tv|television/.test(lower)) return 'entertainment';
-  if (/local|regional|wales|scotland|ireland|manchester|london/.test(lower)) return 'regional';
-  return 'general';
+  if (/science|space|research/.test(lower)) return 'science';
+  if (/environment|climate|wildlife|pollution/.test(lower)) return 'environment';
+  if (/energy|power plant|gas plant|renewable|nuclear|oil|solar|wind/.test(lower)) return 'energy';
+  if (/disaster|flood|earthquake|tsunami|eruption|emergency/.test(lower)) return 'disaster';
+  if (/defence|defense|military|armed forces|army|navy|air force/.test(lower)) return 'defence';
+  if (/crime|criminal|arrest|prison|court|police|justice/.test(lower)) return 'crime';
+  if (/entertainment|film|music|tv|television|cinema|festival|book/.test(lower)) return 'entertainment';
+  if (/celebrity|influencer|gossip|star/.test(lower)) return 'celebrity';
+  if (/local|regional|council|community|neighborhood|neighbourhood/.test(lower)) return 'local';
+  if (/education|school|university|student|curriculum/.test(lower)) return 'education';
+  if (/motoring|car|vehicle|driving|ev /.test(lower)) return 'motoring';
+  if (/personal finance|mortgage|savings|pension|money/.test(lower)) return 'personal finance';
+  if (/royal|monarchy|monarch|king|queen|prince|princess/.test(lower)) return 'royal';
+  return 'other';
 }
 
 function extractKeywords(text) {
@@ -786,9 +810,13 @@ async function main() {
         const responseText = await callLLM(prompt);
         const cleaned = stripMarkdownFences(responseText).trim();
         const parsed = JSON.parse(cleaned);
-        if (Array.isArray(parsed)) {
+        // The response is a JSON object with a "clusters" array (OpenRouter's
+        // json_object mode can't return a bare array). Also handle bare arrays
+        // for robustness in case the LLM ignores the wrapper.
+        const results = Array.isArray(parsed) ? parsed : (parsed.clusters || parsed.data || parsed.results || []);
+        if (Array.isArray(results) && results.length > 0) {
           // Match responses to clusters by id
-          const byId = new Map(parsed.map(p => [p.id, p]));
+          const byId = new Map(results.map(p => [p.id, p]));
           for (const b of batch) {
             const result = byId.get(b.cluster.id);
             if (!applySummaryToCluster(b.cluster, result, null)) {
@@ -798,7 +826,7 @@ async function main() {
             }
           }
         } else {
-          console.log(`  Batch: response was not an array — using fallback for all`);
+          console.log(`  Batch: response had no cluster array — using fallback for all`);
           llmFailed++;
           for (const b of batch) applyFallbackToCluster(b.cluster, b.prepared);
         }

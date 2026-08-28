@@ -21,9 +21,26 @@ Editorial style:
 Output:
 1. "headline" — 8 words max, factual, no question marks.
 2. "summary" — 30-60 words, block text, key facts only. Do not repeat the headline.
-3. "category" — one of: Politics, Business, Technology, Science, Health, World, Sports, Gaming, Entertainment, Environment, Regional, Other. Use Gaming for video games, consoles, game releases, esports, game industry news. Use Technology for hardware, software, AI, processors, tech industry — NOT gaming. Use Entertainment for film, TV, music, celebrity — NOT gaming.
+3. "category" — one of: Politics, Business, Technology, Science, Health, World, Sport, Gaming, Entertainment, Celebrity, Environment, Energy, Disaster, Defence, Crime, Local, Education, Motoring, Personal Finance, Royal, Other.
+   - Gaming: video games, consoles, game releases, esports, game industry
+   - Technology: hardware, software, AI, processors, tech industry — NOT gaming
+   - Celebrity: gossip about famous people, influencers, reality TV stars — NOT film/TV/music reviews
+   - Entertainment: film, TV, music, books, festivals, arts — the work itself, not gossip
+   - Sport: all sports — football, cricket, rugby, tennis, cycling, etc.
+   - Crime: crime, courts, policing, justice — NOT government policy
+   - Politics: government, elections, parliament, policy — NOT court rulings
+   - Business: companies, finance, markets, trade, deals — NOT personal money advice
+   - Personal Finance: mortgages, savings, pensions, consumer money — NOT corporate finance
+   - Energy: power generation, oil, gas, renewables, energy policy
+   - Disaster: floods, earthquakes, accidents, emergencies — NOT climate policy
+   - Defence: military, armed forces, security — NOT politics
+   - Local: hyperlocal community news, council, planning, schools — NOT national politics
+   - Education: schools, universities, curriculum, students — NOT school policy debates
+   - Motoring: cars, EVs, transport, vehicle reviews
+   - Royal: monarchy, royal family, aristocracy
+   - Environment: climate, wildlife, pollution, natural world — NOT disasters
 4. "region" — the geographic scope of the story. Use a place name if the story is tied to a specific location (e.g. "Manchester", "London", "Bangkok", "Gaza"). Use "UK" for national British stories with no specific locality. Use "International" for cross-border or non-UK stories. Use "Global" for worldwide-scope stories (climate, pandemics).
-5. "trigger_words" — 1-5 specific words that identify this topic (e.g. "Kabul", "Widdecombe").
+5. "trigger_words" — 1-5 SPECIFIC words that uniquely identify this topic. Use proper nouns, specific places, named entities, or distinctive terms (e.g. "Kabul", "Widdecombe", "GTA 6", "Ofsted"). Do NOT use generic words like "house", "buy", "ready", "game", "team", "said" — these match millions of stories and are useless for identification.
 6. "impact" — "low" (local/minor), "medium" (sector/group level), or "high" (broad societal/national consequence).
 
 Respond with JSON:
@@ -103,7 +120,7 @@ export function buildSummaryPrompt(stories, existing) {
     ? `\n--- EXISTING CLUSTER BEING UPDATED ---\nCurrent headline: ${existing.headline}\nCurrent summary: ${(existing.summary || '(none)').slice(0, 300)}\n--- END EXISTING CLUSTER ---\n\nThese stories are developments of an existing news cluster. Write an updated headline and summary that reflects the CURRENT state of the story incorporating all developments shown below. The reader sees only the latest version.\n`
     : '';
 
-  return `${ctx}These ${stories.length} stor${stories.length === 1 ? 'y' : 'ies'} ${stories.length === 1 ? 'is' : 'are'} about a single news event. Write one headline and one summary that captures the story across all the sources below.\n${freshness}\n${lines}\n\nRespond ONLY with valid JSON in this exact format:\n{\n  "headline": "Short factual headline (max 8 words)",\n  "summary": "30-60 words of block text facts",\n  "category": "Politics|Business|Technology|Science|Health|World|Sports|Gaming|Entertainment|Environment|Regional|Other",\n  "region": "Manchester|London|UK|International|Global",\n  "impact": "low|medium|high",\n  "trigger_words": ["specific", "unique", "words"]\n}`;
+  return `${ctx}These ${stories.length} stor${stories.length === 1 ? 'y' : 'ies'} ${stories.length === 1 ? 'is' : 'are'} about a single news event. Write one headline and one summary that captures the story across all the sources below.\n${freshness}\n${lines}\n\nRespond ONLY with valid JSON in this exact format:\n{\n  "headline": "Short factual headline (max 8 words)",\n  "summary": "30-60 words of block text facts",\n  "category": "Politics|Business|Technology|Science|Health|World|Sport|Gaming|Entertainment|Celebrity|Environment|Energy|Disaster|Defence|Crime|Local|Education|Motoring|Personal Finance|Royal|Other",\n  "region": "Manchester|London|UK|International|Global",\n  "impact": "low|medium|high",\n  "trigger_words": ["specific", "unique", "proper nouns"]\n}`;
 }
 
 // Batch prompt for multiple small new clusters in a single LLM call.
@@ -120,5 +137,7 @@ export function buildBatchPrompt(clusters) {
     return `=== CLUSTER ${i + 1} (id: ${c.id}) ===\n${freshness}\n${lines}`;
   }).join('\n\n');
 
-  return `You are summarising ${clusters.length} separate news clusters. Each cluster below is a distinct news event — do NOT merge them. For EACH cluster, write one headline and one summary.\n\n${entries}\n\nRespond ONLY with a valid JSON array, one object per cluster, in the same order:\n[\n  {\n    "id": "${clusters[0]?.id}",\n    "headline": "Short factual headline (max 8 words)",\n    "summary": "30-60 words of block text facts",\n    "category": "Politics|Business|Technology|Science|Health|World|Sports|Gaming|Entertainment|Environment|Regional|Other",\n    "region": "Manchester|London|UK|International|Global",\n    "impact": "low|medium|high",\n    "trigger_words": ["specific", "unique", "words"]\n  }\n]\n\nThe "id" field must match the cluster id given above. Write one array entry per cluster, in order.`;
+  const exampleIds = clusters.map(c => `"${c.id}"`).join(', ');
+
+  return `You are summarising ${clusters.length} separate news clusters. Each cluster below is a distinct news event — do NOT merge them. For EACH cluster, write one headline and one summary.\n\n${entries}\n\nRespond ONLY with valid JSON in this exact format (a JSON object with a "clusters" array, one entry per cluster, in the same order as above):\n{\n  "clusters": [\n    {\n      "id": "${clusters[0]?.id}",\n      "headline": "Short factual headline (max 8 words)",\n      "summary": "30-60 words of block text facts",\n      "category": "Politics|Business|Technology|Science|Health|World|Sport|Gaming|Entertainment|Celebrity|Environment|Energy|Disaster|Defence|Crime|Local|Education|Motoring|Personal Finance|Royal|Other",\n      "region": "Manchester|London|UK|International|Global",\n      "impact": "low|medium|high",\n      "trigger_words": ["specific", "unique", "proper nouns"]\n    }\n  ]\n}\n\nThe "id" field must match the cluster id given above. Write exactly ${clusters.length} entries in the clusters array, one per cluster, in order. Expected ids: ${exampleIds}.`;
 }
