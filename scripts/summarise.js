@@ -18,6 +18,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import { SYSTEM_PROMPT, buildSummaryPrompt } from './prompts.js';
+import { TOPIC_SYSTEM_PROMPT, buildTopicPrompt } from './topic-prompt.js';
 import { extractJson } from './extract-json.js';
 import { embedStories, cosineSim, centroid } from './embeddings.js';
 import { dedupStories, clusterEvents, matchToExisting } from './cluster.js';
@@ -374,6 +375,148 @@ async function callLLM(prompt) {
   throw lastError || new Error(`${PROVIDER.name}: all retries exhausted`);
 }
 
+// Merge embedding clusters that share a topic slug. Stories with the same
+// slug are about the same topic (per the LLM), so their clusters should be
+// merged even if embedding similarity was below the clustering threshold.
+// Also stores the slug on each story for future reference.
+function mergeGroupsBySlug(groups, topicSlugs) {
+  if (!topicSlugs || Object.keys(topicSlugs).length === 0) return groups;
+
+  // Tag each story with its slug
+  for (const group of groups) {
+    for (const story of group) {
+      story._topicSlug = topicSlugs[story.id] || null;
+    }
+  }
+
+  // Group clusters by shared slug
+  const bySlug = new Map(); // slug -> array of group indices
+  const noSlug = []; // groups with no slug (keep as-is)
+
+  groups.forEach((group, i) => {
+    const slugsInGroup = new Set(
+      group.map(s => s._topicSlug).filter(Boolean)
+    );
+    if (slugsInGroup.size === 0) {
+      noSlug.push(i);
+      return;
+    }
+    // If a group has multiple slugs (shouldn't happen often), use the first
+    const slug = [...slugsInGroup][0];
+    if (!bySlug.has(slug)) bySlug.set(slug, []);
+    bySlug.get(slug).push(i);
+  });
+
+  // Merge groups that share a slug
+  const merged = [];
+  const used = new Set();
+
+  for (const [slug, indices] of bySlug) {
+    if (indices.length <= 1) {
+      // Only one group has this slug — keep as-is
+      for (const i of indices) {
+        if (!used.has(i)) { used.add(i); merged.push(groups[i]); }
+      }
+      continue;
+    }
+    // Merge all groups with this slug
+    const combined = [];
+    const seen = new Set();
+    for (const i of indices) {
+      used.add(i);
+      for (const s of groups[i]) {
+        if (!seen.has(s.id)) { seen.add(s.id); combined.push(s); }
+      }
+    }
+    console.log(`  Topic merge: "${slug}" merged ${indices.length} groups -> ${combined.length} stories`);
+    merged.push(combined);
+  }
+
+  // Add groups with no slug
+  for (const i of noSlug) {
+    if (!used.has(i)) { used.add(i); merged.push(groups[i]); }
+  }
+
+  return merged;
+}
+
+// --- Topic slug assignment (preflight categorisation) ---
+// One LLM call per run: takes all new story headlines and assigns each a
+// topic slug (e.g. "gta-6", "phillies"). Stories with the same slug are
+// forced into the same embedding cluster, catching same-topic-different-angle
+// stories that embedding similarity alone would miss. Falls back gracefully
+// (no slugs = embedding-only clustering, same as before).
+async function assignTopicSlugs(stories) {
+  if (stories.length < 2) return {};
+  try {
+    const compact = stories.map(s => ({ id: s.id, title: s.title || s.originalTitle || '' }));
+    const prompt = buildTopicPrompt(compact);
+    const responseText = await callLLMTopic(prompt);
+    const cleaned = stripMarkdownFences(responseText).trim();
+    const parsed = JSON.parse(cleaned);
+    // Validate: must be an object mapping string -> string
+    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+      const slugs = {};
+      let multiSlugCount = 0;
+      const slugCounts = {};
+      for (const [id, slug] of Object.entries(parsed)) {
+        if (typeof slug === 'string' && slug.length > 0) {
+          slugs[id] = slug;
+          slugCounts[slug] = (slugCounts[slug] || 0) + 1;
+        }
+      }
+      for (const count of Object.values(slugCounts)) {
+        if (count > 1) multiSlugCount++;
+      }
+      console.log(`Topic slugs: ${Object.keys(slugCounts).length} unique slugs, ${multiSlugCount} multi-story groups`);
+      return slugs;
+    }
+  } catch (e) {
+    console.log(`Topic slug assignment failed (${e.message?.slice(0, 80)}) — falling back to embedding-only clustering`);
+  }
+  return {};
+}
+
+// Separate callLLM for topic assignment — uses the topic system prompt and
+// lower temperature for more deterministic slug assignment.
+async function callLLMTopic(prompt) {
+  const queue = buildModelQueue();
+  for (let qi = 0; qi < queue.length + MAX_RETRIES; qi++) {
+    const modelToTry = queue[qi % queue.length];
+    if (qi >= queue.length) {
+      const delay = Math.min(BASE_DELAY_MS * Math.pow(1.5, qi - queue.length), MAX_DELAY_MS);
+      await new Promise(r => setTimeout(r, delay));
+    }
+    try {
+      const res = await fetch(`${LLM_BASE}/chat/completions`, {
+        method: 'POST',
+        headers: { ...PROVIDER.headers(API_KEY), 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: modelToTry,
+          messages: [{ role: 'system', content: TOPIC_SYSTEM_PROMPT }, { role: 'user', content: prompt }],
+          temperature: 0.2,
+          response_format: { type: 'json_object' },
+        }),
+      });
+      if (!res.ok) {
+        if (res.status === 429 || res.status === 503 || res.status === 502) continue;
+        throw new Error(`${PROVIDER.name} HTTP ${res.status}`);
+      }
+      const data = await res.json();
+      const usedModel = data.model || modelToTry;
+      const text = data.choices?.[0]?.message?.content;
+      if (isPaidModel(usedModel) || hasCost(data.usage)) throw new Error('Paid model blocked');
+      if (!text) continue;
+      if (usedModel !== modelToTry) rememberGoodModel(usedModel);
+      else if (modelToTry !== 'openrouter/free') rememberGoodModel(modelToTry);
+      return stripMarkdownFences(text);
+    } catch (e) {
+      if (qi >= queue.length + MAX_RETRIES - 1) throw e;
+    }
+  }
+  throw new Error('Topic slug LLM call exhausted');
+}
+
 function loadExistingDigest() {
   return loadJson(DIGEST_FILE, { date: new Date().toISOString().split('T')[0], clusters: [] });
 }
@@ -504,8 +647,16 @@ async function main() {
     return all;
   });
 
+  // --- Topic slug merge (LLM preflight) ---
+  // Assign topic slugs to all new stories, then merge embedding clusters
+  // that share a slug. This catches same-topic-different-angle stories
+  // (e.g. GTA 6 frame rate + GTA 6 first person + GTA 6 console comparison)
+  // that embedding similarity alone would leave as separate clusters.
+  const topicSlugs = await assignTopicSlugs(filtered);
+  const mergedGroups = mergeGroupsBySlug(expandedGroups, topicSlugs);
+
   // --- Match to existing clusters ---
-  const assignments = matchToExisting(expandedGroups, digest.clusters, embeddings);
+  const assignments = matchToExisting(mergedGroups, digest.clusters, embeddings);
 
   // --- Summarise each cluster (one LLM call each) ---
   let totalAdded = 0;
@@ -522,8 +673,12 @@ async function main() {
       const added = mergeIntoCluster(existingCluster, prepared);
       totalAdded += added;
       totalUpdated++;
+      // Update topic slug if new stories have one
+      const newSlug = stories.find(s => s._topicSlug)?._topicSlug;
+      if (newSlug && !existingCluster.topicSlug) existingCluster.topicSlug = newSlug;
       console.log(`\n[${i + 1}/${assignments.length}] update: ${existingCluster.headline?.slice(0, 60)} (+${added} new)`);
     } else {
+      const newSlug = stories.find(s => s._topicSlug)?._topicSlug;
       const newCluster = {
         id: `cluster-${Date.now()}-${Math.random().toString(36).substring(2, 8)}`,
         headline: prepared[0].originalTitle || 'Untitled',
@@ -532,6 +687,7 @@ async function main() {
         stories: prepared.map(makeStoryData),
         triggerWords: [],
         impact: 'medium',
+        topicSlug: newSlug || null,
         created: new Date().toISOString(),
         updated: new Date().toISOString(),
         contentVersion: 1,

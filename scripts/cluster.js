@@ -130,6 +130,18 @@ export function matchToExisting(newGroups, existingClusters, embeddings) {
       }
     }
 
+    // Topic slug match: if the new group has a slug that matches an existing
+    // cluster's topicSlug, merge them even if embedding similarity is below
+    // SIM_MATCH. The LLM already determined they're the same topic.
+    const groupSlug = group.find(s => s._topicSlug)?._topicSlug;
+    if (groupSlug && (!best || bestScore < SIM_MATCH)) {
+      const slugMatch = existingClusters.find(c => c.topicSlug === groupSlug);
+      if (slugMatch) {
+        assignments.push({ stories: group, existingCluster: slugMatch, score: bestScore, slugMatched: true });
+        continue;
+      }
+    }
+
     if (best && bestScore >= SIM_MATCH) {
       assignments.push({ stories: group, existingCluster: best, score: bestScore });
     } else {

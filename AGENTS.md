@@ -73,22 +73,31 @@ the free LLM failed constantly and the fallback fragmented everything.
    cosine sim >= 0.65 to be neighbours). minPts=1 so singletons become their own group
    (no story is ever dropped). Threshold tuned on the 30-day story store: 0.65 catches
    all confirmed same-event pairs without false merges. See `scripts/cluster.js`.
-5. **Match to existing clusters** — each new event group is compared to existing digest
+5. **Topic slug merge** (LLM preflight, one call per run) — all new story headlines are
+   sent to the LLM in a single call, which assigns each a deterministic topic slug
+   (e.g. "gta-6", "phillies", "gamescom-2026"). Embedding clusters that share a slug
+   are merged, catching same-topic-different-angle stories (e.g. GTA 6 frame rate +
+   GTA 6 first person + GTA 6 console comparison) that embedding similarity alone
+   misses. Falls back gracefully to embedding-only clustering if the LLM call fails.
+   See `scripts/topic-prompt.js`. Nemotron Super 120B excels at this task.
+6. **Match to existing clusters** — each new event group is compared to existing digest
    clusters by centroid similarity. If >= 0.62, the new stories merge into the existing
-   cluster (living cluster that accumulates developments across runs). Otherwise a new
-   cluster is created. See `scripts/cluster.js`.
-6. **LLM summary** — one LLM call per cluster to write headline + summary + impact +
+   cluster (living cluster that accumulates developments across runs). Also matches by
+   topic slug: if the new group's slug matches an existing cluster's `topicSlug`, they
+   merge even if embedding similarity is below threshold. Otherwise a new cluster is
+   created. See `scripts/cluster.js`.
+7. **LLM summary** — one LLM call per cluster to write headline + summary + impact +
    trigger words + region. The LLM only writes copy for an already-formed cluster — it
    never groups. A failed call degrades only that cluster's text (heuristic fallback uses
    the lead story's title/content). See `scripts/prompts.js` (`buildSummaryPrompt`).
-7. **Annotate** — entities (compromise NER: people/places/orgs, `scripts/entities.js`),
+8. **Annotate** — entities (compromise NER: people/places/orgs, `scripts/entities.js`),
    tags (TF-IDF over compromise nouns/topics, `scripts/tags.js`), lifecycle fields
    (`active` flag based on lastPublished within 48h — NOT pipeline touch time,
    `storyCount`, `firstPublished`/`lastPublished`, stories sorted as a timeline),
    per-story enrichment (`bodyText`, `wordCount`, `storyType` — see
    `scripts/story-enrich.js`), and expiry (clusters with all stories >30 days
    old are removed from the digest — they're dead news, not current events).
-8. Persist `digest.json` + `run-log.json` + `summarised-ids.json` + `embeddings.json`.
+9. Persist `digest.json` + `run-log.json` + `summarised-ids.json` + `embeddings.json`.
 
 **Publish flow** (build.js):
 - Backfills missing fields on old clusters (triggerWords, impact, contentVersion, category
