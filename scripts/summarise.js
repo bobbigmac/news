@@ -155,6 +155,27 @@ function extractKeywords(text) {
 
 // --- LLM call (with retry/backoff + free-router bad-model handling) ---
 
+// --- Paid-model safeguard ---
+// The $10 OpenRouter credit is a daily-limit unlock, NOT spendable budget.
+// We must NEVER call paid models. The free router should only pick :free
+// models, but if it ever routes to a paid model (bug, config change, etc.)
+// we reject the response immediately and retry. We also check the usage
+// object for any non-zero cost as a belt-and-braces check.
+function isPaidModel(modelId) {
+  // Free models on OpenRouter always end with ':free'.
+  return !modelId || !modelId.endsWith(':free');
+}
+
+function hasCost(usage) {
+  if (!usage) return false;
+  // OpenRouter returns cost in USD as a number (e.g. 0.0001).
+  // Any non-zero cost means we spent real money.
+  const cost = typeof usage.cost === 'number' ? usage.cost
+    : typeof usage.total_cost === 'number' ? usage.total_cost
+    : 0;
+  return cost > 0;
+}
+
 // Models in the openrouter/free pool that are not chat completion models.
 // The free router picks randomly and doesn't support exclusions, so we detect
 // these by their output and retry to get a different model.
@@ -228,6 +249,21 @@ async function callLLM(prompt) {
       const data = await res.json();
       const usedModel = data.model || '';
       const text = data.choices?.[0]?.message?.content;
+
+      // Paid-model safeguard: reject immediately if the router picked a paid
+      // model or the response has any cost. This must never spend the credit.
+      if (isPaidModel(usedModel)) {
+        lastError = new Error(`PAID MODEL BLOCKED: ${usedModel} is not a :free model — refusing to spend credit`);
+        console.error(`  ${lastError.message}`);
+        // Don't retry — if the router is sending paid models, retrying won't
+        // help. Fail this cluster and let the fallback handle it.
+        throw lastError;
+      }
+      if (hasCost(data.usage)) {
+        lastError = new Error(`PAID USAGE BLOCKED: response from ${usedModel} has non-zero cost (${data.usage.cost || data.usage.total_cost})`);
+        console.error(`  ${lastError.message}`);
+        throw lastError;
+      }
 
       // Detect content-safety classifier models by their ID or output.
       if (BAD_MODEL_IDS.has(usedModel)) {

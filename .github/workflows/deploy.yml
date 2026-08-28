@@ -9,7 +9,12 @@ on:
       - 'package.json'
       - 'package-lock.json'
   schedule:
-    - cron: '23 6,12,18 * * *'
+    # 3 runs/day timed to story publish peaks (from 30-day publish-time analysis):
+    # 07:23 — catches overnight + early morning filings (peak hour is 08:00 London)
+    # 13:23 — lunchtime update (midday filings, secondary publish window 12:00-15:00)
+    # 19:23 — evening wrap (afternoon/evening filings before the 03:00-05:00 dead zone)
+    # Total: 4 Currents calls/run × 3 runs = 12/day (8 under the 20 free-plan limit)
+    - cron: '23 7,13,19 * * *'
       timezone: "Europe/London"
   workflow_dispatch:
 

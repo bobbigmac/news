@@ -3,7 +3,9 @@
 ## Currents API Quota — Critical Constraints
 
 - **Daily quota: 20 API calls** (free plan). Exceeding returns HTTP 429.
-- **3 scheduled runs per day** (cron: 6:23, 12:23, 18:23 London time).
+- **3 scheduled runs per day** (cron: 7:23, 13:23, 19:23 London time).
+  Timed to story publish peaks from a 30-day publish-time analysis: 08:00 is the
+  busiest hour, with a secondary plateau 14:00-17:00 and a dead zone 03:00-05:00.
 - **2 fixed calls per run**: `latest-news?language=en` (general) + `latest-news?language=en&country=gb` (GB).
 - **2 plugin calls per run**: 1 call per plugin, 1 keyword per call.
 - **Total: 4 calls/run × 3 runs = 12/day** — safely under 20.
@@ -150,6 +152,12 @@ eyeballing the multi-story groups for false merges.
 - **OpenRouter free router** (`openrouter/free`) randomly picks from available free
   models. The router classifies the request type and filters for models that support
   the needed features (JSON mode, etc). It does NOT support `excluded_models`.
+- **Paid-model safeguard** (critical): the $10 OpenRouter credit is a daily-limit
+  unlock, NOT spendable budget. `callLLM` rejects any response where the model ID
+  doesn't end with `:free` or where `usage.cost` is non-zero. If a paid model is
+  detected, the call throws immediately (no retry) and the cluster falls back to
+  heuristic copy. This ensures we can NEVER spend the credit accidentally. See
+  `isPaidModel` / `hasCost` in `scripts/summarise.js`.
 - **Prompt framing matters for the free router.** The original system prompt was
   dominated by "NEVER do X" rules and "strictly enforced" language, which made the
   router's task classifier think the request was content moderation / safety
