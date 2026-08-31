@@ -243,6 +243,7 @@ let readHoveredClusterId = null;
 let readLastActiveId = null; // the single article we're currently accumulating for
 let readCursorX = 0;
 let readCursorY = 0;
+let readActive = true; // false when cursor leaves container or tab is hidden
 
 function initReadInteraction() {
   const sheet = document.getElementById('broadsheet');
@@ -255,8 +256,19 @@ function initReadInteraction() {
   sheet.addEventListener('mousemove', (e) => {
     readCursorX = e.clientX;
     readCursorY = e.clientY;
+    readActive = true;
   });
-  sheet.addEventListener('mouseleave', () => { readHoveredClusterId = null; });
+  sheet.addEventListener('mouseleave', () => { readHoveredClusterId = null; readActive = false; });
+  sheet.addEventListener('mouseenter', () => { readActive = true; });
+
+  // Pause when tab is hidden (user switched away)
+  document.addEventListener('visibilitychange', () => {
+    readActive = !document.hidden;
+    if (!readActive) {
+      // Reset all lastTs so there's no time jump on return
+      for (const p of readProgress.values()) p.lastTs = null;
+    }
+  });
 
   // Single click listener — clicking any link marks the article read
   sheet.addEventListener('click', (e) => {
@@ -350,6 +362,13 @@ function readRafLoop() {
 
   const now = performance.now();
   const mode = currentSettings.markRead;
+
+  if (!readActive) {
+    // Cursor left container or tab hidden — pause all timers, no accumulation
+    for (const p of readProgress.values()) p.lastTs = null;
+    readRafId = requestAnimationFrame(readRafLoop);
+    return;
+  }
 
   if (mode === 'focus') {
     // Focus circle: multiple articles accumulate with distance-based falloff from cursor.
