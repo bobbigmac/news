@@ -16,7 +16,8 @@ const DEFAULT_SETTINGS = {
   watchWords: '',
   expandAll: false,
   showUpdated: false,
-  theme: 'auto'
+  theme: 'auto',
+  markRead: 'off'
 };
 
 const THEME_OPTIONS = [
@@ -68,6 +69,13 @@ const AGE_OPTIONS = [
   { value: '7', label: '7 days' },
   { value: '30', label: '30 days' },
   { value: '60', label: '60 days' },
+];
+
+const MARK_READ_OPTIONS = [
+  { value: 'off', label: 'Off' },
+  { value: 'hover', label: 'Hover' },
+  { value: 'focus', label: 'Focus' },
+  { value: 'turbo', label: 'Turbo' },
 ];
 
 function loadSettings() {
@@ -213,6 +221,217 @@ function isClusterUpdatedSinceRead(cluster) {
 function markClusterRead(cluster) {
   readState[cluster.id] = { contentVersion: cluster.contentVersion || 1, at: Date.now() };
   saveReadState();
+}
+
+// --- Read tracking (viewport dwell timer) ---
+// Single IntersectionObserver + single rAF loop — no per-tile handlers.
+// Modes:
+//   hover — only the tile under the cursor accumulates (2s)
+//   focus — multiple tiles around cursor accumulate with distance falloff (2s)
+//   turbo — auto-selects closest tile to viewport top-center (2s)
+// Counter is non-cumulative: resets when active article(s) change.
+// Clicking a link marks read instantly.
+// The top border fills left-to-right as a progress indicator.
+
+const READ_THRESHOLDS = { hover: 2000, focus: 2000, turbo: 2000 }; // ms of dwell needed
+const FOCUS_MAX_RADIUS = 500; // px — articles beyond this get zero rate
+let readObserver = null;
+let readRafId = null;
+let readProgress = new Map(); // clusterId -> { progress, lastTs, articleEl, cluster }
+let readVisible = new Set(); // clusterIds with headline fully in viewport
+let readHoveredClusterId = null;
+let readLastActiveId = null; // the single article we're currently accumulating for
+let readCursorX = 0;
+let readCursorY = 0;
+
+function initReadInteraction() {
+  const sheet = document.getElementById('broadsheet');
+
+  // Single mouseover listener — tracks which article the cursor is over
+  sheet.addEventListener('mouseover', (e) => {
+    const article = e.target.closest('.article');
+    readHoveredClusterId = article?.dataset?.clusterId || null;
+  });
+  sheet.addEventListener('mousemove', (e) => {
+    readCursorX = e.clientX;
+    readCursorY = e.clientY;
+  });
+  sheet.addEventListener('mouseleave', () => { readHoveredClusterId = null; });
+
+  // Single click listener — clicking any link marks the article read
+  sheet.addEventListener('click', (e) => {
+    if (!e.target.closest('a')) return;
+    const article = e.target.closest('.article');
+    if (!article?.dataset?.clusterId) return;
+    const cluster = currentDigest?.clusters?.find(c => c.id === article.dataset.clusterId);
+    if (cluster) markClusterRead(cluster);
+    article.classList.add('is-read');
+    article.style.setProperty('--read-progress', 1);
+  });
+}
+
+function refreshReadObserver() {
+  if (readObserver) readObserver.disconnect();
+  readProgress.clear();
+  readVisible.clear();
+
+  if (currentSettings.markRead === 'off') {
+    if (readRafId) { cancelAnimationFrame(readRafId); readRafId = null; }
+    return;
+  }
+
+  readObserver = new IntersectionObserver((entries) => {
+    for (const ent of entries) {
+      const article = ent.target.closest('.article');
+      if (!article) continue;
+      const clusterId = article.dataset.clusterId;
+      if (!clusterId) continue;
+
+      if (ent.isIntersecting && ent.intersectionRatio >= 0.9) {
+        readVisible.add(clusterId);
+        if (!readProgress.has(clusterId)) {
+          const cluster = currentDigest?.clusters?.find(c => c.id === clusterId);
+          readProgress.set(clusterId, { progress: 0, lastTs: null, articleEl: article, cluster });
+        }
+      } else {
+        readVisible.delete(clusterId);
+        const p = readProgress.get(clusterId);
+        if (p) {
+          p.lastTs = null;
+          p.progress = 0;
+          p.articleEl.style.setProperty('--read-progress', 0);
+        }
+      }
+    }
+    if (readVisible.size > 0 && !readRafId) readRafLoop();
+  }, { threshold: [0, 0.9] });
+
+  document.querySelectorAll('.article .article-headline').forEach(h => {
+    readObserver.observe(h);
+  });
+}
+
+function pickActiveArticle() {
+  // Hover mode: only accumulate for the article the cursor is over
+  if (currentSettings.markRead === 'hover') {
+    if (readHoveredClusterId && readVisible.has(readHoveredClusterId)) {
+      return readHoveredClusterId;
+    }
+    return null;
+  }
+  // Turbo: prefer the article the mouse is over, if it's in viewport
+  if (readHoveredClusterId && readVisible.has(readHoveredClusterId)) {
+    return readHoveredClusterId;
+  }
+  // Otherwise pick the visible article closest to viewport top-center
+  let bestId = null;
+  let bestDist = Infinity;
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  for (const clusterId of readVisible) {
+    const p = readProgress.get(clusterId);
+    if (!p || p.articleEl.classList.contains('is-read')) continue;
+    const r = p.articleEl.querySelector('.article-headline')?.getBoundingClientRect();
+    if (!r) continue;
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+    const dist = Math.hypot(cx - vw / 2, cy - vh * 0.3);
+    if (dist < bestDist) { bestDist = dist; bestId = clusterId; }
+  }
+  return bestId;
+}
+
+function readRafLoop() {
+  const threshold = READ_THRESHOLDS[currentSettings.markRead] || 0;
+  if (threshold === 0 || readVisible.size === 0) {
+    readRafId = null;
+    return;
+  }
+
+  const now = performance.now();
+  const mode = currentSettings.markRead;
+
+  if (mode === 'focus') {
+    // Focus circle: multiple articles accumulate with distance-based falloff from cursor.
+    // Reset all when hovered article changes (cursor moved to a new area).
+    if (readLastActiveId !== readHoveredClusterId) {
+      for (const id of readVisible) {
+        const p = readProgress.get(id);
+        if (p) {
+          p.lastTs = null;
+          p.progress = 0;
+          p.articleEl.style.setProperty('--read-progress', 0);
+        }
+      }
+      readLastActiveId = readHoveredClusterId;
+    }
+
+    for (const clusterId of readVisible) {
+      const p = readProgress.get(clusterId);
+      if (!p || p.articleEl.classList.contains('is-read')) continue;
+
+      if (p.lastTs !== null) {
+        const r = p.articleEl.querySelector('.article-headline')?.getBoundingClientRect();
+        if (!r) { p.lastTs = now; continue; }
+
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        const dist = Math.hypot(cx - readCursorX, cy - readCursorY);
+        const rate = Math.max(0, 1 - dist / FOCUS_MAX_RADIUS);
+
+        if (rate <= 0) { p.lastTs = now; continue; }
+
+        let delta = (now - p.lastTs) * rate;
+        p.progress += delta;
+
+        const ratio = Math.min(1, p.progress / threshold);
+        p.articleEl.style.setProperty('--read-progress', ratio);
+
+        if (p.progress >= threshold) {
+          markClusterRead(p.cluster);
+          p.articleEl.classList.add('is-read');
+          readVisible.delete(clusterId);
+        }
+      }
+      p.lastTs = now;
+    }
+  } else {
+    // Hover / Turbo: single active article
+    const activeId = pickActiveArticle();
+
+    // Reset the previously active article — non-cumulative, per-view only
+    if (readLastActiveId && readLastActiveId !== activeId) {
+      const prevP = readProgress.get(readLastActiveId);
+      if (prevP) {
+        prevP.lastTs = null;
+        prevP.progress = 0;
+        prevP.articleEl.style.setProperty('--read-progress', 0);
+      }
+    }
+    readLastActiveId = activeId;
+
+    if (activeId) {
+      const p = readProgress.get(activeId);
+      if (p && !p.articleEl.classList.contains('is-read')) {
+        if (p.lastTs !== null) {
+          let delta = now - p.lastTs;
+          p.progress += delta;
+
+          const ratio = Math.min(1, p.progress / threshold);
+          p.articleEl.style.setProperty('--read-progress', ratio);
+
+          if (p.progress >= threshold) {
+            markClusterRead(p.cluster);
+            p.articleEl.classList.add('is-read');
+            readVisible.delete(activeId);
+          }
+        }
+        p.lastTs = now;
+      }
+    }
+  }
+
+  readRafId = requestAnimationFrame(readRafLoop);
 }
 
 // --- Interest signals (Steam discovery queue style) ---
@@ -809,6 +1028,7 @@ function renderDigest(digest, settings) {
   }
   sheet.appendChild(fragment);
   initMasonry();
+  refreshReadObserver();
 }
 
 const SEARCH_HISTORY_KEY = 'broadsheet-search-history';
@@ -950,6 +1170,7 @@ function initSettings() {
   const expandAllCheck = document.getElementById('setting-expandall');
   const showUpdatedCheck = document.getElementById('setting-showupdated');
   const watchWordsInput = document.getElementById('setting-watchwords');
+  const markReadBtn = document.getElementById('setting-markread');
 
   function syncControls() {
     const fontTheme = FONT_THEMES.find(f => f.value === currentSettings.font) || FONT_THEMES[0];
@@ -966,6 +1187,8 @@ function initSettings() {
     ageBtn.textContent = ageOpt.label;
     const themeOpt = THEME_OPTIONS.find(o => o.value === currentSettings.theme) || THEME_OPTIONS[0];
     themeBtn.textContent = themeOpt.label;
+    const markReadOpt = MARK_READ_OPTIONS.find(o => o.value === currentSettings.markRead) || MARK_READ_OPTIONS[0];
+    if (markReadBtn) markReadBtn.textContent = markReadOpt.label;
     expandAllCheck.checked = currentSettings.expandAll;
     showUpdatedCheck.checked = currentSettings.showUpdated;
     watchWordsInput.value = currentSettings.watchWords || '';
@@ -987,6 +1210,7 @@ function initSettings() {
   makeCycleHandler(imagesBtn, IMAGE_OPTIONS, currentSettings.images, { key: 'images' });
   makeCycleHandler(ageBtn, AGE_OPTIONS, currentSettings.ageLimit, { key: 'ageLimit' });
   makeCycleHandler(themeBtn, THEME_OPTIONS, currentSettings.theme, { key: 'theme' });
+  if (markReadBtn) makeCycleHandler(markReadBtn, MARK_READ_OPTIONS, currentSettings.markRead, { key: 'markRead' });
 
   [expandAllCheck, showUpdatedCheck].forEach(el => el.addEventListener('change', updateCheckboxes));
 
@@ -1045,6 +1269,22 @@ function initSettings() {
     }
   });
   changelogClose.addEventListener('click', () => changelogPage.classList.add('hidden'));
+
+  const resetReadBtn = document.getElementById('reset-read-log');
+  if (resetReadBtn) {
+    resetReadBtn.addEventListener('click', () => {
+      readState = {};
+      saveReadState();
+      document.querySelectorAll('.article.is-read').forEach(a => {
+        a.classList.remove('is-read');
+        a.style.setProperty('--read-progress', 0);
+      });
+      if (currentDigest) {
+        renderDigest(currentDigest, currentSettings);
+        initSearch();
+      }
+    });
+  }
 }
 
 function renderChangelog(log) {
@@ -1284,6 +1524,7 @@ async function init() {
   if (dateEl) dateEl.textContent = formatDate(new Date().toISOString());
 
   initSettings();
+  initReadInteraction();
 
   // Mode toggle (in masthead)
   const modeBtn = document.getElementById('mode-toggle');

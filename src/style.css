@@ -189,10 +189,25 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 
 /* Article (cluster) */
 .article {
+  --read-progress: 0;
   padding-bottom: 1.75rem;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid transparent;
   cursor: pointer;
   position: relative;
+}
+
+/* Read-progress indicator — top border fills left-to-right */
+.article::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: calc(var(--read-progress, 0) * 100%);
+  background: #4a9;
+  transition: width 0.1s linear;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .article:last-child { border-bottom: none; }
@@ -356,7 +371,7 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 .settings-content h3 {
   font-family: var(--serif);
   font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--rule);
 }
@@ -365,7 +380,7 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-family: var(--sans);
   font-size: 0.85rem;
 }
@@ -376,7 +391,7 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .toggle-row input[type="checkbox"] {
@@ -447,7 +462,7 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 .settings-close {
   display: block;
   width: 100%;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   padding: 0.5rem;
   font-family: var(--sans);
   font-size: 0.85rem;
@@ -516,7 +531,7 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 .settings-divider {
   height: 1px;
   background: var(--rule);
-  margin: 1.5rem 0 0.75rem;
+  margin: 0.75rem 0 0.5rem;
 }
 
 .settings-subhead {
@@ -621,9 +636,9 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 .interest-btn.active { opacity: 0.7; }
 .interest-btn.active:hover { opacity: 1; }
 
-.article.is-read {
-  opacity: 0.4;
-  transition: opacity 0.3s;
+.article.is-read::before {
+  width: 100%;
+  opacity: 0.5;
 }
 
 .article.downranked {
@@ -631,7 +646,7 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   transition: opacity 0.3s;
 }
 
-.article.is-read:hover, .article.downranked:hover {
+.article.downranked:hover {
   opacity: 0.7;
 }
 
