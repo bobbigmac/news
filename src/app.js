@@ -233,7 +233,7 @@ function markClusterRead(cluster) {
 // Clicking a link marks read instantly.
 // The top border fills left-to-right as a progress indicator.
 
-const READ_THRESHOLDS = { hover: 2000, focus: 2000, turbo: 2000 }; // ms of dwell needed
+const READ_THRESHOLDS = { hover: 2500, focus: 2500, turbo: 2500 }; // ms of dwell needed
 const FOCUS_MAX_RADIUS = 500; // px — articles beyond this get zero rate
 let readObserver = null;
 let readRafId = null;
@@ -270,9 +270,9 @@ function initReadInteraction() {
     }
   });
 
-  // Single click listener — clicking any link marks the article read
+  // Single click listener — clicking anywhere on an article marks it read
   sheet.addEventListener('click', (e) => {
-    if (!e.target.closest('a')) return;
+    if (e.target.closest('.interest-btn')) return; // interest buttons handle their own read-marking
     const article = e.target.closest('.article');
     if (!article?.dataset?.clusterId) return;
     const cluster = currentDigest?.clusters?.find(c => c.id === article.dataset.clusterId);
@@ -370,8 +370,10 @@ function readRafLoop() {
     return;
   }
 
-  if (mode === 'focus') {
-    // Focus circle: multiple articles accumulate with distance-based falloff from cursor.
+  if (mode === 'focus' || mode === 'turbo') {
+    // Focus circle / Turbo: multiple articles accumulate simultaneously.
+    // Focus: rate falls off with distance from cursor.
+    // Turbo: full rate for all visible articles.
     // Reset all when hovered article changes (cursor moved to a new area).
     if (readLastActiveId !== readHoveredClusterId) {
       for (const id of readVisible) {
@@ -390,17 +392,21 @@ function readRafLoop() {
       if (!p || p.articleEl.classList.contains('is-read')) continue;
 
       if (p.lastTs !== null) {
-        const r = p.articleEl.querySelector('.article-headline')?.getBoundingClientRect();
-        if (!r) { p.lastTs = now; continue; }
+        let delta = now - p.lastTs;
 
-        const cx = r.left + r.width / 2;
-        const cy = r.top + r.height / 2;
-        const dist = Math.hypot(cx - readCursorX, cy - readCursorY);
-        const rate = Math.max(0, 1 - dist / FOCUS_MAX_RADIUS);
+        if (mode === 'focus') {
+          const r = p.articleEl.querySelector('.article-headline')?.getBoundingClientRect();
+          if (!r) { p.lastTs = now; continue; }
 
-        if (rate <= 0) { p.lastTs = now; continue; }
+          const cx = r.left + r.width / 2;
+          const cy = r.top + r.height / 2;
+          const dist = Math.hypot(cx - readCursorX, cy - readCursorY);
+          const rate = Math.max(0, 1 - dist / FOCUS_MAX_RADIUS);
 
-        let delta = (now - p.lastTs) * rate;
+          if (rate <= 0) { p.lastTs = now; continue; }
+          delta *= rate;
+        }
+
         p.progress += delta;
 
         const ratio = Math.min(1, p.progress / threshold);
