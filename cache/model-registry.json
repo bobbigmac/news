@@ -1,0 +1,7 @@
+{
+  "good": [
+    "poolside/laguna-s-2.1:free",
+    "cohere/north-mini-code:free"
+  ],
+  "bad": []
+}
