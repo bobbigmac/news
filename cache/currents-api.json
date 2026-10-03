@@ -1,0 +1,717 @@
+{
+  "fetchedAt": 1791028156001,
+  "news": [
+    {
+      "id": "26591c4b-1abf-5f22-8cf6-d9753dedb831",
+      "title": "Running a 133 GB MoE model on an 8 GB GPU at 11 tokens/s by streaming experts from NVMe",
+      "description": "I run local models on one home machine: an RTX 5060 with 8 GB, a Core Ultra 5 225F, 31 GiB of RAM and...",
+      "url": "https://dev.to/helgard_orlm/running-a-133-gb-moe-model-on-an-8-gb-gpu-at-11-tokenss-by-streaming-experts-from-nvme-207b",
+      "author": "Helgard",
+      "image": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fozn8kdta8l7cylk2l28u.png",
+      "language": "en",
+      "category": [
+        "programming"
+      ],
+      "source_category": [
+        "programming"
+      ],
+      "published": "2026-10-03 11:46:52 +0000"
+    },
+    {
+      "id": "5800afd2-a237-592e-85d5-e68116c5cbe7",
+      "title": "Meta glasses: the deleted Amsterdam video and the $1,299 VR glasses",
+      "description": "Meta glasses: Instagram removed a satire of Meta staff filmed with Meta's AI glasses as bullying, the week Connect showed $1,299 VR glasses.",
+      "url": "https://dev.to/axrisi/meta-glasses-the-deleted-amsterdam-video-and-the-1299-vr-glasses-3fld",
+      "author": "Nikoloz Turazashvili",
+      "image": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F4m1e0623i6j256uvbcbc.jpg",
+      "language": "en",
+      "category": [
+        "programming"
+      ],
+      "source_category": [
+        "programming"
+      ],
+      "published": "2026-10-03 11:46:44 +0000"
+    },
+    {
+      "id": "6bbdb130-fdd0-59eb-8dfc-a9c47fb0dad1",
+      "title": "ACL Fest costs: Tickets, food, parking and more in Austin",
+      "description": "From tickets to beer and parking, here's what it costs to attend Austin City Limits Music Festival.",
+      "url": "https://www.statesman.com/news/article/acl-fest-costs-tickets-food-parking-22459845.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "31cf072d-bca3-5e6f-b834-f5744dba1a94",
+      "title": "Brownout: See photos of Turnstile's muddy mosh pit at ACL Festival - Austin American-Statesman",
+      "description": "Rain-soaked fans danced, moshed and celebrated through the mud during Turnstile's Austin City Limits Music Festival set.",
+      "url": "https://www.statesman.com/entertainment/music/article/turnstile-acl-fest-mud-photos-22460584.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "3ae3f0cb-6c73-5613-8080-c6953eeab101",
+      "title": "New Amazon Kindle lineup: Kindle, Paperwhite and Colorsoft - SFGATE",
+      "description": "Amazon refreshed its Kindle lineup with thinner designs, new colors, aluminum models and redesigned displays across the Kindle, Paperwhite and ...",
+      "url": "https://www.statesman.com/shopping/article/new-amazon-kindle-paperwhite-colorsoft-2026-22458307.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "d0694f84-a4a2-5a58-87cc-9785c31ddce6",
+      "title": "UT's reputation as a treasured institution is falling apart | Letters - Austin American-Statesman",
+      "description": "A reader says the University of Texas' decision to remove gender studies courses from the core curriculum hurts its reputation.",
+      "url": "https://www.statesman.com/opinion/letters/article/ut-reputation-elimination-gender-studies-22456662.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "c1a7ad49-dbf0-56ee-945c-561778cee4a5",
+      "title": "I-35 Austin traffic: Truck strikes bridge, closes southbound lanes",
+      "description": "Southbound Interstate 35 was all but closed through central Austin after a tractor-trailer struck a bridge late Friday morning.",
+      "url": "https://www.statesman.com/news/local/article/austin-traffic-i35-bridge-delays-22459785.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "dc9f356b-e985-5129-8229-44b252fb2b5c",
+      "title": "Hasan Piker speaks at University of Texas after venue dispute - Austin American-Statesman",
+      "description": "The Twitch streamer addressed students after days of controversy over his University of Texas appearance.",
+      "url": "https://www.statesman.com/news/education/article/hasan-piker-university-texas-speech-22454926.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "7ea745ee-0265-5bbd-97de-54c42f45d99b",
+      "title": "Southwest expands Austin summer flights with new international destinations",
+      "description": "A Southwest Airlines aircraft taxis at Austin-Bergstrom International Airport on Sept. 29, 2026. The airline announced five new seasonal routes from ...",
+      "url": "https://www.statesman.com/business/travel/article/southwest-austin-new-routes-2027-22459927.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "487fa01d-0326-5a69-a70c-0a4b724790b5",
+      "title": "ICE shooting in Austin: Man has surgery to remove bullet after 11 days",
+      "description": "Elizdar, wife of Wilber Rafael Garces Perez, listens during a news conference at the Law Office of Kate Lincoln-Goldfinch in Austin on Monday, Sept.",
+      "url": "https://www.statesman.com/news/article/austin-ice-shooting-surgery-bullet-removal-22459557.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "bd059647-eec2-588e-b4a9-e62afcdaba0d",
+      "title": "Best food at ACL Fest 2026: 20 dishes to try in Austin",
+      "description": "From tacos and burgers to bánh mì and pizza, here are our favorite dishes at ACL Fest in Zilker Park.",
+      "url": "https://www.statesman.com/entertainment/dining/article/best-acl-food-eats-22449665.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "73728e98-754e-590b-a8ed-3a47653fb989",
+      "title": "Thursday recap: Heavy rain causes flight delays, school cancelations - Austin American-Statesman",
+      "description": "Some Austin-area schools canceled or changed after-school activities Thursday as heavy rain moved through Central Texas.",
+      "url": "https://www.statesman.com/weather/article/austin-weather-flood-live-updates-22458216.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "5a97df2a-5d13-591b-8989-2ed04d432089",
+      "title": "What is Austin Police Oversight, and what can it do?",
+      "description": "Austin Police Oversight reviews complaints and police activity, recommends policy changes and offers mediation, but can't compel APD to adopt ...",
+      "url": "https://www.statesman.com/news/article/austin-police-oversight-role-authority-22450625.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "e84d2adb-d730-59a5-b6c7-80cdb0828854",
+      "title": "Cometeer just unveiled its 24-day coffee advent calendar - SFGATE",
+      "description": "A limited-edition set includes 24 Cometeer coffees, from single origins to festive blends and best-sellers. · Cometeer Coffee Advent Calendar.",
+      "url": "https://www.statesman.com/shopping/article/cometeer-coffee-advent-calendar-2026-22455841.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "110d04a3-d2f6-5921-b5fd-b67ac8448136",
+      "title": "Tesla shares are up after strong deliveries in the third quarter - Austin American-Statesman",
+      "description": "Tesla delivered more than 486000 vehicles in the third quarter, sending its shares higher Friday morning.",
+      "url": "https://www.statesman.com/business/article/tesla-deliveries-q3-2026-22459389.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "387fccc2-2bc0-5b8f-951b-667abd5b1b63",
+      "title": "Nothing Headphone 1 Pro review: Specs and features - SFGATE",
+      "description": "Nothing's $399 Headphone 1 Pro use three drivers, adaptive noise cancellation and studio-style flat tuning, with up to 68 hours of battery life.",
+      "url": "https://www.statesman.com/shopping/article/nothing-headphone-1-pro-22454797.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "e5bc8e05-3a1b-5d86-abd4-d0de925afeff",
+      "title": "Austin flood watch continues as ACL Fest opens amid storm chances",
+      "description": "Live weather updates on rain totals, Austin airport delays, ACL news and more as Austin enters its second day of rain.",
+      "url": "https://www.statesman.com/weather/article/austin-rain-live-updates-22458628.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "f097dc65-00f7-5d0f-b4ab-c10b4f97f5aa",
+      "title": "EyeVac Pro review: Touchless vacuum for sweeping - SFGATE",
+      "description": "EyeVac Pro is a $229 touchless vacuum that automatically sucks up crumbs, pet hair and debris as you sweep hard floors.",
+      "url": "https://www.statesman.com/shopping/article/eyevac-pro-touchless-vacuum-22456533.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "a7213a56-f895-57b8-a9ec-5bb3ffd59ccc",
+      "title": "What makes your Austin City Council district unique? Explore the data",
+      "description": "Ten City Council members represent districts across the city, while the mayor represents Austin as a whole and is elected citywide. Together, the 11- ...",
+      "url": "https://www.statesman.com/projects/2026/austin-council-district-demographics-map/",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "0662cf74-a826-5c82-9fc5-e8a35918f56b",
+      "title": "HexClad Hybrid Bakeware: First look at the new line - Austin American-Statesman",
+      "description": "I got a first look at HexClad's new six-piece bakeware set, with tri-ply construction, a ceramic nonstick surface and an oven-safe design.",
+      "url": "https://www.statesman.com/shopping/article/hexclad-hybrid-bakeware-22453315.php",
+      "author": "",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "source_category": [
+        "austin",
+        "texas",
+        "regional"
+      ],
+      "published": "2026-10-03 11:46:16 +0000"
+    },
+    {
+      "id": "0de9040a-789d-5afe-b3a5-e1e163a392df",
+      "title": "Danny Beard shares harsh 'truth' of life after Drag Race as BBC pulls hit show",
+      "description": "EXCLUSIVE Danny Beard has managed to carve out a successful showbiz career since winning RuPaul's Drag Race in 2022 but has now explained why it is perhaps a good thing that the programme has been pulled by the BBC",
+      "url": "https://www.mirror.co.uk/tv/tv-news/danny-beard-drag-race-bbc-37715601",
+      "author": "Jordan Lloyd Beck",
+      "image": "https://i2-prod.mirror.co.uk/article37715867.ece/ALTERNATES/s1200d/0_Tip-Toe-Launch-Event-Arrivals.jpg",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:33:37 +0000"
+    },
+    {
+      "id": "db7eaa17-e706-5ec9-ac24-c64110a9b5fc",
+      "title": "John Boyega opens up on school friend Damilola Taylor, 26 years after his death",
+      "description": "The actor was left traumatised after Damilola, who was two years older, was killed by local brothers who were just teenagers themselves",
+      "url": "https://www.mirror.co.uk/tv/tv-news/john-boyega-damilola-taylor-bbc-37730615",
+      "author": "Nicola Methven",
+      "image": "https://i2-prod.mirror.co.uk/article37730638.ece/ALTERNATES/s1200d/0_star-wars-the-force-awakens_5fzF3i.jpg",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:32:01 +0000"
+    },
+    {
+      "id": "d645ba01-bb43-5ae5-a9d0-b324cdf331b1",
+      "title": "Labour-run London borough considers UK's biggest ever council tax rise",
+      "description": "Hammersmith and Fulham finance report warns borough could have to raise council tax by up to 150%",
+      "url": "https://www.standard.co.uk/news/london/record-council-tax-rise-hammersmith-fulham-labour-b1299401.html",
+      "author": "Matt Watts; Rachael Burford",
+      "image": "https://static.standard.co.uk/2026/07/02/9/42/London-skyline.jpeg?width=1200&auto=webp&quality=75",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:29:25 +0000"
+    },
+    {
+      "id": "29f71ee1-4f12-5188-8bb7-e5a621b8dfa2",
+      "title": "The Stylistics still make us 'feel brand new' after six decades of love songs",
+      "description": "EXCLUSIVE: Founder member Airron Love recalls fans telling him they conceived their children listening to The Stylistics' hits, as he shares amazing memories of celebrity encounters and life on the road with the world famous band",
+      "url": "https://www.mirror.co.uk/3am/celebrity-news/stylistics-love-song-soul-music-37729332",
+      "author": "Sue Crawford",
+      "image": "https://i2-prod.mirror.co.uk/article37729530.ece/ALTERNATES/s1200d/0_The-Stylistics.jpg",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:26:23 +0000"
+    },
+    {
+      "id": "fa26bc50-31ff-5773-b3fb-fc884645a58b",
+      "title": "Retail chief says prices will go up if diesel continues to soar",
+      "description": "Mike Tomkins, owner of M and M Direct, said his company was struggling to absorb shipping and freight costs and not to pass them on to the consumer.",
+      "url": "https://www.dailymail.com/news/article-16180285/Retail-online-chief-prices-diesel-continues-soar.html?ns_campaign=1490&ito=1490",
+      "author": "Elizabeth Ivens",
+      "image": "https://i.dailymail.com/1s/2026/10/03/12/111628021-0-image-m-29_1791026523768.jpg",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:25:31 +0000"
+    },
+    {
+      "id": "3a9bc2d7-4e95-5d5a-b03c-779090b65b16",
+      "title": "Iranian men ‘identified Heaton Park Synagogue as bomb plot target’",
+      "description": "Salam Ahmadyan, 36, of Liverpool, and Rahman Salehi, 34, of Salford, were arrested in Manchester on September 20.",
+      "url": "https://www.standard.co.uk/news/crime/manchester-iranian-jewish-shabana-mahmood-salford-b1299398.html",
+      "author": "Sam Hall",
+      "image": "https://static.standard.co.uk/2026/10/03/12/4dae904560b349128393a42f01c58137Y29udGVudHNlYXJjaGFwaSwxNzkxMTExNzA0-2.86060296.jpg?width=1200&auto=webp&quality=75",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:24:49 +0000"
+    },
+    {
+      "id": "8735942e-95cb-5a8f-8c7d-ab8e5ecd6b36",
+      "title": "Leigh-Anne Pinnock 'kept pregnancy a secret' while filming Celebrity Traitors",
+      "description": "Celebrity Traitors star, Leigh-Anne Pinnock, who shot to fame with X-Factor band, Little Mix, is expecting her third child with footballer husband, Andre Gray",
+      "url": "https://www.mirror.co.uk/3am/celebrity-news/leigh-anne-pinnock-kept-pregnancy-37730481",
+      "author": "Victoria Johns",
+      "image": "https://i2-prod.mirror.co.uk/article37730578.ece/ALTERNATES/s1200d/0_579416TITLEThe-Celebrity-Traitors-S2.jpg",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:24:22 +0000"
+    },
+    {
+      "id": "330040e0-b64b-50c1-b7d5-d69eb4b57a09",
+      "title": "Everything we know about Christa Pike as killer left on ventilator",
+      "description": "Questions are mounting over what went wrong during Christa Pike's execution and how she survived after the lethal drugs were administered. Here's everything we know about her extraordinary failed execution",
+      "url": "https://www.mirror.co.uk/news/us-news/christa-pike-alive-lethal-injection-37730647",
+      "author": "Shannon Miller",
+      "image": "https://i2-prod.mirror.co.uk/article37728195.ece/ALTERNATES/s1200d/4_Christa-Gail-Pike.jpg",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:22:46 +0000"
+    },
+    {
+      "id": "4e2a2c90-85f5-5b3a-82f0-a867c258e525",
+      "title": "12 injured and dozens more trapped after Spanish tourist bar collapses",
+      "description": "Up to 50 people were at Bar Tempranillo in the village of San Vicente de la Sonsierra, La Rioja, when the building suddenly gave way.",
+      "url": "https://metro.co.uk/2026/10/03/12-injured-dozens-trapped-spanish-tourist-bar-collapses-29675897/",
+      "author": "Ryan Prosser",
+      "image": "https://metro.co.uk/wp-content/uploads/2026/10/SEI_315116784-4360_1791026389.jpg?quality=90&strip=all&w=1200&h=630&crop=1",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:19:43 +0000"
+    },
+    {
+      "id": "dd75a3e7-9390-5fcc-b301-bd7cb98e177c",
+      "title": "Korean golfer dodges military service with Asian Games gold medal",
+      "description": "South Korean golfer Tom Kim got what he came for by winning the men's singles on Saturday at the Asian Games: a gold medal and an exemption from military service back home.",
+      "url": "https://www.dailymail.com/sport/golf/article-16180271/South-Korean-golfer-dodges-military-service-Asian-Games-gold-medal-win-securing-exemption-saw-former-Spurs-star-Son-Heung-min-let-mandatory-21-month-stint.html",
+      "author": "Tamara Prenn",
+      "image": "https://i.dailymail.com/1s/2026/10/03/12/111627967-0-image-m-32_1791025819320.jpg",
+      "language": "en",
+      "category": [
+        "sports"
+      ],
+      "source_category": [
+        "sports"
+      ],
+      "published": "2026-10-03 11:14:25 +0000"
+    },
+    {
+      "id": "97d494b6-728b-51a6-9aa1-3114c00d5113",
+      "title": "'I was driving 17mph when neighbour made 4-word threat about speed'",
+      "description": "A man was left floored when a neighbour 'yelled' at him because of the speed he was going near children. But the story isn't as simple as it sounds - and the neighbour's 4-word threat was grim",
+      "url": "https://www.mirror.co.uk/lifestyle/i-driving-17mph-neighbour-made-37730543",
+      "author": "Danielle Kate Wroe",
+      "image": "https://i2-prod.mirror.co.uk/article35372791.ece/ALTERNATES/s1200d/1_GettyImages-1257704570.jpg",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:14:23 +0000"
+    },
+    {
+      "id": "97ba411a-d44b-5318-b728-7196ae55fe13",
+      "title": "Manchester City whistleblower ready to help UK authorities in return for protection",
+      "description": "Rui Pinto, whose leaks helped to trigger the Premier League’s investigation into Manchester City’s financial affairs, is prepared to help authorities in the UK with their legal case in exchange for protection, the Guardian understands",
+      "url": "https://www.theguardian.com/football/2026/oct/03/manchester-city-whistleblower-rui-pinto-ready-to-help-uk-authorities-in-return-for-protection",
+      "author": "Miguel Dantas",
+      "image": "https://i.guim.co.uk/img/media/f6b8ee9f00cd4faa4c11211cd6e8002adeda65f1/898_0_3887_3113/master/3887.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=81e7b8bbea0482974da015a521a8a7c2",
+      "language": "en",
+      "category": [
+        "world"
+      ],
+      "source_category": [
+        "world"
+      ],
+      "published": "2026-10-03 11:12:48 +0000"
+    },
+    {
+      "id": "318e8992-ffd2-5fe3-9138-0b077d7c785a",
+      "title": "October lawn 'mistake' Monty Don says to avoid before winter",
+      "description": "Monty Don is set to leave BBC Gardeners' World soon, calling the show a \"privilege\"",
+      "url": "https://www.walesonline.co.uk/news/homes-property/october-lawn-mistake-monty-don-34711362",
+      "author": "Sophie Buchan",
+      "image": "https://i2-prod.walesonline.co.uk/article33513749.ece/ALTERNATES/s1200d/0_GettyImages-583676726.jpg",
+      "language": "en",
+      "category": [
+        "national"
+      ],
+      "source_category": [
+        "national"
+      ],
+      "published": "2026-10-03 11:08:41 +0000"
+    },
+    {
+      "id": "c9c81ff1-6469-5751-9c97-b0ef96b94c17",
+      "title": "Green deputy leader hits back at Suella Braverman",
+      "description": "Mrs Braverman, who was home secretary in the previous Tory government before defecting to Reform, has suggested that British Asians like herself can't be English.",
+      "url": "https://www.dailymail.com/news/article-16180257/Im-English-Yorkshire-cup-tea-declares-Green-deputy-leader-Mothin-Ali-hits-ex-home-secretary-Suella-Bravermans-claim-British-Asians-English.html",
+      "author": "Greg Heffer",
+      "image": "https://i.dailymail.com/1s/2026/10/03/12/111627921-0-image-m-18_1791025536092.jpg",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:05:50 +0000"
+    },
+    {
+      "id": "2cab9a4c-4c40-567c-85f6-d45c04a5b447",
+      "title": "Bluetongue restriction zone extension a 'positive thing' for farmers",
+      "description": "The whole of Scotland is now a restricted zone but the agriculture minister says it will make it easier to get livestock to market.",
+      "url": "https://www.bbc.co.uk/news/articles/c8p3gd4x4e6go",
+      "author": "",
+      "image": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/86fb/live/71f42480-bf15-11f1-babe-4199b0e7ccea.jpg",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:04:45 +0000"
+    },
+    {
+      "id": "b0841264-c24c-5b68-8164-98db9386c3d0",
+      "title": "Dr Michael Mosley's 30-second activity to cut 'silent killer' risk",
+      "description": "The late doctor was famous for his easy-to-follow advice and exercises which helped boost the health of numerous people around the world",
+      "url": "https://www.mirror.co.uk/news/health/dr-michael-mosley-activity-people-37722503",
+      "author": "Howard Lloyd",
+      "image": "https://i2-prod.mirror.co.uk/article37722862.ece/ALTERNATES/s1200d/0_GettyImages-1174937978.jpg",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:03:53 +0000"
+    },
+    {
+      "id": "d4ffa888-4cfc-569f-927d-eba277dbba29",
+      "title": "Mum whose son, 16, drowned in car crash wants to develop life-saving tech",
+      "description": "EXCLUSIVE: Crystal Owen’s son Harvey died when the car he was travelling in hit a water-filled ditch - she's now hoping to develop tech to enable passengers to escape submerged vehicles",
+      "url": "https://www.mirror.co.uk/news/uk-news/son-drowned-new-car-tech-37728186",
+      "author": "Saskia Rowlands",
+      "image": "https://i2-prod.mirror.co.uk/article37728214.ece/ALTERNATES/s1200d/2_IMG_3414jpeg.jpg",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-10-03 11:03:41 +0000"
+    },
+    {
+      "id": "5914c18a-62cf-5fae-90d4-6da005299d45",
+      "title": "Max Hastings: 'Churchill's words in 1940 were courageous - Burnham should learn from them'",
+      "description": "As he publishes a riveting new history of the end of the Second World War, Sir Max Hastings takes aim at the PM... brace yourself for explosions",
+      "url": "https://www.express.co.uk/entertainment/books/2254010/andy-burnham-max-hastings-politics-history-churchill",
+      "author": "Matt Nixson",
+      "image": "None",
+      "language": "en",
+      "category": [
+        "entertainment"
+      ],
+      "source_category": [
+        "entertainment"
+      ],
+      "published": "2026-10-03 11:01:00 +0000"
+    },
+    {
+      "id": "f55f94ff-f065-5a99-8f55-16b87a9edfe2",
+      "title": "The hill I will die on: not everything is a ‘girl’ thing – stop gendering and infantilising it all | Elle Hunt",
+      "description": "No, I don’t want to go for a girl walk before my girl dinner with my girl mates: I am a grown woman who walks and eats and votes – and, patriarchy, I am on to you, says freelance journalist Elle Hunt",
+      "url": "https://www.theguardian.com/commentisfree/2026/oct/03/the-hill-i-will-die-on-girl-thing-stop-gendering-infantilising",
+      "author": "Elle Hunt",
+      "image": "https://i.guim.co.uk/img/media/8d33e0cd16e331f6408f17ccc2b39112a6cf2bda/0_0_5000_4000/master/5000.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctb3BpbmlvbnMucG5n&enable=upscale&s=022f03685be0e79709d7b6738ace4255",
+      "language": "en",
+      "category": [
+        "world"
+      ],
+      "source_category": [
+        "world"
+      ],
+      "published": "2026-10-03 11:00:57 +0000"
+    },
+    {
+      "id": "701b6ed0-93d7-5e9c-9155-307d32be5a1f",
+      "title": "I craved a mean girl’s approval until My Little Pony broke the spell",
+      "description": "I didn’t realise my school infatuation was just making fun of me, but then an episode of the cartoon series taught me the attributes of true companionship",
+      "url": "https://www.theguardian.com/culture/2026/oct/03/i-craved-a-mean-girls-approval-until-my-little-pony-broke-the-spell",
+      "author": "Fatimah Merchant; Guardian staff reporter",
+      "image": "https://i.guim.co.uk/img/media/deab09c14d7525b35be8e92008b14de017d0a41f/91_76_2619_2095/master/2619.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=67a8e3f45d96962a72577941c532f551",
+      "language": "en",
+      "category": [
+        "world"
+      ],
+      "source_category": [
+        "world"
+      ],
+      "published": "2026-10-03 11:00:57 +0000"
+    }
+  ]
+}
