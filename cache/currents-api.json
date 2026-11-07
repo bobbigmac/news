@@ -1,0 +1,663 @@
+{
+  "fetchedAt": 1794060582869,
+  "news": [
+    {
+      "id": "aa283279-fa6e-5def-ada5-28af350c5000",
+      "title": "'I Don't Want Metal to Be Safe': Season of Mist Founder Reflects on 30 Years of Heavy Music",
+      "description": "Michael Berberian reflects on 30 years of Season of Mist, working with metal legends, taking risks, and defending artistic freedom.",
+      "url": "https://www.vice.com/en/article/i-dont-want-metal-to-be-safe-season-of-mist-founder-reflects-on-30-years-of-heavy-music/",
+      "author": "Jillian Drachman",
+      "image": "https://www.vice.com/wp-content/uploads/sites/2/2026/11/Michael-Season-04-Ester-Segarra.jpg?resize=2000,1331",
+      "language": "en",
+      "category": [
+        "general",
+        "world",
+        "culture",
+        "lifestyle"
+      ],
+      "source_category": [
+        "general",
+        "world",
+        "culture",
+        "lifestyle"
+      ],
+      "published": "2026-11-07 14:08:54 +0000"
+    },
+    {
+      "id": "4da241f0-6ec9-5d3a-91a3-b1e8b8b87f31",
+      "title": "Best AI tools for making a personalized song with someone's name (2026)",
+      "description": "If you want to give someone a song with their name in it, there are now a handful of options that did...",
+      "url": "https://dev.to/yining_lin_5ee8680314309e/best-ai-tools-for-making-a-personalized-song-with-someones-name-2026-2pmk",
+      "author": "Indie music tools developer",
+      "image": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fs9l6t5bvmxbz84zhsrtk.png",
+      "language": "en",
+      "category": [
+        "programming"
+      ],
+      "source_category": [
+        "programming"
+      ],
+      "published": "2026-11-07 14:06:03 +0000"
+    },
+    {
+      "id": "3380793e-9f68-58c4-91a8-01501a22c5fd",
+      "title": "IEC confirms all local government election results in the Western Cape have been captured",
+      "description": "The IEC said that its results system flagged statistical anomalies during the counting process, requiring further verification before results could be finalised.",
+      "url": "https://www.ewn.co.za/iec-confirms-all-local-government-election-results-in-the-western-cape-have-been-captured/",
+      "author": "Mihle George",
+      "image": "https://media-cache.primedia-service.com/media/xn4fxwjr/lge-cpt-result-centre-2.jpeg?width=1200&height=630",
+      "language": "en",
+      "category": [
+        "regional"
+      ],
+      "source_category": [
+        "regional"
+      ],
+      "published": "2026-11-07 14:05:56 +0000"
+    },
+    {
+      "id": "b1b3a5c0-5581-5342-8036-cc49404cefc1",
+      "title": "A staging task that reached production started with a token in the wrong file",
+      "description": "When a staging job touches production, the first question is usually \"why did the job do that?\" I...",
+      "url": "https://dev.to/fusionaldev/a-staging-task-that-reached-production-started-with-a-token-in-the-wrong-file-1c7g",
+      "author": "FusionAL",
+      "image": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fi5k4ex07tn8woeibpfl9.png",
+      "language": "en",
+      "category": [
+        "programming"
+      ],
+      "source_category": [
+        "programming"
+      ],
+      "published": "2026-11-07 14:05:53 +0000"
+    },
+    {
+      "id": "42dfb858-0a83-5ff2-a299-2f2958e61b24",
+      "title": "React Native vs Native Development: What Should Actually Drive the Decision",
+      "description": "The React Native versus native debate isn't about developer preference or outdated performance myths. It comes down to hardware coupling, team topology, and how fast you need to ship across platforms, and this guide breaks down exactly how to decide.",
+      "url": "https://dev.to/benjohnson77/react-native-vs-native-development-what-should-actually-drive-the-decision-3c0a",
+      "author": "Ben Johnson",
+      "image": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fug1qgs5du21qmrnobff4.png",
+      "language": "en",
+      "category": [
+        "programming"
+      ],
+      "source_category": [
+        "programming"
+      ],
+      "published": "2026-11-07 14:05:52 +0000"
+    },
+    {
+      "id": "f3f825e0-2446-597c-a826-bef151b92cec",
+      "title": "Building a Warehouse Shift Handoff with Six AI Agents in Switch",
+      "description": "How we used a shared Telegram room to organize incident evidence, map operational impact, and keep...",
+      "url": "https://dev.to/nirmit/building-a-warehouse-shift-handoff-with-six-ai-agents-in-switch-1hk5",
+      "author": "Nirmit Mehta",
+      "image": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fkxn8wk7qb0yvfuqr1ogu.png",
+      "language": "en",
+      "category": [
+        "programming"
+      ],
+      "source_category": [
+        "programming"
+      ],
+      "published": "2026-11-07 14:04:57 +0000"
+    },
+    {
+      "id": "80eabaaf-7236-5e51-9826-d0f8c1da39e5",
+      "title": "Building an Incident Response Agent That Remembers with Hindsight",
+      "description": "How I Built RecallOps: Connecting Incident Response with Hindsight Memory Introduction In software...",
+      "url": "https://dev.to/prerana_nbathi_3d0100552/building-an-incident-response-agent-that-remembers-with-hindsight-24ii",
+      "author": "Prerana N bathi",
+      "image": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fuygzic0xe3spqs4ndd22.png",
+      "language": "en",
+      "category": [
+        "programming"
+      ],
+      "source_category": [
+        "programming"
+      ],
+      "published": "2026-11-07 14:04:39 +0000"
+    },
+    {
+      "id": "4621b524-db24-5d4b-b6ff-ae89f24f3f7a",
+      "title": "Your Compose Code, on More Screens and Less CPU",
+      "description": "Kotlin Multiplatform code with Compose now builds as a Codename One app. The Compose runtime ships as it is, the UI layer is ours, and on our benchmark screen it did about a quarter of the CPU work per frame that Compose Multiplatform does (frame rat",
+      "url": "https://dev.to/codenameone/your-compose-code-on-more-screens-and-less-cpu-2o3e",
+      "author": "Shai Almog",
+      "image": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fwww.codenameone.com%2Fblog%2Fcompose-on-more-screens.jpg",
+      "language": "en",
+      "category": [
+        "programming"
+      ],
+      "source_category": [
+        "programming"
+      ],
+      "published": "2026-11-07 14:03:54 +0000"
+    },
+    {
+      "id": "773ec444-206c-5c9c-b67a-a6cba2cf0686",
+      "title": "Moving from Ubuntu 26.04 to Windows: Linux Commands vs PowerShell for Developer",
+      "description": "Introduction Recently, I migrated from Ubuntu 26.04 to Windows as my primary development...",
+      "url": "https://dev.to/vincenttommi/moving-from-ubuntu-2604-to-windows-linux-commands-vs-powershell-for-developer-40ei",
+      "author": "Vincent Tommi",
+      "image": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fs05091hawyjldtj6g2io.png",
+      "language": "en",
+      "category": [
+        "programming"
+      ],
+      "source_category": [
+        "programming"
+      ],
+      "published": "2026-11-07 14:03:00 +0000"
+    },
+    {
+      "id": "0ddce991-73c8-54a3-acf9-d6fb56559f15",
+      "title": "Don't call a login expired after one failed check",
+      "description": "Network failures and expired logins look alike. How Styx tells them apart, and the delay that costs.",
+      "url": "https://dev.to/nicholasflemmer/dont-call-a-login-expired-after-one-failed-check-57am",
+      "author": "Nic Flemmer",
+      "image": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fsh9do7jw2xxaxz6x511y.png",
+      "language": "en",
+      "category": [
+        "programming"
+      ],
+      "source_category": [
+        "programming"
+      ],
+      "published": "2026-11-07 14:02:55 +0000"
+    },
+    {
+      "id": "70ca54db-1746-5f3a-a8f6-9d98c8315acb",
+      "title": "France's top literary prize winner defends 'playful' use of AI",
+      "description": "The winner of France's top literary award Prix Goncourt defended on Friday his \"playful,\" \"ironic,\" and very limited use of AI in his acclaimed book.",
+      "url": "https://www.thelocal.fr/20261107/frances-top-literary-prize-winner-defends-playful-use-of-ai",
+      "author": "AFP",
+      "image": "https://assets.thelocal.com/cdn-cgi/rs:fill:1200:675/quality:75/plain/https://apiwp.thelocal.com/wp-content/uploads/2026/11/watermarks-logo-AFP__20261103__D6AM9KE__v1__MidRes__FranceLiteratureAwardGoncourt.jpg@webp",
+      "language": "en",
+      "category": [
+        "regional"
+      ],
+      "source_category": [
+        "regional"
+      ],
+      "published": "2026-11-07 14:02:48 +0000"
+    },
+    {
+      "id": "47d9f415-2726-5992-87b0-ecc770cebc58",
+      "title": "Rahmanullah, Atal and Rahmat blunt Zimbabwe on third day in Sharjah",
+      "description": "AFG vs ZIM 2026/27, Afghanistan vs Zimbabwe Match Report: Afghanistan ended at 402 for 7, just 102 runs behind, despite Newman Nyamhuri's four wickets",
+      "url": "https://www.cricinfo.com/series/afghanistan-v-zimbabwe-2026-27-1555105/afghanistan-vs-zimbabwe-1st-test-1555123/match-report",
+      "author": "Ahsan Iftikhar Nagi",
+      "image": "https://img1.hscicdn.com/image/upload/f_auto/lsci/db/PICTURES/CMS/424900/424933.6.jpg",
+      "language": "en",
+      "category": [
+        "sports"
+      ],
+      "source_category": [
+        "sports"
+      ],
+      "published": "2026-11-07 14:02:47 +0000"
+    },
+    {
+      "id": "36c3fc04-0f93-5a26-9af8-d5af0228baa6",
+      "title": "How osFoundry detects that Claude Code is waiting on a permission prompt",
+      "description": "This is what Claude Code 2.1.303 writes to its terminal when it asks to run a command. The bytes come...",
+      "url": "https://dev.to/bbt_c84feb0f535/how-osfoundry-detects-that-claude-code-is-waiting-on-a-permission-prompt-1165",
+      "author": "BBT",
+      "image": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fqpy9xhi3ipmfglacezs3.png",
+      "language": "en",
+      "category": [
+        "programming"
+      ],
+      "source_category": [
+        "programming"
+      ],
+      "published": "2026-11-07 14:02:10 +0000"
+    },
+    {
+      "id": "c0c81f59-94c2-5c8b-9796-fbe18311c1ac",
+      "title": "Agentjacking: A Fake Sentry Error Became a 'Fix' That Claude Code and Cursor Ran",
+      "description": "A public Sentry DSN let anyone plant an error whose fake 'Resolution' told Claude Code, Cursor and Codex to run npx. Every hop was authorized. What stops it.",
+      "url": "https://dev.to/gabrielanhaia/agentjacking-a-fake-sentry-error-became-a-fix-that-claude-code-and-cursor-ran-5epn",
+      "author": "Gabriel Anhaia",
+      "image": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fazhs4in9pp7qw240cd3n.jpg",
+      "language": "en",
+      "category": [
+        "programming"
+      ],
+      "source_category": [
+        "programming"
+      ],
+      "published": "2026-11-07 14:01:51 +0000"
+    },
+    {
+      "id": "52015d0a-9e2a-55de-b41e-ef13cb5900f8",
+      "title": "Trump’s Israel aid cutoff draws GOP criticism | The Jerusalem Post",
+      "description": "The US president’s announcement targeted Michigan Democrat Abdul El-Sayed, but Israeli observers question whether the election-day timing served Republican interests.",
+      "url": "https://www.jpost.com/international/article-914127",
+      "author": "GABRIEL COLODRO; THE MEDIA LINE",
+      "image": "https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_faces:center,h_720,w_1280/745244",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-11-07 14:01:50 +0000"
+    },
+    {
+      "id": "d08144f1-ff39-5f19-9790-5209128e8121",
+      "title": "Italy’s FM Tajani says pro-Russian hackers leaked his data | The Jerusalem Post",
+      "description": "The Italian foreign minister said hackers were seeking more information about him and his family, and linked the leak to Rome’s support for Ukraine.",
+      "url": "https://www.jpost.com/international/article-914129",
+      "author": "REUTERS",
+      "image": "https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_faces:center,h_720,w_1280/745283",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-11-07 14:01:49 +0000"
+    },
+    {
+      "id": "7baab516-1588-50ac-8675-f02386e100c6",
+      "title": "Jewish continuity starts with helping singles find someone to marry | The Jerusalem Post",
+      "description": "When it comes to matchmaking, we're often surprisingly hands-off, unstructured, and disorganized.",
+      "url": "https://www.jpost.com/opinion/article-913573",
+      "author": "ALEEZA BEN SHALOM",
+      "image": "https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_faces:center,h_720,w_1280/505902",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-11-07 14:01:49 +0000"
+    },
+    {
+      "id": "82c64006-3ff7-5c53-b6d1-b127543dcb31",
+      "title": "Donald Trump weighs executive order targeting nonprofits over alleged terrorist ties | The Jerusalem Post",
+      "description": "Officials have spent months on an order invoking Section 501(p) of the tax code, which would let the president suspend groups’ tax-exempt status immediately, The Wall Street Journal reported.",
+      "url": "https://www.jpost.com/international/article-914123",
+      "author": "JERUSALEM POST STAFF",
+      "image": "https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_faces:center,h_720,w_1280/734078",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-11-07 14:01:48 +0000"
+    },
+    {
+      "id": "51852767-358b-5ee5-85e5-f47fda03485a",
+      "title": "US CENTCOM to announce task force to combat Iranian trade | The Jerusalem Post",
+      "description": "Task Force Iron Gate, as it will be called, will be based in Tampa, Florida, and will coordinate with other US government agencies.",
+      "url": "https://www.jpost.com/middle-east/iran-news/article-914130",
+      "author": "REUTERS; JERUSALEM POST STAFF",
+      "image": "https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_faces:center,h_720,w_1280/745284",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-11-07 14:01:48 +0000"
+    },
+    {
+      "id": "b48f8fa9-6db6-55c3-823d-df3dfffaff0e",
+      "title": "Chennai Open: Adkar, Bhosale break new ground with historic doubles final",
+      "description": "Vaishnavi Adkar and Rutuja Bhosale made Indian tennis history by becoming the first all-Indian pair to reach a WTA Tour-level doubles final, beating second seeds Weronika Falkowska and Alana Smith at the Chennai Open.",
+      "url": "https://www.indiatoday.in/sports/tennis/story/vaishnavi-adkar-rutuja-bhosale-chennai-open-wta-doubles-final-history-3034540-2026-11-07",
+      "author": "India Today Sports Desk",
+      "image": "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202611/vaishnavi-adkar--rutuja-bhosale-07002134-16x9_0.jpg?VersionId=ODzynYnY_GkmT9Sl4N8CfjQ3Z_tWNm92",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-11-07 14:01:05 +0000"
+    },
+    {
+      "id": "eb941a98-92d9-5a2c-9e15-1cba751bbbc5",
+      "title": "ANOTHER British multi-millionaire threatens to quit UK blaming Labour",
+      "description": "Andrew Thirkill, one of the UK's richest men, said the country will not be able to stand another five years of a Labour government.",
+      "url": "https://www.dailymail.com/news/article-16273911/British-multi-millionaire-quit-UK-Labour.html",
+      "author": "Elizabeth Ivens",
+      "image": "https://i.dailymail.com/1s/2026/11/07/13/112364099-0-image-m-13_1794059665195.jpg",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-11-07 13:57:01 +0000"
+    },
+    {
+      "id": "433397f3-8ef5-5f0e-ae02-59f0fa27344b",
+      "title": "Met Office warns of colder temperatures as polar vortex weakens",
+      "description": "Forecasters say colder Arctic air could sweep south towards Britain, increasing the risk of wintry weather",
+      "url": "https://www.independent.co.uk/news/uk/home-news/weather-polar-vortex-uk-met-office-b3080972.html",
+      "author": "Ted Hennessey",
+      "image": "https://static.independent.co.uk/2026/11/06/22/2254774580..?trim=0,0,0,0&width=1200&height=800&crop=1200:800",
+      "language": "en",
+      "category": [
+        "national"
+      ],
+      "source_category": [
+        "national"
+      ],
+      "published": "2026-11-07 13:50:46 +0000"
+    },
+    {
+      "id": "5559af43-2666-556e-8382-c8d9b9545eef",
+      "title": "Meghan Markle's wedding speech quip about royal life that left guests silent",
+      "description": "The Duchess of Sussex made a comment during her wedding speech about the Firm which shocked guests into silence, according to a royal biographer",
+      "url": "https://www.mirror.co.uk/news/royals/prince-harry-meghan-wedding-speech-37839161",
+      "author": "Jennifer Newton; Charlotte Foster",
+      "image": "https://i2-prod.mirror.co.uk/article37839160.ece/ALTERNATES/s1200d/1_prince-harry-and-meghan-markle-wedding-day.jpg",
+      "language": "en",
+      "category": [
+        "celebrity",
+        "entertainment"
+      ],
+      "source_category": [
+        "celebrity",
+        "entertainment"
+      ],
+      "published": "2026-11-07 13:49:30 +0000"
+    },
+    {
+      "id": "6fc42cb5-25e6-5d28-b899-bc667f0fa2d7",
+      "title": "Global travel to hit record-breaking levels in 2026 despite Middle East conflict",
+      "description": "The travel industry has remained resilient in the face of conflicts and cost of living crises",
+      "url": "https://www.independent.co.uk/travel/news-and-advice/global-travel-international-arrivals-new-record-b3080306.html",
+      "author": "Amelia Neath",
+      "image": "https://static.independent.co.uk/2026/11/06/9/45/iStock-1526986072.jpeg?trim=0,0,0,239&width=1200&height=800&crop=1200:800",
+      "language": "en",
+      "category": [
+        "national"
+      ],
+      "source_category": [
+        "national"
+      ],
+      "published": "2026-11-07 13:46:14 +0000"
+    },
+    {
+      "id": "3ab24751-3500-5e3e-866d-84d6d901c39f",
+      "title": "Tottenham dealt latest attacking injury blow after VAR madness at Leeds",
+      "description": "VAR spent over four minutes reviewing a possible red card offence when Jayden Bogle stamped on Tel’s ankle, but the challenge - which forced the Frenchman off - ultimately went unpunished",
+      "url": "https://www.independent.co.uk/sport/football/tottenham-leeds-mathys-tel-injury-var-b3080971.html",
+      "author": "Will Castle",
+      "image": "https://static.independent.co.uk/2026/11/07/13/2026-11-07T131611Z_1530373311_UP1EMB710UYAW_RTRMADP_3_SOCCER-ENGLAND-LEE-TOT.JPG?trim=0,42,0,42&width=1200&height=800&crop=1200:800",
+      "language": "en",
+      "category": [
+        "national"
+      ],
+      "source_category": [
+        "national"
+      ],
+      "published": "2026-11-07 13:45:49 +0000"
+    },
+    {
+      "id": "5c646ae9-9be8-5350-a5b6-6151bbdaba71",
+      "title": "Princess Anne exposes part of royal walkabouts she finds 'absurd'",
+      "description": "The Princess Royal has met thousands of royal fans through her years of royal engagements, but there is one part of the job she doesn’t understand",
+      "url": "https://www.mirror.co.uk/news/royals/princess-anne-absurd-walkabout-custom-37835218",
+      "author": "Charlotte Foster",
+      "image": "https://i2-prod.mirror.co.uk/article37273936.ece/ALTERNATES/s1200d/5_Her-Royal-Highness-The-Princess-Royal-Visit-To-Tall-Ships-Youth-Trust.jpg",
+      "language": "en",
+      "category": [
+        "celebrity",
+        "entertainment"
+      ],
+      "source_category": [
+        "celebrity",
+        "entertainment"
+      ],
+      "published": "2026-11-07 13:45:14 +0000"
+    },
+    {
+      "id": "f7830b1e-dc1d-58f5-b85c-39e2657fc83b",
+      "title": "Arsenal v Hull City, Fulham v Newcastle United, FA Cup and more: football – live",
+      "description": "Join Barry Glendenning for updates across Saturday’s Premier League games and beyond",
+      "url": "https://www.theguardian.com/football/live/2026/nov/07/arsenal-v-hull-city-fulham-v-newcastle-united-fa-cup-and-more-football-live",
+      "author": "Barry Glendenning",
+      "image": "https://i.guim.co.uk/img/media/8b30349f7ca057ba07ae1b11062c327f1bab37a7/889_0_6880_5504/master/6880.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctbGl2ZS5wbmc&enable=upscale&s=140da72058baadbe6b9821033a10a12c",
+      "language": "en",
+      "category": [
+        "regional"
+      ],
+      "source_category": [
+        "regional"
+      ],
+      "published": "2026-11-07 13:44:29 +0000"
+    },
+    {
+      "id": "521b547a-98a5-5278-98e3-a0b90986cb5f",
+      "title": "Man died after refusing life-saving operation on religious grounds",
+      "description": "A Jehovah's Witness died after turning down a blood transfusion on religious grounds - days before the rules were changed.",
+      "url": "https://metro.co.uk/2026/11/07/man-died-refusing-life-saving-operation-religious-grounds-29773661/",
+      "author": "Brendan Croft",
+      "image": "https://metro.co.uk/wp-content/uploads/2026/11/SEI_319771200-d834_1794059267.jpg?quality=90&strip=all&w=1200&h=630&crop=1",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-11-07 13:43:57 +0000"
+    },
+    {
+      "id": "28c3d752-aa80-5930-ae7a-aa06b0ed6853",
+      "title": "Kalyn Ponga: New Zealand reap rewards of gamble on 'freak of nature' at Rugby League World Cup",
+      "description": "Kalyn Ponga's return to Rugby League World Cup action, just 23 days after breaking his arm, was a risk. But New Zealand head coach Stacey Jones felt it was a risk worth taking - and was proved right.",
+      "url": "https://www.bbc.co.uk/sport/rugby-league/articles/cj20vqpk2z33o",
+      "author": "Elizabeth Botcherby",
+      "image": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/f4f2/live/eeeda310-daab-11f1-9da2-b11e4d68c08e.jpg",
+      "language": "en",
+      "category": [
+        "sports"
+      ],
+      "source_category": [
+        "sports"
+      ],
+      "published": "2026-11-07 13:43:08 +0000"
+    },
+    {
+      "id": "e61c560c-189a-510f-b9ef-a003ffb48b65",
+      "title": "Girl, 15, sent to 'hellhole' penal colony by Russian court for being ‘Ukrainian",
+      "description": "The girl, now 15, has been jailed for five years in a penal colony for seeking to set fire to railway signalling equipment at Bugach station on the Trans Siberian Railway.",
+      "url": "https://metro.co.uk/2026/11/07/girl-15-sent-hellhole-penal-colony-russian-court-ukrainian-spy-29773762/",
+      "author": "Brooke Davies",
+      "image": "https://metro.co.uk/wp-content/uploads/2026/11/SEI_319769785-8bcc_1794058947.jpg?quality=90&strip=all&w=1200&h=630&crop=1",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-11-07 13:42:20 +0000"
+    },
+    {
+      "id": "a7beae97-84d1-583e-b781-ebb2a6d58f88",
+      "title": "Reynolds jets in for Wrexham's game with Wolves after CEO's shock exit",
+      "description": "Ryan Reynolds and Rob McElhenney announced in a joint statement on Friday that Williamson was leaving the club after two years at the Racecourse Ground.",
+      "url": "https://www.dailymail.com/sport/football/article-16273969/Ryan-Reynolds-jets-watch-Wrexhams-clash-against-Wolves-surprise-exit-clubs-CEO.html?ns_campaign=1490&ito=1490",
+      "author": "Ben Willcocks",
+      "image": "https://i.dailymail.com/1s/2026/11/07/13/112363901-0-image-m-22_1794058675375.jpg",
+      "language": "en",
+      "category": [
+        "sports"
+      ],
+      "source_category": [
+        "sports"
+      ],
+      "published": "2026-11-07 13:40:55 +0000"
+    },
+    {
+      "id": "374e2f26-f126-570c-aa21-2ec624fb8f69",
+      "title": "Arsenal XI vs Hull: Starting lineup and confirmed team news",
+      "description": "Gunners have William Saliba back in huge boost but Bukayo Saka wait goes on",
+      "url": "https://www.standard.co.uk/sport/football/arsenal-fc-xi-vs-hull-starting-lineup-confirmed-team-news-injury-latest-premier-league-2026-b1303618.html",
+      "author": "Matt Verri",
+      "image": "https://static.standard.co.uk/2026/11/07/13/2303966412..?trim=1126,0,3467,0&auto=webp&quality=75&width=1200",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-11-07 13:39:56 +0000"
+    },
+    {
+      "id": "e5b3fb29-64ce-51de-bed3-5a580a03a4a6",
+      "title": "Melania to break from Donald for rare solo trip to LSU football game",
+      "description": "Melania and her Secret Service detail will descend on Tiger Stadium this afternoon for one of the biggest games of the season so far, as LSU hosts Alabama in a huge SEC showdown.",
+      "url": "https://www.dailymail.com/sport/college-football/article-16273971/melania-trump-lsu-football-baton-rouge.html?ns_campaign=1490&ito=1490",
+      "author": "Jon Michael Raasch; Ben Nagle",
+      "image": "https://i.dailymail.com/1s/2026/11/07/13/112357039-0-image-m-25_1794058592943.jpg",
+      "language": "en",
+      "category": [
+        "sports"
+      ],
+      "source_category": [
+        "sports"
+      ],
+      "published": "2026-11-07 13:39:22 +0000"
+    },
+    {
+      "id": "df43dac8-9c2f-5636-bef2-d0efb7598a38",
+      "title": "William and Kate 'have to be prepared' on international tours",
+      "description": "The Prince and Princess of Wales’ 2022 trip to the Caribbean became infamous after a number of blunders. The Mirror’s Pod Save the King YouTube show has delved into how they must learn from their mistakes",
+      "url": "https://www.mirror.co.uk/news/royals/william-kate-caribbean-disaster-tour-37852162",
+      "author": "Charlotte Foster",
+      "image": "https://i2-prod.mirror.co.uk/article26836348.ece/ALTERNATES/s1200d/1_Catherine-Duchess-of-Cambridge-and-Prince-William-Royal-visit-to-the-Caribbean-24-Mar-2022.jpg",
+      "language": "en",
+      "category": [
+        "national"
+      ],
+      "source_category": [
+        "national"
+      ],
+      "published": "2026-11-07 13:37:49 +0000"
+    },
+    {
+      "id": "581bbdb3-49de-5f57-88a8-78e82a158ce2",
+      "title": "Josh Tongue ruled out of England tour of Australia in hammer injury blow",
+      "description": "Tongue had been selected in England’s one day squad for the tour down under but will remain behind due to a toe injury",
+      "url": "https://www.independent.co.uk/sport/cricket/josh-tongue-england-cricket-australia-injury-absence-b3080969.html",
+      "author": "Michael Jones",
+      "image": "https://static.independent.co.uk/2026/11/07/13/2301497169..?trim=0,2,0,2&width=1200&height=800&crop=1200:800",
+      "language": "en",
+      "category": [
+        "national"
+      ],
+      "source_category": [
+        "national"
+      ],
+      "published": "2026-11-07 13:36:19 +0000"
+    },
+    {
+      "id": "11732322-2bef-5585-a2ba-a9fd2db86855",
+      "title": "Still Game stars spotted at Barrhead cafe as 'special project' underway",
+      "description": "The pair popped in to Central Cafe on Friday morning - and staff were \"honoured\" to host them.",
+      "url": "https://www.glasgowlive.co.uk/news/glasgow-news/still-game-stars-spotted-barrhead-34878212",
+      "author": "Rachel Cronin",
+      "image": "https://i2-prod.glasgowlive.co.uk/article34878262.ece/ALTERNATES/s1200d/1_Central-Cafe.png",
+      "language": "en",
+      "category": [
+        "regional",
+        "glasgow"
+      ],
+      "source_category": [
+        "regional",
+        "glasgow"
+      ],
+      "published": "2026-11-07 13:35:07 +0000"
+    },
+    {
+      "id": "40d79a5b-baf9-5b04-8270-b85c8ff67e19",
+      "title": "Trump teases there will be more firings after ousting Susie Wiles",
+      "description": "President Donald Trump, 80, sat down with 60 Minutes, just hours before he would announce Wiles' departure and replace her with Stephen Miller.",
+      "url": "https://www.dailymail.com/news/article-16273933/donald-trump-susie-wiles-inner-circle-firing-white-house.html",
+      "author": "Alyssa Guzman",
+      "image": "https://i.dailymail.com/1s/2026/11/07/13/112363829-0-image-m-25_1794057898382.jpg",
+      "language": "en",
+      "category": [
+        "general"
+      ],
+      "source_category": [
+        "general"
+      ],
+      "published": "2026-11-07 13:34:55 +0000"
+    },
+    {
+      "id": "2cbc8bc9-d2f6-5a78-b256-f0fd2afe08b9",
+      "title": "Venezuela Fury left upset after thieves break into husband’s car",
+      "description": "Venezuela Fury has shared her Bonfire Night horror in a new TikTok video after husband Noah Price's Jeep was broken into in Sheffield, with thieves stealing fireworks, a coat and trainers",
+      "url": "https://www.mirror.co.uk/3am/celebrity-news/venezula-fury-noah-price-theft-37853940",
+      "author": "Nikki Onafuye",
+      "image": "https://i2-prod.mirror.co.uk/article37854008.ece/ALTERNATES/s1200d/0_JS423666484.jpg",
+      "language": "en",
+      "category": [
+        "celebrity",
+        "entertainment"
+      ],
+      "source_category": [
+        "celebrity",
+        "entertainment"
+      ],
+      "published": "2026-11-07 13:32:57 +0000"
+    },
+    {
+      "id": "5e794ef4-1deb-52a0-8119-32f80f26b2c7",
+      "title": "25 Products Ready To Accompany You On Your Next Movie Marathon Night",
+      "description": "📞 Your couch is calling.",
+      "url": "https://www.buzzfeed.com/chelseastuart/products-movie-marathon-night",
+      "author": "Chelsea Stuart",
+      "image": "https://img.buzzfeed.com/buzzfeed-static/static/2026-10/26/22/thumb/aXz8IamGC.jpg?crop=2999:1570;0,2%26downsize=1250:*",
+      "language": "en",
+      "category": [
+        "entertainment",
+        "television",
+        "movie"
+      ],
+      "source_category": [
+        "entertainment",
+        "television",
+        "movie"
+      ],
+      "published": "2026-11-07 13:31:02 +0000"
+    },
+    {
+      "id": "49c21ded-6dca-5936-91aa-5b4c66ba2f6f",
+      "title": "From high-flying AI stocks to tariff-hit alcohol companies, the midterms shook up Wall Street",
+      "description": "The overwhelming victory by the Democrats in the midterm elections shook up Wall Street this week",
+      "url": "https://www.independent.co.uk/news/democrats-wall-street-new-york-iran-spacex-b3080973.html",
+      "author": "Damian Troise",
+      "image": "https://static.independent.co.uk/2026/11/07/13/Financial_Markets_Wall_Street_77_53.jpg?width=1200&height=800&crop=1200:800",
+      "language": "en",
+      "category": [
+        "national"
+      ],
+      "source_category": [
+        "national"
+      ],
+      "published": "2026-11-07 13:30:11 +0000"
+    }
+  ]
+}
