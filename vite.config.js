@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
+import { fileURLToPath, URL } from 'node:url';
 
 const CACHE_DIR = 'cache';
 
@@ -12,8 +13,14 @@ export default defineConfig({
   root: 'src',
   base: './',
   build: {
-    outDir: '../docs',
+    outDir: '../dist',
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./src/index.html', import.meta.url)),
+        relationships: fileURLToPath(new URL('./src/relationships.html', import.meta.url)),
+      },
+    },
   },
   server: {
     port: 8000,

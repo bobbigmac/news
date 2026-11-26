@@ -1,4 +1,4 @@
-import { getSourceName } from './sources.js';
+import { getSourceName, prettifySourceKey, sourceKeyFromUrl } from './sources.js';
 
 const SOURCE_LABELS = {
   'bbc.co.uk': 'BBC',
@@ -69,30 +69,6 @@ const SOURCE_LABELS = {
   'upi.com': 'UPI',
   'winnipegfreepress.com': 'Winnipeg Free Press',
 };
-
-export function sourceKeyFromUrl(url) {
-  if (!url) return '';
-  try {
-    return new URL(url).hostname.toLowerCase().replace(/^www\./, '');
-  } catch {
-    return '';
-  }
-}
-
-function prettifySourceKey(key) {
-  if (SOURCE_LABELS[key]) return SOURCE_LABELS[key];
-  const parts = key.split('.').filter(Boolean);
-  if (!parts.length) return 'Unknown';
-  const compoundTlds = new Set(['co.uk', 'org.uk', 'ac.uk', 'com.au', 'net.au', 'org.au', 'co.nz', 'co.kr', 'com.my', 'com.pk', 'co.za', 'com.ng', 'com.sa']);
-  const lastTwo = parts.slice(-2).join('.');
-  const baseIndex = compoundTlds.has(lastTwo) ? parts.length - 3 : parts.length - 2;
-  const base = parts[Math.max(0, baseIndex)] || parts[0];
-  return base
-    .split(/[-_]/)
-    .filter(Boolean)
-    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(' ');
-}
 
 export function collectSources(digest) {
   const byKey = new Map();

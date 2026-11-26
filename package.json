@@ -9,7 +9,10 @@
     "pipeline": "npm run fetch-news && npm run summarise && npm run build",
     "dev": "vite",
     "preview": "vite preview",
-    "watch": "node scripts/watch.js & vite"
+    "watch": "node scripts/watch.js & vite",
+    "test": "vitest run",
+    "test:unit": "vitest run test/view-model.test.js test/pipeline.test.js test/story-groups.test.js",
+    "test:integration": "vitest run test/build-output.test.js test/catchup.test.js test/feed.test.js test/filter-bar.test.js test/glimpse.test.js test/manage-panels.test.js"
   },
   "dependencies": {
     "@xenova/transformers": "^2.17.2",
@@ -20,7 +23,9 @@
     "sharp": "^0.35.3"
   },
   "devDependencies": {
-    "vite": "^8.1.4"
+    "jsdom": "^31.0.1",
+    "vite": "^8.1.4",
+    "vitest": "^5.1.1"
   },
   "license": "DBAD"
 }

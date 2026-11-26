@@ -1,6 +1,6 @@
 import { canonicalCategory, getFeedStories, prettifySourceKey, sourceKeyFromUrl } from './view-model.js';
 import { isClusterRead } from './reading.js';
-import { state, ui } from './state.js';
+import { saveReadState, state, ui } from './state.js';
 
 const SEARCH_HISTORY_KEY = 'broadsheet-search-history';
 const MAX_RECENT_SEARCHES = 8;
@@ -43,8 +43,17 @@ export function updateMarkReadButton() {
   const unread = getDisplayedClusters().filter(c => !isClusterRead(c)).length;
   btn.disabled = unread === 0;
   btn.innerHTML = unread
-    ? `Mark read <span class="mark-read-count">${unread}</span>`
-    : 'All read';
+    ? `Mark <span class="mark-read-count">${unread}</span> Read`
+    : 'Mark Read';
+}
+
+export function markDisplayedClustersRead() {
+  const at = Date.now();
+  for (const cluster of getDisplayedClusters()) {
+    state.readState[cluster.id] = { contentVersion: cluster.contentVersion || 1, at };
+  }
+  saveReadState();
+  ui.refresh();
 }
 
 function loadSearchHistory() {
@@ -87,17 +96,19 @@ export function renderRecentSearches() {
 }
 
 export function applySearchFilter() {
-  const q = getSearchQuery();
-  const articles = document.querySelectorAll('.article');
-  articles.forEach(a => {
-    const match = !q ||
-      a.dataset.headline.includes(q) ||
-      a.dataset.summary.includes(q) ||
-      a.dataset.category.includes(q) ||
-      (a.dataset.stories || '').includes(q);
-    a.classList.toggle('hidden', !match);
-  });
-  ui.relayout();
+  if (ui.syncFeed() !== true) {
+    const q = getSearchQuery();
+    const articles = document.querySelectorAll('.article');
+    articles.forEach(a => {
+      const match = !q ||
+        a.dataset.headline.includes(q) ||
+        a.dataset.summary.includes(q) ||
+        a.dataset.category.includes(q) ||
+        (a.dataset.stories || '').includes(q);
+      a.classList.toggle('hidden', !match);
+    });
+    ui.relayout();
+  }
   updateMarkReadButton();
 }
 

@@ -1,51 +1,48 @@
-import { FAVICON_SPRITE, getFaviconSpritePosition } from './favicon-sprite.js';
-import { saveSettings, state, toggleSourceDisplay, ui } from './state.js';
+import { getFaviconSpriteClass } from './favicon-sprite.js';
+import { saveSettings, setSourcesDisplay, state, ui } from './state.js';
 
 export function renderSourceBar(model) {
   const container = document.getElementById('source-toggles');
   if (!container) return;
   container.innerHTML = '';
 
-  const displaySize = 18;
+  const sources = (model?.sourceOptions || []).filter(source => source.count > 0);
 
-  for (const source of model?.sourceOptions || []) {
+  for (const source of sources) {
+    const sourceKeys = source.preferenceKeys || source.sourceKeys || [source.key];
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'source-toggle';
     btn.dataset.source = source.key;
-    btn.classList.toggle('is-off', !source.displayed);
-    btn.setAttribute('aria-pressed', String(source.displayed));
-    btn.setAttribute('aria-label', `${source.displayed ? 'Hide' : 'Show'} ${source.label} (${source.count} stories)`);
-    btn.title = `${source.label} — ${source.count} stories in the current pool`;
+    btn.classList.toggle('is-off', !source.displayed && !source.mixed);
+    btn.classList.toggle('is-mixed', source.mixed === true);
+    btn.setAttribute('aria-pressed', source.mixed ? 'mixed' : String(source.displayed));
+    btn.setAttribute('aria-label', `${source.displayed || source.mixed ? 'Hide' : 'Show'} ${source.label} (${source.count} stories)`);
+    btn.title = source.grouped
+      ? `${source.path.join(' / ')} — ${source.count} stories across ${source.sourceCount} sources in the current pool`
+      : `${source.label} — ${source.count} stories in the current pool`;
 
     const letter = document.createElement('span');
     letter.className = 'source-letter';
     letter.textContent = (source.label || source.key || '?').trim().charAt(0).toUpperCase() || '?';
     btn.appendChild(letter);
 
-    const spriteIcon = getFaviconSpritePosition(source.key);
-    if (spriteIcon) {
-      // The spritesheet is rendered at 18px in the bar but stored larger so
-      // favicons stay crisp on high-density displays.
-      const scale = displaySize / FAVICON_SPRITE.tile;
+    const spriteClass = getFaviconSpriteClass(source.icon || source.key);
+    if (spriteClass) {
       const icon = document.createElement('span');
-      icon.className = 'source-sprite';
+      icon.className = `source-sprite ${spriteClass}`;
       icon.setAttribute('aria-hidden', 'true');
-      icon.style.backgroundImage = `url("${FAVICON_SPRITE.url}")`;
-      icon.style.backgroundSize = `${FAVICON_SPRITE.width * scale}px ${FAVICON_SPRITE.height * scale}px`;
-      icon.style.backgroundPosition = `-${spriteIcon.x * scale}px -${spriteIcon.y * scale}px`;
       btn.appendChild(icon);
     }
 
-    if (!source.displayed && source.count > 0) {
-      const count = document.createElement('span');
-      count.className = 'source-count';
-      count.textContent = source.count;
-      btn.appendChild(count);
-    }
+    const count = document.createElement('span');
+    count.className = 'source-count';
+    count.textContent = source.count;
+    btn.appendChild(count);
 
     btn.addEventListener('click', () => {
-      toggleSourceDisplay(source.key);
+      const display = !(source.displayed || source.mixed);
+      setSourcesDisplay(sourceKeys, display, { explicitDisplay: display && source.otherMember === true });
       ui.refresh();
     });
 
@@ -67,21 +64,33 @@ export function renderCategoryFilterBar(model) {
   container.classList.remove('is-disabled');
   row?.classList.remove('hidden');
 
-  for (const category of model.categoryOptions || []) {
+  const categories = model.categoryOptions || [];
+  const allActive = categories.every(category => category.active);
+  const allBtn = document.createElement('button');
+  allBtn.type = 'button';
+  allBtn.className = 'category-filter-toggle category-all-toggle';
+  allBtn.classList.toggle('is-off', !allActive);
+  allBtn.setAttribute('aria-pressed', String(allActive));
+  allBtn.title = 'Show all categories';
+  allBtn.textContent = 'All';
+  allBtn.addEventListener('click', () => {
+    state.settings.categoryDisplayFilters = {};
+    saveSettings();
+    ui.refresh();
+  });
+  container.appendChild(allBtn);
+
+  for (const category of categories) {
+    if (!category.active) continue;
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'category-filter-toggle';
-    btn.classList.toggle('is-off', !category.active);
-    btn.setAttribute('aria-pressed', String(category.active));
-    btn.title = `${category.label} — ${category.count} stories`;
+    btn.setAttribute('aria-pressed', 'true');
+    btn.title = `${category.label} — ${category.storyCount} stories`;
     btn.textContent = category.label;
 
     btn.addEventListener('click', () => {
-      if (state.settings.categoryDisplayFilters[category.value] === false) {
-        delete state.settings.categoryDisplayFilters[category.value];
-      } else {
-        state.settings.categoryDisplayFilters[category.value] = false;
-      }
+      state.settings.categoryDisplayFilters[category.value] = false;
       saveSettings();
       ui.refresh();
     });

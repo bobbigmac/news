@@ -8,6 +8,7 @@ import {
 } from './reading.js';
 import { getClusterInterest, scoreClusterAgainstSignals, setClusterInterest } from './signals.js';
 import { storySearchText } from './search.js';
+import { getClusterStoryGroup } from './story-groups.js';
 
 export function formatDate(dateStr) {
   try {
@@ -49,6 +50,18 @@ function isLatestCluster(cluster, referenceTime) {
   return !!added && referenceTime - added <= 24 * 60 * 60 * 1000;
 }
 
+function visibleStoryGroup(cluster) {
+  return state.settings.groupByTag ? getClusterStoryGroup(cluster) : null;
+}
+
+function setStoryGroupMetadata(article, cluster) {
+  const group = visibleStoryGroup(cluster);
+  article.classList.toggle('has-story-group', !!group);
+  article.dataset.groupId = group?.id || '';
+  article.dataset.groupPath = group?.path || '';
+  return group;
+}
+
 function renderSummaryHtml(cluster, summary) {
   const shortSummary = String(cluster.shortSummary || '').replace(/\s+/g, ' ').trim();
   const hasShort = shortSummary && shortSummary !== summary;
@@ -61,13 +74,69 @@ function renderSummaryHtml(cluster, summary) {
   </div>`;
 }
 
-export function renderArticle(cluster, settings, isPluginLead, latestReferenceTime) {
+function clearArticleListeners(article) {
+  for (const cleanup of article._articleCleanup || []) cleanup();
+  article._articleCleanup = [];
+}
+
+function trackArticleListener(article, element, type, listener) {
+  element.addEventListener(type, listener);
+  article._articleCleanup.push(() => element.removeEventListener(type, listener));
+}
+
+export function populateArticleShell(article, cluster) {
+  clearArticleListeners(article);
+  const category = canonicalCategory(cluster.category);
+  article.className = 'article grid-item article-lazy';
+  const group = setStoryGroupMetadata(article, cluster);
+  article.dataset.clusterId = cluster.id;
+  article.dataset.headline = (cluster.headline || 'Untitled').toLowerCase();
+  article.dataset.summary = `${cluster.summary || ''} ${cluster.shortSummary || ''}`.toLowerCase();
+  article.dataset.category = category.toLowerCase();
+  article.dataset.stories = getFeedStories(cluster, state.disabledSources)
+    .map(storySearchText)
+    .join(' ')
+    .toLowerCase();
+
+  const header = document.createElement('div');
+  header.className = 'article-header';
+  const categoryEl = document.createElement('div');
+  categoryEl.className = 'article-category';
+  categoryEl.textContent = category;
+  if (group) {
+    const groupEl = document.createElement('span');
+    groupEl.className = 'article-group-label';
+    groupEl.textContent = ` / ${group.path}`;
+    categoryEl.appendChild(groupEl);
+  }
+  const ageEl = document.createElement('div');
+  ageEl.className = 'article-age';
+  ageEl.textContent = relativeAge(getNewestStoryDate(cluster));
+  header.append(categoryEl, ageEl);
+
+  const headline = document.createElement('h2');
+  headline.className = 'article-headline';
+  headline.textContent = cluster.headline || 'Untitled';
+  article.replaceChildren(header, headline);
+  return article;
+}
+
+export function renderArticleShell(cluster) {
+  return populateArticleShell(document.createElement('article'), cluster);
+}
+
+export function renderArticle(cluster, settings, isPluginLead, latestReferenceTime, target = null) {
   const category = canonicalCategory(cluster.category);
   const headline = cluster.headline || 'Untitled';
   const summary = cluster.summary || '';
   const wasUpdated = isClusterUpdatedSinceRead(cluster);
   const storyCount = (cluster.stories || []).length;
-  const enabledStories = getDisplayedStories(cluster, state.disabledSources, state.sourceFilters);
+  const enabledStories = getDisplayedStories(
+    cluster,
+    state.disabledSources,
+    state.sourceFilters,
+    state.viewModel?.otherSourceKeys,
+  );
   const isSingleton = storyCount === 1;
   const singletonStory = isSingleton ? cluster.stories[0] : null;
 
@@ -93,8 +162,10 @@ export function renderArticle(cluster, settings, isPluginLead, latestReferenceTi
     headlineHtml = `<h2 class="article-headline">${headline}</h2>`;
   }
 
-  const article = document.createElement('article');
+  const article = target || document.createElement('article');
+  clearArticleListeners(article);
   article.className = 'article grid-item';
+  const group = setStoryGroupMetadata(article, cluster);
   if (isSingleton) article.classList.add('singleton');
   article.dataset.clusterId = cluster.id;
   article.dataset.headline = headline.toLowerCase();
@@ -147,7 +218,7 @@ export function renderArticle(cluster, settings, isPluginLead, latestReferenceTi
 
   article.innerHTML = `
     <div class="article-header">
-      <div class="article-category">${category}</div>
+      <div class="article-category">${category}${group ? `<span class="article-group-label"> / ${group.path}</span>` : ''}</div>
       <div class="article-header-right">
         <div class="article-age">${relativeAge(getNewestStoryDate(cluster))}</div>
         <button class="interest-btn interested-btn ${interest === 'interested' ? 'active' : ''}" data-signal="interested" title="Relevant — show more like this">✓</button>
@@ -164,17 +235,20 @@ export function renderArticle(cluster, settings, isPluginLead, latestReferenceTi
 
   // Expanding a glimpsed summary is a reading interaction, not a catch-up
   // acknowledgement: it must not mark the cluster read.
-  article.querySelector('.summary-short')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    article.classList.add('summary-expanded');
-    ui.relayout();
-  });
+  const summaryShort = article.querySelector('.summary-short');
+  if (summaryShort) {
+    trackArticleListener(article, summaryShort, 'click', (e) => {
+      e.stopPropagation();
+      article.classList.add('summary-expanded');
+      ui.relayout();
+    });
+  }
 
   // Click toggles between summary and source links (multi-story only).
   // Singletons don't have an expandable list — the headline links directly.
   if (!isSingleton) {
     const body = article.querySelector('.article-body');
-    article.addEventListener('click', (e) => {
+    trackArticleListener(article, article, 'click', (e) => {
       if (e.target.tagName === 'A' || e.target.closest('.interest-btn, .summary-short')) return;
       body.classList.toggle('show-links');
       ui.relayout();
@@ -183,7 +257,7 @@ export function renderArticle(cluster, settings, isPluginLead, latestReferenceTi
 
   // Interest signal buttons — both mark as read and set signal
   article.querySelectorAll('.interest-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    trackArticleListener(article, btn, 'click', (e) => {
       e.stopPropagation();
       const signal = btn.dataset.signal;
       setClusterInterest(cluster, signal);

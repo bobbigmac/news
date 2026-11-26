@@ -1,6 +1,6 @@
 import { readFileSync, existsSync, mkdirSync, writeFileSync, copyFileSync } from 'fs';
 import { join } from 'path';
-import { annotateClusters, buildEntityIndex } from './entities.js';
+import { annotateClustersIfMissing, buildEntityIndex } from './entities.js';
 import { computeClusterTagsIfMissing } from './tags.js';
 import { enrichAllStories } from './story-enrich.js';
 import { canonicalCategory, recategoriseCluster } from './categories.js';
@@ -10,7 +10,7 @@ import { deriveShortSummary } from './short-summary.js';
 const CACHE_DIR = 'cache';
 const DIGEST_FILE = join(CACHE_DIR, 'digest.json');
 const RUN_LOG_FILE = join(CACHE_DIR, 'run-log.json');
-const OUT_DIR = 'docs';
+const OUT_DIR = 'dist';
 
 function loadJson(path, fallback) {
   if (!existsSync(path)) return fallback;
@@ -48,7 +48,7 @@ enrichAllStories(digest);
 
 // Ensure every cluster has tags + entities even if summarise didn't run fully.
 computeClusterTagsIfMissing(digest);
-annotateClusters(digest);
+annotateClustersIfMissing(digest);
 
 // --- Pipeline stats (consumed by the frontend info panel) ---
 const storyStore = loadJson(join(CACHE_DIR, 'stories.json'), { stories: {} });
@@ -195,46 +195,57 @@ function buildTopics(digest, entities) {
     .filter(t => t && !STRUCTURAL.has(t));
   const clusterTags = clusters.map(c => new Set(contentTags(c)));
 
-  // Map entity name -> set of cluster indices (only entities in 2+ clusters).
-  const entityClusters = new Map();
-  for (const e of entities) {
-    if (e.count >= 2) entityClusters.set(e.name, new Set(
-      e.clusterIds.map(id => clusters.findIndex(c => c.id === id)).filter(i => i >= 0)
-    ));
-  }
+  // Union-find keeps this O(shared-tag edges) instead of comparing every
+  // cluster pair. Large cache-data digests contain thousands of clusters.
+  const parent = clusters.map((_, i) => i);
+  const find = (i) => parent[i] === i ? i : (parent[i] = find(parent[i]));
+  const union = (a, b) => {
+    const pa = find(a);
+    const pb = find(b);
+    if (pa !== pb) parent[pb] = pa;
+  };
 
-  // Adjacency: link i and j if they share >= 2 content tags OR share an
-  // entity that itself appears in 2+ clusters. The entity link is the
-  // stronger signal (a named person/place/org in common), so one shared
-  // entity is enough; tags need >= 2 to avoid spurious links.
-  const adj = clusters.map(() => new Set());
-  for (let i = 0; i < clusters.length; i++) {
-    for (let j = i + 1; j < clusters.length; j++) {
-      let shared = 0;
-      for (const t of clusterTags[i]) if (clusterTags[j].has(t)) shared++;
-      let linked = shared >= 2;
-      if (!linked) {
-        for (const idxSet of entityClusters.values()) {
-          if (idxSet.has(i) && idxSet.has(j)) { linked = true; break; }
-        }
+  // Map tag -> cluster indices, then count how many tags each pair shares.
+  // A pair is linked only when it shares >= 2 content tags.
+  const tagClusters = new Map();
+  clusterTags.forEach((tags, i) => {
+    for (const tag of tags) {
+      if (!tagClusters.has(tag)) tagClusters.set(tag, []);
+      tagClusters.get(tag).push(i);
+    }
+  });
+  const sharedTags = new Map();
+  for (const indices of tagClusters.values()) {
+    if (indices.length < 2) continue;
+    for (let i = 0; i < indices.length; i++) {
+      for (let j = i + 1; j < indices.length; j++) {
+        const key = indices[i] * clusters.length + indices[j];
+        const shared = (sharedTags.get(key) || 0) + 1;
+        if (shared >= 2) union(indices[i], indices[j]);
+        else sharedTags.set(key, shared);
       }
-      if (linked) { adj[i].add(j); adj[j].add(i); }
     }
   }
 
-  // Connected components.
-  const visited = new Array(clusters.length).fill(false);
-  const topics = [];
+  // A shared entity appearing in 2+ clusters is enough to link clusters.
+  const clusterIndexById = new Map(clusters.map((c, i) => [c.id, i]));
+  for (const entity of entities) {
+    if (entity.count < 2) continue;
+    const indices = entity.clusterIds
+      .map(id => clusterIndexById.get(id))
+      .filter(i => i !== undefined);
+    for (let i = 1; i < indices.length; i++) union(indices[0], indices[i]);
+  }
+
+  const components = new Map();
   for (let i = 0; i < clusters.length; i++) {
-    if (visited[i]) continue;
-    const comp = [];
-    const stack = [i];
-    visited[i] = true;
-    while (stack.length) {
-      const u = stack.pop();
-      comp.push(u);
-      for (const v of adj[u]) if (!visited[v]) { visited[v] = true; stack.push(v); }
-    }
+    const root = find(i);
+    if (!components.has(root)) components.set(root, []);
+    components.get(root).push(i);
+  }
+
+  const topics = [];
+  for (const comp of components.values()) {
     if (comp.length < 2) continue; // single-cluster "topics" aren't useful
     // Name the topic by the most common content tag among members, falling
     // back to the most common entity name.

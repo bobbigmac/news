@@ -42,35 +42,27 @@ export function markClusterRead(cluster) {
 
 // --- Glimpse tracking ---
 // Independent of read state: any article visibility is recorded, but the
-// collapsed/short treatment is only applied after the article leaves the
-// viewport so text does not reflow underneath the reader.
+// collapsed/short treatment is only applied when an article is rendered later.
+// Changing the already-rendered card when it scrolls past would reflow the
+// rest of the masonry underneath the reader.
 let glimpseObserver = null;
 
 export function refreshGlimpseObserver() {
   if (glimpseObserver) glimpseObserver.disconnect();
   glimpseObserver = null;
 
-  const articles = document.querySelectorAll('.article[data-cluster-id]');
+  const articles = document.querySelectorAll('.article[data-cluster-id]:not(.article-lazy)');
   if (!articles.length || !state.digest) return;
 
   glimpseObserver = new IntersectionObserver((entries) => {
     let changed = false;
-    let layoutNeeded = false;
     for (const ent of entries) {
-      const article = ent.target;
-      const clusterId = article.dataset.clusterId;
+      if (!ent.isIntersecting) continue;
+      const clusterId = ent.target.dataset.clusterId;
       const cluster = state.digest?.clusters?.find(c => c.id === clusterId);
-      if (!cluster) continue;
-
-      if (ent.isIntersecting) {
-        if (recordClusterGlimpsed(cluster)) changed = true;
-      } else if (isCurrentVersionGlimpsed(cluster) && !isClusterRead(cluster) && !article.classList.contains('is-glimpsed')) {
-        article.classList.add('is-glimpsed');
-        layoutNeeded = true;
-      }
+      if (cluster && recordClusterGlimpsed(cluster)) changed = true;
     }
     if (changed) saveGlimpseState();
-    if (layoutNeeded) ui.relayout();
   }, { threshold: 0 });
 
   articles.forEach(article => glimpseObserver.observe(article));
@@ -171,7 +163,7 @@ export function refreshReadObserver() {
     if (readVisible.size > 0 && !readRafId) readRafLoop();
   }, { threshold: [0, 0.9] });
 
-  document.querySelectorAll('.article .article-headline').forEach(h => {
+  document.querySelectorAll('.article:not(.article-lazy) .article-headline').forEach(h => {
     readObserver.observe(h);
   });
 }

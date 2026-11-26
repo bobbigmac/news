@@ -1,6 +1,5 @@
 /* Source bar — local favicon filters + catchup control */
 .source-bar {
-  border-bottom: 1px solid var(--rule);
   background: var(--paper-light);
 }
 
@@ -16,32 +15,35 @@
 .source-toggles {
   display: flex;
   align-items: center;
-  gap: 0.22rem;
+  flex-wrap: wrap;
+  gap: 0.3rem;
   flex: 1;
   min-width: 0;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scrollbar-width: thin;
   padding: 0.1rem 0;
 }
 
 .source-toggle {
   position: relative;
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   flex: 0 0 auto;
-  border: 1px solid transparent;
+  border: 1px solid var(--ink);
   border-radius: 4px;
-  background: transparent;
-  color: var(--muted);
+  background: var(--ink);
+  color: var(--paper);
   cursor: pointer;
   padding: 0;
   display: grid;
   place-items: center;
-  transition: opacity 0.15s, border-color 0.15s, filter 0.15s, background 0.15s;
+  transition: opacity 0.15s, border-color 0.15s, filter 0.15s, background 0.15s, color 0.15s;
 }
 
-.source-toggle:hover {
+.source-toggle:hover:not(.is-off) {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.source-toggle.is-off:hover {
   border-color: var(--rule-thick);
   background: var(--paper);
 }
@@ -52,8 +54,15 @@
 }
 
 .source-toggle.is-off {
-  opacity: 0.28;
+  background: transparent;
+  border-color: var(--rule);
+  color: var(--muted);
+  opacity: 0.5;
   filter: grayscale(1);
+}
+
+.source-toggle.is-mixed {
+  opacity: 0.72;
 }
 
 .source-toggle.is-off::after {
@@ -70,7 +79,7 @@
 
 .source-letter {
   font-family: var(--sans);
-  font-size: 0.68rem;
+  font-size: 0.88rem;
   font-weight: 700;
   line-height: 1;
 }
@@ -78,34 +87,34 @@
 .source-toggle .source-sprite {
   position: absolute;
   inset: 4px;
-  width: 18px;
-  height: 18px;
+  width: 32px;
+  height: 32px;
   border-radius: 3px;
   background-color: #fff;
-  background-repeat: no-repeat;
   pointer-events: none;
 }
 
 .source-count {
   position: absolute;
-  right: -4px;
-  bottom: -4px;
-  min-width: 14px;
-  height: 14px;
-  padding: 0 3px;
+  right: -5px;
+  bottom: -5px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border: 1px solid var(--ink);
   border-radius: 999px;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--sans);
-  font-size: 0.55rem;
-  line-height: 14px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 15px;
   text-align: center;
   pointer-events: none;
 }
 
 .category-filter-row {
   padding-top: 0;
-  border-top: 1px solid var(--rule);
 }
 
 .category-filter-row.hidden { display: none; }
@@ -113,12 +122,10 @@
 .category-filters {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.3rem;
   flex: 1;
   min-width: 0;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scrollbar-width: thin;
   padding: 0.2rem 0 0.1rem;
 }
 
@@ -127,10 +134,10 @@
   align-items: center;
   gap: 0.28rem;
   flex: 0 0 auto;
-  border: 1px solid transparent;
+  border: 1px solid var(--ink);
   border-radius: 3px;
-  background: transparent;
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
   font-family: var(--sans);
   font-size: 0.68rem;
   font-weight: 700;
@@ -138,17 +145,18 @@
   letter-spacing: 0.5px;
   padding: 0.24rem 0.38rem;
   cursor: pointer;
-  transition: opacity 0.15s, border-color 0.15s, background 0.15s;
+  transition: opacity 0.15s, border-color 0.15s, background 0.15s, color 0.15s;
 }
 
-.category-filter-toggle:hover {
-  border-color: var(--rule-thick);
-  background: var(--paper);
+.category-filter-toggle:hover:not(.is-off) {
+  border-color: var(--accent);
+  background: var(--accent);
 }
 
 .category-filter-toggle.is-off {
-  opacity: 0.34;
-  text-decoration: line-through;
+  background: transparent;
+  border-color: var(--rule);
+  color: var(--muted);
 }
 
 .mark-all-read {
@@ -181,7 +189,7 @@
 .mark-read-count {
   display: inline-block;
   min-width: 1.5em;
-  margin-left: 0.35rem;
+  margin: 0 0.35rem;
   padding: 0.05rem 0.3rem;
   border-radius: 999px;
   background: var(--paper);

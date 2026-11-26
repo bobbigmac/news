@@ -56,7 +56,7 @@ export function buildEntityIndex(digest) {
   const byName = new Map(); // name -> { type, clusterIds: Set }
 
   for (const cluster of clusters) {
-    const ents = extractClusterEntities(cluster);
+    const ents = cluster.entities || extractClusterEntities(cluster);
     for (const [type, names] of Object.entries(ents)) {
       for (const name of names) {
         if (!byName.has(name)) byName.set(name, { name, type, clusterIds: new Set() });
@@ -79,4 +79,16 @@ export function annotateClusters(digest) {
   for (const cluster of (digest.clusters || [])) {
     cluster.entities = extractClusterEntities(cluster);
   }
+}
+
+// Build-time backfill: summarised clusters already carry entities from the
+// comprehend stage, so only older/partial rows need another NLP pass.
+export function annotateClustersIfMissing(digest) {
+  let backfilled = 0;
+  for (const cluster of (digest.clusters || [])) {
+    if (cluster.entities) continue;
+    cluster.entities = extractClusterEntities(cluster);
+    backfilled++;
+  }
+  if (backfilled) console.log(`Entities: backfilled ${backfilled} clusters`);
 }

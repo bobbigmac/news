@@ -1,3 +1,5 @@
+import { groupSourceOptions, isSourceVisible } from './source-groups.js';
+
 // Pure view-model construction for the broadsheet.
 //
 // The UI has two different source concepts that are easy to conflate:
@@ -5,6 +7,8 @@
 //   - sourceFilters: temporary display filters in the top filter panel
 // This module keeps the filter pipeline explicit so rendering code does not
 // reinvent slightly different versions of the same state in several places.
+
+export { INDIVIDUAL_SOURCE_MIN_ARTICLES } from './source-groups.js';
 
 export function canonicalCategory(category) {
   const raw = Array.isArray(category) ? category[0] : category;
@@ -67,18 +71,13 @@ function isFeedSource(sourceKey, disabledSources) {
   return disabledSources[sourceKey] !== true;
 }
 
-function isDisplayedSource(sourceKey, sourceFilters) {
-  if (!sourceKey) return true;
-  return sourceFilters[sourceKey] !== false;
-}
-
 export function getFeedStories(cluster, disabledSources) {
   return (cluster.stories || []).filter(story => isFeedSource(sourceKeyFromUrl(story.url), disabledSources));
 }
 
-export function getDisplayedStories(cluster, disabledSources, sourceFilters) {
+export function getDisplayedStories(cluster, disabledSources, sourceFilters, otherSourceKeys = new Set()) {
   return getFeedStories(cluster, disabledSources)
-    .filter(story => isDisplayedSource(sourceKeyFromUrl(story.url), sourceFilters));
+    .filter(story => isSourceVisible(sourceKeyFromUrl(story.url), sourceFilters, otherSourceKeys));
 }
 
 function clusterHasFeedSource(cluster, disabledSources) {
@@ -87,10 +86,10 @@ function clusterHasFeedSource(cluster, disabledSources) {
   return stories.some(story => isFeedSource(sourceKeyFromUrl(story.url), disabledSources));
 }
 
-function clusterHasDisplayedSource(cluster, disabledSources, sourceFilters) {
+function clusterHasDisplayedSource(cluster, disabledSources, sourceFilters, otherSourceKeys = new Set()) {
   const stories = getFeedStories(cluster, disabledSources);
   if (!stories.length) return false;
-  return stories.some(story => isDisplayedSource(sourceKeyFromUrl(story.url), sourceFilters));
+  return stories.some(story => isSourceVisible(sourceKeyFromUrl(story.url), sourceFilters, otherSourceKeys));
 }
 
 function isClusterRead(cluster, readState) {
@@ -206,15 +205,18 @@ export function buildViewModel({
   const feedPool = preFeedPool.filter(cluster => clusterHasFeedSource(cluster, disabledSources));
 
   // Header source counts are calculated before temporary display filters are
-  // applied, so a filtered-out source still shows how many items it would restore.
-  const sourceOptions = collectSourceOptions(feedPool, digestSources, disabledSources, { feedOnly: true })
-    .map(source => ({
-      ...source,
-      displayed: isDisplayedSource(source.key, sourceFilters),
-    }));
+  // applied, so a filtered-out branch still shows how many items it would restore.
+  // The raw host list is collapsed through the curated relation tree; known
+  // hosts become readable branches, prominent free-standing hosts stay
+  // individual, and the rest become the explicit Other Sources branch.
+  const sourceGrouping = groupSourceOptions(
+    collectSourceOptions(feedPool, digestSources, disabledSources, { feedOnly: true }),
+    sourceFilters,
+  );
+  const sourceOptions = sourceGrouping.options;
 
   const sourceView = feedPool.filter(cluster =>
-    clusterHasDisplayedSource(cluster, disabledSources, sourceFilters)
+    clusterHasDisplayedSource(cluster, disabledSources, sourceFilters, sourceGrouping.otherSourceKeys)
   );
 
   const categoryFilters = settings.categoryFilter === 'all'
@@ -237,6 +239,7 @@ export function buildViewModel({
     sourceView,
     visibleClusters,
     sourceOptions,
+    otherSourceKeys: sourceGrouping.otherSourceKeys,
     allSourceOptions,
     categoryOptions,
     categoryRowEnabled: settings.categoryFilter === 'all',

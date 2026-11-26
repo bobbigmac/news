@@ -2,18 +2,18 @@ import { buildViewModel, filterByMode } from './view-model.js';
 import {
   applySettings,
   collectSourcesFromDigest,
-  saveReadState,
   saveSettings,
   state,
   ui,
 } from './state.js';
-import { initMasonry } from './layout.js';
 import { renderCategoryFilterBar, renderSourceBar } from './filters.js';
-import { formatDate, renderArticle } from './article.js';
+import { clearFeed, renderFeed, syncFeedToSearch } from './feed.js';
+import { formatDate } from './article.js';
 import { getAvailableCategories, getAvailableModes, sortClusters } from './ordering.js';
+import { groupClustersByTag } from './story-groups.js';
 import {
-  getDisplayedClusters,
   initSearch,
+  markDisplayedClustersRead,
   renderRecentSearches,
   updateMarkReadButton,
 } from './search.js';
@@ -32,21 +32,12 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () 
   if (state.settings.theme === 'auto') applySettings();
 });
 
-function markAllClustersRead() {
-  if (!state.digest) return;
-  const at = Date.now();
-  for (const cluster of getDisplayedClusters()) {
-    state.readState[cluster.id] = { contentVersion: cluster.contentVersion || 1, at };
-  }
-  saveReadState();
-  ui.refresh();
-}
-
 function renderDigest(digest, settings) {
   const sheet = document.getElementById('broadsheet');
-  sheet.innerHTML = '';
-
-  const allClusters = sortClusters(digest.clusters || [], settings.sort);
+  const allClusters = groupClustersByTag(
+    sortClusters(digest.clusters || [], settings.sort),
+    settings.groupByTag,
+  );
   setSignalClusters(allClusters);
 
   if (!allClusters.length) {
@@ -54,6 +45,7 @@ function renderDigest(digest, settings) {
     state.visibleClusters = [];
     renderSourceBar(null);
     renderCategoryFilterBar(null);
+    clearFeed();
     sheet.innerHTML = '<div class="loading">No news available yet. Check back later.</div>';
     refreshGlimpseObserver();
     updateMarkReadButton();
@@ -81,9 +73,10 @@ function renderDigest(digest, settings) {
   renderCategoryFilterBar(state.viewModel);
 
   if (!visible.length) {
+    clearFeed();
     sheet.innerHTML = state.viewModel.feedPool.length
       ? '<div class="loading">No stories match the current source and category filters.</div>'
-      : '<div class="loading">All caught up. Toggle "Show updated" in settings to see stories with new information.</div>';
+      : '<div class="loading">All caught up.</div>';
     refreshGlimpseObserver();
     updateMarkReadButton();
     return;
@@ -102,19 +95,16 @@ function renderDigest(digest, settings) {
   }
 
   const latestReferenceTime = Date.parse(digest.generated || '') || Date.now();
-  const fragment = document.createDocumentFragment();
-  for (const cluster of visible) {
-    const isPluginLead = pluginLeadIds.has(cluster.id);
-    fragment.appendChild(renderArticle(cluster, settings, isPluginLead, latestReferenceTime));
-  }
-  sheet.appendChild(fragment);
-  initMasonry();
-  refreshGlimpseObserver();
-  refreshReadObserver();
-  updateMarkReadButton();
+  renderFeed({
+    clusters: visible,
+    settings,
+    pluginLeadIds,
+    latestReferenceTime,
+  });
 }
 
 ui.relayout = () => state.masonry?.layout();
+ui.syncFeed = () => syncFeedToSearch();
 ui.updateReadCount = () => updateMarkReadButton();
 ui.refresh = () => {
   if (!state.digest) return;
@@ -130,7 +120,7 @@ async function init() {
   initReadInteraction();
 
   const markAllBtn = document.getElementById('mark-all-read');
-  if (markAllBtn) markAllBtn.addEventListener('click', markAllClustersRead);
+  if (markAllBtn) markAllBtn.addEventListener('click', markDisplayedClustersRead);
 
   // Mode toggle (in masthead)
   const modeBtn = document.getElementById('mode-toggle');
@@ -140,7 +130,7 @@ async function init() {
     if (!catBtn || !state.digest) return;
     const modeFiltered = filterByMode(sortClusters(state.digest.clusters || [], state.settings.sort), state.settings.mode);
     const cats = getAvailableCategories(modeFiltered);
-    const all = [{ value: 'all', label: 'Categories' }, ...cats.map(c => ({ value: c, label: c }))];
+    const all = [{ value: 'all', label: 'All' }, ...cats.map(c => ({ value: c, label: c }))];
     // If current filter is no longer available, reset to 'all'
     if (!all.find(o => o.value === state.settings.categoryFilter)) {
       state.settings.categoryFilter = 'all';
@@ -171,7 +161,7 @@ async function init() {
       if (!state.digest) return;
       const modeFiltered = filterByMode(sortClusters(state.digest.clusters || [], state.settings.sort), state.settings.mode);
       const cats = getAvailableCategories(modeFiltered);
-      const all = [{ value: 'all', label: 'Categories' }, ...cats.map(c => ({ value: c, label: c }))];
+      const all = [{ value: 'all', label: 'All' }, ...cats.map(c => ({ value: c, label: c }))];
       const idx = all.findIndex(o => o.value === state.settings.categoryFilter);
       const next = all[(idx + 1) % all.length];
       state.settings.categoryFilter = next.value;

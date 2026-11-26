@@ -215,14 +215,23 @@
 
 .manage-label {
   display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+  align-items: baseline;
+  gap: 0.5rem;
   min-width: 0;
 }
 
+.manage-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .manage-count {
+  margin-left: auto;
   color: var(--muted);
   font-size: 0.68rem;
+  white-space: nowrap;
 }
 
 .cat-pref-btn {

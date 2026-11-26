@@ -50,6 +50,8 @@ export function makeStoryData(s) {
     url: s.url || '',
     image: s.image || '',
     published: s.published || '',
+    description: s.description || '',
+    content: s.content || '',
     category: normaliseCategory(Array.isArray(s.category) ? s.category[0] : (s.category || 'Other')),
     plugin: s.plugin || s._plugin || null,
     pluginPriority: s.pluginPriority ?? s._pluginPriority ?? null,

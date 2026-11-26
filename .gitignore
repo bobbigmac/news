@@ -1,7 +1,16 @@
 node_modules/
 .env
 cache/
-docs/
+dist/
 news/
 logs_*.zip
 logs_extracted/.venv/
+
+# Generated files left behind by the old docs/ build output
+docs/assets/
+docs/digest.json
+docs/favicons/
+docs/index.html
+docs/og-image.jpg
+docs/run-log.json
+docs/sw.js

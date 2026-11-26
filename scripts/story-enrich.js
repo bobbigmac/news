@@ -1,3 +1,5 @@
+import { getSourceName, prettifySourceKey, sourceKeyFromUrl } from './sources.js';
+
 // Per-story enrichment for the public dataset.
 //
 // Adds three fields to each story object that external consumers (e.g. a
@@ -77,6 +79,10 @@ export function enrichStory(story) {
 export function enrichAllStories(digest) {
   for (const cluster of (digest.clusters || [])) {
     for (const story of (cluster.stories || [])) {
+      if (!story.sourceName) {
+        story.sourceName = getSourceName(story.url)
+          || prettifySourceKey(sourceKeyFromUrl(story.url));
+      }
       // Don't re-enrich if already done (idempotent).
       if (story.bodyText !== undefined) continue;
       enrichStory(story);

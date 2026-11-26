@@ -53,8 +53,9 @@ in a single article and returns 0 results. This is not a bug — it's how the AP
 
 - `scripts/summarise.js` must always write a `run-log.json` entry, even when exiting early
   (no new stories or all already summarised). Otherwise the site's infopanel stays stale.
-- `scripts/build.js` copies `digest.json` and `run-log.json` from `cache/` to `docs/`.
-- The site reads these from `docs/` (GitHub Pages serves the `docs/` directory).
+- `scripts/build.js` copies `digest.json` and `run-log.json` from `cache/` to `dist/`.
+- `dist/` is the disposable build artifact uploaded to GitHub Pages; `docs/` is for
+  checked-in documentation and session logs.
 
 ## News Sources
 
@@ -173,8 +174,8 @@ the free LLM failed constantly and the fallback fragmented everything.
 
 ### Dataset fields for external consumers
 
-The public `docs/digest.json` is designed as a general-purpose news dataset, not just
-for our own frontend. Each cluster has:
+The deployed `/digest.json` (generated as `dist/digest.json`) is designed as a
+general-purpose news dataset, not just for our own frontend. Each cluster has:
 - `region` — geographic scope (place name, "UK", "International", "Global"). Identified
   by the LLM as part of the summary request — not heuristic, so it handles any location.
 - `entities` — `{ people, places, orgs }` arrays from compromise NER.
@@ -280,6 +281,18 @@ SEARCH_PLUGINS=longsight|levenshulme|gorton|manchester;xbox|dark souls|dwarf for
 ```
 
 When changing `.env`, also update the GitHub repo secret (Settings → Secrets → Actions).
+
+## Testing
+
+- `npm test` runs the Vitest suite (`test/**/*.test.js`, jsdom environment).
+- `npm run test:unit` covers pure view-model and pipeline helpers.
+- `npm run test:integration` covers DOM/search/catch-up/glimpse/filter-panel behaviour.
+- Do not use manually driven Firefox checks as the mainstream test path; keep
+  regression coverage in `test/` and run the suite before builds.
+- For local dev data, sync the remote pipeline cache instead of rerunning quota
+  or LLM calls: `git fetch origin cache-data && git checkout origin/cache-data -- cache/`
+  then `git restore --staged cache/` if the path checkout staged it. The Vite dev
+  middleware serves `cache/digest.json` directly.
 
 ## Known Pitfalls
 

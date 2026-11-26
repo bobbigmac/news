@@ -21,6 +21,7 @@ export const DEFAULT_SETTINGS = {
   watchWords: '',
   expandAll: false,
   showUpdated: false,
+  groupByTag: false,
   theme: 'auto',
   markRead: 'off'
 };
@@ -95,6 +96,7 @@ export function loadSettings() {
     if (!settings.categoryDisplayFilters || Array.isArray(settings.categoryDisplayFilters) || typeof settings.categoryDisplayFilters !== 'object') {
       settings.categoryDisplayFilters = {};
     }
+    if (settings.categoryFilter === 'other') settings.categoryFilter = 'all';
     return settings;
   } catch { return { ...DEFAULT_SETTINGS }; }
 }
@@ -132,6 +134,7 @@ export const state = {
 export const ui = {
   refresh() {},
   relayout() {},
+  syncFeed() { return false; },
   updateReadCount() {},
 };
 
@@ -176,11 +179,19 @@ export function isSourceDisplayed(sourceKey) {
   return state.sourceFilters[sourceKey] !== false;
 }
 
+export function setSourcesDisplay(sourceKeys, displayed, { explicitDisplay = false } = {}) {
+  for (const sourceKey of sourceKeys || []) {
+    if (!sourceKey) continue;
+    if (displayed && explicitDisplay) state.sourceFilters[sourceKey] = true;
+    else if (displayed) delete state.sourceFilters[sourceKey];
+    else state.sourceFilters[sourceKey] = false;
+  }
+  saveSourcePrefs();
+}
+
 export function toggleSourceDisplay(sourceKey) {
   if (!sourceKey) return;
-  if (isSourceDisplayed(sourceKey)) state.sourceFilters[sourceKey] = false;
-  else delete state.sourceFilters[sourceKey];
-  saveSourcePrefs();
+  setSourcesDisplay([sourceKey], !isSourceDisplayed(sourceKey));
 }
 
 export function setSourceFeedDisabled(sourceKey, disabled) {

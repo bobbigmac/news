@@ -1,13 +1,13 @@
 {
-  "runCount": 2,
-  "date": "2026-08-28",
-  "callsToday": 6,
+  "runCount": 1,
+  "date": "2026-11-26",
+  "callsToday": 4,
   "pluginLastRun": {
-    "longsight": 1787939791111,
-    "xbox": 1787939791757
+    "longsight": 1795659476193,
+    "xbox": 1795659476509
   },
   "pluginKeywordIndex": {
-    "longsight": 2,
-    "xbox": 2
+    "longsight": 1,
+    "xbox": 1
   }
 }

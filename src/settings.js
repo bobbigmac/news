@@ -22,6 +22,10 @@ import {
 import { canonicalCategory } from './view-model.js';
 import { attachAlgoListeners, renderChangelog } from './changelog.js';
 
+function storyCountLabel(count, suffix = '') {
+  return `${count} ${count === 1 ? 'story' : 'stories'}${suffix}`;
+}
+
 function makeCycleHandler(btn, options, currentValue, onChange) {
   const opt = options.find(o => o.value === currentValue) || options[0];
   btn.textContent = opt.label;
@@ -58,7 +62,7 @@ export function renderCategoryPrefs() {
 
     const label = document.createElement('div');
     label.className = 'manage-label';
-    label.innerHTML = `<span>${cat}</span><span class="manage-count">${storyCounts[cat] || 0} stories</span>`;
+    label.innerHTML = `<span class="manage-name">${cat}</span><span class="manage-count">${storyCountLabel(storyCounts[cat] || 0)}</span>`;
 
     const btn = document.createElement('button');
     btn.className = 'cycle-btn cat-pref-btn';
@@ -106,7 +110,7 @@ export function renderSourcePrefs() {
 
     const label = document.createElement('div');
     label.className = 'manage-label';
-    label.innerHTML = `<span>${source.label}</span><span class="manage-count">${source.count} stories in pool</span>`;
+    label.innerHTML = `<span class="manage-name">${source.label}</span><span class="manage-count">${storyCountLabel(source.count, ' in pool')}</span>`;
 
     const btn = document.createElement('button');
     btn.className = 'cycle-btn cat-pref-btn';
@@ -140,6 +144,7 @@ export function initSettings() {
   const themeBtn = document.getElementById('setting-theme');
   const expandAllCheck = document.getElementById('setting-expandall');
   const showUpdatedCheck = document.getElementById('setting-showupdated');
+  const groupTagCheck = document.getElementById('setting-grouptag');
   const watchWordsInput = document.getElementById('setting-watchwords');
   const markReadBtn = document.getElementById('setting-markread');
 
@@ -162,12 +167,14 @@ export function initSettings() {
     if (markReadBtn) markReadBtn.textContent = markReadOpt.label;
     expandAllCheck.checked = state.settings.expandAll;
     showUpdatedCheck.checked = state.settings.showUpdated;
+    groupTagCheck.checked = state.settings.groupByTag;
     watchWordsInput.value = state.settings.watchWords || '';
   }
 
   function updateCheckboxes() {
     state.settings.expandAll = expandAllCheck.checked;
     state.settings.showUpdated = showUpdatedCheck.checked;
+    state.settings.groupByTag = groupTagCheck.checked;
     saveSettings();
     applySettings();
     ui.refresh();
@@ -182,7 +189,7 @@ export function initSettings() {
   makeCycleHandler(themeBtn, THEME_OPTIONS, state.settings.theme, { key: 'theme' });
   if (markReadBtn) makeCycleHandler(markReadBtn, MARK_READ_OPTIONS, state.settings.markRead, { key: 'markRead' });
 
-  [expandAllCheck, showUpdatedCheck].forEach(el => el.addEventListener('change', updateCheckboxes));
+  [expandAllCheck, showUpdatedCheck, groupTagCheck].forEach(el => el.addEventListener('change', updateCheckboxes));
 
   // Watch words — debounce input
   let watchTimer = null;
