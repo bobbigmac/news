@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 15:07:36 UTC
-entries: 140
+last_activity: 2026-11-26 15:17:06 UTC
+entries: 142
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -1087,6 +1087,20 @@ potrace didn't quite get it, weird streaks.
 ### 2026-11-26 15:07:36 UTC
 
 okay, use /home/bobbigmac/Downloads/favicon_io.zip and copy in the base png and svg to our assets somewhere in the repo
+
+---
+
+<!-- r:0 m:hook:0778ce3f-c951-40b1-9d4e-b1395b766208 h:75dca36e -->
+### 2026-11-26 15:11:29 UTC
+
+our cache has some weird assignments like a story about birgitta visser discusses power soul healing, categorised as a gaming story. Can you find the cause of these
+
+---
+
+<!-- r:0 m:hook:9c14dea2-7873-4cfa-9379-31dad0ed0a70 h:4c488e23 -->
+### 2026-11-26 15:17:06 UTC
+
+commit everything, I want to be up to date and I'm too tired to figure out what to do. Oneliner commits
 
 ---
 
