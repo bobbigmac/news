@@ -1,0 +1,275 @@
+{
+  "id": "entertainment-culture",
+  "label": "Entertainment & Culture",
+  "children": [
+    {
+      "id": "screen",
+      "label": "Screen",
+      "children": [
+        {
+          "id": "streaming-platforms",
+          "label": "Streaming Platforms",
+          "terms": [
+            "netflix",
+            "netflixs",
+            "netflix's",
+            "disney plus",
+            "disney+",
+            "hbo",
+            "hbo max",
+            "prime video",
+            "apple tv",
+            "streaming",
+            "tv series",
+            "tv show"
+          ]
+        },
+        {
+          "id": "tv-formats",
+          "label": "TV Formats",
+          "terms": [
+            "strictly",
+            "strictly come dancing",
+            "bake off",
+            "love island",
+            "i'm a celebrity",
+            "traitors",
+            "eastenders",
+            "coronation street",
+            "doctor who",
+            "loose women",
+            "this morning",
+            "itv",
+            "daytime tv",
+            "daytime show"
+          ],
+          "related": [
+            {
+              "to": "medical-workforce",
+              "note": "Entity tagging can’t separate Doctor Who from actual doctors; the alias lives on both branches."
+            }
+          ]
+        },
+        {
+          "id": "film",
+          "label": "Film",
+          "terms": [
+            "james bond",
+            "marvel",
+            "mcu",
+            "film",
+            "box office",
+            "sequel",
+            "hollywood",
+            "movie",
+            "oscars",
+            "bafta",
+            "film festival",
+            "nollywood",
+            "bollywood",
+            "horror",
+            "horror film",
+            "shelley duvall"
+          ]
+        },
+        {
+          "id": "screen-general",
+          "label": "Screen General",
+          "children": [
+            {
+              "id": "series-shows",
+              "label": "Series & Shows",
+              "terms": [
+                "series",
+                "show",
+                "shows",
+                "episode",
+                "finale",
+                "premiere",
+                "season finale"
+              ]
+            },
+            {
+              "id": "trailers-docs",
+              "label": "Trailers & Docs",
+              "terms": [
+                "trailer",
+                "documentary",
+                "docuseries",
+                "teaser"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "music-celebrity",
+      "label": "Music & Celebrity",
+      "children": [
+        {
+          "id": "taylor-swift",
+          "label": "Taylor Swift",
+          "terms": [
+            "taylor swift",
+            "eras tour"
+          ],
+          "related": [
+            {
+              "to": "nfl",
+              "note": "Kelce relationship crosses into NFL coverage."
+            }
+          ]
+        },
+        {
+          "id": "music-artists",
+          "label": "Music Artists",
+          "terms": [
+            "mariah carey",
+            "kanye west",
+            "ye",
+            "beyonce",
+            "lady gaga",
+            "singer",
+            "album",
+            "tour",
+            "concert",
+            "grammy"
+          ]
+        },
+        {
+          "id": "celebrity-news",
+          "label": "Celebrity News",
+          "terms": [
+            "kim kardashian",
+            "kardashian",
+            "celebrity",
+            "actor",
+            "actress",
+            "fame",
+            "red carpet",
+            "matthew perry",
+            "pat mcafee",
+            "george michael",
+            "katherine ryan",
+            "victoria beckham",
+            "david beckham",
+            "beckham",
+            "mile-high club",
+            "richard hammond",
+            "top gear",
+            "jeremy clarkson",
+            "james may",
+            "alex cox"
+          ]
+        },
+        {
+          "id": "british-comedy",
+          "label": "British Comedy",
+          "terms": [
+            "david walliams",
+            "little britain",
+            "ricky gervais",
+            "comedian",
+            "stand up",
+            "matt lucas"
+          ],
+          "related": [
+            {
+              "to": "russell-brand",
+              "note": "Same comedy-circuit generation; Brand’s current coverage is court proceedings, so it groups under public-figure cases."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "culture-heritage",
+      "label": "Culture & Heritage",
+      "children": [
+        {
+          "id": "history-archaeology",
+          "label": "History & Archaeology",
+          "terms": [
+            "ancient",
+            "archaeology",
+            "archaeological",
+            "roman",
+            "medieval",
+            "history",
+            "heritage",
+            "museum",
+            "viking"
+          ]
+        },
+        {
+          "id": "arts-media",
+          "label": "Arts & Media",
+          "terms": [
+            "book",
+            "novel",
+            "author",
+            "poetry",
+            "theatre",
+            "west end",
+            "opera",
+            "radio",
+            "dance",
+            "dancing",
+            "ballet"
+          ]
+        },
+        {
+          "id": "food-home",
+          "label": "Food & Home",
+          "terms": [
+            "food",
+            "recipe",
+            "restaurant",
+            "chef",
+            "cooking",
+            "baking",
+            "garden",
+            "gardening"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gambling-lottery",
+      "label": "Gambling & Lottery",
+      "headlineTerms": [
+        "lottery",
+        "jackpot",
+        "jackpots",
+        "casino",
+        "gambling",
+        "premium bonds",
+        "bets",
+        "betting"
+      ],
+      "terms": [
+        "lottery",
+        "jackpot",
+        "jackpots",
+        "casino",
+        "gambling",
+        "betting",
+        "bookmaker",
+        "bookmakers",
+        "poker",
+        "slot machine",
+        "premium bonds",
+        "ns&i",
+        "scratchcard",
+        "odds"
+      ],
+      "related": [
+        {
+          "to": "horse-racing",
+          "note": "Racing coverage groups under Sport; betting angles land here when not about the sport itself."
+        }
+      ]
+    }
+  ]
+}

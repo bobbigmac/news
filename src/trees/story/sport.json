@@ -1,0 +1,407 @@
+{
+  "id": "sport",
+  "label": "Sport",
+  "children": [
+    {
+      "id": "football",
+      "label": "Football",
+      "children": [
+        {
+          "id": "premier-league",
+          "label": "Premier League",
+          "children": [
+            {
+              "id": "manchester-united",
+              "label": "Manchester United",
+              "terms": [
+                "manchester united",
+                "man utd",
+                "bruno fernandes",
+                "jim ratcliffe",
+                "jj gabriel",
+                "ruben amorim",
+                "old trafford"
+              ]
+            },
+            {
+              "id": "manchester-city",
+              "label": "Manchester City",
+              "terms": [
+                "manchester city",
+                "man city",
+                "pep guardiola",
+                "etihad"
+              ]
+            },
+            {
+              "id": "liverpool-arsenal",
+              "label": "Liverpool & Arsenal",
+              "terms": [
+                "liverpool",
+                "liverpool fc",
+                "anfield",
+                "arsenal",
+                "mikel arteta",
+                "emirates"
+              ]
+            },
+            {
+              "id": "aston-villa",
+              "label": "Aston Villa",
+              "terms": [
+                "aston villa"
+              ]
+            },
+            {
+              "id": "newcastle-united",
+              "label": "Newcastle United",
+              "terms": [
+                "newcastle",
+                "newcastle united",
+                "st james park",
+                "eddie howe"
+              ]
+            },
+            {
+              "id": "everton-chelsea",
+              "label": "Everton & Chelsea",
+              "terms": [
+                "everton",
+                "chelsea",
+                "chelsea's",
+                "stamford bridge"
+              ]
+            },
+            {
+              "id": "promoted-regional",
+              "label": "Promoted & Regional Clubs",
+              "terms": [
+                "sunderland",
+                "leeds",
+                "leeds united",
+                "brighton",
+                "brentford",
+                "fulham",
+                "nottingham forest",
+                "crystal palace",
+                "west ham",
+                "wolves",
+                "bournemouth",
+                "burnley"
+              ]
+            },
+            {
+              "id": "premier-league-general",
+              "label": "Premier League General",
+              "terms": [
+                "premier league",
+                "fantasy premier league",
+                "fpl",
+                "premier league table"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "efl-lower-leagues",
+          "label": "EFL & Lower Leagues",
+          "terms": [
+            "efl",
+            "championship",
+            "league one",
+            "league two",
+            "peterborough",
+            "ipswich",
+            "norwich",
+            "wrexham",
+            "derby county",
+            "middlesbrough",
+            "sheffield wednesday"
+          ]
+        },
+        {
+          "id": "scottish-football",
+          "label": "Scottish Football",
+          "terms": [
+            "celtic",
+            "rangers",
+            "rodgers",
+            "spfl",
+            "scottish premiership",
+            "scottish football",
+            "hearts",
+            "hibernian",
+            "aberdeen fc",
+            "o'neill"
+          ]
+        },
+        {
+          "id": "international-football",
+          "label": "International Football",
+          "children": [
+            {
+              "id": "european-clubs",
+              "label": "European Clubs",
+              "terms": [
+                "real madrid",
+                "barcelona",
+                "saint germain",
+                "psg",
+                "saint-germain",
+                "bayern",
+                "bayern munich",
+                "juventus",
+                "inter milan",
+                "ac milan",
+                "atletico",
+                "borussia dortmund"
+              ]
+            },
+            {
+              "id": "national-teams",
+              "label": "National Teams",
+              "terms": [
+                "thomas tuchel",
+                "world cup",
+                "england squad",
+                "three lions",
+                "wales football",
+                "scotland football"
+              ]
+            },
+            {
+              "id": "global-stars",
+              "label": "Global Stars",
+              "terms": [
+                "cristiano ronaldo",
+                "ronaldo",
+                "messi",
+                "lionel messi",
+                "ivan toney",
+                "mbappe",
+                "haaland"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "player-watch",
+          "label": "Player Watch",
+          "terms": [
+            "harry kane",
+            "kane",
+            "cole palmer",
+            "palmer",
+            "mauricio pochettino",
+            "bukayo saka",
+            "jude bellingham",
+            "phil foden"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "us-sport",
+      "label": "US Sport",
+      "children": [
+        {
+          "id": "nfl",
+          "label": "NFL",
+          "terms": [
+            "nfl",
+            "super bowl",
+            "quarterback",
+            "touchdown"
+          ],
+          "related": [
+            {
+              "to": "taylor-swift",
+              "note": "Kelce/Swift coverage crosses entertainment and NFL."
+            }
+          ]
+        },
+        {
+          "id": "nba",
+          "label": "NBA",
+          "terms": [
+            "nba",
+            "lakers",
+            "celtics"
+          ]
+        },
+        {
+          "id": "nhl",
+          "label": "NHL",
+          "terms": [
+            "nhl",
+            "stanley cup"
+          ]
+        },
+        {
+          "id": "baseball",
+          "label": "Baseball",
+          "terms": [
+            "mlb",
+            "yankees",
+            "dodgers",
+            "world series"
+          ],
+          "related": [
+            {
+              "to": "surgery",
+              "note": "“Tommy John surgery” is a baseball injury term that groups under Surgery when the story is medical."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "other-leagues",
+      "label": "Other Leagues",
+      "terms": [
+        "cfl",
+        "rugby league",
+        "nrl",
+        "afl",
+        "wnba",
+        "super rugby",
+        "winnipeg"
+      ]
+    },
+    {
+      "id": "motorsport",
+      "label": "Motorsport",
+      "headlineTerms": [
+        "f1",
+        "formula 1"
+      ],
+      "terms": [
+        "formula 1",
+        "f1",
+        "lewis hamilton",
+        "ferrari",
+        "mclaren f1",
+        "verstappen",
+        "grand prix",
+        "nascar",
+        "hybrid v8"
+      ]
+    },
+    {
+      "id": "golf",
+      "label": "Golf",
+      "terms": [
+        "liv golf",
+        "pga tour",
+        "rory mcilroy",
+        "the open"
+      ]
+    },
+    {
+      "id": "darts",
+      "label": "Darts",
+      "terms": [
+        "luke littler",
+        "pdc darts",
+        "littler"
+      ]
+    },
+    {
+      "id": "boxing-mma",
+      "label": "Boxing & MMA",
+      "terms": [
+        "boxing",
+        "heavyweight",
+        "ufc",
+        "mma",
+        "tyson fury",
+        "anthony joshua"
+      ]
+    },
+    {
+      "id": "horse-racing",
+      "label": "Horse Racing",
+      "terms": [
+        "horse racing",
+        "breeders cup",
+        "breeders' cup",
+        "keeneland",
+        "cheltenham",
+        "jockey",
+        "grand national",
+        "ascot",
+        "racing post",
+        "racecourse",
+        "derby"
+      ]
+    },
+    {
+      "id": "cricket-rugby",
+      "label": "Cricket & Rugby",
+      "terms": [
+        "cricket",
+        "ashes",
+        "test match",
+        "rugby",
+        "six nations",
+        "all blacks",
+        "twickenham"
+      ]
+    },
+    {
+      "id": "tennis-athletics",
+      "label": "Tennis & Athletics",
+      "terms": [
+        "tennis",
+        "wimbledon",
+        "grand slam",
+        "olympics",
+        "marathon",
+        "athletics"
+      ]
+    },
+    {
+      "id": "sport-general",
+      "label": "Sport General",
+      "children": [
+        {
+          "id": "players-coaches",
+          "label": "Players & Coaches",
+          "terms": [
+            "player",
+            "players",
+            "coach",
+            "transfer",
+            "signing",
+            "contract"
+          ]
+        },
+        {
+          "id": "matches-results",
+          "label": "Matches & Results",
+          "terms": [
+            "match",
+            "fixture",
+            "score",
+            "league",
+            "stadium",
+            "tournament",
+            "draw",
+            "kick-off"
+          ]
+        },
+        {
+          "id": "fans-culture",
+          "label": "Fans & Culture",
+          "terms": [
+            "fan",
+            "fans",
+            "supporters",
+            "ultras",
+            "season ticket"
+          ]
+        }
+      ]
+    }
+  ]
+}

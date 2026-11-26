@@ -1,0 +1,39 @@
+{
+  "id": "canada-media",
+  "label": "Canada Media",
+  "icon": "torontosun.com",
+  "children": [
+    {
+      "id": "postmedia",
+      "label": "Postmedia",
+      "icon": "torontosun.com",
+      "sources": [
+        "torontosun.com",
+        "vancouversun.com",
+        "theprovince.com",
+        "calgaryherald.com",
+        "edmontonjournal.com",
+        "ottawacitizen.com",
+        "montrealgazette.com",
+        "windsorstar.com",
+        "leaderpost.com",
+        "thestarphoenix.com",
+        "nationalpost.com",
+        "financialpost.com",
+        "winnipegsun.com",
+        "edmontonsun.com",
+        "calgarysun.com",
+        "ottawasun.com"
+      ]
+    },
+    {
+      "id": "torstar",
+      "label": "Torstar",
+      "icon": "thestar.com",
+      "sources": [
+        "thestar.com",
+        "toronto.com"
+      ]
+    }
+  ]
+}

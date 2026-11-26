@@ -1,0 +1,43 @@
+{
+  "id": "named-individuals",
+  "label": "People in the News",
+  "children": [
+    {
+      "id": "pope-leo",
+      "label": "Pope Leo",
+      "terms": [
+        "pope leo",
+        "pope",
+        "vatican"
+      ],
+      "related": [
+        {
+          "to": "world-leaders",
+          "note": "The Pope is a head of state; faith coverage groups here."
+        }
+      ]
+    },
+    {
+      "id": "former-leaders",
+      "label": "Former Leaders",
+      "terms": [
+        "obama",
+        "barack obama",
+        "biden",
+        "tony blair",
+        "boris johnson"
+      ]
+    },
+    {
+      "id": "public-voices",
+      "label": "Public Voices",
+      "terms": [
+        "asha sharma",
+        "gen z",
+        "influencer",
+        "youtuber",
+        "podcaster"
+      ]
+    }
+  ]
+}

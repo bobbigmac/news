@@ -1,0 +1,44 @@
+{
+  "id": "travel-transport",
+  "label": "Travel & Transport",
+  "children": [
+    {
+      "id": "rail-road",
+      "label": "Rail & Road",
+      "terms": [
+        "train",
+        "rail",
+        "railway",
+        "car",
+        "driver",
+        "driving",
+        "traffic",
+        "motorway",
+        "bus",
+        "bridge",
+        "m6",
+        "m1",
+        "service station",
+        "lorry"
+      ]
+    },
+    {
+      "id": "flights-tourism",
+      "label": "Flights & Tourism",
+      "terms": [
+        "flight",
+        "airport",
+        "tourist",
+        "tourism",
+        "travel",
+        "holiday",
+        "passenger",
+        "cruise",
+        "cruise line",
+        "virgin voyages",
+        "aircraft",
+        "helicopter"
+      ]
+    }
+  ]
+}

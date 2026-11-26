@@ -1,0 +1,366 @@
+{
+  "id": "gaming",
+  "label": "Gaming",
+  "children": [
+    {
+      "id": "game-franchises",
+      "label": "Game Franchises",
+      "children": [
+        {
+          "id": "gta",
+          "label": "GTA",
+          "children": [
+            {
+              "id": "gta-6",
+              "label": "GTA 6",
+              "terms": [
+                "gta 6",
+                "gta vi",
+                "grand theft auto 6",
+                "grand theft auto vi",
+                "project leonida",
+                "leonida"
+              ]
+            },
+            {
+              "id": "gta-series",
+              "label": "GTA Series",
+              "terms": [
+                "gta",
+                "grand theft auto",
+                "gta online",
+                "gta 5",
+                "rockstar games",
+                "rockstar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "zelda",
+          "label": "Zelda",
+          "terms": [
+            "zelda",
+            "ocarina",
+            "tears of the kingdom",
+            "breath of the wild",
+            "hyrule",
+            "legend of zelda"
+          ],
+          "related": [
+            {
+              "to": "nintendo",
+              "note": "First-party Nintendo franchise; hardware and company stories still group under Nintendo."
+            }
+          ]
+        },
+        {
+          "id": "pokemon",
+          "label": "Pokémon",
+          "terms": [
+            "pokemon",
+            "pokémon",
+            "pokemon go",
+            "pocket monsters"
+          ],
+          "related": [
+            {
+              "to": "nintendo",
+              "note": "Nintendo co-owns the Pokémon franchise."
+            }
+          ]
+        },
+        {
+          "id": "minecraft",
+          "label": "Minecraft",
+          "terms": [
+            "minecraft"
+          ],
+          "related": [
+            {
+              "to": "microsoft-corporate",
+              "note": "Mojang/Microsoft property."
+            }
+          ]
+        },
+        {
+          "id": "call-of-duty",
+          "label": "Call of Duty",
+          "terms": [
+            "call of duty",
+            "black ops",
+            "warzone",
+            "modern warfare"
+          ],
+          "related": [
+            {
+              "to": "microsoft-corporate",
+              "note": "Activision Blizzard is a Microsoft studio."
+            }
+          ]
+        },
+        {
+          "id": "monster-hunter",
+          "label": "Monster Hunter",
+          "terms": [
+            "monster hunter",
+            "hunter wilds",
+            "monster hunter wilds"
+          ]
+        },
+        {
+          "id": "warcraft-blizzard",
+          "label": "Warcraft & Blizzard",
+          "terms": [
+            "warcraft",
+            "world of warcraft",
+            "blizzard",
+            "diablo",
+            "overwatch"
+          ]
+        },
+        {
+          "id": "nintendo-franchises",
+          "label": "Nintendo Franchises",
+          "terms": [
+            "mario",
+            "pikmin",
+            "kirby",
+            "metroid",
+            "donkey kong",
+            "smash bros",
+            "animal crossing",
+            "splatoon",
+            "fire emblem"
+          ]
+        },
+        {
+          "id": "fromsoftware-souls",
+          "label": "FromSoftware & Souls",
+          "terms": [
+            "fromsoftware",
+            "dark souls",
+            "elden ring",
+            "bloodborne",
+            "sekiro",
+            "nightreign"
+          ]
+        },
+        {
+          "id": "playstation-franchises",
+          "label": "PlayStation Franchises",
+          "terms": [
+            "god of war",
+            "spider-man 2",
+            "horizon zero dawn",
+            "ghost of tsushima",
+            "last of us",
+            "kait"
+          ],
+          "related": [
+            {
+              "to": "playstation",
+              "note": "Sony first-party franchises; platform stories group under PlayStation."
+            }
+          ]
+        },
+        {
+          "id": "live-service",
+          "label": "Live Service",
+          "terms": [
+            "fortnite",
+            "roblox",
+            "destiny 2",
+            "apex legends",
+            "league of legends"
+          ]
+        },
+        {
+          "id": "upcoming-titles",
+          "label": "Upcoming Titles",
+          "terms": [
+            "crimson desert",
+            "pearl abyss",
+            "state of decay 3",
+            "fable",
+            "perfect dark"
+          ]
+        },
+        {
+          "id": "other-franchises",
+          "label": "Other Franchises",
+          "terms": [
+            "gears of war",
+            "genshin impact",
+            "final fantasy",
+            "guild wars",
+            "star wars battlefront",
+            "battlefront",
+            "alien isolation",
+            "system shock",
+            "resident evil",
+            "fallout",
+            "elder scrolls",
+            "assassins creed",
+            "assassin's creed",
+            "battlefield",
+            "halo",
+            "tekken",
+            "street fighter",
+            "silent hill",
+            "the sims",
+            "active matter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "platform-holders",
+      "label": "Platform Holders",
+      "children": [
+        {
+          "id": "nintendo",
+          "label": "Nintendo",
+          "terms": [
+            "nintendo",
+            "nintendo switch",
+            "switch 2",
+            "official nintendo",
+            "nintendos",
+            "nintendo's",
+            "eshop"
+          ]
+        },
+        {
+          "id": "playstation",
+          "label": "PlayStation",
+          "terms": [
+            "playstation",
+            "ps5",
+            "ps6",
+            "ps plus",
+            "playstation portal",
+            "playstation store",
+            "pulse elevate",
+            "state of play"
+          ]
+        },
+        {
+          "id": "sony-games",
+          "label": "Sony Games",
+          "terms": [
+            "sony",
+            "sonys",
+            "sony interactive"
+          ]
+        },
+        {
+          "id": "pc-storefronts",
+          "label": "PC Storefronts",
+          "terms": [
+            "steam",
+            "steam deck",
+            "epic games store",
+            "gog"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "game-industry",
+      "label": "Game Industry",
+      "children": [
+        {
+          "id": "game-publishers",
+          "label": "Game Publishers",
+          "terms": [
+            "activision",
+            "activision blizzard",
+            "tencent",
+            "ubisoft",
+            "electronic arts",
+            "ea sports",
+            "ea fc",
+            "square enix",
+            "capcom",
+            "larian studios",
+            "bioware",
+            "bandai namco",
+            "sega",
+            "konami",
+            "cd projekt",
+            "take-two",
+            "warhorse",
+            "warhorse studios",
+            "remedy",
+            "remedy entertainment",
+            "arenanet",
+            "cyberagent",
+            "krafton",
+            "bethesda",
+            "obsidian",
+            "kojima",
+            "insomniac",
+            "naughty dog",
+            "io interactive",
+            "dice",
+            "respawn"
+          ]
+        },
+        {
+          "id": "game-development",
+          "label": "Game Development",
+          "terms": [
+            "game developer",
+            "game studio",
+            "game director",
+            "gameplay",
+            "developer update",
+            "first-person",
+            "third-person"
+          ]
+        },
+        {
+          "id": "game-releases",
+          "label": "Releases & Reviews",
+          "terms": [
+            "release date",
+            "game trailer",
+            "review score",
+            "early access",
+            "open beta"
+          ]
+        },
+        {
+          "id": "indie-esports",
+          "label": "Indie & Esports",
+          "terms": [
+            "indie game",
+            "indie games",
+            "indie dev",
+            "itch io",
+            "game jam",
+            "esports",
+            "e-sports",
+            "twitch",
+            "streamer",
+            "speedrun",
+            "extraction shooter"
+          ]
+        },
+        {
+          "id": "games-general",
+          "label": "Games General",
+          "terms": [
+            "video game",
+            "video games",
+            "videogame",
+            "game",
+            "games",
+            "gamer"
+          ]
+        }
+      ]
+    }
+  ]
+}

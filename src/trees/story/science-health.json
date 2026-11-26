@@ -1,0 +1,536 @@
+{
+  "id": "science-health",
+  "label": "Science & Health",
+  "children": [
+    {
+      "id": "space",
+      "label": "Space",
+      "children": [
+        {
+          "id": "nasa",
+          "label": "NASA",
+          "terms": [
+            "nasa",
+            "nasas",
+            "nasa's",
+            "artemis",
+            "james webb",
+            "iss",
+            "international space station"
+          ]
+        },
+        {
+          "id": "spaceflight",
+          "label": "Spaceflight",
+          "terms": [
+            "spacex",
+            "starlink",
+            "rocket launch",
+            "moon mission",
+            "mars mission",
+            "starship",
+            "blue origin",
+            "rocket lab"
+          ],
+          "related": [
+            {
+              "to": "nasa",
+              "note": "Commercial crews fly NASA missions; agency stories stay under NASA."
+            }
+          ]
+        },
+        {
+          "id": "astronomy",
+          "label": "Astronomy",
+          "terms": [
+            "space",
+            "deep space",
+            "asteroid",
+            "comet",
+            "space telescope",
+            "exoplanet",
+            "black hole",
+            "meteor",
+            "astronaut",
+            "dwarf planet",
+            "observatory",
+            "pluto",
+            "martian",
+            "mars",
+            "voyager",
+            "lunar",
+            "telescope",
+            "gamma ray",
+            "gamma-ray",
+            "stellar",
+            "supernova",
+            "nebula",
+            "aurora"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physical-sciences",
+      "label": "Physical Sciences",
+      "children": [
+        {
+          "id": "physics-quantum",
+          "label": "Physics & Quantum",
+          "terms": [
+            "physics",
+            "physicist",
+            "quantum",
+            "electron",
+            "particle",
+            "photon",
+            "quantum computing",
+            "quantum communications",
+            "particle physics"
+          ]
+        },
+        {
+          "id": "materials-chemistry",
+          "label": "Materials & Chemistry",
+          "terms": [
+            "chemistry",
+            "chemists",
+            "molecule",
+            "molecules",
+            "materials",
+            "polymer",
+            "polymers",
+            "crystal",
+            "superconductor",
+            "compound"
+          ]
+        },
+        {
+          "id": "natural-history",
+          "label": "Natural History",
+          "terms": [
+            "dinosaur",
+            "dinosaurs",
+            "fossil",
+            "fossils",
+            "prehistoric",
+            "palaeontology",
+            "paleontology",
+            "extinction",
+            "ancient creature",
+            "amphibian",
+            "evolution"
+          ],
+          "related": [
+            {
+              "to": "history-archaeology",
+              "note": "Human-history archaeology sits in Culture & Heritage; this branch is deep-time and palaeontology."
+            }
+          ]
+        },
+        {
+          "id": "earth-research",
+          "label": "Earth Research",
+          "terms": [
+            "geology",
+            "geological",
+            "ice sheet",
+            "glacier",
+            "glaciers",
+            "tibetan plateau",
+            "permafrost",
+            "oceanography",
+            "marine research",
+            "deep sea"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "health-medicine",
+      "label": "Health & Medicine",
+      "children": [
+        {
+          "id": "nhs-healthcare",
+          "label": "NHS & Healthcare",
+          "children": [
+            {
+              "id": "nhs",
+              "label": "NHS",
+              "terms": [
+                "nhs",
+                "welsh nhs",
+                "nhs england",
+                "scotland s nhs",
+                "nhs trust"
+              ]
+            },
+            {
+              "id": "hospitals",
+              "label": "Hospitals",
+              "terms": [
+                "hospital",
+                "health board",
+                "royal free hospital",
+                "general hospital",
+                "teaching hospital",
+                "a&e",
+                "waiting list"
+              ]
+            },
+            {
+              "id": "medical-workforce",
+              "label": "Medical Workforce",
+              "terms": [
+                "doctor",
+                "surgeon",
+                "british doctor",
+                "doctor who",
+                "nurse",
+                "gp",
+                "junior doctor",
+                "paramedic"
+              ],
+              "related": [
+                {
+                  "to": "tv-formats",
+                  "note": "“Doctor Who” the TV series is aliased here because entity tagging cannot tell them apart."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "medicines-regulation",
+          "label": "Medicines & Regulation",
+          "terms": [
+            "fda",
+            "drug administration",
+            "pfizer",
+            "novartis",
+            "medicare",
+            "drug approval",
+            "mhra",
+            "nice",
+            "pharma",
+            "pharmaceutical",
+            "pharmaceuticals",
+            "biotech",
+            "drugmaker"
+          ]
+        },
+        {
+          "id": "disease-research",
+          "label": "Disease Research",
+          "children": [
+            {
+              "id": "cancer",
+              "label": "Cancer",
+              "children": [
+                {
+                  "id": "specific-cancers",
+                  "label": "Specific Cancers",
+                  "terms": [
+                    "prostate cancer",
+                    "lung cancer",
+                    "breast cancer",
+                    "ovarian cancer",
+                    "cervical cancer",
+                    "bowel cancer",
+                    "skin cancer",
+                    "pancreatic cancer",
+                    "breast"
+                  ]
+                },
+                {
+                  "id": "cancer-general",
+                  "label": "Cancer General",
+                  "headlineTerms": [
+                    "cancer",
+                    "tumour",
+                    "tumor"
+                  ],
+                  "terms": [
+                    "cancer",
+                    "cancer research",
+                    "american cancer society",
+                    "cancer center",
+                    "cancer fighting",
+                    "chemotherapy",
+                    "tumour",
+                    "tumor"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "alzheimer-dementia",
+              "label": "Alzheimer’s & Dementia",
+              "terms": [
+                "alzheimer",
+                "alzheimer's",
+                "dementia",
+                "memory loss"
+              ]
+            },
+            {
+              "id": "metabolic-heart",
+              "label": "Diabetes & Heart",
+              "terms": [
+                "diabetes",
+                "heart disease",
+                "heart attack",
+                "cholesterol",
+                "blood pressure",
+                "obesity",
+                "weight loss drug",
+                "weight-loss jabs",
+                "ozempic",
+                "wegovy",
+                "mounjaro",
+                "metabolic"
+              ]
+            },
+            {
+              "id": "exercise-health",
+              "label": "Exercise & Fitness",
+              "headlineTerms": [
+                "workout",
+                "exercise"
+              ],
+              "terms": [
+                "exercise",
+                "workout",
+                "fitness",
+                "strength training",
+                "physical activity",
+                "training session"
+              ]
+            },
+            {
+              "id": "mental-health",
+              "label": "Mental Health",
+              "terms": [
+                "mental health",
+                "mental illness",
+                "depression",
+                "anxiety",
+                "psychiatric",
+                "adhd",
+                "autism",
+                "suicide",
+                "loneliness",
+                "isolation",
+                "solitude",
+                "withdrawal"
+              ]
+            },
+            {
+              "id": "biomedical-research",
+              "label": "Biomedical Research",
+              "terms": [
+                "gene",
+                "protein",
+                "cell",
+                "brain",
+                "dna",
+                "clinical trial",
+                "vaccine",
+                "antibiotic",
+                "stem cell",
+                "lesion",
+                "lesions",
+                "neurodegeneration",
+                "fertility",
+                "inflammation",
+                "longevity",
+                "ovary",
+                "ovaries",
+                "genetic",
+                "bacteria",
+                "virus",
+                "microbe",
+                "microbes",
+                "cells"
+              ]
+            },
+            {
+              "id": "specific-conditions",
+              "label": "Specific Conditions",
+              "headlineTerms": [
+                "stroke",
+                "epilepsy",
+                "arthritis"
+              ],
+              "terms": [
+                "multiple sclerosis",
+                "epilepsy",
+                "parkinson",
+                "parkinson's",
+                "arthritis",
+                "lupus",
+                "stroke",
+                "asthma",
+                "crohn"
+              ]
+            },
+            {
+              "id": "surgery",
+              "label": "Surgery",
+              "terms": [
+                "surgery",
+                "knee surgery",
+                "plastic surgery",
+                "tommy john surgery",
+                "transplant",
+                "operation"
+              ]
+            },
+            {
+              "id": "patient-care",
+              "label": "Patient Care",
+              "terms": [
+                "patient",
+                "patients",
+                "disease",
+                "assault patient",
+                "diagnosis",
+                "treatment"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "maternal-health",
+          "label": "Maternal & Reproductive",
+          "terms": [
+            "pregnancy",
+            "pregnant",
+            "maternity",
+            "prenatal",
+            "maternal",
+            "childbirth",
+            "ivf",
+            "fertility treatment"
+          ]
+        },
+        {
+          "id": "public-health",
+          "label": "Public Health",
+          "terms": [
+            "covid",
+            "flu",
+            "vaccine rollout",
+            "outbreak",
+            "who",
+            "pandemic",
+            "measles",
+            "mpox"
+          ]
+        },
+        {
+          "id": "smoking-vaping",
+          "label": "Smoking & Vaping",
+          "terms": [
+            "vaping",
+            "vape",
+            "e-cigarette",
+            "tobacco",
+            "nicotine",
+            "cigarette",
+            "smoking"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "environment-climate",
+      "label": "Environment & Climate",
+      "children": [
+        {
+          "id": "weather-warnings",
+          "label": "Weather & Warnings",
+          "terms": [
+            "met office",
+            "weather warning",
+            "storm",
+            "flooding",
+            "flood",
+            "heatwave",
+            "cold snap",
+            "snow warning"
+          ]
+        },
+        {
+          "id": "climate-policy",
+          "label": "Climate Policy",
+          "terms": [
+            "climate",
+            "climate change",
+            "net zero",
+            "emissions",
+            "cop",
+            "paris agreement",
+            "environment agency"
+          ]
+        },
+        {
+          "id": "wildlife-nature",
+          "label": "Wildlife & Nature",
+          "headlineTerms": [
+            "conservation",
+            "wildlife"
+          ],
+          "terms": [
+            "wildlife",
+            "conservation",
+            "endangered",
+            "species",
+            "rewilding",
+            "national park",
+            "animal behaviour",
+            "animal behavior",
+            "bird",
+            "birds",
+            "bonobo",
+            "crows",
+            "wildlife park"
+          ]
+        },
+        {
+          "id": "farming-agriculture",
+          "label": "Farming & Agriculture",
+          "terms": [
+            "farm",
+            "farming",
+            "farmer",
+            "farmers",
+            "crops",
+            "agriculture",
+            "harvest",
+            "fertiliser",
+            "fertilizer",
+            "pesticide",
+            "livestock"
+          ]
+        },
+        {
+          "id": "pollution",
+          "label": "Pollution",
+          "terms": [
+            "pollution",
+            "microplastic",
+            "microplastics",
+            "plastic pollution",
+            "bpa",
+            "contamination",
+            "air pollution",
+            "air quality",
+            "plasticizer",
+            "plasticizers"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "seasonal-events",
+  "label": "Seasonal Events",
+  "children": [
+    {
+      "id": "christmas",
+      "label": "Christmas",
+      "terms": [
+        "christmas",
+        "christmas day",
+        "christmas market",
+        "advent",
+        "festive"
+      ]
+    },
+    {
+      "id": "other-seasonal",
+      "label": "Other Seasonal",
+      "terms": [
+        "halloween",
+        "thanksgiving",
+        "new year",
+        "easter",
+        "valentine",
+        "bonfire night",
+        "firework"
+      ]
+    }
+  ]
+}

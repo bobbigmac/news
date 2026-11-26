@@ -1,0 +1,91 @@
+{
+  "public-international": {
+    "summary": "Public-service, state-funded, charter-bound, and international broadcasters. Public funding or statutory missions do not make these outlets identical: governance, remit, funding pressure, and political context vary widely.",
+    "watch": [
+      "Separate charter obligations from editorial outcome",
+      "State-funded is not the same property as state-controlled",
+      "Regional/public outlets often duplicate the same agency copy"
+    ]
+  },
+  "specialist-press": {
+    "summary": "Beat-led publications grouped by the job they do for the reader. Ownership is still shown in the full membership graph where the same outlet also belongs to a publisher family.",
+    "watch": [
+      "Specialist expertise can coexist with affiliate-commerce incentives",
+      "Beat outlets often share embargoed material and PR access"
+    ]
+  },
+  "murdoch": {
+    "summary": "News Corp/Fox branches share corporate infrastructure and recurring talent pipelines, but their titles have different formats, regulators, and audience contracts. The Sun is not treated as interchangeable with The Times or the Wall Street Journal.",
+    "watch": [
+      "News Corp and Fox Corporation are related by Murdoch-family control but are separate listed companies",
+      "News, comment, TV opinion, and tabloid formats carry different editorial cultures"
+    ],
+    "links": [
+      {
+        "label": "News UK brands",
+        "url": "https://www.news.co.uk/about-news-uk/"
+      },
+      {
+        "label": "Ofcom on Murdoch influence",
+        "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1035791/Annex_B_-_Ofcom_Advice_on_application_by_News_Corp_UK_and_Ireland_Limited__Redacted_v2.pdf"
+      }
+    ]
+  },
+  "uk-media": {
+    "summary": "UK national, regional, and magazine publishers. This branch mixes family-controlled trusts, public companies, free sheets, tabloids, and local networks; the profile notes below identify where those properties diverge.",
+    "watch": [
+      "A shared owner does not erase a title’s own editorial position",
+      "Local brands can share workflows, freelancers, and templated distribution while still serving distinct places"
+    ]
+  },
+  "us-media": {
+    "summary": "US national papers, broadcast networks, and local chains. Local groups are especially important because many station sites republish similar wire copy under different local brands.",
+    "watch": [
+      "Local station branding is not proof of a locally reported story",
+      "Owner-backed national papers have different newsroom governance even when grouped for convenience"
+    ]
+  },
+  "digital-publishers": {
+    "summary": "Digital-native and magazine publishers, including specialist portfolios and owner families. These relations are useful because brands share business models, content-management patterns, freelancers, and commerce incentives.",
+    "watch": [
+      "Portfolio membership is a business relation, not a claim that every desk agrees politically",
+      "Affiliate review economics can shape article mix without appearing in a headline"
+    ]
+  },
+  "regional-english": {
+    "summary": "English-language national and regional media ecosystems outside the UK/US. These are grouped because they provide local context the global outlets often flatten, not because they share an editorial line.",
+    "watch": [
+      "State pressure, family ownership, and media-market concentration differ substantially by country",
+      "A regional grouping is geographic convenience, not a political claim"
+    ]
+  },
+  "wires-releases": {
+    "summary": "Reporting wires and paid press-release distribution are deliberately separated from bylined editorial publishers. They can be useful primary material, but they should not be mistaken for a national newsroom’s own editorial selection.",
+    "watch": [
+      "A wire is source material",
+      "A release is an interested party’s statement",
+      "Both can be valuable, but not under the same assumption of independent selection"
+    ]
+  },
+  "platforms-aggregators": {
+    "summary": "Community, developer, social, and aggregation surfaces. These are useful for signals and expert discussion, but authorship, verification, and moderation differ post-by-post.",
+    "watch": [
+      "Platform items are not equivalent to edited newsroom copy",
+      "Self-posted material may be excellent, promotional, or simply wrong"
+    ]
+  },
+  "official-organizations": {
+    "summary": "First-party institutional sources. These are treated as primary claims from the institution rather than independent reporting about it.",
+    "watch": [
+      "Useful for announcements, records, and primary detail",
+      "Not independent confirmation of the institution’s own claims"
+    ]
+  },
+  "other-sources": {
+    "summary": "Hosts not yet assigned a curated relation, or low-volume hosts whose branches would produce an unusable source bar. Membership in Other is a UI allocation result, not a judgement that the source is unimportant.",
+    "watch": [
+      "The page still lists every Other host individually",
+      "Sources can graduate out of Other as their volume or a curated relation grows"
+    ]
+  }
+}

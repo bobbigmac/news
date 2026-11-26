@@ -1,0 +1,54 @@
+{
+  "id": "work-jobs",
+  "label": "Work & Jobs",
+  "children": [
+    {
+      "id": "employment",
+      "label": "Employment",
+      "terms": [
+        "job",
+        "jobs",
+        "employment",
+        "hiring",
+        "layoffs",
+        "work",
+        "workplace",
+        "redundancy",
+        "minimum wage"
+      ]
+    },
+    {
+      "id": "industrial-action",
+      "label": "Industrial Action",
+      "terms": [
+        "strike",
+        "strikes",
+        "union",
+        "unions",
+        "walkout",
+        "picket",
+        "industrial action"
+      ]
+    },
+    {
+      "id": "pay-workers",
+      "label": "Pay & Workers",
+      "terms": [
+        "pay",
+        "workers",
+        "worker",
+        "wage",
+        "wages",
+        "pay rise",
+        "salary",
+        "earn",
+        "colleagues",
+        "night shift",
+        "night shifts",
+        "shift work",
+        "equal pay",
+        "pay gap"
+      ]
+    }
+  ]
+}

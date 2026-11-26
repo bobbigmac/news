@@ -1,0 +1,35 @@
+{
+  "id": "australia-media",
+  "label": "Australia Media",
+  "icon": "smh.com.au",
+  "children": [
+    {
+      "id": "nine",
+      "label": "Nine",
+      "icon": "smh.com.au",
+      "sources": [
+        "smh.com.au",
+        "theage.com.au",
+        "watoday.com.au",
+        "afr.com",
+        "nine.com.au",
+        "9news.com.au",
+        "2gb.com",
+        "3aw.com.au",
+        "4bc.com.au",
+        "6pr.com.au"
+      ]
+    },
+    {
+      "id": "australia-national",
+      "label": "Australia National",
+      "icon": "theaustralian.com.au",
+      "sources": [
+        "theaustralian.com.au",
+        "news.com.au",
+        "thewest.com.au",
+        "crikey.com.au"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "royal",
+  "label": "Royal",
+  "children": [
+    {
+      "id": "king-charles",
+      "label": "King Charles",
+      "terms": [
+        "king charles",
+        "king charles iii",
+        "king's",
+        "camilla",
+        "queen camilla"
+      ]
+    },
+    {
+      "id": "wales-family",
+      "label": "Wales Family",
+      "terms": [
+        "prince william",
+        "kate middleton",
+        "princess of wales",
+        "princess kate",
+        "zara tindall",
+        "prince george"
+      ]
+    },
+    {
+      "id": "sussex-andrew",
+      "label": "Sussex & Andrew",
+      "terms": [
+        "prince harry",
+        "meghan",
+        "meghan markle",
+        "thomas markle",
+        "prince andrew",
+        "andrew mountbatten-windsor",
+        "duke of sussex",
+        "duchess of sussex"
+      ],
+      "related": [
+        {
+          "to": "epstein-network",
+          "note": "Andrew’s Epstein ties are documented under public-figure cases; royal-removal stories stay here."
+        }
+      ]
+    },
+    {
+      "id": "royal-institution",
+      "label": "Royal Institution",
+      "terms": [
+        "royal family",
+        "buckingham palace",
+        "kensington palace",
+        "windsor",
+        "sandringham"
+      ]
+    }
+  ]
+}

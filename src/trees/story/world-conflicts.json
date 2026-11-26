@@ -1,0 +1,163 @@
+{
+  "id": "world-conflicts",
+  "label": "World Conflicts",
+  "children": [
+    {
+      "id": "ukraine-russia",
+      "label": "Ukraine / Russia",
+      "children": [
+        {
+          "id": "ukraine",
+          "label": "Ukraine",
+          "terms": [
+            "ukraine",
+            "kyiv",
+            "ukraine war",
+            "ukraine's",
+            "ukrainian"
+          ]
+        },
+        {
+          "id": "russia",
+          "label": "Russia",
+          "terms": [
+            "russia",
+            "kremlin",
+            "russian military",
+            "russia us",
+            "russia's",
+            "russian"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "israel-gaza",
+      "label": "Israel / Gaza",
+      "children": [
+        {
+          "id": "gaza-conflict",
+          "label": "Gaza Conflict",
+          "terms": [
+            "gaza",
+            "hamas",
+            "west bank",
+            "hezbollah",
+            "hostage release",
+            "ceasefire"
+          ]
+        },
+        {
+          "id": "israel-domestic",
+          "label": "Israel",
+          "terms": [
+            "israel",
+            "israeli",
+            "israel's",
+            "jerusalem",
+            "israeli military",
+            "knesset"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "iran",
+      "label": "Iran",
+      "terms": [
+        "iran",
+        "tehran",
+        "iranian",
+        "irgc"
+      ]
+    },
+    {
+      "id": "china-taiwan",
+      "label": "China / Taiwan",
+      "children": [
+        {
+          "id": "china",
+          "label": "China",
+          "terms": [
+            "china",
+            "beijing",
+            "south china",
+            "china's",
+            "chinese",
+            "hong kong"
+          ]
+        },
+        {
+          "id": "taiwan",
+          "label": "Taiwan",
+          "terms": [
+            "taiwan",
+            "taipei"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-korea-tensions",
+      "label": "North Korea Tensions",
+      "terms": [
+        "north korea",
+        "pyongyang",
+        "dprk",
+        "korean peninsula",
+        "korean war"
+      ]
+    },
+    {
+      "id": "other-conflicts",
+      "label": "Other Conflicts",
+      "terms": [
+        "sudan",
+        "dr congo",
+        "drc",
+        "myanmar",
+        "sahel",
+        "yemen",
+        "houthi",
+        "venezuela",
+        "haiti"
+      ]
+    },
+    {
+      "id": "defence-security",
+      "label": "Defence & Security",
+      "children": [
+        {
+          "id": "military-forces",
+          "label": "Military Forces",
+          "terms": [
+            "military",
+            "army",
+            "navy",
+            "air force",
+            "defence",
+            "defense",
+            "troops",
+            "warship",
+            "fighter jet",
+            "raf"
+          ]
+        },
+        {
+          "id": "weapons-strikes",
+          "label": "Weapons & Strikes",
+          "terms": [
+            "missile",
+            "drone",
+            "drones",
+            "airstrike",
+            "air strike",
+            "ballistic",
+            "nato",
+            "nuclear"
+          ]
+        }
+      ]
+    }
+  ]
+}

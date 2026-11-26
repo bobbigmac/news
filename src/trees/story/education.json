@@ -1,0 +1,39 @@
+{
+  "id": "education",
+  "label": "Education",
+  "children": [
+    {
+      "id": "schools",
+      "label": "Schools",
+      "terms": [
+        "school",
+        "schools",
+        "teacher",
+        "pupil",
+        "headteacher",
+        "gcse",
+        "a-level",
+        "exam",
+        "ofsted",
+        "curriculum",
+        "half-term",
+        "half term",
+        "pupils"
+      ]
+    },
+    {
+      "id": "universities",
+      "label": "Universities",
+      "terms": [
+        "university",
+        "students",
+        "student",
+        "college",
+        "campus",
+        "tuition",
+        "degree",
+        "oxbridge"
+      ]
+    }
+  ]
+}

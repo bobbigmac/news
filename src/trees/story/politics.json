@@ -1,0 +1,479 @@
+{
+  "id": "politics",
+  "label": "Politics",
+  "children": [
+    {
+      "id": "uk-politics",
+      "label": "UK Politics",
+      "children": [
+        {
+          "id": "andy-burnham",
+          "label": "Andy Burnham",
+          "terms": [
+            "andy burnham",
+            "burnham",
+            "greater manchester mayor"
+          ],
+          "related": [
+            {
+              "to": "labour-government",
+              "note": "Burnham is a Labour mayor whose leadership speculation is a Westminster story."
+            },
+            {
+              "to": "local-community",
+              "note": "His remit is Greater Manchester; local stories stay under the community pivot."
+            }
+          ]
+        },
+        {
+          "id": "labour-government",
+          "label": "Labour Government",
+          "terms": [
+            "starmer",
+            "keir starmer",
+            "labour party",
+            "labour",
+            "downing street",
+            "number 10",
+            "tory government"
+          ]
+        },
+        {
+          "id": "scotland-wales-ni",
+          "label": "Scotland, Wales & NI",
+          "children": [
+            {
+              "id": "scotland",
+              "label": "Scotland",
+              "terms": [
+                "scottish government",
+                "first minister",
+                "holyrood",
+                "snp",
+                "scottish parliament"
+              ],
+              "related": [
+                {
+                  "to": "british-isles",
+                  "note": "Bare Scotland/Wales geography groups under the regions pivot, not politics."
+                }
+              ]
+            },
+            {
+              "id": "wales",
+              "label": "Wales",
+              "terms": [
+                "welsh government",
+                "welsh nhs",
+                "senedd",
+                "welsh parliament"
+              ]
+            },
+            {
+              "id": "northern-ireland",
+              "label": "Northern Ireland",
+              "terms": [
+                "northern ireland",
+                "stormont",
+                "sinn fein",
+                "dup"
+              ]
+            },
+            {
+              "id": "london-government",
+              "label": "London Government",
+              "terms": [
+                "sadiq khan",
+                "london assembly",
+                "city hall"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uk-ministers",
+          "label": "UK Ministers",
+          "terms": [
+            "lisa nandy",
+            "john healey",
+            "home office",
+            "chancellor",
+            "rachel reeves",
+            "wes streeting",
+            "shabana mahmood",
+            "yvette cooper"
+          ]
+        },
+        {
+          "id": "conservatives-reform",
+          "label": "Conservatives & Reform",
+          "terms": [
+            "tory",
+            "conservative party",
+            "reform uk",
+            "nigel farage",
+            "farage",
+            "kemi badenoch"
+          ]
+        },
+        {
+          "id": "uk-parliament",
+          "label": "Parliament",
+          "terms": [
+            "mps",
+            "mp",
+            "parliament",
+            "westminster",
+            "house of commons",
+            "commons",
+            "lords",
+            "pmqs",
+            "backbench"
+          ]
+        },
+        {
+          "id": "local-government",
+          "label": "Local Government",
+          "terms": [
+            "council",
+            "local council",
+            "mayor",
+            "local election",
+            "councillor"
+          ]
+        },
+        {
+          "id": "regulators-policy",
+          "label": "Regulators & Social Policy",
+          "terms": [
+            "ofcom",
+            "ofwat",
+            "cma",
+            "ombudsman",
+            "regulator",
+            "online safety",
+            "online safety act",
+            "age verification",
+            "misogyny",
+            "extremism",
+            "free speech",
+            "social media age"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "us-politics",
+      "label": "US Politics",
+      "children": [
+        {
+          "id": "trump-administration",
+          "label": "Trump Administration",
+          "children": [
+            {
+              "id": "donald-trump",
+              "label": "Donald Trump",
+              "terms": [
+                "donald trump",
+                "trump",
+                "president donald trump",
+                "president trump"
+              ]
+            },
+            {
+              "id": "trump-officials",
+              "label": "Trump Officials",
+              "terms": [
+                "trump administration",
+                "pete hegseth",
+                "secretary pete hegseth",
+                "rfk jr",
+                "vance",
+                "jd vance",
+                "rubio",
+                "marco rubio",
+                "first lady",
+                "melania",
+                "white house",
+                "karoline leavitt"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "us-election-politics",
+          "label": "US Election Politics",
+          "children": [
+            {
+              "id": "midterms",
+              "label": "Midterms",
+              "terms": [
+                "midterm",
+                "midterm elections",
+                "midterms",
+                "2026 midterms"
+              ]
+            },
+            {
+              "id": "democrats",
+              "label": "Democrats",
+              "children": [
+                {
+                  "id": "house-democrats",
+                  "label": "House Democrats",
+                  "terms": [
+                    "house democrats",
+                    "house democrat",
+                    "top house democrat"
+                  ]
+                },
+                {
+                  "id": "democratic-party",
+                  "label": "Democratic Party",
+                  "terms": [
+                    "democrats",
+                    "democrat",
+                    "judith levine democrats",
+                    "dnc"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "republicans",
+              "label": "Republicans",
+              "terms": [
+                "gop",
+                "republican",
+                "republicans",
+                "marjorie taylor greene",
+                "maga"
+              ]
+            },
+            {
+              "id": "us-candidates",
+              "label": "US Candidates",
+              "terms": [
+                "ilhan omar",
+                "abdul el sayed",
+                "abdul el-sayed",
+                "scott colom",
+                "jamie davis",
+                "james talarico",
+                "newsom",
+                "governor newsom",
+                "sununu",
+                "john sununu",
+                "swalwell",
+                "eric swalwell"
+              ]
+            },
+            {
+              "id": "congress-senate",
+              "label": "Congress & Senate",
+              "terms": [
+                "congress",
+                "senate",
+                "senator",
+                "congressman",
+                "congresswoman",
+                "capitol"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "us-federal-agencies",
+          "label": "US Federal Agencies",
+          "terms": [
+            "federal government",
+            "justice department",
+            "doj",
+            "fbi",
+            "fbi's",
+            "dea",
+            "supreme court",
+            "pentagon",
+            "state department",
+            "homeland security",
+            "dhs"
+          ]
+        },
+        {
+          "id": "immigration-enforcement",
+          "label": "Immigration Enforcement",
+          "terms": [
+            "immigration",
+            "immigrant",
+            "immigrants",
+            "ice agents",
+            "ice raids",
+            "immigration agents",
+            "deportation",
+            "deportations",
+            "migrant",
+            "migrants",
+            "border patrol",
+            "asylum"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nigeria-politics",
+      "label": "Nigeria Politics",
+      "children": [
+        {
+          "id": "nigeria-federal",
+          "label": "Nigeria Federal",
+          "terms": [
+            "apc",
+            "tinubu",
+            "atiku",
+            "nigeria senate",
+            "nigerian government",
+            "federal capital territory",
+            "abuja",
+            "pdp"
+          ]
+        },
+        {
+          "id": "lagos-state",
+          "label": "Lagos Government",
+          "terms": [
+            "lagos government",
+            "lagos state",
+            "sanwo-olu"
+          ]
+        },
+        {
+          "id": "nigeria-security-graft",
+          "label": "Nigeria Security & Graft",
+          "terms": [
+            "efcc",
+            "peter obi",
+            "ogun",
+            "boko haram",
+            "nigerian police",
+            "osun",
+            "enugu",
+            "oyo",
+            "kano",
+            "kaduna",
+            "rivers state"
+          ]
+        }
+      ],
+      "related": [
+        {
+          "to": "africa-regions",
+          "note": "Nigeria geography and society stories group under the Africa regions pivot; this branch is its politics."
+        }
+      ]
+    },
+    {
+      "id": "europe-politics",
+      "label": "European Politics",
+      "children": [
+        {
+          "id": "eu-institutions",
+          "label": "EU Institutions",
+          "terms": [
+            "brussels",
+            "european parliament",
+            "european commission",
+            "nato summit",
+            "european council"
+          ],
+          "related": [
+            {
+              "to": "eu-policy",
+              "note": "Policy detail groups under Economic Policy; this branch is the politics of the institutions."
+            }
+          ]
+        },
+        {
+          "id": "european-leaders",
+          "label": "European Leaders",
+          "terms": [
+            "macron",
+            "merz",
+            "meloni",
+            "sanchez",
+            "tusk"
+          ]
+        }
+      ],
+      "related": [
+        {
+          "to": "eu-policy",
+          "note": "EU regulatory and trade detail groups under Economic Policy."
+        },
+        {
+          "to": "europe-regions",
+          "note": "Bare “Europe” geography groups under the regions pivot."
+        }
+      ]
+    },
+    {
+      "id": "world-leaders",
+      "label": "World Leaders",
+      "children": [
+        {
+          "id": "named-leaders",
+          "label": "Named Leaders",
+          "terms": [
+            "putin",
+            "zelensky",
+            "benjamin netanyahu",
+            "netanyahu",
+            "anthony albanese",
+            "albanese government",
+            "anwar",
+            "president lee",
+            "modi",
+            "xi jinping",
+            "kim jong",
+            "kim jong un",
+            "carney",
+            "mark carney"
+          ],
+          "related": [
+            {
+              "to": "pope-leo",
+              "note": "Pope Leo is also a head of state; religious coverage groups under People in the News."
+            }
+          ]
+        },
+        {
+          "id": "leaders-general",
+          "label": "Leaders General",
+          "terms": [
+            "president",
+            "prime minister",
+            "leader",
+            "head of state",
+            "foreign minister"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "elections-worldwide",
+      "label": "Elections Worldwide",
+      "terms": [
+        "election",
+        "elections",
+        "vote",
+        "votes",
+        "ballot",
+        "referendum",
+        "by-election",
+        "polling",
+        "voters",
+        "polling station",
+        "polling stations"
+      ]
+    }
+  ]
+}

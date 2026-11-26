@@ -1,0 +1,449 @@
+{
+  "id": "regional-english",
+  "label": "Regional English Media",
+  "icon": "punchng.com",
+  "children": [
+    {
+      "id": "nigeria-media",
+      "label": "Nigeria Media",
+      "icon": "punchng.com",
+      "children": [
+        {
+          "id": "nigeria-nationals",
+          "label": "Nigeria Nationals",
+          "icon": "punchng.com",
+          "children": [
+            {
+              "id": "punch",
+              "label": "The Punch",
+              "icon": "punchng.com",
+              "sources": [
+                "punchng.com"
+              ]
+            },
+            {
+              "id": "nigeria-companion-papers",
+              "label": "Nigeria Companion Papers",
+              "icon": "premiumtimesng.com",
+              "sources": [
+                "premiumtimesng.com",
+                "dailypost.ng",
+                "vanguardngr.com",
+                "dailytrust.com",
+                "thisdaylive.com"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nigeria-business",
+          "label": "Nigeria Business",
+          "icon": "businessday.ng",
+          "sources": [
+            "businessday.ng",
+            "nairametrics.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "malaysia-media",
+      "label": "Malaysia Media",
+      "icon": "thestar.com.my",
+      "children": [
+        {
+          "id": "malaysia-nationals",
+          "label": "Malaysia Nationals",
+          "icon": "thestar.com.my",
+          "children": [
+            {
+              "id": "the-star-malaysia",
+              "label": "The Star Malaysia",
+              "icon": "thestar.com.my",
+              "sources": [
+                "thestar.com.my"
+              ]
+            },
+            {
+              "id": "nst-malaysia",
+              "label": "New Straits Times",
+              "icon": "nst.com.my",
+              "sources": [
+                "nst.com.my"
+              ]
+            },
+            {
+              "id": "malay-mail",
+              "label": "Malay Mail",
+              "icon": "malaymail.com",
+              "sources": [
+                "malaymail.com"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "malaysia-alt",
+          "label": "Malaysia Alternative",
+          "icon": "freemalaysiatoday.com",
+          "sources": [
+            "freemalaysiatoday.com",
+            "thevibes.com",
+            "lowyat.net"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pakistan-media",
+      "label": "Pakistan Media",
+      "icon": "dailytimes.com.pk",
+      "sources": [
+        "dailytimes.com.pk",
+        "propakistani.pk",
+        "nation.com.pk",
+        "dawn.com",
+        "tribune.com.pk",
+        "arynews.tv",
+        "geo.tv",
+        "brecorder.com",
+        "samaa.tv",
+        "dunyanews.tv",
+        "humnews.pk",
+        "bolnews.com"
+      ]
+    },
+    {
+      "id": "india-media",
+      "label": "India Media",
+      "icon": "thehindu.com",
+      "sources": [
+        "thehindu.com",
+        "timesofindia.com",
+        "hindustantimes.com",
+        "indiatoday.in",
+        "livemint.com",
+        "economictimes.com",
+        "dnaindia.com",
+        "freepressjournal.in",
+        "ndtv.com",
+        "ndtvprofit.com",
+        "thewire.in"
+      ]
+    },
+    {
+      "id": "philippines-media",
+      "label": "Philippines Media",
+      "icon": "inquirer.com",
+      "children": [
+        {
+          "id": "inquirer",
+          "label": "Inquirer",
+          "icon": "inquirer.com",
+          "sources": [
+            "inquirer.com",
+            "newsinfo.inquirer.net",
+            "business.inquirer.net",
+            "cebudailynews.inquirer.net",
+            "entertainment.inquirer.net",
+            "lifestyle.inquirer.net",
+            "technology.inquirer.net"
+          ]
+        },
+        {
+          "id": "philippines-networks",
+          "label": "Philippines Networks",
+          "icon": "gmanetwork.com",
+          "sources": [
+            "gmanetwork.com",
+            "abs-cbn.com",
+            "mb.com.ph",
+            "rappler.com",
+            "philstar.com",
+            "sunstar.com.ph",
+            "interaksyon.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "south-africa-media",
+      "label": "South Africa Media",
+      "icon": "dailymaverick.co.za",
+      "sources": [
+        "dailymaverick.co.za",
+        "iol.co.za",
+        "mg.co.za",
+        "citizen.co.za",
+        "ewn.co.za",
+        "groundup.org.za",
+        "health-e.org.za",
+        "moneyweb.co.za",
+        "engineeringnews.co.za",
+        "miningweekly.com",
+        "techcentral.co.za",
+        "sabcnews.com"
+      ]
+    },
+    {
+      "id": "ghana-media",
+      "label": "Ghana Media",
+      "icon": "myjoyonline.com",
+      "sources": [
+        "myjoyonline.com",
+        "ghanabusinessnews.com",
+        "gbcghanaonline.com",
+        "newsghana.com.gh",
+        "adomonline.com",
+        "citinewsroom.com",
+        "3news.com"
+      ]
+    },
+    {
+      "id": "kenya-media",
+      "label": "Kenya Media",
+      "icon": "nation.africa",
+      "sources": [
+        "nation.africa",
+        "standardmedia.co.ke",
+        "kenyans.co.ke",
+        "tuko.co.ke",
+        "the-star.co.ke",
+        "kbc.co.ke"
+      ]
+    },
+    {
+      "id": "indonesia-media",
+      "label": "Indonesia Media",
+      "icon": "thejakartapost.com",
+      "sources": [
+        "thejakartapost.com",
+        "en.antaranews.com",
+        "kompas.com",
+        "detik.com",
+        "tempo.co",
+        "republika.co.id",
+        "jakartaglobe.id"
+      ]
+    },
+    {
+      "id": "korea-media",
+      "label": "Korea Media",
+      "icon": "koreatimes.co.kr",
+      "children": [
+        {
+          "id": "korea-times",
+          "label": "Korea Times",
+          "icon": "koreatimes.co.kr",
+          "sources": [
+            "koreatimes.co.kr"
+          ]
+        },
+        {
+          "id": "korea-companion-media",
+          "label": "Korea Companion Media",
+          "icon": "koreaherald.com",
+          "sources": [
+            "koreaherald.com",
+            "koreaittimes.com",
+            "en.yna.co.kr",
+            "world.kbs.co.kr",
+            "chosun.com",
+            "koreajoongangdaily.joins.com",
+            "hani.co.kr",
+            "mk.co.kr"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "china-media",
+      "label": "China Media",
+      "icon": "globaltimes.cn",
+      "sources": [
+        "globaltimes.cn",
+        "chinadaily.com.cn",
+        "peopledaily.com",
+        "shanghaidaily.com",
+        "sixthtone.com",
+        "cgtn.com",
+        "news.cgtn.com"
+      ]
+    },
+    {
+      "id": "hongkong-taiwan-media",
+      "label": "Hong Kong & Taiwan",
+      "icon": "scmp.com",
+      "sources": [
+        "scmp.com",
+        "hongkongfp.com",
+        "taiwannews.com.tw",
+        "taipeitimes.com",
+        "news.ltn.com.tw"
+      ]
+    },
+    {
+      "id": "singapore-media",
+      "label": "Singapore Media",
+      "icon": "straitstimes.com",
+      "sources": [
+        "straitstimes.com",
+        "businesstimes.com.sg",
+        "channelnewsasia.com",
+        "cnaluxury.channelnewsasia.com",
+        "mothership.sg",
+        "hardwarezone.com.sg",
+        "fintechnews.sg",
+        "e27.co"
+      ]
+    },
+    {
+      "id": "thailand-media",
+      "label": "Thailand Media",
+      "icon": "bangkokpost.com",
+      "sources": [
+        "bangkokpost.com",
+        "khaosodenglish.com",
+        "thailand-business-news.com",
+        "nationthailand.com",
+        "thethaiger.com",
+        "chiangraitimes.com"
+      ]
+    },
+    {
+      "id": "japan-media",
+      "label": "Japan Media",
+      "icon": "japantimes.co.jp",
+      "sources": [
+        "japantimes.co.jp",
+        "japantoday.com",
+        "mainichi.jp",
+        "english.kyodonews.net",
+        "newsonjapan.com",
+        "asahi.com"
+      ]
+    },
+    {
+      "id": "gulf-media",
+      "label": "Gulf Media",
+      "icon": "gulf-times.com",
+      "children": [
+        {
+          "id": "qatar-media",
+          "label": "Qatar Media",
+          "icon": "qatar-tribune.com",
+          "sources": [
+            "gulf-times.com",
+            "qatar-tribune.com",
+            "thepeninsulaqatar.com",
+            "dohanews.co"
+          ]
+        },
+        {
+          "id": "uae-media",
+          "label": "UAE Media",
+          "icon": "thenationalnews.com",
+          "sources": [
+            "gulfnews.com",
+            "thenationalnews.com",
+            "arabianbusiness.com"
+          ]
+        },
+        {
+          "id": "saudi-media",
+          "label": "Saudi Media",
+          "icon": "english.ajel.sa",
+          "sources": [
+            "english.ajel.sa",
+            "saudigazette.com.sa",
+            "khaleejtimes.com",
+            "arabnews.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "middle-east-media",
+      "label": "Middle East Media",
+      "icon": "middleeasteye.net",
+      "children": [
+        {
+          "id": "jpost",
+          "label": "Jerusalem Post",
+          "icon": "jpost.com",
+          "sources": [
+            "jpost.com"
+          ]
+        },
+        {
+          "id": "middle-east-companion",
+          "label": "Middle East Companion",
+          "icon": "middleeasteye.net",
+          "sources": [
+            "middleeasteye.net",
+            "haaretz.com",
+            "timesofisrael.com",
+            "al-monitor.com",
+            "israelhayom.com",
+            "ynetnews.com",
+            "iranintl.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ukraine-media",
+      "label": "Ukraine Media",
+      "icon": "kyivindependent.com",
+      "sources": [
+        "kyivindependent.com",
+        "kyivpost.com",
+        "euromaidanpress.com",
+        "ukrinform.net",
+        "uatv.ua",
+        "english.nv.ua"
+      ]
+    },
+    {
+      "id": "latin-america-media",
+      "label": "Latin America Media",
+      "icon": "batimes.com.ar",
+      "sources": [
+        "batimes.com.ar",
+        "buenosairesherald.com",
+        "colombiaone.com",
+        "mexiconewsdaily.com",
+        "riotimesonline.com",
+        "braziljournal.com",
+        "elfinanciero.com.mx",
+        "en.mercopress.com"
+      ]
+    },
+    {
+      "id": "europe-english",
+      "label": "Europe English",
+      "icon": "euronews.com",
+      "sources": [
+        "euronews.com",
+        "euobserver.com",
+        "english.elpais.com",
+        "lemonde.fr",
+        "derstandard.at",
+        "dutchnews.nl",
+        "nltimes.nl",
+        "e24.no",
+        "thelocal.com",
+        "thelocal.ch",
+        "thelocal.es",
+        "thelocal.fr",
+        "thelocal.de",
+        "thelocal.it",
+        "thelocal.no",
+        "thelocal.se",
+        "thelocal.dk",
+        "thelocal.at",
+        "anadoluagency.com"
+      ]
+    }
+  ]
+}

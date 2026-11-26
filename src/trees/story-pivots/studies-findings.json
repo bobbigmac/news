@@ -1,0 +1,49 @@
+{
+  "id": "studies-findings",
+  "label": "Studies & Findings",
+  "children": [
+    {
+      "id": "published-studies",
+      "label": "Published Studies",
+      "terms": [
+        "study",
+        "research",
+        "researchers",
+        "new study",
+        "study finds",
+        "peer reviewed",
+        "twin study",
+        "decade-long study",
+        "randomised"
+      ],
+      "headlineTerms": [
+        "study",
+        "studies",
+        "trial shows",
+        "research reveals",
+        "findings"
+      ]
+    },
+    {
+      "id": "scientist-voices",
+      "label": "Scientists",
+      "terms": [
+        "scientist",
+        "scientists",
+        "professor",
+        "researcher"
+      ]
+    },
+    {
+      "id": "expert-analysis",
+      "label": "Experts & Analysis",
+      "terms": [
+        "expert",
+        "experts",
+        "analysis",
+        "analyst",
+        "watchdog"
+      ]
+    }
+  ]
+}

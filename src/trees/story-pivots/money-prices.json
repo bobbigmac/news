@@ -1,0 +1,33 @@
+{
+  "id": "money-prices",
+  "label": "Money & Prices",
+  "children": [
+    {
+      "id": "prices-bills",
+      "label": "Prices & Bills",
+      "terms": [
+        "price",
+        "prices",
+        "cost",
+        "costs",
+        "bills",
+        "fee",
+        "fees",
+        "money"
+      ]
+    },
+    {
+      "id": "spending-saving",
+      "label": "Spending & Saving",
+      "terms": [
+        "deal",
+        "discount",
+        "sale",
+        "saving",
+        "savings",
+        "worth",
+        "free"
+      ]
+    }
+  ]
+}

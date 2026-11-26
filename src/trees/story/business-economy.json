@@ -1,0 +1,293 @@
+{
+  "id": "business-economy",
+  "label": "Business & Economy",
+  "children": [
+    {
+      "id": "major-corporates",
+      "label": "Major Corporates",
+      "children": [
+        {
+          "id": "retail-logistics",
+          "label": "Retail & Logistics",
+          "terms": [
+            "walmart",
+            "ups",
+            "ebay",
+            "nike",
+            "amazon",
+            "tesco",
+            "sainsbury",
+            "asda",
+            "primark",
+            "shein",
+            "kroger",
+            "aldi",
+            "lidl",
+            "marks spencer",
+            "beauty industry",
+            "cosmetics",
+            "doordash",
+            "instacart",
+            "deliveroo",
+            "delivery app"
+          ]
+        },
+        {
+          "id": "fast-food",
+          "label": "Fast Food & Chains",
+          "terms": [
+            "mcdonalds",
+            "mcdonald s",
+            "mcrib",
+            "kfc",
+            "burger king",
+            "dominos",
+            "domino's",
+            "fast food",
+            "subway",
+            "wendys"
+          ]
+        },
+        {
+          "id": "transport-industry",
+          "label": "Transport Industry",
+          "terms": [
+            "boeing",
+            "ford",
+            "bmw",
+            "uber",
+            "audi",
+            "tesla",
+            "toyota",
+            "airline",
+            "ryanair",
+            "british airways"
+          ]
+        },
+        {
+          "id": "finance-companies",
+          "label": "Finance Companies",
+          "terms": [
+            "visa",
+            "goldman sachs",
+            "world bank",
+            "central bank",
+            "securities exchange commission",
+            "bank of england",
+            "hsbc",
+            "barclays",
+            "jpmorgan",
+            "cibc",
+            "fca",
+            "financial conduct authority"
+          ]
+        },
+        {
+          "id": "crypto-fintech",
+          "label": "Crypto & Fintech",
+          "terms": [
+            "crypto",
+            "cryptocurrency",
+            "bitcoin",
+            "ethereum",
+            "binance",
+            "coinbase",
+            "kucoin",
+            "stablecoin",
+            "blockchain",
+            "fintech",
+            "crypto exchange",
+            "htx",
+            "token"
+          ]
+        },
+        {
+          "id": "energy-utilities",
+          "label": "Energy & Utilities",
+          "children": [
+            {
+              "id": "energy-markets",
+              "label": "Energy Markets",
+              "terms": [
+                "oil",
+                "gas",
+                "opec",
+                "energy",
+                "fuel",
+                "shell",
+                "bp",
+                "crude",
+                "petrol",
+                "diesel"
+              ]
+            },
+            {
+              "id": "utilities-water",
+              "label": "Utilities & Water",
+              "terms": [
+                "water",
+                "thames water",
+                "sewage",
+                "water company",
+                "national grid",
+                "offshore wind",
+                "energy bills",
+                "power grid",
+                "heat pump",
+                "heat pumps",
+                "solar panels",
+                "insulation",
+                "energy efficiency"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "children": [
+        {
+          "id": "market-indexes",
+          "label": "Market Indexes",
+          "terms": [
+            "nasdaq",
+            "ftse",
+            "markets authority",
+            "s&p",
+            "dow jones",
+            "stock market"
+          ]
+        },
+        {
+          "id": "stocks-deals",
+          "label": "Stocks & Deals",
+          "terms": [
+            "shares",
+            "stocks",
+            "stock",
+            "ipo",
+            "earnings",
+            "takeover",
+            "merger",
+            "acquisition",
+            "share price",
+            "buyout",
+            "venture capital",
+            "funding round",
+            "raises"
+          ]
+        },
+        {
+          "id": "commodities-mining",
+          "label": "Commodities & Mining",
+          "terms": [
+            "commodities",
+            "commodity",
+            "cotton",
+            "wheat",
+            "gold",
+            "silver",
+            "copper",
+            "lithium",
+            "mining",
+            "mineral",
+            "minerals",
+            "futures",
+            "drilling",
+            "exploration"
+          ]
+        },
+        {
+          "id": "corporate-results",
+          "label": "Company Results",
+          "terms": [
+            "quarterly results",
+            "financial results",
+            "annual results",
+            "earnings report",
+            "revenue",
+            "profit warning",
+            "quarter results",
+            "fiscal quarter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "economic-policy",
+      "label": "Economic Policy",
+      "children": [
+        {
+          "id": "eu-policy",
+          "label": "EU Policy",
+          "terms": [
+            "eu",
+            "eu s",
+            "eu deal",
+            "eu power",
+            "eu rules",
+            "eu uk",
+            "european union s eu",
+            "european union",
+            "eurozone",
+            "schengen"
+          ],
+          "related": [
+            {
+              "to": "europe-politics",
+              "note": "EU summits and leaders group under European Politics."
+            }
+          ]
+        },
+        {
+          "id": "uk-economy",
+          "label": "UK Economy",
+          "terms": [
+            "budget",
+            "obr",
+            "interest rates",
+            "bank rate",
+            "inflation",
+            "recession",
+            "growth",
+            "brexit",
+            "economy",
+            "gdp",
+            "economic growth",
+            "welfare",
+            "welfare spending"
+          ]
+        },
+        {
+          "id": "household-economy",
+          "label": "Household Economy",
+          "terms": [
+            "cost of living",
+            "mortgage",
+            "rent",
+            "housing",
+            "house prices",
+            "wages",
+            "pensions",
+            "universal credit",
+            "benefits",
+            "tax"
+          ]
+        },
+        {
+          "id": "international-institutions",
+          "label": "International Institutions",
+          "terms": [
+            "un security council",
+            "united nations",
+            "imf",
+            "wto",
+            "world trade"
+          ]
+        }
+      ]
+    }
+  ]
+}

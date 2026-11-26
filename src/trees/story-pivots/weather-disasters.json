@@ -1,0 +1,38 @@
+{
+  "id": "weather-disasters",
+  "label": "Weather & Disasters",
+  "children": [
+    {
+      "id": "fires-disasters",
+      "label": "Fires & Disasters",
+      "terms": [
+        "fire",
+        "blaze",
+        "wildfire",
+        "earthquake",
+        "hurricane",
+        "typhoon",
+        "tsunami",
+        "volcano",
+        "landslide",
+        "disaster",
+        "dam",
+        "el nino",
+        "collision",
+        "helicopter crash",
+        "crash"
+      ]
+    },
+    {
+      "id": "extreme-weather",
+      "label": "Extreme Weather",
+      "terms": [
+        "heatwave",
+        "cold wave",
+        "snowstorm",
+        "drought",
+        "monsoon"
+      ]
+    }
+  ]
+}

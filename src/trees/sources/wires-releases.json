@@ -1,0 +1,39 @@
+{
+  "id": "wires-releases",
+  "label": "Wires & Releases",
+  "icon": "apnews.com",
+  "children": [
+    {
+      "id": "news-wires",
+      "label": "News Wires",
+      "icon": "apnews.com",
+      "sources": [
+        "apnews.com",
+        "reuters.com",
+        "factcheck.afp.com",
+        "afp.com",
+        "upi.com",
+        "pressassociation.com",
+        "dpa.com",
+        "ansa.it",
+        "efe.com",
+        "kyodonews.net",
+        "interfax.com"
+      ]
+    },
+    {
+      "id": "press-releases",
+      "label": "Press Releases",
+      "icon": "globenewswire.com",
+      "sources": [
+        "globenewswire.com",
+        "prnewswire.com",
+        "prweb.com",
+        "businesswire.com",
+        "accesswire.com",
+        "einnews.com",
+        "openpr.com"
+      ]
+    }
+  ]
+}

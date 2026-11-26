@@ -1,0 +1,464 @@
+{
+  "id": "technology",
+  "label": "Technology",
+  "children": [
+    {
+      "id": "ai-computing",
+      "label": "AI & Computing",
+      "children": [
+        {
+          "id": "frontier-labs",
+          "label": "Frontier Labs",
+          "children": [
+            {
+              "id": "openai",
+              "label": "OpenAI",
+              "terms": [
+                "openai",
+                "chatgpt",
+                "sam altman",
+                "sora",
+                "gpt"
+              ],
+              "related": [
+                {
+                  "to": "microsoft-corporate",
+                  "note": "Microsoft is OpenAI’s largest outside investor; corporate moves overlap."
+                },
+                {
+                  "to": "nvidia",
+                  "note": "Runs on Nvidia hardware; supply and funding stories intertwine."
+                }
+              ]
+            },
+            {
+              "id": "anthropic",
+              "label": "Anthropic",
+              "terms": [
+                "anthropic",
+                "claude",
+                "claude code",
+                "claude opus",
+                "claude sonnet"
+              ]
+            },
+            {
+              "id": "google-ai",
+              "label": "Google AI",
+              "terms": [
+                "deepmind",
+                "google deepmind",
+                "gemini",
+                "alphagenome",
+                "google ai",
+                "notebooklm"
+              ],
+              "related": [
+                {
+                  "to": "google",
+                  "note": "DeepMind is Google’s AI lab; grouped separately because AI stories outnumber Google-product stories."
+                }
+              ]
+            },
+            {
+              "id": "other-labs",
+              "label": "Other Labs",
+              "terms": [
+                "xai",
+                "grok",
+                "mistral",
+                "meta ai",
+                "llama",
+                "deepseek",
+                "qwen",
+                "perplexity",
+                "hugging face"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ai-industry",
+          "label": "AI Industry",
+          "children": [
+            {
+              "id": "ai-content",
+              "label": "AI Content",
+              "terms": [
+                "ai slop",
+                "ai generated",
+                "ai content",
+                "ai cheating",
+                "ai microdrama",
+                "ghostwriter ai",
+                "ai commentator",
+                "ai actor",
+                "ai actress"
+              ]
+            },
+            {
+              "id": "ai-business",
+              "label": "AI Business",
+              "terms": [
+                "ai company",
+                "ai data",
+                "ai institute",
+                "ai workers",
+                "ai development",
+                "ai investments",
+                "ai costs",
+                "ai tool",
+                "ai group",
+                "ai slowdown",
+                "ai overhaul",
+                "ai datacenter",
+                "ai data center"
+              ]
+            },
+            {
+              "id": "ai-society",
+              "label": "AI & Society",
+              "terms": [
+                "ai safety",
+                "ai regulation",
+                "ai act",
+                "ai jobs",
+                "ai bubble",
+                "ai backlash"
+              ]
+            },
+            {
+              "id": "ai-core",
+              "label": "AI Core",
+              "terms": [
+                "artificial intelligence",
+                "ai",
+                "ai model",
+                "ai models",
+                "gen ai",
+                "generative ai",
+                "gen-ai",
+                "llm",
+                "chatbot"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "platform-companies",
+      "label": "Platform Companies",
+      "children": [
+        {
+          "id": "microsoft",
+          "label": "Microsoft",
+          "children": [
+            {
+              "id": "xbox",
+              "label": "Xbox",
+              "terms": [
+                "xbox game pass",
+                "xbox series",
+                "xbox pc app",
+                "xbox cloud gaming",
+                "xbox labs",
+                "xbox development",
+                "xbox console",
+                "project helix",
+                "game pass"
+              ],
+              "related": [
+                {
+                  "to": "game-publishers",
+                  "note": "Xbox is a platform holder; game-specific stories group under Gaming."
+                }
+              ]
+            },
+            {
+              "id": "windows-github",
+              "label": "Windows & GitHub",
+              "terms": [
+                "windows 11",
+                "github",
+                "github -",
+                "copilot",
+                "microsoft 365",
+                "visual studio"
+              ]
+            },
+            {
+              "id": "microsoft-corporate",
+              "label": "Microsoft Corporate",
+              "terms": [
+                "microsoft",
+                "microsofts",
+                "microsoft's",
+                "satya nadella"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "google",
+          "label": "Google",
+          "terms": [
+            "google",
+            "googles",
+            "youtube",
+            "chromebook",
+            "android",
+            "waymo"
+          ]
+        },
+        {
+          "id": "meta-platforms",
+          "label": "Meta Platforms",
+          "terms": [
+            "meta",
+            "facebook",
+            "instagram",
+            "whatsapp",
+            "mark zuckerberg"
+          ]
+        },
+        {
+          "id": "apple",
+          "label": "Apple",
+          "terms": [
+            "apple",
+            "iphone",
+            "ipad",
+            "macbook",
+            "app store",
+            "vision pro",
+            "tim cook"
+          ]
+        },
+        {
+          "id": "samsung",
+          "label": "Samsung",
+          "terms": [
+            "samsung",
+            "galaxy s",
+            "galaxy z"
+          ]
+        },
+        {
+          "id": "tiktok-bytedance",
+          "label": "TikTok & ByteDance",
+          "terms": [
+            "tiktok",
+            "bytedance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hardware-chipmakers",
+      "label": "Hardware & Chipmakers",
+      "children": [
+        {
+          "id": "nvidia",
+          "label": "Nvidia",
+          "terms": [
+            "nvidia",
+            "nvidias",
+            "nvidia's",
+            "jensen huang",
+            "jensen huangs",
+            "megaspeed",
+            "geforce",
+            "rtx"
+          ],
+          "related": [
+            {
+              "to": "openai",
+              "note": "Nvidia supplies and invests in the frontier labs; chip supply is the shared story."
+            },
+            {
+              "to": "amd",
+              "note": "Direct GPU/accelerator competitor."
+            }
+          ]
+        },
+        {
+          "id": "amd",
+          "label": "AMD",
+          "terms": [
+            "amd",
+            "amd's",
+            "ryzen",
+            "radeon"
+          ]
+        },
+        {
+          "id": "intel",
+          "label": "Intel",
+          "terms": [
+            "intel"
+          ]
+        },
+        {
+          "id": "palantir",
+          "label": "Palantir",
+          "terms": [
+            "palantir"
+          ]
+        },
+        {
+          "id": "semiconductor-industry",
+          "label": "Semiconductors",
+          "terms": [
+            "tsmc",
+            "semiconductor",
+            "chipmaker",
+            "ai chip",
+            "chip war",
+            "sk hynix"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "consumer-tech",
+      "label": "Consumer Tech",
+      "children": [
+        {
+          "id": "phones-wearables",
+          "label": "Phones & Wearables",
+          "terms": [
+            "smartphone",
+            "smart watch",
+            "fitbit",
+            "foldable phone"
+          ]
+        },
+        {
+          "id": "robots-automation",
+          "label": "Robots & Automation",
+          "terms": [
+            "robot",
+            "humanoid robot",
+            "robotaxi",
+            "self driving",
+            "autonomous vehicle"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tech-industry",
+      "label": "Tech Industry",
+      "children": [
+        {
+          "id": "apps-software",
+          "label": "Apps & Software",
+          "terms": [
+            "app",
+            "apps",
+            "software",
+            "saas",
+            "digital",
+            "open source"
+          ]
+        },
+        {
+          "id": "security-hacking",
+          "label": "Security & Hacking",
+          "terms": [
+            "cybersecurity",
+            "cyber attack",
+            "cyberattack",
+            "ransomware",
+            "data breach",
+            "breach",
+            "hackers",
+            "hacking",
+            "phishing",
+            "malware",
+            "ddos",
+            "vulnerability",
+            "cve",
+            "zero day",
+            "exploit",
+            "hack"
+          ]
+        },
+        {
+          "id": "developer-tools",
+          "label": "Developer & Open Source",
+          "terms": [
+            "python",
+            "javascript",
+            "linux",
+            "docker",
+            "kubernetes",
+            "devops",
+            "programming",
+            "software developer",
+            "open source",
+            "contributor",
+            "contributors",
+            "backup",
+            "backups",
+            "velero"
+          ],
+          "related": [
+            {
+              "to": "windows-github",
+              "note": "GitHub is Microsoft's developer platform; this branch is language/tooling-level dev stories."
+            }
+          ]
+        },
+        {
+          "id": "web-search-seo",
+          "label": "Search & Web",
+          "terms": [
+            "seo",
+            "search engine",
+            "googlebot",
+            "gptbot",
+            "crawler",
+            "cookie",
+            "cookies",
+            "website traffic"
+          ]
+        },
+        {
+          "id": "telecoms-networks",
+          "label": "Telecoms & Networks",
+          "headlineTerms": [
+            "5g",
+            "6g",
+            "broadband"
+          ],
+          "terms": [
+            "5g",
+            "6g",
+            "telecom",
+            "telecoms",
+            "broadband",
+            "mobile network",
+            "spectrum",
+            "ofcom broadband"
+          ]
+        },
+        {
+          "id": "tech-sector",
+          "label": "Tech Sector",
+          "terms": [
+            "tech",
+            "big tech",
+            "startup",
+            "startups",
+            "ai startup",
+            "silicon valley",
+            "tech company",
+            "tech industry"
+          ]
+        }
+      ]
+    }
+  ]
+}

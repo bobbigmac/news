@@ -1,0 +1,34 @@
+{
+  "id": "deaths-obituaries",
+  "label": "Deaths & Obituaries",
+  "children": [
+    {
+      "id": "obituaries",
+      "label": "Obituaries & Tributes",
+      "headlineTerms": [
+        "dies",
+        "dies aged",
+        "dies at",
+        "dead at",
+        "obituary"
+      ],
+      "terms": [
+        "obituary",
+        "tributes",
+        "dies aged",
+        "has died"
+      ]
+    },
+    {
+      "id": "passings",
+      "label": "Deaths",
+      "terms": [
+        "dies",
+        "died",
+        "dead",
+        "death",
+        "passing"
+      ]
+    }
+  ]
+}

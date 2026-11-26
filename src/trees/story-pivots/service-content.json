@@ -1,0 +1,82 @@
+{
+  "id": "service-content",
+  "label": "Service & Promo",
+  "children": [
+    {
+      "id": "shopping-deals",
+      "label": "Shopping & Deals",
+      "headlineTerms": [
+        "deals",
+        "discount",
+        "on sale",
+        "gift guide"
+      ],
+      "terms": [
+        "best deals",
+        "deal of the day",
+        "discount code",
+        "voucher",
+        "price drop",
+        "black friday",
+        "where to buy",
+        "gift guide",
+        "buying guide",
+        "best buy",
+        "doorbuster",
+        "on sale"
+      ]
+    },
+    {
+      "id": "guides-howto",
+      "label": "Guides & How-To",
+      "terms": [
+        "how to",
+        "guide",
+        "guides",
+        "tips",
+        "tutorial",
+        "explained",
+        "explainer",
+        "what you need to know",
+        "how to watch",
+        "what time",
+        "tv guide",
+        "what to watch"
+      ]
+    },
+    {
+      "id": "reviews-verdicts",
+      "label": "Reviews & Verdicts",
+      "headlineTerms": [
+        "review"
+      ],
+      "terms": [
+        "review",
+        "reviews",
+        "hands on",
+        "hands-on",
+        "verdict",
+        "first look",
+        "comparison",
+        "tested",
+        "we tested"
+      ]
+    },
+    {
+      "id": "lifestyle-advice",
+      "label": "Lifestyle & Advice",
+      "terms": [
+        "relationship advice",
+        "advice",
+        "house poor",
+        "horoscope",
+        "zodiac",
+        "astrology",
+        "wellness",
+        "self-care",
+        "beauty",
+        "skincare"
+      ]
+    }
+  ]
+}

@@ -49,20 +49,26 @@ function clusterTerms(cluster) {
   if (!clusterTermCache.has(cluster)) {
     const entityValues = Object.values(cluster.entities || {}).flat();
     const triggerWords = Array.isArray(cluster.triggerWords) ? cluster.triggerWords : [];
-    clusterTermCache.set(cluster, [
-      ...(cluster.tags || []),
-      ...triggerWords,
-      ...entityValues,
-    ].map(normaliseTerm));
+    clusterTermCache.set(cluster, {
+      values: [
+        ...(cluster.tags || []),
+        ...triggerWords,
+        ...entityValues,
+      ].map(normaliseTerm),
+      headline: normaliseTerm(cluster.headline || ''),
+    });
   }
   return clusterTermCache.get(cluster);
 }
 
 function nodeMatches(cluster, node) {
-  const terms = node.terms || [];
-  if (!terms.length) return false;
-  const values = clusterTerms(cluster);
-  return values.some(value => terms.some(term => termMatches(value, normaliseTerm(term))));
+  const { values, headline } = clusterTerms(cluster);
+  for (const term of node.terms || []) {
+    const wanted = normaliseTerm(term);
+    if (values.some(value => termMatches(value, wanted))) return true;
+    if (wanted.includes(' ') && termMatches(headline, wanted)) return true;
+  }
+  return (node.headlineTerms || []).some(term => termMatches(headline, normaliseTerm(term)));
 }
 
 function subtreeMatches(cluster, node) {
@@ -91,8 +97,16 @@ export function assignStoryGroups(clusters) {
   }));
   const itemKeysByTerm = new Map();
   const termValuesByToken = new Map();
+  const headlineByKey = new Map();
+  const itemKeysByHeadlineToken = new Map();
   for (const item of items) {
-    for (const value of new Set(clusterTerms(item.cluster))) {
+    const { values, headline } = clusterTerms(item.cluster);
+    headlineByKey.set(item.key, headline);
+    for (const token of new Set(headline.split(' ').filter(Boolean))) {
+      if (!itemKeysByHeadlineToken.has(token)) itemKeysByHeadlineToken.set(token, new Set());
+      itemKeysByHeadlineToken.get(token).add(item.key);
+    }
+    for (const value of new Set(values)) {
       if (!itemKeysByTerm.has(value)) itemKeysByTerm.set(value, new Set());
       itemKeysByTerm.get(value).add(item.key);
     }
@@ -104,9 +118,10 @@ export function assignStoryGroups(clusters) {
     }
   }
   const keysForTerm = new Map();
-  const itemKeysForTerm = term => {
+  const itemKeysForTerm = (term, headlineSingle = false) => {
     const wanted = normaliseTerm(term);
-    if (!keysForTerm.has(wanted)) {
+    const cacheKey = `${headlineSingle ? 'h:' : ''}${wanted}`;
+    if (!keysForTerm.has(cacheKey)) {
       const tokens = wanted.split(' ').filter(Boolean);
       let candidates = itemKeysByTerm.keys();
       if (tokens.length) {
@@ -120,14 +135,22 @@ export function assignStoryGroups(clusters) {
       for (const value of candidates) {
         if (termMatches(value, wanted)) itemKeysByTerm.get(value).forEach(key => keys.add(key));
       }
-      keysForTerm.set(wanted, keys);
+      if (tokens.length > 1 || headlineSingle) {
+        for (const key of itemKeysByHeadlineToken.get(tokens[0]) || []) {
+          if (termMatches(headlineByKey.get(key), wanted)) keys.add(key);
+        }
+      }
+      keysForTerm.set(cacheKey, keys);
     }
-    return keysForTerm.get(wanted);
+    return keysForTerm.get(cacheKey);
   };
   const { groups } = allocateTreeGroups({
     roots: STORY_RELATION_TREE,
     items,
-    getNodeKeys: node => [...(node.terms || []).flatMap(term => [...itemKeysForTerm(term)])],
+    getNodeKeys: node => [
+      ...(node.terms || []).flatMap(term => [...itemKeysForTerm(term)]),
+      ...(node.headlineTerms || []).flatMap(term => [...itemKeysForTerm(term, true)]),
+    ],
     targetSize: STORY_GROUP_TARGET_CLUSTERS,
     minBranchSize: STORY_GROUP_MIN_CLUSTERS,
   });

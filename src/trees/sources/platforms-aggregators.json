@@ -1,0 +1,65 @@
+{
+  "id": "platforms-aggregators",
+  "label": "Platforms & Aggregators",
+  "icon": "reddit.com",
+  "children": [
+    {
+      "id": "social-aggregators",
+      "label": "Social Aggregators",
+      "icon": "reddit.com",
+      "sources": [
+        "reddit.com",
+        "ycombinator.com",
+        "apple.news",
+        "flipboard.com",
+        "techmeme.com",
+        "slashdot.org",
+        "games.slashdot.org",
+        "science.slashdot.org"
+      ]
+    },
+    {
+      "id": "developer-platforms",
+      "label": "Developer Platforms",
+      "icon": "dev.to",
+      "children": [
+        {
+          "id": "dev-to",
+          "label": "DEV Community",
+          "icon": "dev.to",
+          "sources": [
+            "dev.to"
+          ]
+        },
+        {
+          "id": "developer-blogs",
+          "label": "Developer Blogs",
+          "icon": "github.com",
+          "sources": [
+            "github.com",
+            "medium.com",
+            "hackernoon.com",
+            "bennadel.com",
+            "learningjquery.com",
+            "icode4.coffee",
+            "seodata.dev",
+            "rixdata.net",
+            "kpwags.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "independent-blogs",
+      "label": "Independent Blogs",
+      "icon": "substack.com",
+      "sources": [
+        "substack.com",
+        "laurenleek.substack.com",
+        "systemdrift.neocities.org",
+        "twelfthmagpie.com",
+        "lumafield.com"
+      ]
+    }
+  ]
+}

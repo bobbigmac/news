@@ -1,0 +1,322 @@
+{
+  "id": "crime-justice",
+  "label": "Crime & Justice",
+  "children": [
+    {
+      "id": "public-figure-cases",
+      "label": "Public Figure Cases",
+      "children": [
+        {
+          "id": "russell-brand",
+          "label": "Russell Brand",
+          "terms": [
+            "russell brand"
+          ],
+          "related": [
+            {
+              "to": "british-comedy",
+              "note": "Brand came up through the same UK comedy/TV circuit as David Walliams, but current coverage is legal, not entertainment."
+            },
+            {
+              "to": "celebrity-news",
+              "note": "Fame is why this is news at all; the grouping is the case, not the celebrity."
+            }
+          ]
+        },
+        {
+          "id": "epstein-network",
+          "label": "Epstein Network",
+          "terms": [
+            "epstein",
+            "jeffrey epstein",
+            "ghislaine maxwell"
+          ],
+          "related": [
+            {
+              "to": "sussex-andrew",
+              "note": "Prince Andrew’s Epstein association sits under Royal while his coverage remains institutional."
+            }
+          ]
+        },
+        {
+          "id": "other-figure-cases",
+          "label": "Other Figure Cases",
+          "terms": [
+            "harvey weinstein",
+            "diddy",
+            "sean combs",
+            "andrew tate",
+            "mogul"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "courts-trials",
+      "label": "Courts & Trials",
+      "children": [
+        {
+          "id": "court-proceedings",
+          "label": "Court Proceedings",
+          "terms": [
+            "court",
+            "courthouse",
+            "judge",
+            "pleaded",
+            "plea",
+            "bail"
+          ]
+        },
+        {
+          "id": "trials",
+          "label": "Trials",
+          "terms": [
+            "trial",
+            "jury",
+            "testified",
+            "testimony",
+            "defendant",
+            "witness",
+            "prosecution"
+          ]
+        },
+        {
+          "id": "verdicts-sentences",
+          "label": "Verdicts & Sentences",
+          "terms": [
+            "guilty",
+            "verdict",
+            "convicted",
+            "acquitted",
+            "sentencing",
+            "conviction"
+          ]
+        },
+        {
+          "id": "legal-disputes",
+          "label": "Legal Disputes",
+          "headlineTerms": [
+            "legal action"
+          ],
+          "terms": [
+            "lawsuit",
+            "appeal",
+            "settlement",
+            "injunction",
+            "tribunal",
+            "high court",
+            "legal challenge",
+            "legal action"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "policing-investigations",
+      "label": "Policing & Investigations",
+      "children": [
+        {
+          "id": "met-police",
+          "label": "Met & UK Police",
+          "terms": [
+            "met police",
+            "metropolitan police",
+            "police force",
+            "constable",
+            "chief constable"
+          ]
+        },
+        {
+          "id": "police-general",
+          "label": "Police General",
+          "terms": [
+            "police",
+            "officer",
+            "officers",
+            "police officer",
+            "law enforcement",
+            "sheriff"
+          ]
+        },
+        {
+          "id": "investigations",
+          "label": "Investigations",
+          "terms": [
+            "investigation",
+            "inquiry",
+            "cold case",
+            "probe",
+            "watchdog investigation"
+          ]
+        },
+        {
+          "id": "missing-persons",
+          "label": "Missing Persons",
+          "terms": [
+            "missing",
+            "disappearance",
+            "missing person"
+          ]
+        },
+        {
+          "id": "arrests",
+          "label": "Arrests",
+          "terms": [
+            "arrested",
+            "manhunt",
+            "detained",
+            "suspect",
+            "raid"
+          ]
+        },
+        {
+          "id": "charges-accusations",
+          "label": "Charges & Accusations",
+          "terms": [
+            "charged",
+            "charges",
+            "accused",
+            "allegedly",
+            "allegations",
+            "indicted"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "violence-killings",
+      "label": "Violence & Killings",
+      "children": [
+        {
+          "id": "killings",
+          "label": "Killings",
+          "terms": [
+            "murder",
+            "killed",
+            "killer",
+            "homicide",
+            "manslaughter",
+            "body found"
+          ]
+        },
+        {
+          "id": "assaults-shootings",
+          "label": "Assaults & Shootings",
+          "terms": [
+            "shot",
+            "shooting",
+            "stabbing",
+            "stabbed",
+            "assault",
+            "attacker",
+            "victim",
+            "hostage",
+            "machete"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "security-services",
+      "label": "Security Services",
+      "terms": [
+        "mi5",
+        "mi6",
+        "gchq",
+        "espionage",
+        "spy",
+        "spying",
+        "intelligence agency",
+        "leveson",
+        "security service"
+      ]
+    },
+    {
+      "id": "misconduct-scandals",
+      "label": "Misconduct & Scandals",
+      "terms": [
+        "scandal",
+        "scandals",
+        "misconduct",
+        "sleaze",
+        "disgraced",
+        "cover-up",
+        "cover up",
+        "bullying",
+        "harassment",
+        "apologises",
+        "apologizes"
+      ]
+    },
+    {
+      "id": "sexual-offences",
+      "label": "Sexual Offences",
+      "terms": [
+        "rape",
+        "sexual assault",
+        "sex abuse",
+        "paedophile",
+        "grooming"
+      ]
+    },
+    {
+      "id": "prisons-sentencing",
+      "label": "Prisons & Sentencing",
+      "terms": [
+        "jailed",
+        "prison",
+        "jail",
+        "custody",
+        "sentence",
+        "parole",
+        "life sentence"
+      ]
+    },
+    {
+      "id": "drug-offences",
+      "label": "Drug Offences",
+      "terms": [
+        "drug",
+        "drugs",
+        "cannabis",
+        "cocaine",
+        "trafficking",
+        "smuggling",
+        "drug gang"
+      ]
+    },
+    {
+      "id": "fraud-financial-crime",
+      "label": "Fraud & Financial Crime",
+      "headlineTerms": [
+        "scam",
+        "fraud"
+      ],
+      "terms": [
+        "fraud",
+        "scam",
+        "money laundering",
+        "bribery",
+        "corruption case",
+        "ponzi",
+        "counterfeit",
+        "seized",
+        "fake goods"
+      ]
+    },
+    {
+      "id": "theft-burglary",
+      "label": "Theft & Burglary",
+      "terms": [
+        "theft",
+        "stolen",
+        "burglary",
+        "robbed",
+        "robbery",
+        "shoplifting",
+        "looting",
+        "tools stolen"
+      ]
+    }
+  ]
+}

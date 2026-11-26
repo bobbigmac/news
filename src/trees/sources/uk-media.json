@@ -1,0 +1,224 @@
+{
+  "id": "uk-media",
+  "label": "UK Media",
+  "icon": "dailymail.com",
+  "children": [
+    {
+      "id": "dmgt",
+      "label": "Daily Mail / DMGT",
+      "icon": "dailymail.com",
+      "children": [
+        {
+          "id": "daily-mail",
+          "label": "Daily Mail",
+          "icon": "dailymail.com",
+          "sources": [
+            "dailymail.com",
+            "mailonline.com"
+          ]
+        },
+        {
+          "id": "dmgt-companion",
+          "label": "DMGT Companion",
+          "icon": "metro.co.uk",
+          "sources": [
+            "metro.co.uk",
+            "thisismoney.co.uk",
+            "inews.co.uk",
+            "newscientist.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "guardian",
+      "label": "The Guardian",
+      "icon": "theguardian.com",
+      "sources": [
+        "theguardian.com",
+        "guardian.co.uk"
+      ]
+    },
+    {
+      "id": "reach",
+      "label": "Reach",
+      "icon": "mirror.co.uk",
+      "children": [
+        {
+          "id": "reach-national",
+          "label": "Reach Nationals",
+          "icon": "mirror.co.uk",
+          "sources": [
+            "mirror.co.uk",
+            "express.co.uk",
+            "dailystar.co.uk",
+            "ok.co.uk",
+            "dailyrecord.co.uk"
+          ]
+        },
+        {
+          "id": "reach-local",
+          "label": "Reach Local",
+          "icon": "belfastlive.co.uk",
+          "sources": [
+            "belfastlive.co.uk",
+            "glasgowlive.co.uk",
+            "gloucestershirelive.co.uk",
+            "walesonline.co.uk",
+            "manchestereveningnews.co.uk",
+            "liverpoolecho.co.uk",
+            "dublinlive.ie",
+            "edinburghlive.co.uk",
+            "chroniclelive.co.uk",
+            "birminghammail.co.uk",
+            "leicestermercury.co.uk",
+            "bristollive.co.uk",
+            "bristolpost.co.uk",
+            "cornwalllive.com",
+            "derbyshirelive.co.uk",
+            "devonlive.com",
+            "examinerlive.co.uk",
+            "hulldailymail.co.uk",
+            "kentlive.news",
+            "lancs.live",
+            "leeds-live.co.uk",
+            "lincolnshirelive.co.uk",
+            "nottinghampost.com",
+            "plymouthherald.co.uk",
+            "somersetlive.co.uk",
+            "stokesentinel.co.uk",
+            "surrey.live",
+            "sussexlive.co.uk",
+            "cambridge-news.co.uk",
+            "cheshire-live.co.uk",
+            "mylondon.news"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "future",
+      "label": "Future",
+      "icon": "techradar.com",
+      "children": [
+        {
+          "id": "future-tech",
+          "label": "Future Tech",
+          "icon": "techradar.com",
+          "sources": [
+            "techradar.com",
+            "tomshardware.com",
+            "tomsguide.com",
+            "t3.com",
+            "creativebloq.com",
+            "techadvisor.com",
+            "trustedreviews.com",
+            "itpro.com",
+            "whathifi.com",
+            "laptopmag.com"
+          ]
+        },
+        {
+          "id": "future-science",
+          "label": "Future Science",
+          "icon": "livescience.com",
+          "sources": [
+            "space.com",
+            "livescience.com"
+          ]
+        },
+        {
+          "id": "future-games-lifestyle",
+          "label": "Future Games & Lifestyle",
+          "icon": "pcgamer.com",
+          "sources": [
+            "pcgamer.com",
+            "gamesradar.com",
+            "marieclaire.co.uk",
+            "homesandgardens.com",
+            "idealhome.co.uk",
+            "womanandhome.com",
+            "countrylife.co.uk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "uk-nationals",
+      "label": "UK Nationals",
+      "icon": "independent.co.uk",
+      "children": [
+        {
+          "id": "independent",
+          "label": "Independent",
+          "icon": "independent.co.uk",
+          "sources": [
+            "independent.co.uk",
+            "independent.ie"
+          ]
+        },
+        {
+          "id": "standard",
+          "label": "Evening Standard",
+          "icon": "standard.co.uk",
+          "sources": [
+            "standard.co.uk"
+          ]
+        },
+        {
+          "id": "telegraph",
+          "label": "The Telegraph",
+          "icon": "telegraph.co.uk",
+          "sources": [
+            "telegraph.co.uk"
+          ]
+        },
+        {
+          "id": "observer",
+          "label": "The Observer",
+          "icon": "observer.co.uk",
+          "sources": [
+            "observer.co.uk"
+          ]
+        },
+        {
+          "id": "scotsman",
+          "label": "The Scotsman",
+          "icon": "scotsman.com",
+          "sources": [
+            "scotsman.com",
+            "edinburghnews.scotsman.com"
+          ]
+        },
+        {
+          "id": "evening-gazette",
+          "label": "Evening Gazette",
+          "icon": "gazettelive.co.uk",
+          "sources": [
+            "gazettelive.co.uk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "uk-regional",
+      "label": "UK Regional",
+      "icon": "theolivepress.es",
+      "sources": [
+        "glasgowtimes.co.uk",
+        "heraldscotland.com",
+        "thecourier.co.uk",
+        "pressandjournal.co.uk",
+        "eveningexpress.co.uk",
+        "belfasttelegraph.co.uk",
+        "newsletter.co.uk",
+        "wales247.co.uk",
+        "nation.cymru",
+        "theolivepress.es",
+        "euroweeklynews.com",
+        "hot-dinners.com",
+        "timeout.com/london"
+      ]
+    }
+  ]
+}

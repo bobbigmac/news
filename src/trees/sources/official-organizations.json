@@ -1,0 +1,52 @@
+{
+  "id": "official-organizations",
+  "label": "Official Organizations",
+  "icon": "nasa.gov",
+  "children": [
+    {
+      "id": "microsoft",
+      "label": "Microsoft",
+      "icon": "news.xbox.com",
+      "sources": [
+        "news.xbox.com",
+        "xbox.com",
+        "github.com",
+        "microsoft.com",
+        "linkedin.com"
+      ]
+    },
+    {
+      "id": "nasa",
+      "label": "NASA",
+      "icon": "nasa.gov",
+      "sources": [
+        "nasa.gov",
+        "science.nasa.gov"
+      ]
+    },
+    {
+      "id": "public-bodies",
+      "label": "Public Bodies",
+      "icon": "who.int",
+      "sources": [
+        "who.int",
+        "afro.who.int",
+        "metoffice.gov.uk",
+        "fda.gov",
+        "nasa.gov",
+        "science.nasa.gov"
+      ]
+    },
+    {
+      "id": "research-organizations",
+      "label": "Research Organizations",
+      "icon": "caltech.edu",
+      "sources": [
+        "caltech.edu",
+        "taxfoundation.org",
+        "mckinsey.com",
+        "cancerresearchuk.org"
+      ]
+    }
+  ]
+}

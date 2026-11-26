@@ -1,0 +1,218 @@
+{
+  "id": "digital-publishers",
+  "label": "Digital Publishers",
+  "icon": "theverge.com",
+  "children": [
+    {
+      "id": "axel-springer",
+      "label": "Axel Springer",
+      "icon": "businessinsider.com",
+      "sources": [
+        "businessinsider.com",
+        "insider.com",
+        "politico.com",
+        "politico.eu",
+        "morningbrew.com"
+      ]
+    },
+    {
+      "id": "ziff-davis",
+      "label": "Ziff Davis / IGN Entertainment",
+      "icon": "ign.com",
+      "sources": [
+        "ign.com",
+        "mashable.com",
+        "in.mashable.com",
+        "sea.mashable.com",
+        "pcmag.com",
+        "extremetech.com",
+        "geek.com",
+        "askmen.com",
+        "lifehacker.com",
+        "eurogamer.net",
+        "rockpapershotgun.com",
+        "vg247.com",
+        "gamesindustry.biz",
+        "nintendolife.com",
+        "pushsquare.com",
+        "purexbox.com",
+        "timeextension.com"
+      ]
+    },
+    {
+      "id": "keleops",
+      "label": "Keleops",
+      "icon": "kotaku.com",
+      "sources": [
+        "kotaku.com",
+        "gizmodo.com",
+        "journaldugeek.com",
+        "presse-citron.com",
+        "01net.com",
+        "iphon.fr"
+      ]
+    },
+    {
+      "id": "vox-media",
+      "label": "Vox Media",
+      "icon": "theverge.com",
+      "sources": [
+        "theverge.com",
+        "polygon.com",
+        "vulture.com",
+        "nymag.com",
+        "thecut.com",
+        "sbnation.com",
+        "vox.com",
+        "eater.com",
+        "curbed.com",
+        "thrillist.com",
+        "popsugar.com"
+      ]
+    },
+    {
+      "id": "conde-nast",
+      "label": "Condé Nast",
+      "icon": "arstechnica.com",
+      "sources": [
+        "arstechnica.com",
+        "wired.com",
+        "newyorker.com",
+        "vanityfair.com",
+        "vogue.com",
+        "gq.com",
+        "glamour.com",
+        "allure.com",
+        "bonappetit.com",
+        "epicurious.com",
+        "cntraveler.com",
+        "self.com",
+        "them.us",
+        "pitchfork.com"
+      ]
+    },
+    {
+      "id": "hearst-magazines",
+      "label": "Hearst Magazines",
+      "icon": "housebeautiful.com",
+      "sources": [
+        "housebeautiful.com",
+        "cosmopolitan.com",
+        "esquire.com",
+        "menshealth.com",
+        "womenshealthmag.com",
+        "goodhousekeeping.com",
+        "countryliving.com",
+        "elle.com",
+        "harpersbazaar.com",
+        "caranddriver.com",
+        "popularmechanics.com",
+        "roadandtrack.com",
+        "bestproducts.com",
+        "delish.com",
+        "prevention.com",
+        "runnersworld.com",
+        "bicycling.com",
+        "oprahdaily.com",
+        "townandcountrymag.com"
+      ]
+    },
+    {
+      "id": "penske",
+      "label": "Penske Media",
+      "icon": "variety.com",
+      "sources": [
+        "variety.com",
+        "deadline.com",
+        "hollywoodreporter.com",
+        "indiewire.com",
+        "rollingstone.com",
+        "billboard.com",
+        "sportico.com",
+        "wwd.com",
+        "footwearnews.com"
+      ]
+    },
+    {
+      "id": "yahoo",
+      "label": "Yahoo",
+      "icon": "sports.yahoo.com",
+      "sources": [
+        "sports.yahoo.com",
+        "news.yahoo.com",
+        "finance.yahoo.com",
+        "yahoo.com",
+        "aol.com",
+        "engadget.com",
+        "autoblog.com"
+      ]
+    },
+    {
+      "id": "red-ventures",
+      "label": "Red Ventures",
+      "icon": "cnet.com",
+      "sources": [
+        "cnet.com",
+        "gamespot.com",
+        "zdnet.com",
+        "healthline.com",
+        "lonelyplanet.com",
+        "bankrate.com"
+      ]
+    },
+    {
+      "id": "valnet",
+      "label": "Valnet",
+      "icon": "gamerant.com",
+      "sources": [
+        "gamerant.com",
+        "thegamer.com",
+        "screenrant.com",
+        "makeuseof.com",
+        "howtogeek.com",
+        "movieweb.com",
+        "xda-developers.com"
+      ]
+    },
+    {
+      "id": "static-media",
+      "label": "Static Media",
+      "icon": "nickiswift.com",
+      "sources": [
+        "nickiswift.com",
+        "thelist.com",
+        "looper.com",
+        "grunge.com",
+        "mashable.com"
+      ]
+    },
+    {
+      "id": "motley-fool",
+      "label": "Motley Fool",
+      "icon": "fool.com",
+      "sources": [
+        "fool.com",
+        "fool.ca",
+        "fool.com.au",
+        "fool.co.uk"
+      ]
+    },
+    {
+      "id": "digital-news-standalones",
+      "label": "Independent Digital News",
+      "icon": "newsweek.com",
+      "sources": [
+        "newsweek.com",
+        "semafor.com",
+        "qz.com",
+        "vice.com",
+        "huffpost.com",
+        "thedailybeast.com",
+        "rawstory.com",
+        "salon.com",
+        "slate.com",
+        "thedispatch.com"
+      ]
+    }
+  ]
+}

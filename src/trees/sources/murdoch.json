@@ -1,0 +1,89 @@
+{
+  "id": "murdoch",
+  "label": "Fox / News Corp",
+  "icon": "nypost.com",
+  "children": [
+    {
+      "id": "fox",
+      "label": "Fox",
+      "icon": "foxnews.com",
+      "sources": [
+        "foxnews.com",
+        "foxbusiness.com",
+        "foxsports.com",
+        "foxnation.com",
+        "fox2now.com",
+        "fox4news.com",
+        "fox5atlanta.com",
+        "fox5dc.com",
+        "fox5ny.com",
+        "fox5sandiego.com",
+        "fox5vegas.com",
+        "fox6now.com",
+        "fox7austin.com",
+        "fox8live.com",
+        "fox9.com",
+        "fox10phoenix.com",
+        "fox11online.com",
+        "fox12oregon.com",
+        "fox13news.com",
+        "fox13memphis.com",
+        "fox14tv.com",
+        "fox16.com",
+        "fox17.com",
+        "fox19.com",
+        "fox21online.com",
+        "fox23maine.com",
+        "fox25boston.com",
+        "fox26houston.com",
+        "fox28media.com",
+        "fox29.com",
+        "fox30jax.com",
+        "fox32chicago.com",
+        "fox35orlando.com",
+        "fox40.com",
+        "fox43.com",
+        "fox44.com",
+        "fox46charlotte.com",
+        "fox47news.com",
+        "fox59.com"
+      ]
+    },
+    {
+      "id": "news-corp-print",
+      "label": "News Corp Print",
+      "icon": "nypost.com",
+      "sources": [
+        "nypost.com",
+        "pagesix.com",
+        "thesun.co.uk",
+        "thetimes.co.uk",
+        "thesundaytimes.co.uk",
+        "news.com.au",
+        "dailytelegraph.com.au",
+        "heraldsun.com.au",
+        "couriermail.com.au",
+        "perthnow.com.au",
+        "adelaidenow.com.au",
+        "ntnews.com.au",
+        "townsvillebulletin.com.au",
+        "cairnspost.com.au",
+        "goldcoastbulletin.com.au",
+        "geelongadvertiser.com.au",
+        "weeklytimesnow.com.au",
+        "theaustralian.com.au",
+        "skynews.com.au"
+      ]
+    },
+    {
+      "id": "news-corp-business",
+      "label": "News Corp Business",
+      "icon": "wsj.com",
+      "sources": [
+        "wsj.com",
+        "barrons.com",
+        "marketwatch.com"
+      ]
+    }
+  ]
+}

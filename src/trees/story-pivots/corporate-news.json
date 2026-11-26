@@ -1,0 +1,74 @@
+{
+  "id": "corporate-news",
+  "label": "Corporate News",
+  "children": [
+    {
+      "id": "banking",
+      "label": "Banking",
+      "terms": [
+        "bank",
+        "banks",
+        "banking",
+        "lender",
+        "mortgage lender"
+      ]
+    },
+    {
+      "id": "corporate-general",
+      "label": "Corporate General",
+      "terms": [
+        "company",
+        "ceo",
+        "firm",
+        "firms",
+        "profit",
+        "revenue",
+        "quarterly",
+        "board",
+        "corporate",
+        "conference",
+        "convention",
+        "event planning",
+        "crore",
+        "lakh",
+        "brand"
+      ]
+    },
+    {
+      "id": "executive-moves",
+      "label": "Executive Moves",
+      "headlineTerms": [
+        "appointed",
+        "takes over",
+        "take over",
+        "steps down",
+        "resigns",
+        "new ceo"
+      ],
+      "terms": [
+        "appointed",
+        "appointment",
+        "steps down",
+        "resigns",
+        "resignation",
+        "takes over",
+        "new ceo",
+        "leadership transition",
+        "chamber",
+        "chamber of commerce"
+      ]
+    },
+    {
+      "id": "investment-deals",
+      "label": "Investment & Deals",
+      "terms": [
+        "investment",
+        "investors",
+        "funding",
+        "funding round",
+        "valuation",
+        "backer"
+      ]
+    }
+  ]
+}

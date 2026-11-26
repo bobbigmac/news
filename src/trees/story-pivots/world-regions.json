@@ -1,0 +1,436 @@
+{
+  "id": "world-regions",
+  "label": "World Regions",
+  "children": [
+    {
+      "id": "british-isles",
+      "label": "British Isles",
+      "children": [
+        {
+          "id": "london",
+          "label": "London",
+          "terms": [
+            "london",
+            "east london",
+            "west london",
+            "south london",
+            "north london",
+            "central london"
+          ]
+        },
+        {
+          "id": "england-britain",
+          "label": "England & Britain",
+          "terms": [
+            "england",
+            "england's",
+            "britain",
+            "british",
+            "english"
+          ]
+        },
+        {
+          "id": "scotland-wales-regions",
+          "label": "Scotland & Wales",
+          "terms": [
+            "scotland",
+            "scottish",
+            "scotland's",
+            "wales",
+            "welsh",
+            "edinburgh",
+            "glasgow",
+            "cardiff",
+            "belfast"
+          ]
+        },
+        {
+          "id": "ireland-isle",
+          "label": "Ireland",
+          "terms": [
+            "ireland",
+            "irish",
+            "dublin",
+            "cork",
+            "galway"
+          ]
+        }
+      ],
+      "related": [
+        {
+          "to": "uk-politics",
+          "note": "Government and policy stories group under UK Politics before this geographic net sees them."
+        }
+      ]
+    },
+    {
+      "id": "americas",
+      "label": "Americas",
+      "children": [
+        {
+          "id": "us-general",
+          "label": "US General",
+          "terms": [
+            "america",
+            "united states",
+            "american",
+            "u s"
+          ]
+        },
+        {
+          "id": "us-states",
+          "label": "US States",
+          "terms": [
+            "california",
+            "texas",
+            "florida",
+            "new york",
+            "los angeles",
+            "colorado",
+            "michigan",
+            "north carolina",
+            "jersey",
+            "chicago",
+            "boston",
+            "ohio",
+            "georgia state",
+            "oregon",
+            "portland",
+            "wisconsin",
+            "pennsylvania",
+            "nevada",
+            "arizona",
+            "tennessee",
+            "missouri"
+          ]
+        },
+        {
+          "id": "canada",
+          "label": "Canada",
+          "terms": [
+            "canada",
+            "canadian",
+            "ontario",
+            "toronto",
+            "quebec",
+            "vancouver",
+            "ottawa",
+            "montreal",
+            "british columbia"
+          ]
+        },
+        {
+          "id": "latin-america",
+          "label": "Latin America",
+          "terms": [
+            "brazil",
+            "argentina",
+            "mexico",
+            "chile",
+            "colombia",
+            "peru",
+            "cuba",
+            "jamaica",
+            "caribbean",
+            "latin america"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "europe-regions",
+      "label": "European Regions",
+      "children": [
+        {
+          "id": "western-europe",
+          "label": "Western Europe",
+          "terms": [
+            "france",
+            "french",
+            "paris",
+            "germany",
+            "german",
+            "berlin",
+            "netherlands",
+            "amsterdam",
+            "belgium",
+            "austria",
+            "vienna",
+            "switzerland"
+          ]
+        },
+        {
+          "id": "southern-europe",
+          "label": "Southern Europe",
+          "terms": [
+            "spain",
+            "spanish",
+            "madrid",
+            "italy",
+            "italian",
+            "milan",
+            "rome",
+            "athens",
+            "greece",
+            "lisbon",
+            "portugal",
+            "venice"
+          ]
+        },
+        {
+          "id": "northern-eastern-europe",
+          "label": "Northern & Eastern Europe",
+          "terms": [
+            "poland",
+            "norway",
+            "sweden",
+            "denmark",
+            "finland",
+            "czech",
+            "hungary",
+            "romania",
+            "baltic",
+            "iceland",
+            "belarus",
+            "belarusian",
+            "ukraine",
+            "moldova",
+            "slovakia",
+            "slovenia",
+            "croatia",
+            "serbia",
+            "bosnia",
+            "albania"
+          ]
+        },
+        {
+          "id": "europe-general",
+          "label": "Europe General",
+          "terms": [
+            "europe",
+            "european",
+            "continental europe"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "asia-pacific",
+      "label": "Asia Pacific",
+      "children": [
+        {
+          "id": "south-asia",
+          "label": "South Asia",
+          "children": [
+            {
+              "id": "india",
+              "label": "India",
+              "terms": [
+                "india",
+                "india's",
+                "indian",
+                "delhi",
+                "mumbai",
+                "bengaluru"
+              ]
+            },
+            {
+              "id": "pakistan",
+              "label": "Pakistan",
+              "terms": [
+                "pakistan",
+                "punjab",
+                "lahore",
+                "karachi",
+                "islamabad",
+                "pakistani"
+              ]
+            },
+            {
+              "id": "south-asia-other",
+              "label": "South Asia Other",
+              "terms": [
+                "bangladesh",
+                "sri lanka",
+                "dhaka",
+                "nepal"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "east-asia",
+          "label": "East Asia",
+          "children": [
+            {
+              "id": "south-korea-region",
+              "label": "South Korea",
+              "terms": [
+                "korea",
+                "korea's",
+                "korean",
+                "south korea",
+                "seoul",
+                "south korea's"
+              ],
+              "related": [
+                {
+                  "to": "north-korea-tensions",
+                  "note": "North Korea is a security topic under World Conflicts; South Korea geography is regional."
+                }
+              ]
+            },
+            {
+              "id": "east-asia-general",
+              "label": "East Asia General",
+              "terms": [
+                "japan",
+                "japanese",
+                "tokyo",
+                "singapore",
+                "shanghai"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "southeast-asia",
+          "label": "Southeast Asia",
+          "terms": [
+            "malaysia",
+            "lumpur",
+            "kuala lumpur",
+            "indonesia",
+            "thailand",
+            "philippines",
+            "vietnam",
+            "jakarta",
+            "bangkok",
+            "manila",
+            "cambodia"
+          ]
+        },
+        {
+          "id": "oceania",
+          "label": "Oceania",
+          "terms": [
+            "australia",
+            "australia's",
+            "australian",
+            "sydney",
+            "melbourne",
+            "new zealand",
+            "zealand",
+            "auckland",
+            "brisbane",
+            "perth",
+            "fiji"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "middle-east-central",
+      "label": "Middle East & Central Asia",
+      "terms": [
+        "saudi arabia",
+        "saudi",
+        "uae",
+        "qatar",
+        "dubai",
+        "abu dhabi",
+        "turkey",
+        "istanbul",
+        "oman",
+        "kuwait",
+        "jordan",
+        "lebanon",
+        "iraq",
+        "syria",
+        "afghanistan",
+        "sharjah",
+        "riyadh",
+        "doha",
+        "gulf",
+        "bahrain",
+        "uzbekistan",
+        "kazakhstan",
+        "kyrgyzstan",
+        "tajikistan",
+        "turkmenistan",
+        "tashkent",
+        "astana",
+        "bishkek"
+      ]
+    },
+    {
+      "id": "africa-regions",
+      "label": "Africa",
+      "children": [
+        {
+          "id": "west-africa",
+          "label": "West Africa",
+          "terms": [
+            "nigeria",
+            "nigerian",
+            "lagos",
+            "ghana",
+            "senegal",
+            "ivory coast",
+            "accra"
+          ],
+          "related": [
+            {
+              "to": "nigeria-politics",
+              "note": "Nigerian political stories group under the primary Nigeria Politics branch."
+            }
+          ]
+        },
+        {
+          "id": "east-africa",
+          "label": "East Africa",
+          "terms": [
+            "kenya",
+            "ethiopia",
+            "uganda",
+            "rwanda",
+            "nairobi",
+            "tanzania"
+          ]
+        },
+        {
+          "id": "southern-africa",
+          "label": "Southern Africa",
+          "terms": [
+            "south africa",
+            "zimbabwe",
+            "johannesburg",
+            "cape town",
+            "botswana"
+          ]
+        },
+        {
+          "id": "north-africa",
+          "label": "North Africa",
+          "terms": [
+            "egypt",
+            "morocco",
+            "tunisia",
+            "algeria",
+            "cairo",
+            "libya"
+          ]
+        },
+        {
+          "id": "africa-general",
+          "label": "Africa General",
+          "terms": [
+            "africa",
+            "african",
+            "africa's"
+          ]
+        }
+      ]
+    }
+  ]
+}

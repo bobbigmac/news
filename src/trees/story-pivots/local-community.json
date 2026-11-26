@@ -1,0 +1,42 @@
+{
+  "id": "local-community",
+  "label": "Local & Community",
+  "children": [
+    {
+      "id": "manchester-local",
+      "label": "Manchester Local",
+      "terms": [
+        "longsight",
+        "levenshulme",
+        "gorton",
+        "manchester"
+      ],
+      "related": [
+        {
+          "to": "andy-burnham",
+          "note": "City-region stories overlap the mayor; Burnham himself groups under UK Politics."
+        }
+      ]
+    },
+    {
+      "id": "uk-local",
+      "label": "UK Local",
+      "terms": [
+        "birmingham",
+        "bristol",
+        "leeds",
+        "sheffield",
+        "nottingham",
+        "community",
+        "residents",
+        "neighbours",
+        "anti social",
+        "anti-social",
+        "neighbourhood",
+        "village",
+        "town centre",
+        "residents association"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "id": "human-interest",
+  "label": "Human Interest",
+  "children": [
+    {
+      "id": "animals",
+      "label": "Animals",
+      "terms": [
+        "dog",
+        "cat",
+        "puppy",
+        "kitten",
+        "pet",
+        "pets",
+        "whale",
+        "elephant",
+        "on the loose",
+        "bull"
+      ]
+    },
+    {
+      "id": "rescues-survivors",
+      "label": "Rescues & Survivors",
+      "terms": [
+        "rescue",
+        "survivor",
+        "miracle",
+        "escaped",
+        "reunited"
+      ]
+    },
+    {
+      "id": "family-life",
+      "label": "Family Life",
+      "children": [
+        {
+          "id": "children-parents",
+          "label": "Children & Parents",
+          "terms": [
+            "children",
+            "parents",
+            "mother",
+            "father",
+            "mum",
+            "mummy",
+            "dad",
+            "baby",
+            "son",
+            "daughter",
+            "toddler",
+            "teenager"
+          ]
+        },
+        {
+          "id": "partnerships",
+          "label": "Partnerships",
+          "terms": [
+            "wife",
+            "husband",
+            "marriage",
+            "wedding",
+            "divorce",
+            "engaged",
+            "couple"
+          ]
+        },
+        {
+          "id": "family-general",
+          "label": "Family General",
+          "terms": [
+            "family",
+            "families",
+            "relatives",
+            "siblings"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "charity-causes",
+      "label": "Charity & Causes",
+      "terms": [
+        "charity",
+        "fundraising",
+        "donate",
+        "donates",
+        "donation",
+        "volunteers",
+        "nonprofit",
+        "philanthropy",
+        "grant"
+      ]
+    }
+  ]
+}
