@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 14:14:57 UTC
-entries: 3277
+last_activity: 2026-11-26 14:23:16 UTC
+entries: 3294
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -72942,6 +72942,510 @@ The 354 still ending in "..." are publisher-side truncations — the feeds thems
 ```
 
 Reload dev and the dirty data is gone from the source itself, not just filtered on the way out.
+
+---
+
+<!-- r:0 m:hook:7c6d47dc-bd3a-40c7-853f-b93372ec910f h:20a6513e -->
+### 2026-11-26 14:15:49 UTC user
+
+why do we ship publisher-provided text? Check our prompts, I thought we rewrote _most_ texts to our own version. Check
+
+---
+
+<!-- r:0 m:hook:7c6d47dc-bd3a-40c7-853f-b93372ec910f:exec:95160d6e h:2f7d352f -->
+### 2026-11-26 14:16:02 UTC tool `exec`
+
+`{"command": "sed -n '1,60p' scripts/prompts.js; echo ---TIERS---; python3 -c \"\nimport json\nd = json.load(open('cache/digest.json'))\nsingle = sum(1 for c in d['clusters'] if len(c.get('stories',[])) == 1)\nmulti = len(d['clusters']) - single\nprint('singletons:', single, 'multi-story:', multi)\n# how many summaries look source-derived (start with lead title)?\nimport re\nderived = 0\nfor c in d`
+
+```
+Output from command in shell 4da9d8:
+// LLM prompts for the news digest.
+//
+// The LLM's ONLY job now is summarisation: given a cluster of stories that
+// local embedding-based clustering has already grouped as one event, write a
+// single headline + summary + impact + trigger words. Grouping is done
+// locally (see cluster.js), so the LLM never decides which stories belong
+// together — it just writes the editorial copy for an already-formed cluster.
+// This is a far simpler, more reliable prompt and degrades gracefully: a
+// single failed call only affects one cluster's text.
+
+export const SYSTEM_PROMPT = `You are a news editor writing concise summaries for a broadsheet digest. Your task is summarisation: distil a group of stories about one event into a single headline, summary, and very short summary.
+
+Write in a plain, authoritative broadsheet voice — third person, active voice, British English spelling. State facts directly. Get to the point without front-loading context.
+
+Editorial style:
+- Name specifics. If a source says "Manchester", write "Manchester" — not "a major city". If it says "weedkiller", write "weedkiller" — not "an effective liquid". Include proper nouns from the headline.
+- Be information-dense. Every sentence contains a concrete fact. Replace vague nouns with the actual name from the source.
+- Answer questions the original headline poses. The reader should not need to click through for facts available in the source.
+- Do not invent details the source does not contain.
+- Don't be vague or provocative. Avoid clickbaity semantics or framings.
+
+Output:
+1. "headline" — 8 words max, factual, no question marks.
+2. "summary" — 30-60 words, block text, key facts only. Do not repeat the headline.
+3. "short_summary" — VERY short form of story summary AFTER the current summary: 8-14 words, one sentence, key facts only.
+4. "category" — one of: Politics, Business, Technology, Science, Health, World, Sport, Gaming, Entertainment, Celebrity, Environment, Ener
+```
+
+---
+
+<!-- r:0 m:hook:stop:7c6d47dc-bd3a-40c7-853f-b93372ec910f h:9249cd15 -->
+### 2026-11-26 14:16:24 UTC assistant
+
+Checked. The prompts do exactly what you expect — broadsheet-voice rewrite, 30-60 word summary, name specifics, answer the headline's question. The problem isn't the prompt, it's who never sees it:
+
+**83% of the digest bypasses the LLM entirely.** The tier logic in `summarise.js`:
+
+| Tier | Clusters | LLM copy? |
+|---|---|---|
+| SINGLETON (1 story) | **4,633 of 5,557** | **No — publisher text shipped as-is** |
+| BATCH (small new) / SOLO (large/updates) | ~924 | Yes — rewritten |
+| SKIP (established + 1 new story) | rolling | Keeps existing copy |
+
+The singleton rationale in the code comments is *"no cluster was learned, so no LLM summarisation needed — uses the source headline + description"*. That logic is flawed by your standards, and the data shows the consequence: 4,679 summaries are verbatim publisher text. The reasoning conflated "nothing to synthesise across sources" with "nothing to rewrite" — but a single source's copy is written in *the publisher's* voice, for *their* purposes (clickbait, SEO, feed-readers), not broadsheet voice. The only LLM contact singletons get is the clickbait headline screen, which cleans the headline but leaves the body copy as the publisher wrote it. That's also why the publisher-truncation tails survive — we're shipping their truncated RSS descriptions verbatim.
+
+**Cost shape if singletons were rewritten:** the batch infrastructure already exists (BATCH tier groups 5 clusters per call, and the clickbait screen already processes 50 singleton headlines in one call). Backlog of ~4,600 singletons ≈ 920 batch-calls one-time, but ongoing it's only new singletons — roughly 100-150/day at current volume, so ~20-30 extra calls/day through the free router. That's the real constraint: not money, but run duration and free-model rate limiting. A middle option exists too: batch 10-15 singletons per call since their input is small, cutting calls proportionally.
+
+Want me to move singletons into the rewrite path?
+
+---
+
+<!-- r:0 m:hook:551a83a4-4c21-410c-ac61-ec8845ce2100 h:a7ae453e -->
+### 2026-11-26 14:17:48 UTC user
+
+do those updated datas need to get pushed to the cache branch? the https://bobdavies.co.uk/news/ deployed is showing it, AND columnisation isn't working in a LOT of views (not works in some views)
+
+---
+
+<!-- r:0 m:hook:d08c5c0c-651b-437d-97cc-ee5269a7a8e8 h:01d92a11 -->
+### 2026-11-26 14:19:14 UTC user
+
+also this one includes a too-long link that frces the node to overflow/underflow the column container `Gaming
+3d ago
+✓✕
+[GTA 6's strong and silent Jason was inspired by Steve McQueen and former Army Ra](https://www.eurogamer.net/gta-6-jason-steve-mcqueen-army-rangers)— Vikki Blake · Eurogamer
+GTA 6's strong and silent Jason was inspired by Steve McQueen and former Army Rangers, says Rockstar — If you've noticed that Grand Theft Auto 6's Jason Duval isn't much of a talker, that's by design, as his quiet nature was inspired by Steve McQueen and the studio's research into former Army Rangers. Read more — <img src="https://assetsio.gnwcdn.com/GTA_6_Mission_List_5.jpg?width=690&quality=85&format=jpg&auto=webp" /> <p>If you've noticed that <a href="https://www.eurogamer.net/gta-6-walkthrough">Grand Theft Auto 6</a>'s Jason Duval isn't much of a talker, that's by design, as his quiet nature was inspired by Steve McQueen and the studio's research into former Army Rangers.</p> <p><a href="https://www.eurogamer`.net/gta-6-jason-steve-mcqueen-army-rangers">Read more</a></p>
+
+---
+
+<!-- r:0 m:hook:d08c5c0c-651b-437d-97cc-ee5269a7a8e8:exec:da0ea72e h:d32333d2 -->
+### 2026-11-26 14:19:36 UTC tool `exec`
+
+`{"command": "cat src/layout.js 2>/dev/null | head -120; echo ---; git branch -a | head; git log --oneline -3 cache-data 2>/dev/null | head -3", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 81740f:
+// Stable-column feed layout.
+//
+// Items are assigned to a column exactly once — greedily, by estimated height,
+// in feed order — and NEVER move afterwards. Columns are plain block flow, so
+// images loading, summaries expanding, or hydration resizing simply make a
+// column longer. No relayout passes, no absolute positioning, no column hops.
+import { state } from './state.js';
+
+const GUTTER = 20;
+
+export function getColumnCount() {
+  let cols = parseInt(state.settings?.columns, 10) || 2;
+  if (window.innerWidth <= 768) cols = 1;
+  else if (window.innerWidth <= 1024 && cols > 3) cols = 3;
+  return cols;
+}
+
+export function getGridMetrics(sheet) {
+  const cols = getColumnCount();
+  const style = getComputedStyle(sheet);
+  const padL = parseFloat(style.paddingLeft) || 0;
+  const padR = parseFloat(style.paddingRight) || 0;
+  const contentWidth = sheet.clientWidth - padL - padR;
+  const colWidth = (contentWidth - (cols - 1) * GUTTER) / cols;
+  return { colWidth, gutter: GUTTER, cols };
+}
+
+// Distribute items into column containers inside ANY host element.
+// heightHint(item) should return the best available height estimate (0 for
+// hidden items); assignment is greedy-to-shortest in the order given.
+// Reused both for the top-level feed and inside story-group containers.
+// Pure greedy assignment: returns, per column, the items in append order.
+// No DOM — safe to run synchronously even for very large feeds.
+export function assignColumns(items, heightHint) {
+  const cols = getColumnCount();
+  const heights = new Array(cols).fill(0);
+  const columns = Array.from({ length: cols }, () => []);
+  for (const item of items) {
+    let target = 0;
+    for (let i = 1; i < cols; i++) {
+      if (heights[i] < heights[target]) target = i;
+    }
+    columns[target].push(item);
+    heights[target] += heightHint(item);
+  }
+  return columns;
+}
+
+// Create the column skeleton elements for a host.
+export function createColumnShells() {
+  return Array.f
+```
+
+---
+
+<!-- r:0 m:hook:d08c5c0c-651b-437d-97cc-ee5269a7a8e8:exec:247f5757 h:9efc73ab -->
+### 2026-11-26 14:20:11 UTC tool `exec`
+
+`{"command": "python3 -c \"\nimport json, re\nd = json.load(open('cache/digest.json'))\nfor c in d['clusters']:\n    if 'McQueen' in (c.get('summary','') or ''):\n        print('GTA summary:', repr((c.get('summary') or '')[:300]))\n        break\nelse:\n    print('GTA cluster not in cache window')\n\"; grep -n \"overflow-wrap\\|word-break\\|overflow-x\\|max-width\" src/styles/articles.css src/style`
+
+```
+Output from command in shell 1860b2:
+GTA summary: "GTA 6's strong and silent Jason was inspired by Steve McQueen and former Army Rangers, says Rockstar — If you've noticed that Grand Theft Auto 6's Jason Duval isn't much of a talker, that's by design, as his quiet nature was inspired by Steve McQueen and the studio's research into former Army Ranger"
+src/styles/articles.css:2:  max-width: 1200px;
+src/styles/articles.css:16:.broadsheet.cols-1 { max-width: 700px; }
+src/styles/articles.css:330:  text-overflow: ellipsis;
+src/styles/changelog.css:6:  overflow-y: auto;
+src/styles/relationships.css:227:  overflow-wrap: anywhere;
+src/styles/settings.css:10:  overflow-y: auto;
+src/styles/settings.css:156:  overflow-y: auto;
+src/styles/settings.css:226:  text-overflow: ellipsis;
+src/styles/shell.css:66:  text-overflow: ellipsis;
+src/styles/shell.css:227:  text-overflow: ellipsis;
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d08c5c0c-651b-437d-97cc-ee5269a7a8e8:exec:0fda0438 h:f548e418 -->
+### 2026-11-26 14:20:26 UTC tool `exec`
+
+`{"command": "grep -n \"feed-col\\|cols-\\|broadsheet\" src/styles/articles.css | head -15; echo ---; grep -rn \"cols-\\|feed-col\" src/*.js | grep -v \"//\" | head -10", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 7f2cdd:
+1:.broadsheet {
+11:.feed-col {
+16:.broadsheet.cols-1 { max-width: 700px; }
+213:.broadsheet-footer {
+222:.broadsheet-footer a {
+273:.broadsheet.grouped-feed {
+---
+src/layout.js:53:    col.className = 'feed-col';
+src/state.js:189:  sheet.className = `broadsheet cols-${settings.columns}`;
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d08c5c0c-651b-437d-97cc-ee5269a7a8e8:exec:f7d2b6d4 h:0e29909a -->
+### 2026-11-26 14:20:35 UTC tool `exec`
+
+`{"command": "sed -n '1,30p' src/styles/articles.css; echo ---; sed -n '180,200p' src/state.js; echo ---; grep -n \"columns\" src/state.js | head -5; grep -n \"'columns'\" src/*.js | head; grep -rn \"columns:\" src/state.js | head -3", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 759e7a:
+.broadsheet {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  position: relative;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.feed-col {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.broadsheet.cols-1 { max-width: 700px; }
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* Article (cluster) */
+.article {
+  --read-progress: 0;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+---
+export function applySettings(settings = state.settings) {
+  document.body.className = '';
+  const fontTheme = FONT_THEMES.find(f => f.value === settings.font) || FONT_THEMES[0];
+  document.body.classList.add(fontTheme.className);
+  document.documentElement.className = `font-${settings.fontsize}`;
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const effective = settings.theme === 'auto' ? (prefersDark ? 'night' : 'day') : settings.theme;
+  document.documentElement.setAttribute('data-theme', effective);
+  const sheet = document.getElementById('broadsheet');
+  sheet.className = `broadsheet cols-${settings.columns}`;
+}
+
+// Source display filters are filter-TO (inclusion), not filter-out: the set
+// holds control keys (group:<id> or individual host keys). Empty = everything
+// visible. Toggling a control adds/removes it; selecting nothing means all.
+export function isSourceIncludeActive() {
+  return Object.keys(state.sourceInclude).length > 0;
+}
+
+export function toggleSourceInclude(controlKey) {
+  if (!controlKey) return;
+---
+14:  columns: '3',
+189:  sheet.className = `broadsheet cols-${settings.columns}`;
+src/settings.js:185:  makeCycleHandler(columnsBtn, COLUMN_OPTIONS, state.settings.columns, { key: 'columns' });
+14:  columns: '3',
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d08c5c0c-651b-437d-97cc-ee5269a7a8e8:exec:72791f5f h:59acfdd7 -->
+### 2026-11-26 14:20:47 UTC tool `exec`
+
+`{"command": "sed -n '270,330p' src/styles/articles.css", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell da1188:
+/* Story-group containers (Group By Tag mode).
+   The sheet stops being a flex row; each container is a full-width band whose
+   body reproduces the normal column layout internally. */
+.broadsheet.grouped-feed {
+  display: block;
+}
+
+.feed-ungrouped,
+.story-group-body {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.story-group {
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-light);
+  padding: 0.6rem 0.8rem 0.2rem;
+}
+
+.story-group.hidden { display: none; }
+
+.story-group-head {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding-bottom: 0.55rem;
+  user-select: none;
+}
+
+.story-group-head::-webkit-details-marker { display: none; }
+
+.story-group-head::before {
+  content: '▸';
+  font-size: 0.8rem;
+  color: var(--muted);
+  transition: transform 0.15s ease;
+}
+
+.story-group[open] > .story-group-head::before {
+  transform: rotate(90deg);
+}
+
+.story-group-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.story-group-crumb {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d08c5c0c-651b-437d-97cc-ee5269a7a8e8:exec:c8cbee22 h:34562977 -->
+### 2026-11-26 14:21:14 UTC tool `exec`
+
+`{"command": "python3 /dev/stdin << 'EOF'\n# 1) applySettings wipes sheet.className wholesale \u2014 destroying the\n#    grouped-feed class whenever any setting changes in group-by-tag view.\n#    The sheet then snaps back to display:flex and every group container is\n#    squeezed side-by-side as a flex item: columnisation destroyed.\ns = open('src/state.js').read()\nold = '''  const sheet = docu`
+
+```
+Output from command in shell 432d13:
+state.js: grouped-feed survives settings changes
+articles.css: overflow protection
+56:  overflow-wrap: break-word;
+135:  overflow-wrap: break-word;
+175:  overflow-wrap: break-word;
+120:.article-image {
+121-  width: 100%;
+122-  height: auto;
+123-  /* Reserve a 16:9 box before the image loads (killing vertical jumps for
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d08c5c0c-651b-437d-97cc-ee5269a7a8e8:exec:46a249d9 h:9398c92f -->
+### 2026-11-26 14:21:31 UTC tool `exec`
+
+`{"command": "grep -n -A6 \"cache-data\" .github/workflows/deploy.yml | head -30; npx vitest run test/feed.test.js test/pipeline.test.js 2>&1 | grep \"Tests \"", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 43bf40:
+49:          git fetch origin cache-data --depth=1 2>/dev/null || true
+50:          if git show-ref --verify --quiet refs/remotes/origin/cache-data; then
+51:            git checkout origin/cache-data -- cache/ 2>/dev/null || true
+52-          fi
+53-
+54-      - name: Check cache freshness
+55-        id: cache-check
+56-        run: |
+57-          if [ -f cache/currents-api.json ]; then
+--
+105:      - name: Save cache to cache-data branch
+106-        run: |
+107-          echo "=== Cache files before save ==="
+108-          ls -la cache/ 2>/dev/null || echo "No cache/ directory!"
+109-          git config user.name "github-actions[bot]"
+110-          git config user.email "github-actions[bot]@users.noreply.github.com"
+111:          git checkout --orphan cache-data 2>/dev/null || git checkout cache-data
+112-          # --cached: remove from git index only, NOT from disk.
+113-          # Without --cached, git rm deletes tracked cache files from disk too,
+114-          # and if fetch was skipped (cache fresh), they're never recreated.
+115-          git rm -rf --cached . --quiet 2>/dev/null || true
+116-          echo "=== Cache files after git rm --cached ==="
+117-          ls -la cache/ 2>/dev/null || echo "cache/ directory was removed!"
+--
+121:          git push origin cache-data --force
+122-
+123-      - name: Deploy to GitHub Pages
+124-        id: deployment
+125-        uses: actions/deploy-pages@v4
+[2m      Tests [22m [1m[32m18 passed[39m[22m[90m (18)[39m
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d08c5c0c-651b-437d-97cc-ee5269a7a8e8:exec:367417c9 h:e263a761 -->
+### 2026-11-26 14:22:07 UTC tool `exec`
+
+`{"command": "python3 -c \"\nimport json\nd = json.load(open('cache/digest.json'))\nprint('local digest generated:', d.get('generated'))\nprint('local clusters:', len(d['clusters']))\n\"; git log -1 --format=\"%ci %s\" origin/cache-data 2>/dev/null; git fetch origin cache-data --depth=1 2>&1 | tail -1; git log -1 --format=\"%ci %s\" origin/cache-data", "workdir": "/home/bobbigmac/projects/bobdavies`
+
+```
+local digest generated: 2026-11-26T02:29:47.334Z
+local clusters: 5557
+2026-11-26 02:32:25 +0000 Update cache data 2026-11-26T02:32
+
+===
+Stopped waiting for output after 10.8 seconds. Command running in background with ID: b07a46. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:d08c5c0c-651b-437d-97cc-ee5269a7a8e8:exec:2dba9990 h:3f8cedb0 -->
+### 2026-11-26 14:22:29 UTC tool `exec`
+
+`{"command": "rm -rf /tmp/news-cache-fix && git clone --depth 1 --branch cache-data . /tmp/news-cache-fix 2>&1 | tail -1 && cd /tmp/news-cache-fix && ls cache/ | head -5 && node /home/bobbigmac/projects/bobdavies/news/scripts/repair-digest.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 60000}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: f4b373. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:d08c5c0c-651b-437d-97cc-ee5269a7a8e8:get_output:598c26c2 h:3cd7cec5 -->
+### 2026-11-26 14:22:47 UTC tool `get_output`
+
+`{"shell_id": "f4b373", "timeout": 60000}`
+
+```
+Updating files:  44% (4/9)
+Updating files:  55% (5/9)
+Updating files:  66% (6/9)
+Updating files:  77% (7/9)
+Updating files:  88% (8/9)
+Updating files: 100% (9/9)
+Updating files: 100% (9/9), done.
+currents-api.json
+digest.json
+embeddings.json
+model-registry.json
+raw-new.json
+Repaired 5191 damaged summaries
+Backfilled source text on 9212 digest stories
+digest.json written
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d08c5c0c-651b-437d-97cc-ee5269a7a8e8:exec:e4fc0d9c h:032267d9 -->
+### 2026-11-26 14:22:58 UTC tool `exec`
+
+`{"command": "python3 -c \"\nimport json, re\nd = json.load(open('/tmp/news-cache-fix/cache/digest.json'))\nmarkup = [c for c in d['clusters'] if re.search(r'<[a-zA-Z][^>]*>', c.get('summary') or '')]\nents = [c for c in d['clusters'] if re.search(r'&(nbsp|mdash|amp);', c.get('summary') or '')]\nprint('cache-data repaired \u2014 clusters:', len(d['clusters']), 'markup:', len(markup), 'entities:', l`
+
+```
+Output from command in shell c6c021:
+cache-data repaired — clusters: 6194 markup: 0 entities: 0
+ M cache/digest.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:d08c5c0c-651b-437d-97cc-ee5269a7a8e8 h:b4723592 -->
+### 2026-11-26 14:23:16 UTC assistant
+
+Yes — the cache branch is exactly why the deployed site still shows the dirty data. CI restores the digest from `cache-data` on every run, nothing ever repairs it there (new clusters are clean going forward, but the 5,191 damaged ones stay damaged forever), and the deploy publishes whatever that digest holds. I've repaired the actual cache-data content in a scratch clone — it's ready for you to commit:
+
+```bash
+cd /tmp/news-cache-fix
+git commit -am "repair digest text data (one-off migration)"
+git push origin cache-data
+```
+
+Verified clean: 6,194 clusters (theirs is ahead of local — CI added more), zero markup, zero entity junk. One timing note: CI force-pushes `cache-data` after every pipeline run, and the next run is ~19:23 — if it beats your push, your push will be rejected as non-fast-forward. If that happens just tell me and I'll redo the repair on the newer state; it takes seconds. The force-push isn't a problem otherwise because CI would overwrite anyway — your repaired digest becomes the new baseline either way.
+
+**The columnisation breakage — two separate causes, both fixed:**
+
+1. **`applySettings` was wiping the sheet's className wholesale** — `sheet.className = 'broadsheet cols-N'` destroyed the `grouped-feed` class every time any setting changed in group-by-tag view. The sheet snapped from `display: block` back to `display: flex`, and every group container got squeezed sideways as a flex item — columnisation structurally destroyed in that view, but fine in others until a re-render masked it. That's your "works in some views, not others". Now it preserves render-owned classes.
+
+2. **No `overflow-wrap` anywhere in article text** — the Eurogamer example is the dirty-deployed-data case (raw `<img width=690>` markup), but even in clean plain text, long unbreakable URLs overflow the column box and bleed across the gutter, visually breaking the grid. `overflow-wrap: break-word` now on summaries, headlines, and story links. Article images were already width-capped.
+
+```text
+18/18 focused tests pass
+```
+
+Still open from before: whether you want singletons moved into the LLM rewrite path — that's the change that would stop publisher text being shipped at all, rather than just cleaned.
 
 ---
 

@@ -53,6 +53,7 @@
 }
 
 .article-lazy .article-headline {
+  overflow-wrap: break-word;
   opacity: 0.72;
 }
 
@@ -131,6 +132,7 @@
   line-height: 1.7;
   color: var(--ink);
   margin: 0;
+  overflow-wrap: break-word;
 }
 
 .article-summary .summary-full {
@@ -170,6 +172,7 @@
 }
 
 .story-links a {
+  overflow-wrap: break-word;
   color: var(--ink);
   text-decoration: underline;
   text-decoration-color: var(--rule);

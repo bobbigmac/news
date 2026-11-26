@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 14:12:44 UTC
-entries: 109
+last_activity: 2026-11-26 14:19:14 UTC
+entries: 112
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -866,6 +866,31 @@ okay I rebuilt and rerun dev
 ### 2026-11-26 14:12:44 UTC
 
 I don't want repairs for one-off fuckups in my forever build. Keep the boundary HERE, not forveer
+
+---
+
+<!-- r:0 m:hook:7c6d47dc-bd3a-40c7-853f-b93372ec910f h:20a6513e -->
+### 2026-11-26 14:15:49 UTC
+
+why do we ship publisher-provided text? Check our prompts, I thought we rewrote _most_ texts to our own version. Check
+
+---
+
+<!-- r:0 m:hook:551a83a4-4c21-410c-ac61-ec8845ce2100 h:a7ae453e -->
+### 2026-11-26 14:17:48 UTC
+
+do those updated datas need to get pushed to the cache branch? the https://bobdavies.co.uk/news/ deployed is showing it, AND columnisation isn't working in a LOT of views (not works in some views)
+
+---
+
+<!-- r:0 m:hook:d08c5c0c-651b-437d-97cc-ee5269a7a8e8 h:01d92a11 -->
+### 2026-11-26 14:19:14 UTC
+
+also this one includes a too-long link that frces the node to overflow/underflow the column container `Gaming
+3d ago
+✓✕
+[GTA 6's strong and silent Jason was inspired by Steve McQueen and former Army Ra](https://www.eurogamer.net/gta-6-jason-steve-mcqueen-army-rangers)— Vikki Blake · Eurogamer
+GTA 6's strong and silent Jason was inspired by Steve McQueen and former Army Rangers, says Rockstar — If you've noticed that Grand Theft Auto 6's Jason Duval isn't much of a talker, that's by design, as his quiet nature was inspired by Steve McQueen and the studio's research into former Army Rangers. Read more — <img src="https://assetsio.gnwcdn.com/GTA_6_Mission_List_5.jpg?width=690&quality=85&format=jpg&auto=webp" /> <p>If you've noticed that <a href="https://www.eurogamer.net/gta-6-walkthrough">Grand Theft Auto 6</a>'s Jason Duval isn't much of a talker, that's by design, as his quiet nature was inspired by Steve McQueen and the studio's research into former Army Rangers.</p> <p><a href="https://www.eurogamer`.net/gta-6-jason-steve-mcqueen-army-rangers">Read more</a></p>
 
 ---
 

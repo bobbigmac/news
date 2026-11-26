@@ -186,7 +186,11 @@ export function applySettings(settings = state.settings) {
   const effective = settings.theme === 'auto' ? (prefersDark ? 'night' : 'day') : settings.theme;
   document.documentElement.setAttribute('data-theme', effective);
   const sheet = document.getElementById('broadsheet');
+  // Preserve render-owned classes (grouped-feed) — className is shared state,
+  // not ours to overwrite wholesale.
+  const grouped = sheet.classList.contains('grouped-feed');
   sheet.className = `broadsheet cols-${settings.columns}`;
+  if (grouped) sheet.classList.add('grouped-feed');
 }
 
 // Source display filters are filter-TO (inclusion), not filter-out: the set
