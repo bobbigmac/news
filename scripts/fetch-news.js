@@ -245,7 +245,7 @@ function normalizeStory(item) {
     url: item.url || '',
     image: item.image || '',
     source: item.author || item.source || '',
-    sourceName: sourceName || '',
+    sourceName: sourceName || item.sourceName || '',
     published: item.published || '',
     category: item.category || 'General',
     keywords: item.keywords || '',

@@ -45,6 +45,35 @@ const TECHMEME_FEEDS = [
   { url: 'https://www.techmeme.com/feed.xml', category: 'Technology', maxItems: 30 },
 ];
 
+// Sky News — official RSS feeds, no key. UK-focused but with useful world,
+// politics, business and technology desks. Kept deliberately small because
+// the home/uk/world feeds overlap heavily; URL dedup removes repeats.
+const SKY_FEEDS = [
+  { url: 'https://feeds.skynews.com/feeds/rss/home.xml', category: 'General', maxItems: 15, sourceName: 'Sky News' },
+  { url: 'https://feeds.skynews.com/feeds/rss/uk.xml', category: 'General', maxItems: 15, sourceName: 'Sky News' },
+  { url: 'https://feeds.skynews.com/feeds/rss/world.xml', category: 'World', maxItems: 10, sourceName: 'Sky News' },
+  { url: 'https://feeds.skynews.com/feeds/rss/politics.xml', category: 'Politics', maxItems: 8, sourceName: 'Sky News' },
+  { url: 'https://feeds.skynews.com/feeds/rss/business.xml', category: 'Business', maxItems: 8, sourceName: 'Sky News' },
+  { url: 'https://feeds.skynews.com/feeds/rss/technology.xml', category: 'Technology', maxItems: 8, sourceName: 'Sky News' },
+];
+
+// Direct high-quality technology publishers. These overlap with Techmeme by
+// design: when Techmeme is enabled it provides editorial prioritisation, while
+// these feeds provide resilience if Techmeme is disabled or misses a story.
+const TECHPRESS_FEEDS = [
+  { url: 'https://feeds.arstechnica.com/arstechnica/index', category: 'Technology', maxItems: 10, sourceName: 'Ars Technica' },
+  { url: 'https://www.theverge.com/rss/index.xml', category: 'Technology', maxItems: 10, sourceName: 'The Verge' },
+  { url: 'https://www.wired.com/feed/rss', category: 'Technology', maxItems: 10, sourceName: 'Wired' },
+];
+
+// Small, high-signal science additions. Nature's feed includes journal items
+// as well as news, so keep it tightly capped rather than treating it as a
+// high-volume wire feed.
+const SCIENCE_FEEDS = [
+  { url: 'https://www.nature.com/nature.rss', category: 'Science', maxItems: 8, sourceName: 'Nature' },
+  { url: 'https://phys.org/rss-feed/', category: 'Science', maxItems: 12, sourceName: 'Phys.org' },
+];
+
 function makeId(url) {
   return 'rss-' + createHash('md5').update(url).digest('hex');
 }
@@ -66,7 +95,7 @@ function normalizeRssItem(item, feed, pluginName) {
     url,
     image,
     source: item.creator || item.author || '',
-    sourceName: getSourceName(url) || (feed.pluginName === 'gaming' ? feed.url.includes('eurogamer') ? 'Eurogamer' : feed.url.includes('kotaku') ? 'Kotaku' : 'RSS' : feed.pluginName === 'urgent' ? 'Urgent News' : feed.pluginName === 'bbc' ? 'BBC' : feed.pluginName === 'tech' ? 'Techmeme' : 'RSS'),
+    sourceName: getSourceName(url) || feed.sourceName || (feed.pluginName === 'gaming' ? feed.url.includes('eurogamer') ? 'Eurogamer' : feed.url.includes('kotaku') ? 'Kotaku' : 'RSS' : feed.pluginName === 'urgent' ? 'Urgent News' : feed.pluginName === 'bbc' ? 'BBC' : feed.pluginName === 'tech' ? 'Techmeme' : 'RSS'),
     published: parseDate(item.isoDate || item.pubDate),
     category: feed.category,
     keywords: '',
@@ -160,6 +189,18 @@ export async function fetchRssFeeds() {
 
   if (enabledNames.includes('tech')) {
     feeds.push(...TECHMEME_FEEDS.map(f => ({ ...f, pluginName: 'tech' })));
+  }
+
+  if (enabledNames.includes('sky')) {
+    feeds.push(...SKY_FEEDS.map(f => ({ ...f, pluginName: 'sky' })));
+  }
+
+  if (enabledNames.includes('techpress')) {
+    feeds.push(...TECHPRESS_FEEDS.map(f => ({ ...f, pluginName: 'techpress' })));
+  }
+
+  if (enabledNames.includes('science')) {
+    feeds.push(...SCIENCE_FEEDS.map(f => ({ ...f, pluginName: 'science' })));
   }
 
   if (!feeds.length) return [];
