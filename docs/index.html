@@ -33,8 +33,8 @@
     })();
   </script>
   <link href="https://fonts.googleapis.com/css2?family=OpenDyslexic:wght@400;700&family=Outfit:wght@200;300;400;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-CRFRen-q.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-_xwuWs82.css">
+  <script type="module" crossorigin src="./assets/index-BGkRwMLl.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CrEMr_ll.css">
 </head>
 <body>
   <div id="settings-panel" class="settings-panel hidden">
@@ -89,6 +89,7 @@
 
       <div class="settings-divider"></div>
       <button id="manage-categories" class="settings-link" type="button">Manage Categories</button>
+      <button id="manage-sources" class="settings-link" type="button">Manage Sources</button>
 
       <button id="settings-close" class="settings-close">Close</button>
       <button id="settings-changelog" class="settings-close">Recent Updates</button>
@@ -102,6 +103,16 @@
         <button id="category-close" class="changelog-close">&times;</button>
       </div>
       <div id="category-prefs" class="category-prefs"></div>
+    </div>
+  </div>
+
+  <div id="source-panel" class="category-panel hidden">
+    <div class="category-panel-content">
+      <div class="category-panel-header">
+        <h3>Manage Sources</h3>
+        <button id="source-close" class="changelog-close">&times;</button>
+      </div>
+      <div id="source-prefs" class="category-prefs source-prefs"></div>
     </div>
   </div>
 
@@ -140,6 +151,16 @@
       </button>
     </div>
   </header>
+
+  <div id="source-bar" class="source-bar" aria-label="Source filters and catchup controls">
+    <div class="source-bar-inner">
+      <div id="source-toggles" class="source-toggles" role="toolbar" aria-label="Toggle news sources"></div>
+      <button id="mark-all-read" class="mark-all-read" type="button" title="Mark the currently displayed stories as read">Mark read</button>
+    </div>
+    <div class="source-bar-inner category-filter-row">
+      <div id="category-filters" class="category-filters" role="toolbar" aria-label="Filter categories"></div>
+    </div>
+  </div>
 
   <div id="search-panel" class="search-panel hidden">
     <input type="search" id="filter" placeholder="Search the broadsheet..." autocomplete="off" />

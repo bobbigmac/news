@@ -1,9 +1,23 @@
 import Masonry from 'masonry-layout';
+import { FAVICON_SPRITE, getFaviconSpritePosition } from './favicon-sprite.js';
+import {
+  buildViewModel,
+  canonicalCategory,
+  filterByMode,
+  getDisplayedStories,
+  getFeedStories,
+  getNewestStoryDate,
+  prettifySourceKey,
+  sourceKeyFromUrl,
+} from './view-model.js';
 
 const SETTINGS_KEY = 'broadsheet-settings';
 const READ_KEY = 'broadsheet-read';
+const GLIMPSE_KEY = 'broadsheet-glimpsed';
 const CAT_PREFS_KEY = 'broadsheet-cat-prefs';
 const INTEREST_KEY = 'broadsheet-interest';
+const SOURCE_PREFS_KEY = 'broadsheet-source-prefs';
+const SOURCE_DISABLED_KEY = 'broadsheet-source-disabled';
 const DEFAULT_SETTINGS = {
   font: 'serif',
   fontsize: 'medium',
@@ -13,6 +27,7 @@ const DEFAULT_SETTINGS = {
   ageLimit: '30',
   mode: 'all',
   categoryFilter: 'all',
+  categoryDisplayFilters: {},
   watchWords: '',
   expandAll: false,
   showUpdated: false,
@@ -62,6 +77,7 @@ const SORT_OPTIONS = [
 const IMAGE_OPTIONS = [
   { value: 'none', label: 'None' },
   { value: 'minimal', label: 'Minimal' },
+  { value: 'latest', label: 'Latest' },
   { value: 'all', label: 'All' },
 ];
 
@@ -81,7 +97,11 @@ const MARK_READ_OPTIONS = [
 function loadSettings() {
   try {
     const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
-    return { ...DEFAULT_SETTINGS, ...saved };
+    const settings = { ...DEFAULT_SETTINGS, ...saved };
+    if (!settings.categoryDisplayFilters || Array.isArray(settings.categoryDisplayFilters) || typeof settings.categoryDisplayFilters !== 'object') {
+      settings.categoryDisplayFilters = {};
+    }
+    return settings;
   } catch { return { ...DEFAULT_SETTINGS }; }
 }
 
@@ -112,6 +132,8 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () 
 
 let currentDigest = null;
 let currentSettings = loadSettings();
+let currentVisibleClusters = [];
+let currentViewModel = null;
 let masonryInstance = null;
 
 function initMasonry() {
@@ -149,7 +171,10 @@ function initMasonry() {
   }
 }
 let readState = loadReadState();
+let glimpseState = loadGlimpseState();
 let catPrefs = loadCatPrefs();
+let sourceFilters = loadSourcePrefs();
+let disabledSources = loadDisabledSources();
 let interestState = {};
 loadInterestState();
 
@@ -161,26 +186,252 @@ function saveReadState() {
   localStorage.setItem(READ_KEY, JSON.stringify(readState));
 }
 
+function loadGlimpseState() {
+  try { return JSON.parse(localStorage.getItem(GLIMPSE_KEY) || '{}'); } catch { return {}; }
+}
+
+function saveGlimpseState() {
+  localStorage.setItem(GLIMPSE_KEY, JSON.stringify(glimpseState));
+}
+
+function isClusterGlimpsed(cluster) {
+  return !!glimpseState[cluster.id];
+}
+
+// Glimpses do not expire, but an updated cluster should still present its new
+// full copy until the updated version has itself been glimpsed.
+function isCurrentVersionGlimpsed(cluster) {
+  const entry = glimpseState[cluster.id];
+  return !!entry && entry.contentVersion >= (cluster.contentVersion || 1);
+}
+
+function recordClusterGlimpsed(cluster) {
+  const existing = glimpseState[cluster.id];
+  if (existing && existing.contentVersion >= (cluster.contentVersion || 1)) return false;
+  glimpseState[cluster.id] = {
+    contentVersion: cluster.contentVersion || 1,
+    firstAt: existing?.firstAt || existing?.at || Date.now(),
+    at: Date.now(),
+  };
+  return true;
+}
+
 function loadCatPrefs() {
-  try { return JSON.parse(localStorage.getItem(CAT_PREFS_KEY) || '{}'); } catch { return {}; }
+  try {
+    const saved = JSON.parse(localStorage.getItem(CAT_PREFS_KEY) || '{}');
+    const migrated = {};
+    for (const [cat, pref] of Object.entries(saved)) migrated[canonicalCategory(cat)] = pref;
+    return migrated;
+  } catch { return {}; }
 }
 
 function saveCatPrefs() {
   localStorage.setItem(CAT_PREFS_KEY, JSON.stringify(catPrefs));
 }
 
+function loadSourcePrefs() {
+  try { return JSON.parse(localStorage.getItem(SOURCE_PREFS_KEY) || '{}'); } catch { return {}; }
+}
+
+function saveSourcePrefs() {
+  localStorage.setItem(SOURCE_PREFS_KEY, JSON.stringify(sourceFilters));
+}
+
+function loadDisabledSources() {
+  try { return JSON.parse(localStorage.getItem(SOURCE_DISABLED_KEY) || '{}'); } catch { return {}; }
+}
+
+function saveDisabledSources() {
+  localStorage.setItem(SOURCE_DISABLED_KEY, JSON.stringify(disabledSources));
+}
+
+function isSourceDisplayed(sourceKey) {
+  if (!sourceKey) return true;
+  return sourceFilters[sourceKey] !== false;
+}
+
+function toggleSourceDisplay(sourceKey) {
+  if (!sourceKey) return;
+  if (isSourceDisplayed(sourceKey)) sourceFilters[sourceKey] = false;
+  else delete sourceFilters[sourceKey];
+  saveSourcePrefs();
+}
+
+function setSourceFeedDisabled(sourceKey, disabled) {
+  if (!sourceKey) return;
+  if (disabled) disabledSources[sourceKey] = true;
+  else delete disabledSources[sourceKey];
+  saveDisabledSources();
+}
+
+function collectSourcesFromDigest(digest) {
+  if (Array.isArray(digest?.sources) && digest.sources.length) return digest.sources;
+
+  // Fallback for older digest files that predate the additive sources index.
+  const byKey = new Map();
+  for (const cluster of digest?.clusters || []) {
+    for (const story of cluster.stories || []) {
+      const key = sourceKeyFromUrl(story.url);
+      if (!key) continue;
+      if (!byKey.has(key)) byKey.set(key, { key, label: prettifySourceKey(key), count: 0 });
+      byKey.get(key).count++;
+    }
+  }
+  return [...byKey.values()].sort((a, b) => b.count - a.count || a.key.localeCompare(b.key));
+}
+
+function renderSourceBar(model) {
+  const container = document.getElementById('source-toggles');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const displaySize = 18;
+
+  for (const source of model?.sourceOptions || []) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'source-toggle';
+    btn.dataset.source = source.key;
+    btn.classList.toggle('is-off', !source.displayed);
+    btn.setAttribute('aria-pressed', String(source.displayed));
+    btn.setAttribute('aria-label', `${source.displayed ? 'Hide' : 'Show'} ${source.label} (${source.count} stories)`);
+    btn.title = `${source.label} — ${source.count} stories in the current pool`;
+
+    const letter = document.createElement('span');
+    letter.className = 'source-letter';
+    letter.textContent = (source.label || source.key || '?').trim().charAt(0).toUpperCase() || '?';
+    btn.appendChild(letter);
+
+    const spriteIcon = getFaviconSpritePosition(source.key);
+    if (spriteIcon) {
+      // The spritesheet is rendered at 18px in the bar but stored larger so
+      // favicons stay crisp on high-density displays.
+      const scale = displaySize / FAVICON_SPRITE.tile;
+      const icon = document.createElement('span');
+      icon.className = 'source-sprite';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.style.backgroundImage = `url("${FAVICON_SPRITE.url}")`;
+      icon.style.backgroundSize = `${FAVICON_SPRITE.width * scale}px ${FAVICON_SPRITE.height * scale}px`;
+      icon.style.backgroundPosition = `-${spriteIcon.x * scale}px -${spriteIcon.y * scale}px`;
+      btn.appendChild(icon);
+    }
+
+    if (!source.displayed && source.count > 0) {
+      const count = document.createElement('span');
+      count.className = 'source-count';
+      count.textContent = source.count;
+      btn.appendChild(count);
+    }
+
+    btn.addEventListener('click', () => {
+      toggleSourceDisplay(source.key);
+      if (currentDigest) renderDigest(currentDigest, currentSettings);
+      initSearch();
+    });
+
+    container.appendChild(btn);
+  }
+}
+
+function renderCategoryFilterBar(model) {
+  const container = document.getElementById('category-filters');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const row = container.closest('.category-filter-row');
+  if (!model?.categoryRowEnabled) {
+    container.classList.add('is-disabled');
+    row?.classList.add('hidden');
+    return;
+  }
+  container.classList.remove('is-disabled');
+  row?.classList.remove('hidden');
+
+  for (const category of model.categoryOptions || []) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'category-filter-toggle';
+    btn.classList.toggle('is-off', !category.active);
+    btn.setAttribute('aria-pressed', String(category.active));
+    btn.title = `${category.label} — ${category.count} stories`;
+    btn.textContent = category.label;
+
+    btn.addEventListener('click', () => {
+      if (currentSettings.categoryDisplayFilters[category.value] === false) {
+        delete currentSettings.categoryDisplayFilters[category.value];
+      } else {
+        currentSettings.categoryDisplayFilters[category.value] = false;
+      }
+      saveSettings(currentSettings);
+      if (currentDigest) renderDigest(currentDigest, currentSettings);
+      initSearch();
+    });
+
+    container.appendChild(btn);
+  }
+}
+
+function getSearchQuery() {
+  return (document.getElementById('filter')?.value || '').trim().toLowerCase();
+}
+
+function storySearchText(story) {
+  const sourceKey = sourceKeyFromUrl(story.url);
+  return [
+    story.title || '',
+    story.source || '',
+    story.sourceName || '',
+    sourceKey,
+    sourceKey ? prettifySourceKey(sourceKey) : '',
+  ].join(' ');
+}
+
+function clusterMatchesSearch(cluster, query) {
+  if (!query) return true;
+  const haystack = [
+    cluster.headline || '',
+    cluster.summary || '',
+    cluster.shortSummary || '',
+    canonicalCategory(cluster.category),
+    ...getFeedStories(cluster, disabledSources).map(storySearchText),
+  ].join(' ').toLowerCase();
+  return haystack.includes(query);
+}
+
+function getDisplayedClusters() {
+  const query = getSearchQuery();
+  return currentVisibleClusters.filter(cluster => clusterMatchesSearch(cluster, query));
+}
+
+function updateMarkReadButton() {
+  const btn = document.getElementById('mark-all-read');
+  if (!btn) return;
+  const unread = getDisplayedClusters().filter(c => !isClusterRead(c)).length;
+  btn.disabled = unread === 0;
+  btn.innerHTML = unread
+    ? `Mark read <span class="mark-read-count">${unread}</span>`
+    : 'All read';
+}
+
+function markAllClustersRead() {
+  if (!currentDigest) return;
+  const at = Date.now();
+  for (const cluster of getDisplayedClusters()) {
+    readState[cluster.id] = { contentVersion: cluster.contentVersion || 1, at };
+  }
+  saveReadState();
+  renderDigest(currentDigest, currentSettings);
+  initSearch();
+}
+
 function getCatPref(category) {
-  const cat = Array.isArray(category) ? category[0] : category;
-  return catPrefs[cat] || 'normal';
+  return catPrefs[canonicalCategory(category)] || 'normal';
 }
 
 function getAllKnownCategories(clusters) {
   const fromDigest = new Set();
   for (const c of clusters) {
-    if (c.category) {
-      const cat = Array.isArray(c.category) ? c.category[0] : c.category;
-      if (cat) fromDigest.add(cat);
-    }
+    if (c.category) fromDigest.add(canonicalCategory(c.category));
   }
   for (const cat of Object.keys(catPrefs)) {
     fromDigest.add(cat);
@@ -221,6 +472,43 @@ function isClusterUpdatedSinceRead(cluster) {
 function markClusterRead(cluster) {
   readState[cluster.id] = { contentVersion: cluster.contentVersion || 1, at: Date.now() };
   saveReadState();
+  updateMarkReadButton();
+}
+
+// --- Glimpse tracking ---
+// Independent of read state: any article visibility is recorded, but the
+// collapsed/short treatment is only applied after the article leaves the
+// viewport so text does not reflow underneath the reader.
+let glimpseObserver = null;
+
+function refreshGlimpseObserver() {
+  if (glimpseObserver) glimpseObserver.disconnect();
+  glimpseObserver = null;
+
+  const articles = document.querySelectorAll('.article[data-cluster-id]');
+  if (!articles.length || !currentDigest) return;
+
+  glimpseObserver = new IntersectionObserver((entries) => {
+    let changed = false;
+    let layoutNeeded = false;
+    for (const ent of entries) {
+      const article = ent.target;
+      const clusterId = article.dataset.clusterId;
+      const cluster = currentDigest?.clusters?.find(c => c.id === clusterId);
+      if (!cluster) continue;
+
+      if (ent.isIntersecting) {
+        if (recordClusterGlimpsed(cluster)) changed = true;
+      } else if (isCurrentVersionGlimpsed(cluster) && !isClusterRead(cluster) && !article.classList.contains('is-glimpsed')) {
+        article.classList.add('is-glimpsed');
+        layoutNeeded = true;
+      }
+    }
+    if (changed) saveGlimpseState();
+    if (layoutNeeded && masonryInstance) masonryInstance.layout();
+  }, { threshold: 0 });
+
+  articles.forEach(article => glimpseObserver.observe(article));
 }
 
 // --- Read tracking (viewport dwell timer) ---
@@ -270,9 +558,9 @@ function initReadInteraction() {
     }
   });
 
-  // Single click listener — clicking anywhere on an article marks it read
+  // Single click listener — article clicks mark read, except interactive controls
   sheet.addEventListener('click', (e) => {
-    if (e.target.closest('.interest-btn')) return; // interest buttons handle their own read-marking
+    if (e.target.closest('.interest-btn, .summary-short')) return; // controls handle their own behaviour
     const article = e.target.closest('.article');
     if (!article?.dataset?.clusterId) return;
     const cluster = currentDigest?.clusters?.find(c => c.id === article.dataset.clusterId);
@@ -767,16 +1055,6 @@ function relativeAge(dateStr) {
   } catch { return ''; }
 }
 
-function getNewestStoryDate(cluster) {
-  const dates = (cluster.stories || [])
-    .map(s => s.published)
-    .filter(Boolean)
-    .map(d => { try { return new Date(d).getTime(); } catch { return 0; } })
-    .filter(Boolean);
-  if (!dates.length) return String(cluster.updated || cluster.created || '');
-  return new Date(Math.max(...dates)).toISOString();
-}
-
 function sortClusters(clusters, sortMode) {
   const sorted = [...clusters];
   const profile = getSignalProfile();
@@ -814,12 +1092,30 @@ function pickLeadImage(cluster) {
   return withImage[0];
 }
 
-function renderArticle(cluster, settings, isPluginLead) {
-  const category = Array.isArray(cluster.category) ? cluster.category[0] || 'Other' : (cluster.category || 'Other');
+function isLatestCluster(cluster, referenceTime) {
+  const added = Date.parse(cluster.updated || cluster.created || '');
+  return !!added && referenceTime - added <= 24 * 60 * 60 * 1000;
+}
+
+function renderSummaryHtml(cluster, summary) {
+  const shortSummary = String(cluster.shortSummary || '').replace(/\s+/g, ' ').trim();
+  const hasShort = shortSummary && shortSummary !== summary;
+  if (!hasShort) {
+    return `<div class="article-summary"><span class="summary-full">${summary}</span></div>`;
+  }
+  return `<div class="article-summary has-short">
+    <span class="summary-full">${summary}</span>
+    <button type="button" class="summary-short" title="Show full summary"><span>${shortSummary}</span><span class="summary-more">More</span></button>
+  </div>`;
+}
+
+function renderArticle(cluster, settings, isPluginLead, latestReferenceTime) {
+  const category = canonicalCategory(cluster.category);
   const headline = cluster.headline || 'Untitled';
   const summary = cluster.summary || '';
   const wasUpdated = isClusterUpdatedSinceRead(cluster);
   const storyCount = (cluster.stories || []).length;
+  const enabledStories = getDisplayedStories(cluster, disabledSources, sourceFilters);
   const isSingleton = storyCount === 1;
   const singletonStory = isSingleton ? cluster.stories[0] : null;
 
@@ -834,7 +1130,7 @@ function renderArticle(cluster, settings, isPluginLead) {
     const byline = sourceParts.length ? ` — ${sourceParts.join(' · ')}` : '';
     headlineHtml = `<h2 class="article-headline"><a href="${singletonStory.url || '#'}" target="_blank" rel="noopener">${headline}</a><span class="singleton-byline">${byline}</span></h2>`;
   } else {
-    linksHtml = (cluster.stories || []).map(s => {
+    linksHtml = enabledStories.map(s => {
       const sourceParts = [];
       if (s.source) sourceParts.push(s.source);
       if (s.sourceName) sourceParts.push(s.sourceName);
@@ -850,10 +1146,15 @@ function renderArticle(cluster, settings, isPluginLead) {
   if (isSingleton) article.classList.add('singleton');
   article.dataset.clusterId = cluster.id;
   article.dataset.headline = headline.toLowerCase();
-  article.dataset.summary = summary.toLowerCase();
+  article.dataset.summary = `${summary} ${cluster.shortSummary || ''}`.toLowerCase();
   article.dataset.category = category.toLowerCase();
+  article.dataset.stories = getFeedStories(cluster, disabledSources)
+    .map(storySearchText)
+    .join(' ')
+    .toLowerCase();
   if (wasUpdated) article.classList.add('has-updates');
   if (matchesWatchWords(cluster)) article.classList.add('watch-match');
+  if (isCurrentVersionGlimpsed(cluster) && !isClusterRead(cluster)) article.classList.add('is-glimpsed');
 
   // Signal-derived styling (subtle — these are guesses, not explicit signals)
   const signalScore = scoreClusterAgainstSignals(cluster);
@@ -867,6 +1168,8 @@ function renderArticle(cluster, settings, isPluginLead) {
       showImage = true;
     } else if (settings.images === 'minimal') {
       showImage = isPluginLead;
+    } else if (settings.images === 'latest') {
+      showImage = isLatestCluster(cluster, latestReferenceTime);
     }
     if (showImage) {
       const imgStory = pickLeadImage(cluster);
@@ -877,13 +1180,14 @@ function renderArticle(cluster, settings, isPluginLead) {
   }
 
   const interest = getClusterInterest(cluster.id);
+  const summaryHtml = renderSummaryHtml(cluster, summary);
 
   // For singletons, no expandable source list — the headline is the link.
   // For multi-story clusters, keep the expandable list behaviour.
   const bodyHtml = isSingleton
-    ? `<p class="article-summary">${summary}</p>`
+    ? summaryHtml
     : `<div class="article-body${settings.expandAll ? ' show-links' : ''}">
-         <p class="article-summary">${summary}</p>
+         ${summaryHtml}
          <div class="story-links">
            <ul>${linksHtml}</ul>
          </div>
@@ -906,12 +1210,20 @@ function renderArticle(cluster, settings, isPluginLead) {
   // Apply interest-based visibility class
   if (interest === 'not-interested') article.classList.add('downranked');
 
+  // Expanding a glimpsed summary is a reading interaction, not a catch-up
+  // acknowledgement: it must not mark the cluster read.
+  article.querySelector('.summary-short')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    article.classList.add('summary-expanded');
+    if (masonryInstance) masonryInstance.layout();
+  });
+
   // Click toggles between summary and source links (multi-story only).
   // Singletons don't have an expandable list — the headline links directly.
   if (!isSingleton) {
     const body = article.querySelector('.article-body');
     article.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A' || e.target.closest('.interest-btn')) return;
+      if (e.target.tagName === 'A' || e.target.closest('.interest-btn, .summary-short')) return;
       body.classList.toggle('show-links');
       if (masonryInstance) masonryInstance.layout();
     });
@@ -954,23 +1266,10 @@ function getAvailableModes(clusters) {
   return modes;
 }
 
-function filterByMode(clusters, mode) {
-  if (mode === 'all') return clusters;
-  if (mode === 'main') return clusters.filter(c => !c.stories?.some(s => s.plugin));
-  if (mode.startsWith('plugin:')) {
-    const plugin = mode.slice(7);
-    return clusters.filter(c => c.stories?.some(s => s.plugin === plugin));
-  }
-  return clusters;
-}
-
 function getAvailableCategories(clusters) {
   const cats = new Set();
   for (const c of clusters) {
-    if (getCatPref(c.category) !== 'hide') {
-      const cat = Array.isArray(c.category) ? c.category[0] || 'Other' : (c.category || 'Other');
-      cats.add(cat);
-    }
+    if (getCatPref(c.category) !== 'hide') cats.add(canonicalCategory(c.category));
   }
   // Sort by category preference priority, then alphabetical
   return [...cats].sort((a, b) => {
@@ -990,47 +1289,42 @@ function renderDigest(digest, settings) {
   _cachedTagDF = null; // invalidate IDF cache on re-render
 
   if (!allClusters.length) {
+    currentViewModel = null;
+    currentVisibleClusters = [];
+    renderSourceBar(null);
+    renderCategoryFilterBar(null);
     sheet.innerHTML = '<div class="loading">No news available yet. Check back later.</div>';
+    refreshGlimpseObserver();
+    updateMarkReadButton();
     return;
   }
 
-  const modeFiltered = filterByMode(allClusters, settings.mode);
-
-  // Filter out clusters older than the age limit
-  const ageDays = parseInt(settings.ageLimit, 10) || 30;
-  const ageCutoff = Date.now() - ageDays * 24 * 60 * 60 * 1000;
-  const ageFiltered = modeFiltered.filter(c => {
-    const newest = getNewestStoryDate(c);
-    try { return new Date(newest).getTime() >= ageCutoff; } catch { return true; }
+  currentViewModel = buildViewModel({
+    clusters: allClusters,
+    digestSources: collectSourcesFromDigest(digest),
+    settings,
+    catPrefs,
+    sourceFilters,
+    disabledSources,
+    readState,
+    isSignalVisible: cluster => {
+      const explicit = getClusterInterest(cluster.id);
+      if (explicit === 'interested') return true;
+      return scoreClusterAgainstSignals(cluster).score > -5;
+    },
   });
 
-  // Filter out hidden categories
-  const visibleCats = ageFiltered.filter(c => getCatPref(c.category) !== 'hide');
-
-  // Filter out clusters with strong negative signal score (guessed disinterest).
-  // Asymmetric threshold: requires -5 to hide (harder than the old -3) because
-  // the new IDF-weighted scoring produces smaller absolute scores for generic
-  // tag matches, and we want to avoid accidental suppression.
-  const signalFiltered = visibleCats.filter(c => {
-    const explicit = getClusterInterest(c.id);
-    if (explicit === 'interested') return true; // explicit interest always shows
-    const signal = scoreClusterAgainstSignals(c);
-    return signal.score > -5; // strong negative = hide
-  });
-
-  // Apply category filter (secondary filter)
-  const catFiltered = settings.categoryFilter === 'all'
-    ? signalFiltered
-    : signalFiltered.filter(c => (c.category || 'Other') === settings.categoryFilter);
-
-  const visible = catFiltered.filter(c => {
-    if (!isClusterRead(c)) return true;
-    if (settings.showUpdated && isClusterUpdatedSinceRead(c)) return true;
-    return false;
-  });
+  const visible = currentViewModel.visibleClusters;
+  currentVisibleClusters = visible;
+  renderSourceBar(currentViewModel);
+  renderCategoryFilterBar(currentViewModel);
 
   if (!visible.length) {
-    sheet.innerHTML = '<div class="loading">All caught up. Toggle "Show updated" in settings to see stories with new information.</div>';
+    sheet.innerHTML = currentViewModel.feedPool.length
+      ? '<div class="loading">No stories match the current source and category filters.</div>'
+      : '<div class="loading">All caught up. Toggle "Show updated" in settings to see stories with new information.</div>';
+    refreshGlimpseObserver();
+    updateMarkReadButton();
     return;
   }
 
@@ -1046,14 +1340,17 @@ function renderDigest(digest, settings) {
     }
   }
 
+  const latestReferenceTime = Date.parse(digest.generated || '') || Date.now();
   const fragment = document.createDocumentFragment();
   for (const cluster of visible) {
     const isPluginLead = pluginLeadIds.has(cluster.id);
-    fragment.appendChild(renderArticle(cluster, settings, isPluginLead));
+    fragment.appendChild(renderArticle(cluster, settings, isPluginLead, latestReferenceTime));
   }
   sheet.appendChild(fragment);
   initMasonry();
+  refreshGlimpseObserver();
   refreshReadObserver();
+  updateMarkReadButton();
 }
 
 const SEARCH_HISTORY_KEY = 'broadsheet-search-history';
@@ -1098,30 +1395,47 @@ function renderRecentSearches() {
   });
 }
 
+function applySearchFilter() {
+  const q = getSearchQuery();
+  const articles = document.querySelectorAll('.article');
+  articles.forEach(a => {
+    const match = !q ||
+      a.dataset.headline.includes(q) ||
+      a.dataset.summary.includes(q) ||
+      a.dataset.category.includes(q) ||
+      (a.dataset.stories || '').includes(q);
+    a.classList.toggle('hidden', !match);
+  });
+  if (masonryInstance) masonryInstance.layout();
+  updateMarkReadButton();
+}
+
 function initSearch() {
   const filter = document.getElementById('filter');
   if (!filter) return;
 
-  filter.addEventListener('input', () => {
-    const q = filter.value.trim().toLowerCase();
-    const articles = document.querySelectorAll('.article');
-    articles.forEach(a => {
-      const match = !q ||
-        a.dataset.headline.includes(q) ||
-        a.dataset.summary.includes(q) ||
-        a.dataset.category.includes(q);
-      a.classList.toggle('hidden', !match);
+  if (!filter.dataset.bound) {
+    let searchTimer = null;
+    filter.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        applySearchFilter();
+        renderRecentSearches();
+      }, 120);
     });
-    if (masonryInstance) masonryInstance.layout();
-    renderRecentSearches();
-  });
 
-  filter.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      addSearchTerm(filter.value);
-      renderRecentSearches();
-    }
-  });
+    filter.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        addSearchTerm(filter.value);
+        renderRecentSearches();
+      }
+    });
+    filter.dataset.bound = 'true';
+  }
+
+  // Rendering replaces the article DOM, so reapply any active query to the new
+  // nodes. Binding happens only once; filtering itself is cheap and debounced above.
+  applySearchFilter();
 }
 
 function makeCycleHandler(btn, options, currentValue, onChange) {
@@ -1146,14 +1460,22 @@ function renderCategoryPrefs() {
 
   const clusters = currentDigest?.clusters || [];
   const categories = getAllKnownCategories(clusters);
+  const countPool = currentViewModel?.inventoryPool || clusters;
+  const storyCounts = {};
+  for (const cluster of countPool) {
+    const cat = canonicalCategory(cluster.category);
+    storyCounts[cat] = (storyCounts[cat] || 0) + (cluster.stories || []).length;
+  }
 
   container.innerHTML = '';
   for (const cat of categories) {
     const row = document.createElement('div');
     row.className = 'setting-row cat-pref-row';
+    row.dataset.category = cat;
 
-    const label = document.createElement('span');
-    label.textContent = cat;
+    const label = document.createElement('div');
+    label.className = 'manage-label';
+    label.innerHTML = `<span>${cat}</span><span class="manage-count">${storyCounts[cat] || 0} stories</span>`;
 
     const btn = document.createElement('button');
     btn.className = 'cycle-btn cat-pref-btn';
@@ -1172,6 +1494,49 @@ function renderCategoryPrefs() {
       btn.textContent = next.label;
       if (currentDigest) renderDigest(currentDigest, currentSettings);
       initSearch();
+    });
+
+    row.appendChild(label);
+    row.appendChild(btn);
+    container.appendChild(row);
+  }
+}
+
+function renderSourcePrefs() {
+  const container = document.getElementById('source-prefs');
+  if (!container || !currentDigest) return;
+
+  const digestSources = collectSourcesFromDigest(currentDigest);
+  const poolCounts = new Map((currentViewModel?.allSourceOptions || []).map(source => [source.key, source.count]));
+  const sources = digestSources
+    .map(source => ({
+      ...source,
+      count: poolCounts.get(source.key) || 0,
+      disabled: disabledSources[source.key] === true,
+    }))
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+
+  container.innerHTML = '';
+  for (const source of sources) {
+    const row = document.createElement('div');
+    row.className = 'setting-row source-pref-row';
+    row.dataset.source = source.key;
+
+    const label = document.createElement('div');
+    label.className = 'manage-label';
+    label.innerHTML = `<span>${source.label}</span><span class="manage-count">${source.count} stories in pool</span>`;
+
+    const btn = document.createElement('button');
+    btn.className = 'cycle-btn cat-pref-btn';
+    btn.type = 'button';
+    btn.textContent = source.disabled ? 'Disabled' : 'Enabled';
+    btn.classList.toggle('is-disabled-state', source.disabled);
+
+    btn.addEventListener('click', () => {
+      setSourceFeedDisabled(source.key, !source.disabled);
+      if (currentDigest) renderDigest(currentDigest, currentSettings);
+      initSearch();
+      renderSourcePrefs();
     });
 
     row.appendChild(label);
@@ -1267,9 +1632,23 @@ function initSettings() {
   }
   if (catClose) catClose.addEventListener('click', () => catPanel.classList.add('hidden'));
 
+  // Manage sources panel — hard feed exclusions, unlike the temporary header filters.
+  const manageSourceBtn = document.getElementById('manage-sources');
+  const sourcePanel = document.getElementById('source-panel');
+  const sourceClose = document.getElementById('source-close');
+  if (manageSourceBtn && sourcePanel) {
+    manageSourceBtn.addEventListener('click', () => {
+      panel.classList.add('hidden');
+      sourcePanel.classList.remove('hidden');
+      renderSourcePrefs();
+    });
+  }
+  if (sourceClose) sourceClose.addEventListener('click', () => sourcePanel.classList.add('hidden'));
+
   syncControls();
   applySettings(currentSettings);
   renderCategoryPrefs();
+  renderSourcePrefs();
 
   // Changelog page
   const changelogBtn = document.getElementById('settings-changelog');
@@ -1329,7 +1708,7 @@ function renderChangelog(log) {
   const sourceList = Object.entries(sources).sort((a,b) => b[1]-a[1]);
 
   const cats = {};
-  clusters.forEach(c => { cats[c.category] = (cats[c.category]||0)+1; });
+  clusters.forEach(c => { const cat = canonicalCategory(c.category); cats[cat] = (cats[cat]||0)+1; });
   const catList = Object.entries(cats).sort((a,b) => b[1]-a[1]);
 
   const plugins = {};
@@ -1551,6 +1930,9 @@ async function init() {
   initSettings();
   initReadInteraction();
 
+  const markAllBtn = document.getElementById('mark-all-read');
+  if (markAllBtn) markAllBtn.addEventListener('click', markAllClustersRead);
+
   // Mode toggle (in masthead)
   const modeBtn = document.getElementById('mode-toggle');
   const catBtn = document.getElementById('category-toggle');
@@ -1622,7 +2004,36 @@ async function init() {
     document.getElementById('changelog-page')?.classList.add('hidden');
     document.getElementById('search-panel')?.classList.add('hidden');
     document.getElementById('category-panel')?.classList.add('hidden');
+    document.getElementById('source-panel')?.classList.add('hidden');
   }
+
+  // Clicking outside an open side panel closes it. This runs in the capture
+  // phase so the first outside click does not also activate whatever is behind
+  // the panel. The settings toggle is left alone so it keeps its toggle behaviour.
+  document.addEventListener('click', (e) => {
+    const panelSelector = '#settings-panel, #category-panel, #source-panel';
+    const searchPanelEl = document.getElementById('search-panel');
+    const searchOpen = searchPanelEl && !searchPanelEl.classList.contains('hidden');
+    const openPanels = [...document.querySelectorAll(panelSelector)]
+      .filter(panel => !panel.classList.contains('hidden'));
+    if (!openPanels.length && !searchOpen) return;
+
+    const insidePanel = !!e.target.closest(panelSelector);
+    const insideSearch = !!e.target.closest('#search-panel, #search-toggle');
+    if (insidePanel || insideSearch) return;
+
+    if (searchOpen) searchPanelEl.classList.add('hidden');
+    if (e.target.closest('#settings-toggle')) {
+      document.getElementById('category-panel')?.classList.add('hidden');
+      document.getElementById('source-panel')?.classList.add('hidden');
+      return;
+    }
+    for (const panel of openPanels) panel.classList.add('hidden');
+    // Side panels are modal enough that the first outside click should not
+    // activate whatever is underneath. Search is non-modal: closing it should
+    // not swallow an interaction with the page controls.
+    if (openPanels.length) e.stopPropagation();
+  }, true);
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeAllOverlays();
@@ -1675,6 +2086,7 @@ async function init() {
     syncCategoryToggle();
     renderDigest(currentDigest, currentSettings);
     renderCategoryPrefs();
+    renderSourcePrefs();
     initSearch();
   } catch (err) {
     console.error('Failed to load news:', err);
