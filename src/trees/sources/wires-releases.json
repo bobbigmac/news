@@ -6,7 +6,7 @@
     {
       "id": "news-wires",
       "label": "News Wires",
-      "icon": "apnews.com",
+      "icon": "concept:wires",
       "sources": [
         "apnews.com",
         "reuters.com",
@@ -24,7 +24,7 @@
     {
       "id": "press-releases",
       "label": "Press Releases",
-      "icon": "globenewswire.com",
+      "icon": "concept:wires",
       "sources": [
         "globenewswire.com",
         "prnewswire.com",

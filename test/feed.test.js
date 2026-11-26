@@ -54,7 +54,6 @@ describe('feed view manager', () => {
     state.disabledSources = {};
     state.sourceFilters = {};
     state.interestState = {};
-    state.masonry = null;
     vi.stubGlobal('IntersectionObserver', FakeIntersectionObserver);
     clearFeed();
   });

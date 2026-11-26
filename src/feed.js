@@ -1,5 +1,5 @@
 import { populateArticleShell, renderArticle, renderArticleShell } from './article.js';
-import { bindImageLayout, getGridMetrics, initMasonry } from './layout.js';
+import { getGridMetrics, layoutColumns } from './layout.js';
 import { refreshGlimpseObserver, refreshReadObserver } from './reading.js';
 import { clusterMatchesSearch, getSearchQuery, updateMarkReadButton } from './search.js';
 import { state } from './state.js';
@@ -36,10 +36,6 @@ class FeedView {
     this.hydratedCount = 0;
     this.columnWidth = 0;
     this.observedNodes = new Set();
-    if (state.masonry) {
-      state.masonry.destroy();
-      state.masonry = null;
-    }
   }
 
   heightKey(cluster) {
@@ -96,7 +92,6 @@ class FeedView {
       this.context.latestReferenceTime,
       article,
     );
-    bindImageLayout(article);
     const actualHeight = article.offsetHeight;
     this.heights.set(cluster.id, { key: this.heightKey(cluster), height: actualHeight });
     this.hydratedCount++;
@@ -116,8 +111,7 @@ class FeedView {
     return true;
   }
 
-  finishChanges(relayout = false) {
-    if (relayout) state.masonry?.layout();
+  finishChanges() {
     refreshGlimpseObserver();
     refreshReadObserver();
   }
@@ -203,10 +197,15 @@ class FeedView {
       this.observe(node);
       return node;
     });
-    sheet.replaceChildren(...orderedNodes);
+    layoutColumns(
+      sheet,
+      orderedNodes,
+      node => node.classList.contains('hidden')
+        ? 0
+        : parseFloat(node.style.height) || 240,
+    );
     this.hydratedCount = 0;
 
-    initMasonry();
     refreshGlimpseObserver();
     refreshReadObserver();
     updateMarkReadButton();
@@ -228,7 +227,6 @@ class FeedView {
       node.classList.toggle('hidden', !visible);
     }
 
-    state.masonry?.layout();
     if (unloaded) this.finishChanges();
     else {
       refreshGlimpseObserver();

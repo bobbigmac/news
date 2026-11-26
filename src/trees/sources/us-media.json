@@ -297,7 +297,7 @@
     {
       "id": "us-broadcast",
       "label": "US Broadcast Networks",
-      "icon": "nbcnews.com",
+      "icon": "concept:broadcast",
       "children": [
         {
           "id": "nbcu",

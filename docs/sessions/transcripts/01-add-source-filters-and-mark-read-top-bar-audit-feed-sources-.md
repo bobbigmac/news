@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 06:47:04 UTC
-entries: 2510
+last_activity: 2026-11-26 07:16:37 UTC
+entries: 2628
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -50694,6 +50694,3894 @@ Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/stor
 ### 2026-11-26 06:47:04 UTC user
 
 postpone further tree-expansion work for now, and add a TODO: ... we need to identify some established/mainstream/news/widely-known reference taxonomies for better support. Continue with the other work raised, and I'll come back to taxonomies researcg  after you finished the rest, cos we're under quota pressure.
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:read:b4571f79 h:3a06501b -->
+### 2026-11-26 06:47:12 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/TODO.md"}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/TODO.md" start_line="1" end_line="13">
+  1|# TODO
+  2|
+  3|## Future features
+  4|
+  5|- [ ] Source/category roundups: after the normal run has finished batch/solo cluster summaries, consider a second pass that identifies recurring low-value story patterns by source or category (for example, repeated outrage framing) and uses one consolidated OpenRouter call to flag or resummarise those groups. Needs design before implementation.
+  6|- [ ] Keep `src/source-tree.js` and `src/story-tree.js` maintained: add newly-seen hosts/subjects to curated branches and deepen any allocated branch that grows well past its target group size. Revisit `src/source-profiles.js` research notes as sources accumulate.
+  7|
+  8|
+  9|continue... you were working on this..``Ungrouped 1,126 is mostly clusters whose only vocabulary is pronouns/filler tags (`you`, `your`, `post`, `home`) — legitimately ungroupable rather than misses.` that's not "legitimately ungroupable", there's no such thing, you're just excusing laziness. How much of them are like obviously promotional skims, 'lifestyle' as a proxy for advertising, clickable studies but little real value... like understand the stories by searching for more info, not just only what we have from the shitter openrouter llm.... YOU the LLM are capable of much more here, and I'm asking you to build a transferable/portable dataset, not a single spec that only matches today's news. It would help to split the trees into multiple json files, cos you using thousands of lines for js, when this is OBVIOUSLY a key updateable dataset is VERY LAZY, bordering on professionally incompetent. This needs to be manageable. `
+ 10|
+ 11|Also source-toggle buttons don't need black-and-white styling and padding added. plain Icons is good enough, with greyed-out for alts. Some groups have plain white icons only, OR no icons (falling back to a single-char text, which I don't like either), so it's worth detecting w
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:write:bc7f07b4 h:2dd7137c -->
+### 2026-11-26 06:47:27 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/TODO.md", "content": "# TODO\n\n## Future features\n\n- [ ] Source/category roundups: after the normal run has finished batch/solo cluster summaries, consider a second pass that identifies recurring low-value story patterns by source or category (for example, repeated outrage framing) and uses one consolidated OpenRouter call to flag or resumm`
+
+```
+Successfully wrote 2442 bytes (17 lines) to /home/bobbigmac/projects/bobdavies/news/TODO.md
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:todo_write:5863e7b0 h:92bf61c2 -->
+### 2026-11-26 06:47:32 UTC tool `todo_write`
+
+`{"todos": [{"content": "Tree expansion paused \u2014 TODO logged for taxonomy research", "status": "completed"}, {"content": "Verify tree work so far: focused tests + build", "status": "in_progress"}, {"content": "Source buttons: strip B&W styling/padding, plain icons, greyed-out inactive", "status": "pending"}, {"content": "Detect missing/white-only group icons, find replacements (fluent icon lib`
+
+```
+WARNING: You removed the following pending items from your todo list:
+- Verify: focused tests + build
+If you did not mean to do that please add them back. Think about this before your next action.
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [x] Tree expansion paused — TODO logged for taxonomy research [completed]
+2. [~] Verify tree work so far: focused tests + build [in_progress]
+3. [ ] Source buttons: strip B&W styling/padding, plain icons, greyed-out inactive [pending]
+4. [ ] Detect missing/white-only group icons, find replacements (fluent icon library?) [pending]
+5. [ ] Fix masonry: no column moves on relayout, fix image unload-on-resize bug [pending]
+
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:40da6cb7 h:a7c2478e -->
+### 2026-11-26 06:47:48 UTC tool `exec`
+
+`{"command": "npx vitest run test/story-groups.test.js test/relationships.test.js 2>&1 | tail -12", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 120000}`
+
+```
+Output from command in shell ae5a5c:
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.1.1 [39m[90m/home/bobbigmac/projects/bobdavies/news[39m
+
+ [32m✓[39m test/relationships.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m test/story-groups.test.js [2m([22m[2m7 tests[22m[2m)[22m[32m 140[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m10 passed[39m[22m[90m (10)[39m
+[2m   Start at [22m 06:47:44
+[2m   Duration [22m 3.04s[2m (environment 74%, transform 17%, import 4%, tests 4%, worker 1%)[22m
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:96fa5adf h:3e3b883d -->
+### 2026-11-26 06:47:55 UTC tool `exec`
+
+`{"command": "node --check src/story-groups.js && node --input-type=module -e \"import('./src/story-groups.js').then(async m=>{const{readFileSync}=await import('fs');const d=JSON.parse(readFileSync('/tmp/remote-digest.json','utf8'));const{groups,assignments}=m.assignStoryGroups(d.clusters);console.log('grouped',assignments.size,'/',d.clusters.length,groups.length,'groups');})\" 2>&1 | tail -2", "wo`
+
+```
+Output from command in shell 05c7e4:
+grouped 4825 / 5557 233 groups
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:read:bf9c5486 h:6cfdb45e -->
+### 2026-11-26 06:47:59 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/filters.js"}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/filters.js" start_line="1" end_line="100">
+  1|import { getFaviconSpriteClass } from './favicon-sprite.js';
+  2|import { saveSettings, setSourcesDisplay, state, ui } from './state.js';
+  3|
+  4|export function renderSourceBar(model) {
+  5|  const container = document.getElementById('source-toggles');
+  6|  if (!container) return;
+  7|  container.innerHTML = '';
+  8|
+  9|  const sources = (model?.sourceOptions || []).filter(source => source.count > 0);
+ 10|
+ 11|  for (const source of sources) {
+ 12|    const sourceKeys = source.preferenceKeys || source.sourceKeys || [source.key];
+ 13|    const btn = document.createElement('button');
+ 14|    btn.type = 'button';
+ 15|    btn.className = 'source-toggle';
+ 16|    btn.dataset.source = source.key;
+ 17|    btn.classList.toggle('is-off', !source.displayed && !source.mixed);
+ 18|    btn.classList.toggle('is-mixed', source.mixed === true);
+ 19|    btn.setAttribute('aria-pressed', source.mixed ? 'mixed' : String(source.displayed));
+ 20|    btn.setAttribute('aria-label', `${source.displayed || source.mixed ? 'Hide' : 'Show'} ${source.label} (${source.count} stories)`);
+ 21|    btn.title = source.grouped
+ 22|      ? `${source.path.join(' / ')} — ${source.count} stories across ${source.sourceCount} sources in the current pool`
+ 23|      : `${source.label} — ${source.count} stories in the current pool`;
+ 24|
+ 25|    const letter = document.createElement('span');
+ 26|    letter.className = 'source-letter';
+ 27|    letter.textContent = (source.label || source.key || '?').trim().charAt(0).toUpperCase() || '?';
+ 28|    btn.appendChild(letter);
+ 29|
+ 30|    const spriteClass = getFaviconSpriteClass(source.icon || source.key);
+ 31|    if (spriteClass) {
+ 32|      const icon = document.createElement('span');
+ 33|      icon.className = `source-sprite ${spriteClass}`;
+ 34|      icon.setAttribute('aria-hidden', 'true');
+ 35|      btn.appendChild(icon);
+ 36|    }
+ 37|
+ 38|    const 
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:read:0cb51a44 h:f4f490e0 -->
+### 2026-11-26 06:48:02 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/filter-bar.css"}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/styles/filter-bar.css" start_line="1" end_line="249">
+  1|/* Source bar — local favicon filters + catchup control */
+  2|.source-bar {
+  3|  background: var(--paper-light);
+  4|}
+  5|
+  6|.source-bar-inner {
+  7|  max-width: 1200px;
+  8|  margin: 0 auto;
+  9|  padding: 0.35rem 1rem;
+ 10|  display: flex;
+ 11|  align-items: center;
+ 12|  gap: 0.65rem;
+ 13|}
+ 14|
+ 15|.source-toggles {
+ 16|  display: flex;
+ 17|  align-items: center;
+ 18|  flex-wrap: wrap;
+ 19|  gap: 0.3rem;
+ 20|  flex: 1;
+ 21|  min-width: 0;
+ 22|  padding: 0.1rem 0;
+ 23|}
+ 24|
+ 25|.source-toggle {
+ 26|  position: relative;
+ 27|  width: 40px;
+ 28|  height: 40px;
+ 29|  flex: 0 0 auto;
+ 30|  border: 1px solid var(--ink);
+ 31|  border-radius: 4px;
+ 32|  background: var(--ink);
+ 33|  color: var(--paper);
+ 34|  cursor: pointer;
+ 35|  padding: 0;
+ 36|  display: grid;
+ 37|  place-items: center;
+ 38|  transition: opacity 0.15s, border-color 0.15s, filter 0.15s, background 0.15s, color 0.15s;
+ 39|}
+ 40|
+ 41|.source-toggle:hover:not(.is-off) {
+ 42|  border-color: var(--accent);
+ 43|  background: var(--accent);
+ 44|}
+ 45|
+ 46|.source-toggle.is-off:hover {
+ 47|  border-color: var(--rule-thick);
+ 48|  background: var(--paper);
+ 49|}
+ 50|
+ 51|.source-toggle:focus-visible {
+ 52|  outline: 2px solid var(--accent);
+ 53|  outline-offset: 1px;
+ 54|}
+ 55|
+ 56|.source-toggle.is-off {
+ 57|  background: transparent;
+ 58|  border-color: var(--rule);
+ 59|  color: var(--muted);
+ 60|  opacity: 0.5;
+ 61|  filter: grayscale(1);
+ 62|}
+ 63|
+ 64|.source-toggle.is-mixed {
+ 65|  opacity: 0.72;
+ 66|}
+ 67|
+ 68|.source-toggle.is-off::after {
+ 69|  content: '';
+ 70|  position: absolute;
+ 71|  left: 3px;
+ 72|  right: 3px;
+ 73|  top: 50%;
+ 74|  height: 1px;
+ 75|  background: var(--accent);
+ 76|  transform: rotate(-18deg);
+ 77|  pointer-events: none;
+ 78|}
+ 79|
+ 80|.source-letter {
+ 81|  font-family: var(--sans);
+ 82|  font-size: 0.88rem;
+ 83|  font-weight: 700;
+ 84|  line-height: 1;
+
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:read:26b0409f h:59aa8584 -->
+### 2026-11-26 06:48:07 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/favicon-sprite.js"}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/favicon-sprite.js" start_line="1" end_line="139">
+  1|// Generated once on the dev system when source favicons change.
+  2|// src/styles/favicon-sprite.css carries the actual sheet offsets for each
+  3|// canonical icon class; this file only tells rendering code whether a host has
+  4|// a sprite tile.
+  5|export const FAVICON_SPRITE_HOSTS = new Set([
+  6|  'abc.net.au',
+  7|  'aljazeera.com',
+  8|  'androidheadlines.com',
+  9|  'arabianbusiness.com',
+ 10|  'arstechnica.com',
+ 11|  'axios.com',
+ 12|  'bbc.co.uk',
+ 13|  'belfastlive.co.uk',
+ 14|  'bgr.com',
+ 15|  'brecorder.com',
+ 16|  'businessday.ng',
+ 17|  'businessinsider.com',
+ 18|  'businesskorea.co.kr',
+ 19|  'cbsnews.com',
+ 20|  'chalkbeat.org',
+ 21|  'channelnewsasia.com',
+ 22|  'cityam.com',
+ 23|  'colombiaone.com',
+ 24|  'courant.com',
+ 25|  'dailymail.com',
+ 26|  'dailymaverick.co.za',
+ 27|  'dailypost.ng',
+ 28|  'dailytimes.com.pk',
+ 29|  'dev.to',
+ 30|  'digitaltrends.com',
+ 31|  'discovermagazine.com',
+ 32|  'dw.com',
+ 33|  'en.interfax.com.ua',
+ 34|  'endpoints.news',
+ 35|  'engadget.com',
+ 36|  'english.ajel.sa',
+ 37|  'eurogamer.net',
+ 38|  'euronews.com',
+ 39|  'euroweeklynews.com',
+ 40|  'finextra.com',
+ 41|  'france24.com',
+ 42|  'freemalaysiatoday.com',
+ 43|  'freepressjournal.in',
+ 44|  'frontiersin.org',
+ 45|  'ft.com',
+ 46|  'gamespot.com',
+ 47|  'github.com',
+ 48|  'globalnews.ca',
+ 49|  'handelsblatt.com',
+ 50|  'hothardware.com',
+ 51|  'ign.com',
+ 52|  'inc.com',
+ 53|  'independent.co.uk',
+ 54|  'indiatoday.in',
+ 55|  'inquirer.com',
+ 56|  'jpost.com',
+ 57|  'kait8.com',
+ 58|  'kitguru.net',
+ 59|  'koreatimes.co.kr',
+ 60|  'kotaku.com',
+ 61|  'lemonde.fr',
+ 62|  'malaymail.com',
+ 63|  'marketbeat.com',
+ 64|  'medicalxpress.com',
+ 65|  'medpagetoday.com',
+ 66|  'metro.co.uk',
+ 67|  'middleeasteye.net',
+ 68|  'mirror.co.uk',
+ 69|  'myjoyonline.com',
+ 70|  'nasdaq.com',
+ 71|  'nature.com',
+ 72|  'nautil.us',
+ 73|  'news.sky.com',
+ 7
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:3aa30467 h:5765e794 -->
+### 2026-11-26 06:48:16 UTC tool `exec`
+
+`{"command": "grep -n \"icon\" src/source-groups.js | head -20; grep -n \"icon\" src/group-tree.js | head -10", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 49af87:
+34:    icon: choice.node.icon || choice.keys[0],
+82:      icon: otherSources[0]?.icon || otherSources[0]?.key,
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:7e278685 h:bde92dbe -->
+### 2026-11-26 06:48:35 UTC tool `exec`
+
+`{"command": "node --input-type=module - <<'NODE'\nimport { readFileSync } from 'fs';\nimport { groupSourceOptions } from './src/source-groups.js';\nimport { FAVICON_SPRITE_HOSTS } from './src/favicon-sprite.js';\nconst d=JSON.parse(readFileSync('/tmp/remote-digest.json','utf8'));\nconst counts=new Map();\nfor(const c of d.clusters||[]) for(const s of c.stories||[]){\n  let host=''; try{host=new UR`
+
+```
+Output from command in shell 845f9f:
+file:///home/bobbigmac/projects/bobdavies/news/src/source-groups.js:98
+      b.count - a.count || a.label.localeCompare(b.label)
+                                   ^
+
+TypeError: Cannot read properties of undefined (reading 'localeCompare')
+    at file:///home/bobbigmac/projects/bobdavies/news/src/source-groups.js:98:36
+    at Array.sort (<anonymous>)
+    at groupSourceOptions (file:///home/bobbigmac/projects/bobdavies/news/src/source-groups.js:97:47)
+    at file:///home/bobbigmac/projects/bobdavies/news/[eval1]:11:17
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async node:internal/modules/esm/loader:230:26
+    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:227:20)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.16.0
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:601ae20a h:ef07da3b -->
+### 2026-11-26 06:48:44 UTC tool `exec`
+
+`{"command": "node --input-type=module - <<'NODE'\nimport { readFileSync } from 'fs';\nimport { groupSourceOptions } from './src/source-groups.js';\nimport { FAVICON_SPRITE_HOSTS } from './src/favicon-sprite.js';\nconst d=JSON.parse(readFileSync('/tmp/remote-digest.json','utf8'));\nconst counts=new Map();\nfor(const c of d.clusters||[]) for(const s of c.stories||[]){\n  let host=''; try{host=new UR`
+
+```
+Output from command in shell 1247ca:
+controls: 99
+with sprite: 78  missing: 21
+
+=== MISSING SPRITE (count label icon-key members) ===
+367	Other Sources	springfieldnewssun.com	springfieldnewssun.com,economictimes.indiatimes.com,stuff.tv,benzinga.com,techpowerup.com,decrypt.co
+71	Mobile & Software	androidauthority.com	androidauthority.com,androidheadlines.com,macstories.net,apple.news,bleepingcomputer.com,windowscentral.com
+51	Entertainment & Culture	variety.com	variety.com,deadline.com,hollywoodreporter.com,indiewire.com,thewrap.com,comingsoon.net
+50	US Broadcast Networks	nbcnews.com	nbcnews.com,cnbc.com,eonline.com,abcnews.com,6abc.com,abc7ny.com
+47	Sports Press	espn.com	espn.com,worldsoccertalk.com,frontofficesports.com,yardbarker.com,givemesport.com,skysports.com
+38	Hardware Guides	tomshardware.com	tomshardware.com,tomsguide.com,pcmag.com,wccftech.com,hardwarezone.com.sg
+35	Advance Local	oregonlive.com	obits.oregonlive.com,lehighvalleylive.com
+29	Ukraine Media	kyivindependent.com	kyivindependent.com,kyivpost.com,euromaidanpress.com,ukrinform.net,english.nv.ua
+28	Industry & B2B	retaildive.com	bankingdive.com,retaildive.com,restaurantdive.com,grocerydive.com,supplychaindive.com,truckingdive.com
+24	Latin America Media	batimes.com.ar	batimes.com.ar,buenosairesherald.com,colombiaone.com,mexiconewsdaily.com,riotimesonline.com,en.mercopress.com
+24	Singapore Media	straitstimes.com	straitstimes.com,channelnewsasia.com,cnaluxury.channelnewsasia.com,mothership.sg
+23	Wires & Releases	apnews.com	apnews.com,reuters.com,factcheck.afp.com,globenewswire.com,prnewswire.com,prweb.com
+21	Business Newsweeklies	economist.com	economist.com,bloomberg.com,wsj.com,marketwatch.com
+21	Retail Investor	fool.com	fool.com,fool.ca,fool.com.au,nairametrics.com,moneyweb.co.za,macrobusiness.com.au
+20	Social Tech	mashable.com	mashable.com,in.mashable.com,sea.mashable.com,gizmodo.com
+19	Thailand Media	bangkokpost.com	bangkokpost.com,khaosodenglish.com,thailand-business-news.com,chiangraitimes.com
+17	O
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:50e61f1a h:c901c0a8 -->
+### 2026-11-26 06:49:01 UTC tool `exec`
+
+`{"command": "ls scripts/ src/styles/favicon-sprite.css 2>&1 | head; ls cache/favicons 2>/dev/null | head -5; ls public/ 2>/dev/null; find . -name \"favicon*\" -not -path \"./node_modules/*\" -not -path \"./.git/*\" 2>/dev/null", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 6d02c3:
+src/styles/favicon-sprite.css
+
+scripts/:
+build.js
+cache-io.js
+categories.js
+category-graph.js
+cluster-copy.js
+cluster.js
+embeddings.js
+abc.net.au.ico
+aljazeera.com.ico
+androidheadlines.com.ico
+arstechnica.com.ico
+axios.com.ico
+./dist/favicons
+./cache/favicons
+./src/favicons
+./src/favicon-sprite.js
+./src/styles/favicon-sprite.css
+./src/public/favicons
+./scripts/favicons.js
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:acea2d0b h:115be9e0 -->
+### 2026-11-26 06:49:05 UTC tool `exec`
+
+`{"command": "head -80 scripts/favicons.js; echo ...; grep -n \"sprite\\|missing\\|fetch\" scripts/favicons.js | head -20", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell be7283:
+import { getSourceName, prettifySourceKey, sourceKeyFromUrl } from './sources.js';
+
+const SOURCE_LABELS = {
+  'bbc.co.uk': 'BBC',
+  'bbc.com': 'BBC',
+  'news.sky.com': 'Sky News',
+  'sky.com': 'Sky News',
+  'theguardian.com': 'The Guardian',
+  'dailymail.com': 'Daily Mail',
+  'independent.co.uk': 'The Independent',
+  'mirror.co.uk': 'Mirror',
+  'metro.co.uk': 'Metro',
+  'standard.co.uk': 'Evening Standard',
+  'eurogamer.net': 'Eurogamer',
+  'kotaku.com': 'Kotaku',
+  'ign.com': 'IGN',
+  'ft.com': 'Financial Times',
+  'phys.org': 'Phys.org',
+  'medicalxpress.com': 'Medical Xpress',
+  'cityam.com': 'City A.M.',
+  'punchng.com': 'Punch',
+  'koreatimes.co.kr': 'Korea Times',
+  'thisismoney.co.uk': 'This is Money',
+  'jpost.com': 'Jerusalem Post',
+  'brecorder.com': 'Business Recorder',
+  'notebookcheck.net': 'Notebookcheck',
+  'handelsblatt.com': 'Handelsblatt',
+  'thestar.com.my': 'The Star',
+  'nst.com.my': 'New Straits Times',
+  'tweaktown.com': 'TweakTown',
+  'windowscentral.com': 'Windows Central',
+  'gamespot.com': 'GameSpot',
+  'newscientist.com': 'New Scientist',
+  'abc.net.au': 'ABC News',
+  'nypost.com': 'New York Post',
+  'businessinsider.com': 'Business Insider',
+  'thehindu.com': 'The Hindu',
+  'marketbeat.com': 'MarketBeat',
+  'vice.com': 'Vice',
+  'businessday.ng': 'Business Day',
+  'dailymaverick.co.za': 'Daily Maverick',
+  'psypost.org': 'PsyPost',
+  'wccftech.com': 'Wccftech',
+  'semafor.com': 'Semafor',
+  'qz.com': 'Quartz',
+  'reddit.com': 'Reddit',
+  'techradar.com': 'TechRadar',
+  'cbsnews.com': 'CBS News',
+  'newsweek.com': 'Newsweek',
+  'smh.com.au': 'Sydney Morning Herald',
+  'scmp.com': 'South China Morning Post',
+  'thenationalnews.com': 'The National',
+  'myjoyonline.com': 'MyJoyOnline',
+  'nasdaq.com': 'Nasdaq',
+  'theage.com.au': 'The Age',
+  'statnews.com': 'STAT News',
+  'dw.com': 'DW',
+  'chalkbeat.org': 'Chalkbeat',
+  'pbs.org': 'PBS',
+  'news.xbox.com': 'Xbox Wire',
+  'aljazeera.com': 'Al Jazeera',
+ 
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:a5c10273 h:99c9bebf -->
+### 2026-11-26 06:49:08 UTC tool `exec`
+
+`{"command": "sed -n '80,220p' scripts/favicons.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 5fb186:
+        byKey.set(key, {
+          key,
+          label: SOURCE_LABELS[key] || getSourceName(story.url) || prettifySourceKey(key),
+          count: 0,
+          newest: null,
+          oldest: null,
+        });
+      }
+      const entry = byKey.get(key);
+      entry.count++;
+      const ts = Date.parse(story.published || '');
+      if (ts) {
+        const iso = new Date(ts).toISOString();
+        if (!entry.newest || iso > entry.newest) entry.newest = iso;
+        if (!entry.oldest || iso < entry.oldest) entry.oldest = iso;
+      }
+    }
+  }
+  return [...byKey.values()].sort((a, b) => b.count - a.count || a.key.localeCompare(b.key));
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:b508b01e h:562d36c4 -->
+### 2026-11-26 06:49:19 UTC tool `exec`
+
+`{"command": "head -60 src/styles/favicon-sprite.css; echo ...; ls cache/favicons | wc -l; ls cache/favicons | head -3; file cache/favicons/bbc.co.uk.ico 2>/dev/null; ls src/public/favicons 2>/dev/null | head -5; ls src/favicons 2>/dev/null | head -5", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 9753f8:
+/* Source favicon sprite classes. Generated once on the dev system. */
+.source-sprite {
+  background-image: url('../favicons/sprite.png');
+  background-repeat: no-repeat;
+}
+
+.source-icon-abc-net-au { background-position: -0px -0px; }
+.source-icon-aljazeera-com { background-position: -32px -0px; }
+.source-icon-androidheadlines-com { background-position: -64px -0px; }
+.source-icon-arabianbusiness-com { background-position: -96px -0px; }
+.source-icon-arstechnica-com { background-position: -128px -0px; }
+.source-icon-axios-com { background-position: -160px -0px; }
+.source-icon-bbc-co-uk { background-position: -192px -0px; }
+.source-icon-belfastlive-co-uk { background-position: -224px -0px; }
+.source-icon-bgr-com { background-position: -256px -0px; }
+.source-icon-brecorder-com { background-position: -288px -0px; }
+.source-icon-businessday-ng { background-position: -320px -0px; }
+.source-icon-businessinsider-com { background-position: -352px -0px; }
+.source-icon-businesskorea-co-kr { background-position: -384px -0px; }
+.source-icon-cbsnews-com { background-position: -416px -0px; }
+.source-icon-chalkbeat-org { background-position: -448px -0px; }
+.source-icon-channelnewsasia-com { background-position: -480px -0px; }
+.source-icon-cityam-com { background-position: -0px -32px; }
+.source-icon-colombiaone-com { background-position: -32px -32px; }
+.source-icon-courant-com { background-position: -64px -32px; }
+.source-icon-dailymail-com { background-position: -96px -32px; }
+.source-icon-dailymaverick-co-za { background-position: -128px -32px; }
+.source-icon-dailypost-ng { background-position: -160px -32px; }
+.source-icon-dailytimes-com-pk { background-position: -192px -32px; }
+.source-icon-dev-to { background-position: -224px -32px; }
+.source-icon-digitaltrends-com { background-position: -256px -32px; }
+.source-icon-discovermagazine-com { background-position: -288px -32px; }
+.source-icon-dw-com { background-position: -320px -32px; }
+.source-ico
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:5e70bb5f h:a52d48fe -->
+### 2026-11-26 06:49:36 UTC tool `exec`
+
+`{"command": "cat package.json | grep -A 30 dependencies | head -35; ls /home/bobbigmac/projects/cross-stitcher 2>/dev/null | head; grep -ri \"fluent\" /home/bobbigmac/projects/cross-stitcher/package.json /home/bobbigmac/projects/cross-stitcher/index.html 2>/dev/null | head -5", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 458308:
+  "dependencies": {
+    "@xenova/transformers": "^2.17.2",
+    "compromise": "^14.16.0",
+    "density-clustering": "^1.3.0",
+    "masonry-layout": "^4.2.2",
+    "rss-parser": "^3.13.0",
+    "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "jsdom": "^31.0.1",
+    "vite": "^8.1.4",
+    "vitest": "^5.1.1"
+  },
+  "license": "DBAD"
+}
+AGENTS_AnalysisStages.md
+AGENTS.md
+dist
+docs
+index.html
+lib
+node_modules
+package.json
+package-lock.json
+python
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:e6cdc43f h:71f5a2ea -->
+### 2026-11-26 06:49:46 UTC tool `exec`
+
+`{"command": "ls /home/bobbigmac/projects/cross-stitcher/lib 2>/dev/null; grep -ril \"fluent\\|iconify\\|lucide\" /home/bobbigmac/projects/cross-stitcher/index.html /home/bobbigmac/projects/cross-stitcher/lib /home/bobbigmac/projects/cross-stitcher/package.json 2>/dev/null | head -5; cat /home/bobbigmac/projects/cross-stitcher/package.json 2>/dev/null | head -30", "workdir": "/home/bobbigmac/projec`
+
+```
+Output from command in shell 57ac8d:
+analysis
+chart.mjs
+color
+craft
+crochet
+cut
+data
+embroidery
+fabric
+formats
+genart
+image
+ingest
+ir
+metrics
+palette
+palette.mjs
+pipeline
+quantize
+render
+sequence
+sheet
+sidecar
+stitch
+stringart
+symbols
+text
+units
+util
+vector
+vendor
+/home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/.git/logs/refs/remotes/origin/HEAD
+/home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/.git/logs/refs/heads/main
+/home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/.git/logs/HEAD
+/home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/.git/config
+/home/bobbigmac/projects/cross-stitcher/lib/vendor/ATTRIBUTION.md
+{
+  "name": "cross-stitcher",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test \"tests/**/*.test.mjs\""
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "jpeg-js": "^0.4.4",
+    "pngjs": "^7.0.0",
+    "vite": "^7.2.7"
+  }
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:722dbf24 h:d000d478 -->
+### 2026-11-26 06:50:02 UTC tool `exec`
+
+`{"command": "ls /home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/ 2>/dev/null | head; ls /home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/assets 2>/dev/null | head -8; cat /home/bobbigmac/projects/cross-stitcher/lib/vendor/ATTRIBUTION.md 2>/dev/null | head -20"}`
+
+```
+Output from command in shell cfc7f4:
+assets
+LICENSE
+1st place medal
+2nd place medal
+3rd place medal
+Abacus
+Ab button blood type
+A button blood type
+Accordion
+Adhesive bandage
+# Vendored data & code — sources and licences
+
+| File | Source | Licence | Notes |
+|---|---|---|---|
+| `dmc-floss.json` | [makebead/craft-color-codes](https://github.com/makebead/craft-color-codes) `data/json/dmc-floss.json` | CC BY 4.0 | 489 DMC six-strand floss colours, community-verified. Attribution: craft-color-codes contributors. |
+| `fluentui-emoji/` | [microsoft/fluentui-emoji](https://github.com/microsoft/fluentui-emoji) sparse checkout (`assets/*/metadata.json`, `*/Flat/*.svg`, `*/Color/*.svg`, `*/High Contrast/*.svg`) | MIT | 1595 emoji assets × styles (Flat / Color / High Contrast) × 6 Fitzpatrick skin tones where applicable. Queried via `lib/data/emoji/`. |
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:8965ab87 h:67ae5b23 -->
+### 2026-11-26 06:50:57 UTC tool `exec`
+
+`{"command": "node --input-type=module - <<'NODE'\nimport sharp from 'sharp';\nimport { readdirSync } from 'fs';\n// analyze existing per-host PNGs for blankness (variance + mean)\nconst dir='src/public/favicons';\nconst files=readdirSync(dir).filter(f=>f.endsWith('.png')&&f!=='sprite.png');\nconst stats=[];\nfor(const f of files){\n  try{\n    const {data,info}=await sharp(`${dir}/${f}`).ensureAlp`
+
+```
+Output from command in shell 4f32e5:
+total pngs: 0
+near-uniform tiles (std<12): 0
+undecodable: 0
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:ece89f94 h:171c50b9 -->
+### 2026-11-26 06:51:10 UTC tool `exec`
+
+`{"command": "ls src/public/favicons/ | head; ls dist/favicons 2>/dev/null | head -6; ls src/favicons | head", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 565d49:
+sprite.png
+sprite.png
+abc.net.au.png
+aljazeera.com.png
+androidheadlines.com.png
+arabianbusiness.com.png
+arstechnica.com.png
+axios.com.png
+bbc.co.uk.png
+belfastlive.co.uk.png
+bgr.com.png
+brecorder.com.png
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:d06c2bf2 h:c369a001 -->
+### 2026-11-26 06:51:23 UTC tool `exec`
+
+`{"command": "node --input-type=module - <<'NODE'\nimport sharp from 'sharp';\nimport { readdirSync } from 'fs';\nconst dir='src/favicons';\nconst files=readdirSync(dir).filter(f=>f.endsWith('.png')&&f!=='sprite.png');\nconst stats=[];\nfor(const f of files){\n  try{\n    const {data}=await sharp(`${dir}/${f}`).ensureAlpha().raw().toBuffer({resolveWithObject:true});\n    let sum=0,sum2=0,n=0,alphaS`
+
+```
+Output from command in shell c5c618:
+total pngs: 108
+near-uniform or invisible tiles: 21
+  abc.net.au.png std 0.2 mean 1 cov 52
+  cbsnews.com.png std 0.0 mean 23 cov 58
+  cityam.com.png std 0.0 mean 0 cov 0
+  courant.com.png std 0.0 mean 0 cov 0
+  dailymaverick.co.za.png std 0.0 mean 0 cov 28
+  digitaltrends.com.png std 0.0 mean 0 cov 0
+  dw.com.png std 0.0 mean 135 cov 21
+  github.com.png std 1.3 mean 22 cov 43
+  globalnews.ca.png std 0.0 mean 0 cov 0
+  inc.com.png std 0.0 mean 0 cov 53
+  kotaku.com.png std 0.8 mean 188 cov 33
+  medicalxpress.com.png std 36.3 mean 114 cov 9
+  nautil.us.png std 0.4 mean 198 cov 14
+  newscientist.com.png std 0.0 mean 0 cov 0
+  nypost.com.png std 0.0 mean 0 cov 0
+  nytimes.com.png std 1.5 mean 19 cov 27
+  qz.com.png std 0.0 mean 0 cov 15
+  techradar.com.png std 0.5 mean 87 cov 39
+  vice.com.png std 0.0 mean 0 cov 0
+  wccftech.com.png std 0.0 mean 0 cov 35
+  winnipegfreepress.com.png std 0.0 mean 0 cov 0
+mostly-white tiles (invisible on white bg): 0
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:8c8acd7e h:9a599ce2 -->
+### 2026-11-26 06:52:01 UTC tool `exec`
+
+`{"command": "curl -s -o /tmp/g1.png -w \"%{http_code} %{size_download}\\n\" \"https://www.google.com/s2/favicons?domain=espn.com&sz=64\" --max-time 10; curl -s -o /tmp/g2.png -w \"%{http_code} %{size_download}\\n\" \"https://www.google.com/s2/favicons?domain=nypost.com&sz=128\" --max-time 10; curl -s -o /tmp/a1.png -w \"%{http_code} %{size_download}\\n\" -L \"https://nypost.com/apple-touch-icon.pn`
+
+```
+Output from command in shell ab073c:
+301 328
+301 331
+200 68
+/tmp/g1.png: HTML document, ASCII text, with CRLF, LF line terminators
+/tmp/g2.png: HTML document, ASCII text, with CRLF, LF line terminators
+/tmp/a1.png: PNG image data, 1 x 1, 8-bit gray+alpha, non-interlaced
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:ddae416b h:0ed2dae3 -->
+### 2026-11-26 06:52:11 UTC tool `exec`
+
+`{"command": "curl -sL -o /tmp/g1.png -w \"%{http_code} %{size_download}\\n\" \"https://www.google.com/s2/favicons?domain=espn.com&sz=128\" --max-time 10; curl -sL -o /tmp/g2.png -w \"%{http_code} %{size_download}\\n\" \"https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://nypost.com&size=64\" --max-time 10; file /tmp/g1.png /tmp/g2.png; curl -s -o /tm`
+
+```
+Output from command in shell 972b67:
+200 705
+200 1858
+/tmp/g1.png: PNG image data, 128 x 128, 8-bit colormap, non-interlaced
+/tmp/g2.png: PNG image data, 64 x 64, 8-bit colormap, non-interlaced
+200 24838
+/tmp/f1.ico: MS Windows icon resource - 4 icons, 16x16, 32 bits/pixel, 24x24, 32 bits/pixel
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:d9b0b7f1 h:39cb934f -->
+### 2026-11-26 06:52:56 UTC tool `exec`
+
+`{"command": "ls /home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/assets | grep -i -E \"^(newspaper|satellite|classical|mobile phone|performing|trophy|factory|chart increasing|speech balloon|television|globe|rolled-up)\" ; ls /home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/assets | grep -i -E \"flag\" | head -8; ls /home/bobbigmac/projects/cross-stitcher/lib/vendo`
+
+```
+Output from command in shell 7ad729:
+Chart increasing
+Chart increasing with yen
+Classical building
+Factory
+Factory worker
+Globe showing americas
+Globe showing asia-australia
+Globe showing europe-africa
+Globe with meridians
+Mobile phone
+Mobile phone off
+Mobile phone with arrow
+Newspaper
+Performing arts
+Rolled-up newspaper
+Satellite
+Satellite antenna
+Speech balloon
+Television
+Trophy
+Black flag
+Chequered flag
+Closed mailbox with lowered flag
+Closed mailbox with raised flag
+Crossed flags
+Flag in hole
+Open mailbox with lowered flag
+Open mailbox with raised flag
+Bookmark
+Bookmark tabs
+Card file box
+Card index
+Card index dividers
+File folder
+Globe showing americas
+Globe showing asia-australia
+Globe showing europe-africa
+Globe with meridians
+Label
+Memo
+Notebook
+Notebook with decorative cover
+Puzzle piece
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:a6f66d00 h:0df5fbf8 -->
+### 2026-11-26 06:53:02 UTC tool `exec`
+
+`{"command": "ls /home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/assets | grep -i -E \"^flag\" | head -12; ls \"/home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/assets/Newspaper\"; ls \"/home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/assets/Newspaper/Flat\" 2>/dev/null; ls \"/home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/assets`
+
+```
+Output from command in shell 5e2106:
+Flag in hole
+Color
+Flat
+High Contrast
+metadata.json
+newspaper_flat.svg
+newspaper_color.svg
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:47cd5123 h:306b9ef8 -->
+### 2026-11-26 06:53:19 UTC tool `exec`
+
+`{"command": "grep -n \"favicon\\|publicDir\\|public\" vite.config.js scripts/build.js | head -12; ls src/favicons/sprite.png src/public/favicons/sprite.png 2>&1; diff <(ls src/favicons | head -20) <(ls src/public/favicons | head -20) && echo SAME-NAMES || echo DIFFERENT", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 18dab1:
+scripts/build.js:7:import { collectSources } from './favicons.js';
+scripts/build.js:152:// The frontend uses the checked-in favicon spritesheet directly; the digest
+scripts/build.js:156:// --- Assemble the final public dataset ---
+scripts/build.js:157:const publicDigest = {
+scripts/build.js:169:writeFileSync(join(OUT_DIR, 'digest.json'), JSON.stringify(publicDigest, null, 2));
+ls: cannot access 'src/favicons/sprite.png': No such file or directory
+src/public/favicons/sprite.png
+1,20c1
+< abc.net.au.png
+< aljazeera.com.png
+< androidheadlines.com.png
+< arabianbusiness.com.png
+< arstechnica.com.png
+< axios.com.png
+< bbc.co.uk.png
+< belfastlive.co.uk.png
+< bgr.com.png
+< brecorder.com.png
+< businessday.ng.jpg
+< businessinsider.com.png
+< businesskorea.co.kr.png
+< cbsnews.com.png
+< chalkbeat.org.webp
+< channelnewsasia.com.png
+< cityam.com.png
+< colombiaone.com.png
+< courant.com.png
+< dailymail.com.png
+---
+> sprite.png
+DIFFERENT
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:52658c28 h:acba0077 -->
+### 2026-11-26 06:53:24 UTC tool `exec`
+
+`{"command": "grep -rn \"favicon\" vite.config.js; grep -rn \"publicDir\\|src/public\" vite.config.js scripts/build.js src/styles/favicon-sprite.css | head; cat vite.config.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell d03245:
+import { defineConfig } from 'vite';
+import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
+import { fileURLToPath, URL } from 'node:url';
+
+const CACHE_DIR = 'cache';
+
+function loadJson(file, fallback) {
+  try { return JSON.parse(readFileSync(file, 'utf8')); } catch { return fallback; }
+}
+
+export default defineConfig({
+  root: 'src',
+  base: './',
+  build: {
+    outDir: '../dist',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./src/index.html', import.meta.url)),
+        relationships: fileURLToPath(new URL('./src/relationships.html', import.meta.url)),
+      },
+    },
+  },
+  server: {
+    port: 8000,
+    open: '/',
+  },
+  define: {
+    // Inject digest data at build time for preview
+  },
+  plugins: [
+    {
+      name: 'inject-digest',
+      transformIndexHtml(html) {
+        // In dev, serve digest.json from cache; in build, it's copied separately
+        return html;
+      },
+      configureServer(server) {
+        // Serve cache/digest.json as /digest.json in dev
+        server.middlewares.use('/digest.json', (req, res, next) => {
+          const digestPath = join(CACHE_DIR, 'digest.json');
+          if (existsSync(digestPath)) {
+            const data = readFileSync(digestPath, 'utf8');
+            res.setHeader('Content-Type', 'application/json');
+            res.end(data);
+          } else {
+            res.statusCode = 404;
+            res.end('{}');
+          }
+        });
+        // Also serve run-log.json
+        server.middlewares.use('/run-log.json', (req, res, next) => {
+          const runLogPath = join(CACHE_DIR, 'run-log.json');
+          if (existsSync(runLogPath)) {
+            const data = readFileSync(runLogPath, 'utf8');
+            res.setHeader('Content-Type', 'application/json');
+            res.end(data);
+          } else {
+            res.statusCode = 404;
+            res.end('[]');
+          }
+        });
+      },
+    },
+  ],
+});
+
+
+E
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:write:01cb687b h:062b2698 -->
+### 2026-11-26 06:54:47 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-favicon-sprite.js", "content": "// Repeatable favicon sprite pipeline.\n//\n// Usage:\n//   node scripts/build-favicon-sprite.js            reuse good tiles, fetch missing/broken\n//   node scripts/build-favicon-sprite.js --no-fetch build sheet from existing tiles only\n//   node scripts/build-favicon-sprite.js --force host1,host`
+
+```
+Successfully wrote 12527 bytes (329 lines) to /home/bobbigmac/projects/bobdavies/news/scripts/build-favicon-sprite.js
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:d5c4536e h:a02ee8f3 -->
+### 2026-11-26 06:55:00 UTC tool `exec`
+
+`{"command": "ls /home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/assets | grep -i -E \"^(laptop|desktop|computer|radio|studio|microphone|video|movie|clapper|musical|game|video game|joystick|books|open book|graduation|microscope|test tube|pill|hospital|police|balance|scale|money|dollar|bank)\" | head -25"}`
+
+```
+Output from command in shell c1719f:
+Balance scale
+Bank
+Books
+Clapper board
+Computer disk
+Computer mouse
+Desktop computer
+Dollar banknote
+Game die
+Graduation cap
+Hospital
+Joystick
+Laptop
+Microphone
+Microscope
+Money bag
+Money-mouth face
+Money with wings
+Movie camera
+Musical keyboard
+Musical note
+Musical notes
+Musical score
+Open book
+Pill
+… (11 lines truncated)
+
+Exit code: 0
+
+`| head -25` was parsed out (25 of 36 total lines shown).
+<truncation_notice>
+Full output written to: /tmp/devin-overflows-1000/febbee5e/content.txt
+</truncation_notice>
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:72ece135 h:a6f5fc88 -->
+### 2026-11-26 06:55:20 UTC tool `exec`
+
+`{"command": "V=/home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/assets\nD=src/favicons/concepts\ncp \"$V/Card index dividers/Color/card_index_dividers_color.svg\" $D/other.svg 2>&1\ncp \"$V/Satellite antenna/Color/satellite_antenna_color.svg\" $D/wires.svg\ncp \"$V/Classical building/Color/classical_building_color.svg\" $D/official.svg\ncp \"$V/Mobile phone/Color/mobile_phone_colo`
+
+```
+Output from command in shell 2ff940:
+cp: cannot create regular file 'src/favicons/concepts/other.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/wires.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/official.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/mobile.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/entertainment.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/sports.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/hardware.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/industry.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/finance.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/social.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/newspaper.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/broadcast.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/globe-americas.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/globe-emea.svg': No such file or directory
+cp: cannot create regular file 'src/favicons/concepts/globe-asia.svg': No such file or directory
+ls: cannot access 'src/favicons/concepts': No such file or directory
+bash: line 18: src/favicons/concepts/ATTRIBUTION.md: No such file or directory
+attribution-written
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:d565f574 h:ee87ade1 -->
+### 2026-11-26 06:55:31 UTC tool `exec`
+
+`{"command": "mkdir -p src/favicons/concepts && V=/home/bobbigmac/projects/cross-stitcher/lib/vendor/fluentui-emoji/assets && D=src/favicons/concepts &&\ncp \"$V/Card index dividers/Color/card_index_dividers_color.svg\" $D/other.svg &&\ncp \"$V/Satellite antenna/Color/satellite_antenna_color.svg\" $D/wires.svg &&\ncp \"$V/Classical building/Color/classical_building_color.svg\" $D/official.svg &&\nc`
+
+```
+Output from command in shell 6517ed:
+15
+copied
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:ccf89598 h:71072cea -->
+### 2026-11-26 06:55:42 UTC tool `exec`
+
+`{"command": "cat > src/favicons/concepts/ATTRIBUTION.md <<'EOF'\nSVGs in this directory are from microsoft/fluentui-emoji (MIT licence).\nhttps://github.com/microsoft/fluentui-emoji\n\nMIT License\n\nCopyright (c) Microsoft Corporation.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\ni`
+
+```
+Output from command in shell a486ed:
+done
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:dd6b7f71 h:6cc28c43 -->
+### 2026-11-26 06:55:57 UTC tool `exec`
+
+`{"command": "grep -l \"Mobile & Software\\|Sports Press\\|Hardware Guides\" src/trees/sources/*.json; grep -n \"\\\"id\\\"\\|\\\"label\\\"\" src/trees/sources/specialist-press.json | head -30; grep -n \"\\\"id\\\"\\|\\\"label\\\"\" src/trees/sources/us-media.json src/trees/sources/digital-publishers.json src/trees/sources/wires-releases.json src/trees/sources/official-organizations.json src/trees/`
+
+```
+Output from command in shell 93569a:
+src/trees/sources/specialist-press.json
+2:  "id": "specialist-press",
+3:  "label": "Specialist Press",
+7:      "id": "gaming-press",
+8:      "label": "Gaming Press",
+12:          "id": "gaming-press-major",
+13:          "label": "Major Gaming Outlets",
+17:              "id": "eurogamer",
+18:              "label": "Eurogamer",
+25:              "id": "kotaku",
+26:              "label": "Kotaku",
+33:              "id": "ign",
+34:              "label": "IGN",
+43:          "id": "gaming-press-networks",
+44:          "label": "Gaming Networks",
+74:          "id": "gaming-platforms",
+75:          "label": "Gaming Platforms",
+88:      "id": "science-health-press",
+89:      "label": "Science & Health Press",
+93:          "id": "science-xpress",
+94:          "label": "Science Xpress",
+98:              "id": "phys-org",
+99:              "label": "Phys.org",
+106:              "id": "medical-xpress",
+107:              "label": "Medical Xpress",
+114:              "id": "tech-xplore",
+115:              "label": "Tech Xplore",
+124:          "id": "science-popular",
+125:          "label": "Popular Science",
+129:              "id": "science-aggregators",
+130:              "label": "Science Aggregators",
+src/trees/sources/us-media.json:2:  "id": "us-media",
+src/trees/sources/us-media.json:3:  "label": "US Media",
+src/trees/sources/us-media.json:7:      "id": "us-nationals",
+src/trees/sources/us-media.json:8:      "label": "US Nationals",
+src/trees/sources/us-media.json:12:          "id": "nytimes",
+src/trees/sources/us-media.json:13:          "label": "New York Times",
+src/trees/sources/us-media.json:20:          "id": "billionaire-backed-nationals",
+src/trees/sources/us-media.json:21:          "label": "Owner-backed Nationals",
+src/trees/sources/us-media.json:31:          "id": "independent-city-papers",
+src/trees/sources/us-media.json:32:          "label": "Independent City Papers",
+src/trees/sources/us-media.json:44:      "id": "us-local",
+src/t
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:8af142d4 h:fd38dd47 -->
+### 2026-11-26 06:56:04 UTC tool `exec`
+
+`{"command": "grep -n \"mobile-software\\|entertainment-culture\\|sports-press\\|hardware-guides\\|industry-b2b\\|retail-investor\\|social-tech\\|business-newsweeklies\\|ukraine-media\\|latin-america\\|singapore\\|thailand\\|japan-media\\|korea-companion\\|uk-regional\\|mobile-soft\" src/trees/sources/*.json | head -25; grep -n \"\\\"id\\\"\" src/trees/sources/wires-releases.json src/trees/sources/`
+
+```
+Output from command in shell 5b72e2:
+src/trees/sources/regional-english.json:243:          "id": "korea-companion-media",
+src/trees/sources/regional-english.json:286:      "id": "singapore-media",
+src/trees/sources/regional-english.json:301:      "id": "thailand-media",
+src/trees/sources/regional-english.json:307:        "thailand-business-news.com",
+src/trees/sources/regional-english.json:308:        "nationthailand.com",
+src/trees/sources/regional-english.json:314:      "id": "japan-media",
+src/trees/sources/regional-english.json:395:      "id": "ukraine-media",
+src/trees/sources/regional-english.json:408:      "id": "latin-america-media",
+src/trees/sources/specialist-press.json:229:              "id": "business-newsweeklies",
+src/trees/sources/specialist-press.json:259:              "id": "retail-investor",
+src/trees/sources/specialist-press.json:383:              "id": "social-tech",
+src/trees/sources/specialist-press.json:421:              "id": "hardware-guides",
+src/trees/sources/specialist-press.json:437:          "id": "mobile-software",
+src/trees/sources/specialist-press.json:457:          "id": "industry-b2b",
+src/trees/sources/specialist-press.json:514:      "id": "entertainment-culture",
+src/trees/sources/specialist-press.json:560:      "id": "sports-press",
+src/trees/sources/uk-media.json:204:      "id": "uk-regional",
+src/trees/sources/wires-releases.json:2:  "id": "wires-releases",
+src/trees/sources/wires-releases.json:7:      "id": "news-wires",
+src/trees/sources/wires-releases.json:25:      "id": "press-releases",
+src/trees/sources/official-organizations.json:2:  "id": "official-organizations",
+src/trees/sources/official-organizations.json:7:      "id": "microsoft",
+src/trees/sources/official-organizations.json:19:      "id": "nasa",
+src/trees/sources/official-organizations.json:28:      "id": "public-bodies",
+src/trees/sources/official-organizations.json:41:      "id": "research-organizations",
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:e13c751f h:a2d9f1c5 -->
+### 2026-11-26 06:56:17 UTC tool `exec`
+
+`{"command": "node --input-type=module - <<'NODE'\nimport { readFileSync, writeFileSync } from 'fs';\nconst patches = {\n  'specialist-press': {\n    'business-newsweeklies': 'concept:newspaper',\n    'retail-investor': 'concept:finance',\n    'social-tech': 'concept:social',\n    'hardware-guides': 'concept:hardware',\n    'mobile-software': 'concept:mobile',\n    'industry-b2b': 'concept:industry`
+
+```
+Output from command in shell 3aeee3:
+specialist-press patched: NONE
+regional-english patched: NONE
+uk-media patched: NONE
+us-media patched: NONE
+wires-releases patched: NONE
+official-organizations patched: NONE
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:09b05a64 h:8909bcaf -->
+### 2026-11-26 06:56:36 UTC tool `exec`
+
+`{"command": "node --input-type=module - <<'NODE'\nimport { readFileSync } from 'fs';\nconst tree = JSON.parse(readFileSync('src/trees/sources/specialist-press.json','utf8'));\nfunction find(node, id, path=[]) {\n  if (node.id === id) return [...path, node.id];\n  for (const c of node.children || []) {\n    const r = find(c, id, [...path, node.id]);\n    if (r) return r;\n  }\n  return null;\n}\nco`
+
+```
+Output from command in shell c8df48:
+mobile-software at: [ 'specialist-press', 'technology-press', 'mobile-software' ]
+top children: [
+  'gaming-press',
+  'science-health-press',
+  'business-money',
+  'technology-press',
+  'entertainment-culture',
+  'sports-press'
+]
+file:///home/bobbigmac/projects/bobdavies/news/[eval1]:16
+  for (const c of node.children||[]) { const r = node(c, id); if (r) return r; }
+                                                 ^
+
+TypeError: node is not a function
+    at node (file:///home/bobbigmac/projects/bobdavies/news/[eval1]:16:50)
+    at file:///home/bobbigmac/projects/bobdavies/news/[eval1]:19:11
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async node:internal/modules/esm/loader:230:26
+    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:227:20)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.16.0
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:6163b8e1 h:4b6dbf88 -->
+### 2026-11-26 06:56:47 UTC tool `exec`
+
+`{"command": "grep -n \"icon\" src/trees/sources/specialist-press.json | head; node --input-type=module - <<'NODE'\nimport { readFileSync } from 'fs';\nconst tree = JSON.parse(readFileSync('src/trees/sources/specialist-press.json','utf8'));\nfunction walk(node, hits) {\n  if (node.id === 'sports-press' || node.id === 'mobile-software') hits.push(node.id, JSON.stringify(Object.keys(node)));\n  for (`
+
+```
+Output from command in shell 04d1ad:
+4:  "icon": "eurogamer.net",
+9:      "icon": "eurogamer.net",
+14:          "icon": "eurogamer.net",
+19:              "icon": "eurogamer.net",
+27:              "icon": "kotaku.com",
+35:              "icon": "ign.com",
+45:          "icon": "gamespot.com",
+76:          "icon": "news.xbox.com",
+90:      "icon": "phys.org",
+95:          "icon": "phys.org",
+[
+  'mobile-software',
+  '["id","label","icon","sources"]',
+  'sports-press',
+  '["id","label","icon","sources"]'
+]
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:db954348 h:49c58d7c -->
+### 2026-11-26 06:56:56 UTC tool `exec`
+
+`{"command": "node --input-type=module - <<'NODE'\nimport { readFileSync, writeFileSync } from 'fs';\nconst patches = {\n  'specialist-press': {\n    'business-newsweeklies': 'concept:newspaper',\n    'retail-investor': 'concept:finance',\n    'social-tech': 'concept:social',\n    'hardware-guides': 'concept:hardware',\n    'mobile-software': 'concept:mobile',\n    'industry-b2b': 'concept:industry`
+
+```
+Output from command in shell 816743:
+specialist-press patched: business-newsweeklies, retail-investor, social-tech, hardware-guides, mobile-software, industry-b2b, entertainment-culture, sports-press
+regional-english patched: korea-companion-media, singapore-media, thailand-media, japan-media, ukraine-media, latin-america-media
+uk-media patched: uk-regional
+us-media patched: us-broadcast
+wires-releases patched: news-wires, press-releases
+official-organizations patched: public-bodies, research-organizations
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:13d15180 h:7775ab53 -->
+### 2026-11-26 06:57:12 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/source-groups.js", "old_string": "      label: 'Other Sources',\n      icon: otherSources[0]?.icon || otherSources[0]?.key,", "new_string": "      label: 'Other Sources',\n      icon: 'concept:other',"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/source-groups.js' - made 1 replacement(s). 2 line(s) removed, 2 line(s) added at line 81.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:01180ad0 h:136117cc -->
+### 2026-11-26 06:57:22 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-favicon-sprite.js", "old_string": "const conceptIcons = [...collectConceptIcons(SOURCE_RELATION_TREE).keys()];", "new_string": "const conceptIcons = [...new Set([\n  'other', // Other Sources bucket is synthesized in source-groups.js, not the tree\n  ...collectConceptIcons(SOURCE_RELATION_TREE).keys(),\n])];"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/build-favicon-sprite.js' - made 1 replacement(s). 1 line(s) removed, 4 line(s) added at line 83.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:c2f8ffe2 h:c1403881 -->
+### 2026-11-26 06:57:40 UTC tool `exec`
+
+`{"command": "node scripts/build-favicon-sprite.js 2>&1 | tail -40", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 280000, "shell_id": "spritebuild"}`
+
+```
+needed hosts: 948, concept icons: 15
+  + 01net.com fetched (ok)
+  + 13newsnow.com fetched (ok)
+
+===
+Stopped waiting for output after 14.6 seconds. Command running in background with ID: spritebuild. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:kill_shell:492216a6 h:08e74c30 -->
+### 2026-11-26 06:57:50 UTC tool `kill_shell`
+
+`{"shell_id": "spritebuild"}`
+
+```
+Shell spritebuild terminated successfully
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:6573aa01 h:a76f4d54 -->
+### 2026-11-26 06:57:56 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-favicon-sprite.js", "old_string": "  for (const [host, count] of counts) if (count >= 10) digestHosts.add(host);", "new_string": "  for (const [host, count] of counts) if (count >= 20) digestHosts.add(host);"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/build-favicon-sprite.js' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 69.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:7d6ae9eb h:39666c87 -->
+### 2026-11-26 06:58:10 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-favicon-sprite.js", "old_string": "const tiles = new Map();\nlet fetched = 0, cached = 0, failed = 0;\nfor (const host of [...neededHosts].sort()) {\n  try {\n    const tile = await tileForHost(host);\n    if (tile.png) {\n      tiles.set(host, tile.png);\n      if (tile.source === 'cache') cached++;\n      else { fetched++; cons`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/build-favicon-sprite.js' - made 1 replacement(s). 18 line(s) removed, 24 line(s) added at line 253.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:10694146 h:9c90fb6a -->
+### 2026-11-26 06:58:34 UTC tool `exec`
+
+`{"command": "node scripts/build-favicon-sprite.js 2>&1 | tail -60", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 280000, "shell_id": "spritebuild2"}`
+
+```
+needed hosts: 945, concept icons: 15
+  + 4bc.com.au fetched (ok)
+  + 6abc.com fetched (ok)
+  + 6pr.com.au fetched (ok)
+  + 90min.com fetched (ok)
+  + 9news.com.au fetched (ok)
+  + 9to5google.com fetched (ok)
+  + 9to5mac.com fetched (ok)
+  + aa.com.tr fetched (ok)
+  + abc11.com fetched (ok)
+  + abc13.com fetched (ok)
+  + abc30.com fetched (ok)
+  + abc7.com fetched (ok)
+  + abc7chicago.com fetched (ok)
+  + abc7news.com fetched (ok)
+  + abc7ny.com fetched (ok)
+  + abcnews.com fetched (ok)
+  + abcnews.go.com fetched (ok)
+  + abs-cbn.com fetched (ok)
+
+===
+Stopped waiting for output after 20.2 seconds. Command running in background with ID: spritebuild2. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:40aca54f h:179c725e -->
+### 2026-11-26 06:58:47 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/filter-bar.css", "old_string": ".source-toggle {\n  position: relative;\n  width: 40px;\n  height: 40px;\n  flex: 0 0 auto;\n  border: 1px solid var(--ink);\n  border-radius: 4px;\n  background: var(--ink);\n  color: var(--paper);\n  cursor: pointer;\n  padding: 0;\n  display: grid;\n  place-items: center;\n  transition: opacity 0.1`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/filter-bar.css' - made 1 replacement(s). 54 line(s) removed, 33 line(s) added at line 25.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:581401bb h:d98755fc -->
+### 2026-11-26 06:58:56 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/filter-bar.css", "old_string": ".source-toggle .source-sprite {\n  position: absolute;\n  inset: 4px;\n  width: 32px;\n  height: 32px;\n  border-radius: 3px;\n  background-color: #fff;\n  pointer-events: none;\n}\n\n.source-count {\n  position: absolute;\n  right: -5px;\n  bottom: -5px;\n  min-width: 17px;\n  height: 17px;\n  paddin`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/filter-bar.css' - made 1 replacement(s). 28 line(s) removed, 27 line(s) added at line 66.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:c6aac5f9 h:d3b40db4 -->
+### 2026-11-26 06:59:09 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/filter-bar.css", "old_string": ".source-toggle {\n  position: relative;\n  width: 30px;\n  height: 30px;\n  flex: 0 0 auto;\n  border: none;\n  border-radius: 5px;\n  background: transparent;\n  color: var(--ink);\n  cursor: pointer;\n  padding: 0;\n  display: grid;\n  place-items: center;\n  transition: opacity 0.15s, filter 0.15s,`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/filter-bar.css' - made 1 replacement(s). 15 line(s) removed, 15 line(s) added at line 25.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:740e8027 h:3ccf11ea -->
+### 2026-11-26 06:59:16 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/filter-bar.css", "old_string": ".source-toggle .source-sprite {\n  position: absolute;\n  inset: 1px;\n  width: 28px;\n  height: 28px;\n  border-radius: 4px;\n  pointer-events: none;\n}", "new_string": ".source-toggle .source-sprite {\n  position: absolute;\n  inset: 0;\n  width: 32px;\n  height: 32px;\n  border-radius: 4px;\n  poin`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/filter-bar.css' - made 1 replacement(s). 8 line(s) removed, 8 line(s) added at line 66.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:fa6368b8 h:58466417 -->
+### 2026-11-26 06:59:22 UTC tool `exec`
+
+`{"command": "ls src/*.js | head -20; grep -rln \"masonry\\|Masonry\" src/*.js src/styles/*.css 2>/dev/null", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 361b13:
+src/app.js
+src/article.js
+src/changelog.js
+src/favicon-sprite.js
+src/feed.js
+src/filters.js
+src/group-tree.js
+src/layout.js
+src/ordering.js
+src/reading.js
+src/relationships.js
+src/search.js
+src/settings.js
+src/signals.js
+src/source-groups.js
+src/source-profiles.js
+src/source-tree.js
+src/state.js
+src/story-groups.js
+src/story-tree.js
+src/app.js
+src/feed.js
+src/layout.js
+src/reading.js
+src/state.js
+src/styles/filter-bar.css
+src/styles/responsive.css
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:2bf6c87d h:16bc82d5 -->
+### 2026-11-26 07:00:18 UTC tool `exec`
+
+`{"command": "grep -n \"resize\\|initMasonry\\|renderFeed\" src/app.js src/state.js src/reading.js | head -20", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 9c8da2:
+src/app.js:10:import { clearFeed, renderFeed, syncFeedToSearch } from './feed.js';
+src/app.js:98:  renderFeed({
+src/app.js:245:  // Re-layout Masonry on resize
+src/app.js:246:  let resizeTimer;
+src/app.js:247:  window.addEventListener('resize', () => {
+src/app.js:248:    clearTimeout(resizeTimer);
+src/app.js:249:    resizeTimer = setTimeout(() => {
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:dfeae110 h:9749e3ba -->
+### 2026-11-26 07:00:51 UTC tool `exec`
+
+`{"command": "grep -n \"masonry\\|grid-item\\|broadsheet\" src/state.js src/reading.js src/styles/articles.css src/style.css src/styles/responsive.css 2>/dev/null | head -30", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell e57675:
+src/state.js:3:export const SETTINGS_KEY = 'broadsheet-settings';
+src/state.js:4:export const READ_KEY = 'broadsheet-read';
+src/state.js:5:export const GLIMPSE_KEY = 'broadsheet-glimpsed';
+src/state.js:6:export const CAT_PREFS_KEY = 'broadsheet-cat-prefs';
+src/state.js:7:export const INTEREST_KEY = 'broadsheet-interest';
+src/state.js:8:export const SOURCE_PREFS_KEY = 'broadsheet-source-prefs';
+src/state.js:9:export const SOURCE_DISABLED_KEY = 'broadsheet-source-disabled';
+src/state.js:122:  masonry: null,
+src/state.js:173:  const sheet = document.getElementById('broadsheet');
+src/state.js:174:  sheet.className = `broadsheet cols-${settings.columns}`;
+src/reading.js:47:// rest of the masonry underneath the reader.
+src/reading.js:94:  const sheet = document.getElementById('broadsheet');
+src/styles/articles.css:1:.broadsheet {
+src/styles/articles.css:8:.broadsheet.cols-1 { max-width: 700px; }
+src/styles/articles.css:252:.broadsheet-footer {
+src/styles/articles.css:261:.broadsheet-footer a {
+src/styles/responsive.css:3:  .broadsheet { max-width: 600px; }
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:d2a67dfd h:9122f89f -->
+### 2026-11-26 07:00:55 UTC tool `exec`
+
+`{"command": "sed -n '1,40p' src/styles/articles.css; sed -n '85,130p' src/reading.js; grep -n \"grid-item\" src/styles/*.css src/style.css | head", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 231468:
+.broadsheet {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  position: relative;
+}
+
+.broadsheet.cols-1 { max-width: 700px; }
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* Article (cluster) */
+.article {
+  --read-progress: 0;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Read-progress indicator — top border fills left-to-right */
+.article::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: calc(var(--read-progress, 0) * 100%);
+  background: #4a9;
+  transition: width 0.1s linear;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.article:last-child { border-bottom: none; }
+let readProgress = new Map(); // clusterId -> { progress, lastTs, articleEl, cluster }
+let readVisible = new Set(); // clusterIds with headline fully in viewport
+let readHoveredClusterId = null;
+let readLastActiveId = null; // the single article we're currently accumulating for
+let readCursorX = 0;
+let readCursorY = 0;
+let readActive = true; // false when cursor leaves container or tab is hidden
+
+export function initReadInteraction() {
+  const sheet = document.getElementById('broadsheet');
+
+  // Single mouseover listener — tracks which article the cursor is over
+  sheet.addEventListener('mouseover', (e) => {
+    const article = e.target.closest('.article');
+    readHoveredClusterId = article?.dataset?.clusterId || null;
+  });
+  sheet.addEventListener('mousemove', (e) => {
+    readCursorX = e.clientX;
+    readCursorY = e.clientY;
+    readActive = true;
+  });
+  sheet.addEventListener('mouseleave', () => { readHoveredClusterId = null; readActive = false; });
+  sheet.addEventListener('mouseenter', () => { readActive = true; });
+
+  // Pause when tab is hidden (user switched away)
+  document.addEventListener('visibilitychange', () => {
+    readActive = !document.hidden;
+    if (!readActive) {
+      
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:4d669ca4 h:8d3f7f6c -->
+### 2026-11-26 07:01:01 UTC tool `exec`
+
+`{"command": "grep -n \"grid-item\\|article-lazy\" src/article.js | head -8; grep -n \"sprite build\\|sheet:\" /dev/null; get_output 2>/dev/null; echo ---; tail -5 /dev/null", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 2dc92f:
+90:  article.className = 'article grid-item article-lazy';
+167:  article.className = 'article grid-item';
+---
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:get_output:62193455 h:28c91262 -->
+### 2026-11-26 07:01:34 UTC tool `get_output`
+
+`{"shell_id": "spritebuild2", "timeout": 30000}`
+
+```
+  - accesswire.com unfetchable
+  + adelaidenow.com.au fetched (ok)
+  + adomonline.com fetched (ok)
+  + adventuregamers.com fetched (ok)
+  + adweek.com fetched (ok)
+  - afp.com unfetchable
+  + afr.com fetched (ok)
+  + afro.who.int fetched (ok)
+  + al-monitor.com fetched (ok)
+  + al.com fetched (ok)
+  + allure.com fetched (ok)
+  - anadoluagency.com unfetchable
+  - anandtech.com unfetchable
+  + androidauthority.com fetched (ok)
+  + andscape.com fetched (ok)
+  + ansa.it fetched (ok)
+  + aol.com fetched (ok)
+  + apnews.com fetched (ok)
+  + app.com fetched (ok)
+  + apple.news fetched (ok)
+  - arabnews.com unfetchable
+  + arxiv.org fetched (ok)
+  + arynews.tv fetched (ok)
+  + asahi.com fetched (ok)
+  + askmen.com fetched (ok)
+  + atwoodmagazine.com fetched (ok)
+  + autoblog.com fetched (ok)
+  + azcentral.com fetched (ok)
+  + baltimoresun.com fetched (ok)
+  + bangkokpost.com fetched (ok)
+  + bankingdive.com fetched (ok)
+  + bankrate.com fetched (ok)
+  + barrons.com fetched (ok)
+  + batimes.com.ar fetched (ok)
+  + bbc.com fetched (ok)
+  + bbc.in fetched (ok)
+  - bbci.co.uk unfetchable
+  + belfasttelegraph.co.uk fetched (ok)
+  + bennadel.com fetched (ok)
+  + bestproducts.com fetched (ok)
+  + bicycling.com fetched (ok)
+  + billboard.com fetched (ok)
+  + billingsgazette.com fetched (ok)
+  + biopharmadive.com fetched (ok)
+  + biorxiv.org fetched (ok)
+  + birminghammail.co.uk fetched (ok)
+  + bleepingcomputer.com fetched (ok)
+  + blog.playstation.com fetched (ok)
+  + bloomberg.com fetched (ok)
+  + bmj.com fetched (ok)
+  + bnd.com fetched (ok)
+  + bolnews.com fetched (ok)
+  + bonappetit.com fetched (ok)
+  + bostonglobe.com fetched (ok)
+  + bradenton.com fetched (ok)
+  + braziljournal.com fetched (light-glyph-chipped)
+  - bristollive.co.uk unfetchable
+  + bristolpost.co.uk fetched (ok)
+  + buenosairesherald.com fetched (ok)
+  + buffalonews.com fetched (ok)
+  + business-standard.com fetched (ok)
+  + business.inquirer.net fetched (ok)
+  + businessday.ng fetched (ok)
+  + businesslive.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:99daa35d h:c71fb924 -->
+### 2026-11-26 07:01:59 UTC tool `exec`
+
+`{"command": "grep -rn \"appendGridItems\\|ui.relayout\\|state.masonry\" src/*.js | grep -v \"^src/layout.js\"", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 4be77e:
+src/app.js:106:ui.relayout = () => state.masonry?.layout();
+src/article.js:243:      ui.relayout();
+src/article.js:254:      ui.relayout();
+src/article.js:274:        ui.relayout();
+src/feed.js:39:    if (state.masonry) {
+src/feed.js:40:      state.masonry.destroy();
+src/feed.js:41:      state.masonry = null;
+src/feed.js:120:    if (relayout) state.masonry?.layout();
+src/feed.js:231:    state.masonry?.layout();
+src/search.js:110:    ui.relayout();
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:6c34f619 h:a4646c23 -->
+### 2026-11-26 07:02:25 UTC tool `exec`
+
+`{"command": "grep -n \"img\\|image\" src/article.js | head -12; grep -n \"img\\|image\" src/styles/articles.css | head -8", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 42fb75:
+43:  const withImage = (cluster.stories || []).filter(s => s.image && s.image !== 'None');
+187:  let imageHtml = '';
+188:  if (settings.images !== 'none') {
+190:    if (settings.images === 'all') {
+192:    } else if (settings.images === 'minimal') {
+194:    } else if (settings.images === 'latest') {
+198:      const imgStory = pickLeadImage(cluster);
+199:      if (imgStory) {
+200:        imageHtml = `<img class="article-image" src="${imgStory.image}" alt="" loading="lazy" onerror="this.style.display='none'">`;
+228:    ${imageHtml}
+116:.article-image {
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:1eb52230 h:1eb5b64e -->
+### 2026-11-26 07:02:28 UTC tool `exec`
+
+`{"command": "sed -n '110,135p' src/styles/articles.css", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 3fdf54:
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.article-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.article-summary {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0;
+}
+
+.article-summary .summary-full {
+  display: block;
+}
+
+.summary-short {
+  display: none;
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:write:5098e181 h:d986512c -->
+### 2026-11-26 07:02:54 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/layout.js", "content": "// Stable-column feed layout.\n//\n// Items are assigned to a column exactly once \u2014 greedily, by estimated height,\n// in feed order \u2014 and NEVER move afterwards. Columns are plain block flow, so\n// images loading, summaries expanding, or hydration resizing simply make a\n// column longer. No relayout pass`
+
+```
+Successfully wrote 2026 bytes (58 lines) to /home/bobbigmac/projects/bobdavies/news/src/layout.js
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:0cea15b4 h:eea30f2c -->
+### 2026-11-26 07:03:02 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/layout.js", "old_string": "// Kept as a no-op for callers that still reference it \u2014 flow columns need no\n// image-load relayout handling at all.\nexport function bindImageLayout() {}\n\nexport function initMasonry() {}\n\nexport function appendGridItems() {}", "new_string": "// Flow columns need no image-load relayout handling at all`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/layout.js' - made 1 replacement(s). 7 line(s) removed, 2 line(s) added at line 52.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:d31440c0 h:a0158473 -->
+### 2026-11-26 07:03:13 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/feed.js", "old_string": "import { populateArticleShell, renderArticle, renderArticleShell } from './article.js';\nimport { bindImageLayout, getGridMetrics, initMasonry } from './layout.js';\nimport { refreshGlimpseObserver, refreshReadObserver } from './reading.js';\nimport { clusterMatchesSearch, getSearchQuery, updateMarkReadButton } fro`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/feed.js' - made 1 replacement(s). 5 line(s) removed, 5 line(s) added at line 1.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:3513cb0b h:2b4a94ad -->
+### 2026-11-26 07:03:23 UTC tool `exec`
+
+`{"command": "sed -i 's/^import { refreshGlimpseObserver, refreshReadObserver } from/.&/' /dev/null; python3 - <<'EOF'\nimport re\np='src/feed.js'\ns=open(p).read()\n# remove masonry destroy in clear()\ns=s.replace(\"\"\"    if (state.masonry) {\n      state.masonry.destroy();\n      state.masonry = null;\n    }\n\"\"\",\"\")\n# remove bindImageLayout call in hydrate\ns=s.replace(\"\"\"    );\n    `
+
+```
+Output from command in shell ec6c21:
+sed: couldn't edit /dev/null: not a regular file
+done
+feed-ok
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:0e7e34d6 h:a2d183a6 -->
+### 2026-11-26 07:03:33 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/app.js", "old_string": "  // Re-layout Masonry on resize\n  let resizeTimer;\n  window.addEventListener('resize', () => {\n    clearTimeout(resizeTimer);\n    resizeTimer = setTimeout(() => {\n      if (state.digest) renderDigest(state.digest, state.settings);\n    }, 250);\n  });", "new_string": "  // Resize only re-renders when the colum`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/app.js' - made 1 replacement(s). 8 line(s) removed, 14 line(s) added at line 245.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:df3e5512 h:acf58e31 -->
+### 2026-11-26 07:03:39 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/app.js", "old_string": "ui.relayout = () => state.masonry?.layout();", "new_string": "// Flow columns lay themselves out; expanding content just grows its column.\nui.relayout = () => {};"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/app.js' - made 1 replacement(s). 1 line(s) removed, 2 line(s) added at line 106.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:570e2fa5 h:61ed8b7f -->
+### 2026-11-26 07:03:47 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/app.js", "old_string": "import { buildViewModel, filterByMode } from './view-model.js';", "new_string": "import { getColumnCount } from './layout.js';\nimport { buildViewModel, filterByMode } from './view-model.js';"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/app.js' - made 1 replacement(s). 1 line(s) removed, 2 line(s) added at line 1.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:20bdc01d h:0ac6cd6a -->
+### 2026-11-26 07:03:54 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/articles.css", "old_string": ".broadsheet {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 1.5rem 1rem;\n  position: relative;\n}", "new_string": ".broadsheet {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 1.5rem 1rem;\n  position: relative;\n  display: flex;\n  gap: 20px;\n  align-items: flex-start;\n}\n\n.feed-col {\`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/articles.css' - made 1 replacement(s). 6 line(s) removed, 14 line(s) added at line 1.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:2b808570 h:2deafa59 -->
+### 2026-11-26 07:04:03 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/articles.css", "old_string": ".article-image {\n  width: 100%;\n  height: auto;\n  margin-bottom: 0.75rem;\n  display: block;\n}", "new_string": ".article-image {\n  width: 100%;\n  height: auto;\n  /* Reserve a 16:9 box before the image loads (killing vertical jumps for\n     most news images); once loaded, the natural ratio takes `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/articles.css' - made 1 replacement(s). 6 line(s) removed, 9 line(s) added at line 124.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:7b691724 h:e6e51d5b -->
+### 2026-11-26 07:04:12 UTC tool `exec`
+
+`{"command": "grep -rn \"masonry\" src/ test/ 2>/dev/null | grep -v \"masonry-layout\"; grep -n \"loading\" src/styles/articles.css | head -2", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell e46ec1:
+src/state.js:122:  masonry: null,
+src/reading.js:47:// rest of the masonry underneath the reader.
+test/feed.test.js:57:    state.masonry = null;
+18:.loading {
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:091bfa4f h:b8f85667 -->
+### 2026-11-26 07:04:17 UTC tool `exec`
+
+`{"command": "sed -n '15,25p' src/styles/articles.css; sed -n '40,120p' test/feed.test.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell bf0b82:
+
+.broadsheet.cols-1 { max-width: 700px; }
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* Article (cluster) */
+    disconnect() { this.disconnected = true; }
+  }
+
+  beforeEach(() => {
+    localStorage.clear();
+    observers = [];
+    document.body.innerHTML = `
+      <input id="filter" value="">
+      <button id="mark-all-read" type="button"></button>
+      <main id="broadsheet"></main>
+    `;
+    state.settings = { ...DEFAULT_SETTINGS, images: 'none', markRead: 'off' };
+    state.readState = {};
+    state.glimpseState = {};
+    state.disabledSources = {};
+    state.sourceFilters = {};
+    state.interestState = {};
+    state.masonry = null;
+    vi.stubGlobal('IntersectionObserver', FakeIntersectionObserver);
+    clearFeed();
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  function mount(clusters) {
+    state.digest = { clusters };
+    state.visibleClusters = clusters;
+    renderFeed({
+      clusters,
+      settings: state.settings,
+      pluginLeadIds: new Set(),
+      latestReferenceTime: Date.now(),
+    });
+  }
+
+  it('creates one lightweight node per story without hydrating contents', () => {
+    const clusters = Array.from({ length: 120 }, (_, i) => cluster(`c${i}`));
+    mount(clusters);
+
+    const articles = [...document.querySelectorAll('.article')];
+    expect(articles).toHaveLength(120);
+    expect(document.querySelectorAll('.article-lazy')).toHaveLength(120);
+    expect(articles.every(article => article.style.height)).toBe(true);
+    expect(getFeedRenderState()).toMatchObject({ hydrated: 0, total: 120 });
+  });
+
+  it('hydrates near articles and unloads them while preserving measured height', () => {
+    const clusters = [cluster('a'), cluster('b')];
+    mount(clusters);
+    const article = document.querySelector('.article');
+    const feedObserver = observers[0];
+
+    feedObserver.callback([{ target: article, isIntersecting: true }]);
+    expect(article
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:c28e2a4a h:f46a031e -->
+### 2026-11-26 07:04:25 UTC tool `exec`
+
+`{"command": "sed -n '115,130p' src/state.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 2a7855:
+}
+
+export const state = {
+  digest: null,
+  settings: loadSettings(),
+  visibleClusters: [],
+  viewModel: null,
+  masonry: null,
+  readState: loadJson(READ_KEY, {}),
+  glimpseState: loadJson(GLIMPSE_KEY, {}),
+  catPrefs: loadCatPrefs(),
+  sourceFilters: loadJson(SOURCE_PREFS_KEY, {}),
+  disabledSources: loadJson(SOURCE_DISABLED_KEY, {}),
+  interestState: loadJson(INTEREST_KEY, {}),
+};
+
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:bb4f28c4 h:c87038fa -->
+### 2026-11-26 07:04:33 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/state.js", "old_string": "  viewModel: null,\n  masonry: null,\n  readState: loadJson(READ_KEY, {}),", "new_string": "  viewModel: null,\n  readState: loadJson(READ_KEY, {}),"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/state.js' - made 1 replacement(s). 3 line(s) removed, 2 line(s) added at line 121.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:459c25d7 h:8738cda6 -->
+### 2026-11-26 07:04:40 UTC tool `exec`
+
+`{"command": "npx vitest run test/feed.test.js 2>&1 | tail -8", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 120000}`
+
+```
+Output from command in shell a4af9d:
+… (4 lines truncated)
+   [32m✓[39m feed view manager [2m(5)[22m
+     [33m[2m✓[22m[39m creates one lightweight node per story without hydrating contents[33m 339[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m5 passed[39m[22m[90m (5)[39m
+[2m   Start at [22m 07:04:37
+[2m   Duration [22m 2.80s[2m (environment 62%, tests 17%, transform 15%, import 5%)[22m
+
+
+Exit code: 0
+
+`| tail -8` was parsed out (8 of 12 total lines shown).
+<truncation_notice>
+Full output written to: /tmp/devin-overflows-1000/d4272ff0/content.txt
+</truncation_notice>
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:get_output:d2c19e7b h:6cb51a3c -->
+### 2026-11-26 07:05:04 UTC tool `get_output`
+
+`{"shell_id": "spritebuild2", "timeout": 20000}`
+
+```
+  + chalkbeat.org fetched (ok)
+  + channel4.com fetched (ok)
+  + charlotteobserver.com fetched (ok)
+  + cheshire-live.co.uk fetched (ok)
+  + chiangraitimes.com fetched (light-glyph-chipped)
+  + chicagotribune.com fetched (ok)
+  + chinadaily.com.cn fetched (ok)
+  + chosun.com fetched (ok)
+  + chroniclelive.co.uk fetched (ok)
+  + cio.com fetched (ok)
+  + citinewsroom.com fetched (ok)
+  + citizen.co.za fetched (ok)
+  + cityam.com fetched (ok)
+  + clarionledger.com fetched (ok)
+  + cleveland.com fetched (ok)
+  + cnaluxury.channelnewsasia.com fetched (ok)
+  + cnbc.com fetched (ok)
+  + cnet.com fetched (ok)
+  + cnn.com fetched (ok)
+  + cntraveler.com fetched (ok)
+  + comicbook.com fetched (ok)
+  + comingsoon.net fetched (ok)
+  + commercialappeal.com fetched (ok)
+  + complianceweek.com fetched (light-glyph-chipped)
+  - connecticutpost.com unfetchable
+  + constructiondive.com fetched (ok)
+  + cornwalllive.com fetched (ok)
+  + cosmopolitan.com fetched (ok)
+  + countrylife.co.uk fetched (ok)
+  + countryliving.com fetched (ok)
+  + courant.com fetched (ok)
+  + courier-journal.com fetched (ok)
+  + couriermail.com.au fetched (ok)
+  + creativebloq.com fetched (ok)
+  + crikey.com.au fetched (ok)
+  + csoonline.com fetched (ok)
+  + curbed.com fetched (ok)
+  + cw33.com fetched (ok)
+  + cybersecuritydive.com fetched (ok)
+  + dailypress.com fetched (ok)
+  + dailyrecord.co.uk fetched (ok)
+  + dailystar.co.uk fetched (ok)
+  + dailytelegraph.com.au fetched (ok)
+  + dailytrust.com fetched (ok)
+  + dawn.com fetched (ok)
+  + deadline.com fetched (ok)
+  + decider.com fetched (ok)
+  + delish.com fetched (ok)
+  + democratandchronicle.com fetched (ok)
+  + denver7.com fetched (ok)
+  + derbyshirelive.co.uk fetched (ok)
+  + derstandard.at fetched (ok)
+  + desmoinesregister.com fetched (ok)
+  + destructoid.com fetched (ok)
+  - detik.com unfetchable
+  + detroitnews.com fetched (ok)
+  + devonlive.com fetched (ok)
+  + digiday.com fetched (ok)
+  + digitaltrends.com fetched (light-glyph-chipped)
+  + dispa
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:bc2c674e h:486ec458 -->
+### 2026-11-26 07:05:15 UTC tool `exec`
+
+`{"command": "npm uninstall masonry-layout 2>&1 | tail -2", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 60000}`
+
+```
+Output from command in shell 4d0ea4:
+… (13 lines truncated)
+
+Run `npm audit` for details.
+
+Exit code: 0
+
+`| tail -2` was parsed out (2 of 15 total lines shown).
+<truncation_notice>
+Full output written to: /tmp/devin-overflows-1000/728bf418/content.txt
+</truncation_notice>
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:a400c56e h:6110400c -->
+### 2026-11-26 07:05:21 UTC tool `exec`
+
+`{"command": "ls test/; sed -n '1,30p' test/feed.test.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 1d4ed7:
+build-output.test.js
+catchup.test.js
+feed.test.js
+filter-bar.test.js
+glimpse.test.js
+manage-panels.test.js
+pipeline.test.js
+relationships.test.js
+story-groups.test.js
+view-model.test.js
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import {
+  clearFeed,
+  getFeedRenderState,
+  renderFeed,
+  syncFeedToSearch,
+} from '../src/feed.js';
+import { DEFAULT_SETTINGS, state } from '../src/state.js';
+
+function cluster(id, headline = `Story ${id}`) {
+  return {
+    id,
+    headline,
+    summary: `${headline} summary`,
+    category: 'Science',
+    contentVersion: 1,
+    created: new Date().toISOString(),
+    updated: new Date().toISOString(),
+    stories: [{
+      id: `${id}-story`,
+      title: headline,
+      url: `https://example.com/${id}`,
+      sourceName: 'Example',
+      published: new Date().toISOString(),
+    }],
+  };
+}
+
+describe('feed view manager', () => {
+  let observers;
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:write:c7cb75f8 h:2320c577 -->
+### 2026-11-26 07:05:35 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/test/layout.test.js", "content": "import { beforeEach, describe, expect, it } from 'vitest';\nimport { layoutColumns } from '../src/layout.js';\nimport { DEFAULT_SETTINGS, state } from '../src/state.js';\n\nfunction item(id) {\n  const el = document.createElement('div');\n  el.className = 'grid-item';\n  el.dataset.id = id;\n  return el;\n}\n\`
+
+```
+Successfully wrote 2638 bytes (62 lines) to /home/bobbigmac/projects/bobdavies/news/test/layout.test.js
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:d161cf3e h:a16ceb89 -->
+### 2026-11-26 07:05:45 UTC tool `exec`
+
+`{"command": "npx vitest run test/layout.test.js test/feed.test.js 2>&1 | tail -8", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 120000}`
+
+```
+Output from command in shell 6a934a:
+… (3 lines truncated)
+ [32m✓[39m test/layout.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 65[2mms[22m[39m
+ [32m✓[39m test/feed.test.js [2m([22m[2m5 tests[22m[2m)[22m[33m 366[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m9 passed[39m[22m[90m (9)[39m
+[2m   Start at [22m 07:05:41
+[2m   Duration [22m 3.11s[2m (environment 68%, transform 18%, tests 9%, import 4%)[22m
+
+
+Exit code: 0
+
+`| tail -8` was parsed out (8 of 11 total lines shown).
+<truncation_notice>
+Full output written to: /tmp/devin-overflows-1000/4c792808/content.txt
+</truncation_notice>
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:0b9f6203 h:64092a99 -->
+### 2026-11-26 07:06:13 UTC tool `exec`
+
+`{"command": "npm run build 2>&1 | tail -6", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 180000, "shell_id": "mainbuild"}`
+
+```
+> build
+> vite build && node scripts/build.js
+
+vite v8.1.4 building client environment for production...
+[2K
+transforming...
+../favicons/sprite.png referenced in ../favicons/sprite.png didn't resolve at build time, it will remain unchanged to be resolved at runtime
+✓ 65 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/relationships.html                  4.66 kB │ gzip:  1.89 kB
+dist/index.html                          9.48 kB │ gzip:  2.57 kB
+dist/assets/relationships-CPchJ1Fc.css   5.17 kB │ gzip:  1.49 kB
+dist/assets/story-groups-C4WIzwmL.css   24.72 kB │ gzip:  5.16 kB
+dist/assets/relationships-BMAZ_jFS.js   31.44 kB │ gzip: 11.01 kB
+dist/assets/main-wbXG4qzE.js            44.82 kB │ gzip: 13.10 kB
+dist/assets/story-groups-DIZ8ALWu.js    90.19 kB │ gzip: 31.57 kB
+
+✓ built in 406ms
+
+===
+Stopped waiting for output after 11.1 seconds. Command running in background with ID: mainbuild. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:8cb97369 h:2cd8b975 -->
+### 2026-11-26 07:06:20 UTC tool `exec`
+
+`{"command": "grep -n \"broadsheet-v\" src/sw.js | head -2", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell e5bf1d:
+1:const CACHE = 'broadsheet-v4';
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:PostCompaction:0eba4d9b-196e-44af-9d87-cad495fc7b76 h:67f2189e -->
+### 2026-11-26 07:06:21 UTC · postcompaction 
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:get_output:1edae9ce h:9c418739 -->
+### 2026-11-26 07:06:50 UTC tool `get_output`
+
+`{"shell_id": "spritebuild2", "timeout": 15000}`
+
+```
+  + hrdive.com fetched (ok)
+  + huffpost.com fetched (ok)
+  + hulldailymail.co.uk fetched (ok)
+  + humnews.pk fetched (ok)
+  + hypebeast.com fetched (ok)
+  + icode4.coffee fetched (ok)
+  + idahostatesman.com fetched (ok)
+  + idealhome.co.uk fetched (ok)
+  + ilsole24ore.com fetched (ok)
+  + in.mashable.com fetched (ok)
+  + inc42.com fetched (ok)
+  + independent.ie fetched (ok)
+  + indiewire.com fetched (ok)
+  + indystar.com fetched (ok)
+  + inews.co.uk fetched (ok)
+  + insider.com fetched (ok)
+  + interaksyon.com fetched (ok)
+  + interfax.com fetched (light-glyph-chipped)
+  + iol.co.za fetched (ok)
+  + iphon.fr fetched (ok)
+  + iranintl.com fetched (ok)
+  + israelhayom.com fetched (ok)
+  + itpro.com fetched (ok)
+  + itv.com fetched (ok)
+  + jakartaglobe.id fetched (light-glyph-chipped)
+  + jamanetwork.com fetched (ok)
+  + japantimes.co.jp fetched (ok)
+
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:7a4e2194 h:2c58b737 -->
+### 2026-11-26 07:06:55 UTC tool `exec`
+
+`{"command": "grep -rn \"masonry\\|Masonry\" src/ test/ scripts/*.js 2>/dev/null | grep -v node_modules | head -10; echo ---; grep -rn \"relayout\" src/ | head -5", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell e90b5b:
+src/styles/responsive.css:1:/* Responsive — Masonry handles column count via JS */
+src/styles/filter-bar.css:227:/* Broadsheet layout — Masonry handles positioning */
+src/reading.js:47:// rest of the masonry underneath the reader.
+test/feed.test.js:57:    state.masonry = null;
+---
+src/state.js:135:  relayout() {},
+src/app.js:108:ui.relayout = () => {};
+src/search.js:110:    ui.relayout();
+src/article.js:243:      ui.relayout();
+src/article.js:254:      ui.relayout();
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:62dfaf3c h:88cc66bf -->
+### 2026-11-26 07:07:16 UTC tool `exec`
+
+`{"command": "grep -n \"aspect-ratio\\|min-height\" src/styles/articles.css | head -8; grep -n \"feed-col\\|flex\" src/styles/articles.css | head -10", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 098103:
+52:  min-height: 6rem;
+129:  aspect-ratio: auto 16 / 9;
+6:  display: flex;
+8:  align-items: flex-start;
+11:.feed-col {
+12:  flex: 1 1 0;
+60:  display: flex;
+81:  display: flex;
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:0da98811 h:4a96a302 -->
+### 2026-11-26 07:07:21 UTC tool `exec`
+
+`{"command": "sed -n '1,3p' src/styles/responsive.css; sed -n '225,230p' src/styles/filter-bar.css; sed -n '54,60p' test/feed.test.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 280932:
+/* Responsive — Masonry handles column count via JS */
+@media (max-width: 768px) {
+  .broadsheet { max-width: 600px; }
+}
+
+/* Broadsheet layout — Masonry handles positioning */
+    state.disabledSources = {};
+    state.sourceFilters = {};
+    state.interestState = {};
+    state.masonry = null;
+    vi.stubGlobal('IntersectionObserver', FakeIntersectionObserver);
+    clearFeed();
+  });
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:8f2e31aa h:c46ae539 -->
+### 2026-11-26 07:07:37 UTC tool `exec`
+
+`{"command": "python3 - <<'EOF'\nimport re\np='src/styles/responsive.css'\ns=open(p).read()\ns=s.replace('/* Responsive \u2014 Masonry handles column count via JS */','/* Responsive \u2014 column count follows JS breakpoint logic in layout.js */')\nopen(p,'w').write(s)\np='src/styles/filter-bar.css'\ns=open(p).read()\ns=s.replace('/* Broadsheet layout \u2014 Masonry handles positioning */','/* Broa`
+
+```
+Output from command in shell ab2e7e:
+done
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:get_output:f7f86254 h:928bf2eb -->
+### 2026-11-26 07:08:01 UTC tool `get_output`
+
+`{"shell_id": "spritebuild2", "timeout": 15000}`
+
+```
+  + japantoday.com fetched (ok)
+  + journaldugeek.com fetched (ok)
+  + journalnow.com fetched (ok)
+  + journalstar.com fetched (ok)
+  + jsonline.com fetched (ok)
+  + kansas.com fetched (ok)
+  + kansascity.com fetched (ok)
+  + kare11.com fetched (ok)
+  + katu.com fetched (ok)
+  - kbc.co.ke unfetchable
+  + keloland.com fetched (ok)
+  + kentlive.news fetched (ok)
+  + kentucky.com fetched (ok)
+  + kenyans.co.ke fetched (ok)
+  + kffhealthnews.org fetched (ok)
+  + kgwn.tv fetched (ok)
+  + khaleejtimes.com fetched (ok)
+  + khaosodenglish.com fetched (ok)
+  + khou.com fetched (ok)
+  + king5.com fetched (ok)
+  + kjrh.com fetched (ok)
+  + kktv.com fetched (ok)
+  + knoxnews.com fetched (ok)
+  + kolotv.com fetched (ok)
+  + komonews.com fetched (ok)
+  + kompas.com fetched (ok)
+  + koreaherald.com fetched (light-glyph-chipped)
+  + koreaittimes.com fetched (ok)
+  + koreajoongangdaily.joins.com fetched (ok)
+  + kpwags.com fetched (ok)
+  + kqed.org fetched (ok)
+  + krem.com fetched (ok)
+  + kron4.com fetched (ok)
+  + ksdk.com fetched (ok)
+  + kshb.com fetched (ok)
+  + ktla.com fetched (ok)
+  + ktnv.com fetched (ok)
+  + kusa.com fetched (ok)
+  + kutv.com fetched (ok)
+  + kwqc.com fetched (ok)
+  + ky3.com fetched (ok)
+  + kyivindependent.com fetched (ok)
+  + kyivpost.com fetched (ok)
+  + kyodonews.net fetched (ok)
+  + labiotech.eu fetched (ok)
+  + lancs.live fetched (ok)
+  + laptopmag.com fetched (ok)
+  + latimes.com fetched (ok)
+  + laurenleek.substack.com fetched (ok)
+  + leaderpost.com fetched (ok)
+  - learningjquery.com unfetchable
+
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:todo_write:5371e27a h:2325d2a0 -->
+### 2026-11-26 07:08:25 UTC tool `todo_write`
+
+`{"todos": [{"content": "Tree expansion paused \u2014 TODO logged for taxonomy research", "status": "completed"}, {"content": "Verify tree work so far: focused tests + build", "status": "completed"}, {"content": "Source buttons: strip B&W styling/padding, plain icons, greyed-out inactive", "status": "completed"}, {"content": "Detect missing/white-only group icons, find replacements (fluent icon lib`
+
+```
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [x] Tree expansion paused — TODO logged for taxonomy research [completed]
+2. [x] Verify tree work so far: focused tests + build [completed]
+3. [x] Source buttons: strip B&W styling/padding, plain icons, greyed-out inactive [completed]
+4. [~] Detect missing/white-only group icons, find replacements (fluent icon library?) [in_progress]
+5. [x] Fix masonry: no column moves on relayout, fix image unload-on-resize bug [completed]
+6. [~] Verify sprite build output, run full test suite + build [in_progress]
+
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:50401e54 h:a4592562 -->
+### 2026-11-26 07:08:40 UTC tool `exec`
+
+`{"command": "npx vitest run 2>&1 | tail -15", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 180000}`
+
+```
+Output from command in shell a472bb:
+… (92 lines truncated)
+    [90m 63|[39m       [34mexpect[39m(block)[33m.[39m[34mtoMatch[39m([36m/color\s*:\s*var\(--paper\)/[39m)[33m;[39m
+    [90m 64|[39m       [34mexpect[39m(block)[33m.[39m[34mtoMatch[39m([36m/border\s*:\s*1px solid var\(--ink\)/[39m)[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m10 passed[39m[22m[90m (11)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m52 passed[39m[22m[90m (54)[39m
+[2m   Start at [22m 07:08:30
+[2m   Duration [22m 9.50s[2m (environment 78%, transform 9%, tests 7%, import 6%, worker 1%)[22m
+
+[2mEnvironment [22m [33mjsdom was created 11 times[39m[2m · 36.75s total, 78% of tracked time[22m
+[2m            [22m [2mcreate it once per worker with [22m[33mpool: 'vmThreads'[39m[2m (keeps per-file isolation) or [22m[33misolate: false[39m[2m (shares it across files)[22m
+[2m            [22m [2mlearn more: https://vitest.dev/guide/improving-performance#test-environments[22m
+
+
+Exit code: 1
+
+`| tail -15` was parsed out (15 of 107 total lines shown).
+<truncation_notice>
+Full output written to: /tmp/devin-overflows-1000/a762581f/content.txt
+</truncation_notice>
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:70b75586 h:1a128082 -->
+### 2026-11-26 07:08:44 UTC tool `exec`
+
+`{"command": "grep -n \"paper\\|--ink\\|padding\\|background\" test/filter-bar.test.js | head -20", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell cf53ef:
+47:    expect(sprite).toMatch(/background-image:\s*url\('\.\.\/favicons\/sprite\.png'\)/);
+48:    expect(sprite).not.toMatch(/background-size/);
+49:    expect(bbc).toMatch(/background-position:\s*-192px -0px/);
+62:      expect(block).toMatch(/background\s*:\s*var\(--ink\)/);
+63:      expect(block).toMatch(/color\s*:\s*var\(--paper\)/);
+64:      expect(block).toMatch(/border\s*:\s*1px solid var\(--ink\)/);
+66:    expect(markRead).toMatch(/background\s*:\s*var\(--ink\)/);
+67:    expect(markRead).toMatch(/color\s*:\s*var\(--paper\)/);
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:77919af3 h:46c1f9aa -->
+### 2026-11-26 07:09:05 UTC tool `exec`
+
+`{"command": "python3 - <<'EOF'\nimport re\ncss=open('src/styles/filter-bar.css').read()\nfor sel in ['.source-toggle', '.source-toggle.is-off', '.category-filter-toggle', '.category-filter-toggle.is-off', '.mark-all-read']:\n    m=re.search(re.escape(sel)+r'\\s*\\{([^}]*)\\}', css)\n    print(sel, '->', m.group(1).strip()[:200] if m else 'MISSING')\nEOF", "workdir": "/home/bobbigmac/projects/bobda`
+
+```
+Output from command in shell 122d09:
+.source-toggle -> position: relative;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0;
+  display: g
+.source-toggle.is-off -> opacity: 0.4;
+  filter: grayscale(1);
+.category-filter-toggle -> display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  flex: 0 0 auto;
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var
+.category-filter-toggle.is-off -> background: transparent;
+  border-color: var(--rule);
+  color: var(--muted);
+.mark-all-read -> flex: 0 0 auto;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--paper);
+  background: var(--ink);
+  border: 1
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:c95e5783 h:2a9e5aa5 -->
+### 2026-11-26 07:09:18 UTC tool `exec`
+
+`{"command": "npx vitest run test/filter-bar.test.js 2>&1 | grep -E \"\u2713|\u2717|\u00d7|FAIL|passed|failed\" | head -15", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 60000}`
+
+```
+Output from command in shell 70513b:
+ [31m❯[39m test/filter-bar.test.js [2m([22m[2m9 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 218[2mms[22m[39m
+     [32m✓[39m keeps Mark Read inside the source filter row, split to the right[32m 135[2mms[22m[39m
+     [32m✓[39m uses wrapped filter rows rather than thin scrollbars[32m 3[2mms[22m[39m
+[31m     [31m×[31m uses canonical sprite classes with unscaled 32px tile offsets[39m[32m 18[2mms[22m[39m
+[31m     [31m×[31m uses the same inverse treatment for selected filters as Mark Read[39m[32m 3[2mms[22m[39m
+   [32m✓[39m source filter buttons [2m(3)[22m
+     [32m✓[39m shows a story-count badge on every clickable source and skips empty sources[32m 29[2mms[22m[39m
+     [32m✓[39m keeps filtered-out sources clickable with their available count[32m 6[2mms[22m[39m
+     [32m✓[39m toggles every host in a grouped source branch[32m 5[2mms[22m[39m
+   [32m✓[39m category filter buttons [2m(2)[22m
+     [32m✓[39m leads with All and removes display-disabled categories from the row[32m 8[2mms[22m[39m
+     [32m✓[39m restores every display-filtered category through All[32m 6[2mms[22m[39m
+[41m[1m FAIL [22m[49m test/filter-bar.test.js[2m > [22mfilter bar structure[2m > [22muses canonical sprite classes with unscaled 32px tile offsets
+[41m[1m FAIL [22m[49m test/filter-bar.test.js[2m > [22mfilter bar structure[2m > [22muses the same inverse treatment for selected filters as Mark Read
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+… (1 lines truncated)
+
+Exit code: 0
+
+`| head -15` was parsed out (15 of 16 total lines shown).
+<truncation_notice>
+Full output written to: /tmp/devin-overflows-1000/7409cde1/content.txt
+</truncation_notice>
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:edit:36cb164b h:fb9cd2e2 -->
+### 2026-11-26 07:09:41 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/test/filter-bar.test.js", "old_string": "    expect(sprite).toMatch(/background-image:\\s*url\\('\\.\\.\\/favicons\\/sprite\\.png'\\)/);\n    expect(sprite).not.toMatch(/background-size/);\n    expect(bbc).toMatch(/background-position:\\s*-192px -0px/);\n    expect(button).toMatch(/width:\\s*40px/);\n    expect(tile).toMatch(/width:\\s*32px/);`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/test/filter-bar.test.js' - made 1 replacement(s). 22 line(s) removed, 31 line(s) added at line 47.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:ee173b56 h:7f19b3d7 -->
+### 2026-11-26 07:09:51 UTC tool `exec`
+
+`{"command": "npx vitest run test/filter-bar.test.js 2>&1 | grep -E \"Tests|Test Files\" | head -3", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 60000}`
+
+```
+Output from command in shell 77deb0:
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m10 passed[39m[22m[90m (10)[39m
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:get_output:0ee02727 h:18bc4ad2 -->
+### 2026-11-26 07:10:11 UTC tool `get_output`
+
+`{"shell_id": "spritebuild2", "timeout": 15000}`
+
+```
+  + ledger-enquirer.com fetched (ok)
+  + leeds-live.co.uk fetched (ok)
+  + legaldive.com fetched (ok)
+  + lehighvalleylive.com fetched (ok)
+  + leicestermercury.co.uk fetched (ok)
+  + lifehacker.com fetched (ok)
+  + lifestyle.inquirer.net fetched (ok)
+  + lincolnshirelive.co.uk fetched (ok)
+  + linkedin.com fetched (ok)
+  + livemint.com fetched (ok)
+  + liverpoolecho.co.uk fetched (ok)
+  + livescience.com fetched (ok)
+  + lohud.com fetched (ok)
+  + lonelyplanet.com fetched (ok)
+  + looper.com fetched (ok)
+  + lowyat.net fetched (ok)
+  + lrt.lt fetched (ok)
+  + lsm.lv fetched (ok)
+  + lumafield.com fetched (ok)
+  + macon.com fetched (ok)
+  + macrobusiness.com.au fetched (ok)
+  + macrumors.com fetched (ok)
+  + macstories.net fetched (ok)
+  + madison.com fetched (ok)
+  - mailonline.com unfetchable
+  + mainichi.jp fetched (ok)
+  + makeuseof.com fetched (ok)
+  + manchestereveningnews.co.uk fetched (light-glyph-chipped)
+  - manifest unfetchable
+  + manufacturingdive.com fetched (ok)
+  + marieclaire.co.uk fetched (ok)
+  + marieclaire.com fetched (ok)
+  + marketingdive.com fetched (ok)
+  + marketingweek.com fetched (ok)
+  + marketwatch.com fetched (ok)
+  + martech.org fetched (ok)
+  + mashable.com fetched (ok)
+  + masslive.com fetched (ok)
+  + mb.com.ph fetched (ok)
+  + mcall.com fetched (ok)
+  + mckinsey.com fetched (ok)
+  + medium.com fetched (ok)
+  + medscape.com fetched (ok)
+
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:850399a4 h:b96945f5 -->
+### 2026-11-26 07:10:19 UTC tool `exec`
+
+`{"command": "sed -n '95,130p' src/app.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 6a86dc:
+    }
+  }
+
+  const latestReferenceTime = Date.parse(digest.generated || '') || Date.now();
+  renderFeed({
+    clusters: visible,
+    settings,
+    pluginLeadIds,
+    latestReferenceTime,
+  });
+}
+
+// Flow columns lay themselves out; expanding content just grows its column.
+ui.relayout = () => {};
+ui.syncFeed = () => syncFeedToSearch();
+ui.updateReadCount = () => updateMarkReadButton();
+ui.refresh = () => {
+  if (!state.digest) return;
+  renderDigest(state.digest, state.settings);
+  initSearch();
+};
+
+async function init() {
+  const dateEl = document.getElementById('masthead-date');
+  if (dateEl) dateEl.textContent = formatDate(new Date().toISOString());
+
+  initSettings();
+  initReadInteraction();
+
+  const markAllBtn = document.getElementById('mark-all-read');
+  if (markAllBtn) markAllBtn.addEventListener('click', markDisplayedClustersRead);
+
+  // Mode toggle (in masthead)
+  const modeBtn = document.getElementById('mode-toggle');
+  const catBtn = document.getElementById('category-toggle');
+
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:cdfeeeb9 h:9bc42963 -->
+### 2026-11-26 07:10:22 UTC tool `exec`
+
+`{"command": "grep -n \"resize\\|columnCountFor\\|columnsFor\" src/app.js src/layout.js | head -15", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 92575f:
+src/app.js:248:  // resizes need nothing: columns are fluid and items never move.
+src/app.js:249:  let resizeTimer;
+src/app.js:251:  window.addEventListener('resize', () => {
+src/app.js:252:    clearTimeout(resizeTimer);
+src/app.js:253:    resizeTimer = setTimeout(() => {
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:8935faf1 h:c50162dc -->
+### 2026-11-26 07:10:27 UTC tool `exec`
+
+`{"command": "sed -n '240,280p' src/app.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell e45bd4:
+  });
+
+  // Back button closes overlays on mobile
+  window.addEventListener('popstate', () => {
+    closeAllOverlays();
+  });
+
+  // Resize only re-renders when the column count actually changes. Width-only
+  // resizes need nothing: columns are fluid and items never move.
+  let resizeTimer;
+  let lastColumnCount = getColumnCount();
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (!state.digest) return;
+      const cols = getColumnCount();
+      if (cols === lastColumnCount) return;
+      lastColumnCount = cols;
+      renderDigest(state.digest, state.settings);
+    }, 250);
+  });
+
+  try {
+    const res = await fetch('digest.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    state.digest = await res.json();
+
+    // Backfill tags for signals saved before metadata enrichment
+    backfillInterestSignals(state.digest.clusters || []);
+
+    // Cache signal weights for this page session
+    refreshSignalProfile();
+
+    // Sync mode toggle label
+    if (modeBtn) {
+      const modes = getAvailableModes(state.digest.clusters || []);
+      const current = modes.find(m => m.value === state.settings.mode) || modes[0];
+      state.settings.mode = current.value;
+      modeBtn.textContent = current.label;
+    }
+
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:122dc15e h:94770ff6 -->
+### 2026-11-26 07:10:32 UTC tool `exec`
+
+`{"command": "cat src/layout.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 7cf194:
+// Stable-column feed layout.
+//
+// Items are assigned to a column exactly once — greedily, by estimated height,
+// in feed order — and NEVER move afterwards. Columns are plain block flow, so
+// images loading, summaries expanding, or hydration resizing simply make a
+// column longer. No relayout passes, no absolute positioning, no column hops.
+import { state } from './state.js';
+
+const GUTTER = 20;
+
+export function getColumnCount() {
+  let cols = parseInt(state.settings?.columns, 10) || 2;
+  if (window.innerWidth <= 768) cols = 1;
+  else if (window.innerWidth <= 1024 && cols > 3) cols = 3;
+  return cols;
+}
+
+export function getGridMetrics(sheet) {
+  const cols = getColumnCount();
+  const style = getComputedStyle(sheet);
+  const padL = parseFloat(style.paddingLeft) || 0;
+  const padR = parseFloat(style.paddingRight) || 0;
+  const contentWidth = sheet.clientWidth - padL - padR;
+  const colWidth = (contentWidth - (cols - 1) * GUTTER) / cols;
+  return { colWidth, gutter: GUTTER, cols };
+}
+
+// Distribute items into column containers inside the sheet.
+// heightHint(item) should return the best available height estimate (0 for
+// hidden items); assignment is greedy-to-shortest in the order given.
+export function layoutColumns(sheet, items, heightHint) {
+  const cols = getColumnCount();
+  const heights = new Array(cols).fill(0);
+  const columns = [];
+  for (let i = 0; i < cols; i++) {
+    const col = document.createElement('div');
+    col.className = 'feed-col';
+    columns.push(col);
+  }
+  for (const item of items) {
+    let target = 0;
+    for (let i = 1; i < cols; i++) {
+      if (heights[i] < heights[target]) target = i;
+    }
+    columns[target].appendChild(item);
+    heights[target] += heightHint(item);
+  }
+  sheet.replaceChildren(...columns);
+  return columns;
+}
+
+// Flow columns need no image-load relayout handling at all: an image loading
+// simply grows its own column, and nothing else moves.
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:fe40a7aa h:db5ecfca -->
+### 2026-11-26 07:10:49 UTC tool `exec`
+
+`{"command": "head -50 DONE.md; echo ===; cat TODO.md", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 6da6b2:
+# DONE
+
+## Source filter bar rework (session audit)
+
+- Restored a bounded source bar: 526 nonzero story hosts now allocate to ~101 human-scale controls instead of one toggle per host.
+- Built `src/source-tree.js`, a deep curated source-relation tree (ownership families, public broadcasters, specialist press, billionaire-backed nationals, wires/press-release pipes, regional media). Runtime never infers grouping — `src/group-tree.js` only measures article counts and picks disjoint branches near a target of ~80 stories per group.
+- Ungrouped and low-volume hosts collapse into a real `Other Sources` toggle (`otherSourceKeys` threads through feed visibility so the toggle actually hides/restores its 132+ hosts).
+- Explicitly display-filtered sources stay visible in the bar with their counts, including branches below the cutoff, so filters can be restored.
+- Source buttons are 36px click targets with 28px canonical CSS sprite classes and per-source story-count badges; zero-story sources are excluded.
+- Added regression coverage for grouped options, the Other toggle, individual-source prominence, and source visibility in `test/view-model.test.js` / `test/filter-bar.test.js`.
+
+## Tag-based story grouping
+
+- Built `src/story-tree.js`, a deep curated subject tree rebuilt against the real `cache-data` digest vocabulary, driven by the same disjoint article-count allocator (40 clusters/group target, ~4 min). Source/category noise tags (bbc, urgent, gaming, xbox) are excluded.
+- Tree schema supports `related` cross-links between nodes (e.g. Russell Brand ↔ British Comedy while his coverage groups under public-figure cases), alias in-routes via per-node `terms`, and a `pivot` root claimed last so catch-all branches only group what the real taxonomy leaves thin.
+- `Group By Tag` setting (off by default) moves matching clusters into contiguous curated groups preserving sort order; articles show a compact group path label.
+- Term matching is whole-
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:e3dc5fd7 h:8533a503 -->
+### 2026-11-26 07:11:05 UTC tool `exec`
+
+`{"command": "python3 - <<'EOF'\ntodo = open('TODO.md').read()\ndone = open('DONE.md').read()\n\n# Remove completed in-progress section from TODO\nsection_start = todo.index('## In progress (this session)')\ntodo = todo[:section_start].rstrip() + '\\n'\n\ndone += '''\n## Stable-column feed layout (masonry replacement)\n\n- Replaced `masonry-layout` with `src/layout.js` stable columns: items are ass`
+
+```
+Output from command in shell 01b527:
+updated
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:get_output:8dde6777 h:28a435cb -->
+### 2026-11-26 07:11:31 UTC tool `get_output`
+
+`{"shell_id": "spritebuild2", "timeout": 15000}`
+
+```
+  + medtechdive.com fetched (ok)
+  + menshealth.com fetched (ok)
+  + metoffice.gov.uk fetched (ok)
+  + mexiconewsdaily.com fetched (ok)
+  + mg.co.za fetched (ok)
+  + miamiherald.com fetched (ok)
+  + microsoft.com fetched (ok)
+  + middleeasteye.net fetched (ok)
+  + middletownpress.com fetched (ok)
+  + miningweekly.com fetched (ok)
+  + missoulian.com fetched (ok)
+  + mk.co.kr fetched (ok)
+  + mlive.com fetched (ok)
+  + modbee.com fetched (ok)
+  + moneyweb.co.za fetched (ok)
+  + montgomeryadvertiser.com fetched (ok)
+  + montrealgazette.com fetched (ok)
+  + morningbrew.com fetched (ok)
+  + mothership.sg fetched (ok)
+  + movieweb.com fetched (ok)
+  + msnbc.com fetched (ok)
+  + mspoweruser.com fetched (ok)
+  + mtstandard.com fetched (ok)
+  + mylondon.news fetched (ok)
+  + nairametrics.com fetched (ok)
+  + naplesnews.com fetched (ok)
+  + nasa.gov fetched (ok)
+  + nation.africa fetched (ok)
+  + nation.com.pk fetched (ok)
+  + nation.cymru fetched (ok)
+  + nationalpost.com fetched (ok)
+  + nationthailand.com fetched (ok)
+  + nbc15.com fetched (ok)
+  + nbcnews.com fetched (ok)
+  + nbcsports.com fetched (ok)
+  + ndtv.com fetched (ok)
+  + ndtvprofit.com fetched (ok)
+  + nejm.org fetched (ok)
+  - netinterest.co unfetchable
+  + news-press.com fetched (ok)
+  + news.cgtn.com fetched (ok)
+  + news.com.au fetched (ok)
+  + news.ltn.com.tw fetched (ok)
+  + news.yahoo.com fetched (ok)
+  + newscientist.com fetched (ok)
+  + newsghana.com.gh fetched (ok)
+  + newsinfo.inquirer.net fetched (ok)
+  + newsletter.co.uk fetched (ok)
+
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:1987d6ae h:b2f72736 -->
+### 2026-11-26 07:11:37 UTC tool `exec`
+
+`{"command": "sed -n '1,80p' scripts/build-favicon-sprite.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 977ee7:
+// Repeatable favicon sprite pipeline.
+//
+// Usage:
+//   node scripts/build-favicon-sprite.js            reuse good tiles, fetch missing/broken
+//   node scripts/build-favicon-sprite.js --no-fetch build sheet from existing tiles only
+//   node scripts/build-favicon-sprite.js --force host1,host2   refetch specific hosts
+//
+// Outputs:
+//   src/favicons/<host>.png        per-host 32px tiles (source material)
+//   src/public/favicons/sprite.png the shipped sheet (16 tiles per row)
+//   src/styles/favicon-sprite.css  class offsets
+//   src/favicon-sprite.js          FAVICON_SPRITE_HOSTS registry
+//
+// Quality rules:
+//   - reject tiles with <10% visible coverage (empty/broken fetches)
+//   - light-on-transparent glyphs (mean luminance >185) get a dark rounded chip
+//     baked behind them so they read on the paper background
+//   - everything else floats as a plain icon
+
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
+import { join } from 'path';
+import sharp from 'sharp';
+import { SOURCE_RELATION_TREE } from '../src/source-tree.js';
+
+const TILE = 32;
+const COLUMNS = 16;
+const TILES_DIR = 'src/favicons';
+const CONCEPTS_DIR = 'src/favicons/concepts';
+const OUT_SHEET = 'src/public/favicons/sprite.png';
+const OUT_CSS = 'src/styles/favicon-sprite.css';
+const OUT_REGISTRY = 'src/favicon-sprite.js';
+const FETCH_TIMEOUT_MS = 12000;
+const args = process.argv.slice(2);
+const NO_FETCH = args.includes('--no-fetch');
+const forceIdx = args.indexOf('--force');
+const FORCE = forceIdx >= 0 ? new Set(args[forceIdx + 1].split(',').map(s => s.trim()).filter(Boolean)) : new Set();
+
+mkdirSync(TILES_DIR, { recursive: true });
+mkdirSync(CONCEPTS_DIR, { recursive: true });
+mkdirSync('src/public/favicons', { recursive: true });
+
+// --- collect needed hosts -------------------------------------------------
+
+function collectTreeHosts(nodes, out = new Set()) {
+  for (const node of nodes) {
+    for (const host of node.source
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:bbfd98d1 h:5e393a46 -->
+### 2026-11-26 07:11:46 UTC tool `exec`
+
+`{"command": "sed -n '80,200p' scripts/build-favicon-sprite.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell c0b4d4:
+  }
+  return out;
+}
+const conceptIcons = [...new Set([
+  'other', // Other Sources bucket is synthesized in source-groups.js, not the tree
+  ...collectConceptIcons(SOURCE_RELATION_TREE).keys(),
+])];
+
+async function rasterizeConcepts() {
+  const made = new Map();
+  for (const name of conceptIcons) {
+    const svgPath = join(CONCEPTS_DIR, `${name}.svg`);
+    if (!existsSync(svgPath)) {
+      console.warn(`  concept icon missing svg: ${name} (drop ${name}.svg into ${CONCEPTS_DIR})`);
+      continue;
+    }
+    const png = await sharp(readFileSync(svgPath), { density: 96 })
+      .resize(TILE, TILE, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+      .png()
+      .toBuffer();
+    writeFileSync(join(TILES_DIR, `concept-${name}.png`), png);
+    made.set(`concept-${name}`, png);
+  }
+  return made;
+}
+
+// --- fetching ---------------------------------------------------------------
+
+function extractPngsFromIco(buf) {
+  // ICO: reserved(2) type(2) count(2), then count x 16-byte entries.
+  // Entry: width(1) height(1) colors(1) reserved(1) planes(2) bpp(2) size(4) offset(4).
+  // Images are either embedded PNGs (start 89 50 4E 47) or raw BMP/DIB.
+  if (buf.length < 6) return [];
+  const count = buf.readUInt16LE(4);
+  const pngs = [];
+  for (let i = 0; i < count; i++) {
+    const entryOffset = 6 + i * 16;
+    if (entryOffset + 16 > buf.length) break;
+    const width = buf[entryOffset] || 256;
+    const size = buf.readUInt32LE(entryOffset + 8);
+    const offset = buf.readUInt32LE(entryOffset + 12);
+    if (offset + 8 > buf.length || offset + size > buf.length) continue;
+    const image = buf.subarray(offset, offset + size);
+    const isPng = image.length > 8 && image[0] === 0x89 && image[1] === 0x50 && image[2] === 0x4e && image[3] === 0x47;
+    if (isPng) pngs.push({ width, png: image });
+  }
+  return pngs.sort((a, b) => b.width - a.width);
+}
+
+async function fetchBuffer(url) {
+  const controller = new AbortController();
+  con
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:get_output:f497c155 h:e33c5ce8 -->
+### 2026-11-26 07:12:09 UTC tool `get_output`
+
+`{"shell_id": "spritebuild2", "timeout": 15000}`
+
+```
+  + newsnationnow.com fetched (ok)
+  + newsobserver.com fetched (ok)
+  - newson5.com unfetchable
+  + newsonjapan.com fetched (ok)
+  + newsroom.co.nz fetched (light-glyph-chipped)
+  + newstimes.com fetched (ok)
+  + newsweek.com fetched (ok)
+  + newyorker.com fetched (ok)
+  + nickiswift.com fetched (ok)
+  + nine.com.au fetched (ok)
+  + nintendo.com fetched (ok)
+  + nintendoeverything.com fetched (ok)
+  + nintendolife.com fetched (ok)
+  + nintendoworldreport.com fetched (ok)
+  + nj.com fetched (ok)
+  + nltimes.nl fetched (ok)
+
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:1c0e8ef3 h:7ae0dd9c -->
+### 2026-11-26 07:12:25 UTC tool `exec`
+
+`{"command": "grep -n \"layoutColumns\\|feed-col\\|heightHint\" src/feed.js | head -10; sed -n \"$(grep -n 'layoutColumns' src/feed.js | head -1 | cut -d: -f1),+20p\" src/feed.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 3193b9:
+2:import { getGridMetrics, layoutColumns } from './layout.js';
+200:    layoutColumns(
+import { getGridMetrics, layoutColumns } from './layout.js';
+import { refreshGlimpseObserver, refreshReadObserver } from './reading.js';
+import { clusterMatchesSearch, getSearchQuery, updateMarkReadButton } from './search.js';
+import { state } from './state.js';
+
+const HYDRATE_ROOT_MARGIN = '1200px 0px';
+
+class FeedView {
+  constructor() {
+    this.context = null;
+    this.observer = null;
+    this.query = '';
+    this.nodes = new Map();
+    this.clusterById = new Map();
+    this.visibleIds = new Set();
+    this.heights = new Map();
+    this.hydratedCount = 0;
+    this.columnWidth = 0;
+    this.observedNodes = new Set();
+  }
+
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:894e03df h:fdd5fd03 -->
+### 2026-11-26 07:12:27 UTC tool `exec`
+
+`{"command": "sed -n '150,235p' src/feed.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 5cdf71:
+
+    node = renderArticleShell(cluster);
+    node.addEventListener('click', event => {
+      if (!node.classList.contains('article-lazy')) return;
+      event.stopPropagation();
+      const resized = this.hydrate(node);
+      this.finishChanges(resized);
+    });
+    this.nodes.set(cluster.id, node);
+    return node;
+  }
+
+  matchingClusters() {
+    return this.context.clusters.filter(cluster =>
+      !this.query || clusterMatchesSearch(cluster, this.query));
+  }
+
+  mount(context) {
+    const sheet = document.getElementById('broadsheet');
+    if (!sheet) return;
+
+    if (this.context) {
+      for (const node of this.nodes.values()) this.unload(node);
+    }
+
+    this.context = context;
+    this.query = getSearchQuery();
+    this.clusterById = new Map(context.clusters.map(cluster => [cluster.id, cluster]));
+    const measuredWidth = getGridMetrics(sheet).colWidth;
+    this.columnWidth = measuredWidth > 0 ? measuredWidth : 320;
+
+    const matching = this.matchingClusters();
+    this.visibleIds = new Set(matching.map(cluster => cluster.id));
+    for (const [id, node] of this.nodes) {
+      if (!this.clusterById.has(id)) {
+        this.observer?.unobserve?.(node);
+        this.observedNodes.delete(node);
+        node.remove();
+        this.nodes.delete(id);
+      }
+    }
+
+    this.ensureObserver();
+    const orderedNodes = context.clusters.map(cluster => {
+      const node = this.nodeFor(cluster);
+      node.style.height = `${this.knownHeight(cluster) ?? this.estimatedHeight(cluster)}px`;
+      node.classList.toggle('hidden', !this.visibleIds.has(cluster.id));
+      this.observe(node);
+      return node;
+    });
+    layoutColumns(
+      sheet,
+      orderedNodes,
+      node => node.classList.contains('hidden')
+        ? 0
+        : parseFloat(node.style.height) || 240,
+    );
+    this.hydratedCount = 0;
+
+    refreshGlimpseObserver();
+    refreshReadObserver();
+    updateMarkReadButton();
+  }
+
+  syncSearch() {
+    if (!this.context) retu
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:e7b4233c h:0bd61b39 -->
+### 2026-11-26 07:12:46 UTC tool `exec`
+
+`{"command": "grep -n \"style.height\\|knownHeight\\|estimatedHeight\\|hydrate(\\|unload(\" src/feed.js | head -20; sed -n \"$(grep -n 'hydrate(node' src/feed.js | head -2 | tail -1 | cut -d: -f1),+40p\" src/feed.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 26f628:
+69:  estimatedHeight(cluster) {
+76:  knownHeight(cluster) {
+82:  hydrate(article) {
+87:    article.style.height = '';
+101:  unload(article) {
+108:    article.style.height = `${actualHeight}px`;
+132:          const result = this.hydrate(entry.target);
+136:          changed = this.unload(entry.target) || changed;
+146:      if (!node.classList.contains('article-lazy')) this.unload(node);
+155:      const resized = this.hydrate(node);
+172:      for (const node of this.nodes.values()) this.unload(node);
+195:      node.style.height = `${this.knownHeight(cluster) ?? this.estimatedHeight(cluster)}px`;
+205:        : parseFloat(node.style.height) || 240,
+226:      if (!visible) unloaded = this.unload(node) || unloaded;
+      const resized = this.hydrate(node);
+      this.finishChanges(resized);
+    });
+    this.nodes.set(cluster.id, node);
+    return node;
+  }
+
+  matchingClusters() {
+    return this.context.clusters.filter(cluster =>
+      !this.query || clusterMatchesSearch(cluster, this.query));
+  }
+
+  mount(context) {
+    const sheet = document.getElementById('broadsheet');
+    if (!sheet) return;
+
+    if (this.context) {
+      for (const node of this.nodes.values()) this.unload(node);
+    }
+
+    this.context = context;
+    this.query = getSearchQuery();
+    this.clusterById = new Map(context.clusters.map(cluster => [cluster.id, cluster]));
+    const measuredWidth = getGridMetrics(sheet).colWidth;
+    this.columnWidth = measuredWidth > 0 ? measuredWidth : 320;
+
+    const matching = this.matchingClusters();
+    this.visibleIds = new Set(matching.map(cluster => cluster.id));
+    for (const [id, node] of this.nodes) {
+      if (!this.clusterById.has(id)) {
+        this.observer?.unobserve?.(node);
+        this.observedNodes.delete(node);
+        node.remove();
+        this.nodes.delete(id);
+      }
+    }
+
+    this.ensureObserver();
+    const orderedNodes = context.clusters.map(cluster => {
+      const node = this.nodeFor(cluster);
+      nod
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:11e80394 h:c7282173 -->
+### 2026-11-26 07:12:49 UTC tool `exec`
+
+`{"command": "sed -n '69,130p' src/feed.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 669587:
+  estimatedHeight(cluster) {
+    const text = `${cluster.headline || ''} ${cluster.summary || ''}`;
+    const charsPerLine = Math.max(28, Math.floor(this.columnWidth / 7));
+    const textLines = Math.ceil(text.length / charsPerLine);
+    return 88 + textLines * 24 + (this.showsImage(cluster) ? this.columnWidth * 0.5625 : 0);
+  }
+
+  knownHeight(cluster) {
+    const entry = this.heights.get(cluster.id);
+    if (entry?.key === this.heightKey(cluster)) return entry.height;
+    return null;
+  }
+
+  hydrate(article) {
+    if (!article?.classList.contains('article-lazy') || article.classList.contains('hidden')) return false;
+    const cluster = this.clusterById.get(article.dataset.clusterId);
+    if (!cluster) return false;
+
+    article.style.height = '';
+    renderArticle(
+      cluster,
+      this.context.settings,
+      this.context.pluginLeadIds.has(cluster.id),
+      this.context.latestReferenceTime,
+      article,
+    );
+    const actualHeight = article.offsetHeight;
+    this.heights.set(cluster.id, { key: this.heightKey(cluster), height: actualHeight });
+    this.hydratedCount++;
+    return true;
+  }
+
+  unload(article) {
+    if (!article || article.classList.contains('article-lazy')) return false;
+    const cluster = this.clusterById.get(article.dataset.clusterId);
+    if (!cluster) return false;
+
+    const actualHeight = article.offsetHeight;
+    this.heights.set(cluster.id, { key: this.heightKey(cluster), height: actualHeight });
+    article.style.height = `${actualHeight}px`;
+    populateArticleShell(article, cluster);
+    this.hydratedCount--;
+    return true;
+  }
+
+  finishChanges() {
+    refreshGlimpseObserver();
+    refreshReadObserver();
+  }
+
+  observe(article) {
+    if (this.observedNodes.has(article)) return;
+    this.observedNodes.add(article);
+    this.observer?.observe(article);
+  }
+
+  ensureObserver() {
+    if (this.observer || typeof IntersectionObserver === 'undefined') return;
+    this.observer = new IntersectionOb
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:61d392e5 h:3810a2e8 -->
+### 2026-11-26 07:12:58 UTC tool `exec`
+
+`{"command": "sed -n '120,135p' src/styles/articles.css; grep -n \"img\\|image\" src/article.js | head -12", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell b751a0:
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.article-image {
+  width: 100%;
+  height: auto;
+  /* Reserve a 16:9 box before the image loads (killing vertical jumps for
+     most news images); once loaded, the natural ratio takes over. */
+  aspect-ratio: auto 16 / 9;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.article-summary {
+  font-size: 0.95rem;
+43:  const withImage = (cluster.stories || []).filter(s => s.image && s.image !== 'None');
+187:  let imageHtml = '';
+188:  if (settings.images !== 'none') {
+190:    if (settings.images === 'all') {
+192:    } else if (settings.images === 'minimal') {
+194:    } else if (settings.images === 'latest') {
+198:      const imgStory = pickLeadImage(cluster);
+199:      if (imgStory) {
+200:        imageHtml = `<img class="article-image" src="${imgStory.image}" alt="" loading="lazy" onerror="this.style.display='none'">`;
+228:    ${imageHtml}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:get_output:4772efc7 h:20c6a93e -->
+### 2026-11-26 07:13:28 UTC tool `get_output`
+
+`{"shell_id": "spritebuild2", "timeout": 20000}`
+
+```
+  + nme.com fetched (ok)
+  + northjersey.com fetched (ok)
+  + nos.nl fetched (ok)
+  + nottinghampost.com fetched (ok)
+  + npr.org fetched (ok)
+  + nrk.no fetched (ok)
+  + nst.com.my fetched (ok)
+  + ntnews.com.au fetched (ok)
+  + nwfdailynews.com fetched (light-glyph-chipped)
+  + nwitimes.com fetched (ok)
+  + nydailynews.com fetched (ok)
+  + nymag.com fetched (ok)
+  + nypost.com fetched (ok)
+  + observer.co.uk fetched (ok)
+  + ok.co.uk fetched (ok)
+  + omaha.com fetched (ok)
+  + opb.org fetched (ok)
+  + openpr.com fetched (ok)
+  + oprahdaily.com fetched (ok)
+  + oregonlive.com fetched (ok)
+  + orf.at fetched (ok)
+  + orlandosentinel.com fetched (ok)
+  + ottawacitizen.com fetched (ok)
+  + ottawasun.com fetched (ok)
+  + oxygen.com fetched (ok)
+  + pagesix.com fetched (ok)
+  + palmbeachpost.com fetched (ok)
+  + pcgamer.com fetched (ok)
+  + pcgamesn.com fetched (ok)
+  + pcmag.com fetched (ok)
+  + pennlive.com fetched (ok)
+  - peopledaily.com unfetchable
+  + perthnow.com.au fetched (ok)
+  + pharmavoice.com fetched (ok)
+  + philstar.com fetched (ok)
+  + physicsworld.com fetched (ok)
+  + pilotonline.com fetched (ok)
+  + pitchfork.com fetched (ok)
+  + planetfootball.com fetched (ok)
+  + playstation.com fetched (ok)
+  + plos.org fetched (light-glyph-chipped)
+  + plymouthherald.co.uk fetched (ok)
+  + pokde.net fetched (ok)
+  + politico.com fetched (ok)
+  + polygon.com fetched (ok)
+  + popsugar.com fetched (ok)
+  + popularmechanics.com fetched (ok)
+  + poughkeepsiejournal.com fetched (ok)
+  + premiumtimesng.com fetched (ok)
+  + prensa-latina.cu fetched (ok)
+  + pressandjournal.co.uk fetched (ok)
+  + pressassociation.com fetched (ok)
+  + pressconnects.com fetched (ok)
+  + presse-citron.com fetched (ok)
+  + prevention.com fetched (ok)
+  + prnewswire.com fetched (ok)
+  + prolificnorth.co.uk fetched (ok)
+  + propakistani.pk fetched (ok)
+  + providencejournal.com fetched (ok)
+  + prweb.com fetched (ok)
+  + psypost.org fetched (ok)
+  + punchng.com fetched (ok)
+  + purexbox.com fetch
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:42e710ae h:acb80ca4 -->
+### 2026-11-26 07:13:41 UTC tool `exec`
+
+`{"command": "python3 - <<'EOF'\nimport subprocess, struct, zlib, sys\ndef png_stats(path):\n    r = subprocess.run(['node','-e',f'''\nconst sharp=require(\"sharp\");\nsharp(\"{path}\").ensureAlpha().raw().toBuffer({{resolveWithObject:true}}).then(({{data,info}})=>{{\nlet vis=0,sum=0;\nfor(let i=0;i<data.length;i+=4){{if(data[i+3]>=16){{vis++;sum+=0.299*data[i]+0.587*data[i+1]+0.114*data[i+2];}}}}\`
+
+```
+Output from command in shell b79abf:
+nypost.com -> 32x32 coverage=88% meanlum=128
+newscientist.com -> 32x32 coverage=87% meanlum=161
+vice.com -> 16x16 coverage=0% meanlum=0
+cityam.com -> 32x32 coverage=88% meanlum=123
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:get_output:4c797641 h:1f251dc6 -->
+### 2026-11-26 07:14:18 UTC tool `get_output`
+
+`{"shell_id": "spritebuild2", "timeout": 30000}`
+
+```
+  + s4c.cymru fetched (ok)
+  + sabcnews.com fetched (ok)
+  + sacbee.com fetched (ok)
+  + salon.com fetched (ok)
+  + samaa.tv fetched (ok)
+  + saudigazette.com.sa fetched (ok)
+  + savannahnow.com fetched (ok)
+  + sbnation.com fetched (ok)
+  + sbs.com.au fetched (ok)
+  + sci.news fetched (ok)
+  + science.nasa.gov fetched (ok)
+  + science.org fetched (ok)
+  + science.slashdot.org fetched (ok)
+  + sciencealert.com fetched (ok)
+  + sciencebasedmedicine.org fetched (ok)
+  + sciencedaily.com fetched (ok)
+  + sciencenews.org fetched (ok)
+  + scientificamerican.com fetched (ok)
+  + scirp.org fetched (ok)
+  + scotsman.com fetched (ok)
+  + screenrant.com fetched (ok)
+  + sea.mashable.com fetched (ok)
+  + seattletimes.com fetched (ok)
+  + self.com fetched (ok)
+  + seodata.dev fetched (ok)
+  + seoulbeats.com fetched (ok)
+  + sfchronicle.com fetched (ok)
+  + sfgate.com fetched (ok)
+  - shanghaidaily.com unfetchable
+
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:get_output:77a84413 h:0bd64456 -->
+### 2026-11-26 07:15:07 UTC tool `get_output`
+
+`{"shell_id": "spritebuild2", "timeout": 30000}`
+
+```
+  + siouxcityjournal.com fetched (ok)
+  + sixthtone.com fetched (ok)
+  + sky.com fetched (ok)
+  + skynews.com.au fetched (ok)
+  + skysports.com fetched (ok)
+  + slashdot.org fetched (ok)
+  + slate.com fetched (ok)
+  + smartcitiesdive.com fetched (ok)
+  + smithsonianmag.com fetched (ok)
+  + somersetlive.co.uk fetched (ok)
+  + soompi.com fetched (ok)
+  + sportico.com fetched (ok)
+  + sportsgrid.com fetched (ok)
+
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:get_output:0f1158f2 h:9f5bf616 -->
+### 2026-11-26 07:16:09 UTC tool `get_output`
+
+`{"shell_id": "spritebuild2", "timeout": 60000}`
+
+```
+  + sportsmole.co.uk fetched (ok)
+  + stamfordadvocate.com fetched (ok)
+  + standardmedia.co.ke fetched (ok)
+  + star-telegram.com fetched (ok)
+  + startribune.com fetched (ok)
+  + startupdaily.net fetched (ok)
+  + statesman.com fetched (ok)
+  + staugustine.com fetched (ok)
+  + stltoday.com fetched (ok)
+  + stockhead.com.au fetched (ok)
+  + stokesentinel.co.uk fetched (ok)
+  + straitstimes.com fetched (ok)
+  + stv.tv fetched (ok)
+  + substack.com fetched (ok)
+  + sun-sentinel.com fetched (ok)
+  + sunherald.com fetched (ok)
+  + sunstar.com.ph fetched (ok)
+  + superherohype.com fetched (ok)
+  + supplychaindive.com fetched (ok)
+  - surrey.live unfetchable
+  + sussexlive.co.uk fetched (ok)
+  + sverigesradio.se fetched (ok)
+  + svt.se fetched (ok)
+  + swissinfo.ch fetched (ok)
+  + syracuse.com fetched (ok)
+  + systemdrift.neocities.org fetched (ok)
+  + t3.com fetched (ok)
+  + taipeitimes.com fetched (ok)
+  + taiwannews.com.tw fetched (light-glyph-chipped)
+  + tallahassee.com fetched (ok)
+  + tass.com fetched (ok)
+  + taxfoundation.org fetched (ok)
+  + tcpalm.com fetched (ok)
+  + techadvisor.com fetched (ok)
+  + techcentral.co.za fetched (ok)
+  + techcrunch.com fetched (ok)
+  + techdows.com fetched (ok)
+  + technology.inquirer.net fetched (ok)
+  + techxplore.com fetched (ok)
+  + telegram.com fetched (ok)
+  + telegraph.co.uk fetched (ok)
+  + telemundo.com fetched (ok)
+  + tempo.co fetched (ok)
+  + tennessean.com fetched (ok)
+  + thailand-business-news.com fetched (ok)
+  + the-star.co.ke fetched (ok)
+  + theanalyst.com fetched (ok)
+  + theaustralian.com.au fetched (ok)
+  + thecourier.co.uk fetched (ok)
+  + thecut.com fetched (ok)
+  + thedailybeast.com fetched (ok)
+  + thedispatch.com fetched (ok)
+  + thefastmode.com fetched (ok)
+  + thegamer.com fetched (ok)
+  + thehindubusinessline.com fetched (ok)
+  + thehour.com fetched (ok)
+  + thelancet.com fetched (ok)
+  + thelist.com fetched (ok)
+  + thelocal.at fetched (ok)
+  + thelocal.ch fetched (ok)
+  + thelocal.com fetched (ok)
+
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:b960b642 h:5e9f90b6 -->
+### 2026-11-26 07:16:18 UTC tool `exec`
+
+`{"command": "ls src/favicons/concepts/ | head -20; grep -n \"concept\" src/source-groups.js | head -5", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell bd0510:
+ATTRIBUTION.md
+broadcast.svg
+entertainment.svg
+finance.svg
+globe-americas.svg
+globe-asia.svg
+globe-emea.svg
+hardware.svg
+industry.svg
+mobile.svg
+newspaper.svg
+official.svg
+other.svg
+social.svg
+sports.svg
+wires.svg
+82:      icon: 'concept:other',
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:567b3544 h:b0dfc0ec -->
+### 2026-11-26 07:16:25 UTC tool `exec`
+
+`{"command": "grep -n \"source-icon\\|spriteClass\\|iconKey\\|concept\" src/filters.js src/favicon-sprite.js | head -15", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell ec1fd1:
+src/filters.js:30:    const spriteClass = getFaviconSpriteClass(source.icon || source.key);
+src/filters.js:31:    if (spriteClass) {
+src/filters.js:33:      icon.className = `source-sprite ${spriteClass}`;
+src/favicon-sprite.js:138:  return FAVICON_SPRITE_HOSTS.has(host) ? `source-icon-${faviconSpriteId(host)}` : '';
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:8ac6e3e6 h:6ef9dacb -->
+### 2026-11-26 07:16:28 UTC tool `exec`
+
+`{"command": "sed -n '120,140p' src/favicon-sprite.js; grep -n \"concept\\|faviconSpriteId\" src/favicon-sprite.js | head -8", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 1d148b:
+  'upi.com',
+  'usatoday.com',
+  'vice.com',
+  'wccftech.com',
+  'windowscentral.com',
+  'winnipegfreepress.com',
+  'wired.com',
+  'worldsoccertalk.com',
+]);
+
+export function faviconSpriteId(host) {
+  return String(host || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+export function getFaviconSpriteClass(host) {
+  return FAVICON_SPRITE_HOSTS.has(host) ? `source-icon-${faviconSpriteId(host)}` : '';
+}
+130:export function faviconSpriteId(host) {
+138:  return FAVICON_SPRITE_HOSTS.has(host) ? `source-icon-${faviconSpriteId(host)}` : '';
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76:exec:988aaa19 h:76d4960e -->
+### 2026-11-26 07:16:37 UTC tool `exec`
+
+`{"command": "sed -n '200,330p' scripts/build-favicon-sprite.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 2f1a6e:
+    .resize(TILE - 2, TILE - 2, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .extend({ top: 1, bottom: 1, left: 1, right: 1, background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .png()
+    .toBuffer();
+  const stats = await analyzeTile(base);
+  if (stats.coverage < 0.1) return { png: null, stats, reason: 'empty' };
+  if (stats.mean > 185 && stats.std < 40) {
+    // light glyph on transparency — bake a dark rounded chip behind it
+    const chip = await sharp({
+      create: {
+        width: TILE, height: TILE, channels: 4,
+        background: { r: 32, g: 33, b: 36, alpha: 1 },
+      },
+    }).png().toBuffer();
+    const inset = await sharp(base)
+      .resize(TILE - 8, TILE - 8, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+      .png().toBuffer();
+    const roundedMask = Buffer.from(
+      `<svg width="${TILE}" height="${TILE}"><rect x="0" y="0" width="${TILE}" height="${TILE}" rx="6" fill="#fff"/></svg>`
+    );
+    const chippedChip = await sharp(chip)
+      .composite([{ input: roundedMask, blend: 'dest-in' }, { input: inset, blend: 'over' }])
+      .png().toBuffer();
+    return { png: chippedChip, stats, reason: 'light-glyph-chipped' };
+  }
+  return { png: base, stats, reason: 'ok' };
+}
+
+// --- main -------------------------------------------------------------------
+
+const registryNotes = [];
+
+async function tileForHost(host) {
+  const key = `host:${host}`;
+  const tilePath = join(TILES_DIR, `${host}.png`);
+  if (existsSync(tilePath) && !FORCE.has(host)) {
+    const existing = readFileSync(tilePath);
+    const stats = await analyzeTile(existing);
+    if (stats.coverage >= 0.1) return { key, png: existing, source: 'cache' };
+    registryNotes.push(`${host}: existing tile empty — refetching`);
+  }
+  if (NO_FETCH) return { key, png: null, source: 'missing' };
+  const fetched = await fetchFaviconPng(host);
+  if (!fetched) return { key, png: null, source: 'unfetchable' };
+  const normalized = a
+```
 
 ---
 

@@ -79,7 +79,7 @@ export function groupSourceOptions(sourceOptions, sourceFilters = {}) {
       groupId: OTHER_SOURCE_KEY,
       rootId: OTHER_SOURCE_KEY,
       label: 'Other Sources',
-      icon: otherSources[0]?.icon || otherSources[0]?.key,
+      icon: 'concept:other',
       path: ['Other Sources'],
       count: otherSources.reduce((sum, source) => sum + source.count, 0),
       sourceCount: otherSources.length,

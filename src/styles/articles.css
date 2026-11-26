@@ -3,6 +3,14 @@
   margin: 0 auto;
   padding: 1.5rem 1rem;
   position: relative;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.feed-col {
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .broadsheet.cols-1 { max-width: 700px; }
@@ -116,6 +124,9 @@
 .article-image {
   width: 100%;
   height: auto;
+  /* Reserve a 16:9 box before the image loads (killing vertical jumps for
+     most news images); once loaded, the natural ratio takes over. */
+  aspect-ratio: auto 16 / 9;
   margin-bottom: 0.75rem;
   display: block;
 }

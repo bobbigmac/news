@@ -1,3 +1,4 @@
+import { getColumnCount } from './layout.js';
 import { buildViewModel, filterByMode } from './view-model.js';
 import {
   applySettings,
@@ -103,7 +104,8 @@ function renderDigest(digest, settings) {
   });
 }
 
-ui.relayout = () => state.masonry?.layout();
+// Flow columns lay themselves out; expanding content just grows its column.
+ui.relayout = () => {};
 ui.syncFeed = () => syncFeedToSearch();
 ui.updateReadCount = () => updateMarkReadButton();
 ui.refresh = () => {
@@ -242,12 +244,18 @@ async function init() {
     closeAllOverlays();
   });
 
-  // Re-layout Masonry on resize
+  // Resize only re-renders when the column count actually changes. Width-only
+  // resizes need nothing: columns are fluid and items never move.
   let resizeTimer;
+  let lastColumnCount = getColumnCount();
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-      if (state.digest) renderDigest(state.digest, state.settings);
+      if (!state.digest) return;
+      const cols = getColumnCount();
+      if (cols === lastColumnCount) return;
+      lastColumnCount = cols;
+      renderDigest(state.digest, state.settings);
     }, 250);
   });
 

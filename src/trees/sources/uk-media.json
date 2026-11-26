@@ -203,7 +203,7 @@
     {
       "id": "uk-regional",
       "label": "UK Regional",
-      "icon": "theolivepress.es",
+      "icon": "concept:globe-emea",
       "sources": [
         "glasgowtimes.co.uk",
         "heraldscotland.com",

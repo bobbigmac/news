@@ -119,7 +119,6 @@ export const state = {
   settings: loadSettings(),
   visibleClusters: [],
   viewModel: null,
-  masonry: null,
   readState: loadJson(READ_KEY, {}),
   glimpseState: loadJson(GLIMPSE_KEY, {}),
   catPrefs: loadCatPrefs(),

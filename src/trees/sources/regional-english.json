@@ -242,7 +242,7 @@
         {
           "id": "korea-companion-media",
           "label": "Korea Companion Media",
-          "icon": "koreaherald.com",
+          "icon": "concept:globe-asia",
           "sources": [
             "koreaherald.com",
             "koreaittimes.com",
@@ -285,7 +285,7 @@
     {
       "id": "singapore-media",
       "label": "Singapore Media",
-      "icon": "straitstimes.com",
+      "icon": "concept:globe-asia",
       "sources": [
         "straitstimes.com",
         "businesstimes.com.sg",
@@ -300,7 +300,7 @@
     {
       "id": "thailand-media",
       "label": "Thailand Media",
-      "icon": "bangkokpost.com",
+      "icon": "concept:globe-asia",
       "sources": [
         "bangkokpost.com",
         "khaosodenglish.com",
@@ -313,7 +313,7 @@
     {
       "id": "japan-media",
       "label": "Japan Media",
-      "icon": "japantimes.co.jp",
+      "icon": "concept:globe-asia",
       "sources": [
         "japantimes.co.jp",
         "japantoday.com",
@@ -394,7 +394,7 @@
     {
       "id": "ukraine-media",
       "label": "Ukraine Media",
-      "icon": "kyivindependent.com",
+      "icon": "concept:globe-emea",
       "sources": [
         "kyivindependent.com",
         "kyivpost.com",
@@ -407,7 +407,7 @@
     {
       "id": "latin-america-media",
       "label": "Latin America Media",
-      "icon": "batimes.com.ar",
+      "icon": "concept:globe-americas",
       "sources": [
         "batimes.com.ar",
         "buenosairesherald.com",

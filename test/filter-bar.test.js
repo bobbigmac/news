@@ -47,22 +47,31 @@ describe('filter bar structure', () => {
     expect(sprite).toMatch(/background-image:\s*url\('\.\.\/favicons\/sprite\.png'\)/);
     expect(sprite).not.toMatch(/background-size/);
     expect(bbc).toMatch(/background-position:\s*-192px -0px/);
-    expect(button).toMatch(/width:\s*40px/);
+    expect(button).toMatch(/width:\s*32px/);
     expect(tile).toMatch(/width:\s*32px/);
     expect(tile).toMatch(/height:\s*32px/);
   });
 
-  it('uses the same inverse treatment for selected filters as Mark Read', () => {
+  it('keeps source toggles as plain icons, greyed out when off', () => {
     const css = readFileSync('src/styles/filter-bar.css', 'utf8');
     const sourceToggle = cssBlock(css, '.source-toggle');
+    const sourceOff = cssBlock(css, '.source-toggle.is-off');
+
+    expect(sourceToggle).toMatch(/background\s*:\s*transparent/);
+    expect(sourceToggle).toMatch(/border\s*:\s*none/);
+    expect(sourceToggle).toMatch(/padding\s*:\s*0/);
+    expect(sourceToggle).not.toMatch(/var\(--ink\)\s*;?\s*$/);
+    expect(sourceOff).toMatch(/grayscale/);
+    expect(sourceOff).toMatch(/opacity/);
+  });
+
+  it('keeps inverse treatment on the text buttons', () => {
+    const css = readFileSync('src/styles/filter-bar.css', 'utf8');
     const categoryToggle = cssBlock(css, '.category-filter-toggle');
     const markRead = cssBlock(css, '.mark-all-read');
 
-    for (const block of [sourceToggle, categoryToggle]) {
-      expect(block).toMatch(/background\s*:\s*var\(--ink\)/);
-      expect(block).toMatch(/color\s*:\s*var\(--paper\)/);
-      expect(block).toMatch(/border\s*:\s*1px solid var\(--ink\)/);
-    }
+    expect(categoryToggle).toMatch(/background\s*:\s*var\(--ink\)/);
+    expect(categoryToggle).toMatch(/color\s*:\s*var\(--paper\)/);
     expect(markRead).toMatch(/background\s*:\s*var\(--ink\)/);
     expect(markRead).toMatch(/color\s*:\s*var\(--paper\)/);
   });

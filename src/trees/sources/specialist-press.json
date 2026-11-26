@@ -228,7 +228,7 @@
             {
               "id": "business-newsweeklies",
               "label": "Business Newsweeklies",
-              "icon": "economist.com",
+              "icon": "concept:newspaper",
               "sources": [
                 "economist.com",
                 "bloomberg.com",
@@ -258,7 +258,7 @@
             {
               "id": "retail-investor",
               "label": "Retail Investor",
-              "icon": "fool.com",
+              "icon": "concept:finance",
               "sources": [
                 "fool.com",
                 "fool.ca",
@@ -382,7 +382,7 @@
             {
               "id": "social-tech",
               "label": "Social Tech",
-              "icon": "mashable.com",
+              "icon": "concept:social",
               "sources": [
                 "mashable.com",
                 "in.mashable.com",
@@ -420,7 +420,7 @@
             {
               "id": "hardware-guides",
               "label": "Hardware Guides",
-              "icon": "tomshardware.com",
+              "icon": "concept:hardware",
               "sources": [
                 "tomshardware.com",
                 "tomsguide.com",
@@ -436,7 +436,7 @@
         {
           "id": "mobile-software",
           "label": "Mobile & Software",
-          "icon": "androidauthority.com",
+          "icon": "concept:mobile",
           "sources": [
             "androidauthority.com",
             "androidheadlines.com",
@@ -456,7 +456,7 @@
         {
           "id": "industry-b2b",
           "label": "Industry & B2B",
-          "icon": "retaildive.com",
+          "icon": "concept:industry",
           "children": [
             {
               "id": "industry-dive",
@@ -513,7 +513,7 @@
     {
       "id": "entertainment-culture",
       "label": "Entertainment & Culture",
-      "icon": "variety.com",
+      "icon": "concept:entertainment",
       "children": [
         {
           "id": "entertainment-trade",
@@ -559,7 +559,7 @@
     {
       "id": "sports-press",
       "label": "Sports Press",
-      "icon": "espn.com",
+      "icon": "concept:sports",
       "sources": [
         "espn.com",
         "espnfc.com",

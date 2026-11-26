@@ -1,4 +1,4 @@
-/* Responsive — Masonry handles column count via JS */
+/* Responsive — column count follows JS breakpoint logic in layout.js */
 @media (max-width: 768px) {
   .broadsheet { max-width: 600px; }
   .masthead { flex-direction: column; gap: 0.5rem; }

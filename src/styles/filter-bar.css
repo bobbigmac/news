@@ -24,28 +24,22 @@
 
 .source-toggle {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   flex: 0 0 auto;
-  border: 1px solid var(--ink);
-  border-radius: 4px;
-  background: var(--ink);
-  color: var(--paper);
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ink);
   cursor: pointer;
   padding: 0;
   display: grid;
   place-items: center;
-  transition: opacity 0.15s, border-color 0.15s, filter 0.15s, background 0.15s, color 0.15s;
+  transition: opacity 0.15s, filter 0.15s, background 0.15s;
 }
 
-.source-toggle:hover:not(.is-off) {
-  border-color: var(--accent);
-  background: var(--accent);
-}
-
-.source-toggle.is-off:hover {
-  border-color: var(--rule-thick);
-  background: var(--paper);
+.source-toggle:hover {
+  background: var(--rule);
 }
 
 .source-toggle:focus-visible {
@@ -54,27 +48,12 @@
 }
 
 .source-toggle.is-off {
-  background: transparent;
-  border-color: var(--rule);
-  color: var(--muted);
-  opacity: 0.5;
+  opacity: 0.4;
   filter: grayscale(1);
 }
 
 .source-toggle.is-mixed {
   opacity: 0.72;
-}
-
-.source-toggle.is-off::after {
-  content: '';
-  position: absolute;
-  left: 3px;
-  right: 3px;
-  top: 50%;
-  height: 1px;
-  background: var(--accent);
-  transform: rotate(-18deg);
-  pointer-events: none;
 }
 
 .source-letter {
@@ -86,11 +65,10 @@
 
 .source-toggle .source-sprite {
   position: absolute;
-  inset: 4px;
+  inset: 0;
   width: 32px;
   height: 32px;
-  border-radius: 3px;
-  background-color: #fff;
+  border-radius: 4px;
   pointer-events: none;
 }
 
@@ -246,4 +224,4 @@
   color: var(--ink);
 }
 
-/* Broadsheet layout — Masonry handles positioning */
+/* Broadsheet layout — stable column containers position items */

@@ -27,7 +27,7 @@
     {
       "id": "public-bodies",
       "label": "Public Bodies",
-      "icon": "who.int",
+      "icon": "concept:official",
       "sources": [
         "who.int",
         "afro.who.int",
@@ -40,7 +40,7 @@
     {
       "id": "research-organizations",
       "label": "Research Organizations",
-      "icon": "caltech.edu",
+      "icon": "concept:official",
       "sources": [
         "caltech.edu",
         "taxfoundation.org",
