@@ -69,8 +69,12 @@ jobs:
             echo "No cache file, will fetch"
           fi
 
+      # Push-triggered runs ship updated CODE with the existing data — they
+      # never ingest. Ingestion is designed around 3 scheduled runs/day; a
+      # code push has no business re-hitting endpoints or burning 30 minutes
+      # of free-router LLM latency re-summarising what's already summarised.
       - name: Fetch latest news
-        if: steps.cache-check.outputs.fresh != 'true' || github.event_name == 'schedule'
+        if: github.event_name != 'push' && (steps.cache-check.outputs.fresh != 'true' || github.event_name == 'schedule')
         env:
           CURRENTSAPI_SERVICES_KEY: ${{ secrets.CURRENTSAPI_SERVICES_KEY }}
           SEARCH_PLUGINS: ${{ secrets.SEARCH_PLUGINS }}
@@ -81,6 +85,7 @@ jobs:
         run: node scripts/fetch-news.js
 
       - name: Summarise with LLM
+        if: github.event_name != 'push'
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           FEATHERLESS_API_KEY: ${{ secrets.FEATHERLESS_API_KEY }}
@@ -103,6 +108,7 @@ jobs:
       # forced the next run to waste quota rebuilding it. The artifact is
       # already uploaded, so switching branches here cannot affect the deploy.
       - name: Save cache to cache-data branch
+        if: github.event_name != 'push'
         run: |
           echo "=== Cache files before save ==="
           ls -la cache/ 2>/dev/null || echo "No cache/ directory!"
