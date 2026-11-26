@@ -97,10 +97,11 @@ jobs:
         with:
           path: ./docs
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
+      # Persist the pipeline cache before deploying. Pages deployment has
+      # occasional artifact-metadata failures; when this step was after the
+      # deploy, those flakes also discarded fetch/embedding/model state and
+      # forced the next run to waste quota rebuilding it. The artifact is
+      # already uploaded, so switching branches here cannot affect the deploy.
       - name: Save cache to cache-data branch
         run: |
           echo "=== Cache files before save ==="
@@ -118,3 +119,7 @@ jobs:
           git add -f cache/
           git commit -m "Update cache data $(date -u +%Y-%m-%dT%H:%M)" --allow-empty
           git push origin cache-data --force
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
