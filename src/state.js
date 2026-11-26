@@ -22,14 +22,15 @@ export const DEFAULT_SETTINGS = {
   expandAll: false,
   showUpdated: false,
   groupByTag: false,
+  fullWidth: false,
   theme: 'auto',
   markRead: 'off'
 };
 
 export const THEME_OPTIONS = [
-  { value: 'auto', label: 'Auto' },
-  { value: 'day', label: 'Day' },
-  { value: 'night', label: 'Night' },
+  { value: 'auto', label: 'Auto', tip: 'Follows your OS light/dark setting' },
+  { value: 'day', label: 'Day', tip: 'Always light paper' },
+  { value: 'night', label: 'Night', tip: 'Always dark ink' },
 ];
 
 export const CAT_PREF_OPTIONS = [
@@ -41,48 +42,41 @@ export const CAT_PREF_OPTIONS = [
 export const CAT_PREF_ORDER = { favour: 0, normal: 1, demote: 2, hide: 3 };
 
 export const FONT_THEMES = [
-  { value: 'serif', label: 'Serif', className: 'font-serif', family: 'Georgia, "Times New Roman", "Noto Serif", serif' },
-  { value: 'sans', label: 'Sans', className: 'font-sans', family: '"Helvetica Neue", Arial, sans-serif' },
-  { value: 'modern', label: 'Modern', className: 'font-modern', family: 'Outfit, system-ui, sans-serif' },
-  { value: 'accessible', label: 'Assist', className: 'font-accessible', family: 'OpenDyslexic, system-ui, sans-serif' },
+  { value: 'serif', label: 'Serif', className: 'font-serif', family: 'Georgia, "Times New Roman", "Noto Serif", serif', tip: 'Georgia — newspaper serif' },
+  { value: 'sans', label: 'Sans', className: 'font-sans', family: '"Helvetica Neue", Arial, sans-serif', tip: 'Helvetica — plain sans-serif' },
+  { value: 'modern', label: 'Modern', className: 'font-modern', family: 'Outfit, system-ui, sans-serif', tip: 'Outfit — geometric sans' },
+  { value: 'accessible', label: 'Assist', className: 'font-accessible', family: 'OpenDyslexic, system-ui, sans-serif', tip: 'OpenDyslexic — weighted letterforms' },
 ];
 
 export const FONT_SIZE_OPTIONS = [
-  { value: 'small', label: 'Small' },
-  { value: 'medium', label: 'Medium' },
-  { value: 'large', label: 'Large' },
-];
-
-export const COLUMN_OPTIONS = [
-  { value: '1', label: '1' },
-  { value: '2', label: '2' },
-  { value: '3', label: '3' },
-  { value: '4', label: '4' },
+  { value: 'small', label: 'Small', tip: 'Dense text, more articles per screen' },
+  { value: 'medium', label: 'Medium', tip: 'Default text size' },
+  { value: 'large', label: 'Large', tip: 'Larger text, easier reading' },
 ];
 
 export const SORT_OPTIONS = [
-  { value: 'recent', label: 'Most recent' },
-  { value: 'stories', label: 'Most stories' },
+  { value: 'recent', label: 'Most recent', tip: 'Freshest clusters lead the feed' },
+  { value: 'stories', label: 'Most stories', tip: 'Biggest multi-source clusters lead' },
 ];
 
 export const IMAGE_OPTIONS = [
-  { value: 'none', label: 'None' },
-  { value: 'minimal', label: 'Minimal' },
-  { value: 'latest', label: 'Latest' },
-  { value: 'all', label: 'All' },
+  { value: 'none', label: 'None', tip: 'No article images' },
+  { value: 'minimal', label: 'Minimal', tip: 'Images only on plugin-sourced leads' },
+  { value: 'latest', label: 'Latest', tip: 'Image only on the freshest cluster' },
+  { value: 'all', label: 'All', tip: 'Every article shows its image' },
 ];
 
 export const AGE_OPTIONS = [
-  { value: '7', label: '7 days' },
-  { value: '30', label: '30 days' },
-  { value: '60', label: '60 days' },
+  { value: '7', label: '7 days', tip: 'Only the last week of stories' },
+  { value: '30', label: '30 days', tip: 'Stories up to a month old' },
+  { value: '60', label: '60 days', tip: 'Stories up to two months old' },
 ];
 
 export const MARK_READ_OPTIONS = [
-  { value: 'off', label: 'Off' },
-  { value: 'hover', label: 'Hover' },
-  { value: 'focus', label: 'Focus' },
-  { value: 'turbo', label: 'Turbo' },
+  { value: 'off', label: 'Off', tip: 'Articles never auto-mark as read' },
+  { value: 'hover', label: 'Hover', tip: 'Dwell 2.5s on one article to mark it read' },
+  { value: 'focus', label: 'Focus', tip: 'Dwell marks articles around the cursor' },
+  { value: 'turbo', label: 'Turbo', tip: 'Scrolling itself marks top articles read' },
 ];
 
 function loadJson(key, fallback) {
@@ -181,7 +175,7 @@ export function applySettings(settings = state.settings) {
   document.body.className = '';
   const fontTheme = FONT_THEMES.find(f => f.value === settings.font) || FONT_THEMES[0];
   document.body.classList.add(fontTheme.className);
-  document.documentElement.className = `font-${settings.fontsize}`;
+  document.documentElement.className = `font-${settings.fontsize}` + (settings.fullWidth ? ' full-width' : '');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const effective = settings.theme === 'auto' ? (prefersDark ? 'night' : 'day') : settings.theme;
   document.documentElement.setAttribute('data-theme', effective);

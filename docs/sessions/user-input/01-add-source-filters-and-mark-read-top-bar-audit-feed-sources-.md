@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 14:46:06 UTC
-entries: 133
+last_activity: 2026-11-26 15:07:36 UTC
+entries: 140
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -1038,6 +1038,55 @@ do we say anywhere on our site that we don't collect any data? like in the foote
 ### 2026-11-26 14:46:06 UTC
 
 "Because clickbait sucks" should be "No data gathered. You are not our product."
+
+---
+
+<!-- r:0 m:hook:ae169e60-df88-4279-b5d1-7dad299cd212 h:bbb997d5 -->
+### 2026-11-26 14:51:47 UTC
+
+I'd prefer to put the image in the repo/src, not build it every time. I hate how often you fuck up obvious boundaries in this model
+
+---
+
+<!-- r:0 m:hook:f72f0caf-d25a-40c1-85dc-7314d96ace21 h:79bf3441 -->
+### 2026-11-26 14:55:24 UTC
+
+Our settings also need an option to use the FULL viewport width, not just the amount of it we picked, which also then lets the number of columns be set much higher (still increases by just 1, but let's say can go up to 12 in full-wdith mode, to support ultrawide).
+
+---
+
+<!-- r:0 m:hook:7303b15e-b94d-40bf-9c52-0cb8866f21c5 h:d221a7ba -->
+### 2026-11-26 14:58:33 UTC
+
+I can't get https://bobdavies.co.uk/news/og-image.jpg to show the new version, have the new version use a different name so we also invalidate platform's own caches in preview/lint.
+
+---
+
+<!-- r:0 m:hook:ba562896-6872-4a44-b3ec-345cc69e57cd h:acf10f6d -->
+### 2026-11-26 15:00:34 UTC
+
+Each setting needs a tooltip that says what the current setting does. The user is expected to cycle through to discover all setting functions, so keep the texts small and PER-value, not per-setting. I.e. tell them what the current setting value does, not what the setting is generally 'for'. Our users are smart, generally
+
+---
+
+<!-- r:0 m:hook:e0c2145f-5d4c-446b-8dda-328b03c3764f h:4f47a3ad -->
+### 2026-11-26 15:04:33 UTC
+
+autocrop to content ~/downloads/daily-broadsheet-icon.png so I can take it over for to-svg conversion, actually, autocrop it then try potrace, that might be good enough here (not sure if i have it installed), it's mono but not black, but it's also not square (it's wide), but you can crop it TO square centrally on box axes with zero pad on left and right (it should have equal pad top and bottom, cos favicon.io will do it better)
+
+---
+
+<!-- r:0 m:hook:02edd4f3-abf7-4f17-84a3-77d456c9c5fe h:facca64c -->
+### 2026-11-26 15:06:06 UTC
+
+potrace didn't quite get it, weird streaks. 
+
+---
+
+<!-- r:0 m:hook:356a2d5a-3745-4d42-858a-235c771b2e3a h:580f82d3 -->
+### 2026-11-26 15:07:36 UTC
+
+okay, use /home/bobbigmac/Downloads/favicon_io.zip and copy in the base png and svg to our assets somewhere in the repo
 
 ---
 

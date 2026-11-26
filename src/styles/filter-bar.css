@@ -220,3 +220,7 @@
   background: var(--ink, #1c1a16);
   color: var(--paper, #f5f0e6);
 }
+
+html.full-width .source-bar-inner {
+  max-width: none;
+}

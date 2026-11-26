@@ -187,18 +187,13 @@ const runLog = loadJson(RUN_LOG_FILE, []);
 writeFileSync(join(OUT_DIR, 'run-log.json'), JSON.stringify(runLog, null, 2));
 
 // Copy static assets that Vite doesn't process
+copyStatic('og-cover.jpg');
 copyStatic('sw.js');
-
-// og-image is generated, not static: a dense grid of source favicons behind
-// the masthead, rebuilt each publish so it grows with the source base.
-// Falls back to the committed static file if generation fails.
-try {
-  const { buildOgImage } = await import('./build-og-image.js');
-  const { icons } = await buildOgImage(`${OUT_DIR}/og-image.jpg`);
-  console.log(`og-image: ${icons} source icons`);
-} catch (err) {
-  console.warn('og-image generation failed, using static fallback:', err.message);
-  copyStatic('og-image.jpg');
+// Favicon set (favicon.io output + the traced SVG master)
+for (const f of ['favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png', 'apple-touch-icon.png',
+                 'android-chrome-192x192.png', 'android-chrome-512x512.png', 'site.webmanifest',
+                 'icon.png', 'icon.svg']) {
+  copyStatic(f);
 }
 
 console.log(`Build complete. ${digest.clusters.length} clusters, ${entities.length} entities, ${topics.length} topics, ${timeline.length} stories in timeline -> ${OUT_DIR}/dataset.json`);

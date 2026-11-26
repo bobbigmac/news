@@ -3,7 +3,6 @@ import {
   applySettings,
   CAT_PREF_OPTIONS,
   collectSourcesFromDigest,
-  COLUMN_OPTIONS,
   FONT_SIZE_OPTIONS,
   FONT_THEMES,
   getAllKnownCategories,
@@ -29,12 +28,14 @@ function storyCountLabel(count, suffix = '') {
 function makeCycleHandler(btn, options, currentValue, onChange) {
   const opt = options.find(o => o.value === currentValue) || options[0];
   btn.textContent = opt.label;
+  if (opt.tip) btn.title = opt.tip;
 
   btn.addEventListener('click', () => {
     const idx = options.findIndex(o => o.value === state.settings[onChange.key]);
     const next = options[(idx + 1) % options.length];
     state.settings[onChange.key] = next.value;
     btn.textContent = next.label;
+    if (next.tip) btn.title = next.tip;
     saveSettings();
     applySettings();
     ui.refresh();
@@ -130,6 +131,27 @@ export function renderSourcePrefs() {
   }
 }
 
+
+// Per-state toggle tooltips: the text describes what the CURRENT state does,
+// so cycling through states is self-explanatory.
+const TOGGLE_TIPS = {
+  'setting-expandall': ['Story links collapsed until clicked', 'All story links always visible'],
+  'setting-showupdated': ['Read articles stay hidden', 'Read articles resurface when updated'],
+  'setting-grouptag': ['Articles in the plain column feed', 'Articles grouped under tag headings'],
+  'setting-fullwidth': ['Layout capped at 1200px', 'Layout uses the full viewport width'],
+};
+
+function syncToggleTips() {
+  for (const [id, [offTip, onTip]] of Object.entries(TOGGLE_TIPS)) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    const tip = el.checked ? onTip : offTip;
+    el.title = tip;
+    const row = el.closest('.setting-row');
+    if (row) row.title = tip;
+  }
+}
+
 export function initSettings() {
   const panel = document.getElementById('settings-panel');
   const toggle = document.getElementById('settings-toggle');
@@ -145,6 +167,7 @@ export function initSettings() {
   const expandAllCheck = document.getElementById('setting-expandall');
   const showUpdatedCheck = document.getElementById('setting-showupdated');
   const groupTagCheck = document.getElementById('setting-grouptag');
+  const fullWidthCheck = document.getElementById('setting-fullwidth');
   const watchWordsInput = document.getElementById('setting-watchwords');
   const markReadBtn = document.getElementById('setting-markread');
 
@@ -153,8 +176,11 @@ export function initSettings() {
     fontBtn.textContent = fontTheme.label;
     const fsOpt = FONT_SIZE_OPTIONS.find(o => o.value === state.settings.fontsize) || FONT_SIZE_OPTIONS[1];
     fontsizeBtn.textContent = fsOpt.label;
-    const colOpt = COLUMN_OPTIONS.find(o => o.value === state.settings.columns) || COLUMN_OPTIONS[2];
-    columnsBtn.textContent = colOpt.label;
+    columnsBtn.textContent = state.settings.columns;
+    {
+      const n = parseInt(state.settings.columns, 10) || 3;
+      columnsBtn.title = `Articles in ${n} column${n === 1 ? '' : 's'}`;
+    }
     const sortOpt = SORT_OPTIONS.find(o => o.value === state.settings.sort) || SORT_OPTIONS[0];
     sortBtn.textContent = sortOpt.label;
     const imgOpt = IMAGE_OPTIONS.find(o => o.value === state.settings.images) || IMAGE_OPTIONS[1];
@@ -163,11 +189,25 @@ export function initSettings() {
     ageBtn.textContent = ageOpt.label;
     const themeOpt = THEME_OPTIONS.find(o => o.value === state.settings.theme) || THEME_OPTIONS[0];
     themeBtn.textContent = themeOpt.label;
+    for (const [btn, opts, val] of [
+      [fontBtn, FONT_THEMES, state.settings.font],
+      [fontsizeBtn, FONT_SIZE_OPTIONS, state.settings.fontsize],
+      [sortBtn, SORT_OPTIONS, state.settings.sort],
+      [imagesBtn, IMAGE_OPTIONS, state.settings.images],
+      [ageBtn, AGE_OPTIONS, state.settings.ageLimit],
+      [themeBtn, THEME_OPTIONS, state.settings.theme],
+      [markReadBtn, MARK_READ_OPTIONS, state.settings.markRead],
+    ]) {
+      const o = opts.find(x => x.value === val);
+      if (btn && o?.tip) btn.title = o.tip;
+    }
+    syncToggleTips();
     const markReadOpt = MARK_READ_OPTIONS.find(o => o.value === state.settings.markRead) || MARK_READ_OPTIONS[0];
     if (markReadBtn) markReadBtn.textContent = markReadOpt.label;
     expandAllCheck.checked = state.settings.expandAll;
     showUpdatedCheck.checked = state.settings.showUpdated;
     groupTagCheck.checked = state.settings.groupByTag;
+    fullWidthCheck.checked = state.settings.fullWidth;
     watchWordsInput.value = state.settings.watchWords || '';
   }
 
@@ -175,21 +215,39 @@ export function initSettings() {
     state.settings.expandAll = expandAllCheck.checked;
     state.settings.showUpdated = showUpdatedCheck.checked;
     state.settings.groupByTag = groupTagCheck.checked;
+    state.settings.fullWidth = fullWidthCheck.checked;
+    if (!state.settings.fullWidth && parseInt(state.settings.columns, 10) > 4) {
+      state.settings.columns = '4';
+      columnsBtn.textContent = '4';
+    }
     saveSettings();
     applySettings();
     ui.refresh();
+    syncToggleTips();
   }
 
   makeCycleHandler(fontBtn, FONT_THEMES, state.settings.font, { key: 'font' });
   makeCycleHandler(fontsizeBtn, FONT_SIZE_OPTIONS, state.settings.fontsize, { key: 'fontsize' });
-  makeCycleHandler(columnsBtn, COLUMN_OPTIONS, state.settings.columns, { key: 'columns' });
+  // Columns cycle 1-4 normally, 1-12 in full-width mode — same single-step
+  // increment either way, wrapping at the active bound.
+  columnsBtn.addEventListener('click', () => {
+    const max = state.settings.fullWidth ? 12 : 4;
+    const cur = parseInt(state.settings.columns, 10) || 3;
+    const next = cur >= max ? 1 : cur + 1;
+    state.settings.columns = String(next);
+    columnsBtn.textContent = String(next);
+    columnsBtn.title = `Articles in ${next} column${next === 1 ? '' : 's'}`;
+    saveSettings();
+    applySettings();
+    ui.refresh();
+  });
   makeCycleHandler(sortBtn, SORT_OPTIONS, state.settings.sort, { key: 'sort' });
   makeCycleHandler(imagesBtn, IMAGE_OPTIONS, state.settings.images, { key: 'images' });
   makeCycleHandler(ageBtn, AGE_OPTIONS, state.settings.ageLimit, { key: 'ageLimit' });
   makeCycleHandler(themeBtn, THEME_OPTIONS, state.settings.theme, { key: 'theme' });
   if (markReadBtn) makeCycleHandler(markReadBtn, MARK_READ_OPTIONS, state.settings.markRead, { key: 'markRead' });
 
-  [expandAllCheck, showUpdatedCheck, groupTagCheck].forEach(el => el.addEventListener('change', updateCheckboxes));
+  [expandAllCheck, showUpdatedCheck, groupTagCheck, fullWidthCheck].forEach(el => el.addEventListener('change', updateCheckboxes));
 
   // Watch words — debounce input
   let watchTimer = null;

@@ -15,6 +15,11 @@
 
 .broadsheet.cols-1 { max-width: 700px; }
 
+html.full-width .broadsheet {
+  max-width: none;
+}
+html.full-width .broadsheet.cols-1 { max-width: 700px; }
+
 .loading {
   text-align: center;
   padding: 3rem;
