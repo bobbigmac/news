@@ -1,47 +1,41 @@
-// Summarise pipeline (reworked).
+// Summarise pipeline orchestration.
 //
-// Flow:
-//   1. Load new stories (raw-new.json) + existing digest + summarised ids.
-//   2. Embed all relevant stories locally (Transformers.js, cached by id).
-//   3. Cross-source dedup of new stories (cosine sim >= SIM_DEDUP).
-//   4. Cluster new stories into event groups (DBSCAN on embeddings).
-//   5. Match each group to an existing digest cluster by centroid similarity
-//      (stories accumulate into living clusters across runs).
-//   6. For each cluster (existing-updated or new), make ONE LLM call to write
-//      headline + summary + impact + trigger words. Grouping is already done
-//      locally, so the LLM only writes editorial copy — simple and reliable.
-//      A failed call degrades only that cluster's text (heuristic fallback).
-//   7. Annotate clusters with entities (compromise NER), tags (TF-IDF), and
-//      lifecycle fields (active/archive, timeline, story count).
-//   8. Persist digest + run-log.
+// Grouping is local (embeddings + DBSCAN + topic-slug merge); the LLM only
+// writes editorial copy for already-formed clusters. Helpers live in focused
+// modules: cache-io, llm-client, topic-slugs, and cluster-copy.
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
-import { join } from 'path';
-import { SYSTEM_PROMPT, buildSummaryPrompt, buildBatchPrompt, buildClickbaitPrompt } from './prompts.js';
-import { TOPIC_SYSTEM_PROMPT, buildTopicPrompt } from './topic-prompt.js';
-import { extractJson } from './extract-json.js';
-import { deriveShortSummary } from './short-summary.js';
-import { embedStories, cosineSim, centroid } from './embeddings.js';
+import { buildSummaryPrompt, buildBatchPrompt, buildClickbaitPrompt } from './prompts.js';
+import { embedStories } from './embeddings.js';
 import { dedupStories, clusterEvents, matchToExisting } from './cluster.js';
 import { annotateClusters, buildEntityIndex } from './entities.js';
 import { computeClusterTags } from './tags.js';
-import { enrichStory } from './story-enrich.js';
-
-const CACHE_DIR = 'cache';
-const RAW_FILE = join(CACHE_DIR, 'raw-new.json');
-const DIGEST_FILE = join(CACHE_DIR, 'digest.json');
-const STORY_STORE_FILE = join(CACHE_DIR, 'stories.json');
-const SUMMARISED_IDS_FILE = join(CACHE_DIR, 'summarised-ids.json');
-const RUN_LOG_FILE = join(CACHE_DIR, 'run-log.json');
-const MODEL_REGISTRY_FILE = join(CACHE_DIR, 'model-registry.json');
-
-const MAX_RETRIES = 5;
-const BASE_DELAY_MS = 5000;
-const MAX_DELAY_MS = 60000;
-const INTER_CALL_DELAY_MS = 2000; // pause between LLM calls to avoid rate limiting
-const ACTIVE_WINDOW_HOURS = 48;   // a cluster is "active" if last story published within this window
-const STALE_AFTER_DAYS = 7;       // clusters with no new stories in 7 days are stale
-const EXPIRE_AFTER_DAYS = 30;     // clusters with no stories in 30 days are removed from digest
+import {
+  DIGEST_FILE,
+  loadJson,
+  RAW_FILE,
+  RUN_LOG_FILE,
+  saveJson,
+  STORY_STORE_FILE,
+  SUMMARISED_IDS_FILE,
+} from './cache-io.js';
+import {
+  callLLM,
+  INTER_CALL_DELAY_MS,
+  MODEL,
+  parseSummaryResponse,
+  PROVIDER,
+  stripMarkdownFences,
+} from './llm-client.js';
+import { assignTopicSlugs, mergeGroupsBySlug } from './topic-slugs.js';
+import {
+  annotateLifecycle,
+  fallbackClusterCopy,
+  loadExistingDigest,
+  makeStoryData,
+  mergeIntoCluster,
+  normaliseCategory,
+  prepareStoryForLLM,
+} from './cluster-copy.js';
 
 // --- LLM call consolidation ---
 // Free LLM calls are not unlimited. OpenRouter :free models have rate limits
@@ -53,583 +47,6 @@ const SKIP_MINOR_UPDATE_THRESHOLD = 3;  // Don't re-summarise existing clusters 
 const BATCH_NEW_CLUSTERS = true;        // Batch small new clusters into one LLM call
 const BATCH_SIZE = 5;                   // Max clusters per batch LLM call
 const BATCH_MAX_STORIES = 2;            // Only batch clusters with <= this many stories
-
-// --- Model registry ---
-// When openrouter/free gives us a good :free model, we remember it. On
-// subsequent calls we try known-good models directly (still free — :free
-// suffix means zero cost) instead of gambling on the random router. This
-// eliminates the retry-roulette with safety classifier models.
-// Falls back to openrouter/free if all known-good models are unavailable.
-const MODEL_REGISTRY = loadJson(MODEL_REGISTRY_FILE, { good: [], bad: [] });
-function saveModelRegistry() { saveJson(MODEL_REGISTRY_FILE, MODEL_REGISTRY); }
-function rememberGoodModel(modelId) {
-  if (!modelId || !modelId.endsWith(':free')) return;
-  if (!MODEL_REGISTRY.good.includes(modelId)) {
-    MODEL_REGISTRY.good.unshift(modelId); // most recent first
-    if (MODEL_REGISTRY.good.length > 10) MODEL_REGISTRY.good.pop();
-    saveModelRegistry();
-  }
-}
-function rememberBadModel(modelId) {
-  if (!modelId) return;
-  if (!MODEL_REGISTRY.bad.includes(modelId)) {
-    MODEL_REGISTRY.bad.push(modelId);
-    if (MODEL_REGISTRY.bad.length > 20) MODEL_REGISTRY.bad.shift();
-    saveModelRegistry();
-  }
-}
-function isKnownBad(modelId) {
-  return MODEL_REGISTRY.bad.includes(modelId);
-}
-
-function loadEnv() {
-  const envPath = join(process.cwd(), '.env');
-  if (!existsSync(envPath)) return;
-  for (const line of readFileSync(envPath, 'utf8').split('\n')) {
-    const m = line.match(/^(\w+)=(.*)$/);
-    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim();
-  }
-}
-loadEnv();
-
-const PROVIDERS = [
-  // OpenRouter free router: 'openrouter/free' randomly picks from available
-  // free models. Some of those models are content-safety classifiers (e.g.
-  // nvidia/nemotron-3.5-content-safety:free) that return "User Safety: safe"
-  // instead of chat completions, and some wrap JSON in markdown fences. The
-  // free router doesn't support excluded_models, so we handle bad-model
-  // responses in callLLM by detecting them and retrying (each retry gets a
-  // new random model). Override with OPENROUTER_MODEL to pin a specific model.
-  { name: 'OpenRouter', keyEnv: 'OPENROUTER_API_KEY', baseUrl: 'https://openrouter.ai/api/v1', model: process.env.OPENROUTER_MODEL || 'openrouter/free', headers: (key) => ({ 'Authorization': `Bearer ${key}`, 'HTTP-Referer': 'https://github.com/bobbigmac/news', 'X-Title': 'News Dashboard' }) },
-  { name: 'Featherless', keyEnv: 'FEATHERLESS_API_KEY', baseUrl: 'https://api.featherless.ai/v1', model: process.env.FEATHERLESS_MODEL || 'meta-llama/Llama-3.3-70B-Instruct', headers: (key) => ({ 'Authorization': `Bearer ${key}` }) },
-  { name: 'OpenAI', keyEnv: 'OPENAI_API_KEY', baseUrl: 'https://api.openai.com/v1', model: process.env.OPENAI_MODEL || 'gpt-4o-mini', headers: (key) => ({ 'Authorization': `Bearer ${key}` }) },
-];
-
-const PROVIDER = PROVIDERS.find(p => process.env[p.keyEnv]);
-if (!PROVIDER) {
-  console.error('No LLM API key found. Set one of: OPENROUTER_API_KEY, FEATHERLESS_API_KEY, OPENAI_API_KEY');
-  process.exit(0);
-}
-const API_KEY = process.env[PROVIDER.keyEnv];
-const LLM_BASE = PROVIDER.baseUrl;
-const MODEL = PROVIDER.model;
-
-const MIN_STORY_WORDS = 15;
-const MAX_CONTENT_CHARS = 800;
-
-function loadJson(path, fallback) {
-  if (!existsSync(path)) return fallback;
-  try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return fallback; }
-}
-
-function saveJson(path, data) {
-  mkdirSync(CACHE_DIR, { recursive: true });
-  writeFileSync(path, JSON.stringify(data, null, 2));
-}
-
-function wordCount(text) {
-  return (text || '').trim().split(/\s+/).filter(Boolean).length;
-}
-
-function truncate(text, max) {
-  const t = (text || '').trim();
-  if (t.length <= max) return t;
-  return t.substring(0, max).replace(/\s+\S*$/, '') + '...';
-}
-
-// Build the compact story object sent to the LLM (text for comprehension)
-// and the metadata object stored on the cluster (for the frontend).
-function prepareStoryForLLM(story) {
-  const title = truncate(story.title, 200);
-  const desc = truncate(story.description || '', 400);
-  const content = truncate(story.content || '', MAX_CONTENT_CHARS);
-  const combined = [title, desc, content].filter(Boolean).join(' — ');
-  return {
-    id: story.id,
-    text: combined,
-    // Keep the raw description/content for story enrichment (bodyText).
-    description: desc,
-    content: content,
-    source: story.source || '',
-    sourceName: story.sourceName || '',
-    url: story.url || '',
-    image: story.image || '',
-    published: story.published || '',
-    category: story.category || 'General',
-    originalTitle: story.title,
-    plugin: story.plugin || story._plugin || null,
-    pluginPriority: story.pluginPriority ?? story._pluginPriority ?? null,
-  };
-}
-
-function makeStoryData(s) {
-  return enrichStory({
-    id: s.id,
-    title: s.originalTitle || s.title,
-    source: s.source || '',
-    sourceName: s.sourceName || '',
-    url: s.url || '',
-    image: s.image || '',
-    published: s.published || '',
-    category: normaliseCategory(Array.isArray(s.category) ? s.category[0] : (s.category || 'Other')),
-    plugin: s.plugin || s._plugin || null,
-    pluginPriority: s.pluginPriority ?? s._pluginPriority ?? null,
-  });
-}
-
-function normaliseCategory(raw) {
-  const cat = Array.isArray(raw) ? raw.join(' ') : (raw || 'general');
-  const lower = cat.toLowerCase().trim();
-  // Direct match against our known categories (case-insensitive)
-  const knownCategories = [
-    'politics', 'business', 'technology', 'science', 'health', 'world',
-    'sport', 'sports', 'gaming', 'entertainment', 'celebrity',
-    'environment', 'energy', 'disaster', 'defence', 'defense',
-    'crime', 'local', 'education', 'motoring', 'personal finance',
-    'royal', 'other', 'general', 'regional',
-  ];
-  if (knownCategories.includes(lower)) {
-    // Normalise plural and variants
-    if (lower === 'sports') return 'sport';
-    if (lower === 'defense') return 'defence';
-    if (lower === 'general') return 'other';
-    if (lower === 'regional') return 'local';
-    return lower;
-  }
-  // Fuzzy match for common variants
-  if (/gaming|game|console|xbox|playstation|nintendo|steam|video game|esports|mmorpg|rpg|fps/.test(lower)) return 'gaming';
-  if (/sport|football|cricket|rugby|tennis|olympic/.test(lower)) return 'sport';
-  if (/politic|election|government|parliament|minister/.test(lower)) return 'politics';
-  if (/business|finance|economy|market|bank|trade/.test(lower)) return 'business';
-  if (/tech|ai|software|digital|cyber|internet|processor|chip|cpu|gpu|semiconductor/.test(lower)) return 'technology';
-  if (/health|medical|disease|hospital|drug|vaccine/.test(lower)) return 'health';
-  if (/science|space|research/.test(lower)) return 'science';
-  if (/environment|climate|wildlife|pollution/.test(lower)) return 'environment';
-  if (/energy|power plant|gas plant|renewable|nuclear|oil|solar|wind/.test(lower)) return 'energy';
-  if (/disaster|flood|earthquake|tsunami|eruption|emergency/.test(lower)) return 'disaster';
-  if (/defence|defense|military|armed forces|army|navy|air force/.test(lower)) return 'defence';
-  if (/crime|criminal|arrest|prison|court|police|justice/.test(lower)) return 'crime';
-  if (/entertainment|film|music|tv|television|cinema|festival|book/.test(lower)) return 'entertainment';
-  if (/celebrity|influencer|gossip|star/.test(lower)) return 'celebrity';
-  if (/local|regional|council|community|neighborhood|neighbourhood/.test(lower)) return 'local';
-  if (/education|school|university|student|curriculum/.test(lower)) return 'education';
-  if (/motoring|car|vehicle|driving|ev /.test(lower)) return 'motoring';
-  if (/personal finance|mortgage|savings|pension|money/.test(lower)) return 'personal finance';
-  if (/royal|monarchy|monarch|king|queen|prince|princess/.test(lower)) return 'royal';
-  return 'other';
-}
-
-function extractKeywords(text) {
-  const stop = new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','by','from','as','is','are','was','were','be','been','being','have','has','had','do','does','did','will','would','could','should','may','might','must','can','this','that','these','those','it','its','they','them','their','there','here','who','whom','whose','which','what','when','where','why','how','all','any','both','each','few','more','most','other','some','such','no','nor','not','only','own','same','so','than','too','very','s','t','just','don','now','said','says','say','after','before','during','while','about','against','between','into','through','above','below','up','down','out','off','over','under','again','further','then','once','uk','us','mr','mrs','ms']);
-  const words = (text || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(w => w.length > 2 && !stop.has(w));
-  return [...new Set(words)];
-}
-
-// --- LLM call (with retry/backoff + free-router bad-model handling) ---
-
-// --- Paid-model safeguard ---
-// The $10 OpenRouter credit is a daily-limit unlock, NOT spendable budget.
-// We must NEVER call paid models. The free router should only pick :free
-// models, but if it ever routes to a paid model (bug, config change, etc.)
-// we reject the response immediately and retry. We also check the usage
-// object for any non-zero cost as a belt-and-braces check.
-function isPaidModel(modelId) {
-  // Free models on OpenRouter always end with ':free'.
-  return !modelId || !modelId.endsWith(':free');
-}
-
-function hasCost(usage) {
-  if (!usage) return false;
-  // OpenRouter returns cost in USD as a number (e.g. 0.0001).
-  // Any non-zero cost means we spent real money.
-  const cost = typeof usage.cost === 'number' ? usage.cost
-    : typeof usage.total_cost === 'number' ? usage.total_cost
-    : 0;
-  return cost > 0;
-}
-
-// Models in the openrouter/free pool that are not chat completion models.
-// The free router picks randomly and doesn't support exclusions, so we detect
-// these by their output and retry to get a different model.
-const BAD_MODEL_PATTERNS = [
-  /user safety/i,
-  /^safe$/i,
-  /^unsafe$/i,
-];
-
-// Models known to be non-generative (classifiers, safety models).
-const BAD_MODEL_IDS = new Set([
-  'nvidia/nemotron-3.5-content-safety:free',
-]);
-
-// Some free models wrap JSON in markdown fences despite response_format
-// json_object. Strip fences so the parser can handle the content.
-function stripMarkdownFences(text) {
-  const trimmed = text.trim();
-  const fenceMatch = trimmed.match(/^```(?:json)?\s*\n?([\s\S]*?)\n?```$/);
-  return fenceMatch ? fenceMatch[1].trim() : trimmed;
-}
-
-// Parse the single-cluster JSON object returned by buildSummaryPrompt.
-// The prompt asks for a flat { headline, summary, category, impact,
-// trigger_words } object — not the old { clusters: [...] } wrapper — so we
-// parse directly. callLLM already strips markdown fences; we also tolerate
-// fences here and fall back to extractJson (which handles truncated/malformed
-// JSON) if direct parse fails.
-function parseSummaryResponse(text) {
-  const cleaned = stripMarkdownFences(text).trim();
-  try {
-    const obj = JSON.parse(cleaned);
-    if (obj && obj.headline) return obj;
-    // Some models wrap in a clusters array despite the prompt
-    if (obj && obj.clusters && obj.clusters[0]?.headline) return obj.clusters[0];
-  } catch { /* fall through to extractJson */ }
-  const recovered = extractJson(text);
-  if (recovered && recovered.clusters && recovered.clusters[0]?.headline) {
-    return recovered.clusters[0];
-  }
-  return null;
-}
-
-// Build the list of models to try for a single LLM call.
-// Known-good :free models first (direct calls, still zero cost), then
-// openrouter/free as a fallback to discover new good models.
-function buildModelQueue() {
-  const queue = [];
-  // Only use known-good models for OpenRouter free router
-  if (PROVIDER.name === 'OpenRouter') {
-    for (const m of MODEL_REGISTRY.good) {
-      if (!isKnownBad(m)) queue.push(m);
-    }
-    // Always include the free router last to discover new good models
-    // (or as the only option if no known-good models yet)
-    if (MODEL === 'openrouter/free' && !queue.includes('openrouter/free')) {
-      queue.push('openrouter/free');
-    } else if (!queue.includes(MODEL)) {
-      queue.push(MODEL);
-    }
-  } else {
-    queue.push(MODEL);
-  }
-  return queue;
-}
-
-async function callLLM(prompt) {
-  let lastError = null;
-  const queue = buildModelQueue();
-  let attempt = 0;
-
-  for (let qi = 0; qi < queue.length + MAX_RETRIES; qi++) {
-    const modelToTry = queue[qi % queue.length];
-    // After the first pass through the queue, we're retrying — add delay
-    if (qi >= queue.length) {
-      const delay = Math.min(BASE_DELAY_MS * Math.pow(1.5, attempt), MAX_DELAY_MS);
-      console.log(`  Retrying in ${Math.round(delay / 1000)}s (attempt ${attempt + 1}/${MAX_RETRIES})`);
-      await new Promise(r => setTimeout(r, delay));
-      attempt++;
-    }
-
-    try {
-      const res = await fetch(`${LLM_BASE}/chat/completions`, {
-        method: 'POST',
-        headers: { ...PROVIDER.headers(API_KEY), 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: modelToTry,
-          messages: [{ role: 'system', content: SYSTEM_PROMPT }, { role: 'user', content: prompt }],
-          temperature: 0.3,
-          response_format: { type: 'json_object' },
-        }),
-      });
-
-      if (!res.ok) {
-        const errText = await res.text().catch(() => '');
-        const retryable = res.status === 429 || res.status === 503 || res.status === 502;
-        const reason = res.status === 429 ? 'rate limited' : res.status === 503 ? 'service unavailable' : res.status === 502 ? 'bad gateway' : `HTTP ${res.status}`;
-        lastError = new Error(`${PROVIDER.name} ${reason}: ${errText.substring(0, 300)}`);
-        if (!retryable) throw lastError;
-        // Rate-limited on a specific model — try the next one in the queue
-        if (res.status === 429 && modelToTry !== 'openrouter/free') {
-          console.log(`  ${modelToTry} rate limited — trying next model`);
-          continue;
-        }
-        continue;
-      }
-
-      const data = await res.json();
-      const usedModel = data.model || modelToTry;
-      const text = data.choices?.[0]?.message?.content;
-
-      // Paid-model safeguard: reject immediately, no retry.
-      if (isPaidModel(usedModel)) {
-        lastError = new Error(`PAID MODEL BLOCKED: ${usedModel} is not a :free model — refusing to spend credit`);
-        console.error(`  ${lastError.message}`);
-        throw lastError;
-      }
-      if (hasCost(data.usage)) {
-        lastError = new Error(`PAID USAGE BLOCKED: response from ${usedModel} has non-zero cost (${data.usage.cost || data.usage.total_cost})`);
-        console.error(`  ${lastError.message}`);
-        throw lastError;
-      }
-
-      // Detect content-safety classifier models by ID or output.
-      // Remember as bad and try the next model in the queue.
-      if (BAD_MODEL_IDS.has(usedModel) || isKnownBad(usedModel)) {
-        console.log(`  Known bad model ${usedModel} — trying next`);
-        rememberBadModel(usedModel);
-        continue;
-      }
-      if (text && BAD_MODEL_PATTERNS.some(p => p.test(text.trim()))) {
-        console.log(`  Safety-classifier response from ${usedModel} — remembering as bad, trying next`);
-        rememberBadModel(usedModel);
-        continue;
-      }
-
-      if (!text) {
-        const finish = data.choices?.[0]?.finish_reason;
-        lastError = new Error(`${PROVIDER.name} returned empty response${finish ? ` (finish_reason: ${finish})` : ''} from ${usedModel}`);
-        if (finish === 'length' || finish === 'content_filter') throw lastError;
-        console.log(`  ${lastError.message} — trying next model`);
-        continue;
-      }
-
-      // Success! Remember this model as good for future calls.
-      if (usedModel !== modelToTry) {
-        // The free router picked a model — remember which one
-        rememberGoodModel(usedModel);
-      } else if (modelToTry !== 'openrouter/free') {
-        // Direct model call succeeded — make sure it's in the registry
-        rememberGoodModel(modelToTry);
-      }
-
-      return stripMarkdownFences(text);
-    } catch (err) {
-      lastError = err;
-      const isNetwork = err.cause?.code || err.name === 'TypeError' || /fetch|network|connection|ECONNREFUSED|ENOTFOUND|ETIMEDOUT|aborted/i.test(err.message);
-      if (isNetwork && attempt < MAX_RETRIES - 1) {
-        console.log(`  Network error (${err.cause?.code || err.message}) — retrying`);
-        continue;
-      }
-      throw err;
-    }
-  }
-  throw lastError || new Error(`${PROVIDER.name}: all retries exhausted`);
-}
-
-// Merge embedding clusters that share a topic slug. Stories with the same
-// slug are about the same topic (per the LLM), so their clusters should be
-// merged even if embedding similarity was below the clustering threshold.
-// Also stores the slug on each story for future reference.
-function mergeGroupsBySlug(groups, topicSlugs) {
-  if (!topicSlugs || Object.keys(topicSlugs).length === 0) return groups;
-
-  // Tag each story with its slug
-  for (const group of groups) {
-    for (const story of group) {
-      story._topicSlug = topicSlugs[story.id] || null;
-    }
-  }
-
-  // Group clusters by shared slug
-  const bySlug = new Map(); // slug -> array of group indices
-  const noSlug = []; // groups with no slug (keep as-is)
-
-  groups.forEach((group, i) => {
-    const slugsInGroup = new Set(
-      group.map(s => s._topicSlug).filter(Boolean)
-    );
-    if (slugsInGroup.size === 0) {
-      noSlug.push(i);
-      return;
-    }
-    // If a group has multiple slugs (shouldn't happen often), use the first
-    const slug = [...slugsInGroup][0];
-    if (!bySlug.has(slug)) bySlug.set(slug, []);
-    bySlug.get(slug).push(i);
-  });
-
-  // Merge groups that share a slug
-  const merged = [];
-  const used = new Set();
-
-  for (const [slug, indices] of bySlug) {
-    if (indices.length <= 1) {
-      // Only one group has this slug — keep as-is
-      for (const i of indices) {
-        if (!used.has(i)) { used.add(i); merged.push(groups[i]); }
-      }
-      continue;
-    }
-    // Merge all groups with this slug
-    const combined = [];
-    const seen = new Set();
-    for (const i of indices) {
-      used.add(i);
-      for (const s of groups[i]) {
-        if (!seen.has(s.id)) { seen.add(s.id); combined.push(s); }
-      }
-    }
-    console.log(`  Topic merge: "${slug}" merged ${indices.length} groups -> ${combined.length} stories`);
-    merged.push(combined);
-  }
-
-  // Add groups with no slug
-  for (const i of noSlug) {
-    if (!used.has(i)) { used.add(i); merged.push(groups[i]); }
-  }
-
-  return merged;
-}
-
-// --- Topic slug assignment (preflight categorisation) ---
-// One LLM call per run: takes all new story headlines and assigns each a
-// topic slug (e.g. "gta-6", "phillies"). Stories with the same slug are
-// forced into the same embedding cluster, catching same-topic-different-angle
-// stories that embedding similarity alone would miss. Falls back gracefully
-// (no slugs = embedding-only clustering, same as before).
-async function assignTopicSlugs(stories) {
-  if (stories.length < 2) return {};
-  try {
-    const compact = stories.map(s => ({ id: s.id, title: s.title || s.originalTitle || '' }));
-    const prompt = buildTopicPrompt(compact);
-    const responseText = await callLLMTopic(prompt);
-    const cleaned = stripMarkdownFences(responseText).trim();
-    const parsed = JSON.parse(cleaned);
-    // Validate: must be an object mapping string -> string
-    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
-      const slugs = {};
-      let multiSlugCount = 0;
-      const slugCounts = {};
-      for (const [id, slug] of Object.entries(parsed)) {
-        if (typeof slug === 'string' && slug.length > 0) {
-          slugs[id] = slug;
-          slugCounts[slug] = (slugCounts[slug] || 0) + 1;
-        }
-      }
-      for (const count of Object.values(slugCounts)) {
-        if (count > 1) multiSlugCount++;
-      }
-      console.log(`Topic slugs: ${Object.keys(slugCounts).length} unique slugs, ${multiSlugCount} multi-story groups`);
-      return slugs;
-    }
-  } catch (e) {
-    console.log(`Topic slug assignment failed (${e.message?.slice(0, 80)}) — falling back to embedding-only clustering`);
-  }
-  return {};
-}
-
-// Separate callLLM for topic assignment — uses the topic system prompt and
-// lower temperature for more deterministic slug assignment.
-async function callLLMTopic(prompt) {
-  const queue = buildModelQueue();
-  for (let qi = 0; qi < queue.length + MAX_RETRIES; qi++) {
-    const modelToTry = queue[qi % queue.length];
-    if (qi >= queue.length) {
-      const delay = Math.min(BASE_DELAY_MS * Math.pow(1.5, qi - queue.length), MAX_DELAY_MS);
-      await new Promise(r => setTimeout(r, delay));
-    }
-    try {
-      const res = await fetch(`${LLM_BASE}/chat/completions`, {
-        method: 'POST',
-        headers: { ...PROVIDER.headers(API_KEY), 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: modelToTry,
-          messages: [{ role: 'system', content: TOPIC_SYSTEM_PROMPT }, { role: 'user', content: prompt }],
-          temperature: 0.2,
-          response_format: { type: 'json_object' },
-        }),
-      });
-      if (!res.ok) {
-        if (res.status === 429 || res.status === 503 || res.status === 502) continue;
-        throw new Error(`${PROVIDER.name} HTTP ${res.status}`);
-      }
-      const data = await res.json();
-      const usedModel = data.model || modelToTry;
-      const text = data.choices?.[0]?.message?.content;
-      if (isPaidModel(usedModel) || hasCost(data.usage)) throw new Error('Paid model blocked');
-      if (!text) continue;
-      if (usedModel !== modelToTry) rememberGoodModel(usedModel);
-      else if (modelToTry !== 'openrouter/free') rememberGoodModel(modelToTry);
-      return stripMarkdownFences(text);
-    } catch (e) {
-      if (qi >= queue.length + MAX_RETRIES - 1) throw e;
-    }
-  }
-  throw new Error('Topic slug LLM call exhausted');
-}
-
-function loadExistingDigest() {
-  return loadJson(DIGEST_FILE, { date: new Date().toISOString().split('T')[0], clusters: [] });
-}
-
-function findClusterForStory(digest, storyId) {
-  return digest.clusters.find(c => c.stories?.some(s => s.id === storyId));
-}
-
-// Heuristic fallback when the LLM fails for a cluster: derive headline/summary
-// from the story text directly. Crude but never loses a story.
-function fallbackClusterCopy(stories, cleanHeadline) {
-  const lead = stories[0];
-  const rawHeadline = lead.originalTitle || lead.title || 'Untitled';
-  const headline = (cleanHeadline || rawHeadline).slice(0, 80);
-  const summary = (lead.text || '').slice(0, 200).replace(/\s+\S*$/, '') + '...';
-  const shortSummary = deriveShortSummary(summary, headline);
-  const triggerWords = extractKeywords(headline + ' ' + summary).slice(0, 5);
-  return { headline, summary, shortSummary, triggerWords, impact: 'medium', category: normaliseCategory(lead.category) };
-}
-
-// Sort a cluster's stories chronologically (oldest first) so the stored
-// stories array reads as a timeline of how the event developed.
-function sortTimeline(stories) {
-  return [...stories].sort((a, b) => String(a.published || '').localeCompare(String(b.published || '')));
-}
-
-// Attach lifecycle fields to every cluster: active flag, story count, sorted
-// timeline, and first/last published dates. Also expire clusters whose stories
-// are all older than EXPIRE_AFTER_DAYS — they're dead news taking up space.
-function annotateLifecycle(digest) {
-  const now = Date.now();
-  const activeCutoff = now - ACTIVE_WINDOW_HOURS * 60 * 60 * 1000;
-  const expireCutoff = now - EXPIRE_AFTER_DAYS * 24 * 60 * 60 * 1000;
-  const before = digest.clusters.length;
-  for (const cluster of (digest.clusters || [])) {
-    cluster.stories = sortTimeline(cluster.stories || []);
-    const dates = cluster.stories
-      .map(s => s.published)
-      .filter(Boolean)
-      .map(d => { try { return new Date(d).getTime(); } catch { return 0; } })
-      .filter(Boolean);
-    cluster.storyCount = cluster.stories.length;
-    cluster.firstPublished = dates.length ? new Date(Math.min(...dates)).toISOString() : null;
-    cluster.lastPublished = dates.length ? new Date(Math.max(...dates)).toISOString() : null;
-    // Active = last STORY published within the window (not pipeline touch time).
-    // Using lastPublished means a cluster only stays active if real new stories
-    // arrive — the pipeline refreshing metadata doesn't keep dead stories alive.
-    const lastPubTs = cluster.lastPublished ? new Date(cluster.lastPublished).getTime() : 0;
-    cluster.active = lastPubTs >= activeCutoff;
-  }
-  // Expire clusters where ALL stories are older than EXPIRE_AFTER_DAYS.
-  // These are dead news — the event is over and no new developments are coming.
-  digest.clusters = digest.clusters.filter(c => {
-    const lastPubTs = c.lastPublished ? new Date(c.lastPublished).getTime() : 0;
-    if (lastPubTs < expireCutoff) {
-      console.log(`  Expiring stale cluster (${Math.floor((now - lastPubTs)/86400000)}d old): ${c.headline?.slice(0,60)}`);
-      return false;
-    }
-    return true;
-  });
-  const expired = before - digest.clusters.length;
-  if (expired) console.log(`  Expired ${expired} stale clusters (>${EXPIRE_AFTER_DAYS}d no new stories)`);
-}
-
-// Merge a group of new stories into an existing cluster (dedup by id).
-function mergeIntoCluster(cluster, prepared) {
-  const existingIds = new Set(cluster.stories.map(s => s.id));
-  let added = 0;
-  for (const s of prepared) {
-    if (!existingIds.has(s.id)) { cluster.stories.push(makeStoryData(s)); added++; }
-  }
-  return added;
-}
 
 async function main() {
   console.log('=== Summarise News (reworked) ===');
@@ -656,11 +73,10 @@ async function main() {
     return;
   }
 
-  // Filter out stories too short to be meaningful.
-  const filtered = toProcess.filter(s => wordCount((s.description || '') + ' ' + (s.content || '')) >= MIN_STORY_WORDS);
-  const tooShort = toProcess.length - filtered.length;
-  if (tooShort) console.log(`Filtered out ${tooShort} stories with < ${MIN_STORY_WORDS} words`);
-  console.log(`Stories to process: ${filtered.length} (skipped ${rawStories.length - toProcess.length} already summarised)`);
+  // Every fetched story is a pipeline input. Do not silently discard short or
+  // thin items here; bad source extraction should be visible in output/logs.
+  const storiesToProcess = toProcess;
+  console.log(`Stories to process: ${storiesToProcess.length} (skipped ${rawStories.length - toProcess.length} already summarised)`);
 
   // --- Embed ---
   // We need embeddings for: new stories, AND any existing-cluster stories not
@@ -672,10 +88,10 @@ async function main() {
     .map(id => store[id] || rawStories.find(r => r.id === id))
     .filter(Boolean);
   // embedStories uses the on-disk cache, so already-embedded ids are skipped.
-  const embeddings = await embedStories([...filtered, ...existingStoriesToEmbed]);
+  const embeddings = await embedStories([...storiesToProcess, ...existingStoriesToEmbed]);
 
   // --- Dedup + cluster new stories ---
-  const dedupGroups = dedupStories(filtered, embeddings);
+  const dedupGroups = dedupStories(storiesToProcess, embeddings);
   const dedupedReps = dedupGroups.map(g => g[0]);
   const eventGroups = clusterEvents(dedupedReps, embeddings);
   // Expand each event group back to include all dedup members.
@@ -694,7 +110,7 @@ async function main() {
   // that share a slug. This catches same-topic-different-angle stories
   // (e.g. GTA 6 frame rate + GTA 6 first person + GTA 6 console comparison)
   // that embedding similarity alone would leave as separate clusters.
-  const topicSlugs = await assignTopicSlugs(filtered);
+  const topicSlugs = await assignTopicSlugs(storiesToProcess);
   const mergedGroups = mergeGroupsBySlug(expandedGroups, topicSlugs);
 
   // --- Match to existing clusters ---
@@ -721,7 +137,6 @@ async function main() {
   let singletonCount = 0;
 
   // First pass: merge stories into clusters, classify into tiers
-  const skipTier = [];      // existing clusters, minor update — no LLM call
   const singletonTier = []; // new 1-story clusters — clickbait screen only
   const batchTier = [];     // small new clusters (2+ stories) — batched LLM call
   const soloTier = [];      // everything else — dedicated LLM call
@@ -782,7 +197,7 @@ async function main() {
   }
 
   // Helper: apply parsed LLM response to a cluster
-  function applySummaryToCluster(cluster, parsed, existingCluster) {
+  function applySummaryToCluster(cluster, parsed) {
     if (parsed && parsed.headline) {
       const parsedShortSummary = String(parsed.short_summary || parsed.shortSummary || '').replace(/\s+/g, ' ').trim();
       const summaryChanged = parsed.summary && parsed.summary !== cluster.summary;
@@ -893,7 +308,7 @@ async function main() {
           const byId = new Map(results.map(p => [p.id, p]));
           for (const b of batch) {
             const result = byId.get(b.cluster.id);
-            if (!applySummaryToCluster(b.cluster, result, null)) {
+            if (!applySummaryToCluster(b.cluster, result)) {
               console.log(`  Batch: unparseable result for ${b.cluster.id} — using fallback`);
               llmFailed++;
               applyFallbackToCluster(b.cluster, b.prepared);
@@ -931,7 +346,7 @@ async function main() {
         const prompt = buildSummaryPrompt(prepared, existingCluster);
         const responseText = await callLLM(prompt);
         const parsed = parseSummaryResponse(responseText);
-        if (!applySummaryToCluster(cluster, parsed, existingCluster)) {
+        if (!applySummaryToCluster(cluster, parsed)) {
           console.log(`  LLM returned unparseable JSON — using fallback copy`);
           llmFailed++;
           if (!existingCluster) applyFallbackToCluster(cluster, prepared);
@@ -964,7 +379,7 @@ async function main() {
   digest.generated = new Date().toISOString();
   saveJson(DIGEST_FILE, digest);
 
-  writeRunLog(digest, filtered.length, totalAdded, clustersCreated, totalUpdated, llmCalls, llmFailed, false, tooShort, skippedMinor);
+  writeRunLog(digest, storiesToProcess.length, totalAdded, clustersCreated, totalUpdated, llmCalls, llmFailed, false, skippedMinor);
 
   const wouldHaveCalled = assignments.length;
   const saved = wouldHaveCalled - llmCalls;
@@ -973,7 +388,7 @@ async function main() {
   console.log(`Skipped ${skippedMinor} minor updates, ${singletonCount} singletons screened. Digest: ${digest.clusters.length} clusters.`);
 }
 
-function writeRunLog(digest, processed, added, created, updated, llmCalls, llmFailed, skipped, filteredTooShort = 0, skippedMinor = 0) {
+function writeRunLog(digest, processed, added, created, updated, llmCalls, llmFailed, skipped, skippedMinor = 0) {
   const runLog = loadJson(RUN_LOG_FILE, []);
   runLog.unshift({
     timestamp: new Date().toISOString(),
@@ -989,7 +404,6 @@ function writeRunLog(digest, processed, added, created, updated, llmCalls, llmFa
     skippedMinor,
     chunks: llmCalls, // retained for frontend compatibility
     chunksFailed: llmFailed, // retained for frontend compatibility
-    filteredTooShort,
     skipped,
   });
   saveJson(RUN_LOG_FILE, runLog.slice(0, 10));
