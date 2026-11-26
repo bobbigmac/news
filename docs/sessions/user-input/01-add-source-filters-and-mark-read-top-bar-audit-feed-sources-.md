@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 13:15:11 UTC
-entries: 100
+last_activity: 2026-11-26 14:12:44 UTC
+entries: 109
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -780,6 +780,92 @@ I fucking hate fallbacks
 ### 2026-11-26 13:15:11 UTC
 
 there shouldn't ever be a need to truncate text artificially. We literally ask the LLM to summarise with target word counts explicitly so we don't have to truncate
+
+---
+
+<!-- r:0 m:hook:ed651e14-04dc-459d-9309-330f4592d478 h:fa586adb -->
+### 2026-11-26 14:01:45 UTC
+
+wtf. A lot of links now show in browser default styling, images get loaded wonky, underflow their container and spread over the page. Others get injected really small. What ddi you break now?
+
+---
+
+<!-- r:0 m:hook:d063dd40-496a-4393-95dc-983978f64c48 h:6c693441 -->
+### 2026-11-26 14:02:44 UTC
+
+<div class="article-summary"><span class="summary-full">Hands-on with the "Install as app" feature for Claude artifacts: they are HTML apps wrapped inside an Electron shim, which is managed via the main Claude app — &nbsp; From the company's blog: … If you're an AppStories listener, you know that I've long thought it was only a matter … — <a href="https://www.macstories.net/stories/a-closer-look-at-claudes-mac-apps/"><img vspace="4" hspace="4" border="0" align="RIGHT" src="http://www.techmeme.com/261125/i40.jpg"></a>
+<p><a href="https://www.techmeme.com/261125/p40#a261125p40" title="Techmeme permalink"><img width="11" height="12" src="http://www.techmeme.com/img/pml.png" style="border:none;padding:0;margin:0;"></a> Federico Viticci / <a href="https://www.macstories.net/">MacStories</a>:<br>
+<span style="font-size:1.3em;"><b><a href="https://www.macstories.net/stories/a-closer-look-at-claudes-mac-apps/">Hands-on with the “Install as app” feature for Claude artifacts: they are HTML apps wrapped inside an Electron shim, which is managed via the main Claude app</a></b></span>&nbsp; —&nbsp; From the company's blog: … If you're an AppStories listener, you know that I've long thought it was only a matter … </p></span></div>
+
+---
+
+<!-- r:0 m:hook:8bb4f3be-f59e-4fca-835c-bb3a0f3c74a4 h:5d80033f -->
+### 2026-11-26 14:03:33 UTC
+
+no. OUR content wrapper (header AND container and byline) is duplicated. Don't make assumptions
+
+---
+
+<!-- r:0 m:hook:11aa27c3-756a-4d38-a96a-fae453aa9e1c h:2cc84181 -->
+### 2026-11-26 14:05:08 UTC
+
+it also happens for macStories and TechCrunch, I think it's 'random', not source-specific. Trying to get more xamples but can't inspect cos too much content OPEN the fucking page
+
+---
+
+<!-- r:0 m:hook:3720cead-d445-4278-a388-2dd0604dcf77 h:fc3feb2a -->
+### 2026-11-26 14:05:37 UTC
+
+okay, sounds like you spotted it. Stop fucking about
+
+---
+
+<!-- r:0 m:hook:33d509fc-44e8-4211-a250-3521992a7bee h:ee9a7592 -->
+### 2026-11-26 14:07:04 UTC
+
+`e and is just being stolen, store insiders have revealed.
+Technology
+12h ago
+✓✕
+[Apple removes MiniMax's chatbot Talkie from the App Store worldwide over sexual](https://www.thebureauinvestigates.com/stories/2026-11-24/talkie-china-chatbot-children)— Thebureauinvestigates
+Apple removes MiniMax's chatbot Talkie from the App Store worldwide over sexual content, after outlets showed it evidence of AI characters sexualizing children — &nbsp; Talkie's characters belittle and sexualise their young users - and its owners won't explain how it uses the data — <A HREF="https://www.thebureauinvestigates.com/stories/2026-11-24/talkie-china-chatbot-children"><IMG VSPACE="4" HSPACE="4" BORDER="0" ALIGN="RIGHT" SRC="http://www.techmeme.com/261125/i44.jpg"></A> <P><A HREF="https://www.techmeme.com/261125/p44#a261125p44" TITLE="Techmeme permalink"><IMG WIDTH=11 HEIGHT=12 SRC="http://www.techmeme.com/img/pml.png" STYLE="border:none;padding:0;margin:0;"></A> <A HREF="https://www.thebureauinvestigates.com/">TBIJ</A>:<BR> <SPAN STYLE="font-size:1.3em;"><B><A HREF="https://www.thebureauinvestigates.com/stories/2026-11-24/talkie-china-chatbot-children">Apple removes MiniMax's chatbot Talkie from the App Store worldwide over sexual content, after outlets showed it evidence of AI characters sexualizing children</A></B></SPAN>&nbsp; &mdash;&nbsp; Talkie's characters belittle and sexualise their young users - and its owners won't explain how it uses the data</P>`
+
+---
+
+<!-- r:0 m:hook:6f9a489e-8b1f-4df2-a484-68271bb6102c h:935223d0 -->
+### 2026-11-26 14:08:30 UTC
+
+what a fucking mess `<article class="article grid-item singleton is-read" data-cluster-id="cluster-1795659691996-49z0y8" data-headline="a us court dismisses amazon's challenge to a 2025 cpsc order requiring it to rec" data-summary="a us court dismisses amazon's challenge to a 2025 cpsc order requiring it to recall 400k+ hazardous products sold by third parties via fulfillment by amazon — &amp;nbsp; a court ruled in favor of the us cpsc's argument that amazon is responsible for recalled products that other companies sell on its platforms. — &lt;a href=&quot;https://www.theverge.com/tech/1042870/amazon-recall-order-cpsc&quot;&gt;&lt;img vspace=&quot;4&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;right&quot; src=&quot;http://www.techmeme.com/261125/i42.jpg&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.techmeme.com/261125/p42#a261125p42&quot; title=&quot;techmeme permalink&quot;&gt;&lt;img width=11 height=12 src=&quot;http://www.techmeme.com/img/pml.png&quot; style=&quot;border:none;padding:0;margin:0;&quot;&gt;&lt;/a&gt; emma roth / &lt;a href=&quot;https://www.theverge.com/&quot;&gt;the verge&lt;/a&gt;:&lt;br&gt;
+&lt;span style=&quot;font-size:1.3em;&quot;&gt;&lt;b&gt;&lt;a href=&quot;https://www.theverge.com/tech/1042870/amazon-recall-order-cpsc&quot;&gt;a us court dismisses amazon's challenge to a 2025 cpsc order requiring it to recall 400k+ hazardous products sold by third parties via fulfillment by amazon&lt;/a&gt;&lt;/b&gt;&lt;/span&gt;&amp;nbsp; &amp;mdash;&amp;nbsp; a court ruled in favor of the us cpsc's argument that amazon is responsible for recalled products that other companies sell on its platforms.&lt;/p&gt; " data-category="technology" data-stories="a us court dismisses amazon's challenge to a 2025 cpsc order requiring it to recall 400k+ hazardous products sold by third parties via fulfillment by amazon emma roth the verge theverge.com theverge" style="--read-progress: 1;">
+    <div class="article-header">
+      <div class="article-category">Technology</div>
+      <div class="article-header-right">
+        <div class="article-age">13h ago</div>
+        <button class="interest-btn interested-btn " data-signal="interested" title="Relevant — show more like this">✓</button>
+        <button class="interest-btn not-interested-btn " data-signal="not-interested" title="Ignore — show less like this">✕</button>
+      </div>
+    </div>
+    
+    <h2 class="article-headline"><a href="https://www.theverge.com/tech/1042870/amazon-recall-order-cpsc" target="_blank" rel="noopener">A US court dismisses Amazon's challenge to a 2025 CPSC order requiring it to rec</a><span class="singleton-byline"> — Emma Roth · The Verge</span></h2>
+    <div class="article-summary"><span class="summary-full">A US court dismisses Amazon's challenge to a 2025 CPSC order requiring it to recall 400K+ hazardous products sold by third parties via Fulfillment by Amazon — &nbsp; A court ruled in favor of the US CPSC's argument that Amazon is responsible for recalled products that other companies sell on its platforms. — <a href="https://www.theverge.com/tech/1042870/amazon-recall-order-cpsc"><img vspace="4" hspace="4" border="0" align="RIGHT" src="http://www.techmeme.com/261125/i42.jpg"></a>
+<p><a href="https://www.techmeme.com/261125/p42#a261125p42" title="Techmeme permalink"><img width="11" height="12" src="http://www.techmeme.com/img/pml.png" style="border:none;padding:0;margin:0;"></a> Emma Roth / <a href="https://www.theverge.com/">The Verge</a>:<br>
+<span style="font-size:1.3em;"><b><a href="https://www.theverge.com/tech/1042870/amazon-recall-order-cpsc">A US court dismisses Amazon's challenge to a 2025 CPSC order requiring it to recall 400K+ hazardous products sold by third parties via Fulfillment by Amazon</a></b></span>&nbsp; —&nbsp; A court ruled in favor of the US CPSC's argument that Amazon is responsible for recalled products that other companies sell on its platforms.</p></span></div>
+  </article>`
+
+---
+
+<!-- r:0 m:hook:4efd094c-31c2-4904-b537-81f8ad9e1d97 h:213db619 -->
+### 2026-11-26 14:10:01 UTC
+
+okay I rebuilt and rerun dev
+
+---
+
+<!-- r:0 m:hook:9624e156-14e1-4fe5-a6e0-d080a094c655 h:91b9cbbf -->
+### 2026-11-26 14:12:44 UTC
+
+I don't want repairs for one-off fuckups in my forever build. Keep the boundary HERE, not forveer
 
 ---
 

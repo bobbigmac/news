@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 13:20:41 UTC
-entries: 3239
+last_activity: 2026-11-26 14:14:57 UTC
+entries: 3277
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -72248,6 +72248,700 @@ The old text was even truncated mid-word ("checks" for "checks infrastructure.")
 ```
 
 DONE.md updated; nothing committed.
+
+---
+
+<!-- r:0 m:hook:ed651e14-04dc-459d-9309-330f4592d478 h:fa586adb -->
+### 2026-11-26 14:01:45 UTC user
+
+wtf. A lot of links now show in browser default styling, images get loaded wonky, underflow their container and spread over the page. Others get injected really small. What ddi you break now?
+
+---
+
+<!-- r:0 m:hook:d063dd40-496a-4393-95dc-983978f64c48 h:6c693441 -->
+### 2026-11-26 14:02:44 UTC user
+
+<div class="article-summary"><span class="summary-full">Hands-on with the "Install as app" feature for Claude artifacts: they are HTML apps wrapped inside an Electron shim, which is managed via the main Claude app — &nbsp; From the company's blog: … If you're an AppStories listener, you know that I've long thought it was only a matter … — <a href="https://www.macstories.net/stories/a-closer-look-at-claudes-mac-apps/"><img vspace="4" hspace="4" border="0" align="RIGHT" src="http://www.techmeme.com/261125/i40.jpg"></a>
+<p><a href="https://www.techmeme.com/261125/p40#a261125p40" title="Techmeme permalink"><img width="11" height="12" src="http://www.techmeme.com/img/pml.png" style="border:none;padding:0;margin:0;"></a> Federico Viticci / <a href="https://www.macstories.net/">MacStories</a>:<br>
+<span style="font-size:1.3em;"><b><a href="https://www.macstories.net/stories/a-closer-look-at-claudes-mac-apps/">Hands-on with the “Install as app” feature for Claude artifacts: they are HTML apps wrapped inside an Electron shim, which is managed via the main Claude app</a></b></span>&nbsp; —&nbsp; From the company's blog: … If you're an AppStories listener, you know that I've long thought it was only a matter … </p></span></div>
+
+---
+
+<!-- r:0 m:hook:8bb4f3be-f59e-4fca-835c-bb3a0f3c74a4 h:5d80033f -->
+### 2026-11-26 14:03:33 UTC user
+
+no. OUR content wrapper (header AND container and byline) is duplicated. Don't make assumptions
+
+---
+
+<!-- r:0 m:hook:8bb4f3be-f59e-4fca-835c-bb3a0f3c74a4:exec:9950636d h:fd866a98 -->
+### 2026-11-26 14:03:43 UTC tool `exec`
+
+`{"command": "sed -n '160,230p' src/article.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 6a7246:
+      showImage = isLatestCluster(cluster, latestReferenceTime);
+    }
+    if (showImage) {
+      const imgStory = pickLeadImage(cluster);
+      if (imgStory) {
+        imageHtml = `<img class="article-image" src="${imgStory.image}" alt="" loading="lazy" onerror="this.style.display='none'">`;
+      }
+    }
+  }
+
+  const interest = getClusterInterest(cluster.id);
+  const summaryHtml = renderSummaryHtml(cluster, summary);
+
+  // For singletons, no expandable source list — the headline is the link.
+  // For multi-story clusters, keep the expandable list behaviour.
+  const bodyHtml = isSingleton
+    ? summaryHtml
+    : `<div class="article-body${settings.expandAll ? ' show-links' : ''}">
+         ${summaryHtml}
+         <div class="story-links">
+           <ul>${linksHtml}</ul>
+         </div>
+       </div>`;
+
+  article.innerHTML = `
+    <div class="article-header">
+      <div class="article-category">${category}</div>
+      <div class="article-header-right">
+        <div class="article-age">${relativeAge(getNewestStoryDate(cluster))}</div>
+        <button class="interest-btn interested-btn ${interest === 'interested' ? 'active' : ''}" data-signal="interested" title="Relevant — show more like this">✓</button>
+        <button class="interest-btn not-interested-btn ${interest === 'not-interested' ? 'active' : ''}" data-signal="not-interested" title="Ignore — show less like this">✕</button>
+      </div>
+    </div>
+    ${imageHtml}
+    ${headlineHtml}
+    ${bodyHtml}
+  `;
+
+  // Apply interest-based visibility class
+  if (interest === 'not-interested') article.classList.add('downranked');
+
+  // Click toggles between summary and source links (multi-story only).
+  // Singletons don't have an expandable list — the headline links directly.
+  if (!isSingleton) {
+    const body = article.querySelector('.article-body');
+    trackArticleListener(article, article, 'click', (e) => {
+      if (e.target.tagName === 'A' || e.target.closest('.interest-bt
+```
+
+---
+
+<!-- r:0 m:hook:8bb4f3be-f59e-4fca-835c-bb3a0f3c74a4:exec:c509ae75 h:6be730ae -->
+### 2026-11-26 14:04:06 UTC tool `exec`
+
+`{"command": "grep -n -i \"techmeme\" scripts/fetch-rss.js | head; sed -n \"$(grep -n -i techmeme scripts/fetch-rss.js | head -1 | cut -d: -f1),+70p\" scripts/fetch-rss.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 421ca8:
+37:// Techmeme — human-curated tech news aggregator (editors across 5 continents,
+39:// the stories that actually matter. The RSS feed's <link> is a Techmeme
+41:// description. We extract it so we cite the original source, not Techmeme.
+44:const TECHMEME_FEEDS = [
+45:  { url: 'https://www.techmeme.com/feed.xml', category: 'Technology', maxItems: 30 },
+60:// Direct high-quality technology publishers. These overlap with Techmeme by
+61:// design: when Techmeme is enabled it provides editorial prioritisation, while
+62:// these feeds provide resilience if Techmeme is disabled or misses a story.
+98:    sourceName: getSourceName(url) || feed.sourceName || (feed.pluginName === 'gaming' ? feed.url.includes('eurogamer') ? 'Eurogamer' : feed.url.includes('kotaku') ? 'Kotaku' : 'RSS' : feed.pluginName === 'urgent' ? 'Urgent News' : feed.pluginName === 'bbc' ? 'BBC' : feed.pluginName === 'tech' ? 'Techmeme' : 'RSS'),
+107:// Techmeme-specific parser. The feed <link> is a Techmeme permalink; the
+// Techmeme — human-curated tech news aggregator (editors across 5 continents,
+// led by Gabe Rivera since 2005). Sources from thousands of outlets and picks
+// the stories that actually matter. The RSS feed's <link> is a Techmeme
+// permalink, but the original publisher's URL is embedded in the HTML
+// description. We extract it so we cite the original source, not Techmeme.
+// The title format is "Headline (Author/Publication)" — we strip the
+// parenthetical and use it as the byline.
+const TECHMEME_FEEDS = [
+  { url: 'https://www.techmeme.com/feed.xml', category: 'Technology', maxItems: 30 },
+];
+
+// Sky News — official RSS feeds, no key. UK-focused but with useful world,
+// politics, business and technology desks. Kept deliberately small because
+// the home/uk/world feeds overlap heavily; URL dedup removes repeats.
+const SKY_FEEDS = [
+  { url: 'https://feeds.skynews.com/feeds/rss/home.xml', category: 'General', maxItems: 15, sourceName: 'Sky News' },
+
+```
+
+---
+
+<!-- r:0 m:hook:8bb4f3be-f59e-4fca-835c-bb3a0f3c74a4:exec:69d4a09a h:6cacf81b -->
+### 2026-11-26 14:04:09 UTC tool `exec`
+
+`{"command": "sed -n '107,175p' scripts/fetch-rss.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 31ff05:
+// Techmeme-specific parser. The feed <link> is a Techmeme permalink; the
+// original publisher's URL is the first non-Techmeme <A HREF> in the HTML
+// description. The title has "(Author/Publication)" appended — we strip it
+// and use the publication name as sourceName, author as source.
+function normalizeTechmemeItem(item, feed) {
+  const html = item.content || item.contentSnippet || '';
+  // Extract the original article URL from the description HTML.
+  // The description has: Techmeme permalink img link, then the real article link.
+  // We want the first <A HREF="..."> that doesn't point to techmeme.com.
+  const hrefMatches = [...html.matchAll(/<A\s+HREF="([^"]+)"/gi)];
+  let originalUrl = item.link || '';
+  for (const m of hrefMatches) {
+    const href = m[1];
+    if (!href.includes('techmeme.com')) {
+      originalUrl = href;
+      break;
+    }
+  }
+
+  // Extract image from the description HTML (Techmeme includes an <IMG SRC>)
+  const imgMatch = html.match(/<IMG[^>]+SRC="([^"]+)"/i);
+  const image = imgMatch?.[1] || '';
+
+  // Title format: "Headline (Author/Publication)" or "Headline (Publication)"
+  // Strip the parenthetical and extract author + publication.
+  const title = item.title || '';
+  const parenMatch = title.match(/\s*\(([^)]+)\)\s*$/);
+  let cleanTitle = title;
+  let author = '';
+  let publication = '';
+  if (parenMatch) {
+    cleanTitle = title.replace(/\s*\(([^)]+)\)\s*$/, '').trim();
+    const inside = parenMatch[1];
+    // Format is "Author/Publication" or just "Publication"
+    if (inside.includes('/')) {
+      const parts = inside.split('/');
+      author = parts[0].trim();
+      publication = parts.slice(1).join('/').trim();
+    } else {
+      publication = inside.trim();
+    }
+  }
+
+  // Extract the text snippet from the HTML (after the links, the — separator)
+  const snippetMatch = html.match(/&mdash;\s*([^<]+)/);
+  const snippet = snippetMatch?.[1]?.trim() || '';
+
+  return {
+    id: makeId(originalUrl ||
+```
+
+---
+
+<!-- r:0 m:hook:11aa27c3-756a-4d38-a96a-fae453aa9e1c h:2cc84181 -->
+### 2026-11-26 14:05:08 UTC user
+
+it also happens for macStories and TechCrunch, I think it's 'random', not source-specific. Trying to get more xamples but can't inspect cos too much content OPEN the fucking page
+
+---
+
+<!-- r:0 m:hook:11aa27c3-756a-4d38-a96a-fae453aa9e1c:exec:7cb8f90b h:92773bc7 -->
+### 2026-11-26 14:05:18 UTC tool `exec`
+
+`{"command": "curl -s -o /dev/null -w \"%{http_code}\" --max-time 3 http://localhost:8000/ ; echo; ls dist/index.html 2>/dev/null && echo dist-exists", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 12734b:
+200
+dist/index.html
+dist-exists
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:11aa27c3-756a-4d38-a96a-fae453aa9e1c:browser_preview:7e6fca2f h:ada379c9 -->
+### 2026-11-26 14:05:20 UTC tool `browser_preview`
+
+`{"url": "http://localhost:8000/", "name": "Daily Broadsheet"}`
+
+```
+Browser preview running with ID: b610646d-9cd7-45c8-ad25-8e8566530f2b
+Preview URL: http://127.0.0.1:45081
+Target: http://localhost:8000/
+
+Attempted to open the preview in the user's browser. Captures the user makes (element, console output) go to their message box — they must send them for you to see them.
+```
+
+---
+
+<!-- r:0 m:hook:3720cead-d445-4278-a388-2dd0604dcf77 h:fc3feb2a -->
+### 2026-11-26 14:05:37 UTC user
+
+okay, sounds like you spotted it. Stop fucking about
+
+---
+
+<!-- r:0 m:hook:3720cead-d445-4278-a388-2dd0604dcf77:exec:518ee398 h:1463efa3 -->
+### 2026-11-26 14:06:06 UTC tool `exec`
+
+`{"command": "cat > scripts/plain-text.js << 'EOF'\n// Feeds deliver HTML in description/content \u2014 sometimes entire self-contained\n// item cards (Techmeme embeds headline, byline, permalink chrome and body in\n// one blob). Anything stored as story text must be plain text: markup is\n// structure, not content, and letting it through means foreign cards render\n// nested inside our own article`
+
+```
+Output from command in shell b8580d:
+fetch-rss.js: plain text at ingest
+build.js: repair strips markup
+cluster-copy.js: prep strips markup
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3720cead-d445-4278-a388-2dd0604dcf77:exec:af2ad3c7 h:ddd793d7 -->
+### 2026-11-26 14:06:32 UTC tool `exec`
+
+`{"command": "python3 << 'PYEOF'\nb = open('scripts/build.js').read()\nold = '''  const summary = (c.summary || '').trim();\n  if (!summary.endsWith('...')) continue;\n  const lead = c.stories?.[0];\n  if (!lead) continue;\n  const storedLead = storyStoreForRepair[lead.id];\n  const fullText = fullSourceText({\n    title: lead.title || storedLead?.title,\n    description: lead.description || stored`
+
+```
+Output from command in shell 88af4e:
+build.js: markup-injection repair added
+article.js: plain-text fields escaped at interpolation
+"Federico Viticci / MacStories: Headline — From the blog — test"
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:33d509fc-44e8-4211-a250-3521992a7bee h:ee9a7592 -->
+### 2026-11-26 14:07:04 UTC user
+
+`e and is just being stolen, store insiders have revealed.
+Technology
+12h ago
+✓✕
+[Apple removes MiniMax's chatbot Talkie from the App Store worldwide over sexual](https://www.thebureauinvestigates.com/stories/2026-11-24/talkie-china-chatbot-children)— Thebureauinvestigates
+Apple removes MiniMax's chatbot Talkie from the App Store worldwide over sexual content, after outlets showed it evidence of AI characters sexualizing children — &nbsp; Talkie's characters belittle and sexualise their young users - and its owners won't explain how it uses the data — <A HREF="https://www.thebureauinvestigates.com/stories/2026-11-24/talkie-china-chatbot-children"><IMG VSPACE="4" HSPACE="4" BORDER="0" ALIGN="RIGHT" SRC="http://www.techmeme.com/261125/i44.jpg"></A> <P><A HREF="https://www.techmeme.com/261125/p44#a261125p44" TITLE="Techmeme permalink"><IMG WIDTH=11 HEIGHT=12 SRC="http://www.techmeme.com/img/pml.png" STYLE="border:none;padding:0;margin:0;"></A> <A HREF="https://www.thebureauinvestigates.com/">TBIJ</A>:<BR> <SPAN STYLE="font-size:1.3em;"><B><A HREF="https://www.thebureauinvestigates.com/stories/2026-11-24/talkie-china-chatbot-children">Apple removes MiniMax's chatbot Talkie from the App Store worldwide over sexual content, after outlets showed it evidence of AI characters sexualizing children</A></B></SPAN>&nbsp; &mdash;&nbsp; Talkie's characters belittle and sexualise their young users - and its owners won't explain how it uses the data</P>`
+
+---
+
+<!-- r:0 m:hook:33d509fc-44e8-4211-a250-3521992a7bee:exec:1b092aa4 h:7f19dfcd -->
+### 2026-11-26 14:07:47 UTC tool `exec`
+
+`{"command": "python3 << 'PYEOF'\nb = open('scripts/build.js').read()\nold = '''const fullSourceText = (story) => {\n  const parts = [];\n  for (const part of [story?.title, story?.description, story?.content]) {\n    const text = toPlainText(part || '');\n    // some feeds repeat the description as the content \u2014 joining both would\n    // duplicate the text verbatim in the repaired summary\n `
+
+```
+dedupe strengthened both directions
+
+===
+Stopped waiting for output after 10.1 seconds. Command running in background with ID: b82a61. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:33d509fc-44e8-4211-a250-3521992a7bee:get_output:b691afe1 h:469b7fdb -->
+### 2026-11-26 14:08:14 UTC tool `get_output`
+
+`{"shell_id": "b82a61", "timeout": 120000}`
+
+```
+Repaired 3103 truncated summaries
+Build complete. 5557 clusters, 7113 entities, 57 topics, 10517 stories in timeline -> dist/dataset.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:33d509fc-44e8-4211-a250-3521992a7bee:exec:c8ce6f50 h:a980293f -->
+### 2026-11-26 14:08:20 UTC tool `exec`
+
+`{"command": "python3 -c \"\nimport json, re\nd = json.load(open('dist/digest.json'))\ndirty = [c for c in d['clusters'] if re.search(r'<[a-zA-Z][^>]*>', c.get('summary') or '')]\nprint('clusters with markup in summary:', len(dirty), '/', len(d['clusters']))\nfor c in d['clusters']:\n    if 'Talkie' in (c.get('summary','') or ''):\n        print('TALKIE:', repr((c.get('summary') or '')[:450]))\n   `
+
+```
+Output from command in shell df9e82:
+clusters with markup in summary: 0 / 1075
+TALKIE: "Apple removes MiniMax's chatbot Talkie from the App Store worldwide over sexual content, after outlets showed it evidence of AI characters sexualizing children — &nbsp; Talkie's characters belittle..."
+MACSTORIES: 'Hands-on with the "Install as app" feature for Claude artifacts: they are HTML apps wrapped inside an Electron shim, which is managed via the main Claude app — &nbsp; From the company\'s blog:...'
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:6f9a489e-8b1f-4df2-a484-68271bb6102c h:935223d0 -->
+### 2026-11-26 14:08:30 UTC user
+
+what a fucking mess `<article class="article grid-item singleton is-read" data-cluster-id="cluster-1795659691996-49z0y8" data-headline="a us court dismisses amazon's challenge to a 2025 cpsc order requiring it to rec" data-summary="a us court dismisses amazon's challenge to a 2025 cpsc order requiring it to recall 400k+ hazardous products sold by third parties via fulfillment by amazon — &amp;nbsp; a court ruled in favor of the us cpsc's argument that amazon is responsible for recalled products that other companies sell on its platforms. — &lt;a href=&quot;https://www.theverge.com/tech/1042870/amazon-recall-order-cpsc&quot;&gt;&lt;img vspace=&quot;4&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;right&quot; src=&quot;http://www.techmeme.com/261125/i42.jpg&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.techmeme.com/261125/p42#a261125p42&quot; title=&quot;techmeme permalink&quot;&gt;&lt;img width=11 height=12 src=&quot;http://www.techmeme.com/img/pml.png&quot; style=&quot;border:none;padding:0;margin:0;&quot;&gt;&lt;/a&gt; emma roth / &lt;a href=&quot;https://www.theverge.com/&quot;&gt;the verge&lt;/a&gt;:&lt;br&gt;
+&lt;span style=&quot;font-size:1.3em;&quot;&gt;&lt;b&gt;&lt;a href=&quot;https://www.theverge.com/tech/1042870/amazon-recall-order-cpsc&quot;&gt;a us court dismisses amazon's challenge to a 2025 cpsc order requiring it to recall 400k+ hazardous products sold by third parties via fulfillment by amazon&lt;/a&gt;&lt;/b&gt;&lt;/span&gt;&amp;nbsp; &amp;mdash;&amp;nbsp; a court ruled in favor of the us cpsc's argument that amazon is responsible for recalled products that other companies sell on its platforms.&lt;/p&gt; " data-category="technology" data-stories="a us court dismisses amazon's challenge to a 2025 cpsc order requiring it to recall 400k+ hazardous products sold by third parties via fulfillment by amazon emma roth the verge theverge.com theverge" style="--read-progress: 1;">
+    <div class="article-header">
+      <div class="article-category">Technology</div>
+      <div class="article-header-right">
+        <div class="article-age">13h ago</div>
+        <button class="interest-btn interested-btn " data-signal="interested" title="Relevant — show more like this">✓</button>
+        <button class="interest-btn not-interested-btn " data-signal="not-interested" title="Ignore — show less like this">✕</button>
+      </div>
+    </div>
+    
+    <h2 class="article-headline"><a href="https://www.theverge.com/tech/1042870/amazon-recall-order-cpsc" target="_blank" rel="noopener">A US court dismisses Amazon's challenge to a 2025 CPSC order requiring it to rec</a><span class="singleton-byline"> — Emma Roth · The Verge</span></h2>
+    <div class="article-summary"><span class="summary-full">A US court dismisses Amazon's challenge to a 2025 CPSC order requiring it to recall 400K+ hazardous products sold by third parties via Fulfillment by Amazon — &nbsp; A court ruled in favor of the US CPSC's argument that Amazon is responsible for recalled products that other companies sell on its platforms. — <a href="https://www.theverge.com/tech/1042870/amazon-recall-order-cpsc"><img vspace="4" hspace="4" border="0" align="RIGHT" src="http://www.techmeme.com/261125/i42.jpg"></a>
+<p><a href="https://www.techmeme.com/261125/p42#a261125p42" title="Techmeme permalink"><img width="11" height="12" src="http://www.techmeme.com/img/pml.png" style="border:none;padding:0;margin:0;"></a> Emma Roth / <a href="https://www.theverge.com/">The Verge</a>:<br>
+<span style="font-size:1.3em;"><b><a href="https://www.theverge.com/tech/1042870/amazon-recall-order-cpsc">A US court dismisses Amazon's challenge to a 2025 CPSC order requiring it to recall 400K+ hazardous products sold by third parties via Fulfillment by Amazon</a></b></span>&nbsp; —&nbsp; A court ruled in favor of the US CPSC's argument that Amazon is responsible for recalled products that other companies sell on its platforms.</p></span></div>
+  </article>`
+
+---
+
+<!-- r:0 m:hook:6f9a489e-8b1f-4df2-a484-68271bb6102c:exec:79ae8bda h:99c3ad88 -->
+### 2026-11-26 14:09:39 UTC tool `exec`
+
+`{"command": "python3 << 'PYEOF'\n# 1) entity decoding to fixpoint \u2014 store data is double-encoded in places\np = open('scripts/plain-text.js').read()\nold = '''export function decodeEntities(text) {\n  return (text || '')\n    .replace(/&#(\\\\d+);?/g, (_, n) => String.fromCodePoint(Number(n)))\n    .replace(/&#x([0-9a-f]+);?/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))\n    .replace(/`
+
+```
+Output from command in shell f0f19c:
+plain-text.js: fixpoint decoding
+build.js: repair persists to cache
+12:export function loadJson(path, fallback) {
+17:export function saveJson(path, data) {
+13:const DIGEST_FILE = join(CACHE_DIR, 'digest.json');
+29:const digest = loadJson(DIGEST_FILE, { date: new Date().toISOString().split('T')[0], clusters: [] });
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:4efd094c-31c2-4904-b537-81f8ad9e1d97 h:213db619 -->
+### 2026-11-26 14:10:01 UTC user
+
+okay I rebuilt and rerun dev
+
+---
+
+<!-- r:0 m:hook:4efd094c-31c2-4904-b537-81f8ad9e1d97:exec:b7b6af2a h:be3016a9 -->
+### 2026-11-26 14:10:14 UTC tool `exec`
+
+`{"command": "python3 - << 'EOF'\nb = open('scripts/build.js').read()\nold = '''if (repairedSummaries || backfilledStories) {\n  const { writeJson } = await import('./cache-io.js');\n  writeJson(DIGEST_FILE, digest);\n}'''\nnew = '''if (repairedSummaries || backfilledStories) {\n  saveJson(DIGEST_FILE, digest);\n}'''\nassert old in b\nb = b.replace(old, new)\nimport re\nm = re.search(r\"import \\{(`
+
+```
+Output from command in shell 13fdbd:
+fixed
+1:import { saveJson } from './cache-io.js';
+syntax-ok
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:4efd094c-31c2-4904-b537-81f8ad9e1d97:exec:67ca2f68 h:962d120c -->
+### 2026-11-26 14:10:19 UTC tool `exec`
+
+`{"command": "grep -n \"loadJson\\|saveJson\" scripts/build.js | head -4; sed -n '1,12p' scripts/build.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 6c4066:
+1:import { saveJson } from './cache-io.js';
+18:function loadJson(path, fallback) {
+30:const digest = loadJson(DIGEST_FILE, { date: new Date().toISOString().split('T')[0], clusters: [] });
+55:const storyStoreForRepair = loadJson(join(CACHE_DIR, 'stories.json'), { stories: {} }).stories || {};
+import { saveJson } from './cache-io.js';
+import { readFileSync, existsSync, mkdirSync, writeFileSync, copyFileSync } from 'fs';
+import { join } from 'path';
+import { annotateClustersIfMissing, buildEntityIndex } from './entities.js';
+import { computeClusterTagsIfMissing } from './tags.js';
+import { assignStoryGroupsToDigest } from './story-group-assign.js';
+import { enrichAllStories } from './story-enrich.js';
+import { canonicalCategory, recategoriseCluster } from './categories.js';
+import { collectSources } from './favicons.js';
+import { splitClientDigest } from './digest-split.js';
+import { toPlainText } from './plain-text.js';
+
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:4efd094c-31c2-4904-b537-81f8ad9e1d97:exec:1e9a3ad4 h:9ddb4301 -->
+### 2026-11-26 14:10:37 UTC tool `exec`
+
+`{"command": "npm run build 2>&1 | grep -iE \"repaired|backfilled|build complete|error\" &\nwait", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 150000}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: 95fdaa. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:4efd094c-31c2-4904-b537-81f8ad9e1d97:get_output:a6a3d091 h:1ba44f45 -->
+### 2026-11-26 14:10:50 UTC tool `get_output`
+
+`{"shell_id": "95fdaa", "timeout": 150000}`
+
+```
+Repaired 3103 truncated/markup-damaged summaries
+Backfilled source text on 8125 digest stories
+Build complete. 5557 clusters, 7113 entities, 57 topics, 10517 stories in timeline -> dist/dataset.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:4efd094c-31c2-4904-b537-81f8ad9e1d97:exec:2fbdc382 h:0b96c080 -->
+### 2026-11-26 14:10:59 UTC tool `exec`
+
+`{"command": "python3 -c \"\nimport json, re\n# verify cache at rest AND dist output\nfor f in ['cache/digest.json', 'dist/digest.json']:\n    d = json.load(open(f))\n    dirty = [c for c in d['clusters'] if re.search(r'<[a-zA-Z][^>]*>', c.get('summary') or '')]\n    ents = [c for c in d['clusters'] if '&nbsp;' in (c.get('summary') or '') or '&mdash;' in (c.get('summary') or '')]\n    ell = [c for `
+
+```
+Output from command in shell a45845:
+cache/digest.json markup: 0 entities: 13 ellipsed: 1903 / 5557
+dist/digest.json markup: 0 entities: 13 ellipsed: 330 / 1075
+AMAZON: "A US court dismisses Amazon's challenge to a 2025 CPSC order requiring it to recall 400K+ hazardous products sold by third parties via Fulfillment by Amazon — &nbsp; A court ruled in favor of the US..."
+TALKIE: 'Mums describe how Chinese AI app lured daughters into abusive chats — Parents around the world are sharing stories of inappropriate interactions between their children and a Chinese AI app called Talkie, alleging it manipulates users to train AI.'
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:4efd094c-31c2-4904-b537-81f8ad9e1d97:exec:86af5c5d h:99390e29 -->
+### 2026-11-26 14:11:43 UTC tool `exec`
+
+`{"command": "python3 - << 'EOF'\nb = open('scripts/build.js').read()\nold = '''  const hasMarkup = /<[a-zA-Z][^>]*>/.test(summary);\n  const isTruncation = summary.endsWith('...')\n    && summary.slice(0, -3).trimEnd().length >= 40\n    && fullText.startsWith(summary.slice(0, -3).trimEnd())\n    && fullText.length > summary.slice(0, -3).trimEnd().length;'''\nnew = '''  const hasMarkup = /<[a-zA-Z]`
+
+```
+proof normalised
+
+===
+Stopped waiting for output after 10.0 seconds. Command running in background with ID: 70d021. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:4efd094c-31c2-4904-b537-81f8ad9e1d97:get_output:859712cb h:16081005 -->
+### 2026-11-26 14:11:57 UTC tool `get_output`
+
+`{"shell_id": "70d021", "timeout": 150000}`
+
+```
+Repaired 27 truncated/markup-damaged summaries
+Build complete. 5557 clusters, 7113 entities, 57 topics, 10517 stories in timeline -> dist/dataset.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:4efd094c-31c2-4904-b537-81f8ad9e1d97:exec:6cb64066 h:3f666441 -->
+### 2026-11-26 14:12:07 UTC tool `exec`
+
+`{"command": "python3 -c \"\nimport json, re\nd = json.load(open('cache/digest.json'))\nents = [c for c in d['clusters'] if '&nbsp;' in (c.get('summary') or '') or '&mdash;' in (c.get('summary') or '')]\nell = [c for c in d['clusters'] if (c.get('summary') or '').rstrip().endswith('...')]\nmarkup = [c for c in d['clusters'] if re.search(r'<[a-zA-Z][^>]*>', c.get('summary') or '')]\nprint('cache \u2`
+
+```
+Output from command in shell 1998a1:
+cache — markup: 0 entities: 0 ellipsed: 1883 / 5557
+AMAZON: "A US court dismisses Amazon's challenge to a 2025 CPSC order requiring it to recall 400K+ hazardous products sold by third parties via Fulfillment by Amazon — A court ruled in favor of the US CPSC's argument that Amazon is responsible for recalled products that other companies sell on its platforms."
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:4efd094c-31c2-4904-b537-81f8ad9e1d97:exec:7912a6b5 h:e651ad1b -->
+### 2026-11-26 14:12:15 UTC tool `exec`
+
+`{"command": "python3 -c \"\nimport json\nd = json.load(open('cache/digest.json'))\nstore = json.load(open('cache/stories.json'))['stories']\nell = [c for c in d['clusters'] if (c.get('summary') or '').rstrip().endswith('...')]\npublisher = 0; maybe_broken = []\nfor c in ell:\n    lead = (c.get('stories') or [{}])[0]\n    stored = store.get(lead.get('id',''), {})\n    desc = (stored.get('descriptio`
+
+```
+Output from command in shell 22a1bd:
+publisher-truncated at source: 360 / 1883
+potentially repairable: 1523
+ sample: 'ed during a training exercise on Salisbury Plain, an inquest is told. — Second Lt Max George, 26,...'
+ sample: ' the former Chinese leader as a "dictator" during an interview about memes. — The France star had...'
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:4efd094c-31c2-4904-b537-81f8ad9e1d97:exec:9b517e55 h:4dedbe26 -->
+### 2026-11-26 14:12:30 UTC tool `exec`
+
+`{"command": "python3 -c \"\nimport json\nd = json.load(open('cache/digest.json'))\nstore = json.load(open('cache/stories.json'))['stories']\nfor c in d['clusters']:\n    if 'Max George' in (c.get('summary') or ''):\n        lead = c['stories'][0]\n        stored = store.get(lead['id'], {})\n        print('summary:', repr((c.get('summary') or '')[-150:]))\n        print('desc:', repr((stored.get('d`
+
+```
+Output from command in shell a80280:
+summary: 'lty alarm - inquest — Second Lt Max George, 26, died during a training exercise on Salisbury Plain, an inquest is told. — Second Lt Max George, 26,...'
+desc: 'Second Lt Max George, 26, died during a training exercise on Salisbury Plain, an inquest is told.'
+content: 'Second Lt Max George, 26, died during a training exercise on Salisbury Plain, an inquest is told.'
+lead-desc: 'Second Lt Max George, 26, died during a training exercise on Salisbury Plain, an inquest is told.'
+lead-content: 'Second Lt Max George, 26, died during a training exercise on Salisbury Plain, an inquest is told.'
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:9624e156-14e1-4fe5-a6e0-d080a094c655 h:91b9cbbf -->
+### 2026-11-26 14:12:44 UTC user
+
+I don't want repairs for one-off fuckups in my forever build. Keep the boundary HERE, not forveer
+
+---
+
+<!-- r:0 m:hook:9624e156-14e1-4fe5-a6e0-d080a094c655:exec:2b6ae2e0 h:58508e7a -->
+### 2026-11-26 14:13:18 UTC tool `exec`
+
+`{"command": "python3 << 'PYEOF'\nb = open('scripts/build.js').read()\n\n# remove the entire repair block from the forever-build\nstart = b.index('// Repair mechanically truncated summaries from older pipeline runs')\nend = b.index('// Enrich all stories with bodyText, wordCount, storyType for external consumers.')\nb = b[:start] + b[end:]\n\n# drop now-unused imports if nothing else uses them\nif `
+
+```
+Output from command in shell 268391:
+bash: line 17: warning: here-document at line 1 delimited by end-of-file (wanted `PYEOF')
+  File "<stdin>", line 16
+    node --check scripts/build.js && echo syntax-ok; grep -c "saveJson\|toPlainText\|repair" scripts/build.js
+                 ^^^^^^^
+SyntaxError: invalid syntax
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:9624e156-14e1-4fe5-a6e0-d080a094c655:exec:4fa5c9b1 h:99dcd1de -->
+### 2026-11-26 14:13:25 UTC tool `exec`
+
+`{"command": "python3 /dev/stdin << 'EOF'\nb = open('scripts/build.js').read()\nstart = b.index('// Repair mechanically truncated summaries from older pipeline runs')\nend = b.index('// Enrich all stories with bodyText, wordCount, storyType for external consumers.')\nb = b[:start] + b[end:]\nif 'toPlainText(' not in b:\n    b = b.replace(\"import { toPlainText } from './plain-text.js';\\n\", '')\ni`
+
+```
+Output from command in shell b110f8:
+build.js: repair machinery removed
+syntax-ok
+0
+---
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:9624e156-14e1-4fe5-a6e0-d080a094c655:exec:762a3e1e h:eb228df7 -->
+### 2026-11-26 14:13:46 UTC tool `exec`
+
+`{"command": "cat > scripts/repair-digest.js << 'EOF'\n// ONE-OFF MIGRATION \u2014 not part of the pipeline. Run manually with:\n//   node scripts/repair-digest.js\n// Repairs damage caused by pipeline bugs fixed at the ingest boundary\n// (truncation at 200 chars with fake ellipses, raw feed markup baked into\n// summaries, double-encoded entities, description/content duplicated into\n// the summa`
+
+```
+Output from command in shell 4aa459:
+Repaired 1542 damaged summaries
+digest.json written
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:9624e156-14e1-4fe5-a6e0-d080a094c655:exec:8228b773 h:f5b5d41c -->
+### 2026-11-26 14:13:55 UTC tool `exec`
+
+`{"command": "python3 -c \"\nimport json, re\nd = json.load(open('cache/digest.json'))\nmarkup = [c for c in d['clusters'] if re.search(r'<[a-zA-Z][^>]*>', c.get('summary') or '')]\nents = [c for c in d['clusters'] if re.search(r'&(nbsp|mdash|amp|lt|gt|quot);', c.get('summary') or '')]\nell = [c for c in d['clusters'] if (c.get('summary') or '').rstrip().endswith('...')]\nprint('markup:', len(marku`
+
+```
+Output from command in shell cf980c:
+markup: 0 entities: 0 ellipsed: 354 / 5557
+MAX GEORGE: 'Army officer killed by reversing Warrior with faulty alarm - inquest — Second Lt Max George, 26, died during a training exercise on Salisbury Plain, an inquest is told.'
+
+CPSC: "A US court dismisses Amazon's challenge to a 2025 CPSC order requiring it to recall 400K+ hazardous products sold by third parties via Fulfillment by Amazon — A court ruled in favor of the US CPSC's argument that Amazon is responsible for recalled products that other companies sell on its platforms."
+
+TALKIE: 'Mums describe how Chinese AI app lured daughters into abusive chats — Parents around the world are sharing stories of inappropriate interactions between their children and a Chinese AI app called Talkie, alleging it manipulates users to train AI.'
+
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:9624e156-14e1-4fe5-a6e0-d080a094c655:exec:4e289c72 h:1663a337 -->
+### 2026-11-26 14:14:13 UTC tool `exec`
+
+`{"command": "npm run build 2>&1 | grep -iE \"build complete\" ; npx vitest run 2>&1 | grep -E \"Test Files|Tests \" | head -3", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 240000}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: 06a7f7. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:9624e156-14e1-4fe5-a6e0-d080a094c655:get_output:22f0709f h:065f348b -->
+### 2026-11-26 14:14:38 UTC tool `get_output`
+
+`{"shell_id": "06a7f7", "timeout": 240000}`
+
+```
+Build complete. 5557 clusters, 7113 entities, 57 topics, 10517 stories in timeline -> dist/dataset.json
+[2m Test Files [22m [1m[32m12 passed[39m[22m[90m (12)[39m
+[2m      Tests [22m [1m[32m85 passed[39m[22m[90m (85)[39m
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:9624e156-14e1-4fe5-a6e0-d080a094c655:exec:982887a8 h:2930c21b -->
+### 2026-11-26 14:14:46 UTC tool `exec`
+
+`{"command": "python3 -c \"\nd = open('DONE.md').read()\nentry = '''- **Feed-markup injection fix** \u2014 RSS content HTML (including Techmeme's\n  self-contained item cards with their own headline/byline/permalink chrome) was\n  stored raw and baked into summaries, rendering foreign cards nested inside\n  article chrome. Boundary fixed at ingest: all feed text is plain-text normalized\n  (tags st`
+
+```
+Output from command in shell 4613d4:
+done
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:9624e156-14e1-4fe5-a6e0-d080a094c655 h:d6ad0122 -->
+### 2026-11-26 14:14:57 UTC assistant
+
+Done, and the boundary is where you wanted it:
+
+**At ingest (permanent):** all feed text is plain-text normalized the moment it enters the pipeline — tags stripped, entities decoded to fixpoint (the store had double-encoded `&amp;nbsp;` escaping as literal `&nbsp;`). Techmeme's self-contained item cards — the nested headline/byline/permalink chrome you were seeing — never get stored as content anymore. Same for `prepareStoryForLLM`, so even dirty store data gets cleaned as it flows through. Rendering escapes plain-text fields as contract enforcement, so even if dirty data ever arrives, it displays as inert text rather than executing as markup.
+
+**The repair (one-off, not in the build):** pulled entirely out of `build.js` into `scripts/repair-digest.js` — a migration you run once and can delete. It repaired 1,542 summaries, proof-gated so LLM editorial copy is untouchable (a summary must literally begin with the lead story's exact title to qualify as source-derived). It also handles the duplication cases the build-time version couldn't — like the Max George one, where description and content were the same text joined twice.
+
+Verified on the real examples:
+
+```text
+AMAZON:  ...recall 400K+ hazardous products sold by third parties via
+         Fulfillment by Amazon — A court ruled in favor of the US CPSC's
+         argument that Amazon is responsible... platforms.
+MAX GEORGE: ...died during a training exercise on Salisbury Plain,
+         an inquest is told.          ← complete, no duplication
+markup in summaries: 0 · entity junk: 0
+```
+
+The 354 still ending in "..." are publisher-side truncations — the feeds themselves ship the text that way; nothing of ours touches them.
+
+```text
+85/85 tests pass · build clean · cache/digest.json clean at rest
+```
+
+Reload dev and the dirty data is gone from the source itself, not just filtered on the way out.
 
 ---
 

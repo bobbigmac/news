@@ -1,5 +1,6 @@
 import { DIGEST_FILE, loadJson } from './cache-io.js';
 import { enrichStory } from './story-enrich.js';
+import { toPlainText } from './plain-text.js';
 export const ACTIVE_WINDOW_HOURS = 48;   // a cluster is "active" if last story published within this window
 export const EXPIRE_AFTER_DAYS = 30;     // clusters with no stories in 30 days are removed from digest
 
@@ -12,9 +13,9 @@ export function wordCount(text) {
 // truncated — the LLM is asked for length-controlled output, and stored
 // copy must be the full source text, not a mangled prefix of it.
 export function prepareStoryForLLM(story) {
-  const title = (story.title || '').trim();
-  const desc = (story.description || '').trim();
-  const content = (story.content || '').trim();
+  const title = toPlainText(story.title || '');
+  const desc = toPlainText(story.description || '');
+  const content = toPlainText(story.content || '');
   const combined = [title, desc, content].filter(Boolean).join(' — ');
   return {
     id: story.id,

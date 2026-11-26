@@ -4,6 +4,12 @@ import { isClusterRead, isClusterUpdatedSinceRead, markClusterRead } from './rea
 import { getClusterInterest, scoreClusterAgainstSignals, setClusterInterest } from './signals.js';
 import { storySearchText } from './search.js';
 
+const escapeHtml = text => String(text ?? '')
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;');
+
 export function formatDate(dateStr) {
   try {
     return new Date(dateStr).toLocaleDateString('en-GB', {
@@ -45,7 +51,7 @@ function isLatestCluster(cluster, referenceTime) {
 }
 
 function renderSummaryHtml(cluster, summary) {
-  return `<div class="article-summary"><span class="summary-full">${summary}</span></div>`;
+  return `<div class="article-summary"><span class="summary-full">${escapeHtml(summary)}</span></div>`;
 }
 
 function clearArticleListeners(article) {
@@ -116,17 +122,17 @@ export function renderArticle(cluster, settings, isPluginLead, latestReferenceTi
     if (singletonStory.source) sourceParts.push(singletonStory.source);
     if (singletonStory.sourceName) sourceParts.push(singletonStory.sourceName);
     const byline = sourceParts.length ? ` — ${sourceParts.join(' · ')}` : '';
-    headlineHtml = `<h2 class="article-headline"><a href="${singletonStory.url || '#'}" target="_blank" rel="noopener">${headline}</a><span class="singleton-byline">${byline}</span></h2>`;
+    headlineHtml = `<h2 class="article-headline"><a href="${singletonStory.url || '#'}" target="_blank" rel="noopener">${escapeHtml(headline)}</a><span class="singleton-byline">${escapeHtml(byline)}</span></h2>`;
   } else {
     linksHtml = enabledStories.map(s => {
       const sourceParts = [];
       if (s.source) sourceParts.push(s.source);
       if (s.sourceName) sourceParts.push(s.sourceName);
       const sourceHtml = sourceParts.length
-        ? `<span class="story-source">— ${sourceParts.join(' · ')}</span>` : '';
-      return `<li><a href="${s.url || '#'}" target="_blank" rel="noopener">${s.title || 'Untitled'}</a>${sourceHtml}</li>`;
+        ? `<span class="story-source">— ${escapeHtml(sourceParts.join(' · '))}</span>` : '';
+      return `<li><a href="${s.url || '#'}" target="_blank" rel="noopener">${escapeHtml(s.title || 'Untitled')}</a>${sourceHtml}</li>`;
     }).join('');
-    headlineHtml = `<h2 class="article-headline">${headline}</h2>`;
+    headlineHtml = `<h2 class="article-headline">${escapeHtml(headline)}</h2>`;
   }
 
   const article = target || document.createElement('article');

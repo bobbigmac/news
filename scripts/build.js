@@ -43,60 +43,6 @@ for (const c of digest.clusters) {
   c.category = canonicalCategory(c.category);
 }
 
-// Repair mechanically truncated summaries from older pipeline runs: they were
-// sliced at 200 chars with a fabricated '...' appended. The full source text
-// is reconstructed from the story store (cluster story objects from those runs
-// often lack description/content entirely — also backfilled here). A summary
-// is only rewritten when it provably IS such a truncation: the text minus its
-// ellipsis must be an exact prefix of the reconstructed full text. LLM-written
-// copy never is, so it is never touched.
-const storyStoreForRepair = loadJson(join(CACHE_DIR, 'stories.json'), { stories: {} }).stories || {};
-const fullSourceText = (story) => {
-  const parts = [];
-  for (const part of [story?.title, story?.description, story?.content]) {
-    const text = (part || '').trim();
-    // some feeds repeat the description as the content — joining both would
-    // duplicate the text verbatim in the repaired summary
-    if (text && !parts.some(existing => existing === text || existing.startsWith(text))) parts.push(text);
-  }
-  return parts.join(' — ');
-};
-let repairedSummaries = 0;
-let backfilledStories = 0;
-for (const c of digest.clusters) {
-  for (const story of c.stories || []) {
-    const stored = storyStoreForRepair[story.id];
-    if (!stored) continue;
-    if (!(story.description || '').trim() && (stored.description || '').trim()) {
-      story.description = stored.description.trim();
-      backfilledStories++;
-    }
-    if (!(story.content || '').trim() && (stored.content || '').trim()) {
-      story.content = stored.content.trim();
-    }
-  }
-  const summary = (c.summary || '').trim();
-  if (!summary.endsWith('...')) continue;
-  const lead = c.stories?.[0];
-  if (!lead) continue;
-  const storedLead = storyStoreForRepair[lead.id];
-  const fullText = fullSourceText({
-    title: lead.title || storedLead?.title,
-    description: lead.description || storedLead?.description,
-    content: lead.content || storedLead?.content,
-  });
-  if (!fullText) continue;
-  const prefix = summary.slice(0, -3).trimEnd();
-  if (prefix.length < 40) continue;
-  if (fullText.startsWith(prefix) && fullText.length > prefix.length) {
-    c.summary = fullText;
-    delete c.shortSummary;
-    repairedSummaries++;
-  }
-}
-if (repairedSummaries) console.log(`Repaired ${repairedSummaries} truncated summaries`);
-if (backfilledStories) console.log(`Backfilled source text on ${backfilledStories} digest stories`);
-
 // Enrich all stories with bodyText, wordCount, storyType for external consumers.
 enrichAllStories(digest);
 

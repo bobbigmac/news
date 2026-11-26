@@ -195,3 +195,13 @@
   backfills missing story description/content (8125 stories), and dedups feeds that
   repeat description as content. Remaining ellipsis endings are publisher-side
   truncations in the feeds themselves.
+
+- **Feed-markup injection fix** — RSS content HTML (including Techmeme's
+  self-contained item cards with their own headline/byline/permalink chrome) was
+  stored raw and baked into summaries, rendering foreign cards nested inside
+  article chrome. Boundary fixed at ingest: all feed text is plain-text normalized
+  (tags stripped, entities decoded to fixpoint) in fetch-rss and prepareStoryForLLM,
+  so markup never enters the pipeline. Client rendering escapes plain-text fields
+  as contract enforcement. One-off migration scripts/repair-digest.js cleaned the
+  cache (1542 summaries rebuilt, proof-gated to never touch LLM editorial copy) —
+  the repair is NOT in the forever-build; prevention lives at the boundary.

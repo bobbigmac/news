@@ -1,5 +1,6 @@
 import Parser from 'rss-parser';
 import { createHash } from 'crypto';
+import { toPlainText } from './plain-text.js';
 import { getSourceName } from './sources.js';
 
 const parser = new Parser({ timeout: 5000 });
@@ -90,8 +91,8 @@ function normalizeRssItem(item, feed, pluginName) {
   return {
     id: makeId(url || item.title),
     title: item.title || '',
-    description: item.contentSnippet || item.content || '',
-    content: item.content || item.contentSnippet || '',
+    description: toPlainText(item.contentSnippet || item.content || ''),
+    content: toPlainText(item.content || item.contentSnippet || ''),
     url,
     image,
     source: item.creator || item.author || '',
@@ -154,8 +155,8 @@ function normalizeTechmemeItem(item, feed) {
   return {
     id: makeId(originalUrl || title),
     title: cleanTitle,
-    description: snippet || item.contentSnippet || '',
-    content: html,
+    description: toPlainText(snippet || item.contentSnippet || ''),
+    content: toPlainText(snippet || item.contentSnippet || ''),
     url: originalUrl,
     image,
     source: author,
