@@ -153,7 +153,7 @@ the free LLM failed constantly and the fallback fragmented everything.
 **Publish flow** (build.js):
 - Backfills missing fields on old clusters (triggerWords, impact, contentVersion, category
   casing) so the frontend never sees an incomplete cluster.
-- **Recategorises** clusters using a keyword graph (`scripts/categories.js`) that overrides
+- **Recategorises** clusters using a keyword graph (`scripts/category-graph.js`, applied by `scripts/categories.js`) that overrides
   the LLM's category when the graph is confident (score >= 5). Categories are more specific
   than newspaper conventions: Gaming, Sport, Celebrity, Entertainment, Politics, Crime,
   Business, Personal Finance, Health, Science, Environment, Technology, Motoring, Energy,
@@ -247,7 +247,7 @@ eyeballing the multi-story groups for false merges.
   doesn't end with `:free` or where `usage.cost` is non-zero. If a paid model is
   detected, the call throws immediately (no retry) and the cluster falls back to
   heuristic copy. This ensures we can NEVER spend the credit accidentally. See
-  `isPaidModel` / `hasCost` in `scripts/summarise.js`.
+  `isPaidModel` / `hasCost` in `scripts/llm-client.js`.
 - **Model registry** (`cache/model-registry.json`): when `openrouter/free` returns
   a good `:free` model, its ID is saved. On subsequent calls, known-good models are
   called directly (still zero cost — the `:free` suffix means free regardless of
