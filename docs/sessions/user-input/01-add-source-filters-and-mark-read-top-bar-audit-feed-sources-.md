@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 15:17:06 UTC
-entries: 142
+last_activity: 2026-11-26 15:34:54 UTC
+entries: 147
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -1101,6 +1101,41 @@ our cache has some weird assignments like a story about birgitta visser discusse
 ### 2026-11-26 15:17:06 UTC
 
 commit everything, I want to be up to date and I'm too tired to figure out what to do. Oneliner commits
+
+---
+
+<!-- r:0 m:hook:88f04cdc-c8e6-4b29-8165-bcc318433b21 h:036d8096 -->
+### 2026-11-26 15:18:31 UTC
+
+just fix everything, at the right place. I think the intent is clear, just clean up your old fuckups
+
+---
+
+<!-- r:0 m:hook:b2cced12-1c3c-42c2-9ec4-9648a71d655b h:1eb8f94a -->
+### 2026-11-26 15:19:00 UTC
+
+dark souls should only match n dark souls, not dark or souls
+
+---
+
+<!-- r:0 m:hook:1dab46d5-5cac-43c3-b413-6ce4f3219ed8 h:886880b5 -->
+### 2026-11-26 15:24:23 UTC
+
+hmm. Not sure about this... Heuristics can't possibly categorise. Are you trying to heuristic stuff I told YOU to fix-up?
+
+---
+
+<!-- r:0 m:hook:db577e7c-4d17-4bd3-b639-ea64b00087d9 h:69fdd7be -->
+### 2026-11-26 15:33:53 UTC
+
+via the github api, can you see why our build actions are SO slow? is it just the main ingestion running on catchup because we interrupt each run when we push new runs, or some other problem?
+
+---
+
+<!-- r:0 m:hook:db281f15-3e36-41c7-8a4b-aab7bf517b5f h:35febb3e -->
+### 2026-11-26 15:34:54 UTC
+
+fucking commit stuff please, I told you already I'm knackered
 
 ---
 
