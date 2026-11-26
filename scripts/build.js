@@ -2,6 +2,7 @@ import { readFileSync, existsSync, mkdirSync, writeFileSync, copyFileSync } from
 import { join } from 'path';
 import { annotateClustersIfMissing, buildEntityIndex } from './entities.js';
 import { computeClusterTagsIfMissing } from './tags.js';
+import { assignStoryGroupsToDigest } from './story-group-assign.js';
 import { enrichAllStories } from './story-enrich.js';
 import { canonicalCategory, recategoriseCluster } from './categories.js';
 import { collectSources } from './favicons.js';
@@ -49,6 +50,12 @@ enrichAllStories(digest);
 // Ensure every cluster has tags + entities even if summarise didn't run fully.
 computeClusterTagsIfMissing(digest);
 annotateClustersIfMissing(digest);
+
+// Story-group assignment runs at publish time, not ingest: it recomputes over
+// the whole digest on every build, so edits to the tree dataset apply
+// retroactively to older clusters instead of only new ones.
+const groupStats = assignStoryGroupsToDigest(digest);
+console.log(`Story groups: ${groupStats.assigned}/${groupStats.total} clusters assigned (${groupStats.fuzzy} via fuzzy word matches)`);
 
 // --- Pipeline stats (consumed by the frontend info panel) ---
 const storyStore = loadJson(join(CACHE_DIR, 'stories.json'), { stories: {} });

@@ -25,10 +25,11 @@ export function getGridMetrics(sheet) {
   return { colWidth, gutter: GUTTER, cols };
 }
 
-// Distribute items into column containers inside the sheet.
+// Distribute items into column containers inside ANY host element.
 // heightHint(item) should return the best available height estimate (0 for
 // hidden items); assignment is greedy-to-shortest in the order given.
-export function layoutColumns(sheet, items, heightHint) {
+// Reused both for the top-level feed and inside story-group containers.
+export function distributeIntoColumns(host, items, heightHint) {
   const cols = getColumnCount();
   const heights = new Array(cols).fill(0);
   const columns = [];
@@ -45,8 +46,12 @@ export function layoutColumns(sheet, items, heightHint) {
     columns[target].appendChild(item);
     heights[target] += heightHint(item);
   }
-  sheet.replaceChildren(...columns);
+  host.replaceChildren(...columns);
   return columns;
+}
+
+export function layoutColumns(sheet, items, heightHint) {
+  return distributeIntoColumns(sheet, items, heightHint);
 }
 
 // Flow columns need no image-load relayout handling at all: an image loading

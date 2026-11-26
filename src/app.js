@@ -11,7 +11,7 @@ import { renderCategoryFilterBar, renderSourceBar } from './filters.js';
 import { clearFeed, renderFeed, syncFeedToSearch } from './feed.js';
 import { formatDate } from './article.js';
 import { getAvailableCategories, getAvailableModes, sortClusters } from './ordering.js';
-import { groupClustersByTag } from './story-groups.js';
+import { groupClustersForFeed } from './story-groups.js';
 import {
   initSearch,
   markDisplayedClustersRead,
@@ -35,10 +35,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () 
 
 function renderDigest(digest, settings) {
   const sheet = document.getElementById('broadsheet');
-  const allClusters = groupClustersByTag(
-    sortClusters(digest.clusters || [], settings.sort),
-    settings.groupByTag,
-  );
+  const allClusters = sortClusters(digest.clusters || [], settings.sort);
   setSignalClusters(allClusters);
 
   if (!allClusters.length) {
@@ -58,7 +55,7 @@ function renderDigest(digest, settings) {
     digestSources: collectSourcesFromDigest(digest),
     settings,
     catPrefs: state.catPrefs,
-    sourceFilters: state.sourceFilters,
+    sourceInclude: state.sourceInclude,
     disabledSources: state.disabledSources,
     readState: state.readState,
     isSignalVisible: cluster => {
@@ -96,11 +93,13 @@ function renderDigest(digest, settings) {
   }
 
   const latestReferenceTime = Date.parse(digest.generated || '') || Date.now();
+  document.getElementById('source-bar')?.removeAttribute('hidden');
   renderFeed({
     clusters: visible,
     settings,
     pluginLeadIds,
     latestReferenceTime,
+    grouping: groupClustersForFeed(visible, settings.groupByTag),
   });
 }
 

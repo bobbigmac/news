@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Source Relationships — The Daily Broadsheet</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="How The Daily Broadsheet relates and groups news sources and story tags.">
+  <meta name="description" content="Who owns, funds, and operates the news outlets in The Daily Broadsheet — and how they connect.">
   <script>
     (function() {
       var s = JSON.parse(localStorage.getItem('broadsheet-settings') || '{}');
@@ -22,82 +22,23 @@
   <header class="relationships-masthead">
     <a class="back-link" href="./">← The Daily Broadsheet</a>
     <div>
-      <p class="eyebrow">Dataset transparency</p>
-      <h1>Source & Story Relationships</h1>
+      <h1>Who’s behind the news</h1>
       <p class="intro">
-        The source bar is not a literal list of every host. This page exposes the curated
-        relations behind the convenience groups, the current allocated branches, and the
-        subject tree used by optional tag grouping.
+        The broadsheet reads hundreds of outlets so you don’t have to. This is a running
+        guide to who they are — who owns them, how they’re funded, who shares journalists
+        or owners with whom — so you can read every story with the context it deserves.
       </p>
     </div>
+    <label class="source-search-label">
+      Search outlets, owners, or topics
+      <input id="source-search" type="search" placeholder="BBC, Murdoch, Postmedia, licence fee…">
+    </label>
   </header>
 
-  <main class="relationships-main">
-    <section class="method-panel">
-      <h2>How to read this</h2>
-      <div class="method-grid">
-        <article>
-          <h3>Relation ≠ claim</h3>
-          <p>A branch can mean shared owner, public-service model, specialist beat, regional market, wire pipe, platform, or another useful property. The full memberships are listed because one host can reasonably belong to more than one relation.</p>
-        </article>
-        <article>
-          <h3>Rendered branches are disjoint</h3>
-          <p>The underlying graph can overlap, but the UI claims each host once in tree order. That prevents duplicated controls while still documenting every relation here.</p>
-        </article>
-        <article>
-          <h3>Sizes are article-driven</h3>
-          <p>The allocator chooses the branch depth that lands near a readable number of stories. Tiny branches roll up; very large atomic outlets can remain single controls.</p>
-        </article>
-        <article>
-          <h3>Profiles are research notes</h3>
-          <p>Profiles use different fields because the useful properties are different: ownership, funding, remit, political context, provenance risk, shared journalists, distribution model, or notable history.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="relationship-section">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Source graph</p>
-          <h2>Current source controls</h2>
-          <p id="relationship-status" class="status-line">Loading source relationships…</p>
-        </div>
-        <label class="source-search-label">
-          Search sources or relations
-          <input id="source-search" type="search" placeholder="BBC, Hillsborough, Nigeria, Keleops…">
-        </label>
-      </div>
-      <div id="source-stats" class="source-stats"></div>
-      <div id="source-groups" class="source-groups"></div>
-    </section>
-
-    <section class="relationship-section">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Story grouping</p>
-          <h2>Tag relation tree</h2>
-          <p>
-            Group By Tag is optional and can be disabled in Settings. The tree below is the
-            manually curated subject graph; the allocator then chooses branches that make
-            a sensible number of clusters in the current digest.
-          </p>
-        </div>
-      </div>
-      <div class="story-panel-grid">
-        <div>
-          <h3>Allocated groups in this digest</h3>
-          <ul id="story-group-list" class="allocated-story-groups"></ul>
-        </div>
-        <div>
-          <h3>Curated tag relations</h3>
-          <div id="story-tree"></div>
-        </div>
-      </div>
-    </section>
-  </main>
+  <main id="relationships-main" class="relationships-main"></main>
 
   <footer class="broadsheet-footer relationships-footer">
-    <p><a href="./">Back to today’s broadsheet</a> · Relation notes are working research, not legal ownership claims.</p>
+    <p><a href="./">Back to today’s broadsheet</a> · Notes are working research with evidence links, not legal ownership claims.</p>
   </footer>
 
   <script type="module" src="relationships.js"></script>

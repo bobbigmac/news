@@ -45,13 +45,13 @@ describe('displayed-story catch-up', () => {
     state.visibleClusters = [];
     state.readState = {};
     state.disabledSources = {};
-    state.sourceFilters = {};
+    state.sourceInclude = {};
     ui.refresh = vi.fn();
     ui.relayout = vi.fn();
     ui.syncFeed = vi.fn(() => false);
   });
 
-  it('shows the number of unread displayed stories in the Mark Read control', () => {
+  it('shows the unread count as plain text in the Mark Read control', () => {
     const matchingUnread = cluster('mars-one', 'Mars landing begins');
     const matchingRead = cluster('mars-two', 'Mars landing delayed');
     const nonMatchingUnread = cluster('sport', 'Cricket result');
@@ -64,7 +64,7 @@ describe('displayed-story catch-up', () => {
     const button = document.getElementById('mark-all-read');
     expect(button.disabled).toBe(false);
     expect(button.textContent).toBe('Mark 1 Read');
-    expect(button.querySelector('.mark-read-count')?.textContent).toBe('1');
+    expect(button.querySelector('.mark-read-count')).toBeNull();
   });
 
   it('marks only the active displayed set and refreshes the UI immediately', () => {

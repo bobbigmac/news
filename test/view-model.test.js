@@ -50,13 +50,13 @@ describe('view-model helpers', () => {
   it('derives stable source keys and labels from story URLs', () => {
     expect(sourceKeyFromUrl('https://www.bbc.co.uk/news/article-123')).toBe('bbc.co.uk');
     expect(sourceKeyFromUrl('not a url')).toBe('');
-    expect(prettifySourceKey('bbc.co.uk')).toBe('Bbc');
+    expect(prettifySourceKey('bbc.co.uk')).toBe('BBC');
     expect(prettifySourceKey('kotaku.com')).toBe('Kotaku');
   });
 });
 
 describe('buildViewModel', () => {
-  it('keeps display-filtered sources in the bar while removing their stories from view', () => {
+  it('filters-to the selected control, keeping only clusters with matching stories', () => {
     const clusters = [
       cluster('mixed', 'Sport', [
         story('s1', 'https://www.bbc.co.uk/news/one'),
@@ -66,23 +66,37 @@ describe('buildViewModel', () => {
       cluster('blocked', 'World', [story('s4', 'https://blocked.example/four')]),
     ];
 
-    const model = buildViewModel({
+    const unfiltered = buildViewModel({
       clusters,
       digestSources: [{ key: 'bbc.co.uk', label: 'BBC' }],
       settings: settings(),
       disabledSources: { 'blocked.example': true },
-      sourceFilters: { 'bbc.co.uk': false },
     });
+    expect(unfiltered.feedPool.map(c => c.id)).toEqual(['mixed', 'bbc-only']);
+    expect(unfiltered.visibleClusters.map(c => c.id)).toEqual(['mixed', 'bbc-only']);
+    expect(unfiltered.sourceIncludeActive).toBe(false);
 
-    expect(model.feedPool.map(c => c.id)).toEqual(['mixed', 'bbc-only']);
-    expect(model.visibleClusters.map(c => c.id)).toEqual(['mixed']);
-    expect(getDisplayedStories(clusters[0], { 'blocked.example': true }, { 'bbc.co.uk': false }))
+    const bbcControl = unfiltered.controlByHost.get('bbc.co.uk');
+    expect(bbcControl).toBeTruthy();
+    const kotakuControl = unfiltered.controlByHost.get('kotaku.com');
+    expect(kotakuControl).toBeTruthy();
+    expect(kotakuControl).not.toBe(bbcControl);
+
+    const included = buildViewModel({
+      clusters,
+      digestSources: [{ key: 'bbc.co.uk', label: 'BBC' }],
+      settings: settings(),
+      disabledSources: { 'blocked.example': true },
+      sourceInclude: { [kotakuControl]: true },
+    });
+    expect(included.sourceIncludeActive).toBe(true);
+    expect(included.visibleClusters.map(c => c.id)).toEqual(['mixed']);
+    expect(included.sourceOptions.find(source => source.key === kotakuControl)?.included).toBe(true);
+    expect(included.sourceOptions.find(source => source.key === bbcControl)?.included).toBe(false);
+    expect(getDisplayedStories(clusters[0], { 'blocked.example': true }, { [kotakuControl]: true }, included.controlByHost))
       .toEqual([clusters[0].stories[1]]);
 
-    const bbc = model.sourceOptions.find(source => source.sourceKeys?.includes('bbc.co.uk'));
-    expect(bbc).toMatchObject({ label: 'Public & International', count: 2, displayed: false, grouped: true });
-    expect(bbc.sourceKeys).toEqual(['bbc.co.uk']);
-    expect(model.allSourceOptions.find(source => source.key === 'blocked.example'))
+    expect(included.allSourceOptions.find(source => source.key === 'blocked.example'))
       .toMatchObject({ count: 1, disabled: true });
   });
 
@@ -129,42 +143,48 @@ describe('buildViewModel', () => {
       count: 2,
       sourceCount: 2,
       grouped: true,
-      displayed: true,
+      included: false,
       sourceKeys: ['foxnews.com', 'nypost.com'],
     });
     const wsj = model.sourceOptions.find(source => source.sourceKeys?.includes('wsj.com'));
-    expect(wsj).toMatchObject({ grouped: true, displayed: true });
+    expect(wsj).toMatchObject({ grouped: true });
     expect(model.sourceOptions.some(source => source.key === 'small.example')).toBe(false);
     expect(model.sourceOptions.some(source => source.key === 'busy.example')).toBe(true);
     expect(model.otherSourceKeys.has('small.example')).toBe(true);
     expect(model.sourceOptions.find(source => source.key === `group:${OTHER_SOURCE_KEY}`))
-      .toMatchObject({ label: 'Other Sources', count: 1, sourceCount: 1, displayed: true });
+      .toMatchObject({ label: 'Other Sources', count: 1, sourceCount: 1 });
 
-    const filtered = buildViewModel({
+    // every host maps to exactly one control
+    expect(model.controlByHost.get('small.example')).toBe(`group:${OTHER_SOURCE_KEY}`);
+    expect(model.controlByHost.get('foxnews.com')).toBe(murdoch.key);
+    expect(model.controlByHost.get('busy.example')).toBe('busy.example');
+
+    // selecting Other Sources shows only its members
+    const otherOnly = buildViewModel({
       clusters,
       settings: settings(),
-      sourceFilters: { 'small.example': false },
+      sourceInclude: { [`group:${OTHER_SOURCE_KEY}`]: true },
     });
-    expect(filtered.sourceOptions.find(source => source.key === 'small.example'))
-      .toMatchObject({ count: 1, displayed: false });
+    expect(otherOnly.visibleClusters.map(item => item.id)).toEqual(['small']);
 
-    const otherFiltered = buildViewModel({
-      clusters,
-      settings: settings(),
-      sourceFilters: { [OTHER_SOURCE_KEY]: false },
-    });
-    expect(otherFiltered.sourceOptions.find(source => source.key === `group:${OTHER_SOURCE_KEY}`))
-      .toMatchObject({ count: 1, displayed: false });
-    expect(otherFiltered.visibleClusters.map(item => item.id)).toEqual(['murdoch', 'busy']);
-
+    // an individually-included host surfaces as its own control even when tiny
     const restored = buildViewModel({
       clusters,
       settings: settings(),
-      sourceFilters: { [OTHER_SOURCE_KEY]: false, 'small.example': true },
+      sourceInclude: { 'small.example': true },
     });
     expect(restored.sourceOptions.find(source => source.key === 'small.example'))
-      .toMatchObject({ count: 1, displayed: true, otherMember: true });
-    expect(restored.visibleClusters.map(item => item.id)).toEqual(['murdoch', 'busy', 'small']);
+      .toMatchObject({ count: 1, included: true, otherMember: true });
+    expect(restored.controlByHost.get('small.example')).toBe('small.example');
+    expect(restored.visibleClusters.map(item => item.id)).toEqual(['small']);
+
+    // multiple selections are additive
+    const additive = buildViewModel({
+      clusters,
+      settings: settings(),
+      sourceInclude: { 'small.example': true, 'busy.example': true },
+    });
+    expect(additive.visibleClusters.map(item => item.id)).toEqual(['busy', 'small']);
   });
 
   it('uses live category filters only in all-category masthead mode', () => {
@@ -173,18 +193,25 @@ describe('buildViewModel', () => {
       cluster('tech', 'Technology', [story('s2', 'https://b.example/2')]),
     ];
 
+    const unfiltered = buildViewModel({ clusters, settings: settings() });
+    expect(unfiltered.visibleClusters.map(c => c.id)).toEqual(['sport', 'tech']);
+    expect(unfiltered.categoryIncludeActive).toBe(false);
+
     const filtered = buildViewModel({
       clusters,
-      settings: settings({ categoryDisplayFilters: { Sport: false } }),
+      settings: settings({ categoryDisplayFilters: { Sport: true } }),
     });
-    expect(filtered.visibleClusters.map(c => c.id)).toEqual(['tech']);
+    expect(filtered.visibleClusters.map(c => c.id)).toEqual(['sport']);
     expect(filtered.categoryRowEnabled).toBe(true);
+    expect(filtered.categoryIncludeActive).toBe(true);
+    expect(filtered.categoryOptions.find(c => c.value === 'Sport')?.included).toBe(true);
+    expect(filtered.categoryOptions.find(c => c.value === 'Technology')?.included).toBe(false);
 
     const mastheadSport = buildViewModel({
       clusters,
       settings: settings({
         categoryFilter: 'Sport',
-        categoryDisplayFilters: { Sport: false },
+        categoryDisplayFilters: { Sport: true },
       }),
     });
     expect(mastheadSport.visibleClusters.map(c => c.id)).toEqual(['sport']);

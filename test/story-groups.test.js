@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { renderArticleShell } from '../src/article.js';
 import { DEFAULT_SETTINGS, state } from '../src/state.js';
-import { getClusterStoryGroup, groupClustersByTag } from '../src/story-groups.js';
+import { getClusterStoryGroup, groupClustersForFeed } from '../src/story-groups.js';
 import { STORY_RELATION_TREE } from '../src/story-tree.js';
 
 function cluster(id, fields = {}) {
@@ -48,25 +48,24 @@ describe('curated story groups', () => {
     expect(getClusterStoryGroup(item)).toBeNull();
   });
 
-  it('orders known groups together and preserves the underlying story order', () => {
+  it('partitions clusters into rollup containers plus an ungrouped tail', () => {
     const items = [
       cluster('plain-a'),
       cluster('gta', { tags: ['gta'] }),
       cluster('microsoft', { entities: { orgs: ['Microsoft'] } }),
       cluster('plain-b'),
-      cluster('nintendo', { tags: ['zelda'] }),
+      cluster('gta2', { tags: ['gta 6'] }),
     ];
 
-    expect(groupClustersByTag(items, true).map(item => item.id)).toEqual([
-      'microsoft',
-      'gta',
-      'nintendo',
-      'plain-a',
-      'plain-b',
-    ]);
-    expect(groupClustersByTag(items, false)).toBe(items);
+    const grouping = groupClustersForFeed(items, true);
+    // containers are ordered by their best member's feed position
+    expect(grouping.groups[0].clusters.map(c => c.id)).toEqual(['gta', 'gta2']);
+    expect(grouping.groups[1].clusters.map(c => c.id)).toEqual(['microsoft']);
+    // member order inside a container preserves feed order
+    expect(grouping.ungrouped.map(c => c.id)).toEqual(['plain-a', 'plain-b']);
+    // disabled = no restructuring at all
+    expect(groupClustersForFeed(items, false)).toBeNull();
   });
-
   it('groups russell brand under public-figure cases, not entertainment', () => {
     expect(getClusterStoryGroup(cluster('brand', {
       entities: { people: ['Russell Brand'], orgs: [] },
@@ -98,15 +97,15 @@ describe('curated story groups', () => {
     expect(STORY_RELATION_TREE.slice(0, -1).every(root => !root.pivot)).toBe(true);
   });
 
-  it('labels shells and hydrated articles with the curated group path only when enabled', () => {
+  it('never labels individual tiles — the container header carries group identity', () => {
     const item = cluster('nv', { entities: { orgs: ['Nvidia'] } });
     const shell = renderArticleShell(item);
-    expect(shell.dataset.groupId).toBe('');
+    expect(shell.dataset.groupId || '').toBe('');
     expect(shell.querySelector('.article-group-label')).toBeNull();
 
     state.settings.groupByTag = true;
     const grouped = renderArticleShell(item);
-    expect(grouped.dataset.groupId).toBe('nvidia');
-    expect(grouped.querySelector('.article-group-label')?.textContent).toBe(' / Technology / Hardware & Chipmakers / Nvidia');
+    expect(grouped.dataset.groupId || '').toBe('');
+    expect(grouped.querySelector('.article-group-label')).toBeNull();
   });
 });

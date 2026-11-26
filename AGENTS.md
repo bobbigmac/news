@@ -216,6 +216,45 @@ read. The short-summary collapse is version-aware: an updated cluster shows full
 again until that updated `contentVersion` has itself been glimpsed, and expanding a
 short summary does not count as read.
 
+### Server-side story-group assignment (scripts/story-group-assign.js)
+
+Clusters are assigned to the curated story tree **once, at build time** — never
+per-client. The client (`src/story-groups.js`) only measures group sizes over the
+pre-assigned node ids and picks a readable branch depth; its exact matcher is a
+fallback for unassigned clusters only. This keeps partial-string indexing off
+every client.
+
+**Matching algorithm** (longest-string word-match + light levenshtein):
+- Cluster vocab = tags + keywords + triggerWords + entity names (curated) plus
+  headline words (non-curated). Terms from the tree are matched as word-sets:
+  more matched words = more specific = wins. `["ai","farming"]` beats `["ai"]`.
+- Subset matching: a vocab entry matches a term if all the term's words are in
+  the entry — but only when the entry is not much longer than the term
+  (length ratio <= 1.5x or diff <= 2 for curated entries). This stops junk
+  TF-IDF/entity compounds like `["nepal","china"]` from matching `china`.
+- Light levenshtein (1 edit on 5+ char words, 2 on 9+) handles morphology:
+  `universities` → `university`. Never applied to words under 5 chars
+  (`ai`/`uk` stay exact). Digits are preserved (`gta 6` ≠ `gta`).
+- Ranking: specificity (word count) first across the whole tree, then fewer
+  edits, more corroborating terms, non-pivot over pivot, deeper node, tree
+  order. Pivot branches lose only ties — a two-word pivot match (`flash flood`)
+  legitimately beats a one-word primary match (`china`).
+- Performance: stemmed-word inverted index, ~3-4s for 5,557 clusters at build
+  time. ~88% of the corpus assigns; ~120 of those via fuzzy matches.
+
+**Taxonomy hinting in the LLM prompt** (`scripts/prompts.js`): the keyword/tag
+instruction includes the verbatim line "Prefer tags/keywords in mainstream
+taxonomies, like IPTC NewsCodes, Guardian/AssociatedPress/Reuters News/API
+Tags, common semantic APIs or Wiki word-sets, for portability". It asks for
+7-12 keywords per cluster. Do not add more examples to it — the soft hint
+tightens suggestions just enough for portability without the model hallucinating
+exact taxonomy ids.
+
+**This is a living dataset**: after new sources or a news-cycle shift, re-check
+what escapes the net (clusters with no `storyGroup`) and extend the tree JSON
+files in `src/trees/` — especially now that many sources were added in one day.
+The tree files are the portable/transferable asset; the matcher is generic.
+
 ### Clustering thresholds (scripts/cluster.js)
 
 - `SIM_DEDUP = 0.92` — same article from different sources.
@@ -293,6 +332,15 @@ When changing `.env`, also update the GitHub repo secret (Settings → Secrets �
   or LLM calls: `git fetch origin cache-data && git checkout origin/cache-data -- cache/`
   then `git restore --staged cache/` if the path checkout staged it. The Vite dev
   middleware serves `cache/digest.json` directly.
+
+## Site content rule — never talk about the dataset on the website
+
+Public-facing pages are for readers. They must never describe dataset internals,
+methodology, allocation mechanics, control counts, or how grouping/filtering is
+implemented. That analysis belongs only in the codebase and `docs/`. Reader-facing
+copy talks about the subject matter itself (the news, the sources, who owns them)
+in plain editorial language. This mistake has been made repeatedly — check copy
+for meta-referential framing before shipping any page.
 
 ## Known Pitfalls
 

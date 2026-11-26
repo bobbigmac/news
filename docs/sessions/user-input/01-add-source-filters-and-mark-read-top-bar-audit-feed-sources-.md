@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 06:47:04 UTC
-entries: 68
+last_activity: 2026-11-26 08:24:04 UTC
+entries: 75
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -524,6 +524,85 @@ Relayouts are triggering for lazy-loaded images (but I think it's because the im
 ### 2026-11-26 06:47:04 UTC
 
 postpone further tree-expansion work for now, and add a TODO: ... we need to identify some established/mainstream/news/widely-known reference taxonomies for better support. Continue with the other work raised, and I'll come back to taxonomies researcg  after you finished the rest, cos we're under quota pressure.
+
+---
+
+<!-- r:0 m:hook:fe36a919-a7d4-4dc3-808c-f7e853e796c1 h:1d118ee0 -->
+### 2026-11-26 07:22:51 UTC
+
+the filter bar and mark read button shouldn't be visible at all, until after data has loaded. Also I don't like the number badges on source-groups. Hmm, not sure what to do about it tho. Maybe we just group icons by their number of stories bucket, then badge a number on only that bucket. Like the buckets will need to be derived from whatever's on the actual list (cos I have a localhjost client with thousands of unread stories, and i have my deployed/live/daily client with only a hundred or so unread stories (the last few days)). The user doesn't need to see a badge on EVERY icon, it''s just not relevant if I have 51 guardian stories.
+
+Also we have a fundamental design error. These are Filter-ON buttons, but are implemented as filter-OUT buttons (clicking a button from default makes items visible in that group disappear). I think this was inherited from 'disable' (a different state in a different place). The should not grey-out that group's icon or hide their stories. Clicking a filter-TO iconbutton should SHOW only stories from that group of sources, greying every OTHER icon (tho they are still clickable).
+
+This applies to categories too. 
+
+---
+
+<!-- r:0 m:hook:bb18f5f0-7868-4359-ba58-2a612e461196 h:a2079b72 -->
+### 2026-11-26 07:34:51 UTC
+
+Currently, iirc, our article-tag to grouper is full-string-only, because it was substring-based, but I think we can apply 'closest match with fewest changes' (like light-levenstein-on-ingest, and can assign detected categories ONCE on the server at ingestion time, AFTER the LLM call gives us the tags IT thinks is useful, and BEFORE it goes to the client (i.e. so we don't make every client index on partial-strings)) and assign matching tags by longest-string word-match (i.e. 'ai in farming' tag CAN match 'ai' tag, but matches 'ai farming' MORE)... AND we can use hinting from well established taxonomies by simply naming them in our tags prompt as supplied to openrouter. It won't undertsand the deep detail of exact tag lists in every taxonomy but we CAN say something soft like "Prefer tags/keywords in mainstream taxonomies, like IPTC NewsCodes, Guardian/AssociatedPress/Reuters News/API Tags, common semantic APIs or Wiki word-sets, for portability" <-- verbatim should be close enough, do NOT give more examples or another partial prompt for this, it should just be appended to the existing keyword/tags part of the existing prompt, and should tighten its suggestions just ENOUGH to be more useful to us. Also check it is being asked for like 7-12 keywords/tags, not something silly like 2-3. It's also worth documenting this decision in our docs, cos we will need to tweak it after we have more updated news, especially since we added a bunch of sources today.
+
+If the user wants to disable sources, they'd do that from the manage sources page.
+
+---
+
+<!-- r:0 m:hook:0ef7c854-e946-4f7b-bd59-666cd47f3902 h:9ae287f8 -->
+### 2026-11-26 07:51:29 UTC
+
+you made the http://localhost:8000/relationships.html page ENTIRELY about the dataset. The reader doesn't give a single fuck about our dataset. They care about the sources and who they are and why they're in the dataset. Every single piece of text you included in http://localhost:8000/relationships.html is a caveat or disclaimer about our dataset, but that's NOT what I asked for. Delete it, start over, it should be built from the reltionships dataset and the relationships should be ABOUT the relationships, NOT a meta-referential analysis of our dataset or methodology. YOU ALWAYS MAKE THIS SAME FUCKING mistake. You MADE a dataset-transparency page and literally called it that, but the path is relationships, which is what that page is supposed to be about. We shuld NEVER talk about the dataset on the website, that analysis belongs ONLY in the codebase or in the docs/ folder. 
+
+---
+
+<!-- r:0 m:hook:6bf678b7-9d62-45e4-a7ec-1e3fb620690e h:87f6e7d8 -->
+### 2026-11-26 07:59:54 UTC
+
+"Mark # read" doesn't need a badge. Normal text is fine
+
+---
+
+<!-- r:0 m:hook:58f641cc-759d-4a9d-82d0-d125c5d8a4f4 h:9b1c482b -->
+### 2026-11-26 08:02:15 UTC
+
+the "group by tag" mode still makes EVERY tile output its topic, but the point is to let the UI display collapsible/expandable topics as groups, so they essentially use whatever viewport setting is available as normal, but put the most important stories grouped by tag (according to our tag trees) in their own containers, following a similar rollup system as to how sources rollup on the top bar. It's supposed to eliminate duplication, not just make duplication happen nearer to the other duplication. 
+
+---
+
+<!-- r:0 m:hook:cb2dcf2b-0602-48c9-a3d9-3d8c94d8fce9 h:6a657a7f -->
+### 2026-11-26 08:23:25 UTC
+
+most sources group icons switched to text only. Check over the config/codebase/etc .
+
+`client:851 [vite] connecting...
+client:865 WebSocket connection to 'ws://localhost:8000/?token=[REDACTED:SECRET]' failed: 
+(anonymous) @ client:865
+client:875 WebSocket connection to 'ws://localhost:8000/?token=[REDACTED:SECRET]' failed: 
+(anonymous) @ client:875
+client:885 [vite] failed to connect to websocket.
+your current setup:
+  (browser) localhost:8000/ <--[HTTP]--> localhost:8000/ (server)
+  (browser) localhost:8000/ <--[WebSocket (failing)]--> localhost:8000/ (server)
+Check out your Vite / network configuration and https://vite.dev/config/server-options.html#server-hmr .
+connect @ client:885
+[Violation] 'setTimeout' handler took <N>ms
+[Violation] 'setTimeout' handler took <N>ms
+[Violation] 'setTimeout' handler took <N>ms
+[Violation] 'setTimeout' handler took <N>ms
+[Violation] 'setTimeout' handler took <N>ms
+[Violation] 'setTimeout' handler took <N>ms
+[Violation] 'setTimeout' handler took <N>ms
+[Violation] 'setTimeout' handler took <N>ms
+[Violation] 'setTimeout' handler took <N>ms
+[Violation] 'setTimeout' handler took <N>ms
+[Violation] Forced reflow while executing JavaScript took 211ms
+`
+
+---
+
+<!-- r:0 m:hook:87ab2c5a-a029-43cd-b9a1-5f0397aa0b26 h:2b2d9362 -->
+### 2026-11-26 08:24:04 UTC
+
+also you lost the # in mark # read, I only told you to put the number in the string, to debadge it, not to remove the number entirely
 
 ---
 

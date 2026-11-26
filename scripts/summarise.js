@@ -207,6 +207,12 @@ async function main() {
       else if (summaryChanged) delete cluster.shortSummary;
       if (parsed.category) cluster.category = normaliseCategory(parsed.category);
       if (parsed.trigger_words && Array.isArray(parsed.trigger_words)) cluster.triggerWords = parsed.trigger_words;
+      if (parsed.keywords && Array.isArray(parsed.keywords)) {
+        cluster.keywords = parsed.keywords
+          .map(k => String(k || '').trim().toLowerCase())
+          .filter(k => k.length >= 2 && k.length <= 60)
+          .slice(0, 12);
+      }
       if (parsed.region) cluster.region = parsed.region;
       if (parsed.impact && ['low', 'medium', 'high'].includes(parsed.impact.toLowerCase())) cluster.impact = parsed.impact.toLowerCase();
       cluster.contentVersion = (cluster.contentVersion || 0) + 1;

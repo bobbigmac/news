@@ -4,7 +4,7 @@ import { groupSourceOptions, isSourceVisible } from './source-groups.js';
 //
 // The UI has two different source concepts that are easy to conflate:
 //   - disabledSources: sources removed from the reader's feed in Manage Sources
-//   - sourceFilters: temporary display filters in the top filter panel
+//   - sourceInclude: filter-TO selection in the top filter panel (empty = all)
 // This module keeps the filter pipeline explicit so rendering code does not
 // reinvent slightly different versions of the same state in several places.
 
@@ -30,6 +30,12 @@ export function sourceKeyFromUrl(url) {
   }
 }
 
+const SOURCE_NAME_ACRONYMS = new Set([
+  'bbc', 'cnn', 'nbc', 'abc', 'cbs', 'npr', 'itv', 'sky', 'dw', 'cbc', 'sbs',
+  'cnbc', 'msnbc', 'espn', 'tsn', 'nfl', 'nhl', 'nba', 'mlb', 'fox', 'rt',
+  'nyt', 'wsj', 'usa', 'uk', 'eu', 'un', 'nato', 'ft', 'ap', 'upi', 'afp',
+]);
+
 export function prettifySourceKey(key) {
   const parts = key.split('.').filter(Boolean);
   if (!parts.length) return 'Unknown';
@@ -37,6 +43,7 @@ export function prettifySourceKey(key) {
   const lastTwo = parts.slice(-2).join('.');
   const baseIndex = compoundTlds.has(lastTwo) ? parts.length - 3 : parts.length - 2;
   const base = parts[Math.max(0, baseIndex)] || parts[0];
+  if (SOURCE_NAME_ACRONYMS.has(base.toLowerCase())) return base.toUpperCase();
   return base
     .split(/[-_]/)
     .filter(Boolean)
@@ -75,9 +82,9 @@ export function getFeedStories(cluster, disabledSources) {
   return (cluster.stories || []).filter(story => isFeedSource(sourceKeyFromUrl(story.url), disabledSources));
 }
 
-export function getDisplayedStories(cluster, disabledSources, sourceFilters, otherSourceKeys = new Set()) {
+export function getDisplayedStories(cluster, disabledSources, sourceInclude, controlByHost = new Map()) {
   return getFeedStories(cluster, disabledSources)
-    .filter(story => isSourceVisible(sourceKeyFromUrl(story.url), sourceFilters, otherSourceKeys));
+    .filter(story => isSourceVisible(sourceKeyFromUrl(story.url), sourceInclude, controlByHost));
 }
 
 function clusterHasFeedSource(cluster, disabledSources) {
@@ -86,10 +93,10 @@ function clusterHasFeedSource(cluster, disabledSources) {
   return stories.some(story => isFeedSource(sourceKeyFromUrl(story.url), disabledSources));
 }
 
-function clusterHasDisplayedSource(cluster, disabledSources, sourceFilters, otherSourceKeys = new Set()) {
+function clusterHasDisplayedSource(cluster, disabledSources, sourceInclude, controlByHost = new Map()) {
   const stories = getFeedStories(cluster, disabledSources);
   if (!stories.length) return false;
-  return stories.some(story => isSourceVisible(sourceKeyFromUrl(story.url), sourceFilters, otherSourceKeys));
+  return stories.some(story => isSourceVisible(sourceKeyFromUrl(story.url), sourceInclude, controlByHost));
 }
 
 function isClusterRead(cluster, readState) {
@@ -142,7 +149,7 @@ function collectCategoryOptions(clusters, categoryFilters) {
         label: category,
         count: 0,
         storyCount: 0,
-        active: categoryFilters[category] !== false,
+        included: categoryFilters[category] === true,
       });
     }
     const entry = byCategory.get(category);
@@ -160,7 +167,7 @@ export function buildViewModel({
   digestSources = [],
   settings,
   catPrefs = {},
-  sourceFilters = {},
+  sourceInclude = {},
   disabledSources = {},
   readState = {},
   isSignalVisible = () => true,
@@ -211,20 +218,21 @@ export function buildViewModel({
   // individual, and the rest become the explicit Other Sources branch.
   const sourceGrouping = groupSourceOptions(
     collectSourceOptions(feedPool, digestSources, disabledSources, { feedOnly: true }),
-    sourceFilters,
+    sourceInclude,
   );
   const sourceOptions = sourceGrouping.options;
 
   const sourceView = feedPool.filter(cluster =>
-    clusterHasDisplayedSource(cluster, disabledSources, sourceFilters, sourceGrouping.otherSourceKeys)
+    clusterHasDisplayedSource(cluster, disabledSources, sourceInclude, sourceGrouping.controlByHost)
   );
 
   const categoryFilters = settings.categoryFilter === 'all'
     ? (settings.categoryDisplayFilters || {})
     : {};
+  const categoryIncludeActive = Object.keys(categoryFilters).length > 0;
   const categoryOptions = collectCategoryOptions(sourceView, categoryFilters);
   const visibleClusters = sourceView.filter(cluster =>
-    categoryFilters[canonicalCategory(cluster.category)] !== false
+    !categoryIncludeActive || categoryFilters[canonicalCategory(cluster.category)] === true
   );
 
   return {
@@ -240,6 +248,9 @@ export function buildViewModel({
     visibleClusters,
     sourceOptions,
     otherSourceKeys: sourceGrouping.otherSourceKeys,
+    controlByHost: sourceGrouping.controlByHost,
+    sourceIncludeActive: Object.keys(sourceInclude).length > 0,
+    categoryIncludeActive,
     allSourceOptions,
     categoryOptions,
     categoryRowEnabled: settings.categoryFilter === 'all',

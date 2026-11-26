@@ -42,9 +42,7 @@ export function updateMarkReadButton() {
   if (!btn) return;
   const unread = getDisplayedClusters().filter(c => !isClusterRead(c)).length;
   btn.disabled = unread === 0;
-  btn.innerHTML = unread
-    ? `Mark <span class="mark-read-count">${unread}</span> Read`
-    : 'Mark Read';
+  btn.textContent = unread ? `Mark ${unread} Read` : 'Mark Read';
 }
 
 export function markDisplayedClustersRead() {

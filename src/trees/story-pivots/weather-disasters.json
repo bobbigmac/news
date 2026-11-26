@@ -31,7 +31,15 @@
         "cold wave",
         "snowstorm",
         "drought",
-        "monsoon"
+        "monsoon",
+        "flood",
+        "flash flood",
+        "flooding",
+        "storm",
+        "heavy rain",
+        "rainfall",
+        "cyclone",
+        "tornado"
       ]
     }
   ]

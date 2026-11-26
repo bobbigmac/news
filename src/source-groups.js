@@ -14,18 +14,20 @@ export const INDIVIDUAL_SOURCE_MIN_ARTICLES = 20;
 
 export const OTHER_SOURCE_KEY = 'other-sources';
 
-export function isSourceVisible(sourceKey, sourceFilters = {}, otherSourceKeys = new Set()) {
+// Inclusion visibility: empty inclusion set means everything is visible.
+// When the set is non-empty a host is visible only if the control that owns
+// it (its allocated group, its own individual control, or Other Sources) is
+// in the set. Hosts with no control in the current bar have nothing selecting
+// them, so they stay hidden while a selection is active.
+export function isSourceVisible(sourceKey, sourceInclude = {}, controlByHost = new Map()) {
   if (!sourceKey) return true;
-  if (sourceFilters[sourceKey] === false) return false;
-  if (sourceFilters[sourceKey] === true) return true;
-  if (otherSourceKeys.has(sourceKey)) return sourceFilters[OTHER_SOURCE_KEY] !== false;
-  return true;
+  if (!Object.keys(sourceInclude).length) return true;
+  const control = controlByHost.get(sourceKey);
+  if (!control) return false;
+  return sourceInclude[control] === true;
 }
 
-function summarizeGroup(choice, isVisible) {
-  const members = choice.items;
-  const displayedMembers = members.filter(source => isVisible(source.key));
-  const displayed = displayedMembers.length === members.length;
+function summarizeGroup(choice) {
   return {
     key: `group:${choice.id}`,
     groupId: choice.id,
@@ -34,17 +36,14 @@ function summarizeGroup(choice, isVisible) {
     icon: choice.node.icon || choice.keys[0],
     path: choice.path,
     count: choice.weight,
-    sourceCount: members.length,
+    sourceCount: choice.items.length,
     sourceKeys: choice.keys,
-    sources: members,
-    displayed,
-    mixed: displayedMembers.length > 0 && !displayed,
+    sources: choice.items,
     grouped: true,
-    preferenceKeys: choice.keys,
   };
 }
 
-export function groupSourceOptions(sourceOptions, sourceFilters = {}) {
+export function groupSourceOptions(sourceOptions, sourceInclude = {}) {
   const { groups, claimed } = allocateTreeGroups({
     roots: SOURCE_RELATION_TREE,
     items: sourceOptions,
@@ -55,20 +54,19 @@ export function groupSourceOptions(sourceOptions, sourceFilters = {}) {
   });
 
   const ungrouped = sourceOptions.filter(source => !claimed.has(source.key));
+  // Individually-included hosts always surface as their own control, even
+  // below the usual prominence cutoff — otherwise a shrinking digest could
+  // strand an inclusion key with no clickable control to clear it.
   const individualSources = ungrouped.filter(source =>
-    source.count >= INDIVIDUAL_SOURCE_MIN_ARTICLES ||
-    sourceFilters[source.key] === false ||
-    sourceFilters[source.key] === true
+    source.count >= INDIVIDUAL_SOURCE_MIN_ARTICLES || sourceInclude[source.key] === true
   );
   const individualKeys = new Set(individualSources.map(source => source.key));
   const otherSources = ungrouped.filter(source => !individualKeys.has(source.key));
   const otherSourceKeys = new Set(otherSources.map(source => source.key));
-  const isVisible = sourceKey => isSourceVisible(sourceKey, sourceFilters, otherSourceKeys);
 
-  const options = groups.map(choice => summarizeGroup(choice, isVisible));
+  const options = groups.map(choice => summarizeGroup(choice));
   const explicitSources = individualSources.map(source => ({
     ...source,
-    displayed: isVisible(source.key),
     grouped: false,
     otherMember: source.count < INDIVIDUAL_SOURCE_MIN_ARTICLES,
   }));
@@ -85,19 +83,28 @@ export function groupSourceOptions(sourceOptions, sourceFilters = {}) {
       sourceCount: otherSources.length,
       sourceKeys: otherSources.map(source => source.key),
       sources: otherSources,
-      displayed: sourceFilters[OTHER_SOURCE_KEY] !== false,
-      mixed: false,
       grouped: true,
       otherGroup: true,
-      preferenceKeys: [OTHER_SOURCE_KEY],
     });
   }
 
+  const sorted = [...options, ...explicitSources].sort((a, b) =>
+    b.count - a.count || a.label.localeCompare(b.label)
+  );
+
+  // Every host belongs to exactly one control (allocation is disjoint), so
+  // visibility is a single lookup while a selection is active.
+  const controlByHost = new Map();
+  for (const control of sorted) {
+    const keys = control.grouped ? control.sourceKeys : [control.key];
+    for (const key of keys) controlByHost.set(key, control.key);
+  }
+  for (const control of sorted) control.included = sourceInclude[control.key] === true;
+
   return {
-    options: [...options, ...explicitSources].sort((a, b) =>
-      b.count - a.count || a.label.localeCompare(b.label)
-    ),
+    options: sorted,
     groupedSourceKeys: claimed,
     otherSourceKeys,
+    controlByHost,
   };
 }

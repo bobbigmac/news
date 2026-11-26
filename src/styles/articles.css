@@ -72,11 +72,6 @@
   font-weight: 400;
 }
 
-.article-group-label {
-  color: var(--accent);
-  font-weight: 700;
-}
-
 .article-header-right {
   display: flex;
   align-items: center;
@@ -316,3 +311,82 @@
 }
 
 /* Changelog page */
+
+/* Story-group containers (Group By Tag mode).
+   The sheet stops being a flex row; each container is a full-width band whose
+   body reproduces the normal column layout internally. */
+.broadsheet.grouped-feed {
+  display: block;
+}
+
+.feed-ungrouped,
+.story-group-body {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.story-group {
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-light);
+  padding: 0.6rem 0.8rem 0.2rem;
+}
+
+.story-group.hidden { display: none; }
+
+.story-group-head {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding-bottom: 0.55rem;
+  user-select: none;
+}
+
+.story-group-head::-webkit-details-marker { display: none; }
+
+.story-group-head::before {
+  content: '▸';
+  font-size: 0.8rem;
+  color: var(--muted);
+  transition: transform 0.15s ease;
+}
+
+.story-group[open] > .story-group-head::before {
+  transform: rotate(90deg);
+}
+
+.story-group-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.story-group-crumb {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.story-group-count {
+  margin-left: auto;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0 0.5rem;
+}
+
+.story-group-body {
+  border-top: 1px solid var(--rule);
+  padding-top: 0.75rem;
+}

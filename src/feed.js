@@ -1,5 +1,5 @@
 import { populateArticleShell, renderArticle, renderArticleShell } from './article.js';
-import { getGridMetrics, layoutColumns } from './layout.js';
+import { distributeIntoColumns, getGridMetrics, layoutColumns } from './layout.js';
 import { refreshGlimpseObserver, refreshReadObserver } from './reading.js';
 import { clusterMatchesSearch, getSearchQuery, updateMarkReadButton } from './search.js';
 import { state } from './state.js';
@@ -18,6 +18,7 @@ class FeedView {
     this.hydratedCount = 0;
     this.columnWidth = 0;
     this.observedNodes = new Set();
+    this.collapsedGroups = new Set();
   }
 
   disconnectObserver() {
@@ -190,6 +191,9 @@ class FeedView {
     }
 
     this.ensureObserver();
+    const nodeHeight = node => node.classList.contains('hidden')
+      ? 0
+      : parseFloat(node.style.height) || 240;
     const orderedNodes = context.clusters.map(cluster => {
       const node = this.nodeFor(cluster);
       node.style.height = `${this.knownHeight(cluster) ?? this.estimatedHeight(cluster)}px`;
@@ -197,13 +201,64 @@ class FeedView {
       this.observe(node);
       return node;
     });
-    layoutColumns(
-      sheet,
-      orderedNodes,
-      node => node.classList.contains('hidden')
-        ? 0
-        : parseFloat(node.style.height) || 240,
-    );
+
+    // Grouped mode: clusters consolidate into collapsible rollup containers
+    // (dedup view), each internally columned like the main feed. Ungrouped
+    // clusters flow in the normal column band after the containers.
+    const grouping = context.grouping || null;
+    sheet.classList.toggle('grouped-feed', !!grouping);
+    if (grouping) {
+      const nodeByCluster = new Map(context.clusters.map((cluster, i) => [cluster, orderedNodes[i]]));
+      const sections = [];
+      for (const group of grouping.groups) {
+        const details = document.createElement('details');
+        details.className = 'story-group';
+        details.open = !this.collapsedGroups.has(group.id);
+        details.dataset.groupId = group.id;
+        details.addEventListener('toggle', () => {
+          if (details.open) this.collapsedGroups.delete(group.id);
+          else this.collapsedGroups.add(group.id);
+        });
+
+        const summary = document.createElement('summary');
+        summary.className = 'story-group-head';
+        const crumb = document.createElement('span');
+        crumb.className = 'story-group-crumb';
+        crumb.textContent = (group.pathParts || []).slice(0, -1).join(' / ');
+        const title = document.createElement('span');
+        title.className = 'story-group-title';
+        title.textContent = group.label;
+        const count = document.createElement('span');
+        count.className = 'story-group-count';
+        count.textContent = String(group.clusters.length);
+        summary.appendChild(crumb);
+        summary.appendChild(title);
+        summary.appendChild(count);
+        details.appendChild(summary);
+
+        const body = document.createElement('div');
+        body.className = 'story-group-body';
+        distributeIntoColumns(
+          body,
+          group.clusters.map(cluster => nodeByCluster.get(cluster)),
+          nodeHeight,
+        );
+        details.appendChild(body);
+        sections.push(details);
+      }
+
+      sheet.replaceChildren(...sections);
+      const ungroupedNodes = grouping.ungrouped.map(cluster => nodeByCluster.get(cluster)).filter(Boolean);
+      if (ungroupedNodes.length) {
+        const band = document.createElement('div');
+        band.className = 'feed-ungrouped';
+        sheet.appendChild(band);
+        distributeIntoColumns(band, ungroupedNodes, nodeHeight);
+      }
+      this.syncGroupVisibility();
+    } else {
+      layoutColumns(sheet, orderedNodes, nodeHeight);
+    }
     this.hydratedCount = 0;
 
     refreshGlimpseObserver();
@@ -227,6 +282,8 @@ class FeedView {
       node.classList.toggle('hidden', !visible);
     }
 
+    this.syncGroupVisibility();
+
     if (unloaded) this.finishChanges();
     else {
       refreshGlimpseObserver();
@@ -234,6 +291,16 @@ class FeedView {
     }
     updateMarkReadButton();
     return true;
+  }
+
+  syncGroupVisibility() {
+    for (const details of document.querySelectorAll('.story-group')) {
+      const articles = [...details.querySelectorAll('.article')];
+      const visible = articles.filter(node => !node.classList.contains('hidden'));
+      details.classList.toggle('hidden', !visible.length);
+      const count = details.querySelector('.story-group-count');
+      if (count) count.textContent = String(visible.length);
+    }
   }
 
   stats() {

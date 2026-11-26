@@ -46,23 +46,33 @@ describe('filter bar structure', () => {
 
     expect(sprite).toMatch(/background-image:\s*url\('\.\.\/favicons\/sprite\.png'\)/);
     expect(sprite).not.toMatch(/background-size/);
-    expect(bbc).toMatch(/background-position:\s*-192px -0px/);
+    expect(bbc).toMatch(/background-position:\s*-\d+px -\d+px/);
+    const [, bx, by] = /background-position:\s*-(\d+)px -(\d+)px/.exec(bbc) || [];
+    expect(Number(bx) % 32).toBe(0);
+    expect(Number(by) % 32).toBe(0);
     expect(button).toMatch(/width:\s*32px/);
     expect(tile).toMatch(/width:\s*32px/);
     expect(tile).toMatch(/height:\s*32px/);
   });
 
-  it('keeps source toggles as plain icons, greyed out when off', () => {
+  it('keeps source toggles as plain icons, dimmed when outside the selection', () => {
     const css = readFileSync('src/styles/filter-bar.css', 'utf8');
     const sourceToggle = cssBlock(css, '.source-toggle');
-    const sourceOff = cssBlock(css, '.source-toggle.is-off');
+    const sourceDimmed = cssBlock(css, '.source-toggle.is-dimmed');
 
     expect(sourceToggle).toMatch(/background\s*:\s*transparent/);
     expect(sourceToggle).toMatch(/border\s*:\s*none/);
     expect(sourceToggle).toMatch(/padding\s*:\s*0/);
-    expect(sourceToggle).not.toMatch(/var\(--ink\)\s*;?\s*$/);
-    expect(sourceOff).toMatch(/grayscale/);
-    expect(sourceOff).toMatch(/opacity/);
+    expect(sourceDimmed).toMatch(/grayscale/);
+    expect(sourceDimmed).toMatch(/opacity/);
+  });
+
+  it('hides the source bar until data has loaded', () => {
+    const dom = new JSDOM(readFileSync('src/index.html', 'utf8'));
+    const bar = dom.window.document.getElementById('source-bar');
+    expect(bar.hasAttribute('hidden')).toBe(true);
+    expect(bar.querySelector('#mark-all-read')).toBeTruthy();
+    expect(bar.querySelector('#source-toggles')).toBeTruthy();
   });
 
   it('keeps inverse treatment on the text buttons', () => {
@@ -81,44 +91,57 @@ describe('source filter buttons', () => {
   beforeEach(() => {
     localStorage.clear();
     document.body.innerHTML = '<div id="source-toggles"></div>';
-    state.sourceFilters = {};
+    state.sourceInclude = {};
     ui.refresh = vi.fn();
   });
 
-  it('shows a story-count badge on every clickable source and skips empty sources', () => {
+  it('renders plain icons without count badges, counts only in the tooltip', () => {
     renderSourceBar({
       sourceOptions: [
-        { key: 'bbc.co.uk', label: 'BBC', count: 12, displayed: true },
-        { key: 'example.com', label: 'Example', count: 0, displayed: true },
+        { key: 'bbc.co.uk', label: 'BBC', count: 12, included: false },
+        { key: 'example.com', label: 'Example', count: 0, included: false },
       ],
+      sourceIncludeActive: false,
     });
 
     const buttons = [...document.querySelectorAll('.source-toggle')];
     expect(buttons).toHaveLength(1);
     expect(buttons[0].title).toBe('BBC — 12 stories in the current pool');
-    expect(buttons[0].querySelector('.source-count')?.textContent).toBe('12');
+    expect(buttons[0].querySelector('.source-count')).toBeNull();
     expect(buttons[0].querySelector('.source-sprite.source-icon-bbc-co-uk')).toBeTruthy();
+    expect(buttons[0].classList.contains('is-dimmed')).toBe(false);
 
     buttons[0].click();
-    expect(state.sourceFilters).toEqual({ 'bbc.co.uk': false });
+    expect(state.sourceInclude).toEqual({ 'bbc.co.uk': true });
     expect(ui.refresh).toHaveBeenCalledTimes(1);
   });
 
-  it('keeps filtered-out sources clickable with their available count', () => {
+  it('dims non-selected icons while a selection is active, still clickable', () => {
+    state.sourceInclude = { 'other.example': true };
     renderSourceBar({
       sourceOptions: [
-        { key: 'example.com', label: 'Example', count: 7, displayed: false },
+        { key: 'example.com', label: 'Example', count: 7, included: false },
+        { key: 'other.example', label: 'Other', count: 3, included: true },
       ],
+      sourceIncludeActive: true,
     });
 
-    const button = document.querySelector('.source-toggle');
-    expect(button.classList.contains('is-off')).toBe(true);
-    expect(button.getAttribute('aria-pressed')).toBe('false');
-    expect(button.querySelector('.source-count')?.textContent).toBe('7');
+    const buttons = [...document.querySelectorAll('.source-toggle')];
+    expect(buttons[0].classList.contains('is-dimmed')).toBe(true);
+    expect(buttons[0].getAttribute('aria-pressed')).toBe('false');
+    expect(buttons[1].classList.contains('is-dimmed')).toBe(false);
+    expect(buttons[1].getAttribute('aria-pressed')).toBe('true');
+
+    // clicking a dimmed icon adds it to the selection
+    buttons[0].click();
+    expect(state.sourceInclude).toEqual({ 'other.example': true, 'example.com': true });
+
+    // clicking the selected icon removes it; empty selection shows everything
+    buttons[1].click();
+    expect(state.sourceInclude).toEqual({ 'example.com': true });
   });
 
-  it('toggles every host in a grouped source branch', () => {
-    state.sourceFilters = { 'nypost.com': false };
+  it('toggles the whole grouped branch as one control key', () => {
     renderSourceBar({
       sourceOptions: [{
         key: 'group:murdoch',
@@ -128,24 +151,69 @@ describe('source filter buttons', () => {
         count: 14,
         sourceCount: 3,
         sourceKeys: ['foxnews.com', 'nypost.com', 'wsj.com'],
-        displayed: false,
-        mixed: true,
+        included: false,
         grouped: true,
       }],
+      sourceIncludeActive: false,
     });
 
     const button = document.querySelector('.source-toggle');
-    expect(button.classList.contains('is-mixed')).toBe(true);
-    expect(button.getAttribute('aria-pressed')).toBe('mixed');
     expect(button.title).toBe('Fox / News Corp — 14 stories across 3 sources in the current pool');
     expect(button.querySelector('.source-icon-nypost-com')).toBeTruthy();
 
     button.click();
-    expect(state.sourceFilters).toEqual({
-      'foxnews.com': false,
-      'nypost.com': false,
-      'wsj.com': false,
+    expect(state.sourceInclude).toEqual({ 'group:murdoch': true });
+  });
+
+  it('offers a reset control only while a selection is active', () => {
+    renderSourceBar({
+      sourceOptions: [{ key: 'a.example', label: 'A', count: 5, included: false }],
+      sourceIncludeActive: false,
     });
+    expect(document.querySelector('.source-reset')).toBeNull();
+
+    state.sourceInclude = { 'a.example': true };
+    renderSourceBar({
+      sourceOptions: [{ key: 'a.example', label: 'A', count: 5, included: true }],
+      sourceIncludeActive: true,
+    });
+    const reset = document.querySelector('.source-reset');
+    expect(reset).toBeTruthy();
+    reset.click();
+    expect(state.sourceInclude).toEqual({});
+  });
+
+  it('groups icons into volume buckets with one label per bucket', () => {
+    renderSourceBar({
+      sourceOptions: [
+        { key: 'big.example', label: 'Big', count: 100, included: false },
+        { key: 'mid.example', label: 'Mid', count: 30, included: false },
+        { key: 'small.example', label: 'Small', count: 2, included: false },
+      ],
+      sourceIncludeActive: false,
+    });
+
+    const chips = [...document.querySelectorAll('.source-bucket')];
+    expect(chips.length).toBeGreaterThanOrEqual(2);
+    expect(chips[0].textContent).toBe('25+');
+    // each chip precedes the first icon of its bucket
+    const children = [...document.getElementById('source-toggles').children];
+    const bigIdx = children.findIndex(el => el.dataset?.source === 'big.example');
+    const midIdx = children.findIndex(el => el.dataset?.source === 'mid.example');
+    const firstChip = children.findIndex(el => el.classList?.contains('source-bucket'));
+    expect(firstChip).toBeLessThan(bigIdx);
+    expect(bigIdx).toBeLessThan(midIdx);
+  });
+
+  it('renders no bucket chips when volumes are small', () => {
+    renderSourceBar({
+      sourceOptions: [
+        { key: 'a.example', label: 'A', count: 3, included: false },
+        { key: 'b.example', label: 'B', count: 2, included: false },
+      ],
+      sourceIncludeActive: false,
+    });
+    expect(document.querySelector('.source-bucket')).toBeNull();
   });
 });
 
@@ -161,31 +229,47 @@ describe('category filter buttons', () => {
     ui.refresh = vi.fn();
   });
 
-  it('leads with All and removes display-disabled categories from the row', () => {
+  it('leads with All and dims unselected categories only while filtering', () => {
     renderCategoryFilterBar({
       categoryRowEnabled: true,
+      categoryIncludeActive: false,
       categoryOptions: [
-        { value: 'Sport', label: 'Sport', count: 1, storyCount: 2, active: true },
-        { value: 'Technology', label: 'Technology', count: 1, storyCount: 1, active: false },
+        { value: 'Sport', label: 'Sport', count: 1, storyCount: 2, included: false },
+        { value: 'Technology', label: 'Technology', count: 1, storyCount: 1, included: false },
       ],
     });
 
     const buttons = [...document.querySelectorAll('.category-filter-toggle')];
-    expect(buttons.map(button => button.textContent)).toEqual(['All', 'Sport']);
-    expect(buttons[0].classList.contains('is-off')).toBe(true);
+    expect(buttons.map(button => button.textContent)).toEqual(['All', 'Sport', 'Technology']);
+    expect(buttons[0].classList.contains('is-off')).toBe(false);
+    expect(buttons[1].classList.contains('is-off')).toBe(false);
 
     buttons[1].click();
-    expect(state.settings.categoryDisplayFilters).toEqual({ Sport: false });
+    expect(state.settings.categoryDisplayFilters).toEqual({ Sport: true });
     expect(ui.refresh).toHaveBeenCalledTimes(1);
-  });
 
-  it('restores every display-filtered category through All', () => {
-    state.settings.categoryDisplayFilters = { Technology: false };
     renderCategoryFilterBar({
       categoryRowEnabled: true,
+      categoryIncludeActive: true,
       categoryOptions: [
-        { value: 'Sport', label: 'Sport', count: 1, storyCount: 1, active: true },
-        { value: 'Technology', label: 'Technology', count: 1, storyCount: 1, active: false },
+        { value: 'Sport', label: 'Sport', count: 1, storyCount: 2, included: true },
+        { value: 'Technology', label: 'Technology', count: 1, storyCount: 1, included: false },
+      ],
+    });
+    const filtered = [...document.querySelectorAll('.category-filter-toggle')];
+    expect(filtered[1].classList.contains('is-off')).toBe(false);
+    expect(filtered[2].classList.contains('is-off')).toBe(true);
+    expect(filtered[2].getAttribute('aria-pressed')).toBe('false');
+  });
+
+  it('clears the category selection through All', () => {
+    state.settings.categoryDisplayFilters = { Technology: true };
+    renderCategoryFilterBar({
+      categoryRowEnabled: true,
+      categoryIncludeActive: true,
+      categoryOptions: [
+        { value: 'Sport', label: 'Sport', count: 1, storyCount: 1, included: false },
+        { value: 'Technology', label: 'Technology', count: 1, storyCount: 1, included: true },
       ],
     });
 

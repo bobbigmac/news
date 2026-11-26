@@ -1,5 +1,38 @@
 import { getFaviconSpriteClass } from './favicon-sprite.js';
-import { saveSettings, setSourcesDisplay, state, ui } from './state.js';
+import {
+  clearCategoryInclude,
+  clearSourceInclude,
+  toggleCategoryInclude,
+  toggleSourceInclude,
+  ui,
+} from './state.js';
+
+// Volume buckets are derived from the actual control counts, not absolute
+// numbers: a digest with thousands of stories and one with a hundred both
+// split into readable tiers. Icons carry no per-source count badge — the
+// exact count is in the tooltip, and each bucket cluster gets one label.
+function bucketBounds(counts) {
+  const max = counts[0] || 0;
+  const bounds = [];
+  let edge = Math.floor(max / 4);
+  while (edge >= 4 && bounds.length < 3) {
+    if (!bounds.length || edge < bounds[bounds.length - 1]) bounds.push(edge);
+    edge = Math.floor(edge / 4);
+  }
+  return bounds;
+}
+
+function bucketIndex(count, bounds) {
+  for (let i = 0; i < bounds.length; i++) {
+    if (count >= bounds[i]) return i;
+  }
+  return bounds.length;
+}
+
+function bucketLabel(index, bounds) {
+  if (index < bounds.length) return `${bounds[index]}+`;
+  return 'few';
+}
 
 export function renderSourceBar(model) {
   const container = document.getElementById('source-toggles');
@@ -7,17 +40,32 @@ export function renderSourceBar(model) {
   container.innerHTML = '';
 
   const sources = (model?.sourceOptions || []).filter(source => source.count > 0);
+  const includeActive = model?.sourceIncludeActive === true;
+  const bounds = bucketBounds(sources.map(source => source.count));
+  let lastBucket = -1;
 
   for (const source of sources) {
-    const sourceKeys = source.preferenceKeys || source.sourceKeys || [source.key];
+    const bucket = bucketIndex(source.count, bounds);
+    if (bounds.length && bucket !== lastBucket) {
+      const chip = document.createElement('span');
+      chip.className = 'source-bucket';
+      chip.textContent = bucketLabel(bucket, bounds);
+      chip.title = 'Source volume tier — icons are grouped by how many stories they currently hold';
+      container.appendChild(chip);
+      lastBucket = bucket;
+    }
+
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'source-toggle';
     btn.dataset.source = source.key;
-    btn.classList.toggle('is-off', !source.displayed && !source.mixed);
-    btn.classList.toggle('is-mixed', source.mixed === true);
-    btn.setAttribute('aria-pressed', source.mixed ? 'mixed' : String(source.displayed));
-    btn.setAttribute('aria-label', `${source.displayed || source.mixed ? 'Hide' : 'Show'} ${source.label} (${source.count} stories)`);
+    const included = source.included === true;
+    btn.classList.toggle('is-dimmed', includeActive && !included);
+    btn.setAttribute('aria-pressed', String(included));
+    btn.setAttribute(
+      'aria-label',
+      `${included ? 'Stop filtering to' : 'Show only'} ${source.label} (${source.count} stories)`,
+    );
     btn.title = source.grouped
       ? `${source.path.join(' / ')} — ${source.count} stories across ${source.sourceCount} sources in the current pool`
       : `${source.label} — ${source.count} stories in the current pool`;
@@ -35,18 +83,26 @@ export function renderSourceBar(model) {
       btn.appendChild(icon);
     }
 
-    const count = document.createElement('span');
-    count.className = 'source-count';
-    count.textContent = source.count;
-    btn.appendChild(count);
-
     btn.addEventListener('click', () => {
-      const display = !(source.displayed || source.mixed);
-      setSourcesDisplay(sourceKeys, display, { explicitDisplay: display && source.otherMember === true });
+      toggleSourceInclude(source.key);
       ui.refresh();
     });
 
     container.appendChild(btn);
+  }
+
+  if (includeActive) {
+    const reset = document.createElement('button');
+    reset.type = 'button';
+    reset.className = 'source-reset';
+    reset.textContent = '×';
+    reset.title = 'Clear the source selection — show everything again';
+    reset.setAttribute('aria-label', 'Clear the source selection');
+    reset.addEventListener('click', () => {
+      clearSourceInclude();
+      ui.refresh();
+    });
+    container.appendChild(reset);
   }
 }
 
@@ -65,33 +121,33 @@ export function renderCategoryFilterBar(model) {
   row?.classList.remove('hidden');
 
   const categories = model.categoryOptions || [];
-  const allActive = categories.every(category => category.active);
+  const includeActive = model.categoryIncludeActive === true;
+
   const allBtn = document.createElement('button');
   allBtn.type = 'button';
   allBtn.className = 'category-filter-toggle category-all-toggle';
-  allBtn.classList.toggle('is-off', !allActive);
-  allBtn.setAttribute('aria-pressed', String(allActive));
+  allBtn.classList.toggle('is-off', includeActive);
+  allBtn.setAttribute('aria-pressed', String(!includeActive));
   allBtn.title = 'Show all categories';
   allBtn.textContent = 'All';
   allBtn.addEventListener('click', () => {
-    state.settings.categoryDisplayFilters = {};
-    saveSettings();
+    clearCategoryInclude();
     ui.refresh();
   });
   container.appendChild(allBtn);
 
   for (const category of categories) {
-    if (!category.active) continue;
+    const included = category.included === true;
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'category-filter-toggle';
-    btn.setAttribute('aria-pressed', 'true');
+    btn.classList.toggle('is-off', includeActive && !included);
+    btn.setAttribute('aria-pressed', String(included));
     btn.title = `${category.label} — ${category.storyCount} stories`;
     btn.textContent = category.label;
 
     btn.addEventListener('click', () => {
-      state.settings.categoryDisplayFilters[category.value] = false;
-      saveSettings();
+      toggleCategoryInclude(category.value);
       ui.refresh();
     });
 

@@ -98,9 +98,9 @@ function extractClusterTerms(cluster) {
     }
   });
 
-  // Also include trigger words from the LLM — these are curated, specific,
-  // and designed to identify the topic. High quality.
-  for (const tw of (cluster.triggerWords || [])) {
+  // Also include trigger words and LLM keywords — these are curated,
+  // specific, and designed to identify the topic. High quality.
+  for (const tw of [...(cluster.triggerWords || []), ...(cluster.keywords || [])]) {
     const cleaned = cleanTerm(tw);
     if (cleaned) terms.add(cleaned);
   }
@@ -139,7 +139,12 @@ export function computeClusterTags(digest) {
     });
     scored.sort((a, b) => b.score - a.score);
     const topTerms = scored.slice(0, 10).map(s => s.term);
-    cluster.tags = [...new Set([...structuralTags, ...topTerms])].slice(0, 12);
+    // LLM keywords are the model's own taxonomy-aligned read of the story —
+    // they take precedence over statistically-extracted terms.
+    const curatedKeywords = (cluster.keywords || [])
+      .map(cleanTerm)
+      .filter(Boolean);
+    cluster.tags = [...new Set([...structuralTags, ...curatedKeywords, ...topTerms])].slice(0, 12);
   });
 }
 

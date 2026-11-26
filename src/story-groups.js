@@ -1,7 +1,10 @@
 // Optional feed grouping over the curated subject-relation tree.
 //
-// The tree defines every eligible pool. Runtime code only measures cluster
-// counts, selects a readable branch depth, and assigns each cluster once.
+// Clusters arrive with a server-assigned `storyGroup` node id (matched at
+// build time with fuzzy word-set matching — see scripts/story-group-assign.js),
+// so the client never indexes partial strings: it only measures group sizes
+// over the pre-assigned nodes and picks a readable branch depth. The exact
+// matcher below remains as a fallback for clusters missing a pre-assignment.
 
 import { allocateTreeGroups } from './group-tree.js';
 import { STORY_RELATION_TREE } from './story-tree.js';
@@ -95,11 +98,52 @@ export function assignStoryGroups(clusters) {
     key: cluster.id || `cluster-${index}`,
     cluster,
   }));
+  // Server-assigned groups are authoritative: the pipeline matched them with
+  // the full fuzzy matcher at build time. Only clusters missing an assignment
+  // (older digests, test fixtures) go through the exact client matcher.
+  const preAssignedByNode = new Map();
+  const unassigned = [];
+  for (const item of items) {
+    const nodeId = item.cluster.storyGroup?.id;
+    if (nodeId) {
+      if (!preAssignedByNode.has(nodeId)) preAssignedByNode.set(nodeId, []);
+      preAssignedByNode.get(nodeId).push(item.key);
+    } else {
+      unassigned.push(item);
+    }
+  }
+  if (!unassigned.length) {
+    const { groups } = allocateTreeGroups({
+      roots: STORY_RELATION_TREE,
+      items,
+      getNodeKeys: node => preAssignedByNode.get(node.id) || [],
+      targetSize: STORY_GROUP_TARGET_CLUSTERS,
+      minBranchSize: STORY_GROUP_MIN_CLUSTERS,
+    });
+    const assignments = new Map();
+    for (const item of items) assignedGroups.set(item.cluster, null);
+    groups.forEach((group, order) => {
+      const summary = {
+        id: group.id,
+        label: group.label,
+        path: group.path.join(' / '),
+        order,
+        size: group.weight,
+      };
+      for (const item of group.items) {
+        assignments.set(item.key, summary);
+        assignedGroups.set(item.cluster, summary);
+      }
+    });
+    return { groups, assignments };
+  }
   const itemKeysByTerm = new Map();
   const termValuesByToken = new Map();
   const headlineByKey = new Map();
   const itemKeysByHeadlineToken = new Map();
-  for (const item of items) {
+  // Only unassigned items enter the fallback index — pre-assigned clusters
+  // already anchor to their server-matched node and must not double-claim.
+  for (const item of unassigned) {
     const { values, headline } = clusterTerms(item.cluster);
     headlineByKey.set(item.key, headline);
     for (const token of new Set(headline.split(' ').filter(Boolean))) {
@@ -148,6 +192,7 @@ export function assignStoryGroups(clusters) {
     roots: STORY_RELATION_TREE,
     items,
     getNodeKeys: node => [
+      ...(preAssignedByNode.get(node.id) || []),
       ...(node.terms || []).flatMap(term => [...itemKeysForTerm(term)]),
       ...(node.headlineTerms || []).flatMap(term => [...itemKeysForTerm(term, true)]),
     ],
@@ -175,6 +220,13 @@ export function assignStoryGroups(clusters) {
 
 export function getClusterStoryGroup(cluster) {
   if (assignedGroups.has(cluster)) return assignedGroups.get(cluster);
+  if (cluster.storyGroup) {
+    return {
+      id: cluster.storyGroup.id,
+      label: cluster.storyGroup.label,
+      path: (cluster.storyGroup.path || []).join(' / '),
+    };
+  }
 
   for (const root of STORY_RELATION_TREE) {
     const match = bestMatchingNode(root, cluster, [root.label]);
@@ -183,17 +235,40 @@ export function getClusterStoryGroup(cluster) {
   return null;
 }
 
-export function groupClustersByTag(clusters, enabled) {
-  if (!enabled) return clusters;
+// Structured grouping for the feed: clusters in feed order are partitioned
+// into rollup containers (ordered by their best member's feed position) plus
+// the ungrouped tail. This is the dedup view — near-duplicate coverage
+// consolidates into one collapsible unit instead of scattering through the
+// feed. Returns null when grouping is disabled.
+export function groupClustersForFeed(clusters, enabled) {
+  if (!enabled) return null;
   const { groups, assignments } = assignStoryGroups(clusters);
-  const groupOrder = new Map(groups.map((group, index) => [group.id, index]));
 
-  return clusters
-    .map((cluster, index) => ({
-      cluster,
-      index,
-      groupIndex: groupOrder.get(assignments.get(cluster.id || `cluster-${index}`)?.id) ?? groups.length,
+  const positionByCluster = new Map(clusters.map((cluster, index) => [cluster, index]));
+  const membersByGroup = new Map();
+  const ungrouped = [];
+  clusters.forEach((cluster, index) => {
+    const key = cluster.id || `cluster-${index}`;
+    const assigned = assignments.get(key);
+    if (!assigned) {
+      ungrouped.push(cluster);
+      return;
+    }
+    if (!membersByGroup.has(assigned.id)) {
+      membersByGroup.set(assigned.id, { ...assigned, clusters: [] });
+    }
+    membersByGroup.get(assigned.id).clusters.push(cluster);
+  });
+
+  // assignment summaries carry path as a joined string; the raw allocated
+  // groups keep the array, which container headers need for the crumb
+  const rawById = new Map(groups.map(group => [group.id, group]));
+  const grouped = [...membersByGroup.values()]
+    .map(group => ({
+      ...group,
+      pathParts: rawById.get(group.id)?.path || String(group.path).split(' / '),
+      top: Math.min(...group.clusters.map(c => positionByCluster.get(c) ?? Infinity)),
     }))
-    .sort((a, b) => a.groupIndex - b.groupIndex || a.index - b.index)
-    .map(entry => entry.cluster);
+    .sort((a, b) => a.top - b.top);
+  return { groups: grouped, ungrouped };
 }

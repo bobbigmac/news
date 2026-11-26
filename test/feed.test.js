@@ -52,7 +52,7 @@ describe('feed view manager', () => {
     state.readState = {};
     state.glimpseState = {};
     state.disabledSources = {};
-    state.sourceFilters = {};
+    state.sourceInclude = {};
     state.interestState = {};
     vi.stubGlobal('IntersectionObserver', FakeIntersectionObserver);
     clearFeed();

@@ -5,7 +5,7 @@ export const READ_KEY = 'broadsheet-read';
 export const GLIMPSE_KEY = 'broadsheet-glimpsed';
 export const CAT_PREFS_KEY = 'broadsheet-cat-prefs';
 export const INTEREST_KEY = 'broadsheet-interest';
-export const SOURCE_PREFS_KEY = 'broadsheet-source-prefs';
+export const SOURCE_INCLUDE_KEY = 'broadsheet-source-include';
 export const SOURCE_DISABLED_KEY = 'broadsheet-source-disabled';
 
 export const DEFAULT_SETTINGS = {
@@ -96,6 +96,11 @@ export function loadSettings() {
     if (!settings.categoryDisplayFilters || Array.isArray(settings.categoryDisplayFilters) || typeof settings.categoryDisplayFilters !== 'object') {
       settings.categoryDisplayFilters = {};
     }
+    // Inclusion model: only true values are meaningful. Legacy filter-out
+    // entries (false) are dropped — hidden is no longer a display-filter state.
+    for (const [cat, val] of Object.entries(settings.categoryDisplayFilters)) {
+      if (val !== true) delete settings.categoryDisplayFilters[cat];
+    }
     if (settings.categoryFilter === 'other') settings.categoryFilter = 'all';
     return settings;
   } catch { return { ...DEFAULT_SETTINGS }; }
@@ -122,7 +127,7 @@ export const state = {
   readState: loadJson(READ_KEY, {}),
   glimpseState: loadJson(GLIMPSE_KEY, {}),
   catPrefs: loadCatPrefs(),
-  sourceFilters: loadJson(SOURCE_PREFS_KEY, {}),
+  sourceInclude: loadJson(SOURCE_INCLUDE_KEY, {}),
   disabledSources: loadJson(SOURCE_DISABLED_KEY, {}),
   interestState: loadJson(INTEREST_KEY, {}),
 };
@@ -149,8 +154,8 @@ export function saveCatPrefs() {
   localStorage.setItem(CAT_PREFS_KEY, JSON.stringify(state.catPrefs));
 }
 
-export function saveSourcePrefs() {
-  localStorage.setItem(SOURCE_PREFS_KEY, JSON.stringify(state.sourceFilters));
+export function saveSourceInclude() {
+  localStorage.setItem(SOURCE_INCLUDE_KEY, JSON.stringify(state.sourceInclude));
 }
 
 export function saveDisabledSources() {
@@ -173,24 +178,36 @@ export function applySettings(settings = state.settings) {
   sheet.className = `broadsheet cols-${settings.columns}`;
 }
 
-export function isSourceDisplayed(sourceKey) {
-  if (!sourceKey) return true;
-  return state.sourceFilters[sourceKey] !== false;
+// Source display filters are filter-TO (inclusion), not filter-out: the set
+// holds control keys (group:<id> or individual host keys). Empty = everything
+// visible. Toggling a control adds/removes it; selecting nothing means all.
+export function isSourceIncludeActive() {
+  return Object.keys(state.sourceInclude).length > 0;
 }
 
-export function setSourcesDisplay(sourceKeys, displayed, { explicitDisplay = false } = {}) {
-  for (const sourceKey of sourceKeys || []) {
-    if (!sourceKey) continue;
-    if (displayed && explicitDisplay) state.sourceFilters[sourceKey] = true;
-    else if (displayed) delete state.sourceFilters[sourceKey];
-    else state.sourceFilters[sourceKey] = false;
-  }
-  saveSourcePrefs();
+export function toggleSourceInclude(controlKey) {
+  if (!controlKey) return;
+  if (state.sourceInclude[controlKey]) delete state.sourceInclude[controlKey];
+  else state.sourceInclude[controlKey] = true;
+  saveSourceInclude();
 }
 
-export function toggleSourceDisplay(sourceKey) {
-  if (!sourceKey) return;
-  setSourcesDisplay([sourceKey], !isSourceDisplayed(sourceKey));
+export function clearSourceInclude() {
+  state.sourceInclude = {};
+  saveSourceInclude();
+}
+
+export function toggleCategoryInclude(category) {
+  if (!category) return;
+  const filters = state.settings.categoryDisplayFilters;
+  if (filters[category]) delete filters[category];
+  else filters[category] = true;
+  saveSettings();
+}
+
+export function clearCategoryInclude() {
+  state.settings.categoryDisplayFilters = {};
+  saveSettings();
 }
 
 export function setSourceFeedDisabled(sourceKey, disabled) {

@@ -8,7 +8,6 @@ import {
 } from './reading.js';
 import { getClusterInterest, scoreClusterAgainstSignals, setClusterInterest } from './signals.js';
 import { storySearchText } from './search.js';
-import { getClusterStoryGroup } from './story-groups.js';
 
 export function formatDate(dateStr) {
   try {
@@ -50,18 +49,6 @@ function isLatestCluster(cluster, referenceTime) {
   return !!added && referenceTime - added <= 24 * 60 * 60 * 1000;
 }
 
-function visibleStoryGroup(cluster) {
-  return state.settings.groupByTag ? getClusterStoryGroup(cluster) : null;
-}
-
-function setStoryGroupMetadata(article, cluster) {
-  const group = visibleStoryGroup(cluster);
-  article.classList.toggle('has-story-group', !!group);
-  article.dataset.groupId = group?.id || '';
-  article.dataset.groupPath = group?.path || '';
-  return group;
-}
-
 function renderSummaryHtml(cluster, summary) {
   const shortSummary = String(cluster.shortSummary || '').replace(/\s+/g, ' ').trim();
   const hasShort = shortSummary && shortSummary !== summary;
@@ -88,7 +75,6 @@ export function populateArticleShell(article, cluster) {
   clearArticleListeners(article);
   const category = canonicalCategory(cluster.category);
   article.className = 'article grid-item article-lazy';
-  const group = setStoryGroupMetadata(article, cluster);
   article.dataset.clusterId = cluster.id;
   article.dataset.headline = (cluster.headline || 'Untitled').toLowerCase();
   article.dataset.summary = `${cluster.summary || ''} ${cluster.shortSummary || ''}`.toLowerCase();
@@ -103,12 +89,6 @@ export function populateArticleShell(article, cluster) {
   const categoryEl = document.createElement('div');
   categoryEl.className = 'article-category';
   categoryEl.textContent = category;
-  if (group) {
-    const groupEl = document.createElement('span');
-    groupEl.className = 'article-group-label';
-    groupEl.textContent = ` / ${group.path}`;
-    categoryEl.appendChild(groupEl);
-  }
   const ageEl = document.createElement('div');
   ageEl.className = 'article-age';
   ageEl.textContent = relativeAge(getNewestStoryDate(cluster));
@@ -134,8 +114,8 @@ export function renderArticle(cluster, settings, isPluginLead, latestReferenceTi
   const enabledStories = getDisplayedStories(
     cluster,
     state.disabledSources,
-    state.sourceFilters,
-    state.viewModel?.otherSourceKeys,
+    state.sourceInclude,
+    state.viewModel?.controlByHost,
   );
   const isSingleton = storyCount === 1;
   const singletonStory = isSingleton ? cluster.stories[0] : null;
@@ -165,7 +145,6 @@ export function renderArticle(cluster, settings, isPluginLead, latestReferenceTi
   const article = target || document.createElement('article');
   clearArticleListeners(article);
   article.className = 'article grid-item';
-  const group = setStoryGroupMetadata(article, cluster);
   if (isSingleton) article.classList.add('singleton');
   article.dataset.clusterId = cluster.id;
   article.dataset.headline = headline.toLowerCase();
@@ -218,7 +197,7 @@ export function renderArticle(cluster, settings, isPluginLead, latestReferenceTi
 
   article.innerHTML = `
     <div class="article-header">
-      <div class="article-category">${category}${group ? `<span class="article-group-label"> / ${group.path}</span>` : ''}</div>
+      <div class="article-category">${category}</div>
       <div class="article-header-right">
         <div class="article-age">${relativeAge(getNewestStoryDate(cluster))}</div>
         <button class="interest-btn interested-btn ${interest === 'interested' ? 'active' : ''}" data-signal="interested" title="Relevant — show more like this">✓</button>
