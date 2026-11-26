@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 05:49:52 UTC
-entries: 66
+last_activity: 2026-11-26 06:47:04 UTC
+entries: 68
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -506,6 +506,24 @@ world/countries/regions are a little lazy, I'd prefer more topic-groups if you c
 ### 2026-11-26 05:49:52 UTC
 
 continue... you were working on this..``Ungrouped 1,126 is mostly clusters whose only vocabulary is pronouns/filler tags (`you`, `your`, `post`, `home`) — legitimately ungroupable rather than misses.` that's not "legitimately ungroupable", there's no such thing, you're just excusing laziness. How much of them are like obviously promotional skims, 'lifestyle' as a proxy for advertising, clickable studies but little real value... like understand the stories by searching for more info, not just only what we have from the shitter openrouter llm.... YOU the LLM are capable of much more here, and I'm asking you to build a transferable/portable dataset, not a single spec that only matches today's news. It would help to split the trees into multiple json files, cos you using thousands of lines for js, when this is OBVIOUSLY a key updateable dataset is VERY LAZY, bordering on professionally incompetent. This needs to be manageable. `
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94 h:1289f7c7 -->
+### 2026-11-26 06:44:29 UTC
+
+continue... you were working on this..``Ungrouped 1,126 is mostly clusters whose only vocabulary is pronouns/filler tags (`you`, `your`, `post`, `home`) — legitimately ungroupable rather than misses.` that's not "legitimately ungroupable", there's no such thing, you're just excusing laziness. How much of them are like obviously promotional skims, 'lifestyle' as a proxy for advertising, clickable studies but little real value... like understand the stories by searching for more info, not just only what we have from the shitter openrouter llm.... YOU the LLM are capable of much more here, and I'm asking you to build a transferable/portable dataset, not a single spec that only matches today's news. It would help to split the trees into multiple json files, cos you using thousands of lines for js, when this is OBVIOUSLY a key updateable dataset is VERY LAZY, bordering on professionally incompetent. This needs to be manageable. `
+
+Also source-toggle buttons don't need black-and-white styling and padding added. plain Icons is good enough, with greyed-out for alts. Some groups have plain white icons only, OR no icons (falling back to a single-char text, which I don't like either), so it's worth detecting which ones and finding some appropriate replaceemnt for them. We can use other general purpose icons for these too, like where they don't really have any insititutional icon or mean something generic, so just pick a library (I think we added a good one from microsoft recently in a peer project, hmm, cross-stitcher, probably).
+
+Relayouts are triggering for lazy-loaded images (but I think it's because the image causes a complete reread of the content from scratch). Hmm, not sure what to do about this. I HATE relayouts in masonry causing columns to move column-index, and I thought we had solved this. I'd be totally fine with columns getting longer, but they shouldn't be able to MOVE to other columns. Also images unload on EVERY page resize. This is definitely a bug. The masonry has become shoddy, but it was fine before, needs work. Maybe research online for better modern masonry, cos this aint cutting it, we don't even have stroy grouping working yet either.
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76 h:a5453c68 -->
+### 2026-11-26 06:47:04 UTC
+
+postpone further tree-expansion work for now, and add a TODO: ... we need to identify some established/mainstream/news/widely-known reference taxonomies for better support. Continue with the other work raised, and I'll come back to taxonomies researcg  after you finished the rest, cos we're under quota pressure.
 
 ---
 

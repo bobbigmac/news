@@ -101,7 +101,11 @@
             "nevada",
             "arizona",
             "tennessee",
-            "missouri"
+            "missouri",
+            "alabama",
+            "louisiana",
+            "kentucky",
+            "indiana"
           ]
         },
         {
@@ -132,7 +136,13 @@
             "cuba",
             "jamaica",
             "caribbean",
-            "latin america"
+            "latin america",
+            "guyana",
+            "suriname",
+            "trinidad",
+            "barbados",
+            "ecuador",
+            "bolivia"
           ]
         }
       ]
@@ -307,7 +317,10 @@
             "jakarta",
             "bangkok",
             "manila",
-            "cambodia"
+            "cambodia",
+            "melaka",
+            "penang",
+            "negros"
           ]
         },
         {

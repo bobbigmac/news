@@ -345,7 +345,11 @@
         "rugby",
         "six nations",
         "all blacks",
-        "twickenham"
+        "twickenham",
+        "red roses",
+        "kildunne",
+        "women s rugby",
+        "england rugby"
       ]
     },
     {
@@ -357,7 +361,10 @@
         "grand slam",
         "olympics",
         "marathon",
-        "athletics"
+        "athletics",
+        "hyrox",
+        "triathlon",
+        "ironman"
       ]
     },
     {
@@ -387,7 +394,11 @@
             "stadium",
             "tournament",
             "draw",
-            "kick-off"
+            "kick-off",
+            "world champion",
+            "world championship",
+            "gold medal",
+            "title fight"
           ]
         },
         {

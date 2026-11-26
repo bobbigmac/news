@@ -236,6 +236,22 @@
       ]
     },
     {
+      "id": "fandom-fanworks",
+      "label": "Fandom & Fanworks",
+      "terms": [
+        "ao3",
+        "archive of our own",
+        "fanfic",
+        "fanfiction",
+        "fandom",
+        "cosplay",
+        "comic con",
+        "comic-con",
+        "anime",
+        "manga"
+      ]
+    },
+    {
       "id": "gambling-lottery",
       "label": "Gambling & Lottery",
       "headlineTerms": [

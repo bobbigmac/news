@@ -401,6 +401,21 @@
           ]
         },
         {
+          "id": "diet-nutrition",
+          "label": "Diet & Nutrition",
+          "terms": [
+            "diet",
+            "nutrition",
+            "dietary",
+            "superfood",
+            "fibre",
+            "fiber",
+            "vitamin",
+            "supplement",
+            "eating"
+          ]
+        },
+        {
           "id": "maternal-health",
           "label": "Maternal & Reproductive",
           "terms": [

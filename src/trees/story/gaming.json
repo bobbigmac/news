@@ -209,7 +209,15 @@
             "street fighter",
             "silent hill",
             "the sims",
-            "active matter"
+            "active matter",
+            "ace combat",
+            "conan exiles",
+            "magic the gathering",
+            "mtg",
+            "warhammer",
+            "warhammer 40000",
+            "kingdom hearts",
+            "dragon quest"
           ]
         }
       ]
@@ -328,7 +336,9 @@
             "game trailer",
             "review score",
             "early access",
-            "open beta"
+            "open beta",
+            "goty",
+            "game of the year"
           ]
         },
         {

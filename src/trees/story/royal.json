@@ -5,6 +5,11 @@
     {
       "id": "king-charles",
       "label": "King Charles",
+      "headlineTerms": [
+        "king charles",
+        "king visits",
+        "king s visit"
+      ],
       "terms": [
         "king charles",
         "king charles iii",

@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 05:49:52 UTC
-entries: 2492
+last_activity: 2026-11-26 06:47:04 UTC
+entries: 2510
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -50456,6 +50456,244 @@ Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/stor
 ### 2026-11-26 05:49:52 UTC user
 
 continue... you were working on this..``Ungrouped 1,126 is mostly clusters whose only vocabulary is pronouns/filler tags (`you`, `your`, `post`, `home`) — legitimately ungroupable rather than misses.` that's not "legitimately ungroupable", there's no such thing, you're just excusing laziness. How much of them are like obviously promotional skims, 'lifestyle' as a proxy for advertising, clickable studies but little real value... like understand the stories by searching for more info, not just only what we have from the shitter openrouter llm.... YOU the LLM are capable of much more here, and I'm asking you to build a transferable/portable dataset, not a single spec that only matches today's news. It would help to split the trees into multiple json files, cos you using thousands of lines for js, when this is OBVIOUSLY a key updateable dataset is VERY LAZY, bordering on professionally incompetent. This needs to be manageable. `
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94 h:1289f7c7 -->
+### 2026-11-26 06:44:29 UTC user
+
+continue... you were working on this..``Ungrouped 1,126 is mostly clusters whose only vocabulary is pronouns/filler tags (`you`, `your`, `post`, `home`) — legitimately ungroupable rather than misses.` that's not "legitimately ungroupable", there's no such thing, you're just excusing laziness. How much of them are like obviously promotional skims, 'lifestyle' as a proxy for advertising, clickable studies but little real value... like understand the stories by searching for more info, not just only what we have from the shitter openrouter llm.... YOU the LLM are capable of much more here, and I'm asking you to build a transferable/portable dataset, not a single spec that only matches today's news. It would help to split the trees into multiple json files, cos you using thousands of lines for js, when this is OBVIOUSLY a key updateable dataset is VERY LAZY, bordering on professionally incompetent. This needs to be manageable. `
+
+Also source-toggle buttons don't need black-and-white styling and padding added. plain Icons is good enough, with greyed-out for alts. Some groups have plain white icons only, OR no icons (falling back to a single-char text, which I don't like either), so it's worth detecting which ones and finding some appropriate replaceemnt for them. We can use other general purpose icons for these too, like where they don't really have any insititutional icon or mean something generic, so just pick a library (I think we added a good one from microsoft recently in a peer project, hmm, cross-stitcher, probably).
+
+Relayouts are triggering for lazy-loaded images (but I think it's because the image causes a complete reread of the content from scratch). Hmm, not sure what to do about this. I HATE relayouts in masonry causing columns to move column-index, and I thought we had solved this. I'd be totally fine with columns getting longer, but they shouldn't be able to MOVE to other columns. Also images unload on EVERY page resize. This is definitely a bug. The masonry has become shoddy, but it was fine before, needs work. Maybe research online for better modern masonry, cos this aint cutting it, we don't even have stroy grouping working yet either.
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:todo_write:cba50d01 h:36eee301 -->
+### 2026-11-26 06:44:57 UTC tool `todo_write`
+
+`{"todos": [{"content": "Finish tree expansion batch + re-probe ungrouped corpus", "status": "in_progress"}, {"content": "Verify: focused tests + build", "status": "pending"}, {"content": "Source buttons: strip B&W styling/padding, plain icons, greyed-out inactive", "status": "pending"}, {"content": "Detect missing/white-only group icons, find replacements (fluent icon library?)", "status": "pendin`
+
+```
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [~] Finish tree expansion batch + re-probe ungrouped corpus [in_progress]
+2. [ ] Verify: focused tests + build [pending]
+3. [ ] Source buttons: strip B&W styling/padding, plain icons, greyed-out inactive [pending]
+4. [ ] Detect missing/white-only group icons, find replacements (fluent icon library?) [pending]
+5. [ ] Fix masonry: no column moves on relayout, fix image unload-on-resize bug [pending]
+
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:296c0d26 h:da5cd340 -->
+### 2026-11-26 06:45:05 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story/science-health.json", "old_string": "        {\n          \"id\": \"maternal-health\",\n          \"label\": \"Maternal & Reproductive\",", "new_string": "        {\n          \"id\": \"diet-nutrition\",\n          \"label\": \"Diet & Nutrition\",\n          \"terms\": [\n            \"diet\",\n            \"nutrition\",\n     `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story/science-health.json' - made 1 replacement(s). 3 line(s) removed, 18 line(s) added at line 403.
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:14219ae2 h:1d8893fa -->
+### 2026-11-26 06:45:10 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story/education.json", "old_string": "        \"tuition\",\n        \"degree\",\n        \"oxbridge\"", "new_string": "        \"tuition\",\n        \"degree\",\n        \"oxbridge\",\n        \"higher education\",\n        \"universities\""}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story/education.json' - made 1 replacement(s). 3 line(s) removed, 5 line(s) added at line 33.
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:5f72ee54 h:4e176fbc -->
+### 2026-11-26 06:45:16 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story/gaming.json", "old_string": "            \"the sims\",\n            \"active matter\"\n          ]\n        }", "new_string": "            \"the sims\",\n            \"active matter\",\n            \"ace combat\",\n            \"conan exiles\",\n            \"magic the gathering\",\n            \"mtg\",\n            \"warhammer`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story/gaming.json' - made 1 replacement(s). 4 line(s) removed, 12 line(s) added at line 211.
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:227edd59 h:1c4ce2a0 -->
+### 2026-11-26 06:45:31 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story/gaming.json", "old_string": "            \"release date\",\n            \"game trailer\",\n            \"review score\",\n            \"early access\",\n            \"open beta\"\n          ]\n        },", "new_string": "            \"release date\",\n            \"game trailer\",\n            \"review score\",\n            \"e`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story/gaming.json' - made 1 replacement(s). 7 line(s) removed, 9 line(s) added at line 335.
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:615f2b19 h:418746be -->
+### 2026-11-26 06:45:37 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story/entertainment-culture.json", "old_string": "    {\n      \"id\": \"gambling-lottery\",", "new_string": "    {\n      \"id\": \"fandom-fanworks\",\n      \"label\": \"Fandom & Fanworks\",\n      \"terms\": [\n        \"ao3\",\n        \"archive of our own\",\n        \"fanfic\",\n        \"fanfiction\",\n        \"fandom\",\n   `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story/entertainment-culture.json' - made 1 replacement(s). 2 line(s) removed, 18 line(s) added at line 238.
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:d1f90adb h:81a9db5d -->
+### 2026-11-26 06:45:42 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story/royal.json", "old_string": "      \"id\": \"king-charles\",\n      \"label\": \"King Charles\",\n      \"terms\": [", "new_string": "      \"id\": \"king-charles\",\n      \"label\": \"King Charles\",\n      \"headlineTerms\": [\n        \"king charles\",\n        \"king visits\",\n        \"king s visit\"\n      ],\n      \"te`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story/royal.json' - made 1 replacement(s). 3 line(s) removed, 8 line(s) added at line 6.
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:e2d5e04f h:f4224421 -->
+### 2026-11-26 06:45:50 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story-pivots/world-regions.json", "old_string": "            \"cuba\",\n            \"jamaica\",\n            \"caribbean\",\n            \"latin america\"", "new_string": "            \"cuba\",\n            \"jamaica\",\n            \"caribbean\",\n            \"latin america\",\n            \"guyana\",\n            \"suriname\",\n `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story-pivots/world-regions.json' - made 1 replacement(s). 4 line(s) removed, 10 line(s) added at line 132.
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:30e22855 h:5e30900f -->
+### 2026-11-26 06:45:55 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story-pivots/world-regions.json", "old_string": "            \"manila\",\n            \"cambodia\"", "new_string": "            \"manila\",\n            \"cambodia\",\n            \"melaka\",\n            \"penang\",\n            \"negros\""}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story-pivots/world-regions.json' - made 1 replacement(s). 2 line(s) removed, 5 line(s) added at line 315.
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:6a36c0c4 h:da6772d3 -->
+### 2026-11-26 06:46:00 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story-pivots/world-regions.json", "old_string": "            \"tennessee\",\n            \"missouri\"", "new_string": "            \"tennessee\",\n            \"missouri\",\n            \"alabama\",\n            \"louisiana\",\n            \"kentucky\",\n            \"indiana\""}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story-pivots/world-regions.json' - made 1 replacement(s). 2 line(s) removed, 6 line(s) added at line 103.
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:69fc4515 h:81fa3c5a -->
+### 2026-11-26 06:46:07 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story/sport.json", "old_string": "        \"rugby\",\n        \"six nations\",\n        \"all blacks\",\n        \"twickenham\"", "new_string": "        \"rugby\",\n        \"six nations\",\n        \"all blacks\",\n        \"twickenham\",\n        \"red roses\",\n        \"kildunne\",\n        \"women s rugby\",\n        \"england r`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story/sport.json' - made 1 replacement(s). 4 line(s) removed, 8 line(s) added at line 345.
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:exec:89a5de9d h:bf4f2f25 -->
+### 2026-11-26 06:46:16 UTC tool `exec`
+
+`{"command": "grep -n \"tennis-athletics\\|matches-results\" -A 16 src/trees/story/sport.json | head -36", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 9baab1:
+356:      "id": "tennis-athletics",
+357-      "label": "Tennis & Athletics",
+358-      "terms": [
+359-        "tennis",
+360-        "wimbledon",
+361-        "grand slam",
+362-        "olympics",
+363-        "marathon",
+364-        "athletics"
+365-      ]
+366-    },
+367-    {
+368-      "id": "sport-general",
+369-      "label": "Sport General",
+370-      "children": [
+371-        {
+372-          "id": "players-coaches",
+--
+384:          "id": "matches-results",
+385-          "label": "Matches & Results",
+386-          "terms": [
+387-            "match",
+388-            "fixture",
+389-            "score",
+390-            "league",
+391-            "stadium",
+392-            "tournament",
+393-            "draw",
+394-            "kick-off"
+395-          ]
+396-        },
+397-        {
+398-          "id": "fans-culture",
+399-          "label": "Fans & Culture",
+400-          "terms": [
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:dbc6b97f h:dde59b71 -->
+### 2026-11-26 06:46:23 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story/sport.json", "old_string": "        \"tennis\",\n        \"wimbledon\",\n        \"grand slam\",\n        \"olympics\",\n        \"marathon\",\n        \"athletics\"\n      ]\n    },", "new_string": "        \"tennis\",\n        \"wimbledon\",\n        \"grand slam\",\n        \"olympics\",\n        \"marathon\",\n        \"ath`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story/sport.json' - made 1 replacement(s). 8 line(s) removed, 11 line(s) added at line 359.
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:b31ec963 h:18b5b516 -->
+### 2026-11-26 06:46:32 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story/sport.json", "old_string": "            \"tournament\",\n            \"draw\",\n            \"kick-off\"\n          ]\n        },", "new_string": "            \"tournament\",\n            \"draw\",\n            \"kick-off\",\n            \"world champion\",\n            \"world championship\",\n            \"gold medal\",\n    `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story/sport.json' - made 1 replacement(s). 5 line(s) removed, 9 line(s) added at line 395.
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:f8105341 h:2c3f20d4 -->
+### 2026-11-26 06:46:38 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story/business-economy.json", "old_string": "            \"doordash\",\n            \"instacart\",\n            \"deliveroo\",\n            \"delivery app\"", "new_string": "            \"doordash\",\n            \"instacart\",\n            \"deliveroo\",\n            \"delivery app\",\n            \"poundland\",\n            \"high `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story/business-economy.json' - made 1 replacement(s). 4 line(s) removed, 8 line(s) added at line 29.
+```
+
+---
+
+<!-- r:0 m:hook:f62d4ab4-dc38-4976-8075-4c71ad345f94:edit:8d594358 h:30b419fd -->
+### 2026-11-26 06:46:44 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/story/business-economy.json", "old_string": "            \"economic growth\",\n            \"welfare\",\n            \"welfare spending\"", "new_string": "            \"economic growth\",\n            \"welfare\",\n            \"welfare spending\",\n            \"treasury\",\n            \"hmrc\",\n            \"hm treasury\""}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/story/business-economy.json' - made 1 replacement(s). 3 line(s) removed, 6 line(s) added at line 262.
+```
+
+---
+
+<!-- r:0 m:hook:0eba4d9b-196e-44af-9d87-cad495fc7b76 h:a5453c68 -->
+### 2026-11-26 06:47:04 UTC user
+
+postpone further tree-expansion work for now, and add a TODO: ... we need to identify some established/mainstream/news/widely-known reference taxonomies for better support. Continue with the other work raised, and I'll come back to taxonomies researcg  after you finished the rest, cos we're under quota pressure.
 
 ---
 
