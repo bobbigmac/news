@@ -1,4 +1,5 @@
-// Generates dist/og-image.jpg at publish time: source favicons (volume-ordered,
+// Manual generator — writes src/og-cover.jpg, which is committed and copied by the
+// build like any static asset. Source favicons (volume-ordered,
 // so the sources readers actually see most lead the texture) on a white base,
 // spaced so the white shows between them, with the masthead type composited
 // over it — each line on its own dark strip. Runs at build so the grid grows
@@ -63,7 +64,7 @@ const CACHE_DIR = 'cache';
 const LINES = [
   { text: 'The Daily Broadsheet', font: 'Georgia, serif', size: 84, weight: 700, spacing: 0, fill: '#f5f0e8' },
   { text: 'A DAILY NEWS DIGEST', font: 'Helvetica, Arial, sans-serif', size: 42, weight: 400, spacing: 6, fill: '#d8d4cc' },
-  { text: 'Good news! Well, some of it.', font: 'Helvetica, Arial, sans-serif', size: 30, weight: 400, spacing: 0, fill: '#c8c4bc' },
+  { text: 'Good news! Well, some of it is.', font: 'Helvetica, Arial, sans-serif', size: 30, weight: 400, spacing: 0, fill: '#c8c4bc' },
 ];
 
 // Measures a text line by rendering it alone and trimming transparent pixels —
@@ -228,9 +229,9 @@ export async function buildOgImage(outPath) {
   return { icons, cells, quads: qi };
 }
 
-// Standalone: node scripts/build-og-image.js <out>
+// Standalone: node scripts/build-og-image.js [out] — manual generation, then commit the output
 if (process.argv[1]?.endsWith('build-og-image.js')) {
-  const out = process.argv[2] || 'dist/og-image.jpg';
+  const out = process.argv[2] || 'src/og-cover.jpg';
   const { icons, cells, quads } = await buildOgImage(out);
   console.log(`og-image: ${icons} icons (${quads} quads) across ${cells} cells -> ${out}`);
 }
