@@ -14,7 +14,7 @@ export const DEFAULT_SETTINGS = {
   columns: '3',
   sort: 'recent',
   images: 'minimal',
-  ageLimit: '30',
+  ageLimit: '7',
   mode: 'all',
   categoryFilter: 'all',
   categoryDisplayFilters: {},
@@ -101,6 +101,16 @@ export function loadSettings() {
     for (const [cat, val] of Object.entries(settings.categoryDisplayFilters)) {
       if (val !== true) delete settings.categoryDisplayFilters[cat];
     }
+    // Single-select now: collapse any legacy multi-select to the first entry.
+    const catKeys = Object.keys(settings.categoryDisplayFilters);
+    if (catKeys.length > 1) {
+      settings.categoryDisplayFilters = { [catKeys[0]]: true };
+    }
+    // The masthead mode/category cyclers were removed; pin the pass-through
+    // values so a stale saved preference can't silently filter the feed with
+    // no UI left to change it back.
+    settings.mode = 'all';
+    settings.categoryFilter = 'all';
     if (settings.categoryFilter === 'other') settings.categoryFilter = 'all';
     return settings;
   } catch { return { ...DEFAULT_SETTINGS }; }
@@ -120,6 +130,7 @@ function loadCatPrefs() {
 }
 
 export const state = {
+  clientPerf: {},
   digest: null,
   settings: loadSettings(),
   visibleClusters: [],
@@ -200,8 +211,10 @@ export function clearSourceInclude() {
 export function toggleCategoryInclude(category) {
   if (!category) return;
   const filters = state.settings.categoryDisplayFilters;
-  if (filters[category]) delete filters[category];
-  else filters[category] = true;
+  const isSoleSelection = filters[category] === true && Object.keys(filters).length === 1;
+  // Single-select restrict-TO: clicking a category makes it the only filter;
+  // clicking the active one clears back to everything.
+  state.settings.categoryDisplayFilters = isSoleSelection ? {} : { [category]: true };
   saveSettings();
 }
 

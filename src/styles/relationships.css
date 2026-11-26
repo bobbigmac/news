@@ -113,8 +113,8 @@
 .relation-group-head,
 .source-card-head {
   display: flex;
-  align-items: start;
-  gap: 0.65rem;
+  align-items: center;
+  gap: 0.55rem;
 }
 
 .relation-group-head .source-sprite,
@@ -122,7 +122,6 @@
   flex: 0 0 32px;
   width: 32px;
   height: 32px;
-  margin-top: 0.1rem;
 }
 
 .relationship-letter {
@@ -134,7 +133,19 @@
   justify-content: center;
   border: 1px solid var(--rule);
   font-weight: 700;
-  margin-top: 0.1rem;
+}
+
+.group-count {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--paper);
+  background: var(--ink);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+  vertical-align: middle;
 }
 
 .relation-group-head > div {
@@ -149,8 +160,8 @@
 }
 
 .source-profile {
-  margin: 0.65rem 0;
-  padding: 0.65rem;
+  margin: 0.45rem 0 0.35rem 2.7rem;
+  padding: 0.55rem 0.65rem;
   background: var(--paper-light);
   border-left: 2px solid var(--accent);
 }
@@ -172,14 +183,37 @@
 }
 
 .source-member-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.65rem;
+  columns: 2 340px;
+  column-gap: 0.65rem;
   margin-top: 0.65rem;
 }
 
 .source-card {
-  padding: 0.65rem;
+  break-inside: avoid;
+  margin-bottom: 0.4rem;
+  padding: 0.3rem 0.45rem;
+}
+
+details.source-card > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+details.source-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.source-card > summary::after {
+  content: '+';
+  margin-left: auto;
+  font-family: var(--sans);
+  font-weight: 700;
+  color: var(--muted);
+  align-self: center;
+}
+
+details.source-card[open] > summary::after {
+  content: '\\2013';
 }
 
 .source-card-title {
@@ -233,10 +267,16 @@
 }
 
 .also-member {
-  margin-top: 0.45rem;
+  margin: 0.1rem 0 0.15rem 2.7rem;
   font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--muted);
+}
+
+.also-member a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
 }
 
 .is-hidden {
@@ -252,9 +292,6 @@
     grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
   }
 
-  .source-member-list {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 640px) {
@@ -272,4 +309,41 @@
     min-width: 0;
     width: 100%;
   }
+}
+
+/* Trust flags: visible chip on the collapsed row so the warning is never
+   hidden inside expansion, full note + references in the profile body. */
+.source-flag-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-left: auto;
+  align-self: center;
+}
+.source-flag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #a01212;
+  border: 1px solid #a01212;
+  border-radius: 3px;
+  padding: 1px 6px 2px;
+  white-space: normal;
+  max-width: 15rem;
+}
+.source-flag::before {
+  content: '⚑ ';
+}
+.profile-flag {
+  border-left: 3px solid #a01212;
+  padding: 4px 0 4px 10px;
+  margin: 8px 0;
+}
+.profile-flag-label {
+  color: #a01212;
+  display: block;
+  margin-bottom: 2px;
+}
+.profile-flag-note {
+  margin: 2px 0 4px;
 }

@@ -1,4 +1,4 @@
-const CACHE = 'broadsheet-v7';
+const CACHE = 'broadsheet-v10';
 
 self.addEventListener('install', (e) => {
   self.skipWaiting();

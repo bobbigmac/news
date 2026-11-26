@@ -66,6 +66,31 @@ export function renderChangelog(log) {
 
   html += `</div></div>`;
 
+  // Client performance — boot timings, payload sizes, memory. These measure
+  // the first-draw cost new readers pay; the archive section only appears for
+  // readers whose window reaches beyond the recent digest.
+  const perf = state.clientPerf || {};
+  const heap = performance.memory?.usedJSHeapSize;
+  const fmtMb = bytes => bytes ? `${(bytes / 1024 / 1024).toFixed(1)} MB` : '—';
+  html += '<div class="changelog-section"><h4>Client Performance</h4>';
+  html += '<div class="changelog-stats">';
+  if (perf.boot) {
+    html += `<div><span class="changelog-stat-label">Boot total</span><span class="changelog-stat-val">${perf.boot.totalMs ?? '—'} ms</span></div>`;
+    html += `<div><span class="changelog-stat-label">Fetch / parse / render</span><span class="changelog-stat-val">${perf.boot.fetchMs ?? '—'} / ${perf.boot.parseMs ?? '—'} / ${perf.boot.renderMs ?? '—'} ms</span></div>`;
+    html += `<div><span class="changelog-stat-label">Recent payload</span><span class="changelog-stat-val">${perf.boot.digestBytes ? fmtMb(perf.boot.digestBytes) : '—'} (${perf.boot.recentClusters ?? '—'} clusters)</span></div>`;
+  }
+  if (perf.archive && !perf.archive.skipped) {
+    html += `<div><span class="changelog-stat-label">Archive fetch / parse / merge</span><span class="changelog-stat-val">${perf.archive.fetchMs ?? '—'} / ${perf.archive.parseMs ?? '—'} / ${perf.archive.mergeRenderMs ?? '—'} ms</span></div>`;
+    html += `<div><span class="changelog-stat-label">Archive clusters</span><span class="changelog-stat-val">${perf.archive.archiveClusters ?? '—'} (total ${perf.archive.totalClusters ?? '—'})</span></div>`;
+  } else if (perf.archive?.skipped) {
+    html += `<div><span class="changelog-stat-label">Archive</span><span class="changelog-stat-val">not loaded${perf.archive.reason ? ` — ${perf.archive.reason}` : ' (window within recent digest)'}</span></div>`;
+  }
+  if (heap) {
+    html += `<div><span class="changelog-stat-label">JS heap</span><span class="changelog-stat-val">${fmtMb(heap)}</span></div>`;
+  }
+  html += `<div><span class="changelog-stat-label">DOM nodes</span><span class="changelog-stat-val">${document.getElementsByTagName('*').length}</span></div>`;
+  html += `</div></div>`;
+
   // Sources section
   html += '<div class="changelog-section"><h4>Sources</h4>';
   html += '<div class="changelog-tags">';

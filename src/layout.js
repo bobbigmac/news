@@ -29,23 +29,38 @@ export function getGridMetrics(sheet) {
 // heightHint(item) should return the best available height estimate (0 for
 // hidden items); assignment is greedy-to-shortest in the order given.
 // Reused both for the top-level feed and inside story-group containers.
-export function distributeIntoColumns(host, items, heightHint) {
+// Pure greedy assignment: returns, per column, the items in append order.
+// No DOM — safe to run synchronously even for very large feeds.
+export function assignColumns(items, heightHint) {
   const cols = getColumnCount();
   const heights = new Array(cols).fill(0);
-  const columns = [];
-  for (let i = 0; i < cols; i++) {
-    const col = document.createElement('div');
-    col.className = 'feed-col';
-    columns.push(col);
-  }
+  const columns = Array.from({ length: cols }, () => []);
   for (const item of items) {
     let target = 0;
     for (let i = 1; i < cols; i++) {
       if (heights[i] < heights[target]) target = i;
     }
-    columns[target].appendChild(item);
+    columns[target].push(item);
     heights[target] += heightHint(item);
   }
+  return columns;
+}
+
+// Create the column skeleton elements for a host.
+export function createColumnShells() {
+  return Array.from({ length: getColumnCount() }, () => {
+    const col = document.createElement('div');
+    col.className = 'feed-col';
+    return col;
+  });
+}
+
+export function distributeIntoColumns(host, items, heightHint) {
+  const assignment = assignColumns(items, heightHint);
+  const columns = createColumnShells();
+  columns.forEach((col, i) => {
+    for (const item of assignment[i]) col.appendChild(item);
+  });
   host.replaceChildren(...columns);
   return columns;
 }

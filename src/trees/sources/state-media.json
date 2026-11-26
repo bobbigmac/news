@@ -1,0 +1,67 @@
+{
+ "id": "state-media",
+ "label": "Nationalist & State Media",
+ "icon": "tass.com",
+ "children": [
+  {
+   "id": "russia-state-media",
+   "label": "Russian State Media",
+   "icon": "rt-english.com",
+   "sources": [
+    "rt-english.com",
+    "tass.com"
+   ]
+  },
+  {
+   "id": "china-state-media",
+   "label": "Chinese State Media",
+   "icon": "news.cgtn.com",
+   "sources": [
+    "news.cgtn.com",
+    "cgtn.com",
+    "globaltimes.cn"
+   ]
+  },
+  {
+   "id": "turkey-state-media",
+   "label": "Turkish State Media",
+   "icon": "trtworld.com",
+   "sources": [
+    "trtworld.com",
+    "aa.com.tr"
+   ]
+  },
+  {
+   "id": "belarus-state-media",
+   "label": "Belarusian State Media",
+   "icon": "eng.belta.by",
+   "sources": [
+    "eng.belta.by"
+   ]
+  },
+  {
+   "id": "cuba-state-media",
+   "label": "Cuban State Media",
+   "icon": "prensa-latina.cu",
+   "sources": [
+    "prensa-latina.cu"
+   ]
+  },
+  {
+   "id": "ukraine-state-media",
+   "label": "Ukrainian State Media",
+   "icon": "uatv.ua",
+   "sources": [
+    "uatv.ua"
+   ]
+  },
+  {
+   "id": "qatar-state-media",
+   "label": "Qatari State Media",
+   "icon": "aljazeera.com",
+   "sources": [
+    "aljazeera.com"
+   ]
+  }
+ ]
+}

@@ -3,7 +3,6 @@ import { canonicalCategory, classifyCategory, recategoriseCluster } from '../scr
 import { makeStoryData, prepareStoryForLLM } from '../scripts/cluster-copy.js';
 import { annotateClustersIfMissing, buildEntityIndex } from '../scripts/entities.js';
 import { extractJson } from '../scripts/extract-json.js';
-import { deriveShortSummary } from '../scripts/short-summary.js';
 import { enrichAllStories } from '../scripts/story-enrich.js';
 import { dedupStories, normaliseUrl } from '../scripts/url-dedup.js';
 
@@ -106,14 +105,25 @@ describe('deduplication and copy fallbacks', () => {
     expect(result.droppedByUrl).toBe(1);
   });
 
-  it('derives a bounded short summary without another LLM call', () => {
-    expect(deriveShortSummary('First sentence. Second sentence is ignored.', 'Fallback'))
-      .toBe('First sentence.');
+});
 
-    const long = Array(40).fill('word').join(' ');
-    const derived = deriveShortSummary(long, 'Fallback headline');
-    expect(derived.endsWith('…')).toBe(true);
-    expect(derived.split(' ')).toHaveLength(24);
+describe('source-derived copy', () => {
+  it('never truncates or fabricates ellipses', async () => {
+    const { fallbackClusterCopy, prepareStoryForLLM } = await import('../scripts/cluster-copy.js');
+    const longDesc = 'The BBC understands the treaties contain a 10-year termination clause to reimburse costs of any need to rebuild border checks and this sentence runs well past two hundred characters to prove the point about artificial truncation being removed entirely.';
+    const prepared = prepareStoryForLLM({
+      id: 's1', title: 'UK government set to publish new treaties agreed with EU',
+      description: longDesc, content: '', source: 'bbc', sourceName: 'BBC',
+      url: 'https://bbc.co.uk/x', published: new Date().toISOString(),
+    });
+    expect(prepared.description).toBe(longDesc);
+    expect(prepared.text).not.toContain('...');
+
+    const copy = fallbackClusterCopy([prepared]);
+    expect(copy.summary).not.toContain('...');
+    expect(copy.summary).toContain(longDesc);
+    expect(copy.summary.length).toBeGreaterThan(200);
+    expect(copy.shortSummary).toBeUndefined();
   });
 });
 

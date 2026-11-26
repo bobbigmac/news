@@ -83,24 +83,26 @@ describe('glimpse tracking', () => {
     expect(ui.relayout).not.toHaveBeenCalled();
   });
 
-  it('applies the collapsed treatment on the next render instead', () => {
+  it('glimpse state has zero rendering impact — full copy always, no collapse machinery', () => {
     const item = cluster();
     expect(recordClusterGlimpsed(item)).toBe(true);
 
     const article = renderArticle(item, { images: 'none', expandAll: false }, false, Date.now());
 
-    expect(article.classList.contains('is-glimpsed')).toBe(true);
-    expect(article.querySelector('.summary-short')).toBeTruthy();
-    expect(article.classList.contains('summary-expanded')).toBe(false);
+    expect(article.classList.contains('is-glimpsed')).toBe(false);
+    expect(article.querySelector('.summary-short')).toBeNull();
+    expect(article.querySelector('.summary-more')).toBeNull();
+    expect(article.textContent).toContain(item.summary);
   });
 
-  it('shows full copy again for an updated content version', () => {
+  it('renders identically whether glimpsed or not', () => {
     const item = cluster({ contentVersion: 2 });
-    state.glimpseState[item.id] = { contentVersion: 1, at: Date.now() };
+    const fresh = renderArticle(item, { images: 'none', expandAll: false }, false, Date.now());
 
-    const article = renderArticle(item, { images: 'none', expandAll: false }, false, Date.now());
+    state.glimpseState[item.id] = { contentVersion: 2, at: Date.now() };
+    const glimpsed = renderArticle(item, { images: 'none', expandAll: false }, false, Date.now());
 
-    expect(article.classList.contains('is-glimpsed')).toBe(false);
-    expect(article.querySelector('.summary-short')).toBeTruthy();
+    expect(glimpsed.className).toBe(fresh.className);
+    expect(glimpsed.innerHTML).toBe(fresh.innerHTML);
   });
 });

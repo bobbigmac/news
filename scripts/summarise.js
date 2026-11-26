@@ -227,7 +227,6 @@ async function main() {
     const fb = fallbackClusterCopy(prepared, cleanHeadline);
     cluster.headline = fb.headline;
     cluster.summary = fb.summary;
-    cluster.shortSummary = fb.shortSummary;
     cluster.triggerWords = fb.triggerWords;
     cluster.impact = fb.impact;
   }

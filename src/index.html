@@ -88,7 +88,10 @@
 
       <div class="settings-divider"></div>
       <h4 class="settings-subhead">Watch Words</h4>
-      <input type="text" id="setting-watchwords" class="watch-words-input" placeholder="Xbox, Gaming, Longsight">
+      <input type="text" id="setting-watchwords" class="watch-words-input" placeholder="Xbox, Gaming, Longsight"
+       autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+       data-1p-ignore data-lpignore="true" data-bwignore data-protonpass-ignore="true" data-dashlane-ignore="true"
+       data-form-type="other">
       <p class="settings-hint">Comma-separated. Stories matching any word are highlighted.</p>
 
       <div class="settings-divider"></div>
@@ -135,19 +138,13 @@
   <header class="masthead">
     <div class="masthead-left">
       <div class="masthead-date" id="masthead-date"></div>
-      <div class="masthead-toggles">
-        <button id="mode-toggle" class="mode-toggle" type="button">All</button>
-        <button id="category-toggle" class="mode-toggle" type="button">Categories</button>
-      </div>
     </div>
     <h1 class="masthead-title">The Daily Broadsheet</h1>
     <div class="masthead-right">
-      <button id="search-toggle" class="masthead-icon" aria-label="Search">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="11" cy="11" r="8"/>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-      </button>
+      <div class="masthead-search">
+        <input type="search" id="filter" placeholder="Search..." autocomplete="off" />
+        <div id="recent-searches" class="recent-searches"></div>
+      </div>
       <button id="settings-toggle" class="masthead-icon" aria-label="Settings">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <circle cx="12" cy="12" r="3"/>
@@ -160,17 +157,15 @@
   <div id="source-bar" class="source-bar" aria-label="Source filters and catchup controls" hidden>
     <div class="source-bar-inner">
       <div id="source-toggles" class="source-toggles" role="toolbar" aria-label="Toggle news sources"></div>
-      <button id="mark-all-read" class="mark-all-read" type="button" title="Mark the currently displayed stories as read" aria-live="polite">Mark Read</button>
     </div>
     <div class="source-bar-inner category-filter-row">
       <div id="category-filters" class="category-filters" role="toolbar" aria-label="Filter categories"></div>
+      <button id="mark-all-read" class="mark-all-read" type="button" title="Mark the currently displayed stories as read" aria-live="polite">Mark Read</button>
     </div>
   </div>
 
-  <div id="search-panel" class="search-panel hidden">
-    <input type="search" id="filter" placeholder="Search the broadsheet..." autocomplete="off" />
-    <div id="recent-searches" class="recent-searches"></div>
-  </div>
+  <button id="back-to-top" class="back-to-top" type="button" hidden
+          title="Back to the top of the broadsheet" aria-label="Back to top">Top ↑</button>
 
   <main id="broadsheet" class="broadsheet">
     <div id="loading" class="loading">Loading today's news...</div>

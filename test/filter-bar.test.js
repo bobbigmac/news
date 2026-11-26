@@ -10,16 +10,35 @@ function cssBlock(css, selector) {
 }
 
 describe('filter bar structure', () => {
-  it('keeps Mark Read inside the source filter row, split to the right', () => {
+  it('keeps Mark Read in the categories row, split to the right', () => {
     const dom = new JSDOM(readFileSync('src/index.html', 'utf8'));
     const button = dom.window.document.getElementById('mark-all-read');
     const row = button?.closest('.source-bar-inner');
-    const toggles = row?.querySelector('#source-toggles');
+    const categories = row?.querySelector('#category-filters');
+    const sourceRow = dom.window.document.querySelector('#source-toggles')?.closest('.source-bar-inner');
 
     expect(row?.parentElement?.id).toBe('source-bar');
-    expect(toggles).toBeTruthy();
-    expect(toggles.nextElementSibling).toBe(button);
+    expect(categories).toBeTruthy();
+    expect(categories.nextElementSibling).toBe(button);
+    expect(sourceRow).not.toBe(row);
+    expect(sourceRow.querySelector('#mark-all-read')).toBeNull();
     expect(button.textContent.trim()).toBe('Mark Read');
+  });
+
+  it('keeps the masthead free of cyclers with the search box living in the masthead itself', () => {
+    const dom = new JSDOM(readFileSync('src/index.html', 'utf8'));
+    expect(dom.window.document.getElementById('mode-toggle')).toBeNull();
+    expect(dom.window.document.getElementById('category-toggle')).toBeNull();
+    expect(dom.window.document.getElementById('search-toggle')).toBeNull();
+    // no pre-state, no separate panel: the textbox is in the masthead, always visible
+    expect(dom.window.document.getElementById('search-panel')).toBeNull();
+    const filter = dom.window.document.getElementById('filter');
+    expect(filter).toBeTruthy();
+    expect(filter.closest('.masthead')).toBeTruthy();
+    expect(filter.closest('.masthead-search')).toBeTruthy();
+    // recent searches ride along inside the masthead search container
+    const recent = dom.window.document.getElementById('recent-searches');
+    expect(recent?.closest('.masthead-search')).toBeTruthy();
   });
 
   it('uses wrapped filter rows rather than thin scrollbars', () => {
@@ -75,13 +94,16 @@ describe('filter bar structure', () => {
     expect(bar.querySelector('#source-toggles')).toBeTruthy();
   });
 
-  it('keeps inverse treatment on the text buttons', () => {
+  it('keeps category pills transparent unless selected, mark read inverse', () => {
     const css = readFileSync('src/styles/filter-bar.css', 'utf8');
     const categoryToggle = cssBlock(css, '.category-filter-toggle');
+    const categoryIncluded = cssBlock(css, '.category-filter-toggle.is-included');
     const markRead = cssBlock(css, '.mark-all-read');
 
-    expect(categoryToggle).toMatch(/background\s*:\s*var\(--ink\)/);
-    expect(categoryToggle).toMatch(/color\s*:\s*var\(--paper\)/);
+    expect(categoryToggle).toMatch(/background\s*:\s*transparent/);
+    expect(categoryToggle).not.toMatch(/color\s*:\s*var\(--paper\)/);
+    expect(categoryIncluded).toMatch(/background\s*:\s*var\(--ink\)/);
+    expect(categoryIncluded).toMatch(/color\s*:\s*var\(--paper\)/);
     expect(markRead).toMatch(/background\s*:\s*var\(--ink\)/);
     expect(markRead).toMatch(/color\s*:\s*var\(--paper\)/);
   });
@@ -165,21 +187,28 @@ describe('source filter buttons', () => {
     expect(state.sourceInclude).toEqual({ 'group:murdoch': true });
   });
 
-  it('offers a reset control only while a selection is active', () => {
+  it('leads with an ALL control that clears whatever selection is set', () => {
     renderSourceBar({
       sourceOptions: [{ key: 'a.example', label: 'A', count: 5, included: false }],
       sourceIncludeActive: false,
     });
-    expect(document.querySelector('.source-reset')).toBeNull();
+    const all = document.querySelector('.source-all');
+    expect(all).toBeTruthy();
+    // ALL is the first control in the bar, before any volume chip or icon
+    expect(document.getElementById('source-toggles').firstElementChild).toBe(all);
+    // nothing filtered: ALL reads active and there is nothing to click
+    expect(all.classList.contains('is-active')).toBe(true);
+    expect(all.disabled).toBe(true);
 
     state.sourceInclude = { 'a.example': true };
     renderSourceBar({
       sourceOptions: [{ key: 'a.example', label: 'A', count: 5, included: true }],
       sourceIncludeActive: true,
     });
-    const reset = document.querySelector('.source-reset');
-    expect(reset).toBeTruthy();
-    reset.click();
+    const activeAll = document.querySelector('.source-all');
+    expect(activeAll.classList.contains('is-active')).toBe(false);
+    expect(activeAll.disabled).toBe(false);
+    activeAll.click();
     expect(state.sourceInclude).toEqual({});
   });
 
@@ -277,5 +306,60 @@ describe('category filter buttons', () => {
 
     expect(state.settings.categoryDisplayFilters).toEqual({});
     expect(ui.refresh).toHaveBeenCalledTimes(1);
+  });
+
+  it('restricts to a single category and clears when re-clicked', () => {
+    state.settings.categoryDisplayFilters = {};
+    renderCategoryFilterBar({
+      categoryRowEnabled: true,
+      categoryIncludeActive: false,
+      categoryOptions: [
+        { value: 'Sport', label: 'Sport', count: 1, storyCount: 1, included: false },
+        { value: 'Technology', label: 'Technology', count: 1, storyCount: 1, included: false },
+      ],
+    });
+
+    const [sport, tech] = [...document.querySelectorAll('.category-filter-toggle:not(.category-all-toggle)')];
+
+    sport.click();
+    expect(state.settings.categoryDisplayFilters).toEqual({ Sport: true });
+
+    // Clicking a different category replaces rather than multi-selects
+    state.settings.categoryDisplayFilters = { Sport: true };
+    tech.click();
+    expect(state.settings.categoryDisplayFilters).toEqual({ Technology: true });
+
+    // Clicking the active category clears back to everything
+    state.settings.categoryDisplayFilters = { Technology: true };
+    tech.click();
+    expect(state.settings.categoryDisplayFilters).toEqual({});
+  });
+
+  it('marks the selected pill inverse and others transparent', () => {
+    state.settings.categoryDisplayFilters = { Technology: true };
+    renderCategoryFilterBar({
+      categoryRowEnabled: true,
+      categoryIncludeActive: true,
+      categoryOptions: [
+        { value: 'Sport', label: 'Sport', count: 1, storyCount: 1, included: false },
+        { value: 'Technology', label: 'Technology', count: 1, storyCount: 1, included: true },
+      ],
+    });
+
+    const [sport, tech] = [...document.querySelectorAll('.category-filter-toggle:not(.category-all-toggle)')];
+    expect(tech.classList.contains('is-included')).toBe(true);
+    expect(sport.classList.contains('is-included')).toBe(false);
+    expect(sport.classList.contains('is-off')).toBe(true);
+  });
+
+  it('ships a back-to-top control that starts hidden and sits outside the flow', () => {
+    const dom = new JSDOM(readFileSync('src/index.html', 'utf8'));
+    const btn = dom.window.document.getElementById('back-to-top');
+    expect(btn).toBeTruthy();
+    expect(btn.hidden).toBe(true);
+    // it must live OUTSIDE the broadsheet column so it never covers copyable text
+    expect(btn.closest('#broadsheet')).toBeNull();
+    const css = readFileSync('src/styles/shell.css', 'utf8');
+    expect(css).toMatch(/\.back-to-top\s*\{[^}]*position\s*:\s*fixed/);
   });
 });

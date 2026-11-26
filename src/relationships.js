@@ -28,16 +28,27 @@ function el(tag, className, text) {
 
 // Cross-membership index: one outlet can sit in several families (a wire
 // that's also a co-op, a broadcaster that's also a platform). Collected once
-// so each outlet card can point at its other relationships.
+// so each outlet row can link to its other families' sections on the page.
 const membershipsByHost = new Map();
 function indexMemberships(node, path = []) {
   const nextPath = [...path, node.label];
   for (const host of node.sources || []) {
     if (!membershipsByHost.has(host)) membershipsByHost.set(host, []);
-    membershipsByHost.get(host).push(nextPath.join(' / '));
+    membershipsByHost.get(host).push({ path: nextPath.join(' / '), label: node.label, anchor: anchorForPath(nextPath) });
   }
   for (const child of node.children || []) indexMemberships(child, nextPath);
 }
+
+function anchorForPath(path) {
+  return 'rel-' + path.map(part => String(part).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')).join('--');
+}
+
+function countDescendantHosts(node) {
+  let count = (node.sources || []).length;
+  for (const child of node.children || []) count += countDescendantHosts(child);
+  return count;
+}
+
 for (const root of SOURCE_RELATION_TREE) indexMemberships(root);
 
 function appendLinkList(container, links) {
@@ -56,6 +67,15 @@ function appendLinkList(container, links) {
 }
 
 function appendProfileBody(container, profile) {
+  if (profile.flags?.length) {
+    for (const flag of profile.flags) {
+      const block = el('div', 'profile-flag');
+      block.appendChild(el('strong', 'profile-flag-label', `⚑ ${flag.label}`));
+      block.appendChild(el('p', 'profile-flag-note', flag.note));
+      appendLinkList(block, flag.links);
+      container.appendChild(block);
+    }
+  }
   for (const [field, label] of Object.entries(PROFILE_FIELD_LABELS)) {
     if (!profile[field]) continue;
     const row = el('p', 'profile-field');
@@ -86,10 +106,10 @@ function renderSourceIcon(container, key) {
 
 function renderOutletCard(host, currentPath) {
   const profile = SOURCE_PROFILES[host];
-  const card = el('article', 'source-card');
+  const card = el(profile ? 'details' : 'div', 'source-card');
   const memberships = membershipsByHost.get(host) || [];
-  const others = memberships.filter(path => path !== currentPath);
-  const searchText = [host, prettifySourceKey(host), ...memberships];
+  const others = memberships.filter(m => m.path !== currentPath);
+  const searchText = [host, prettifySourceKey(host), ...memberships.map(m => m.path)];
   if (profile) {
     for (const value of Object.values(profile)) {
       if (typeof value === 'string') searchText.push(value);
@@ -98,25 +118,43 @@ function renderOutletCard(host, currentPath) {
   }
   card.dataset.search = searchText.join(' ').toLowerCase().replace(/-/g, ' ');
 
-  const head = el('header', 'source-card-head');
-  renderSourceIcon(head, host);
+  // Collapsed by default: icon + name is the whole visible row. The profile
+  // only renders when the reader opens it, so thin rows cost one line each
+  // and no space is wasted beside dense rows.
+  const summary = el(profile ? 'summary' : 'div', 'source-card-head');
+  renderSourceIcon(summary, host);
   const title = el('div', 'source-card-title');
   title.appendChild(el('h4', '', prettifySourceKey(host)));
   title.appendChild(el('code', 'source-key', host));
-  head.appendChild(title);
-  card.appendChild(head);
+  summary.appendChild(title);
+  if (profile?.flags?.length) {
+    const flagRow = el('span', 'source-flag-row');
+    for (const flag of profile.flags) {
+      const chip = el('span', 'source-flag', flag.label);
+      chip.setAttribute('role', 'img');
+      chip.title = flag.note;
+      flagRow.appendChild(chip);
+    }
+    summary.appendChild(flagRow);
+  }
+  card.appendChild(summary);
+
+  if (others.length) {
+    const also = el('p', 'also-member');
+    also.appendChild(el('strong', '', 'Also: '));
+    others.forEach((m, i) => {
+      if (i) also.appendChild(document.createTextNode(' · '));
+      const link = el('a', '', m.label);
+      link.href = `#${m.anchor}`;
+      also.appendChild(link);
+    });
+    card.appendChild(also);
+  }
 
   if (profile) {
     const body = el('div', 'source-profile');
     appendProfileBody(body, profile);
     card.appendChild(body);
-  }
-
-  if (others.length) {
-    const also = el('p', 'also-member');
-    also.appendChild(el('strong', '', 'Also: '));
-    also.appendChild(document.createTextNode(others.join(' · ')));
-    card.appendChild(also);
   }
   return card;
 }
@@ -136,8 +174,10 @@ function renderBranchProfile(profile) {
 // Renders one tree node as a family section: its research note, its own
 // outlets, then child families nested inside.
 function renderFamily(node, path, searchContext = '') {
-  const currentPath = [...path, node.label].join(' / ');
+  const pathParts = [...path, node.label];
+  const currentPath = pathParts.join(' / ');
   const section = el('section', 'relation-group');
+  section.id = anchorForPath(pathParts);
   const hostList = node.sources || [];
   const ownContext = `${searchContext} ${node.id} ${node.label}`.replace(/[-/]/g, ' ');
   section.dataset.search = `${ownContext} ${hostList.join(' ')}`.toLowerCase();
@@ -145,7 +185,16 @@ function renderFamily(node, path, searchContext = '') {
   const head = el('header', 'relation-group-head');
   if (node.icon) renderSourceIcon(head, node.icon);
   const title = el('div');
-  title.appendChild(el('h3', '', node.label));
+  // A group whose label collides with its members' names (the BBC group whose
+  // members are all BBC outlets) reads as a collection, not as one outlet:
+  // "BBC Sources". The count makes the group nature explicit everywhere.
+  const memberNames = hostList.map(h => prettifySourceKey(h).toLowerCase());
+  const collides = memberNames.includes(String(node.label).toLowerCase())
+    || (path.length && String(node.label).toLowerCase() === String(path[path.length - 1]).toLowerCase());
+  const total = countDescendantHosts(node);
+  const heading = el('h3', '', collides ? `${node.label} Sources` : node.label);
+  if (total) heading.appendChild(el('span', 'group-count', String(total)));
+  title.appendChild(heading);
   head.appendChild(title);
   section.appendChild(head);
 
@@ -177,7 +226,7 @@ function renderAll() {
 
     const body = el('div', 'source-groups');
     if ((root.children || []).length) {
-      for (const child of root.children) body.appendChild(renderFamily(child, [], `${root.id} ${root.label}`.replace(/[-/]/g, ' ')));
+      for (const child of root.children) body.appendChild(renderFamily(child, [root.label], `${root.id} ${root.label}`.replace(/[-/]/g, ' ')));
     } else {
       body.appendChild(renderFamily(root, []));
     }
@@ -196,7 +245,12 @@ function bindSourceSearch() {
       const cards = [...group.querySelectorAll(':scope > .source-member-list > .source-card')];
       const selfMatches = !query || group.dataset.search.includes(query);
       const matching = cards.filter(card => selfMatches || card.dataset.search.includes(query));
-      cards.forEach(card => card.classList.toggle('is-hidden', !matching.includes(card)));
+      cards.forEach(card => {
+        const show = matching.includes(card);
+        card.classList.toggle('is-hidden', !show);
+        // A row that matched the query opens so the match is visible in context.
+        if (show && query && !selfMatches && card.dataset.search.includes(query)) card.open = true;
+      });
       group.classList.toggle('is-hidden', !(selfMatches || matching.length > 0));
     }
     for (const section of document.querySelectorAll('.relationship-section')) {

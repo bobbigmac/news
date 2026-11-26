@@ -1,8 +1,5 @@
 import { DIGEST_FILE, loadJson } from './cache-io.js';
-import { deriveShortSummary } from './short-summary.js';
 import { enrichStory } from './story-enrich.js';
-
-export const MAX_CONTENT_CHARS = 800;
 export const ACTIVE_WINDOW_HOURS = 48;   // a cluster is "active" if last story published within this window
 export const EXPIRE_AFTER_DAYS = 30;     // clusters with no stories in 30 days are removed from digest
 
@@ -10,18 +7,14 @@ export function wordCount(text) {
   return (text || '').trim().split(/\s+/).filter(Boolean).length;
 }
 
-export function truncate(text, max) {
-  const t = (text || '').trim();
-  if (t.length <= max) return t;
-  return t.substring(0, max).replace(/\s+\S*$/, '') + '...';
-}
-
-// Build the compact story object sent to the LLM (text for comprehension)
-// and the metadata object stored on the cluster (for the frontend).
+// Build the story object sent to the LLM (text for comprehension) and the
+// metadata object stored on the cluster (for the frontend). Text is never
+// truncated — the LLM is asked for length-controlled output, and stored
+// copy must be the full source text, not a mangled prefix of it.
 export function prepareStoryForLLM(story) {
-  const title = truncate(story.title, 200);
-  const desc = truncate(story.description || '', 400);
-  const content = truncate(story.content || '', MAX_CONTENT_CHARS);
+  const title = (story.title || '').trim();
+  const desc = (story.description || '').trim();
+  const content = (story.content || '').trim();
   const combined = [title, desc, content].filter(Boolean).join(' — ');
   return {
     id: story.id,
@@ -114,16 +107,15 @@ export function findClusterForStory(digest, storyId) {
   return digest.clusters.find(c => c.stories?.some(s => s.id === storyId));
 }
 
-// Heuristic fallback when the LLM fails for a cluster: derive headline/summary
-// from the story text directly. Crude but never loses a story.
+// Source-derived copy for clusters without LLM text (singletons by design,
+// or LLM failure): the full source text, never truncated, never fake-ellipsed.
 export function fallbackClusterCopy(stories, cleanHeadline) {
   const lead = stories[0];
   const rawHeadline = lead.originalTitle || lead.title || 'Untitled';
-  const headline = (cleanHeadline || rawHeadline).slice(0, 80);
-  const summary = (lead.text || '').slice(0, 200).replace(/\s+\S*$/, '') + '...';
-  const shortSummary = deriveShortSummary(summary, headline);
+  const headline = cleanHeadline || rawHeadline;
+  const summary = (lead.text || '').trim();
   const triggerWords = extractKeywords(headline + ' ' + summary).slice(0, 5);
-  return { headline, summary, shortSummary, triggerWords, impact: 'medium', category: normaliseCategory(lead.category) };
+  return { headline, summary, triggerWords, impact: 'medium', category: normaliseCategory(lead.category) };
 }
 
 // Sort a cluster's stories chronologically (oldest first) so the stored

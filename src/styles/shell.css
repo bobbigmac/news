@@ -49,16 +49,21 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
 }
 
 .masthead-title {
   font-family: var(--serif);
-  font-size: 2.6rem;
+  font-size: clamp(1.35rem, 4.2vw, 2.6rem);
   font-weight: 700;
   letter-spacing: -1px;
   font-variant: small-caps;
-  flex: 1;
+  flex: 1 1 auto;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .masthead-left {
@@ -66,7 +71,8 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   flex-direction: column;
   align-items: flex-start;
   gap: 0.4rem;
-  min-width: 120px;
+  min-width: 0;
+  flex: 0 1 auto;
 }
 
 .masthead-date {
@@ -105,7 +111,8 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  min-width: 120px;
+  min-width: 0;
+  flex: 0 1 auto;
   justify-content: flex-end;
 }
 
@@ -121,3 +128,131 @@ body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
 
 .masthead-icon:hover { opacity: 1; color: var(--ink); }
 
+
+/* Masthead search: the input lives in the masthead itself — immediately
+   focusable, always visible, no pre-state. Recent searches surface as a
+   dropdown only while the field is focused. */
+.masthead-search {
+  position: relative;
+  flex: 1 1 130px;
+  max-width: 230px;
+  min-width: 0;
+}
+
+.masthead-search #filter {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.38rem 0.9rem 0.38rem 1.85rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background-color: var(--paper-light);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236b6357' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.8-3.8'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.65rem center;
+  background-size: 13px;
+  color: var(--ink);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.18s, box-shadow 0.18s, background-color 0.18s;
+}
+
+.masthead-search #filter::placeholder {
+  color: var(--muted);
+  opacity: 0.75;
+}
+
+.masthead-search #filter:hover {
+  border-color: var(--rule);
+}
+
+.masthead-search #filter:focus {
+  outline: none;
+  border-color: var(--ink);
+  background-color: var(--paper);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+/* dark-theme magnifier: the baked-in stroke is a day tone */
+[data-theme="night"] .masthead-search #filter {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238a8275' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.8-3.8'/%3E%3C/svg%3E");
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* native clear control inherits the theme instead of clashing with it */
+.masthead-search #filter::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6357' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+[data-theme="night"] .masthead-search #filter::-webkit-search-cancel-button {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a8275' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E");
+}
+
+.masthead-search .recent-searches {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 30;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0;
+  min-width: 100%;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.masthead-search:focus-within .recent-searches:not(:empty) {
+  display: flex;
+}
+
+.masthead-search .recent-search-item {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  border: none;
+  border-radius: 0;
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.masthead-search .recent-search-item:hover {
+  background: var(--rule);
+}
+
+/* Back to top: rides in the gutter just RIGHT of the broadsheet column —
+   never floating over the content, so phone readers can still select and
+   copy text. Hidden entirely when the viewport is too narrow to have a
+   gutter; appears only after scrolling two viewport heights. */
+.back-to-top {
+  position: fixed;
+  bottom: 1.25rem;
+  z-index: 25;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+  opacity: 0.85;
+}
+.back-to-top:hover { opacity: 1; }

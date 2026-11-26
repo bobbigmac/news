@@ -1,11 +1,6 @@
 import { canonicalCategory, getDisplayedStories, getFeedStories, getNewestStoryDate } from './view-model.js';
 import { matchesWatchWords, state, ui } from './state.js';
-import {
-  isClusterRead,
-  isClusterUpdatedSinceRead,
-  isCurrentVersionGlimpsed,
-  markClusterRead,
-} from './reading.js';
+import { isClusterRead, isClusterUpdatedSinceRead, markClusterRead } from './reading.js';
 import { getClusterInterest, scoreClusterAgainstSignals, setClusterInterest } from './signals.js';
 import { storySearchText } from './search.js';
 
@@ -50,15 +45,7 @@ function isLatestCluster(cluster, referenceTime) {
 }
 
 function renderSummaryHtml(cluster, summary) {
-  const shortSummary = String(cluster.shortSummary || '').replace(/\s+/g, ' ').trim();
-  const hasShort = shortSummary && shortSummary !== summary;
-  if (!hasShort) {
-    return `<div class="article-summary"><span class="summary-full">${summary}</span></div>`;
-  }
-  return `<div class="article-summary has-short">
-    <span class="summary-full">${summary}</span>
-    <button type="button" class="summary-short" title="Show full summary"><span>${shortSummary}</span><span class="summary-more">More</span></button>
-  </div>`;
+  return `<div class="article-summary"><span class="summary-full">${summary}</span></div>`;
 }
 
 function clearArticleListeners(article) {
@@ -156,7 +143,6 @@ export function renderArticle(cluster, settings, isPluginLead, latestReferenceTi
     .toLowerCase();
   if (wasUpdated) article.classList.add('has-updates');
   if (matchesWatchWords(cluster)) article.classList.add('watch-match');
-  if (isCurrentVersionGlimpsed(cluster) && !isClusterRead(cluster)) article.classList.add('is-glimpsed');
 
   // Signal-derived styling (subtle — these are guesses, not explicit signals)
   const signalScore = scoreClusterAgainstSignals(cluster);
@@ -212,23 +198,12 @@ export function renderArticle(cluster, settings, isPluginLead, latestReferenceTi
   // Apply interest-based visibility class
   if (interest === 'not-interested') article.classList.add('downranked');
 
-  // Expanding a glimpsed summary is a reading interaction, not a catch-up
-  // acknowledgement: it must not mark the cluster read.
-  const summaryShort = article.querySelector('.summary-short');
-  if (summaryShort) {
-    trackArticleListener(article, summaryShort, 'click', (e) => {
-      e.stopPropagation();
-      article.classList.add('summary-expanded');
-      ui.relayout();
-    });
-  }
-
   // Click toggles between summary and source links (multi-story only).
   // Singletons don't have an expandable list — the headline links directly.
   if (!isSingleton) {
     const body = article.querySelector('.article-body');
     trackArticleListener(article, article, 'click', (e) => {
-      if (e.target.tagName === 'A' || e.target.closest('.interest-btn, .summary-short')) return;
+      if (e.target.tagName === 'A' || e.target.closest('.interest-btn')) return;
       body.classList.toggle('show-links');
       ui.relayout();
     });

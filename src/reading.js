@@ -117,7 +117,7 @@ export function initReadInteraction() {
 
   // Single click listener — article clicks mark read, except interactive controls
   sheet.addEventListener('click', (e) => {
-    if (e.target.closest('.interest-btn, .summary-short')) return; // controls handle their own behaviour
+    if (e.target.closest('.interest-btn')) return; // controls handle their own behaviour
     const article = e.target.closest('.article');
     if (!article?.dataset?.clusterId) return;
     const cluster = state.digest?.clusters?.find(c => c.id === article.dataset.clusterId);

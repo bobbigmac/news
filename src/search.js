@@ -25,7 +25,6 @@ export function clusterMatchesSearch(cluster, query) {
   const haystack = [
     cluster.headline || '',
     cluster.summary || '',
-    cluster.shortSummary || '',
     canonicalCategory(cluster.category),
     ...getFeedStories(cluster, state.disabledSources).map(storySearchText),
   ].join(' ').toLowerCase();

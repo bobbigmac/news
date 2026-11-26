@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 08:24:04 UTC
-entries: 75
+last_activity: 2026-11-26 13:15:11 UTC
+entries: 100
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -603,6 +603,183 @@ connect @ client:885
 ### 2026-11-26 08:24:04 UTC
 
 also you lost the # in mark # read, I only told you to put the number in the string, to debadge it, not to remove the number entirely
+
+---
+
+<!-- r:0 m:hook:142ea439-1cec-452f-a7bd-a7d22dbe6e82 h:6292291a -->
+### 2026-11-26 08:34:06 UTC
+
+we still seem to be doing various reruns of layout/relayout and full-tree indexing on the ui thread, making first-draw VERY slow for new clients (which is basically making the experience the WORST for new users, the opposite of what we want). How do we kick calccs and draws off the ui thread adn have it run progressively instead? Also can we get any memory usage metrics, and is it worth splitting our produced source file to match our various settings windows AND setting say a 7 day default window (iirc) instead of 30 days by default?
+
+---
+
+<!-- r:0 m:hook:be6ab67c-2491-43f1-9067-4875f5402ce5 h:977de9ba -->
+### 2026-11-26 08:44:01 UTC
+
+also put the mark # read button beside the categories list container, not beside the sources list container. It's awkward where it is now, cos it's not an icon. Let the icons container user the full width of that container, while the categroies pills/buttons and the mark read button share a row, keeping the mark read button pulled right. (i.e. keep it as styled, but move it down one row, putting it beside the categroeies list). Also make categories list items transparent by default, and white-on-black only when selected, essentially categories should work just like the sources filters and restrict TO that category only, leaving others greyed. This makes selecting multiple categories impossible, but that's fine. We can also remove the Categories cycler AND the main/bbc/all both from the masthead, they're irrelevant now we have better filters. Make the search a textbox, no pre-state for magnifier only (it's not 1998)
+
+---
+
+<!-- r:0 m:hook:0c994830-c14e-44a9-8740-2d369b5b7e31 h:a9abc0ae -->
+### 2026-11-26 08:54:12 UTC
+
+`yourlocalepidemiologist.substack.com` is logged as 'substack' a source, which is just NOT specific enough. Substack is a platform, with LOTS of individual 'blogs' not a source. We can keep it as a source, but need to audit all sources for their actual specific name, to make sure we're not attributing single authors to an entire platfrom, or vice-versa.
+
+The relationships page wastes a LOT of space on empty/low-content blocks beside high-content blocks, and what little real content is there, is thin and repeititve. Add more content to more sources (you'll need to do real searches, not guesses) and collapse the detailed content by dfeault. Style the relationships panel a little more like how our main sources filter is presented, like icon name, and just let each get its name and be expandable to show more. The 'also' items can just link to their part in the page instead of listing the full set of breadcrumbs for every option, this ui just wasn't thought about for uX at all. Group titles need to be more specific too, like the BBC Group is also labeled BBC but so are 3/4 of its members. It should be "BBC Sources #" cos like "BBC Public Media" and "North America Public" are distinct enough to make their presentation as a group clear.
+
+---
+
+<!-- r:0 m:hook:930cbbc1-9d2e-42ee-b9ab-3a38339e3263 h:08938301 -->
+### 2026-11-26 09:16:56 UTC
+
+Some 'national' broadcasters need quality/trust flags, like RT also should be in a Nationalist Media group AND a Russian Media group, with a flag for uncritical of controlling power as a 'note'/like a red flag for publishers with low trust scores (as typically reported by trustworthy sites), like The Daily Mail because Wikipedia doesn't trust them, for example. We're not saying everyone else is 100% trustworthy, but SOME media producers (like the national US Fox News channels) need red flags for lack of impartiality because they have no fairness law ruling their conduct. Important notes, with links to other sources reporting why we raised those flags, should be entirely possible. Multiple references for red flags are preferred, cos we can't qualify a source by linking to only one other source, even if that source is very trustworthy
+
+---
+
+<!-- r:0 m:hook:67c54b8f-de77-4247-a895-00fd2dd9fba8 h:d333c356 -->
+### 2026-11-26 09:33:43 UTC
+
+the sources filter also needs an ALL option before the first counter-box, that unsets whatever is set. Also the sources icons sometimes look weird, like they were clipped/cropped into the spritesheet, instead of sized appropriately. If you need to downsize a favicon, look at how favicon.io does it, cos they have a nice clean downsizer, I suspect nearest-neighbour but not sure. Either that or the spritesheet producer is doing it wrong. EVERY icon in the spritesheet should be the same size, and if off-aspect, normalised to a square and placed correctly. I think it's just a little wonky and the cropping is weird for some icons but not all of htem.
+
+---
+
+<!-- r:0 m:hook:437608a8-cb74-446c-a528-86505c630e34 h:7657765f -->
+### 2026-11-26 09:43:00 UTC
+
+I asked you to make the Search button into a search box, NOT to move it. I liked it at th etop, you just need slightly smarter responsive layout for narrow devices and can shrink the daily broadsheet header if needed, cos that will be replaced with a smaller variatnt when we port this to its real product anyway. I like a search text box because it's immediately focusable, keeps its search, is easier to select and doesn't futz with the user, but a pre-search button does all of those things.
+
+---
+
+<!-- r:0 m:hook:fc5b7272-378d-4f59-be48-7cb84c909611 h:eb8cf27e -->
+### 2026-11-26 09:47:07 UTC
+
+the page also needs a back t top button that shows when scrolled further than 2 viewport-heights down, in the bottom right, styled like the mark read button, but always just to the right of the main column, not floating over it (user may want to copy text on their phone). I also noticed, the hotloading of panel content (the detail) often doesn't work at all, so scrolling leaves a lot of stories looking like they have no content, but then sometimes it fills in. Check your state manager, maybe you dont even have one for that.
+
+---
+
+<!-- r:0 m:hook:1bf1881b-6032-4ad2-a65c-1e2a7fa1a5d6 h:47c0f8c5 -->
+### 2026-11-26 12:49:38 UTC
+
+give the search box some nicer modern styling. It's very default
+
+---
+
+<!-- r:0 m:hook:e44bfd32-766e-44ee-a372-9c43eb6689d9 h:10307dfd -->
+### 2026-11-26 12:51:23 UTC
+
+the watch words input box gets picked up by password filling extensions, use common tags to prevent it
+
+---
+
+<!-- r:0 m:hook:8edc0429-cf6b-41d1-823a-8d12dc3689ab h:99bab176 -->
+### 2026-11-26 12:52:22 UTC
+
+you somehow added "More" to every article-text. I didn't ask for that, undo whatever change caused that cause it also made every box a fixed size which I also didn't ask for. Identify why it was done
+
+---
+
+<!-- r:0 m:hook:79cc02a4-5168-4ac9-8ef7-d9e213530a6f h:50d6f30c -->
+### 2026-11-26 12:53:09 UTC
+
+no, find the change that added it, cos that entire change mde LOTS of unwelcome changes
+
+---
+
+<!-- r:0 m:hook:9534162f-eb0a-4990-952b-e86c37f3a8d9 h:0266590a -->
+### 2026-11-26 12:55:23 UTC
+
+this should be nothing to do with glimpsed. Glimpsed has NO impact on rendering whatsoever. WHEN EXACTLY was More added?
+
+---
+
+<!-- r:0 m:hook:59896c1c-4f6f-4bc2-801d-c3f73a35f5d5 h:08fc2cb0 -->
+### 2026-11-26 12:56:31 UTC
+
+is it in unstaged/uncommitted work? Basically it JUST appeared, why?
+
+---
+
+<!-- r:0 m:hook:62bab2a7-43d5-4ed8-9aae-6a5b9648b5f4 h:362826e4 -->
+### 2026-11-26 12:57:52 UTC
+
+stop FUCKING about. You made article texts fixed height and enabled a More expander, neither of which were asked for. I explcitly told you a half a dozen times NOT to fuck with my masonry. WHY DID YOU??
+
+---
+
+<!-- r:0 m:hook:50b6349f-8feb-4fe5-a396-919df8d6bcc4 h:e3f3b246 -->
+### 2026-11-26 12:58:45 UTC
+
+No. I fucking asked you the same question 4 times. ANSWER ME
+
+---
+
+<!-- r:0 m:hook:85e838d5-6424-4b15-aeac-583dc6ed6488 h:2762a96a -->
+### 2026-11-26 12:59:17 UTC
+
+article panels are still fixed height. WHY?
+
+---
+
+<!-- r:0 m:hook:eeaac1be-f848-4bb5-8d92-fb85a7519c7c h:1e002d1c -->
+### 2026-11-26 12:59:43 UTC
+
+ALL this work is THIS session. Stop distancing yourself. YOU did this.
+
+---
+
+<!-- r:0 m:hook:9e7fbe15-0089-4826-bd4d-9e52753f14e5 h:1b24370c -->
+### 2026-11-26 13:01:09 UTC
+
+that's not what I asked for. I want virtualisation, but without lazy fucking hacks It worked fine a couple of hours ago, but you stripped out everything reflexively instead of actinign like a fucking professional
+
+---
+
+<!-- r:0 m:hook:5c0eda66-7802-40f4-ac55-dc942ed151a1 h:a3eddc9b -->
+### 2026-11-26 13:02:12 UTC
+
+reread the user-input for this session, the fukcing end, cos you drifted and fucked up hours of work
+
+---
+
+<!-- r:0 m:hook:7ba846d7-f2d3-47a3-9527-99c9274c67de h:fb8b6526 -->
+### 2026-11-26 13:03:32 UTC
+
+okay i see, you put a filthy hack on top of a ffilthy hack, then lazily depended on it, didn't test it, and it fell back to a shit mode I hadn't seen yet
+
+---
+
+<!-- r:0 m:hook:46a5a27d-3e77-436f-a39d-27c4be66b641 h:948a07c4 -->
+### 2026-11-26 13:04:47 UTC
+
+Look at the user input where I said "this is a very fucking common patern, isn't it?" or something like that
+
+---
+
+<!-- r:0 m:hook:e451e0e8-cda6-4f54-831a-b653ce23556a h:ab5acc1c -->
+### 2026-11-26 13:06:20 UTC
+
+search for how to do this properly, cos I'm sick of your lazy bullshit
+
+---
+
+<!-- r:0 m:hook:06438c35-7748-40c2-83b4-07db233c1ab7 h:e262fe58 -->
+### 2026-11-26 13:13:01 UTC
+
+summary-full is being truncated `UK government set to publish new treaties agreed with EU — The BBC understands the treaties contain a 10-year termination clause to reimburse costs of any need to rebuild border checks...`
+
+---
+
+<!-- r:0 m:hook:5cc3e599-5893-4859-a0b7-56bf44a07e2e h:9f93a89c -->
+### 2026-11-26 13:13:59 UTC
+
+I fucking hate fallbacks
+
+---
+
+<!-- r:0 m:hook:60d729d3-bd6b-4ca7-87d2-750e8db86def h:2bfc2b08 -->
+### 2026-11-26 13:15:11 UTC
+
+there shouldn't ever be a need to truncate text artificially. We literally ask the LLM to summarise with target word counts explicitly so we don't have to truncate
 
 ---
 

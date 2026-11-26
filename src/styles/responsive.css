@@ -1,10 +1,17 @@
 /* Responsive — column count follows JS breakpoint logic in layout.js */
 @media (max-width: 768px) {
   .broadsheet { max-width: 600px; }
-  .masthead { flex-direction: column; gap: 0.5rem; }
-  .masthead-title { font-size: 2rem; }
-  .masthead-left { align-items: center; min-width: 0; }
-  .masthead-right { min-width: 0; }
   .settings-panel { width: 100%; }
   .category-panel { width: 100%; }
+}
+
+/* Narrow masthead: the title shrinks first (fluid clamp in shell.css), then
+   the search drops to its own full-width row beneath the masthead line so it
+   stays immediately focusable instead of being crushed or hidden. */
+@media (max-width: 640px) {
+  .masthead { row-gap: 0.5rem; }
+  .masthead-title { order: 0; flex-basis: 100%; }
+  .masthead-left { order: 1; }
+  .masthead-right { order: 2; flex: 1 1 auto; }
+  .masthead-search { max-width: none; }
 }

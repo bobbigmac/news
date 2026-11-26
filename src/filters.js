@@ -44,6 +44,26 @@ export function renderSourceBar(model) {
   const bounds = bucketBounds(sources.map(source => source.count));
   let lastBucket = -1;
 
+  // ALL sits before the first volume chip: the explicit "no filter" control.
+  // It reads active when nothing is filtered and clicking it drops whatever
+  // selection is set, so the reset path is visible before you need it.
+  const all = document.createElement('button');
+  all.type = 'button';
+  all.className = 'source-all';
+  all.textContent = 'ALL';
+  all.classList.toggle('is-active', !includeActive);
+  all.disabled = !includeActive;
+  all.title = includeActive
+    ? 'Clear the source selection — show everything again'
+    : 'Showing everything — click any source icon to filter';
+  all.setAttribute('aria-label', 'Show stories from all sources');
+  all.setAttribute('aria-pressed', String(!includeActive));
+  all.addEventListener('click', () => {
+    clearSourceInclude();
+    ui.refresh();
+  });
+  container.appendChild(all);
+
   for (const source of sources) {
     const bucket = bucketIndex(source.count, bounds);
     if (bounds.length && bucket !== lastBucket) {
@@ -91,19 +111,6 @@ export function renderSourceBar(model) {
     container.appendChild(btn);
   }
 
-  if (includeActive) {
-    const reset = document.createElement('button');
-    reset.type = 'button';
-    reset.className = 'source-reset';
-    reset.textContent = '×';
-    reset.title = 'Clear the source selection — show everything again';
-    reset.setAttribute('aria-label', 'Clear the source selection');
-    reset.addEventListener('click', () => {
-      clearSourceInclude();
-      ui.refresh();
-    });
-    container.appendChild(reset);
-  }
 }
 
 export function renderCategoryFilterBar(model) {
@@ -126,6 +133,7 @@ export function renderCategoryFilterBar(model) {
   const allBtn = document.createElement('button');
   allBtn.type = 'button';
   allBtn.className = 'category-filter-toggle category-all-toggle';
+  allBtn.classList.toggle('is-included', false);
   allBtn.classList.toggle('is-off', includeActive);
   allBtn.setAttribute('aria-pressed', String(!includeActive));
   allBtn.title = 'Show all categories';
@@ -141,6 +149,7 @@ export function renderCategoryFilterBar(model) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'category-filter-toggle';
+    btn.classList.toggle('is-included', included);
     btn.classList.toggle('is-off', includeActive && !included);
     btn.setAttribute('aria-pressed', String(included));
     btn.title = `${category.label} — ${category.storyCount} stories`;

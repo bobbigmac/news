@@ -137,6 +137,50 @@ const DOMAIN_MAP = {
   'www.techmeme.com': 'Techmeme',
 };
 
+// Multi-tenant publishing platforms: the platform itself is not a source —
+// the individual publications/authors on it are. Subdomain tenants
+// (yourlocalepidemiologist.substack.com) carry identity in the host;
+// path tenants (dev.to/username, medium.com/@user) carry it in the first
+// path segment.
+export const PLATFORM_HOSTS = new Set([
+  'substack.com', 'medium.com', 'wordpress.com', 'blogspot.com', 'tumblr.com',
+  'patreon.com', 'typepad.com', 'ghost.io', 'beehiiv.com', 'buttondown.email',
+  'livejournal.com', 'weebly.com', 'wixsite.com', 'hashnode.com', 'dev.to',
+  'mirror.xyz', 'notion.site', 'write.as', 'telegra.ph', 'steemit.com',
+  'peakd.com', 'hive.blog', 'neocities.org', 'bandcamp.com',
+]);
+
+const PATH_TENANT_HOSTS = new Set(['dev.to', 'medium.com']);
+
+export function platformOfHost(host) {
+  const parts = host.split('.');
+  for (const platform of PLATFORM_HOSTS) {
+    const pParts = platform.split('.');
+    if (parts.length >= pParts.length && parts.slice(-pParts.length).join('.') === platform) {
+      return platform;
+    }
+  }
+  return null;
+}
+
+export function tenantFromUrl(url) {
+  try {
+    const u = new URL(url);
+    const host = u.hostname.toLowerCase().replace(/^www\./, '');
+    const platform = platformOfHost(host);
+    if (!platform) return null;
+    if (host !== platform) {
+      // subdomain tenant: leftmost label(s) before the platform host
+      return host.slice(0, host.length - platform.length - 1);
+    }
+    if (PATH_TENANT_HOSTS.has(platform)) {
+      const seg = u.pathname.split('/').filter(Boolean)[0];
+      if (seg) return seg.replace(/^@/, '');
+    }
+    return null;
+  } catch { return null; }
+}
+
 export function getSourceName(url) {
   if (!url) return null;
   try {
@@ -150,19 +194,45 @@ export function getSourceName(url) {
 export function sourceKeyFromUrl(url) {
   if (!url) return '';
   try {
-    return new URL(url).hostname.toLowerCase().replace(/^www\./, '');
+    const u = new URL(url);
+    const host = u.hostname.toLowerCase().replace(/^www\./, '');
+    // Path-tenant platforms key by author/publication, not by platform —
+    // dev.to/alice and dev.to/bob are different sources.
+    if (PATH_TENANT_HOSTS.has(platformOfHost(host) || '') && host === platformOfHost(host)) {
+      const seg = u.pathname.split('/').filter(Boolean)[0];
+      if (seg) return `${host}/${seg.replace(/^@/, '').toLowerCase()}`;
+    }
+    return host;
   } catch {
     return '';
   }
 }
 
 export function prettifySourceKey(key) {
+  // Path-tenant keys (dev.to/alice) display as the tenant.
+  if (key.includes('/')) {
+    const tenant = key.split('/')[1];
+    if (tenant) return prettifyTenant(tenant);
+  }
   const parts = key.split('.').filter(Boolean);
   if (!parts.length) return 'Unknown';
   const compoundTlds = new Set(['co.uk', 'org.uk', 'ac.uk', 'com.au', 'net.au', 'org.au', 'co.nz', 'co.kr', 'com.my', 'com.pk', 'co.za', 'com.ng', 'com.sa']);
   const lastTwo = parts.slice(-2).join('.');
-  const baseIndex = compoundTlds.has(lastTwo) ? parts.length - 3 : parts.length - 2;
-  const base = parts[Math.max(0, baseIndex)] || parts[0];
+  let baseIndex = compoundTlds.has(lastTwo) ? parts.length - 3 : parts.length - 2;
+  let base = parts[Math.max(0, baseIndex)] || parts[0];
+  // Platform tenants display as the tenant, never the platform:
+  // yourlocalepidemiologist.substack.com is not "Substack".
+  if (baseIndex > 0) {
+    const hostNoTld = compoundTlds.has(lastTwo) ? parts.slice(0, -2).join('.') : parts.slice(0, -1).join('.');
+    const platform = platformOfHost(parts.join('.'));
+    if (platform && hostNoTld !== platform.replace(/\.[^.]+$/, '') && platform.split('.')[0] === base) {
+      base = parts[0];
+    }
+  }
+  return prettifyTenant(base);
+}
+
+function prettifyTenant(base) {
   return base
     .split(/[-_]/)
     .filter(Boolean)

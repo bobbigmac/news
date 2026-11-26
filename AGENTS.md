@@ -1,5 +1,20 @@
 # Agent Guidelines
 
+### Platform-tenant attribution (keep copies in sync)
+
+Multi-tenant platforms (substack, medium, dev.to, neocities, etc.) are NOT sources —
+the publications/authors on them are. `sourceKeyFromUrl` and `prettifySourceKey`
+implement this twice: `scripts/sources.js` (pipeline) and `src/view-model.js` (client).
+**The two copies must be edited together** — key shape affects filtering, sprite
+lookup, and read-state consistently only if both sides agree.
+- Subdomain tenants: `x.substack.com` displays/keys as the tenant, never the platform.
+- Path tenants (`dev.to/user`, `medium.com/@user`): keys include the first path
+  segment (`dev.to/alice`) — different authors are different sources.
+- Build-time labels prefer the story's own author field for tenants; explicit
+  overrides live in `SOURCE_LABELS` in `scripts/favicons.js`.
+- Only hosts in `PLATFORM_HOSTS` get this treatment — publisher subdomains
+  (news.xbox.com) still attribute to the parent brand.
+
 ## Currents API Quota — Critical Constraints
 
 - **Daily quota: 20 API calls** (free plan). Exceeding returns HTTP 429.
@@ -48,6 +63,31 @@ in a single article and returns 0 results. This is not a bug — it's how the AP
 - The cache save step intentionally runs after the Pages artifact upload but before
   `actions/deploy-pages`. Artifact metadata flakes must not discard fetch,
   embedding, or model-registry state.
+
+## Client boot performance (windowed digests)
+
+The client boot payload is split at publish time by `scripts/digest-split.js`
+(shared with the vite dev middleware, so dev matches prod):
+
+- `dist/digest.json` — slim clusters whose newest story is within 7 days
+  (~2.6MB vs 23.8MB for the full corpus). This is the only boot fetch.
+- `dist/digest-archive.json` — everything older, slim. The client fetches it
+  in idle time after first paint, and ONLY when the reader's age window
+  setting exceeds 7 days. Default-window readers never download it.
+- `dist/dataset.json` — the full export for external consumers (timeline,
+  entities, topics, stats, per-story bodyText/wordCount/storyType). The client
+  never reads it; those fields are stripped from client digests.
+
+Client-side progressive rendering (`src/feed.js`): column assignment is pure
+math over height estimates and runs synchronously, but article shells
+materialize in chunks — first ~120 synchronously, then ~250 per
+animation frame in feed order. A render token cancels superseded passes.
+
+Memory/boot metrics surface in the changelog panel (boot fetch/parse/render
+ms, payload sizes, archive timings, JS heap, DOM node count) via
+`state.clientPerf`.
+
+Default age window is 7 days for new readers (`DEFAULT_SETTINGS.ageLimit`).
 
 ## Summarise Pipeline
 
@@ -333,6 +373,19 @@ When changing `.env`, also update the GitHub repo secret (Settings → Secrets �
   then `git restore --staged cache/` if the path checkout staged it. The Vite dev
   middleware serves `cache/digest.json` directly.
 
+## Trust flags on the relationships page
+
+- Profiles (`src/trees/profiles/sources.json`) support a `flags` array: `{label, note, links[]}`.
+- **Every flag must cite at least 2 independent references** — regulators, court records,
+  peer-reviewed studies, press-freedom monitors. A single-source accusation is never enough,
+  and the test suite enforces this structurally.
+- Flags are for documented, externally evidenced trust problems (state control, deprecation
+  consensus, proven fabrication) — not for editorial disagreement or leaning.
+- State-directed outlets belong in the `state-media` tree family, never among public-service
+  broadcasters. Cross-file outlets that legitimately belong to two families (CGTN is in both
+  Chinese State Media and China Media) rather than choosing one.
+- Flag chips render on the collapsed outlet row — do not hide them inside expandable content.
+
 ## Site content rule — never talk about the dataset on the website
 
 Public-facing pages are for readers. They must never describe dataset internals,
@@ -341,6 +394,26 @@ implemented. That analysis belongs only in the codebase and `docs/`. Reader-faci
 copy talks about the subject matter itself (the news, the sources, who owns them)
 in plain editorial language. This mistake has been made repeatedly — check copy
 for meta-referential framing before shipping any page.
+
+## Masonry & Virtualization — Hard Constraints
+
+- **Never pin heights on hydrated articles.** Rendered article panels are always
+  natural height. Only unhydrated shells carry an inline height (estimated for
+  never-shown content, measured real height once displayed). The user has
+  repeated this constraint many times — treat any implementation need to pin
+  visible heights as a decision to escalate, not to ship.
+- **Glimpse state is pure data.** It must never affect rendering in any way —
+  no classes, no collapsed summaries, no expanders.
+- **The hydration driver is the single geometric window pass** in `feed.js`
+  (`updateWindow`), driven by scroll/resize through rAF. Do not reintroduce
+  IntersectionObserver for feed hydration, scroll-settle sweeps, or
+  click-to-hydrate fallbacks — layered backup drivers are how the fixed-height
+  shell regression happened. Enter margin 1200px, leave margin 2400px
+  (hysteresis — do not equalize them or boundary nodes oscillate).
+- Height spec (user's words): content below the viewport may be estimated size
+  until close enough to measure; content above the viewport has been displayed,
+  so its measured height is known until browser resize. Unloading drops sub-DOM
+  content only. Images are allowed to re-futz layout.
 
 ## Known Pitfalls
 

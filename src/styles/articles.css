@@ -137,64 +137,19 @@
   display: block;
 }
 
-.summary-short {
-  display: none;
-  width: 100%;
-  border: 0;
-  padding: 0;
-  background: transparent;
-  color: var(--muted);
-  font: inherit;
-  font-size: 0.86rem;
-  line-height: 1.5;
-  text-align: left;
-  cursor: pointer;
-}
 
-.summary-short:hover {
-  color: var(--ink);
-}
-
-.summary-more {
-  margin-left: 0.4rem;
-  font-family: var(--sans);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.article.is-glimpsed:not(.summary-expanded) .article-summary.has-short .summary-full {
-  display: none;
-}
-
-.article.is-glimpsed:not(.summary-expanded) .article-summary.has-short .summary-short {
-  display: block;
-}
-
-/* In-place content swap: when showing summary, only summary is in flow
-   (links display:none, zero height). When showing links, grid stacks them
-   so box height = max(summary, links) — never shrinks below summary height. */
+/* Clicking swaps summary for the source list in place — natural height in
+   both states, the masonry reflows as it always did. */
 .article-body .story-links {
   display: none;
 }
 
-.article-body.show-links {
-  display: grid;
-  grid-template-areas: "stack";
-}
-
 .article-body.show-links .article-summary {
-  grid-area: stack;
-  visibility: hidden;
-  margin: 0;
+  display: none;
 }
 
 .article-body.show-links .story-links {
-  grid-area: stack;
   display: block;
-  visibility: visible;
 }
 
 .story-links {

@@ -14,9 +14,11 @@ import regionalEnglish from './trees/sources/regional-english.json' with { type:
 import wiresReleases from './trees/sources/wires-releases.json' with { type: 'json' };
 import platformsAggregators from './trees/sources/platforms-aggregators.json' with { type: 'json' };
 import officialOrganizations from './trees/sources/official-organizations.json' with { type: 'json' };
+import stateMedia from './trees/sources/state-media.json' with { type: 'json' };
 
 export const SOURCE_RELATION_TREE = [
   publicInternational, specialistPress, murdoch, ukMedia, usMedia,
   digitalPublishers, australiaMedia, canadaMedia, regionalEnglish,
   wiresReleases, platformsAggregators, officialOrganizations,
+  stateMedia,
 ];

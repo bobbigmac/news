@@ -96,24 +96,6 @@
   margin-left: 0;
 }
 
-.source-reset {
-  flex: 0 0 auto;
-  width: 24px;
-  height: 24px;
-  border: none;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1;
-  cursor: pointer;
-  padding: 0;
-}
-
-.source-reset:hover {
-  background: var(--rule);
-  color: var(--ink);
-}
 
 .category-filter-row {
   padding-top: 0;
@@ -138,8 +120,8 @@
   flex: 0 0 auto;
   border: 1px solid var(--ink);
   border-radius: 3px;
-  background: var(--ink);
-  color: var(--paper);
+  background: transparent;
+  color: var(--ink);
   font-family: var(--sans);
   font-size: 0.68rem;
   font-weight: 700;
@@ -150,9 +132,20 @@
   transition: opacity 0.15s, border-color 0.15s, background 0.15s, color 0.15s;
 }
 
-.category-filter-toggle:hover:not(.is-off) {
+.category-filter-toggle:hover {
   border-color: var(--accent);
+  color: var(--accent);
+}
+
+.category-filter-toggle.is-included {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.category-filter-toggle.is-included:hover {
   background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper);
 }
 
 .category-filter-toggle.is-off {
@@ -199,53 +192,31 @@
   text-align: center;
 }
 
-/* Search panel (expandable from masthead) */
-.search-panel {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--rule);
-  background: var(--paper);
-}
-
-.search-panel.hidden { display: none; }
-
-.search-panel #filter {
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  border: none;
-  border-bottom: 1px solid var(--rule);
-  background: transparent;
-  color: var(--ink);
-}
-
-.search-panel #filter:focus {
-  outline: none;
-  border-bottom-color: var(--ink);
-}
-
-.recent-searches {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: 0.5rem;
-}
-
-.recent-search-item {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  padding: 0.2rem 0.6rem;
-  border: 1px solid var(--rule);
-  background: transparent;
-  cursor: pointer;
-  color: var(--muted);
-}
-
-.recent-search-item:hover {
-  border-color: var(--ink);
-  color: var(--ink);
-}
-
 /* Broadsheet layout — stable column containers position items */
+
+/* ALL chip: the explicit unfiltered state, first in the bar before the
+   volume-tier chips. Active (inked) when nothing is filtered. */
+.source-all {
+  flex: 0 0 auto;
+  align-self: center;
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding: 0.3rem 0.45rem;
+  margin-right: 0.25rem;
+  border: 1px solid var(--ink, #1c1a16);
+  border-radius: 3px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.source-all.is-active {
+  background: var(--ink, #1c1a16);
+  color: var(--paper, #f5f0e6);
+  cursor: default;
+}
+.source-all:not(.is-active):hover {
+  background: var(--ink, #1c1a16);
+  color: var(--paper, #f5f0e6);
+}

@@ -1,15 +1,12 @@
 import { populateArticleShell, renderArticle, renderArticleShell } from './article.js';
-import { distributeIntoColumns, getGridMetrics, layoutColumns } from './layout.js';
+import { assignColumns, createColumnShells, getGridMetrics } from './layout.js';
 import { refreshGlimpseObserver, refreshReadObserver } from './reading.js';
 import { clusterMatchesSearch, getSearchQuery, updateMarkReadButton } from './search.js';
 import { state } from './state.js';
 
-const HYDRATE_ROOT_MARGIN = '1200px 0px';
-
 class FeedView {
   constructor() {
     this.context = null;
-    this.observer = null;
     this.query = '';
     this.nodes = new Map();
     this.clusterById = new Map();
@@ -17,17 +14,13 @@ class FeedView {
     this.heights = new Map();
     this.hydratedCount = 0;
     this.columnWidth = 0;
-    this.observedNodes = new Set();
     this.collapsedGroups = new Set();
-  }
-
-  disconnectObserver() {
-    if (this.observer) this.observer.disconnect();
-    this.observer = null;
+    this.renderToken = 0;
   }
 
   clear() {
-    this.disconnectObserver();
+    this.renderToken++;
+    this.windowFramePending = false;
     this.context = null;
     this.query = '';
     this.nodes.clear();
@@ -36,7 +29,6 @@ class FeedView {
     this.heights = new Map();
     this.hydratedCount = 0;
     this.columnWidth = 0;
-    this.observedNodes = new Set();
   }
 
   heightKey(cluster) {
@@ -117,30 +109,6 @@ class FeedView {
     refreshReadObserver();
   }
 
-  observe(article) {
-    if (this.observedNodes.has(article)) return;
-    this.observedNodes.add(article);
-    this.observer?.observe(article);
-  }
-
-  ensureObserver() {
-    if (this.observer || typeof IntersectionObserver === 'undefined') return;
-    this.observer = new IntersectionObserver(entries => {
-      let resized = false;
-      let changed = false;
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          const result = this.hydrate(entry.target);
-          resized = result || resized;
-          changed = result || changed;
-        } else {
-          changed = this.unload(entry.target) || changed;
-        }
-      }
-      if (changed) this.finishChanges(resized);
-    }, { rootMargin: HYDRATE_ROOT_MARGIN });
-  }
-
   nodeFor(cluster) {
     let node = this.nodes.get(cluster.id);
     if (node) {
@@ -150,12 +118,6 @@ class FeedView {
     }
 
     node = renderArticleShell(cluster);
-    node.addEventListener('click', event => {
-      if (!node.classList.contains('article-lazy')) return;
-      event.stopPropagation();
-      const resized = this.hydrate(node);
-      this.finishChanges(resized);
-    });
     this.nodes.set(cluster.id, node);
     return node;
   }
@@ -183,33 +145,35 @@ class FeedView {
     this.visibleIds = new Set(matching.map(cluster => cluster.id));
     for (const [id, node] of this.nodes) {
       if (!this.clusterById.has(id)) {
-        this.observer?.unobserve?.(node);
-        this.observedNodes.delete(node);
         node.remove();
         this.nodes.delete(id);
       }
     }
 
-    this.ensureObserver();
-    const nodeHeight = node => node.classList.contains('hidden')
-      ? 0
-      : parseFloat(node.style.height) || 240;
-    const orderedNodes = context.clusters.map(cluster => {
-      const node = this.nodeFor(cluster);
-      node.style.height = `${this.knownHeight(cluster) ?? this.estimatedHeight(cluster)}px`;
-      node.classList.toggle('hidden', !this.visibleIds.has(cluster.id));
-      this.observe(node);
-      return node;
-    });
+    this.bindDriver();
+    // Progressive materialization: the column assignment is pure math over
+    // height estimates and runs synchronously, but creating thousands of
+    // shell nodes in one go blocks first paint for new readers. Skeleton
+    // containers go up immediately, then article shells materialize in
+    // feed order — one chunk synchronously for the first screens, the rest
+    // across animation frames.
+    const heightOf = cluster => this.knownHeight(cluster) ?? this.estimatedHeight(cluster);
+    const heightHint = cluster => this.visibleIds.has(cluster.id) ? heightOf(cluster) : 0;
 
-    // Grouped mode: clusters consolidate into collapsible rollup containers
-    // (dedup view), each internally columned like the main feed. Ungrouped
-    // clusters flow in the normal column band after the containers.
+    const materialize = cluster => {
+      const node = this.nodeFor(cluster);
+      node.style.height = `${heightOf(cluster)}px`;
+      node.classList.toggle('hidden', !this.visibleIds.has(cluster.id));
+      return node;
+    };
+
+    // Worklist: [cluster, targetColumn] pairs in feed order.
+    const worklist = [];
     const grouping = context.grouping || null;
     sheet.classList.toggle('grouped-feed', !!grouping);
+    sheet.replaceChildren();
+
     if (grouping) {
-      const nodeByCluster = new Map(context.clusters.map((cluster, i) => [cluster, orderedNodes[i]]));
-      const sections = [];
       for (const group of grouping.groups) {
         const details = document.createElement('details');
         details.className = 'story-group';
@@ -218,6 +182,7 @@ class FeedView {
         details.addEventListener('toggle', () => {
           if (details.open) this.collapsedGroups.delete(group.id);
           else this.collapsedGroups.add(group.id);
+          this.scheduleWindowUpdate();
         });
 
         const summary = document.createElement('summary');
@@ -238,28 +203,64 @@ class FeedView {
 
         const body = document.createElement('div');
         body.className = 'story-group-body';
-        distributeIntoColumns(
-          body,
-          group.clusters.map(cluster => nodeByCluster.get(cluster)),
-          nodeHeight,
-        );
+        const columnEls = createColumnShells();
+        body.replaceChildren(...columnEls);
         details.appendChild(body);
-        sections.push(details);
+        sheet.appendChild(details);
+
+        const assignment = assignColumns(group.clusters, heightHint);
+        assignment.forEach((columnClusters, columnIndex) => {
+          for (const cluster of columnClusters) worklist.push([cluster, columnEls[columnIndex]]);
+        });
       }
 
-      sheet.replaceChildren(...sections);
-      const ungroupedNodes = grouping.ungrouped.map(cluster => nodeByCluster.get(cluster)).filter(Boolean);
-      if (ungroupedNodes.length) {
+      if (grouping.ungrouped.length) {
         const band = document.createElement('div');
         band.className = 'feed-ungrouped';
+        const columnEls = createColumnShells();
+        band.replaceChildren(...columnEls);
         sheet.appendChild(band);
-        distributeIntoColumns(band, ungroupedNodes, nodeHeight);
+        const assignment = assignColumns(grouping.ungrouped, heightHint);
+        assignment.forEach((columnClusters, columnIndex) => {
+          for (const cluster of columnClusters) worklist.push([cluster, columnEls[columnIndex]]);
+        });
       }
       this.syncGroupVisibility();
     } else {
-      layoutColumns(sheet, orderedNodes, nodeHeight);
+      const columnEls = createColumnShells();
+      sheet.replaceChildren(...columnEls);
+      const assignment = assignColumns(context.clusters, heightHint);
+      assignment.forEach((columnClusters, columnIndex) => {
+        for (const cluster of columnClusters) worklist.push([cluster, columnEls[columnIndex]]);
+      });
     }
+
     this.hydratedCount = 0;
+    const token = ++this.renderToken;
+    const FIRST_CHUNK = 120;
+    const CHUNK = 250;
+    let cursor = 0;
+    const materializeChunk = (limit) => {
+      const end = Math.min(cursor + limit, worklist.length);
+      for (; cursor < end; cursor++) {
+        const [cluster, columnEl] = worklist[cursor];
+        columnEl.appendChild(materialize(cluster));
+      }
+      refreshGlimpseObserver();
+      refreshReadObserver();
+      this.scheduleWindowUpdate();
+    };
+
+    materializeChunk(FIRST_CHUNK);
+    if (cursor < worklist.length) {
+      const step = () => {
+        if (token !== this.renderToken) return; // a newer render superseded this one
+        materializeChunk(CHUNK);
+        if (cursor < worklist.length) requestAnimationFrame(step);
+        else this.scheduleWindowUpdate();
+      };
+      requestAnimationFrame(step);
+    }
 
     refreshGlimpseObserver();
     refreshReadObserver();
@@ -289,6 +290,7 @@ class FeedView {
       refreshGlimpseObserver();
       refreshReadObserver();
     }
+    this.scheduleWindowUpdate();
     updateMarkReadButton();
     return true;
   }
@@ -301,6 +303,73 @@ class FeedView {
       const count = details.querySelector('.story-group-count');
       if (count) count.textContent = String(visible.length);
     }
+  }
+
+  // The one and only hydration driver — textbook windowed virtualization.
+  // No IntersectionObserver, no event delivery to trust: every scroll/resize
+  // frame recomputes the render window from geometry alone. Heights follow
+  // the spec: measured real heights for anything already displayed (shells
+  // re-pin at their real height on unload), estimates only for content never
+  // shown. Enter/leave margins differ (overscan hysteresis) so nothing can
+  // oscillate at the window edge, and all geometry is read in one pass before
+  // any DOM write — reads never interleave with writes in a scroll handler.
+  updateWindow() {
+    if (!this.context) return;
+    const enterMargin = 1200;
+    const leaveMargin = 2400;
+    const viewportH = window.innerHeight;
+
+    // Phase 1: read everything.
+    const entering = [];
+    const leaving = [];
+    for (const node of this.nodes.values()) {
+      if (!node.isConnected || node.classList.contains('hidden')) continue;
+      const rect = node.getBoundingClientRect();
+      if (rect.height === 0 && rect.width === 0) continue; // collapsed groups etc.
+      const isShell = node.classList.contains('article-lazy');
+      if (isShell) {
+        if (rect.bottom >= -enterMargin && rect.top <= viewportH + enterMargin) entering.push(node);
+      } else if (rect.bottom < -leaveMargin || rect.top > viewportH + leaveMargin) {
+        leaving.push(node);
+      }
+    }
+
+    // Phase 2: write everything.
+    let changed = false;
+    let resized = false;
+    for (const node of entering) {
+      try {
+        const result = this.hydrate(node);
+        changed = result || changed;
+        resized = result || resized;
+      } catch (err) {
+        console.warn('hydration failed for', node?.dataset?.clusterId, err);
+      }
+    }
+    for (const node of leaving) {
+      try {
+        changed = this.unload(node) || changed;
+      } catch (err) {
+        console.warn('unload failed for', node?.dataset?.clusterId, err);
+      }
+    }
+    if (changed) this.finishChanges(resized);
+  }
+
+  scheduleWindowUpdate() {
+    if (this.windowFramePending) return;
+    this.windowFramePending = true;
+    requestAnimationFrame(() => {
+      this.windowFramePending = false;
+      this.updateWindow();
+    });
+  }
+
+  bindDriver() {
+    if (this.driverBound || typeof window === 'undefined') return;
+    this.driverBound = true;
+    window.addEventListener('scroll', () => this.scheduleWindowUpdate(), { passive: true });
+    window.addEventListener('resize', () => this.scheduleWindowUpdate());
   }
 
   stats() {

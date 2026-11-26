@@ -34,6 +34,7 @@ const args = process.argv.slice(2);
 const NO_FETCH = args.includes('--no-fetch');
 const forceIdx = args.indexOf('--force');
 const FORCE = forceIdx >= 0 ? new Set(args[forceIdx + 1].split(',').map(s => s.trim()).filter(Boolean)) : new Set();
+const RENORMALIZE = args.includes('--renormalize'); // resample every cached tile through the current normalizer, no network
 
 mkdirSync(TILES_DIR, { recursive: true });
 mkdirSync(CONCEPTS_DIR, { recursive: true });
@@ -195,12 +196,38 @@ async function analyzeTile(pngBuffer) {
   return { coverage: visible / total, mean, std: Math.sqrt(variance) };
 }
 
-async function normalizeTile(pngBuffer) {
-  const base = await sharp(pngBuffer)
-    .resize(TILE - 2, TILE - 2, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
-    .extend({ top: 1, bottom: 1, left: 1, right: 1, background: { r: 0, g: 0, b: 0, alpha: 0 } })
+// Every cell in the sheet is exactly TILE x TILE with the glyph normalised
+// inside a consistent inner box: transparent margins are trimmed first so a
+// wide-but-short logo fills the same visual footprint as a square one, then
+// the glyph is resampled into a square canvas — never cropped. Downscales use
+// lanczos3 (clean area-averaging, the same approach favicon generators like
+// favicon.io use); tiny sources upscale with nearest so pixel-art favicons
+// keep hard edges instead of turning to mush.
+const INNER = TILE - 4;
+
+async function resampleSquare(pngBuffer, size) {
+  let trimmed = pngBuffer;
+  try {
+    trimmed = await sharp(pngBuffer).trim({ threshold: 16 }).png().toBuffer();
+  } catch { /* fully transparent or nothing to trim — keep original */ }
+  const meta = await sharp(trimmed).metadata();
+  const largest = Math.max(meta.width || 0, meta.height || 0);
+  const kernel = largest <= size ? 'nearest' : 'lanczos3';
+  return sharp(trimmed)
+    .resize(size, size, { fit: 'contain', kernel, background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .extend({
+      top: Math.floor((TILE - size) / 2),
+      bottom: Math.ceil((TILE - size) / 2),
+      left: Math.floor((TILE - size) / 2),
+      right: Math.ceil((TILE - size) / 2),
+      background: { r: 0, g: 0, b: 0, alpha: 0 },
+    })
     .png()
     .toBuffer();
+}
+
+async function normalizeTile(pngBuffer) {
+  const base = await resampleSquare(pngBuffer, INNER);
   const stats = await analyzeTile(base);
   if (stats.coverage < 0.1) return { png: null, stats, reason: 'empty' };
   if (stats.mean > 185 && stats.std < 40) {
@@ -234,9 +261,29 @@ async function tileForHost(host) {
   const tilePath = join(TILES_DIR, `${host}.png`);
   if (existsSync(tilePath) && !FORCE.has(host)) {
     const existing = readFileSync(tilePath);
+    const meta = await sharp(existing).metadata();
     const stats = await analyzeTile(existing);
-    if (stats.coverage >= 0.1) return { key, png: existing, source: 'cache' };
-    registryNotes.push(`${host}: existing tile empty — refetching`);
+    if (stats.coverage < 0.1) {
+      registryNotes.push(`${host}: existing tile empty — refetching`);
+    } else if (meta.width !== TILE || meta.height !== TILE) {
+      // legacy tile written before uniform-cell normalization: it is still
+      // valid source material, so resample it rather than hitting the network
+      const renormalized = await normalizeTile(existing);
+      if (renormalized.png) {
+        writeFileSync(tilePath, renormalized.png);
+        return { key, png: renormalized.png, source: `renormalized (${renormalized.reason})` };
+      }
+      registryNotes.push(`${host}: renormalize produced empty tile — refetching`);
+    } else if (RENORMALIZE) {
+      const renormalized = await normalizeTile(existing);
+      if (renormalized.png) {
+        writeFileSync(tilePath, renormalized.png);
+        return { key, png: renormalized.png, source: `renormalized (${renormalized.reason})` };
+      }
+      return { key, png: existing, source: 'cache' };
+    } else {
+      return { key, png: existing, source: 'cache' };
+    }
   }
   if (NO_FETCH) return { key, png: null, source: 'missing' };
   const fetched = await fetchFaviconPng(host);

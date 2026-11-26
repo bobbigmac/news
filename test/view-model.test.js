@@ -218,3 +218,25 @@ describe('buildViewModel', () => {
     expect(mastheadSport.categoryRowEnabled).toBe(false);
   });
 });
+
+describe('platform tenant attribution', () => {
+  it('attributes subdomain tenants to the publication, never the platform', () => {
+    expect(prettifySourceKey('yourlocalepidemiologist.substack.com')).not.toMatch(/substack/i);
+    expect(prettifySourceKey('laurenleek.substack.com')).toBe('Laurenleek');
+    expect(prettifySourceKey('systemdrift.neocities.org')).toBe('Systemdrift');
+  });
+
+  it('keeps genuine publisher subdomains on the publisher brand', () => {
+    expect(prettifySourceKey('news.xbox.com')).toBe('Xbox');
+    expect(prettifySourceKey('sports.yahoo.com')).toBe('Yahoo');
+    expect(prettifySourceKey('bbc.co.uk')).toBe('BBC');
+  });
+
+  it('keys path-tenant platforms by author, not platform', () => {
+    expect(sourceKeyFromUrl('https://dev.to/alice/some-post-abc')).toBe('dev.to/alice');
+    expect(sourceKeyFromUrl('https://dev.to/bob/other-post')).toBe('dev.to/bob');
+    expect(sourceKeyFromUrl('https://dev.to/alice/some-post-abc')).not.toBe(sourceKeyFromUrl('https://dev.to/bob/x'));
+    expect(sourceKeyFromUrl('https://medium.com/@writer/story-1')).toBe('medium.com/writer');
+    expect(sourceKeyFromUrl('https://www.bbc.co.uk/news/1')).toBe('bbc.co.uk');
+  });
+});

@@ -1,4 +1,4 @@
-import { getSourceName, prettifySourceKey, sourceKeyFromUrl } from './sources.js';
+import { getSourceName, platformOfHost, prettifySourceKey, sourceKeyFromUrl } from './sources.js';
 
 const SOURCE_LABELS = {
   'bbc.co.uk': 'BBC',
@@ -64,7 +64,10 @@ const SOURCE_LABELS = {
   'inquirer.com': 'Inquirer',
   'lemonde.fr': 'Le Monde',
   'nature.com': 'Nature',
-  'dev.to': 'DEV',
+  'dev.to': 'DEV Community',
+  'yourlocalepidemiologist.substack.com': 'Your Local Epidemiologist',
+  'laurenleek.substack.com': 'Lauren Leek',
+  'en.thebell.io': 'The Bell',
   'theregister.com': 'The Register',
   'upi.com': 'UPI',
   'winnipegfreepress.com': 'Winnipeg Free Press',
@@ -77,9 +80,13 @@ export function collectSources(digest) {
       const key = sourceKeyFromUrl(story.url);
       if (!key) continue;
       if (!byKey.has(key)) {
+        const isTenant = key.includes('/') || platformOfHost(key) !== null;
+        const authorLabel = isTenant && typeof story.source === 'string' && story.source.trim()
+          ? story.source.trim()
+          : null;
         byKey.set(key, {
           key,
-          label: SOURCE_LABELS[key] || getSourceName(story.url) || prettifySourceKey(key),
+          label: SOURCE_LABELS[key] || authorLabel || getSourceName(story.url) || prettifySourceKey(key),
           count: 0,
           newest: null,
           oldest: null,

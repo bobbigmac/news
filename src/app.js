@@ -1,16 +1,15 @@
 import { getColumnCount } from './layout.js';
-import { buildViewModel, filterByMode } from './view-model.js';
+import { buildViewModel } from './view-model.js';
 import {
   applySettings,
   collectSourcesFromDigest,
-  saveSettings,
   state,
   ui,
 } from './state.js';
 import { renderCategoryFilterBar, renderSourceBar } from './filters.js';
 import { clearFeed, renderFeed, syncFeedToSearch } from './feed.js';
 import { formatDate } from './article.js';
-import { getAvailableCategories, getAvailableModes, sortClusters } from './ordering.js';
+import { sortClusters } from './ordering.js';
 import { groupClustersForFeed } from './story-groups.js';
 import {
   initSearch,
@@ -123,74 +122,51 @@ async function init() {
   const markAllBtn = document.getElementById('mark-all-read');
   if (markAllBtn) markAllBtn.addEventListener('click', markDisplayedClustersRead);
 
-  // Mode toggle (in masthead)
-  const modeBtn = document.getElementById('mode-toggle');
-  const catBtn = document.getElementById('category-toggle');
-
-  function syncCategoryToggle() {
-    if (!catBtn || !state.digest) return;
-    const modeFiltered = filterByMode(sortClusters(state.digest.clusters || [], state.settings.sort), state.settings.mode);
-    const cats = getAvailableCategories(modeFiltered);
-    const all = [{ value: 'all', label: 'All' }, ...cats.map(c => ({ value: c, label: c }))];
-    // If current filter is no longer available, reset to 'all'
-    if (!all.find(o => o.value === state.settings.categoryFilter)) {
-      state.settings.categoryFilter = 'all';
-      saveSettings();
-    }
-    const current = all.find(o => o.value === state.settings.categoryFilter) || all[0];
-    catBtn.textContent = current.label;
-  }
-
-  if (modeBtn) {
-    modeBtn.addEventListener('click', () => {
-      if (!state.digest) return;
-      const modes = getAvailableModes(state.digest.clusters || []);
-      const idx = modes.findIndex(m => m.value === state.settings.mode);
-      const next = modes[(idx + 1) % modes.length];
-      state.settings.mode = next.value;
-      // Reset category filter when mode changes
-      state.settings.categoryFilter = 'all';
-      saveSettings();
-      modeBtn.textContent = next.label;
-      syncCategoryToggle();
-      ui.refresh();
-    });
-  }
-
-  if (catBtn) {
-    catBtn.addEventListener('click', () => {
-      if (!state.digest) return;
-      const modeFiltered = filterByMode(sortClusters(state.digest.clusters || [], state.settings.sort), state.settings.mode);
-      const cats = getAvailableCategories(modeFiltered);
-      const all = [{ value: 'all', label: 'All' }, ...cats.map(c => ({ value: c, label: c }))];
-      const idx = all.findIndex(o => o.value === state.settings.categoryFilter);
-      const next = all[(idx + 1) % all.length];
-      state.settings.categoryFilter = next.value;
-      saveSettings();
-      catBtn.textContent = next.label;
-      ui.refresh();
-    });
-  }
-
-  // Search toggle
-  const searchToggle = document.getElementById('search-toggle');
-  const searchPanel = document.getElementById('search-panel');
-  const searchInput = document.getElementById('filter');
-  if (searchToggle && searchPanel) {
-    searchToggle.addEventListener('click', () => {
-      searchPanel.classList.toggle('hidden');
-      if (!searchPanel.classList.contains('hidden')) {
-        searchInput.focus();
-        renderRecentSearches();
+  // Back to top: visible only past two viewport heights, and only when the
+  // viewport is wide enough for it to sit in the gutter just right of the
+  // broadsheet column — never overlapping content a phone reader might copy.
+  const backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    const sheet = document.getElementById('broadsheet');
+    const syncBackToTop = () => {
+      if (window.scrollY <= window.innerHeight * 2) {
+        backToTop.hidden = true;
+        return;
       }
+      const rect = sheet?.getBoundingClientRect();
+      if (!rect) {
+        backToTop.hidden = true;
+        return;
+      }
+      const gutter = window.innerWidth - rect.right;
+      const needed = backToTop.offsetWidth + 16;
+      if (gutter < needed) {
+        backToTop.hidden = true;
+        return;
+      }
+      backToTop.style.left = `${rect.right + 8}px`;
+      backToTop.hidden = false;
+    };
+    let scrollTick = false;
+    window.addEventListener('scroll', () => {
+      if (scrollTick) return;
+      scrollTick = true;
+      requestAnimationFrame(() => {
+        scrollTick = false;
+        syncBackToTop();
+      });
+    }, { passive: true });
+    window.addEventListener('resize', syncBackToTop);
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+    syncBackToTop();
   }
 
   // Escape closes sidebar / changelog / search
   function closeAllOverlays() {
     document.getElementById('settings-panel')?.classList.add('hidden');
     document.getElementById('changelog-page')?.classList.add('hidden');
-    document.getElementById('search-panel')?.classList.add('hidden');
     document.getElementById('category-panel')?.classList.add('hidden');
     document.getElementById('source-panel')?.classList.add('hidden');
   }
@@ -200,17 +176,13 @@ async function init() {
   // the panel. The settings toggle is left alone so it keeps its toggle behaviour.
   document.addEventListener('click', (e) => {
     const panelSelector = '#settings-panel, #category-panel, #source-panel';
-    const searchPanelEl = document.getElementById('search-panel');
-    const searchOpen = searchPanelEl && !searchPanelEl.classList.contains('hidden');
     const openPanels = [...document.querySelectorAll(panelSelector)]
       .filter(panel => !panel.classList.contains('hidden'));
-    if (!openPanels.length && !searchOpen) return;
+    if (!openPanels.length) return;
 
     const insidePanel = !!e.target.closest(panelSelector);
-    const insideSearch = !!e.target.closest('#search-panel, #search-toggle');
-    if (insidePanel || insideSearch) return;
+    if (insidePanel) return;
 
-    if (searchOpen) searchPanelEl.classList.add('hidden');
     if (e.target.closest('#settings-toggle')) {
       document.getElementById('category-panel')?.classList.add('hidden');
       document.getElementById('source-panel')?.classList.add('hidden');
@@ -227,10 +199,8 @@ async function init() {
     if (e.key === 'Escape') closeAllOverlays();
     if ((e.ctrlKey || e.metaKey) && e.key === 'f' || e.key === 'F3') {
       e.preventDefault();
-      const sp = document.getElementById('search-panel');
       const si = document.getElementById('filter');
-      if (sp && si) {
-        sp.classList.remove('hidden');
+      if (si) {
         si.focus();
         si.select();
         renderRecentSearches();
@@ -259,9 +229,19 @@ async function init() {
   });
 
   try {
+    const bootT0 = performance.now();
     const res = await fetch('digest.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const fetchedAt = performance.now();
+    const digestBytes = parseInt(res.headers.get('content-length') || '0', 10) || null;
     state.digest = await res.json();
+    const parsedAt = performance.now();
+    state.clientPerf.boot = {
+      fetchMs: Math.round(fetchedAt - bootT0),
+      parseMs: Math.round(parsedAt - fetchedAt),
+      digestBytes,
+      recentClusters: (state.digest.clusters || []).length,
+    };
 
     // Backfill tags for signals saved before metadata enrichment
     backfillInterestSignals(state.digest.clusters || []);
@@ -269,23 +249,60 @@ async function init() {
     // Cache signal weights for this page session
     refreshSignalProfile();
 
-    // Sync mode toggle label
-    if (modeBtn) {
-      const modes = getAvailableModes(state.digest.clusters || []);
-      const current = modes.find(m => m.value === state.settings.mode) || modes[0];
-      state.settings.mode = current.value;
-      modeBtn.textContent = current.label;
-    }
-
-    syncCategoryToggle();
+    const renderT0 = performance.now();
     renderDigest(state.digest, state.settings);
+    state.clientPerf.boot.renderMs = Math.round(performance.now() - renderT0);
+    state.clientPerf.boot.totalMs = Math.round(performance.now() - bootT0);
     renderCategoryPrefs();
     renderSourcePrefs();
     initSearch();
+    scheduleArchiveLoad();
   } catch (err) {
     console.error('Failed to load news:', err);
     document.getElementById('broadsheet').innerHTML =
       `<div class="loading">Failed to load news: ${err.message}</div>`;
+  }
+}
+
+// The recent digest covers the 7-day window. Readers with a wider window get
+// the archive merged in progressively after first paint — never on the boot
+// path, and never at all for readers on the default window.
+function scheduleArchiveLoad() {
+  const ageDays = parseInt(state.settings.ageLimit, 10) || 7;
+  if (ageDays <= 7) {
+    state.clientPerf.archive = { skipped: true };
+    return;
+  }
+  const load = async () => {
+    const t0 = performance.now();
+    try {
+      const res = await fetch('digest-archive.json');
+      if (!res.ok) {
+        state.clientPerf.archive = { skipped: true, reason: `HTTP ${res.status}` };
+        return;
+      }
+      const fetchedAt = performance.now();
+      const archive = await res.json();
+      const parsedAt = performance.now();
+      const before = (state.digest.clusters || []).length;
+      state.digest.clusters = (state.digest.clusters || []).concat(archive.clusters || []);
+      const renderT0 = performance.now();
+      ui.refresh();
+      state.clientPerf.archive = {
+        fetchMs: Math.round(fetchedAt - t0),
+        parseMs: Math.round(parsedAt - fetchedAt),
+        mergeRenderMs: Math.round(performance.now() - renderT0),
+        archiveClusters: (archive.clusters || []).length,
+        totalClusters: before + (archive.clusters || []).length,
+      };
+    } catch (err) {
+      state.clientPerf.archive = { skipped: true, reason: err.message };
+    }
+  };
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => load(), { timeout: 2000 });
+  } else {
+    setTimeout(load, 50);
   }
 }
 

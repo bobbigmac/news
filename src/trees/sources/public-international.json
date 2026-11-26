@@ -1,100 +1,83 @@
 {
-  "id": "public-international",
-  "label": "Public & International",
-  "icon": "bbc.co.uk",
-  "children": [
-    {
-      "id": "bbc",
-      "label": "BBC",
-      "icon": "bbc.co.uk",
-      "sources": [
-        "bbc.co.uk",
-        "bbc.com",
-        "bbc.in",
-        "bbci.co.uk"
-      ]
-    },
-    {
-      "id": "uk-public-media",
-      "label": "UK Public Media",
-      "icon": "itv.com",
-      "sources": [
-        "itv.com",
-        "channel4.com",
-        "s4c.cymru",
-        "stv.tv"
-      ]
-    },
-    {
-      "id": "north-america-public-media",
-      "label": "North America Public",
-      "icon": "pbs.org",
-      "sources": [
-        "pbs.org",
-        "npr.org",
-        "opb.org",
-        "wnyc.org",
-        "wbez.org",
-        "wfyi.org",
-        "wgbh.org",
-        "kqed.org",
-        "cbc.ca",
-        "radio-canada.ca"
-      ]
-    },
-    {
-      "id": "australasia-public-media",
-      "label": "Australia & NZ Public",
-      "icon": "abc.net.au",
-      "sources": [
-        "abc.net.au",
-        "sbs.com.au",
-        "rnz.co.nz",
-        "tvnz.co.nz",
-        "newsroom.co.nz"
-      ]
-    },
-    {
-      "id": "european-public-media",
-      "label": "European Public",
-      "icon": "dw.com",
-      "sources": [
-        "dw.com",
-        "france24.com",
-        "rfi.fr",
-        "rte.ie",
-        "yle.fi",
-        "nrk.no",
-        "sverigesradio.se",
-        "svt.se",
-        "dr.dk",
-        "rtve.es",
-        "rai.it",
-        "orf.at",
-        "vrt.be",
-        "nos.nl",
-        "err.ee",
-        "lrt.lt",
-        "lsm.lv",
-        "swissinfo.ch"
-      ]
-    },
-    {
-      "id": "international-public-media",
-      "label": "International Public",
-      "icon": "aljazeera.com",
-      "sources": [
-        "aljazeera.com",
-        "trtworld.com",
-        "aa.com.tr",
-        "news.cgtn.com",
-        "cgtn.com",
-        "uatv.ua",
-        "eng.belta.by",
-        "tass.com",
-        "rt-english.com",
-        "prensa-latina.cu"
-      ]
-    }
-  ]
+ "id": "public-international",
+ "label": "Public & International",
+ "icon": "bbc.co.uk",
+ "children": [
+  {
+   "id": "bbc",
+   "label": "BBC",
+   "icon": "bbc.co.uk",
+   "sources": [
+    "bbc.co.uk",
+    "bbc.com",
+    "bbc.in",
+    "bbci.co.uk"
+   ]
+  },
+  {
+   "id": "uk-public-media",
+   "label": "UK Public Media",
+   "icon": "itv.com",
+   "sources": [
+    "itv.com",
+    "channel4.com",
+    "s4c.cymru",
+    "stv.tv"
+   ]
+  },
+  {
+   "id": "north-america-public-media",
+   "label": "North America Public",
+   "icon": "pbs.org",
+   "sources": [
+    "pbs.org",
+    "npr.org",
+    "opb.org",
+    "wnyc.org",
+    "wbez.org",
+    "wfyi.org",
+    "wgbh.org",
+    "kqed.org",
+    "cbc.ca",
+    "radio-canada.ca"
+   ]
+  },
+  {
+   "id": "australasia-public-media",
+   "label": "Australia & NZ Public",
+   "icon": "abc.net.au",
+   "sources": [
+    "abc.net.au",
+    "sbs.com.au",
+    "rnz.co.nz",
+    "tvnz.co.nz",
+    "newsroom.co.nz"
+   ]
+  },
+  {
+   "id": "european-public-media",
+   "label": "European Public",
+   "icon": "dw.com",
+   "sources": [
+    "dw.com",
+    "france24.com",
+    "rfi.fr",
+    "rte.ie",
+    "yle.fi",
+    "nrk.no",
+    "sverigesradio.se",
+    "svt.se",
+    "dr.dk",
+    "rtve.es",
+    "rai.it",
+    "orf.at",
+    "vrt.be",
+    "nos.nl",
+    "err.ee",
+    "lrt.lt",
+    "lsm.lv",
+    "swissinfo.ch"
+   ]
+  }
+ ]
 }
