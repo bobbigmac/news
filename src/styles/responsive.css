@@ -1,0 +1,10 @@
+/* Responsive — Masonry handles column count via JS */
+@media (max-width: 768px) {
+  .broadsheet { max-width: 600px; }
+  .masthead { flex-direction: column; gap: 0.5rem; }
+  .masthead-title { font-size: 2rem; }
+  .masthead-left { align-items: center; min-width: 0; }
+  .masthead-right { min-width: 0; }
+  .settings-panel { width: 100%; }
+  .category-panel { width: 100%; }
+}
