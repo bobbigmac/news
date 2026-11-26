@@ -20,6 +20,7 @@ import { join } from 'path';
 import { SYSTEM_PROMPT, buildSummaryPrompt, buildBatchPrompt, buildClickbaitPrompt } from './prompts.js';
 import { TOPIC_SYSTEM_PROMPT, buildTopicPrompt } from './topic-prompt.js';
 import { extractJson } from './extract-json.js';
+import { deriveShortSummary } from './short-summary.js';
 import { embedStories, cosineSim, centroid } from './embeddings.js';
 import { dedupStories, clusterEvents, matchToExisting } from './cluster.js';
 import { annotateClusters, buildEntityIndex } from './entities.js';
@@ -571,8 +572,9 @@ function fallbackClusterCopy(stories, cleanHeadline) {
   const rawHeadline = lead.originalTitle || lead.title || 'Untitled';
   const headline = (cleanHeadline || rawHeadline).slice(0, 80);
   const summary = (lead.text || '').slice(0, 200).replace(/\s+\S*$/, '') + '...';
+  const shortSummary = deriveShortSummary(summary, headline);
   const triggerWords = extractKeywords(headline + ' ' + summary).slice(0, 5);
-  return { headline, summary, triggerWords, impact: 'medium', category: normaliseCategory(lead.category) };
+  return { headline, summary, shortSummary, triggerWords, impact: 'medium', category: normaliseCategory(lead.category) };
 }
 
 // Sort a cluster's stories chronologically (oldest first) so the stored
@@ -782,8 +784,12 @@ async function main() {
   // Helper: apply parsed LLM response to a cluster
   function applySummaryToCluster(cluster, parsed, existingCluster) {
     if (parsed && parsed.headline) {
+      const parsedShortSummary = String(parsed.short_summary || parsed.shortSummary || '').replace(/\s+/g, ' ').trim();
+      const summaryChanged = parsed.summary && parsed.summary !== cluster.summary;
       cluster.headline = parsed.headline;
       cluster.summary = parsed.summary || cluster.summary;
+      if (parsedShortSummary) cluster.shortSummary = parsedShortSummary;
+      else if (summaryChanged) delete cluster.shortSummary;
       if (parsed.category) cluster.category = normaliseCategory(parsed.category);
       if (parsed.trigger_words && Array.isArray(parsed.trigger_words)) cluster.triggerWords = parsed.trigger_words;
       if (parsed.region) cluster.region = parsed.region;
@@ -800,6 +806,7 @@ async function main() {
     const fb = fallbackClusterCopy(prepared, cleanHeadline);
     cluster.headline = fb.headline;
     cluster.summary = fb.summary;
+    cluster.shortSummary = fb.shortSummary;
     cluster.triggerWords = fb.triggerWords;
     cluster.impact = fb.impact;
   }

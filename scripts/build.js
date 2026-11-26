@@ -3,7 +3,9 @@ import { join } from 'path';
 import { annotateClusters, buildEntityIndex } from './entities.js';
 import { computeClusterTagsIfMissing } from './tags.js';
 import { enrichAllStories } from './story-enrich.js';
-import { recategoriseCluster } from './categories.js';
+import { canonicalCategory, recategoriseCluster } from './categories.js';
+import { collectSources } from './favicons.js';
+import { deriveShortSummary } from './short-summary.js';
 
 const CACHE_DIR = 'cache';
 const DIGEST_FILE = join(CACHE_DIR, 'digest.json');
@@ -33,17 +35,12 @@ for (const c of digest.clusters) {
   if (!c.created) c.created = c.updated || new Date().toISOString();
   if (!c.updated) c.updated = c.created;
   if (!c.region) c.region = null;
-  // Normalise category casing (old LLM clusters use title-case, new pipeline
-  // uses lowercase — pick one consistently for the frontend).
-  if (c.category) {
-    const cat = Array.isArray(c.category) ? c.category[0] : c.category;
-    c.category = cat.charAt(0).toUpperCase() + cat.slice(1).toLowerCase();
-  }
-  // Recategorise using keyword graph — more accurate than the LLM's
-  // single-shot categorisation. Catches gaming != technology, celebrity !=
-  // entertainment, energy != business, etc. Only overrides when the keyword
-  // graph is confident (score >= 5).
+  // Normalise category aliases/casing before and after keyword recategorisation
+  // so plural and multi-word variants cannot appear as separate frontend facets.
+  c.category = canonicalCategory(c.category);
   recategoriseCluster(c);
+  c.category = canonicalCategory(c.category);
+  if (!c.shortSummary) c.shortSummary = deriveShortSummary(c.summary, c.headline);
 }
 
 // Enrich all stories with bodyText, wordCount, storyType for external consumers.
@@ -151,6 +148,11 @@ const stats = {
   oldestStory: pubTimes.length ? new Date(Math.min(...pubTimes)).toISOString() : null,
 };
 
+// --- Source index ---
+// The frontend uses the checked-in favicon spritesheet directly; the digest
+// only needs the canonical host, label, count, and freshness metadata here.
+const sources = collectSources(digest);
+
 // --- Assemble the final public dataset ---
 const publicDigest = {
   date: digest.date,
@@ -160,6 +162,7 @@ const publicDigest = {
   topics,
   timeline,
   stats,
+  sources,
   pipelineStats: digest.pipelineStats,
 };
 

@@ -435,6 +435,26 @@ const CATEGORY_GRAPH = {
   },
 };
 
+const CANONICAL_CATEGORY_KEYS = new Map(
+  Object.keys(CATEGORY_GRAPH).map(category => [category.toLowerCase(), category])
+);
+const CATEGORY_ALIASES = new Map([
+  ['sports', 'sport'],
+]);
+
+export function canonicalCategory(category) {
+  const raw = Array.isArray(category) ? category[0] : category;
+  const cleaned = String(raw || 'Other').trim().replace(/\s+/g, ' ');
+  if (!cleaned) return 'Other';
+  const key = cleaned.toLowerCase();
+  const canonical = CANONICAL_CATEGORY_KEYS.get(CATEGORY_ALIASES.get(key) || key);
+  if (canonical) return canonical;
+  return cleaned
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+}
+
 // Classify a cluster into a category using the keyword graph.
 // Returns { category, score, matchedKeywords }
 export function classifyCategory(cluster) {
