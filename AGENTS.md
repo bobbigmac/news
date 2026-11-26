@@ -168,11 +168,15 @@ the free LLM failed constantly and the fallback fragmented everything.
 7. **LLM summary** (consolidated calls) — four tiers to minimise LLM calls:
    - **SKIP**: existing cluster with >= 3 stories getting only 1 new story — no
      re-summarisation, just add the story. The existing copy is still good.
-   - **SINGLETON**: new cluster with only 1 story — no cluster was learned, so no
-     LLM summarisation needed. Uses the source headline + description as fallback
-     copy. All singleton headlines are screened in ONE LLM call
-     (`buildClickbaitPrompt`) to flag clickbait/sensationalism and get clean
-     factual replacements where needed.
+   - **SINGLETON**: new cluster with only 1 story — no cluster copy is written
+     (uses the source headline + description as-is). All singleton headlines are
+     screened in ONE LLM call (`buildClickbaitPrompt`) which does TWO jobs:
+     flags clickbait/sensationalism for clean replacements, AND assigns an
+     editorial category to every singleton. The category assignment matters:
+     a singleton's ingest-time category is publisher/API metadata (arbitrary),
+     and heuristic keyword graphs cannot categorise — provenance tags leaking
+     into the graph once classified spiritual-healing and film-list articles
+     as Gaming because they arrived via the "dark souls" keyword search.
    - **BATCH**: small new clusters (2-2 stories) are grouped into batches of 5,
      one LLM call per batch (`buildBatchPrompt` in `scripts/prompts.js`).
    - **SOLO**: everything else (large new clusters, existing clusters with significant

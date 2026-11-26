@@ -245,11 +245,13 @@ async function main() {
       id: s.cluster.id,
       headline: s.prepared[0].originalTitle || s.prepared[0].title || 'Untitled',
       source: s.prepared[0].sourceName || 'Unknown',
+      description: (s.prepared[0].description || '').slice(0, 300),
     }));
 
     // Call LLM to screen headlines (batched in chunks of 50 to stay within context)
     const CLICKBAIT_BATCH = 50;
     const cleanHeadlines = new Map(); // cluster.id -> clean headline
+    const llmCategories = new Map();  // cluster.id -> editorial category
 
     for (let bi = 0; bi < headlines.length; bi += CLICKBAIT_BATCH) {
       const chunk = headlines.slice(bi, bi + CLICKBAIT_BATCH);
@@ -269,6 +271,12 @@ async function main() {
             }
           }
         }
+        const categories = parsed.categories || [];
+        if (Array.isArray(categories)) {
+          for (const r of categories) {
+            if (r.id && r.category) llmCategories.set(r.id, r.category);
+          }
+        }
       } catch (err) {
         console.error(`  Clickbait screening failed: ${err.message}. Using source headlines as-is.`);
         llmFailed++;
@@ -276,16 +284,21 @@ async function main() {
       if (bi + CLICKBAIT_BATCH < headlines.length) await new Promise(r => setTimeout(r, INTER_CALL_DELAY_MS));
     }
 
-    // Apply fallback copy to all singletons, using clean headline where available
+    // Apply fallback copy to all singletons, using clean headline where available.
+    // The screening call's editorial category replaces the ingest-time
+    // publisher/API metadata — it is the only comprehended judgement a
+    // singleton ever gets.
     for (const s of singletonTier) {
       const cleanHeadline = cleanHeadlines.get(s.cluster.id);
+      const editorialCategory = llmCategories.get(s.cluster.id);
+      if (editorialCategory) s.cluster.category = normaliseCategory(editorialCategory);
       applyFallbackToCluster(s.cluster, s.prepared, cleanHeadline);
       s.cluster.updated = new Date().toISOString();
       for (const story of s.prepared) summarisedIds.add(story.id);
     }
     saveJson(SUMMARISED_IDS_FILE, [...summarisedIds]);
     saveJson(DIGEST_FILE, digest);
-    console.log(`  Applied ${cleanHeadlines.size} clean headlines, ${singletonTier.length - cleanHeadlines.size} source headlines as-is`);
+    console.log(`  Applied ${cleanHeadlines.size} clean headlines, ${llmCategories.size} editorial categories, ${singletonTier.length - cleanHeadlines.size} source headlines as-is`);
   }
 
   // --- Tier 3: Batch small new clusters (2+ stories) ---

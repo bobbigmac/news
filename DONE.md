@@ -114,6 +114,7 @@
 ## Trust flags + state-media restructure (2025)
 
 - **Generated og-image (Nov 26)**: `src/og-image.jpg` is generated on demand by `scripts/build-og-image.js` (run manually, commit the output) — a dense edge-to-edge field of source favicons at native resolution (no upscaling; baked-in tile margins cropped out), volume-ordered with irregularly scattered 2×2 quad slots for sources that have real hi-res artwork, masthead type on localised dark strips. The build just copies the committed file like any other static asset.
+- **Category provenance repair (Nov 26)**: fixed the plugin-provenance bug end-to-end. Causes: plugin keyword searches matched loosely (API ANDs words but not as a phrase), and `tags.js` structural tags (plugin name, category label) counted as category evidence — spiritual/film/lifestyle stories matching "dark souls" self-certified as Gaming. Fixes: exact-phrase verification at plugin ingest (`fetch-news.js`), structural tags excluded from classification (`categories.js`), singletons now categorised editorially in the clickbait-screening LLM call, and 91 already-poisoned backlog clusters repaired by actually reading all 415 Gaming singletons (`scripts/repair-categories.js`, one-off).
 - **Nationalist & State Media family** added to the source tree — state-directed outlets
   (RT, TASS, CGTN, Global Times, TRT World, Anadolu, BelTA, Prensa Latina, UATV, Al Jazeera)
   no longer sit among genuine public-service broadcasters in "International Public".

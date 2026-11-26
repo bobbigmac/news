@@ -45,43 +45,63 @@ export function canonicalCategory(category) {
     .join(' ');
 }
 
-// Classify a cluster into a category using the keyword graph.
-// Returns { category, score, matchedKeywords }
-export function classifyCategory(cluster) {
-  // Build the text to match against. We include headline, summary, tags,
-  // trigger words, and story titles — but we EXCLUDE the LLM's own category
-  // label from tags, because the LLM's category is what we're trying to
-  // override. If we matched "technology" as a tag on a cluster the LLM
-  // labelled Technology, we'd just be reinforcing the LLM's choice.
+// Builds the text the graph matches against. We include headline, summary,
+// tags, trigger words, and story titles — but EXCLUDE structural provenance:
+// - the LLM's own category label (matching it would reinforce the choice
+//   we're trying to override)
+// - plugin names ('xbox', 'gaming') — attached because the story arrived
+//   through that plugin's keyword search; says nothing about what the story
+//   is ABOUT, and counting it means every false-positive API keyword match
+//   (a spiritual article containing the phrase "dark souls") self-certifies
+//   as Gaming
+// - ALL category names — tags.js prepends the category label into every
+//   cluster's tags, so any category keyword in tags is provenance too, and
+//   a stale/overridden label leaks as evidence for a DIFFERENT category
+// Shared by classification and evidence validation so both see exactly the
+// same content.
+function classificationText(cluster) {
   const llmCategory = (Array.isArray(cluster.category) ? cluster.category[0] : cluster.category || '').toLowerCase();
-  // Structural tags are provenance, not content: the plugin name ('xbox',
-  // 'gaming') is attached because the story arrived through that plugin's
-  // keyword search — it says nothing about what the story is ABOUT. Counting
-  // it as category evidence means every false-positive keyword match from the
-  // API (a spiritual article containing the phrase "dark souls") self-certifies
-  // as Gaming. Same exclusion topics already apply for linking.
   const pluginNames = new Set(
     (cluster.stories || []).map(s => (s.plugin || '').toLowerCase()).filter(Boolean)
   );
-  // Category names are structural too — tags.js prepends the category label
-  // into every cluster's tags, so ANY category keyword ('politics', 'gaming')
-  // sitting in tags is provenance, not content. The llmCategory exclusion only
-  // catches the current label; a stale or ingest-time label ('other' upgraded
-  // later, or an overridden category) leaks through as evidence for a
-  // DIFFERENT category. Exclude all of them.
   const categoryNames = new Set([...CANONICAL_CATEGORY_KEYS.keys(), 'sports']);
   const tags = (cluster.tags || []).filter(t => {
     const tag = t.toLowerCase();
     return tag !== llmCategory && !pluginNames.has(tag) && !categoryNames.has(tag);
   });
 
-  const text = [
+  return [
     cluster.headline || '',
     cluster.summary || '',
     ...tags,
     ...(cluster.triggerWords || []),
     ...(cluster.stories || []).slice(0, 3).map(s => s.title || s.originalTitle || ''),
   ].join(' ').toLowerCase();
+}
+
+function keywordPattern(keyword) {
+  return keyword.length <= 3
+    ? new RegExp(`\\b${keyword}\\b`, 'i')
+    : new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+}
+
+// Does a category have ANY graph evidence in this cluster's actual content?
+// Used to validate stored categories — a category backed only by structural
+// provenance is noise, not a classification.
+export function hasCategoryEvidence(cluster, category) {
+  const key = (Array.isArray(category) ? category[0] : category || '').toLowerCase();
+  const canonical = CANONICAL_CATEGORY_KEYS.get(CATEGORY_ALIASES.get(key) || key);
+  if (!canonical) return false;
+  const def = CATEGORY_GRAPH[canonical];
+  if (!def) return false;
+  const text = classificationText(cluster);
+  return Object.keys(def.keywords).some(keyword => keywordPattern(keyword).test(text));
+}
+
+// Classify a cluster into a category using the keyword graph.
+// Returns { category, score, matchedKeywords }
+export function classifyCategory(cluster) {
+  const text = classificationText(cluster);
 
   const scores = {};
   const matched = {};
@@ -91,10 +111,7 @@ export function classifyCategory(cluster) {
     const matches = [];
     for (const [keyword, weight] of Object.entries(def.keywords)) {
       // Use word boundary matching for short keywords, substring for longer
-      const pattern = keyword.length <= 3
-        ? new RegExp(`\\b${keyword}\\b`, 'i')
-        : new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
-      if (pattern.test(text)) {
+      if (keywordPattern(keyword).test(text)) {
         score += weight * def.weight;
         matches.push(keyword);
       }
@@ -122,7 +139,6 @@ export function classifyCategory(cluster) {
 // "sports" -> "Sport") even at a lower score.
 export function recategoriseCluster(cluster) {
   const result = classifyCategory(cluster);
-  if (!result.category) return false;
 
   const current = Array.isArray(cluster.category)
     ? cluster.category[0]
@@ -134,7 +150,7 @@ export function recategoriseCluster(cluster) {
   const pluralMap = { 'sports': 'sport', 'entertainment': 'celebrity' };
   const currentNormalised = pluralMap[currentLower] || currentLower;
 
-  if (result.category.toLowerCase() === currentNormalised) {
+  if (result.category && result.category.toLowerCase() === currentNormalised) {
     // Graph agrees with LLM — just normalise casing
     if (cluster.category !== result.category) {
       cluster.category = result.category;
@@ -144,7 +160,7 @@ export function recategoriseCluster(cluster) {
   }
 
   // Graph disagrees — only override if confident
-  if (result.score >= 5) {
+  if (result.category && result.score >= 5) {
     cluster.category = result.category;
     return true;
   }

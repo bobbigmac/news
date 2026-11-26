@@ -139,8 +139,21 @@ async function runSearchPlugins(runState) {
       const results = await fetchFromApi(endpoint, `plugin:${plugin.name}/${keyword}`);
       const seenIds = new Set();
       const pluginResults = [];
+      // Phrase verification: the API ANDs the words of a multi-word keyword
+      // but doesn't require them adjacent — "dark souls" can match an article
+      // with "dark" in one breath and "souls" in another (spiritual content,
+      // figurative usage). The keyword is a PHRASE — verify it appears as one
+      // before the story earns the plugin's provenance. Single-word keywords
+      // verify at a word boundary so "steam" doesn't match "steampunk" noise.
+      const phrase = keyword.toLowerCase();
+      const phrasePattern = phrase.includes(' ')
+        ? new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i')
+        : new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+      let rejected = 0;
       for (const item of results) {
         if (!item.id || seenIds.has(item.id)) continue;
+        const haystack = `${item.title || ''} ${item.description || ''}`;
+        if (!phrasePattern.test(haystack)) { rejected++; continue; }
         seenIds.add(item.id);
         item._plugin = plugin.name;
         item._pluginPriority = terms.findIndex(t =>
@@ -151,6 +164,7 @@ async function runSearchPlugins(runState) {
         pluginResults.push(item);
       }
       pluginResults.sort((a, b) => (a._pluginPriority ?? 99) - (b._pluginPriority ?? 99));
+      if (rejected) console.log(`Plugin ${plugin.name}: rejected ${rejected} results that didn't contain the exact phrase "${keyword}"`);
       allResults.push(...pluginResults);
       runState.callsToday++;
       pluginCalls++;

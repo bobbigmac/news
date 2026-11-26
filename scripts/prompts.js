@@ -153,23 +153,44 @@ export function buildBatchPrompt(clusters) {
 // quality problems and suggest clean factual replacements. Headlines that
 // aren't flagged just use their source headline as-is.
 //
-// `headlines` is an array of { id, headline, source }
+// `headlines` is an array of { id, headline, source, description }
+//
+// The same single call also categorises every headline: singletons never
+// receive editorial judgement anywhere else in the pipeline (no cluster copy
+// is written for them), and their ingest-time category is publisher/API
+// metadata — arbitrary at best. Heuristic keyword graphs cannot categorise
+// ("cabinet" matches film titles, "therapy" matches spiritual quackery), so
+// this is the one place a singleton gets read by something that comprehends.
+const SINGLETON_CATEGORIES = [
+  'Politics', 'Business', 'Personal Finance', 'Technology', 'Gaming', 'Science',
+  'Health', 'Sport', 'Celebrity', 'Entertainment', 'World', 'Local', 'Crime',
+  'Environment', 'Energy', 'Motoring', 'Defence', 'Education', 'Royal',
+  'Disaster', 'Odd News', 'Other',
+];
+
 export function buildClickbaitPrompt(headlines) {
   const lines = headlines.map((h, i) =>
-    `[${i + 1}] id: ${h.id}\n    headline: ${h.headline}\n    source: ${h.source}`
+    `[${i + 1}] id: ${h.id}\n    headline: ${h.headline}\n    source: ${h.source}${h.description ? `\n    description: ${h.description}` : ''}`
   ).join('\n\n');
 
-  return `You are a news editor reviewing ${headlines.length} headlines. Some may be clickbait, sensationalised, misleading, or use engagement-bait tactics (curiosity gaps, ALL CAPS, listicle numbering, trailing questions, exaggerated claims, emotional manipulation).
+  return `You are a news editor reviewing ${headlines.length} headlines. Two tasks per headline: categorise it, and flag it if clickbait.
 
-Only flag headlines that genuinely mislead or sensationalise. A punchy or engaging headline is not automatically clickbait. Opinion pieces and reviews are fine.
+TASK 1 — CATEGORISE every headline into exactly one of: ${SINGLETON_CATEGORIES.join(', ')}.
+
+Categorise by what the story is actually about, not by the publication or section it came from. A spiritual healing story is Health or Odd News, never Gaming — even if the search term that found it was a video game. A film-list article is Entertainment. Use Gaming only for video games, the games industry, and gaming hardware. When nothing fits, use Other.
+
+TASK 2 — FLAG only headlines that genuinely mislead or sensationalise (curiosity gaps, ALL CAPS, listicle numbering, trailing questions, exaggerated claims, emotional manipulation). A punchy or engaging headline is not automatically clickbait. Opinion pieces and reviews are fine.
 
 Headlines:
 
 ${lines}
 
-Respond ONLY with valid JSON listing ONLY the headlines you flag as clickbait. Omit clean headlines entirely — no need to list them. If none are clickbait, return an empty array.
+Respond ONLY with valid JSON in exactly this shape:
 
 {
+  "categories": [
+    { "id": "the cluster id", "category": "one of the categories listed" }
+  ],
   "flagged": [
     {
       "id": "the cluster id",
@@ -178,5 +199,5 @@ Respond ONLY with valid JSON listing ONLY the headlines you flag as clickbait. O
   ]
 }
 
-Only include entries for clickbait headlines. Include the "id" so we can match it back.`;
+The "categories" array must include EVERY headline exactly once. The "flagged" array includes ONLY clickbait headlines — omit clean ones entirely.`;
 }

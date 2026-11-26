@@ -99,7 +99,7 @@ export const CATEGORY_GRAPH = {
     weight: 1,
     keywords: {
       politics: 5, political: 4, election: 5, government: 3, parliament: 5,
-      minister: 4, 'prime minister': 5, cabinet: 5, 'member of parliament': 5,
+      minister: 4, 'prime minister': 5, cabinet: 3, 'member of parliament': 5,
       'secretary of state': 5, 'energy secretary': 4, policy: 3,
       legislation: 4, 'downing street': 5, whitehall: 5, westminster: 5,
       labour: 3, conservative: 3, tories: 3, 'lib dem': 3, snp: 3,
