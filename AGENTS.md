@@ -45,6 +45,9 @@ in a single article and returns 0 results. This is not a bug — it's how the AP
 - If this checkout fails silently, every run starts at 0 calls used and re-fetches everything,
   wasting quota and breaking the round-robin keyword cycling.
 - Do NOT suppress checkout errors with `2>/dev/null || true` without also logging the failure.
+- The cache save step intentionally runs after the Pages artifact upload but before
+  `actions/deploy-pages`. Artifact metadata flakes must not discard fetch,
+  embedding, or model-registry state.
 
 ## Summarise Pipeline
 
@@ -68,10 +71,15 @@ in a single article and returns 0 results. This is not a bug — it's how the AP
   `"Headline (Author/Publication)"` is parsed to extract the byline and publication name.
   Enabled via `RSS_FEEDS=tech`.
 - **Eurogamer + Kotaku** (gaming RSS) — enabled via `RSS_FEEDS=gaming`.
+- **Sky News** (6 feeds: home/UK/world/politics/business/technology) — official RSS,
+  no key, tightly capped because the desks overlap. Enabled via `RSS_FEEDS=sky`.
+- **Direct tech press** (Ars Technica, The Verge, Wired; 10 items each) — resilience
+  alongside Techmeme. Enabled via `RSS_FEEDS=techpress`.
+- **Science** (Nature tightly capped + Phys.org) — enabled via `RSS_FEEDS=science`.
 - **Guardian API** — available but disabled (requires registration). urgent.news already
   aggregates Guardian content.
 - `RSS_FEEDS` secret is in the `github-pages` environment (not repo-level).
-  Current value: `bbc,gaming,urgent,tech`.
+  Current value: `bbc,gaming,urgent,tech,sky,techpress,science`.
 
 ### Cross-Source URL Deduplication (`scripts/url-dedup.js`)
 
@@ -128,9 +136,11 @@ the free LLM failed constantly and the fallback fragmented everything.
      one LLM call per batch (`buildBatchPrompt` in `scripts/prompts.js`).
    - **SOLO**: everything else (large new clusters, existing clusters with significant
      new content) gets a dedicated LLM call (`buildSummaryPrompt`).
-   The LLM only writes copy for an already-formed cluster — it never groups. A failed
-   call degrades only that cluster's text (heuristic fallback uses the lead story's
-   title/content). Run log tracks `skippedMinor` and `llmCalls` for monitoring.
+   The LLM only writes copy for an already-formed cluster — it never groups. Batch and
+   solo summary calls write `summary` and `shortSummary` in the same response; do not
+   add a separate short-summary LLM call. A failed call degrades only that cluster's
+   text (heuristic fallback uses the lead story's title/content). Run log tracks
+   `skippedMinor` and `llmCalls` for monitoring.
 8. **Annotate** — entities (compromise NER: people/places/orgs, `scripts/entities.js`),
    tags (TF-IDF over compromise nouns/topics, `scripts/tags.js`), lifecycle fields
    (`active` flag based on lastPublished within 48h — NOT pipeline touch time,
@@ -170,6 +180,8 @@ for our own frontend. Each cluster has:
 - `entities` — `{ people, places, orgs }` arrays from compromise NER.
 - `tags` — TF-IDF-weighted topic tags.
 - `impact` — low/medium/high.
+- `shortSummary` — very short cluster summary written by the normal LLM summary call
+  (legacy/missing values are backfilled deterministically at publish time).
 - `active` — whether the cluster was updated in the last 48h.
 - `storyCount`, `firstPublished`, `lastPublished` — lifecycle metadata.
 - `stories[]` — each story has `bodyText` (cleaned plain text), `wordCount` (for
@@ -182,6 +194,26 @@ and paginate without walking the cluster tree.
 
 The `stats` object includes `byRegion`, `byStoryType`, `byCategory`, `bySource`,
 `byImpact` distributions for consumer-side page assignment.
+
+The `sources` array is a canonical URL-host index (`key`, display `label`, story
+`count`, and freshness timestamps). Raw favicons are checked in under
+`src/favicons/` as hostname-named files. When sources change, update those assets
+and regenerate the spritesheet once on the dev system — do not add
+favicon downloading or spritesheet generation to CI/build. The published assets
+are the checked-in `src/public/favicons/sprite.png` plus the static coordinate
+module `src/favicon-sprite.js`; Vite copies the sprite verbatim. Do not replace
+this with client-side Google/proxy favicon services; readers should only request
+local files.
+
+The frontend source bar hides a source by canonical URL host, not by the unreliable
+`sourceName` field. Currents/RSS often put author bylines in source-like fields, so
+use the story URL host as the grouping key.
+
+The frontend records glimpses independently of read state in localStorage. A glimpse
+means the article intersected the viewport at least once; it never marks the cluster
+read. The short-summary collapse is version-aware: an updated cluster shows full copy
+again until that updated `contentVersion` has itself been glimpsed, and expanding a
+short summary does not count as read.
 
 ### Clustering thresholds (scripts/cluster.js)
 
