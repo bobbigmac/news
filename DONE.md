@@ -113,6 +113,7 @@
 
 ## Trust flags + state-media restructure (2025)
 
+- **Generated og-image (Nov 26)**: `og-image.jpg` is now built at publish time by `scripts/build-og-image.js` — a dense 30×15 grid of source favicons (volume-ordered so high-volume outlets lead, deterministic spread so letter-fallback tiles don't clump) under a darkening overlay with the masthead type. Grows automatically as the source base does; falls back to the static file if generation fails.
 - **Nationalist & State Media family** added to the source tree — state-directed outlets
   (RT, TASS, CGTN, Global Times, TRT World, Anadolu, BelTA, Prensa Latina, UATV, Al Jazeera)
   no longer sit among genuine public-service broadcasters in "International Public".

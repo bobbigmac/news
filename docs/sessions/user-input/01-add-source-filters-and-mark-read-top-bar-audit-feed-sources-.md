@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 14:19:14 UTC
-entries: 112
+last_activity: 2026-11-26 14:46:06 UTC
+entries: 133
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -891,6 +891,153 @@ also this one includes a too-long link that frces the node to overflow/underflow
 ✓✕
 [GTA 6's strong and silent Jason was inspired by Steve McQueen and former Army Ra](https://www.eurogamer.net/gta-6-jason-steve-mcqueen-army-rangers)— Vikki Blake · Eurogamer
 GTA 6's strong and silent Jason was inspired by Steve McQueen and former Army Rangers, says Rockstar — If you've noticed that Grand Theft Auto 6's Jason Duval isn't much of a talker, that's by design, as his quiet nature was inspired by Steve McQueen and the studio's research into former Army Rangers. Read more — <img src="https://assetsio.gnwcdn.com/GTA_6_Mission_List_5.jpg?width=690&quality=85&format=jpg&auto=webp" /> <p>If you've noticed that <a href="https://www.eurogamer.net/gta-6-walkthrough">Grand Theft Auto 6</a>'s Jason Duval isn't much of a talker, that's by design, as his quiet nature was inspired by Steve McQueen and the studio's research into former Army Rangers.</p> <p><a href="https://www.eurogamer`.net/gta-6-jason-steve-mcqueen-army-rangers">Read more</a></p>
+
+---
+
+<!-- r:0 m:hook:cc5181b5-244a-4794-918e-6117bbc4244c h:393d8c4f -->
+### 2026-11-26 14:24:25 UTC
+
+bollocks, now my client has BAD data. How to get a refreshed cache? Holy fuck, what a tits up
+
+---
+
+<!-- r:0 m:hook:f52886aa-cc51-4dbf-9095-5a1d18ed7a55 h:39045cde -->
+### 2026-11-26 14:25:27 UTC
+
+doesn't the client log data intenrally, or does the client only track like read-state/etc??
+
+---
+
+<!-- r:0 m:hook:be05a710-fabb-463c-b807-f642e1ad750f h:4774be12 -->
+### 2026-11-26 14:26:14 UTC
+
+I _think_ a hard cache reload worked, but check https://bobdavies.co.uk/news/ for me more thoroughyl (READ the live asset paths)
+
+---
+
+<!-- r:0 m:hook:c0807eb9-c6e0-4182-ad2f-d839f27cc3fe h:f6343bc2 -->
+### 2026-11-26 14:27:30 UTC
+
+Do we still have our opengraph-mage generator? Let's also improve it to include sources icons (largest formatt we have for all/most sources) as a dense grid, rather than a dark grey/brown background colour. 
+
+---
+
+<!-- r:0 m:hook:fdb1b270-3fc9-437f-9402-111cddcd4d08 h:4fd45781 -->
+### 2026-11-26 14:31:10 UTC
+
+I said replace the dark background. Text can gain its own localised dark background per line.
+
+---
+
+<!-- r:0 m:hook:e2313fae-497c-4bce-9141-a8b29d4ae6ae h:bf09ece9 -->
+### 2026-11-26 14:33:02 UTC
+
+I think we need to change the tagline from "No clickbait, just the facts" because we can't guarantee that now we ship the publisher-provided content, to a new tagline: "Good news, well... some of it"
+
+---
+
+<!-- r:0 m:hook:5f040018-e323-4790-a5d8-6367beef5caf h:f010d4d0 -->
+### 2026-11-26 14:33:41 UTC
+
+also bump the font size on all 3 texts by double. Make the icons meet, no padding, and make the background white. I now said twice, replace the dark background.
+
+---
+
+<!-- r:0 m:hook:8acff035-8001-415e-a777-d817cbd07f74 h:c059ef0f -->
+### 2026-11-26 14:34:01 UTC
+
+also bump the font size on all 3 texts by 50%, opengraph images should be readable as thumbnails. Make the icons meet, no padding, and make the background white. I now said twice, replace the dark background.
+
+---
+
+<!-- r:0 m:hook:80f05653-6b47-48f5-a92b-cf089e146897 h:db25ac4a -->
+### 2026-11-26 14:35:06 UTC
+
+yes, you gave it a black background AND put icons over it, I want JUST the icons visible, with a base white behind icons, that don't meet their edges.
+
+---
+
+<!-- r:0 m:hook:2d30dc89-f900-4495-a3a1-850d8565ceaf h:28750778 -->
+### 2026-11-26 14:35:59 UTC
+
+also, the icons can be a little larger so the edges of our image clip them slightly (centered vertically and horionatally, so no edges without icon coverage)
+
+---
+
+<!-- r:0 m:hook:09bbd641-20ab-4d9c-bad8-e8abc44ecfdb h:3b91bb21 -->
+### 2026-11-26 14:36:37 UTC
+
+holy fuck, stop fucking about... just fill the fucking iamge with icons then put the fucking text over it. Bring the font size down on the main headline "The daily broadsheet", it's just a bit too big now
+
+---
+
+<!-- r:0 m:hook:af1ba7ce-7f9d-4d4c-851e-60bac71d46b9 h:446c8373 -->
+### 2026-11-26 14:37:05 UTC
+
+upscaling makes icons look shit. Don't upscale low-res icons, it's dumb. 
+
+---
+
+<!-- r:0 m:hook:6881f99c-60a1-47f3-a5ec-6a34ffba08b8 h:0a1ccfcd -->
+### 2026-11-26 14:37:45 UTC
+
+if you need to, use sources that DO have bigger icons to fill quad-slots, i.e to eat up more space. Just distribute them irregularlyly, so it's not just a corner full of 4x-slots 
+
+---
+
+<!-- r:0 m:hook:14b08570-3115-4bcf-ae56-2a563c386c55 h:eb5c1057 -->
+### 2026-11-26 14:38:05 UTC
+
+no fucking padding please, I said 
+
+---
+
+<!-- r:0 m:hook:349d91c0-f202-4202-98a8-79fd0a7d781c h:2a3a9299 -->
+### 2026-11-26 14:40:13 UTC
+
+"Good news, well, some of it"...  is probably better as "Good news! Well, some of it." with a sub-tagline.
+
+---
+
+<!-- r:0 m:hook:4866eb37-9a0f-4702-925c-ceb973d2ca44 h:4579de4f -->
+### 2026-11-26 14:41:00 UTC
+
+icons STILL have fucking padding
+
+---
+
+<!-- r:0 m:hook:c7c0412a-8da9-40a9-a004-f439bd90adbb h:da28c115 -->
+### 2026-11-26 14:41:36 UTC
+
+and you fucked up the padding on the text blocks readability-bg, which I didn't ask for any changes to
+
+---
+
+<!-- r:0 m:hook:4624c8d6-e34a-46b7-912f-35046efeeb39 h:71fb5706 -->
+### 2026-11-26 14:41:56 UTC
+
+you also wrapped the new tagline. Can you just do exactly what I said and nothing else
+
+---
+
+<!-- r:0 m:hook:24a12ccf-00fa-4ff1-ab2b-0eaa54f93266 h:20f39dc3 -->
+### 2026-11-26 14:43:35 UTC
+
+the good news, well some of it line is still line-breaked, which it shouldn't be.
+
+---
+
+<!-- r:0 m:hook:00c237a4-482a-4a34-970b-ec38a856c1bc h:46c56667 -->
+### 2026-11-26 14:44:48 UTC
+
+do we say anywhere on our site that we don't collect any data? like in the footer do we say it's client-side only?
+
+---
+
+<!-- r:0 m:hook:f48c45f4-0b09-4069-8e99-752d8054c930 h:4548f15a -->
+### 2026-11-26 14:46:06 UTC
+
+"Because clickbait sucks" should be "No data gathered. You are not our product."
 
 ---
 
