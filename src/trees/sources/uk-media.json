@@ -40,6 +40,23 @@
       ]
     },
     {
+      "id": "uk-national-broadcasters",
+      "label": "National Broadcasters",
+      "icon": "news.sky.com",
+      "children": [
+        {
+          "id": "sky-uk",
+          "label": "Sky UK",
+          "icon": "news.sky.com",
+          "sources": [
+            "news.sky.com",
+            "sky.com",
+            "skysports.com"
+          ]
+        }
+      ]
+    },
+    {
       "id": "reach",
       "label": "Reach",
       "icon": "mirror.co.uk",

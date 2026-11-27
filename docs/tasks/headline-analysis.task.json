@@ -92,10 +92,9 @@
         "reason": "Regional Mashable editions substantially reuse the same articles."
       },
       {
-        "key": "group-inquirer",
-        "label": "Inquirer",
+        "key": "group-philippine-inquirer",
+        "label": "Philippine Daily Inquirer",
         "sources": [
-          "inquirer.com",
           "newsinfo.inquirer.net",
           "business.inquirer.net",
           "cebudailynews.inquirer.net",
@@ -103,7 +102,7 @@
           "lifestyle.inquirer.net",
           "technology.inquirer.net"
         ],
-        "reason": "Inquirer vertical and regional subdomains are sections of the same publisher."
+        "reason": "Philippine Daily Inquirer vertical and regional subdomains are sections of one publisher. Philadelphia's unrelated inquirer.com is deliberately excluded."
       },
       {
         "key": "group-nypost-pagesix",

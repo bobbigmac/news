@@ -1,6 +1,8 @@
 // Domain-to-source-name mapping for display alongside bylines.
 // Add entries as new domains appear in the feed.
 
+import { SOURCE_LABELS } from '../src/source-labels.js';
+
 const DOMAIN_MAP = {
   'bbc.co.uk': 'BBC',
   'www.bbc.co.uk': 'BBC',
@@ -209,6 +211,7 @@ export function sourceKeyFromUrl(url) {
 }
 
 export function prettifySourceKey(key) {
+  if (SOURCE_LABELS[key]) return SOURCE_LABELS[key];
   // Path-tenant keys (dev.to/alice) display as the tenant.
   if (key.includes('/')) {
     const tenant = key.split('/')[1];
@@ -216,7 +219,7 @@ export function prettifySourceKey(key) {
   }
   const parts = key.split('.').filter(Boolean);
   if (!parts.length) return 'Unknown';
-  const compoundTlds = new Set(['co.uk', 'org.uk', 'ac.uk', 'com.au', 'net.au', 'org.au', 'co.nz', 'co.kr', 'com.my', 'com.pk', 'co.za', 'com.ng', 'com.sa']);
+  const compoundTlds = new Set(['co.uk', 'org.uk', 'ac.uk', 'com.au', 'net.au', 'org.au', 'co.nz', 'co.kr', 'com.my', 'com.pk', 'co.za', 'com.ng', 'com.sa', 'com.mx', 'com.ua', 'co.ke', 'com.tr', 'com.sg', 'com.br', 'com.ar']);
   const lastTwo = parts.slice(-2).join('.');
   let baseIndex = compoundTlds.has(lastTwo) ? parts.length - 3 : parts.length - 2;
   let base = parts[Math.max(0, baseIndex)] || parts[0];

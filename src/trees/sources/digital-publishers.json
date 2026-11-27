@@ -36,7 +36,8 @@
         "nintendolife.com",
         "pushsquare.com",
         "purexbox.com",
-        "timeextension.com"
+        "timeextension.com",
+        "cnet.com"
       ]
     },
     {
@@ -72,7 +73,7 @@
     },
     {
       "id": "conde-nast",
-      "label": "Condé Nast",
+      "label": "Cond\u00e9 Nast",
       "icon": "arstechnica.com",
       "sources": [
         "arstechnica.com",
@@ -143,7 +144,6 @@
         "finance.yahoo.com",
         "yahoo.com",
         "aol.com",
-        "engadget.com",
         "autoblog.com"
       ]
     },
@@ -152,12 +152,18 @@
       "label": "Red Ventures",
       "icon": "cnet.com",
       "sources": [
-        "cnet.com",
-        "gamespot.com",
         "zdnet.com",
         "healthline.com",
         "lonelyplanet.com",
         "bankrate.com"
+      ]
+    },
+    {
+      "id": "fandom",
+      "label": "Fandom",
+      "icon": "gamespot.com",
+      "sources": [
+        "gamespot.com"
       ]
     },
     {
@@ -183,7 +189,8 @@
         "thelist.com",
         "looper.com",
         "grunge.com",
-        "mashable.com"
+        "engadget.com",
+        "bgr.com"
       ]
     },
     {
@@ -199,7 +206,7 @@
     },
     {
       "id": "digital-news-standalones",
-      "label": "Independent Digital News",
+      "label": "Digital-native News",
       "icon": "newsweek.com",
       "sources": [
         "newsweek.com",
@@ -211,18 +218,22 @@
         "rawstory.com",
         "salon.com",
         "slate.com",
-        "thedispatch.com"
+        "thedispatch.com",
+        "axios.com",
+        "buzzfeed.com"
       ]
     },
     {
       "id": "nonprofit-civic-news",
-      "label": "Nonprofit Civic News",
+      "label": "Nonprofit News & Explainers",
       "icon": "chalkbeat.org",
       "sources": [
         "chalkbeat.org",
         "propublica.org",
         "thetrace.org",
-        "marshallproject.org"
+        "marshallproject.org",
+        "theconversation.com",
+        "news.mongabay.com"
       ]
     }
   ]

@@ -226,10 +226,18 @@ describe('platform tenant attribution', () => {
     expect(prettifySourceKey('systemdrift.neocities.org')).toBe('Systemdrift');
   });
 
-  it('keeps genuine publisher subdomains on the publisher brand', () => {
-    expect(prettifySourceKey('news.xbox.com')).toBe('Xbox');
-    expect(prettifySourceKey('sports.yahoo.com')).toBe('Yahoo');
+  it('uses curated labels for branded publisher subdomains', () => {
+    expect(prettifySourceKey('news.xbox.com')).toBe('Xbox Wire');
+    expect(prettifySourceKey('sports.yahoo.com')).toBe('Yahoo Sports');
     expect(prettifySourceKey('bbc.co.uk')).toBe('BBC');
+  });
+
+  it('uses curated labels for portal sub-brands and easily confused publishers', () => {
+    expect(prettifySourceKey('economictimes.indiatimes.com')).toBe('Economic Times');
+    expect(prettifySourceKey('timesofindia.indiatimes.com')).toBe('Times of India');
+    expect(prettifySourceKey('newsinfo.inquirer.net')).toBe('Philippine Daily Inquirer');
+    expect(prettifySourceKey('inquirer.com')).toBe('The Philadelphia Inquirer');
+    expect(prettifySourceKey('en.interfax.com.ua')).toBe('Interfax-Ukraine');
   });
 
   it('keys path-tenant platforms by author, not platform', () => {

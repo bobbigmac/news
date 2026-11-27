@@ -36,6 +36,14 @@
       ]
     },
     {
+      "id": "corus",
+      "label": "Corus Entertainment",
+      "icon": "globalnews.ca",
+      "sources": [
+        "globalnews.ca"
+      ]
+    },
+    {
       "id": "independent-canadian-newspapers",
       "label": "Independent Canadian Newspapers",
       "icon": "winnipegfreepress.com",

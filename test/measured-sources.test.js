@@ -43,7 +43,8 @@ describe('measured source export', () => {
     expect(byKey.has('bbc.co.uk')).toBe(true);
     expect(byKey.has('group-bbc')).toBe(false);
     expect(byKey.get('group-mashable')?.members.length).toBeGreaterThan(1);
-    expect(byKey.get('group-inquirer')?.members.length).toBeGreaterThan(1);
+    expect(byKey.get('group-philippine-inquirer')?.members.length).toBeGreaterThan(1);
+    expect(byKey.get('group-philippine-inquirer')?.members.map(member => member.key)).not.toContain('inquirer.com');
     expect(byKey.get('group-nypost-pagesix')?.members.length).toBeGreaterThan(1);
     expect(data.sourceIndex['in.mashable.com']).toBe('group-mashable');
     expect(data.sourceIndex['pagesix.com']).toBe('group-nypost-pagesix');

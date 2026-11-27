@@ -28,7 +28,8 @@
           "label": "DEV Community",
           "icon": "dev.to",
           "sources": [
-            "dev.to"
+            "dev.to",
+            "dev.to/wlz"
           ]
         },
         {

@@ -3,8 +3,8 @@ devin-sessionlog: user-input
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-27 08:47:48 UTC
-entries: 34
+last_activity: 2026-11-27 09:39:27 UTC
+entries: 35
 ---
 
 # repeated-bite
@@ -319,6 +319,15 @@ recap what you are doing, and your objectives, for clarity, since you've been go
 ### 2026-11-27 08:47:48 UTC
 
 also see sources-manifest-UPDATE-2026-11-27.md which provides additional source notations to support providing more information for sources where we have literal information gaps, try and import everything relevant, just don't make a mess copying every chatgpt hedge literally... stay focused on what actually matters to a human reader, or what helps inform our systems or can improve them meaningfully
+
+---
+
+<!-- r:0 m:hook:d3ed2092-ba0c-4e16-921e-246a97808809 h:cd9bd5c3 -->
+### 2026-11-27 09:39:27 UTC
+
+continue, tho you're hitting quota now, so be sure you document progress and actually remove content-blocks from the chatgpt-reserach UPDATE file so you don't import it again. you were working on `also see sources-manifest-UPDATE-2026-11-27.md which provides additional source notations to support providing more information for sources where we have literal information gaps, try and import everything relevant, just don't make a mess copying every chatgpt hedge literally... stay focused on what actually matters to a human reader, or what helps inform our systems or can improve them meaningfully`
+
+
 
 ---
 

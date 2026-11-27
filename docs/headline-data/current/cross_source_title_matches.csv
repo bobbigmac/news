@@ -83,14 +83,14 @@ Winnipeg Free Press,Airbnb guests no longer have to wash the dishes or strip the
 New Straits Times,Nasa's 22-year-old Swift satellite telescope falls from orbit in fiery finale,South China Morning Post,Nasa's 22-year-old Swift satellite telescope falls from orbit in fiery finale,0.9999999999999991
 Sfgate,Airbnb guests no longer have to wash the dishes or strip the beds at checkout,Winnipeg Free Press,Airbnb guests no longer have to wash the dishes or strip the beds at checkout,0.9999999999999991
 South China Morning Post,Nasa's 22-year-old Swift satellite telescope falls from orbit in fiery finale,New Straits Times,Nasa's 22-year-old Swift satellite telescope falls from orbit in fiery finale,0.9999999999999991
-Globalnews,Pope Leo XIV will undergo surgery to remove a nodule on his lung,Korea Times,Pope Leo XIV will undergo surgery to remove nodule on his lung,0.9986469854791081
-Korea Times,Pope Leo XIV will undergo surgery to remove nodule on his lung,Globalnews,Pope Leo XIV will undergo surgery to remove a nodule on his lung,0.9986469854791081
+Global News,Pope Leo XIV will undergo surgery to remove a nodule on his lung,Korea Times,Pope Leo XIV will undergo surgery to remove nodule on his lung,0.9986469854791081
+Korea Times,Pope Leo XIV will undergo surgery to remove nodule on his lung,Global News,Pope Leo XIV will undergo surgery to remove a nodule on his lung,0.9986469854791081
 Korea Times,"US, Iran discuss phased deal to reopen Hormuz and end US blockade, sources say",Business Recorder,"US and Iran discuss phased deal to reopen Hormuz and end US blockade, sources say",0.9981652376399626
 Business Recorder,"US and Iran discuss phased deal to reopen Hormuz and end US blockade, sources say",Korea Times,"US, Iran discuss phased deal to reopen Hormuz and end US blockade, sources say",0.9981652376399626
 The Hindu,NASA telescope on verge of plunging back to Earth after failed rescue mission,Winnipeg Free Press,NASA telescope is on the verge of plunging back to Earth after failed rescue mission,0.9918456012063397
 Winnipeg Free Press,NASA telescope is on the verge of plunging back to Earth after failed rescue mission,The Hindu,NASA telescope on verge of plunging back to Earth after failed rescue mission,0.9918456012063397
-Malaymail,"Nepal glacier saw exceptional heat before collapse caused deadly floods, says researcher",Torontosun,Nepal glacier saw exceptional heat before collapse caused deadly floods: researcher,0.9895389731549599
-Torontosun,Nepal glacier saw exceptional heat before collapse caused deadly floods: researcher,Malaymail,"Nepal glacier saw exceptional heat before collapse caused deadly floods, says researcher",0.9895389731549599
+Malay Mail,"Nepal glacier saw exceptional heat before collapse caused deadly floods, says researcher",Toronto Sun,Nepal glacier saw exceptional heat before collapse caused deadly floods: researcher,0.9895389731549599
+Toronto Sun,Nepal glacier saw exceptional heat before collapse caused deadly floods: researcher,Malay Mail,"Nepal glacier saw exceptional heat before collapse caused deadly floods, says researcher",0.9895389731549599
 Financial Times,What we know about the $6.3bn Binance hack,BBC,What we know about Binance's $6.3bn hack,0.9875845490575352
 BBC,What we know about Binance's $6.3bn hack,Financial Times,What we know about the $6.3bn Binance hack,0.9875845490575352
 IGN,The Biggest Game Releases of October 2026,GameSpot,The Biggest New Game Releases Of October 2026,0.9791641474485671
@@ -104,11 +104,11 @@ BBC,'Top Gear is back': Gordon Ramsay announced as new host,Evening Standard,Gor
 MyJoyOnline,Pope discharged from hospital days after lung cancer surgery,The Independent,Pope Leo to be discharged from hospital days after lung cancer surgery,0.9616936467567216
 The Independent,Pope Leo to be discharged from hospital days after lung cancer surgery,MyJoyOnline,Pope discharged from hospital days after lung cancer surgery,0.9616936467567216
 Punch,Pope Leo XIV to undergo surgery to remove lung nodule,Korea Times,Pope Leo XIV will undergo surgery to remove nodule on his lung,0.9574261732873005
-CBC,Pope Leo will undergo surgery to remove a nodule on his lung,Globalnews,Pope Leo XIV will undergo surgery to remove a nodule on his lung,0.9541312444082222
+CBC,Pope Leo will undergo surgery to remove a nodule on his lung,Global News,Pope Leo XIV will undergo surgery to remove a nodule on his lung,0.9541312444082222
 BBC,Florida pastor found guilty over role in assassination of Haitian president,The Guardian,Florida pastor found guilty over 2021 assassination of Haitian president,0.9479452526430944
 The Guardian,Florida pastor found guilty over 2021 assassination of Haitian president,BBC,Florida pastor found guilty over role in assassination of Haitian president,0.9479452526430944
-Investing,New York sued over law requiring social media 'warning label' By Reuters,channelnewsasia.com,New York sued over law requiring social media 'warning label',0.942366065890428
-channelnewsasia.com,New York sued over law requiring social media 'warning label',Investing,New York sued over law requiring social media 'warning label' By Reuters,0.942366065890428
+Investing.com,New York sued over law requiring social media 'warning label' By Reuters,CNA,New York sued over law requiring social media 'warning label',0.942366065890428
+CNA,New York sued over law requiring social media 'warning label',Investing.com,New York sued over law requiring social media 'warning label' By Reuters,0.942366065890428
 BBC,What we know about the Pope's lung cancer diagnosis,New York Times,What to Know About Pope Leo's Lung Cancer Diagnosis,0.937366468652787
 New York Times,What to Know About Pope Leo's Lung Cancer Diagnosis,BBC,What we know about the Pope's lung cancer diagnosis,0.937366468652787
 Daily Mail,Severe drought declared across parts of southern England,BBC,Severe drought declared in parts of southern England,0.9345644822556997
@@ -117,16 +117,16 @@ BBC,Arsenal Double winner Storey dies aged 81,The Independent,Peter Storey: Arse
 The Independent,Peter Storey: Arsenal double winner dies aged 81,BBC,Arsenal Double winner Storey dies aged 81,0.928371104060787
 Jerusalem Post,"No signed Hormuz deal expected yet from Oman, Gulf States meeting on Monday, Iranian official says",Business Recorder,"No signed Hormuz deal expected yet from Oman meeting on Monday, Iranian official says",0.9280015985889293
 Business Recorder,"No signed Hormuz deal expected yet from Oman meeting on Monday, Iranian official says",Jerusalem Post,"No signed Hormuz deal expected yet from Oman, Gulf States meeting on Monday, Iranian official says",0.9280015985889293
-Premiumtimesng,Ebola: Why Nigeria evacuated patient to Switzerland – NCDC,Qatar Tribune,Ebola patient evacuated from Nigeria to Switzerland,0.9213589220504244
-Qatar Tribune,Ebola patient evacuated from Nigeria to Switzerland,Premiumtimesng,Ebola: Why Nigeria evacuated patient to Switzerland – NCDC,0.9213589220504244
+Premium Times,Ebola: Why Nigeria evacuated patient to Switzerland – NCDC,Qatar Tribune,Ebola patient evacuated from Nigeria to Switzerland,0.9213589220504244
+Qatar Tribune,Ebola patient evacuated from Nigeria to Switzerland,Premium Times,Ebola: Why Nigeria evacuated patient to Switzerland – NCDC,0.9213589220504244
 The Guardian,Texas set to carry out first US execution since botched lethal injection of Christa Pike,BBC,Texas carries out first US execution since Christa Pike's botched lethal injections,0.9197601202316379
 BBC,Texas carries out first US execution since Christa Pike's botched lethal injections,The Guardian,Texas set to carry out first US execution since botched lethal injection of Christa Pike,0.9197601202316379
 BBC,"Warrants used to search Andrew Mountbatten-Windsor's homes were unlawful, court says",Evening Standard,"Andrew Mountbatten-Windsor home search warrants were unlawful, says High Court judge",0.9088113136427337
 Evening Standard,"Andrew Mountbatten-Windsor home search warrants were unlawful, says High Court judge",BBC,"Warrants used to search Andrew Mountbatten-Windsor's homes were unlawful, court says",0.9088113136427337
 Kentucky,Linda Gorton wins third term as Lexington mayor. Why it's historic.,Kykernel,Linda Gorton wins third term as Lexington mayor,0.9041433763661444
 Kykernel,Linda Gorton wins third term as Lexington mayor,Kentucky,Linda Gorton wins third term as Lexington mayor. Why it's historic.,0.9041433763661444
-CGTN,"Microsoft offers buyouts to around 60,000 employees to contain costs",Rte,"Microsoft offers buyouts to around 60,000 employees",0.9032303402153119
-Rte,"Microsoft offers buyouts to around 60,000 employees",CGTN,"Microsoft offers buyouts to around 60,000 employees to contain costs",0.9032303402153119
+CGTN,"Microsoft offers buyouts to around 60,000 employees to contain costs",RTÉ,"Microsoft offers buyouts to around 60,000 employees",0.9032303402153119
+RTÉ,"Microsoft offers buyouts to around 60,000 employees",CGTN,"Microsoft offers buyouts to around 60,000 employees to contain costs",0.9032303402153119
 The Guardian,Philippines' Carmelle wins first Eurovision contest in Asia,BBC,Philippines wins first Eurovision Song Contest Asia,0.9012630979824826
 BBC,Philippines wins first Eurovision Song Contest Asia,The Guardian,Philippines' Carmelle wins first Eurovision contest in Asia,0.9012630979824826
 The Independent,Women prosecuted for abortions hail 'historic' pardon,The Guardian,Women prosecuted for abortions hail 'historic day' after receiving pardon,0.8983158474089931
@@ -138,8 +138,8 @@ BBC,Tommy Robinson charged with failing to give phone Pin code to police,Daily M
 Daily Mail,Tommy Robinson charged with failing to hand over phone Pin to police,BBC,Tommy Robinson charged with failing to give phone Pin code to police,0.8854339426234981
 Daily Mail,Serbia's leader concedes defeat to student-led protest movement,BBC,Serbia's Vučić concedes election defeat to student-led protest movement,0.8815935686401274
 BBC,Serbia's Vučić concedes election defeat to student-led protest movement,Daily Mail,Serbia's leader concedes defeat to student-led protest movement,0.8815935686401274
-Daily Mail,Kimi Antonelli becomes youngest champion in F1 history!,channelnewsasia.com,Kimi Antonelli becomes youngest F1 champion at 20 years old,0.8750458436212268
-channelnewsasia.com,Kimi Antonelli becomes youngest F1 champion at 20 years old,Daily Mail,Kimi Antonelli becomes youngest champion in F1 history!,0.8750458436212268
+Daily Mail,Kimi Antonelli becomes youngest champion in F1 history!,CNA,Kimi Antonelli becomes youngest F1 champion at 20 years old,0.8750458436212268
+CNA,Kimi Antonelli becomes youngest F1 champion at 20 years old,Daily Mail,Kimi Antonelli becomes youngest champion in F1 history!,0.8750458436212268
 Kotaku,Jensen Huang Resigns From Nvidia,Nikkei,Jensen Huang resigns as Nvidia chief,0.8725743856498287
 Nikkei,Jensen Huang resigns as Nvidia chief,Kotaku,Jensen Huang Resigns From Nvidia,0.8725743856498287
 Punch,Nigeria Ebola-free after patient's evacuation to Switzerland — WHO,Qatar Tribune,Ebola patient evacuated from Nigeria to Switzerland,0.8591388664990552
@@ -165,5 +165,5 @@ Metro,Godzilla: Destroy All Monsters Melee Remastered review – Power Stone Kai
 IGN,Godzilla: Destroy All Monsters Melee Remastered Video Review,Metro,Godzilla: Destroy All Monsters Melee Remastered review – Power Stone Kaiju Wars,0.8256654971204096
 BBC,Bessent blames Lutnick's Commerce Department for failing to block Megaspeed,Financial Times,Bessent blames Lutnick's commerce department for failure to blacklist Megaspeed,0.8234980540774838
 Financial Times,Bessent blames Lutnick's commerce department for failure to blacklist Megaspeed,BBC,Bessent blames Lutnick's Commerce Department for failing to block Megaspeed,0.8234980540774838
-France24,KENYA CONFIRMS THIRD EBOLA CASE,Kbc,Health ministry confirms third Ebola case in Kenya,0.8222981990848252
-Kbc,Health ministry confirms third Ebola case in Kenya,France24,KENYA CONFIRMS THIRD EBOLA CASE,0.8222981990848252
+France 24,KENYA CONFIRMS THIRD EBOLA CASE,KBC,Health ministry confirms third Ebola case in Kenya,0.8222981990848252
+KBC,Health ministry confirms third Ebola case in Kenya,France 24,KENYA CONFIRMS THIRD EBOLA CASE,0.8222981990848252

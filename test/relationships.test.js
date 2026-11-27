@@ -247,4 +247,47 @@ describe('relationships page', () => {
     expect(SOURCE_PROFILES['nature.com'].watch.join(' ')).toContain('not itself peer-reviewed research');
     expect(SOURCE_PROFILES['phys.org'].watch.join(' ')).toContain('not the same thing as independent scientific verification');
   });
+
+  it('applies ownership and identity corrections from the source-manifest update', () => {
+    const findNode = (node, id) => {
+      if (node.id === id) return node;
+      for (const child of node.children || []) {
+        const found = findNode(child, id);
+        if (found) return found;
+      }
+      return null;
+    };
+    const findInRoots = (id) => SOURCE_RELATION_TREE.map((root) => findNode(root, id)).find(Boolean);
+    const yahoo = findInRoots('yahoo');
+    const staticMedia = findInRoots('static-media');
+    const redVentures = findInRoots('red-ventures');
+    const fandom = findInRoots('fandom');
+    const ziffDavis = findInRoots('ziff-davis');
+    const skyUk = findInRoots('sky-uk');
+    const comcastSky = findInRoots('comcast-sky');
+    const philippineInquirer = findInRoots('inquirer');
+    const cityPapers = findInRoots('independent-city-papers');
+
+    expect(yahoo.sources).not.toContain('engadget.com');
+    expect(staticMedia.sources).toContain('engadget.com');
+    expect(staticMedia.sources).toContain('bgr.com');
+    expect(staticMedia.sources).not.toContain('mashable.com');
+    expect(redVentures.sources).not.toContain('gamespot.com');
+    expect(redVentures.sources).not.toContain('cnet.com');
+    expect(fandom.sources).toContain('gamespot.com');
+    expect(ziffDavis.sources).toContain('cnet.com');
+    expect(ziffDavis.sources).toContain('mashable.com');
+
+    expect(skyUk.sources).toContain('news.sky.com');
+    expect(!comcastSky || !comcastSky.sources?.includes('news.sky.com')).toBe(true);
+    expect(philippineInquirer.label).toBe('Philippine Daily Inquirer');
+    expect(philippineInquirer.sources).not.toContain('inquirer.com');
+    expect(cityPapers.sources).toContain('inquirer.com');
+
+    expect(SOURCE_PROFILES['engadget.com'].ownership).toContain('Static Media');
+    expect(SOURCE_PROFILES['gamespot.com'].ownership).toContain('Fandom');
+    expect(SOURCE_PROFILES['cnet.com'].ownership).toContain('Ziff Davis');
+    expect(SOURCE_PROFILES['inquirer.com'].watch.join(' ')).toContain('Philippine Daily Inquirer');
+    expect(SOURCE_PROFILES['newsinfo.inquirer.net'].watch.join(' ')).toContain('inquirer.com');
+  });
 });

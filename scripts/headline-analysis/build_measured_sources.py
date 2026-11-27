@@ -72,7 +72,7 @@ SOURCE_NOTES = {
     'news.xbox.com': 'Xbox Wire is official platform communication, so its score is not a measure of independent games journalism.',
     'handelsblatt.com': 'English-language cue detection undercounts German-language headlines; treat this position as non-comparable with English-language sources.',
     'group-mashable': 'Regional Mashable editions are grouped because they substantially reuse the same articles; their measured headline profiles are broadly similar rather than dominated by one outlier edition.',
-    'group-inquirer': 'Inquirer verticals and regional subdomains are grouped as sections of one publisher. Some verticals are very small and differ in style, so the combined view mainly describes the main and news streams.',
+    'group-philippine-inquirer': 'Philippine Daily Inquirer verticals and regional subdomains are grouped as sections of one publisher. Philadelphia’s unrelated inquirer.com is deliberately excluded.',
     'group-nypost-pagesix': 'Page Six is measured with the New York Post because it belongs to the same publishing operation; the combined view is dominated by the larger New York Post stream.',
     'dailymail.com': 'The low position is driven especially by sensational and personal framing, alongside weaker time/place and evidence cues.',
     'mirror.co.uk': 'Sensational and personal framing is the largest negative contribution here, even where individual headlines are otherwise concrete.',

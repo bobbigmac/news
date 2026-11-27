@@ -35,7 +35,8 @@
             "seattletimes.com",
             "startribune.com",
             "sfchronicle.com",
-            "houstonchronicle.com"
+            "houstonchronicle.com",
+            "inquirer.com"
           ]
         }
       ]
@@ -210,7 +211,8 @@
             "fox2now.com",
             "fox40.com",
             "fox59.com",
-            "fox5sandiego.com"
+            "fox5sandiego.com",
+            "thehill.com"
           ]
         },
         {
@@ -370,16 +372,6 @@
           "sources": [
             "cbsnews.com",
             "cbslocal.com"
-          ]
-        },
-        {
-          "id": "comcast-sky",
-          "label": "Comcast / Sky",
-          "icon": "news.sky.com",
-          "sources": [
-            "news.sky.com",
-            "sky.com",
-            "skysports.com"
           ]
         },
         {

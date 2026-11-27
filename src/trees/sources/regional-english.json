@@ -139,7 +139,8 @@
         "freepressjournal.in",
         "ndtv.com",
         "ndtvprofit.com",
-        "thewire.in"
+        "thewire.in",
+        "news18.com"
       ]
     },
     {
@@ -149,10 +150,9 @@
       "children": [
         {
           "id": "inquirer",
-          "label": "Inquirer",
-          "icon": "inquirer.com",
+          "label": "Philippine Daily Inquirer",
+          "icon": "newsinfo.inquirer.net",
           "sources": [
-            "inquirer.com",
             "newsinfo.inquirer.net",
             "business.inquirer.net",
             "cebudailynews.inquirer.net",
@@ -220,7 +220,8 @@
         "kenyans.co.ke",
         "tuko.co.ke",
         "the-star.co.ke",
-        "kbc.co.ke"
+        "kbc.co.ke",
+        "peopledaily.digital"
       ]
     },
     {
@@ -412,7 +413,8 @@
         "euromaidanpress.com",
         "ukrinform.net",
         "uatv.ua",
-        "english.nv.ua"
+        "english.nv.ua",
+        "en.interfax.com.ua"
       ]
     },
     {
@@ -453,7 +455,8 @@
         "thelocal.se",
         "thelocal.dk",
         "thelocal.at",
-        "anadoluagency.com"
+        "anadoluagency.com",
+        "irishtimes.com"
       ]
     }
   ]
