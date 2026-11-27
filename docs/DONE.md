@@ -207,3 +207,86 @@
   as contract enforcement. One-off migration scripts/repair-digest.js cleaned the
   cache (1542 summaries rebuilt, proof-gated to never touch LLM editorial copy) —
   the repair is NOT in the forever-build; prevention lives at the boundary.
+
+## Headline-source analysis instrument (2026)
+
+- Recovered the truncated external headline-analysis zip, placed its scripts under
+  `scripts/headline-analysis/`, and reworked the tool into a reproducible dev-time
+  analyser driven by `docs/tasks/headline-analysis.task.json`. Outputs now live in
+  `docs/headline-data/current/`; this is run-once measurement tooling only and is
+  not wired into build/CI.
+- Export format now includes machine-readable `headline-rows.jsonl` with canonical
+  source keys, URLs, timestamps, relation branches and curated profile context, so
+  the analyser no longer depends only on display names or flat export-file groups.
+- Detector taxonomy improved: explicit curiosity gaps, direct/service packaging,
+  and sensational/personal framing are separate axes; evidence provenance is
+  fractional (generic research 0.5, primary artefacts 1.0). Manual audit led to
+  exact-word matching with explicit inflections rather than substring stems,
+  ambiguity guards for words such as open/pass/rules, removal of literal event
+  verbs from the sensational lexicon, narrower stock-clickbait matching, and
+  precision fixes for evidence/original-access false positives (`record contract`,
+  databases, generic investigations, gaming/platform exclusives, `pose risk`,
+  science/genre uses of horror/chaos, Tyson Fury's surname, earnings transcript
+  labels, and narrative uses of "we found"). 59 detector regression cases pass.
+- Export merging now prefers the richest available duplicate story text, so
+  article summaries from `stories.json` are retained instead of being displaced by
+  shorter digest text. Body/summary coverage rose from 4.6% to 58.4% of rows under
+  the strict materially-longer-than-headline check; body cues are exported as a
+  corroboration tier, not composite input, because coverage varies sharply by feed.
+- Source ordering uses cross-fitted topic/editorial-context expectations
+  (GroupKFold by source), residual shrinkage with a sensitivity grid, quartile
+  bands, bootstrap intervals, and partial rather than full topic forgiveness for
+  attention farming. Length-adjusted ordering is exported as a sensitivity rather
+  than the primary index because headline-level information density is the object
+  being measured.
+- Added validation scaffolding: corpus-output invariants, source-capped random
+  `detector_validation_sample.csv` with blank `human_*` columns, and
+  `validate_detectors.py score` for precision/recall/F1 once labels exist. Current
+  validation status is explicitly unlabelled; no quantitative detector precision
+  is claimed.
+- Final verified local run over 11,461 headlines / 695 sources took ~85s. Corpus
+  invariants pass; validation remains unlabelled, so no quantitative detector
+  precision is claimed. High-volume ordering: Eurogamer, Medical Xpress and the
+  Guardian at the top; BBC slightly above Mirror; Kotaku and Daily Mail at the
+  bottom. Small-sample leaders remain interpretive leads rather than robust
+  publisher verdicts. Charts, interactive radar, per-headline rows, source axes,
+  body/summary diagnostics, sensitivity tables and the machine-readable metric
+  dictionary are in `docs/headline-data/current/`.
+
+## Measured-source quality page + machine-readable export
+
+- Added `measured-sources.html` as a peer to the relationships page, linked from
+  the footer, settings panel, and relationships cross-link. It orders the 76
+  sources meeting the minimum measured-headline threshold into quartile buckets
+  and presents ranks as broad bands rather than precise quality verdicts.
+- Each source expands into an eleven-axis spiderweb (events, numbers, place,
+  causality, stakes, evidence, context, explanation, plus three attention-restraint
+  axes). All axes point in the desirable direction, with 50 as the corpus-relative
+  typical ring; source-specific measurement notes appear beneath the spiderweb only
+  where they add information (research-release pipelines, journal-title form,
+  German-language undercounting, syndicated obituaries, official platform copy,
+  tabloid packaging drivers, grouped-edition structure).
+- Added `src/data/measured-sources.json` via
+  `scripts/headline-analysis/build_measured_sources.py`: bands, axis definitions,
+  scale metadata, per-source composite/axes/rates/adjustments/diagnostics, member
+  detail, notes, relationship anchors, and `sourceIndex` aliases so grouped member
+  hosts resolve to their measured group. The frozen export is copied as static site
+  data; analysis itself remains dev-time only.
+- Conservative measurement grouping is configured in the task file: BBC services,
+  Mashable regional editions, Inquirer verticals, and New York Post/Page Six are
+  measured together; unlike-owned Fox-branded affiliates are not grouped with Fox
+  News. Member-level raw profiles were checked before grouping: Mashable editions
+  are similar, Page Six is small and close to the main New York Post stream, while
+  the Inquirer note explicitly warns that tiny verticals differ and the combined
+  view mainly describes the main/news streams.
+- Filled source-tree membership gaps needed by the measured page: Times of India /
+  Indian Express / Economic Times hosts, Bernama, Inc., Winnipeg Free Press, and
+  Chalkbeat now have relationship-tree placements. Renamed the misleading
+  `Business Insider Network` grouping to `Business & Startup Digital` because most
+  members are not Business Insider properties. Every measured source now resolves
+  to a real relationship-page anchor.
+- Presentation audit fixed the expander layout, mobile search layout, dark-mode
+  band colours, spiderweb label clipping, cramped expanded cards, duplicate source
+  family labels, quartile boundary overlap, and stale analysis charts. Verified
+  rendered output in Firefox headless at desktop/mobile widths and with expanded
+  spiderwebs. `npm test` passes 97/97 and `npm run build` succeeds.

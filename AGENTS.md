@@ -1,5 +1,12 @@
 # Agent Guidelines
 
+## Dev-time analysis tasks
+
+- Re-runnable analysis/task configuration lives in `docs/tasks/*.task.json`. Edit the config file rather than maintaining long CLI parameter lists.
+- `docs/tasks/headline-analysis.task.json` controls the exploratory headline/source analysis: export current `origin/cache-data` into `.working/`, then run `.venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json`. Validation helpers are `scripts/headline-analysis/validate_detectors.py sample` (write a source-capped blank labelling sheet) and `validate_detectors.py score` (score completed `human_*` labels); both read the same task config.
+- This headline analysis is dev-time/run-once measurement tooling only. Do not run the analyser in `scripts/build.js`, CI, or the normal digest pipeline without explicit approval. The frozen `src/data/measured-sources.json` export may be copied as static site data for the measured-sources page. No large transformer models or GPU-dependent models.
+- Completed work is logged in `docs/DONE.md`; open work stays in root `TODO.md`.
+
 ### Platform-tenant attribution (keep copies in sync)
 
 Multi-tenant platforms (substack, medium, dev.to, neocities, etc.) are NOT sources —

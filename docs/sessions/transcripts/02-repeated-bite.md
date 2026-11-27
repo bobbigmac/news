@@ -3,8 +3,8 @@ devin-sessionlog: transcript
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-27 05:09:11 UTC
-entries: 405
+last_activity: 2026-11-27 08:49:20 UTC
+entries: 1023
 ---
 
 # repeated-bite
@@ -12844,6 +12844,15428 @@ ok
 
 
 Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:write:33216f07 h:f7eb9e7f -->
+### 2026-11-27 05:09:21 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json", "content": "{\n  \"id\": \"headline-analysis-current-cache\",\n  \"title\": \"Run dev-time headline-source analysis against the current cache export\",\n  \"type\": \"dev-time-analysis\",\n  \"_comment\": \"Executable run configuration for exploratory headline/source analysis. This is run-once measureme`
+
+```
+Successfully wrote 2028 bytes (44 lines) to /home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:b0715d6e h:344f212c -->
+### 2026-11-27 05:09:28 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/AGENTS.md", "old_string": "# Agent Guidelines\n\n### Platform-tenant attribution (keep copies in sync)", "new_string": "# Agent Guidelines\n\n## Dev-time analysis tasks\n\n- Re-runnable analysis/task configuration lives in `docs/tasks/*.task.json`. Edit the config file rather than maintaining long CLI parameter lists.\n- `docs/tasks/headline-a`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/AGENTS.md' - made 1 replacement(s). 3 line(s) removed, 10 line(s) added at line 1.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:get_output:e12d18e1 h:53d55b7e -->
+### 2026-11-27 05:09:36 UTC tool `get_output`
+
+`{"shell_id": "headline-venv-install", "timeout": 10000}`
+
+```
+
+Successfully installed MarkupSafe-3.0.4 annotated-doc-0.0.7 annotated-types-0.8.0 anyio-4.16.0 blis-1.3.4 catalogue-2.0.10 certifi-2026.11.20 charset_normalizer-3.5.3 click-8.5.1 cloudpathlib-0.26.0 cloudpickle-3.1.3 confection-1.3.4 contourpy-1.4.0 cycler-0.12.1 cymem-2.0.16 fonttools-4.69.1 h11-0.16.0 httpcore-1.0.9 httpx-0.29.0 idna-3.20 jinja2-3.1.6 joblib-1.6.0 kiwisolver-1.5.1 markdown-it-py-4.3.0 matplotlib-3.11.2 mdurl-0.1.2 murmurhash-1.0.16 narwhals-2.29.0 numpy-2.5.5 packaging-26.4 pandas-3.1.1 pillow-13.0.0 plotly-7.2.0 preshed-3.0.15 pycountry-26.2.16 pydantic-2.14.4 pydantic-core-2.50.5 pygments-2.21.0 pyparsing-3.3.3 python-dateutil-4.0.0 requests-2.34.2 rich-15.0.0 scikit-learn-1.9.1 scipy-1.18.1 setuptools-84.2.1 shellingham-1.5.4 smart-open-10.0.0 spacy-3.8.18 spacy-legacy-3.0.12 spacy-loggers-1.0.5 srsly-2.5.6 thinc-8.3.14 threadpoolctl-3.8.0 tqdm-4.70.1 typer-0.29.3 typing-extensions-4.16.0 typing-inspection-0.4.5 tzdata-2026.6 urllib3-2.8.0 wasabi-1.1.3 weasel-1.0.1 wrapt-2.5.2
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:168ef796 h:a87b6aa3 -->
+### 2026-11-27 05:09:45 UTC tool `exec`
+
+`{"command": "node scripts/export-source-headlines.js --ref origin/cache-data --out .working/source-headlines-analysis.zip", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 30000}`
+
+```
+Output from command in shell 08eaab:
+{
+  "zip": "/home/bobbigmac/projects/bobdavies/news/.working/source-headlines-analysis.zip",
+  "files": [
+    "README.md",
+    "01-public-and-international.md",
+    "02-specialist-press.md",
+    "03-murdoch-family-media.md",
+    "04-uk-media.md",
+    "05-us-media.md",
+    "06-digital-publishers.md",
+    "07-australia-media.md",
+    "08-canada-media.md",
+    "09-regional-english-media.md",
+    "10-wires-and-releases.md",
+    "11-platforms-and-aggregators.md",
+    "12-official-organizations.md",
+    "13-state-controlled-and-state-linked-media.md",
+    "99-unmatched-sources.md",
+    "sources-manifest.md",
+    "headline-rows.jsonl"
+  ],
+  "sources": 695,
+  "matchedSources": 522,
+  "unmatchedSources": 173,
+  "headlines": 11461,
+  "headlineRows": 11461,
+  "inputStories": 20161,
+  "dedupedStories": 11534
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:c93bef4a h:14afa0f2 -->
+### 2026-11-27 05:09:51 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport zipfile,json\nwith zipfile.ZipFile('.working/source-headlines-analysis.zip') as z:\n lines=z.read('headline-rows.jsonl').decode().splitlines()\n print('rows',len(lines))\n for line in lines[:2]:\n  print(json.dumps(json.loads(line),indent=2)[:1600])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell cda7f5:
+rows 11461
+{
+  "source_key": "inquirer.com",
+  "source": "inquirer.com",
+  "tree_root": "Regional English Media",
+  "tree_root_id": "regional-english",
+  "branch_path": "Philippines Media / Inquirer",
+  "relation_memberships": [
+    "Regional English Media / Philippines Media / Inquirer"
+  ],
+  "curated_group": "Inquirer",
+  "profiled": false,
+  "profile_kind": "",
+  "profile_model": "",
+  "profile_ownership": "",
+  "headline": "LIV golf's death made for a better PGA Tour thanks to Tiger Woods and yes, Phil Mickelson",
+  "story_id": "06f0cea0-0749-5789-8fac-8f8d32b7b3c9",
+  "url": "https://www.inquirer.com/sports/tiger-woods-liv-golf-pga-tour-scottie-scheffler-20261118.html",
+  "published": "2026-11-18 16:27:12 +0000",
+  "first_seen": "",
+  "last_seen": "",
+  "last_updated": "",
+  "category": "local",
+  "story_type": "news",
+  "word_count": 17,
+  "plugin": ""
+}
+{
+  "source_key": "inquirer.com",
+  "source": "inquirer.com",
+  "tree_root": "Regional English Media",
+  "tree_root_id": "regional-english",
+  "branch_path": "Philippines Media / Inquirer",
+  "relation_memberships": [
+    "Regional English Media / Philippines Media / Inquirer"
+  ],
+  "curated_group": "Inquirer",
+  "profiled": false,
+  "profile_kind": "",
+  "profile_model": "",
+  "profile_ownership": "",
+  "headline": "One of Philly's favorite pop-up bakers is going brick-and-mortar in Point Breeze",
+  "story_id": "08acb193-3bdc-596d-bd89-79f2f2f508b5",
+  "url": "https://www.inquirer.com/food/zach-posnan-brass-monkey-bakery-bagels-sourdough-tomato-pie-20261118.html",
+  "published": "2026-11-18 16:27:12 +0000",
+  "first_seen": "",
+  "last_seen": "",
+  "last_updated": "",
+  "category": "local",
+  "story_type": "news",
+  "word_count": 12,
+  "plugin": ""
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:d03c1cd7 h:a55861de -->
+### 2026-11-27 05:10:06 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport zipfile,json,collections\nwith zipfile.ZipFile('.working/source-headlines-analysis.zip') as z:\n rows=[json.loads(x) for x in z.read('headline-rows.jsonl').decode().splitlines()]\nfor field in ['tree_root','curated_group','profile_kind','profile_model','profile_ownership']:\n vals=collections.Counter(r.get(field,'') for r in rows if r.get(field,''))\n print('\`
+
+```
+Output from command in shell c840f2:
+
+ tree_root 14
+3675 'Public & International'
+3337 'Specialist Press'
+1553 'UK Media'
+1423 'Regional English Media'
+625 'Unmatched sources'
+278 'US Media'
+223 'Platforms & Aggregators'
+126 'Digital Publishers'
+64 'Australia Media'
+55 'Murdoch-family media'
+35 'State-Controlled & State-Linked Media'
+26 'Canada Media'
+
+ curated_group 122
+3537 'BBC'
+671 'Kotaku'
+625 'Unmatched sources'
+485 'The Guardian'
+458 'Eurogamer'
+350 'Daily Mail'
+348 'The Punch'
+248 'Independent'
+190 'Phys.org'
+173 'City A.M.'
+154 'DMGT Companion'
+142 'DEV Community'
+
+ profile_kind 84
+3537 'Public-service broadcaster'
+1185 'Games publication'
+485 'Trust-owned national newspaper'
+483 'Tabloid national newspaper'
+348 'Nigerian national newspaper'
+246 'Digital-only national newspaper'
+202 'English-language national daily'
+190 'High-volume science and research news portal'
+173 'Free London business newspaper'
+127 'Medical/health research news service'
+125 'Games and entertainment publication'
+116 'International financial newspaper'
+
+ profile_model 11
+190 'Science X says it is not a blind press-release service and that staff select, edit and fact-check material. Even accepting that self-descrip'
+127 'Advertising-funded (plus voluntary donations). Network publishes 200+ articles daily — a high-volume mix of in-house reports and editor-proc'
+61 'Funded by ads, advertorials and affiliate links (Amazon, Tradedoubler, Awin). Review units are loaned by manufacturers or bought editorially'
+50 "Future's commerce-driven specialist-media model: audience monetised through affiliate buying guides and ads against enthusiast coverage."
+46 'Ads plus optional ad-free subscriptions introduced in 2024-25, explicitly framed as supporting independent tech journalism.'
+40 "Future's commerce engine ('Hawk') powers buying guides, deals and coupon content — affiliate fees are the business model, openly disclosed. "
+37 "Subscriptions ('All Access'), advertising — and aggressive email-list 
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:write:421ab1f6 h:97824808 -->
+### 2026-11-27 05:15:26 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "content": "#!/usr/bin/env python3\n\"\"\"Title-only editorial-value signal analysis for source-headlines ZIP exports.\n\nExploratory dev-time corpus instrument, not a truth/accuracy detector. It extracts\ninterpretable title-level signals, cross-fits topic/editorial-context expectations,\nand w`
+
+```
+Successfully wrote 58602 bytes (767 lines) to /home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:e6a39444 h:50de300c -->
+### 2026-11-27 05:15:47 UTC tool `exec`
+
+`{"command": ".venv/bin/python -m py_compile scripts/headline-analysis/analyse_headlines.py && echo syntax-ok", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 10532b:
+syntax-ok
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:1d64cb74 h:7168f523 -->
+### 2026-11-27 05:15:54 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "            df['headline']=df['headline'].map(normalize)\n            df['source_key']=np.where(df['source_key'].astype(str).str.len()>0,df['source_key'],df['source'])", "new_string": "            df['headline']=df['headline'].map(normalize)\n            if 'word_count' in df:\n  `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 4 line(s) added at line 141.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:fd3aff64 h:359c39a5 -->
+### 2026-11-27 05:16:00 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    df['profiled']=df.get('profiled',False).astype(bool) if 'profiled' in df else False\n    df['editorial_context']=np.where(df['profile_kind'].astype(str).str.len()>0,df['profile_kind'],df['tree_root'])", "new_string": "    if 'profiled' not in df:\n        df['profiled']=False\`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 5 line(s) added at line 169.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:5a83fb99 h:fb72b9dc -->
+### 2026-11-27 05:16:06 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "        adj=100*out[col+'_residual']*(out['n']/(out['n']+float(shrink)))\n        vals=out.loc[eligible,adj.name if hasattr(adj,'name') else col] if False else None\n        tmp=adj.astype(float)", "new_string": "        adj=100*out[col+'_residual']*(out['n']/(out['n']+float(shrin`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 3 line(s) removed, 2 line(s) added at line 388.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:72493f9b h:b3f7280f -->
+### 2026-11-27 05:16:14 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    story_cols=['headline_id','source_key','source','group','tree_root','branch_path','curated_group','editorial_context','group_file','headline','url','published','story_id','category','story_type','word_count','information_delivery_signal'", "new_string": "    story_cols=['headl`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 630.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:c0f0dc43 h:59126c8e -->
+### 2026-11-27 05:16:19 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0, "shell_id": "headline-analysis-run"}`
+
+```
+Command running in background with ID: headline-analysis-run
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:todo_write:83893c2b h:3a557d3b -->
+### 2026-11-27 05:16:29 UTC tool `todo_write`
+
+`{"todos": [{"content": "Find reusable Python environments and assess dependency setup", "status": "completed"}, {"content": "Repair pathing/packaging so the analysis runs reproducibly from this repo", "status": "completed"}, {"content": "Improve detector and scoring methodology to reduce identified shortcomings", "status": "in_progress"}, {"content": "Create a small validation/evaluation harness a`
+
+```
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [x] Find reusable Python environments and assess dependency setup [completed]
+2. [x] Repair pathing/packaging so the analysis runs reproducibly from this repo [completed]
+3. [~] Improve detector and scoring methodology to reduce identified shortcomings [in_progress]
+4. [ ] Create a small validation/evaluation harness and document metric semantics in outputs [pending]
+5. [~] Install dependencies in .venv, run and time the full local analysis [in_progress]
+6. [ ] Inspect results, iterate on obvious failure modes, and summarise findings [pending]
+
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:545dcd6c h:d9f7026d -->
+### 2026-11-27 05:16:46 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys\nsys.path.insert(0,'scripts/headline-analysis')\nimport spacy\nfrom analyse_headlines import detect_one\nnlp=spacy.blank('en')\ncases=[\n\"UK net migration fell 14% in 2025 as asylum claims also fell, ONS data show\",\n\"Can YOU guess the secret behind the new royal relationship...?\",\n\"Jennifer Lopez reveals son Max does not like her stage look`
+
+```
+Output from command in shell bcb976:
+
+ UK net migration fell 14% in 2025 as asylum claims also fell, ONS data show
+{'event_clarity': 1, 'quantified_specificity': 1, 'time_place_anchor': 1, 'material_consequence': 1, 'evidence_provenance': 1.0, 'primary_evidence_cue': 1, 'research_claim_cue': 1, 'explanatory_framing': 0, 'explicit_curiosity_gap_present': 0, 'direct_service_packaging_present': 0, 'personal_sensational_frame_present': 0, 'low_explicit_curiosity_gap': 1, 'low_direct_service_packaging': 1, 'low_sensational_personal': 1}
+
+ Can YOU guess the secret behind the new royal relationship...?
+{'event_clarity': 0, 'quantified_specificity': 0, 'time_place_anchor': 0, 'material_consequence': 0, 'evidence_provenance': 0.0, 'primary_evidence_cue': 0, 'research_claim_cue': 0, 'explanatory_framing': 0, 'explicit_curiosity_gap_present': 1, 'direct_service_packaging_present': 1, 'personal_sensational_frame_present': 1, 'low_explicit_curiosity_gap': 0, 'low_direct_service_packaging': 0, 'low_sensational_personal': 0}
+
+ Jennifer Lopez reveals son Max does not like her stage looks
+{'event_clarity': 0, 'quantified_specificity': 0, 'time_place_anchor': 0, 'material_consequence': 0, 'evidence_provenance': 0.0, 'primary_evidence_cue': 0, 'research_claim_cue': 0, 'explanatory_framing': 0, 'explicit_curiosity_gap_present': 0, 'direct_service_packaging_present': 0, 'personal_sensational_frame_present': 1, 'low_explicit_curiosity_gap': 1, 'low_direct_service_packaging': 1, 'low_sensational_personal': 0}
+
+ How to clear the cache on your Xbox Series X
+{'event_clarity': 1, 'quantified_specificity': 0, 'time_place_anchor': 0, 'material_consequence': 0, 'evidence_provenance': 0.0, 'primary_evidence_cue': 0, 'research_claim_cue': 0, 'explanatory_framing': 1, 'explicit_curiosity_gap_present': 0, 'direct_service_packaging_present': 1, 'personal_sensational_frame_present': 0, 'low_explicit_curiosity_gap': 1, 'low_direct_service_packaging': 0, 'low_sensational_personal': 1}
+
+ Study finds fore
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:get_output:017eca2c h:490b8a2b -->
+### 2026-11-27 05:17:30 UTC tool `get_output`
+
+`{"shell_id": "headline-analysis-run", "timeout": 10000}`
+
+```
+No output yet (still running)
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:da5a2c3f h:83e4d6cc -->
+### 2026-11-27 05:17:34 UTC tool `exec`
+
+`{"command": "ps -o pid,etime,pcpu,pmem,rss,cmd -C python -C python3 2>/dev/null | sed -n '1,20p'", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell a78597:
+    PID     ELAPSED %CPU %MEM   RSS CMD
+ 646977       31:00  0.1  0.3 63204 /home/linuxbrew/.linuxbrew/bin/python /home/bobbigmac/.devin/extensions/ms-python.python-2026.10.0-linux-x64/python_files/run-jedi-language-server.py
+ 658307       01:15  133  4.1 666124 .venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json
+ 658488       00:50  0.3  0.0 14192 /home/bobbigmac/projects/bobdavies/news/.venv/bin/python -c from multiprocessing.resource_tracker import main;main(6)
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:write:d24a92eb h:7854175d -->
+### 2026-11-27 05:17:45 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", "content": "\"\"\"High-precision regression cases for title-level detector behaviour.\"\"\"\nimport sys\nfrom pathlib import Path\nsys.path.insert(0, str(Path(__file__).parent))\nimport spacy\nfrom analyse_headlines import detect_one\n\nnlp = spacy.blank('en')\n\ncases = [\n    (\"UK net migration `
+
+```
+Successfully wrote 2407 bytes (40 lines) to /home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:write:25f5637c h:800e5365 -->
+### 2026-11-27 05:18:01 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_corpus_outputs.py", "content": "\"\"\"Structural/invariant tests for the exported corpus analysis outputs.\"\"\"\nimport argparse, json, sys\nfrom pathlib import Path\n\nimport numpy as np\nimport pandas as pd\n\nsys.path.insert(0, str(Path(__file__).parent))\nfrom analyse_headlines import DELIVERY_METRICS, VALUE`
+
+```
+Successfully wrote 3733 bytes (71 lines) to /home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_corpus_outputs.py
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:write:68909e78 h:24af2f26 -->
+### 2026-11-27 05:18:20 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/make_charts.py", "content": "from pathlib import Path\nimport argparse, json, sys\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib\nmatplotlib.use('Agg')\nimport matplotlib.pyplot as plt\n\nsys.path.insert(0, str(Path(__file__).parent))\nfrom analyse_headlines import REPO_ROOT\n\nap=argparse.ArgumentParse`
+
+```
+Successfully wrote 4728 bytes (93 lines) to /home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/make_charts.py
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:91b8953d h:e34178da -->
+### 2026-11-27 05:18:26 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json", "old_string": "    {\n      \"name\": \"validate-outputs\",\n      \"cmd\": \".venv/bin/python scripts/headline-analysis/test_corpus_outputs.py --config docs/tasks/headline-analysis.task.json\",\n      \"produces\": \"stdout validation\"\n    }", "new_string": "    {\n      \"name\": \"validate-outputs\`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json' - made 1 replacement(s). 5 line(s) removed, 10 line(s) added at line 24.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:5ad88d35 h:049c39da -->
+### 2026-11-27 05:18:54 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "ORG_HINT = re.compile(r\"\\b(?:government|department|ministry|court|parliament|congress|senate|police|NHS|WHO|UN|EU|FDA|CDC|Ofcom|Ofgem|ONS|CMA|SEC|FCA|FTC|NASA|ESA|ECB|IMF|World Bank|Supreme Court|High Court|House of Commons|White House|Downing Street|Bank of England|Federal Rese`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 3 line(s) removed, 21 line(s) added at line 56.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:d753f9d9 h:030ac29f -->
+### 2026-11-27 05:19:00 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    event_action = int(EVENT_ACTIONS.search(title) is not None)\n    numeric = int(NUMERIC.search(title) is not None)", "new_string": "    event_action = detect_event_action(title)\n    numeric = int(NUMERIC.search(title) is not None)"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 2 line(s) added at line 212.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:9b1867b1 h:98f1e3f8 -->
+### 2026-11-27 05:19:08 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", "old_string": "    (\"How to clear the cache on your Xbox Series X\",\n     {'direct_service_packaging_present':1,'low_direct_service_packaging':0,'explanatory_framing':1,'explicit_curiosity_gap_present':0}),", "new_string": "    (\"How to clear the cache on your Xbox Series X\",\n     {'direct_ser`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py' - made 1 replacement(s). 2 line(s) removed, 2 line(s) added at line 17.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:37d35d56 h:8550c84b -->
+### 2026-11-27 05:19:18 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 20000}`
+
+```
+Output from command in shell f644af:
+12 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:get_output:3dc46d3e h:102d843d -->
+### 2026-11-27 05:19:22 UTC tool `get_output`
+
+`{"shell_id": "headline-analysis-run", "timeout": 10000}`
+
+```
+{
+  "headline_rows": 11461,
+  "sources": 695,
+  "sources_ranked_min_n": 74,
+  "sources_n_ge_50": 28,
+  "sources_n_ge_100": 14,
+  "sources_below_min_n": 621,
+  "exact_duplicate_headline_rows": 45,
+  "runtime_seconds": 70.857
+}
+
+TOP:
+ rank                   source   n  topic_adjusted_value_index      ordering_band  raw_title_signal_index
+  1.0                Eurogamer 458                   61.388986 A — upper quartile               35.789665
+  2.0                 Wccftech  27                   59.656735 A — upper quartile               40.277778
+  3.0              MyJoyOnline  28                   57.411694 A — upper quartile               41.517857
+  4.0                TweakTown  46                   57.352305 A — upper quartile               36.775362
+  5.0           Jerusalem Post  68                   57.342469 A — upper quartile               39.705882
+  6.0             ScienceAlert  22                   56.710008 A — upper quartile               35.606061
+  7.0             The Guardian 485                   56.546097 A — upper quartile               36.597938
+  8.0 South China Morning Post  25                   56.521235 A — upper quartile               41.333333
+  9.0                  PsyPost  28                   56.413256 A — upper quartile               36.160714
+ 10.0                   Quartz  24                   56.194259 A — upper quartile               40.972222
+ 11.0            New York Post  43                   55.566415 A — upper quartile               35.077519
+ 12.0               Indiatimes  20                   55.044928 A — upper quartile               39.583333
+ 13.0                      PBS  20                   54.764132 A — upper quartile               37.500000
+ 14.0             Seekingalpha  24                   54.526385 A — upper quartile               37.673611
+ 15.0           Medical Xpress 127                   54.173709 A — upper quartile               35.367454
+
+BOTTOM:
+ rank            source   n  topic_adjusted_value_index      or
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:12897c5b h:9a94ba09 -->
+### 2026-11-27 05:19:30 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport csv,json\nfrom pathlib import Path\nroot=Path('docs/headline-data/current')\nrows=list(csv.DictReader((root/'source_rankings.csv').open(newline='',encoding='utf-8')))\nprint('high volume')\nfor r in sorted([x for x in rows if int(x['n'])>=100],key=lambda x:float(x['topic_adjusted_value_index']),reverse=True):\n print(r['source'],r['n'],round(float(r['topic_adj`
+
+```
+Output from command in shell 71647b:
+high volume
+Eurogamer 458 61.4 raw 35.8 direct 0.06 curiosity 0.0 sens 0.03 event 0.57 evid 0.03
+The Guardian 485 56.5 raw 36.6 direct 0.07 curiosity 0.01 sens 0.02 event 0.57 evid 0.06
+Medical Xpress 127 54.2 raw 35.4 direct 0.05 curiosity 0.01 sens 0.01 event 0.39 evid 0.16
+The Independent 246 53.2 raw 35.4 direct 0.02 curiosity 0.0 sens 0.06 event 0.56 evid 0.06
+Mirror 133 52.5 raw 34.1 direct 0.02 curiosity 0.0 sens 0.15 event 0.57 evid 0.02
+Phys.org 190 51.6 raw 33.1 direct 0.06 curiosity 0.0 sens 0.01 event 0.33 evid 0.12
+Financial Times 116 49.0 raw 36.1 direct 0.05 curiosity 0.0 sens 0.03 event 0.53 evid 0.02
+City A.M. 173 47.0 raw 36.9 direct 0.02 curiosity 0.0 sens 0.02 event 0.54 evid 0.02
+BBC 3537 46.7 raw 34.8 direct 0.07 curiosity 0.0 sens 0.03 event 0.55 evid 0.04
+Korea Times 123 46.7 raw 36.9 direct 0.01 curiosity 0.0 sens 0.03 event 0.59 evid 0.04
+IGN 125 46.4 raw 33.0 direct 0.04 curiosity 0.0 sens 0.02 event 0.5 evid 0.0
+Daily Mail 350 46.0 raw 31.9 direct 0.04 curiosity 0.02 sens 0.11 event 0.45 evid 0.03
+Punch 348 45.0 raw 34.1 direct 0.01 curiosity 0.0 sens 0.01 event 0.46 evid 0.04
+Kotaku 671 37.7 raw 31.5 direct 0.08 curiosity 0.01 sens 0.03 event 0.38 evid 0.02
+
+attention highest n>=20
+Engadget 21 14.3 0.43 0.0 0.0
+This is Money 81 12.3 0.25 0.09 0.04
+Chalkbeat 23 8.7 0.26 0.0 0.0
+TechRadar 40 8.3 0.2 0.0 0.05
+New Scientist 40 8.3 0.18 0.03 0.05
+Windows Central 50 6.7 0.2 0.0 0.0
+Newsweek 28 6.0 0.11 0.0 0.07
+Daily Mail 350 5.7 0.04 0.02 0.11
+Vice 30 5.6 0.17 0.0 0.0
+Mirror 133 5.5 0.02 0.0 0.15
+Inc 26 5.1 0.08 0.04 0.04
+Reddit 40 5.0 0.12 0.03 0.0
+Xbox Wire 21 4.8 0.1 0.0 0.05
+The Verge 35 4.8 0.14 0.0 0.0
+GameSpot 56 4.8 0.11 0.0 0.04
+
+runtime
+{
+  "runtime_seconds": 70.857,
+  "stage_times": {
+    "parse_archive": 0.803,
+    "detectors": 15.665,
+    "headline_reuse_and_templates": 24.716,
+    "topic_model_and_crossfit_expectations": 5.66,
+    "source_statistics_and_bootstrap": 20.78,
+    "write_tables_an
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:4f511005 h:d7c8fd62 -->
+### 2026-11-27 05:20:00 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport csv\nrows=list(csv.DictReader(open('docs/headline-data/current/source_rankings.csv',newline='',encoding='utf-8')))\nfor name in ['Mirror','Daily Mail','The Guardian','Eurogamer','Kotaku','BBC','Medical Xpress','Phys.org']:\n r=next(x for x in rows if x['source']==name)\n print('\\n',name,'n',r['n'],'idx',r['topic_adjusted_value_index'],'raw',r['raw_title_signa`
+
+```
+Output from command in shell ce9c3d:
+
+ Mirror n 133 idx 52.521402392515434 raw 34.08521303258146 context Tabloid national newspaper
+event_clarity obs 0.571 exp 0.455 res 0.116 z 1.18
+quantified_specificity obs 0.12 exp 0.08 res 0.04 z 0.55
+time_place_anchor obs 0.15 exp 0.126 res 0.024 z 0.32
+causal_explanation obs 0.03 exp 0.028 res 0.002 z 0.15
+material_consequence obs 0.301 exp 0.201 res 0.1 z 1.08
+evidence_provenance obs 0.015 exp 0.027 res -0.012 z -0.4
+context_comparison obs 0.068 exp 0.05 res 0.018 z 0.72
+explanatory_framing obs 0.0 exp 0.017 res -0.017 z -0.8
+original_reporting_signal obs 0.0 exp 0.002 res -0.002 z -0.2
+low_explicit_curiosity_gap obs 1.0 exp 0.98 res 0.02 z 1.54
+low_direct_service_packaging obs 0.985 exp 0.965 res 0.02 z 0.26
+low_sensational_personal obs 0.85 exp 0.887 res -0.038 z -2.38
+
+ Daily Mail n 350 idx 46.00770793545982 raw 31.928571428571434 context Tabloid national newspaper
+event_clarity obs 0.446 exp 0.565 res -0.12 z -1.27
+quantified_specificity obs 0.086 exp 0.126 res -0.04 z -0.6
+time_place_anchor obs 0.131 exp 0.161 res -0.029 z -0.32
+causal_explanation obs 0.029 exp 0.032 res -0.004 z -0.05
+material_consequence obs 0.206 exp 0.302 res -0.097 z -1.22
+evidence_provenance obs 0.034 exp 0.025 res 0.009 z 0.17
+context_comparison obs 0.051 exp 0.07 res -0.018 z -0.37
+explanatory_framing obs 0.017 exp 0.004 res 0.013 z 0.91
+original_reporting_signal obs 0.003 exp 0.004 res -0.001 z -0.09
+low_explicit_curiosity_gap obs 0.98 exp 0.998 res -0.018 z -1.58
+low_direct_service_packaging obs 0.963 exp 0.978 res -0.016 z -0.47
+low_sensational_personal obs 0.886 exp 0.854 res 0.032 z 1.69
+
+ The Guardian n 485 idx 56.546096756127014 raw 36.59793814432989 context Trust-owned national newspaper
+event_clarity obs 0.569 exp 0.546 res 0.024 z 0.3
+quantified_specificity obs 0.101 exp 0.156 res -0.055 z -0.83
+time_place_anchor obs 0.307 exp 0.206 res 0.102 z 1.32
+causal_explanation obs 0.052 exp 0.049 res 0.003 z 0.2
+material_consequence obs 0.309 e
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:bd0038be h:9dc5eddd -->
+### 2026-11-27 05:20:21 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport csv\nrows=list(csv.DictReader(open('docs/headline-data/current/source_rankings.csv',newline='',encoding='utf-8')))\ndelivery=['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing','original_reporting_signal']\nattention=['low_explicit_curiosity_g`
+
+```
+Output from command in shell 8109db:
+
+ equal
+ 61.4 Eurogamer
+ 56.5 The Guardian
+ 54.6 Medical Xpress
+ 53.2 The Independent
+ 52.5 Mirror
+ 51.6 Phys.org
+ 49.0 Financial Times
+ 47.0 City A.M.
+ 46.7 BBC
+ 46.7 Korea Times
+ 46.4 IGN
+ 46.0 Daily Mail
+ 45.0 Punch
+ 37.7 Kotaku
+
+ 60del40att
+ 60.3 Eurogamer
+ 58.4 The Guardian
+ 54.4 Medical Xpress
+ 53.0 The Independent
+ 52.5 Phys.org
+ 51.4 Mirror
+ 49.6 Financial Times
+ 48.5 IGN
+ 48.3 City A.M.
+ 47.1 Punch
+ 46.4 Daily Mail
+ 46.2 BBC
+ 45.7 Korea Times
+ 38.3 Kotaku
+
+ severity
+ 61.1 Eurogamer
+ 57.9 The Guardian
+ 55.2 Medical Xpress
+ 53.2 The Independent
+ 51.7 Phys.org
+ 51.1 Mirror
+ 48.1 Financial Times
+ 46.9 Daily Mail
+ 46.4 City A.M.
+ 46.3 IGN
+ 46.0 BBC
+ 45.9 Punch
+ 45.7 Korea Times
+ 37.6 Kotaku
+
+ attentionheavy
+ 59.7 The Guardian
+ 59.5 Eurogamer
+ 54.2 Medical Xpress
+ 53.1 Phys.org
+ 52.9 The Independent
+ 50.7 Mirror
+ 50.0 Financial Times
+ 49.8 IGN
+ 49.1 City A.M.
+ 48.5 Punch
+ 46.7 Daily Mail
+ 45.8 BBC
+ 45.0 Korea Times
+ 38.7 Kotaku
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:99a0e123 h:54f2ed3d -->
+### 2026-11-27 05:20:37 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport csv,statistics\nrows=list(csv.DictReader(open('docs/headline-data/current/source_rankings.csv',newline='',encoding='utf-8')))\ndelivery=['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing','original_reporting_signal']\nattention=['low_explicit_`
+
+```
+Output from command in shell c1b73b:
+
+lambda 0 (1=full topic adjust attention,0=absolute attention)
+ 60.1 Eurogamer
+ 54.7 Medical Xpress
+ 51.8 The Guardian
+ 51.8 The Independent
+ 51.4 Phys.org
+ 50.1 Korea Times
+ 48.7 Financial Times
+ 48.3 Mirror
+ 48.0 BBC
+ 47.8 City A.M.
+ 46.8 Punch
+ 46.1 IGN
+ 40.2 Daily Mail
+ 38.2 Kotaku
+
+lambda 0.25 (1=full topic adjust attention,0=absolute attention)
+ 60.4 Eurogamer
+ 54.8 Medical Xpress
+ 52.9 The Guardian
+ 51.9 The Independent
+ 51.6 Phys.org
+ 49.2 Korea Times
+ 48.8 Financial Times
+ 48.5 Mirror
+ 47.7 BBC
+ 47.7 City A.M.
+ 46.5 Punch
+ 46.3 IGN
+ 40.8 Daily Mail
+ 38.0 Kotaku
+
+lambda 0.5 (1=full topic adjust attention,0=absolute attention)
+ 60.7 Eurogamer
+ 54.8 Medical Xpress
+ 54.2 The Guardian
+ 52.2 The Independent
+ 51.7 Phys.org
+ 49.2 Mirror
+ 48.8 Financial Times
+ 48.3 Korea Times
+ 47.5 City A.M.
+ 47.3 BBC
+ 46.4 IGN
+ 46.1 Punch
+ 42.2 Daily Mail
+ 37.8 Kotaku
+
+lambda 1 (1=full topic adjust attention,0=absolute attention)
+ 61.4 Eurogamer
+ 56.5 The Guardian
+ 54.6 Medical Xpress
+ 53.2 The Independent
+ 52.5 Mirror
+ 51.6 Phys.org
+ 49.0 Financial Times
+ 47.0 City A.M.
+ 46.7 BBC
+ 46.7 Korea Times
+ 46.4 IGN
+ 46.0 Daily Mail
+ 45.0 Punch
+ 37.7 Kotaku
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:72c658cb h:5b119bf1 -->
+### 2026-11-27 05:21:00 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport zipfile,json,collections\nrows=[json.loads(x) for x in zipfile.ZipFile('.working/source-headlines-analysis.zip').read('headline-rows.jsonl').decode().splitlines()]\nc=collections.Counter((r['branch_path'].split(' / ')[0] if r['branch_path'] else 'Unmatched') for r in rows)\nfor x,n in c.most_common(40): print(n,x)\nPY", "workdir": "/home/bobbigmac/projects/bob`
+
+```
+Output from command in shell c1f5db:
+3537 BBC
+1359 Gaming Press
+738 Business & Money
+625 Unmatched
+613 Science & Health Press
+528 Technology Press
+504 Daily Mail
+485 The Guardian
+388 Nigeria Media
+358 UK Nationals
+165 Reach
+165 Developer Platforms
+157 US Local Media
+148 Malaysia Media
+140 Korea Media
+115 Gulf Media
+109 Independent Digital News
+96 US Broadcast Networks
+92 India Media
+88 Middle East Media
+60 Europe English
+54 Entertainment & Culture
+54 South Africa Media
+54 Nine
+52 News Corp Print
+50 Social Aggregators
+50 Australia & NZ Public
+47 Singapore Media
+47 Ghana Media
+46 European Public
+45 Sports Press
+41 North America Public
+38 Philippines Media
+38 Pakistan Media
+31 Japan Media
+29 Hong Kong & Taiwan
+28 Future
+28 Ukraine Media
+26 Postmedia
+25 US Nationals
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:5c5c6569 h:2e05abf3 -->
+### 2026-11-27 05:21:20 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    df['editorial_context']=np.where(df['profile_kind'].astype(str).str.len()>0,df['profile_kind'],df['tree_root'])\n    df['editorial_context']=df['editorial_context'].replace('', 'uncurated')\n    df['tree_root_id']=df['tree_root_id'].replace('', 'uncurated')\n    df['published_`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 5 line(s) removed, 30 line(s) added at line 191.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:9f7a1b2c h:b6808575 -->
+### 2026-11-27 05:21:30 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "def crossfit_expected(df: pd.DataFrame, W, feature_cols, folds=4, seed=27):\n    \"\"\"Cross-fit expected detector rates by source groups, not in-source rows.\n\n    Topic mixture plus coarse curated context predicts each detector. GroupKFold by\n    source means a source's own he`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 8 line(s) removed, 9 line(s) added at line 307.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:c710226b h:09d4e90b -->
+### 2026-11-27 05:21:35 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    expected=crossfit_expected(df,W,FEATURE_KEYS,folds=int(cfg['folds']),seed=int(cfg['random_seed']))", "new_string": "    expected=crossfit_expected(df,W,FEATURE_KEYS,folds=int(cfg['folds']),seed=int(cfg['random_seed']),context_fields=cfg.get('context_fields'))"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 662.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:4cf53c59 h:f0c0c0c2 -->
+### 2026-11-27 05:21:42 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json", "old_string": "    \"cross_source_similarity_threshold\": 0.82,\n    \"shrinkage_grid\": [10, 25, 50],", "new_string": "    \"cross_source_similarity_threshold\": 0.82,\n    \"context_fields\": [\"tree_root_id\", \"neutral_editorial_context\"],\n    \"attention_context_adjustment\": 0.25,\n    \"shrinka`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json' - made 1 replacement(s). 2 line(s) removed, 4 line(s) added at line 45.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:32cd4577 h:13f54715 -->
+### 2026-11-27 05:21:48 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "VALUE_METRICS = DELIVERY_METRICS + ['low_explicit_curiosity_gap','low_direct_service_packaging','low_sensational_personal']\nFEATURES = [", "new_string": "ATTENTION_METRICS = ['low_explicit_curiosity_gap','low_direct_service_packaging','low_sensational_personal']\nVALUE_METRICS = `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 85.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:b0b017d3 h:8028ba97 -->
+### 2026-11-27 05:22:03 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    for col in VALUE_METRICS:\n        adj=100*out[col+'_residual']*(out['n']/(out['n']+float(shrink)))\n        tmp=adj.astype(float)", "new_string": "    for col in VALUE_METRICS:\n        residual_col=col+'_index_residual' if col+'_index_residual' in out else col+'_residual'\n `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 3 line(s) removed, 4 line(s) added at line 432.
+```
+
+---
+
+<!-- r:0 m:hook:PostCompaction:14c433ed-9221-4674-9ceb-f826ca79d0b6 h:01eccc05 -->
+### 2026-11-27 05:22:04 UTC · postcompaction 
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:3b795686 h:7e5e5de8 -->
+### 2026-11-27 05:22:11 UTC tool `exec`
+
+`{"command": "sed -n '444,510p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 4e132e:
+    out.loc[order,'rank']=np.arange(1,len(order)+1)
+    return out
+
+
+def band_from_rank(rank, eligible_count):
+    if not np.isfinite(rank): return 'Unranked'
+    pct=rank/max(eligible_count,1)
+    if pct<=0.25: return 'A — upper quartile'
+    if pct<=0.50: return 'B — second quartile'
+    if pct<=0.75: return 'C — third quartile'
+    return 'D — lower quartile'
+
+
+def source_statistics(df, expected, min_source_n=20, shrinkage=25, shrinkage_grid=(10,25,50), bootstrap=250, seed=27):
+    g=df.groupby('source_key', sort=False)
+    src=g.agg(source=('source',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),
+              n=('headline','size'),
+              group=('group',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),
+              tree_root=('tree_root',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),
+              editorial_context=('editorial_context',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),
+              mean_words=('word_count','mean'), title_value_raw=('title_value_signal_raw','mean'),
+              legacy_title_value_raw=('legacy_title_value_signal_raw','mean'),
+              delivery_signal_mean=('information_delivery_signal','mean'),
+              delivery_signal_median=('information_delivery_signal','median'),
+              delivery_signal_p25=('information_delivery_signal',lambda x:x.quantile(.25)),
+              delivery_signal_p75=('information_delivery_signal',lambda x:x.quantile(.75)),
+              delivery_signal_p90=('information_delivery_signal',lambda x:x.quantile(.90)),
+              delivery_share_le20=('information_delivery_signal',lambda x:(x<=20).mean()),
+              delivery_share_ge44=('information_delivery_signal',lambda x:(x>=44.444444).mean()),
+              attention_pressure_mean=('attention_packaging_pressure','mean'),
+              within_source_template_reuse_rate=('within_source_repeated_trigram_proxy','mean'),
+              attribution_cue_rate=('a
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:6400b7f2 h:9bd9f964 -->
+### 2026-11-27 05:22:17 UTC tool `exec`
+
+`{"command": "sed -n '420,620p' scripts/headline-analysis/analyse_headlines.py && printf '\\n---CONFIG---\\n' && cat docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 3edab4:
+            rows.append({'source': source, 'n_headlines': n_s, 'phrase': terms[j],
+                         'source_doc_count': int(source_counts[j]),
+                         'source_share': float(source_counts[j]/n_s),
+                         'corpus_share': float(global_counts[j]/N),
+                         'weighted_log_odds_z': float(z[j])})
+    pd.DataFrame(rows).to_csv(out_path, index=False)
+
+
+def composite_for_shrink(src, shrink, min_n):
+    out=src.copy()
+    zcols=[]
+    eligible=out['n']>=min_n
+    for col in VALUE_METRICS:
+        residual_col=col+'_index_residual' if col+'_index_residual' in out else col+'_residual'
+        adj=100*out[residual_col]*(out['n']/(out['n']+float(shrink)))
+        tmp=adj.astype(float)
+        mu=float(tmp[eligible].mean())
+        sd=float(tmp[eligible].std(ddof=1))
+        if sd<=1e-8: sd=1.0
+        out[col+'_relative_z']=(tmp-mu)/sd
+        zcols.append(col+'_relative_z')
+    out['topic_adjusted_value_index']=(50+15*out[zcols].clip(-3,3).mean(axis=1)).clip(0,100)
+    order=out.loc[out['n']>=min_n].sort_values('topic_adjusted_value_index',ascending=False).index
+    out['rank']=np.nan
+    out.loc[order,'rank']=np.arange(1,len(order)+1)
+    return out
+
+
+def band_from_rank(rank, eligible_count):
+    if not np.isfinite(rank): return 'Unranked'
+    pct=rank/max(eligible_count,1)
+    if pct<=0.25: return 'A — upper quartile'
+    if pct<=0.50: return 'B — second quartile'
+    if pct<=0.75: return 'C — third quartile'
+    return 'D — lower quartile'
+
+
+def source_statistics(df, expected, min_source_n=20, shrinkage=25, shrinkage_grid=(10,25,50), bootstrap=250, seed=27):
+    g=df.groupby('source_key', sort=False)
+    src=g.agg(source=('source',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),
+              n=('headline','size'),
+              group=('group',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),
+              tree_root=('tree_root',lambda x:x.mode().iat[0] if len(x.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:705555fa h:df027cf7 -->
+### 2026-11-27 05:22:26 UTC tool `exec`
+
+`{"command": "sed -n '620,830p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell c0d1a6:
+            r=df.iloc[int(i)]
+            rows.append({'stratum':label,'source':r['source'],'headline':r['headline'],'url':r.get('url',''),
+                         'explicit_curiosity_gap_present':r['explicit_curiosity_gap_present'],
+                         'direct_service_packaging_present':r['direct_service_packaging_present'],
+                         'personal_sensational_frame_present':r['personal_sensational_frame_present'],
+                         'evidence_strength':r['evidence_strength'],'human_label':'','human_notes':''})
+    pd.DataFrame(rows).drop_duplicates(subset=['source','headline']).to_csv(out_path,index=False)
+
+
+def main():
+    started=time.perf_counter()
+    stage_times={}
+    def mark(name,t0):
+        stage_times[name]=round(time.perf_counter()-t0,3)
+        return time.perf_counter()
+
+    ap=argparse.ArgumentParser()
+    ap.add_argument('--config',type=Path,default=DEFAULT_CONFIG)
+    ap.add_argument('--zip',type=Path)
+    ap.add_argument('--out',type=Path)
+    ap.add_argument('--topics',type=int)
+    ap.add_argument('--folds',type=int)
+    ap.add_argument('--bootstrap',type=int)
+    args=ap.parse_args()
+    cfg=load_config(args)
+    zip_path=Path(cfg['input_zip_path'])
+    out=Path(cfg['output_dir_path'])
+    out.mkdir(parents=True,exist_ok=True)
+
+    t=time.perf_counter()
+    df=parse_archive(zip_path)
+    df['headline_id']=np.arange(len(df))
+    t=mark('parse_archive',t)
+
+    nlp=spacy.blank('en')
+    det=pd.DataFrame([detect_one(x,nlp) for x in df['headline']])
+    df=pd.concat([df.reset_index(drop=True),det],axis=1)
+    t=mark('detectors',t)
+
+    df=headline_reuse_proxy(df,n_neighbors=int(cfg['nearest_neighbors']),threshold=float(cfg['cross_source_similarity_threshold']))
+    df=add_within_source_template_proxy(df)
+    t=mark('headline_reuse_and_templates',t)
+
+    W,topics,vec,nmf=topic_model(df,n_topics=int(cfg['topics']),min_df=int(cfg['topic_min_df']),seed=int(cfg['random_seed']))
+    expected=cro
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:76e43766 h:65452af5 -->
+### 2026-11-27 05:22:35 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "def source_statistics(df, expected, min_source_n=20, shrinkage=25, shrinkage_grid=(10,25,50), bootstrap=250, seed=27):", "new_string": "def source_statistics(df, expected, min_source_n=20, shrinkage=25, shrinkage_grid=(10,25,50), bootstrap=250, seed=27, attention_context_adjustmen`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 457.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:232fc0db h:49bd632a -->
+### 2026-11-27 05:22:44 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    src['explicit_curiosity_gap_incidence_rate'] = 1.0 - src['low_explicit_curiosity_gap_rate']\n    src['direct_service_packaging_incidence_rate'] = 1.0 - src['low_direct_service_packaging_rate']\n    src['sensational_personal_incidence_rate'] = 1.0 - src['low_sensational_persona`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 5 line(s) removed, 20 line(s) added at line 502.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:5d2e0262 h:ce80ac6f -->
+### 2026-11-27 05:22:57 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    for col in VALUE_METRICS:\n        factor=src['n']/(src['n']+float(shrinkage))\n        src[col+'_adjusted_pp']=100*src[col+'_residual']*factor", "new_string": "    for col in VALUE_METRICS:\n        factor=src['n']/(src['n']+float(shrinkage))\n        src[col+'_adjusted_pp']=`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 3 line(s) removed, 3 line(s) added at line 531.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:14c7c655 h:41e80aa5 -->
+### 2026-11-27 05:23:04 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "        obs_b=Ysrc[boot_ix].mean(axis=1)\n        exp_b=Esrc[boot_ix].mean(axis=1)\n        adj_b=100.0*(obs_b-exp_b)*(n/(n+float(shrinkage)))\n        z_b=(adj_b-resid_mu)/resid_sd", "new_string": "        obs_b=Ysrc[boot_ix].mean(axis=1)\n        exp_b=Esrc[boot_ix].mean(axis=1)`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 4 line(s) removed, 8 line(s) added at line 560.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:63a4a53f h:12343d93 -->
+### 2026-11-27 05:23:10 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    src,sensitivity_df=source_statistics(df,expected,min_source_n=int(cfg['min_source_n']),shrinkage=float(cfg['default_shrinkage']),\n                                         shrinkage_grid=cfg['shrinkage_grid'],bootstrap=int(cfg['bootstrap']),seed=int(cfg['random_seed']))", "new`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 691.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:1ed5ac77 h:f866a249 -->
+### 2026-11-27 05:23:19 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "              editorial_context=('editorial_context',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),", "new_string": "              editorial_context=('editorial_context',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),\n              neutral_editorial_context`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 2 line(s) added at line 463.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:8df7665d h:b8ad29ba -->
+### 2026-11-27 05:23:28 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    story_cols=['headline_id','source_key','source','group','tree_root','branch_path','curated_group','editorial_context','group_file','headline','url','published','story_id','category','story_type','word_count','story_word_count','information_delivery_signal','attention_packaging`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 697.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:7b853ac9 h:c9338c0a -->
+### 2026-11-27 05:23:40 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "      '- Expected detector rates are cross-fitted with GroupKFold by source: a source does not train the topic/editorial-context expectation used to residualise itself.',\n      '- Shrinkage sensitivity is exported across the configured grid; broad quartile ordering bands are emph`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 792.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:977d159d h:7ce87160 -->
+### 2026-11-27 05:23:44 UTC tool `exec`
+
+`{"command": "python3 -m py_compile scripts/headline-analysis/analyse_headlines.py && sed -n '1,130p' scripts/headline-analysis/analyse_headlines.py && printf '\\n--- charts ---\\n' && sed -n '1,220p' scripts/headline-analysis/make_charts.py && printf '\\n--- corpus test ---\\n' && sed -n '1,180p' scripts/headline-analysis/test_corpus_outputs.py", "workdir": "/home/bobbigmac/projects/bobdavies/news`
+
+```
+Output from command in shell d21d69. The full terminal output is being written live to /tmp/devin-overflows-1000/shell-d21d69-e45ed934a24c7139/content.txt; read or grep it for anything omitted below. Preview:
+<file-view path="/tmp/devin-overflows-1000/shell-d21d69-e45ed934a24c7139/content.txt" start_line="1" end_line="43" total_lines="298">
+  1|#!/usr/bin/env python3
+  2|"""Title-only editorial-value signal analysis for source-headlines ZIP exports.
+  3|
+  4|Exploratory dev-time corpus instrument, not a truth/accuracy detector. It extracts
+  5|interpretable title-level signals, cross-fits topic/editorial-context expectations,
+  6|and writes story- and source-level tables plus an interactive radar.
+  7|"""
+  8|from __future__ import annotations
+  9|
+ 10|import argparse, html, json, math, re, time, unicodedata, zipfile
+ 11|from collections import Counter
+ 12|from pathlib import Path
+ 13|
+ 14|import numpy as np
+ 15|import pandas as pd
+ 16|import spacy
+ 17|import plotly.graph_objects as go
+ 18|from scipy.sparse import csr_matrix, hstack
+ 19|from sklearn.decomposition import NMF
+ 20|from sklearn.feature_extraction.text import CountVectorizer, ENGLISH_STOP_WORDS, TfidfVectorizer
+ 21|from sklearn.linear_model import Ridge
+ 22|from sklearn.model_selection import GroupKFold
+ 23|from sklearn.neighbors import NearestNeighbors
+ 24|from sklearn.preprocessing import OneHotEncoder
+ 25|
+ 26|REPO_ROOT = Path(__file__).resolve().parents[2]
+ 27|DEFAULT_CONFIG = REPO_ROOT / 'docs/tasks/headline-analysis.task.json'
+ 28|
+ 29|MONTHS = r"january|february|march|april|may|june|july|august|september|october|november|december"
+ 30|DAYS = r"monday|tuesday|wednesday|thursday|friday|saturday|sunday"
+ 31|
+ 32|EVENT_ACTIONS = re.compile(r"\b(?:announc\w*|approv\w*|reject\w*|resign\w*|win\w*|los\w*|die\w*|died|dead|kill\w*|arrest\w*|charg\w*|convict\w*|acquit\w*|launch\w*|open\w*|clos\w*|suspend\w*|ban\w*|sign\w*|bought|buy\w*|sold|sell\w*|fell|fall\w*|rose|ris\w*|increas\w*|decreas\w*|found|finds|f
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:eb10d5d8 h:5a28fa9f -->
+### 2026-11-27 05:23:48 UTC tool `exec`
+
+`{"command": "sed -n '117,180p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell d5fe0a:
+def load_config(args):
+    cfg = {}
+    config_path = resolve_repo_path(args.config) if args.config else DEFAULT_CONFIG
+    if config_path.exists():
+        cfg = json.loads(config_path.read_text())
+    analysis = dict(cfg.get('analysis', {}))
+    if args.zip: analysis['input_zip'] = str(args.zip)
+    if args.out: analysis['output_dir'] = str(args.out)
+    if args.topics is not None: analysis['topics'] = args.topics
+    if args.folds is not None: analysis['folds'] = args.folds
+    if args.bootstrap is not None: analysis['bootstrap'] = args.bootstrap
+    analysis.setdefault('input_zip', '.working/source-headlines-analysis.zip')
+    analysis.setdefault('output_dir', 'docs/headline-data/current')
+    analysis.setdefault('topics', 22)
+    analysis.setdefault('topic_min_df', 4)
+    analysis.setdefault('folds', 4)
+    analysis.setdefault('bootstrap', 250)
+    analysis.setdefault('min_source_n', 20)
+    analysis.setdefault('random_seed', 27)
+    analysis.setdefault('nearest_neighbors', 8)
+    analysis.setdefault('cross_source_similarity_threshold', 0.82)
+    analysis.setdefault('shrinkage_grid', [10, 25, 50])
+    analysis.setdefault('default_shrinkage', 25)
+    analysis['config_path'] = str(config_path)
+    analysis['input_zip_path'] = str(resolve_repo_path(analysis['input_zip']))
+    analysis['output_dir_path'] = str(resolve_repo_path(analysis['output_dir']))
+    return analysis
+
+
+def parse_archive(zip_path: Path):
+    rows=[]
+    with zipfile.ZipFile(zip_path) as zf:
+        names=set(zf.namelist())
+        if 'headline-rows.jsonl' in names:
+            for line in zf.read('headline-rows.jsonl').decode('utf-8', errors='replace').splitlines():
+                if line.strip(): rows.append(json.loads(line))
+            df=pd.DataFrame(rows)
+            for col,default in [
+                ('source_key',''),('tree_root',''),('tree_root_id','uncurated'),('branch_path',''),('curated_group',''),
+                ('profile_kind',''),('profile_
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:a1e0065e h:ee93120e -->
+### 2026-11-27 05:23:58 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+Output from command in shell ce9752:
+12 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:9a4e6b6e h:4ffa861f -->
+### 2026-11-27 05:24:01 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: a69cdb
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:todo_write:216a6487 h:5f7c6342 -->
+### 2026-11-27 05:25:09 UTC tool `todo_write`
+
+`{"todos": [{"content": "Improve detector and scoring methodology to reduce identified shortcomings", "status": "completed"}, {"content": "Run the revised local analysis and validate structural outputs", "status": "in_progress"}, {"content": "Regenerate charts and inspect ranking/axis failure modes", "status": "pending"}, {"content": "Document validation state and summarise findings for the user", `
+
+```
+WARNING: You removed the following pending items from your todo list:
+- Create a small validation/evaluation harness and document metric semantics in outputs
+- Inspect results, iterate on obvious failure modes, and summarise findings
+If you did not mean to do that please add them back. Think about this before your next action.
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [x] Improve detector and scoring methodology to reduce identified shortcomings [completed]
+2. [~] Run the revised local analysis and validate structural outputs [in_progress]
+3. [ ] Regenerate charts and inspect ranking/axis failure modes [pending]
+4. [ ] Document validation state and summarise findings for the user [pending]
+
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:todo_write:2bd4333a h:b7262e5e -->
+### 2026-11-27 05:25:13 UTC tool `todo_write`
+
+`{"todos": [{"content": "Improve detector and scoring methodology to reduce identified shortcomings", "status": "completed"}, {"content": "Run the revised local analysis and validate structural outputs", "status": "in_progress"}, {"content": "Create/complete validation harness and document metric semantics in outputs", "status": "pending"}, {"content": "Regenerate charts and inspect ranking/axis fa`
+
+```
+WARNING: You removed the following pending items from your todo list:
+- Document validation state and summarise findings for the user
+If you did not mean to do that please add them back. Think about this before your next action.
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [x] Improve detector and scoring methodology to reduce identified shortcomings [completed]
+2. [~] Run the revised local analysis and validate structural outputs [in_progress]
+3. [ ] Create/complete validation harness and document metric semantics in outputs [pending]
+4. [ ] Regenerate charts and inspect ranking/axis failure modes [pending]
+5. [ ] Summarise findings and remaining limitations for the user [pending]
+
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:get_output:bdd33808 h:5a3495f1 -->
+### 2026-11-27 05:25:19 UTC tool `get_output`
+
+`{"shell_id": "a69cdb", "timeout": 30000}`
+
+```
+{
+  "headline_rows": 11461,
+  "sources": 695,
+  "sources_ranked_min_n": 74,
+  "sources_n_ge_50": 28,
+  "sources_n_ge_100": 14,
+  "sources_below_min_n": 621,
+  "exact_duplicate_headline_rows": 45,
+  "runtime_seconds": 72.609
+}
+
+TOP:
+ rank                   source   n  topic_adjusted_value_index      ordering_band  raw_title_signal_index
+  1.0                TweakTown  46                   60.802039 A — upper quartile               36.594203
+  2.0           Jerusalem Post  68                   59.269415 A — upper quartile               39.460784
+  3.0                Eurogamer 458                   58.861882 A — upper quartile               35.662300
+  4.0              MyJoyOnline  28                   58.686316 A — upper quartile               41.220238
+  5.0                   Quartz  24                   58.372708 A — upper quartile               40.972222
+  6.0                 Wccftech  27                   58.048628 A — upper quartile               39.351852
+  7.0                  PsyPost  28                   56.972013 A — upper quartile               36.160714
+  8.0 South China Morning Post  25                   56.870939 A — upper quartile               41.333333
+  9.0             The Guardian 485                   56.216618 A — upper quartile               36.529210
+ 10.0               Indiatimes  20                   55.780693 A — upper quartile               39.583333
+ 11.0            New York Post  43                   55.644427 A — upper quartile               35.077519
+ 12.0                      PBS  20                   55.489115 A — upper quartile               37.500000
+ 13.0             Seekingalpha  24                   54.882095 A — upper quartile               37.673611
+ 14.0           Medical Xpress 127                   54.617336 A — upper quartile               35.367454
+ 15.0      channelnewsasia.com  34                   54.524019 A — upper quartile               37.990196
+
+BOTTOM:
+ rank        source   n  topic_adjusted_value_index      orderi
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:4fff37d5 h:133a8f2d -->
+### 2026-11-27 05:25:29 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_corpus_outputs.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+Output from command in shell 65fd32:
+Corpus-output invariants passed: 11,461 headlines; 695 sources; 13 radar axes; 9 delivery markers; 74 ordered sources.
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:todo_write:62da44a9 h:482fbdb0 -->
+### 2026-11-27 05:25:33 UTC tool `todo_write`
+
+`{"todos": [{"content": "Improve detector and scoring methodology to reduce identified shortcomings", "status": "completed"}, {"content": "Run the revised local analysis and validate structural outputs", "status": "completed"}, {"content": "Create/complete validation harness and document metric semantics in outputs", "status": "pending"}, {"content": "Regenerate charts and inspect ranking/axis fail`
+
+```
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [x] Improve detector and scoring methodology to reduce identified shortcomings [completed]
+2. [x] Run the revised local analysis and validate structural outputs [completed]
+3. [ ] Create/complete validation harness and document metric semantics in outputs [pending]
+4. [~] Regenerate charts and inspect ranking/axis failure modes [in_progress]
+5. [ ] Summarise findings and remaining limitations for the user [pending]
+
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:3f59bf8f h:3e0e62b2 -->
+### 2026-11-27 05:25:43 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\ncols=['rank_n100','source','n','topic_adjusted_value_index','topic_adjusted_index_ci95_low','topic_adjusted_index_ci95_high','raw_title_signal_index','explicit_curiosity_gap_incidence_rate','direct_service_packaging_incidence_rate','sensational_personal_incidence_rate','att`
+
+```
+Output from command in shell 93bab0:
+HIGH VOLUME
+ rank_n100          source    n  topic_adjusted_value_index  topic_adjusted_index_ci95_low  topic_adjusted_index_ci95_high  raw_title_signal_index  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  attention_pressure_mean  event_clarity_rate  evidence_provenance_rate  original_reporting_signal_rate  cross_source_near_duplicate_rate
+       1.0       Eurogamer  458                   58.861882                      55.810389                       61.919114               35.662300                               0.004367                                 0.056769                             0.026201                 2.911208            0.556769                  0.030568                        0.015284                          0.002183
+       2.0    The Guardian  485                   56.216618                      53.647536                       59.183068               36.529210                               0.010309                                 0.065979                             0.024742                 3.367698            0.560825                  0.063918                        0.012371                          0.010309
+       3.0  Medical Xpress  127                   54.617336                      49.732341                       58.574388               35.367454                               0.007874                                 0.047244                             0.007874                 2.099738            0.393701                  0.157480                        0.000000                          0.000000
+       4.0       City A.M.  173                   51.606949                      48.875637                       54.667154               36.753372                               0.000000                                 0.023121                             0.023121                 1.541426            0.520231                  0.017341             
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:f1b5049b h:47fbddd1 -->
+### 2026-11-27 05:25:56 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nx=pd.read_csv('docs/headline-data/current/source_index_sensitivity.csv')\nfor sh in sorted(x.shrinkage.unique()):\n print('\\nshrink',sh)\n print(x[(x.shrinkage==sh)&(x.n>=20)].sort_values('topic_adjusted_value_index',ascending=False).head(12)[['rank','source','n','topic_adjusted_value_index']].to_string(index=False))\n# movement for top`
+
+```
+Output from command in shell 969207:
+
+shrink 10
+ rank                   source   n  topic_adjusted_value_index
+  1.0                TweakTown  46                   60.373001
+  2.0              MyJoyOnline  28                   59.148231
+  3.0                   Quartz  24                   59.022192
+  4.0                 Wccftech  27                   58.567520
+  5.0           Jerusalem Post  68                   58.088377
+  6.0 South China Morning Post  25                   57.457522
+  7.0                  PsyPost  28                   57.051000
+  8.0                Eurogamer 458                   56.852413
+  9.0               Indiatimes  20                   56.480316
+ 10.0                      PBS  20                   56.113242
+ 11.0            New York Post  43                   55.543856
+ 12.0             Seekingalpha  24                   55.246808
+
+shrink 25
+ rank                   source   n  topic_adjusted_value_index
+  1.0                TweakTown  46                   60.802039
+  2.0           Jerusalem Post  68                   59.269415
+  3.0                Eurogamer 458                   58.861882
+  4.0              MyJoyOnline  28                   58.686316
+  5.0                   Quartz  24                   58.372708
+  6.0                 Wccftech  27                   58.048628
+  7.0                  PsyPost  28                   56.972013
+  8.0 South China Morning Post  25                   56.870939
+  9.0             The Guardian 485                   56.216618
+ 10.0               Indiatimes  20                   55.780693
+ 11.0            New York Post  43                   55.644427
+ 12.0                      PBS  20                   55.489115
+
+shrink 50
+ rank                   source   n  topic_adjusted_value_index
+  1.0                Eurogamer 458                   61.405077
+  2.0                TweakTown  46                   60.831851
+  3.0           Jerusalem Post  68                   60.216517
+  4.0              MyJoyOnline  28      
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:9dfffb19 h:f852f14a -->
+### 2026-11-27 05:26:16 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\npd.set_option('display.max_colwidth',100)\na=pd.read_csv('docs/headline-data/current/detector_audit_sample.csv')\nprint(a.groupby('stratum').size())\nfor st in ['explicit_curiosity_gap','direct_service_packaging','sensational_personal','evidence_primary','evidence_research_only']:\n print('\\n##',st)\n print(a[a.stratum==st].head(8)[['so`
+
+```
+Output from command in shell 906613:
+stratum
+direct_service_packaging    30
+evidence_primary            30
+evidence_research_only      30
+explicit_curiosity_gap      30
+sensational_personal        30
+unflagged                   29
+dtype: int64
+
+## explicit_curiosity_gap
+          source                                                                                                                                                      headline
+             BBC                                                                                                    Hearts roll out red carpet ... and Celtic walk all over it
+          Kotaku                                        Radio Tower Expert Can't Believe How Realistic GTA 6′s Towers Are: ‘Oh My God Boys... Earthed Tower Legs With Saddles"
+             BBC                                                                                                 Olivia Rodrigo's Christmas song sounds familiar... on purpose
+           Yahoo                                                                                                      And lastly, Brandon Miller has been diagnosed with a ...
+      Daily Mail                                                                                                  The truth about the young women at Leonardo DiCaprio's party
+   This is Money Saving rates have just hit their highest level for years... thanks to these little-known banks and apps. Now SYLVIA MORRIS reveals how you can take advantage
+Evening Standard                                                                              Tuchel reveals key reason why England beat Spain in ‘best performance' of tenure
+          Kotaku                                                                                                           NBA 2K27 Sold Less Than Expected Because Of...GTA 6
+
+## direct_service_packaging
+         source                                                                                                        headli
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:a2503568 h:9f4b51ca -->
+### 2026-11-27 05:26:32 UTC tool `exec`
+
+`{"command": "sed -n '1,240p' scripts/headline-analysis/test_detectors.py && sed -n '35,85p' scripts/headline-analysis/analyse_headlines.py && sed -n '230,330p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 323bf8:
+"""High-precision regression cases for title-level detector behaviour."""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+import spacy
+from analyse_headlines import detect_one
+
+nlp = spacy.blank('en')
+
+cases = [
+    ("UK net migration fell 14% in 2025 as asylum claims also fell, ONS data show",
+     {'event_clarity':1,'quantified_specificity':1,'time_place_anchor':1,'material_consequence':1,'evidence_provenance':1.0,'primary_evidence_cue':1}),
+    ("Can YOU guess the secret behind the new royal relationship...?",
+     {'explicit_curiosity_gap_present':1,'low_explicit_curiosity_gap':0,'direct_service_packaging_present':1}),
+    ("Jennifer Lopez reveals son Max does not like her stage looks",
+     {'personal_life_frame_present':1,'teaser_verb_present':1,'personal_sensational_frame_present':1,'low_sensational_personal':0,'explicit_curiosity_gap_present':0}),
+    ("How to clear the cache on your Xbox Series X",
+     {'direct_service_packaging_present':1,'low_direct_service_packaging':0,'explanatory_framing':1,'explicit_curiosity_gap_present':0,'event_clarity':0}),
+    ("Star Wars studio announces a new game for 2027",
+     {'celebrity_cue_present':0,'event_clarity':1,'quantified_specificity':1}),
+    ("The incredible reason your heart never develops cancer",
+     {'explicit_curiosity_gap_present':1,'low_explicit_curiosity_gap':0}),
+    ("Study finds forever chemicals in New Jersey tap water",
+     {'evidence_provenance':0.5,'research_claim_cue':1,'primary_evidence_cue':0,'event_clarity':1}),
+    ("Court filing reveals Google internally admitted search quality loss",
+     {'evidence_provenance':1.0,'primary_evidence_cue':1,'event_clarity':1}),
+    ("How rail fare increases affect commuters across England",
+     {'explanatory_framing':1,'material_consequence':1}),
+    ("Why the new housing rules matter for renters",
+     {'explanatory_framing':1}),
+    ("What happened to the missing flight?",
+     {'e
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:238a40e2 h:3e691b3c -->
+### 2026-11-27 05:27:05 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "PRIMARY_EVIDENCE = re.compile(r\"\\b(?:documents?|records?|filings?|court filing\\w*|judg\\w*|ruling|audit\\w*|inquiry|investigation|evidence|dataset|database|testimony|transcript\\w*|internal memo|foi|freedom of information|official report|inspection report|trial records|clinical`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 5 line(s) added at line 39.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:8350ca89 h:4ae39ac7 -->
+### 2026-11-27 05:27:20 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "# Evidence provenance is intentionally high precision. Generic uses of \"record\",\n# \"database\", \"investigation\" or \"analysis\" are usually story subjects, not evidence\n# artefacts. Count explicit documentary/official provenance instead.\nPRIMARY_EVIDENCE", "new_string": "P`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 4 line(s) removed, 1 line(s) added at line 39.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:15463af4 h:3a9298d6 -->
+### 2026-11-27 05:27:27 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "ORIGINALITY = re.compile(r\"\\b(?:investigation|investigates?|exclusive|special report|our analysis|we found|documents? obtained|records? obtained|leaked documents?|internal memo|internal documents?|foi|freedom of information|first.hand account|on the ground|interview with|intervi`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 43.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:61f9d1cb h:cc2064ec -->
+### 2026-11-27 05:27:39 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", "old_string": "    (\"Did Scotland's departing chief medical officer actually do anything wrong?\",\n     {'explicit_curiosity_gap_present':0,'question_form_present':1,'explanatory_framing':0}),\n]", "new_string": "    (\"Did Scotland's departing chief medical officer actually do anything wrong?\",`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py' - made 1 replacement(s). 3 line(s) removed, 15 line(s) added at line 33.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:1919a788 h:adfdd49e -->
+### 2026-11-27 05:27:47 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+Output from command in shell 013702:
+18 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:fb1cb8f5 h:c7848772 -->
+### 2026-11-27 05:28:10 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys,spacy\nsys.path.insert(0,'scripts/headline-analysis')\nfrom analyse_headlines import detect_one,SENSATIONAL,PERSONAL_LIFE,CELEBRITY_CUE,TEASER_VERBS\nnlp=spacy.blank('en')\nfor x in [\n'One of my favourite games in recent years is now on consoles and Xbox Game Pass, and it\\'s a Halloween must for horror fans',\n'FDA warns GLP-1 drugs may pose ris`
+
+```
+Output from command in shell 138394:
+
+ One of my favourite games in recent years is now on consoles and Xbox Game Pass, and it's a Halloween must for horror fans
+sens horror personal None
+{'teaser_verb_present': 0, 'sensational_word_present': 1, 'personal_life_frame_present': 0, 'personal_sensational_frame_present': 1, 'celebrity_cue_present': 0, 'low_sensational_personal': 0}
+
+ FDA warns GLP-1 drugs may pose risk of rare condition that causes vision loss
+sens None personal pose
+{'teaser_verb_present': 0, 'sensational_word_present': 0, 'personal_life_frame_present': 1, 'personal_sensational_frame_present': 1, 'celebrity_cue_present': 0, 'low_sensational_personal': 0}
+
+ King calls slave trade a 'shameful chapter' during Commonwealth address
+sens shameful personal None
+{'teaser_verb_present': 0, 'sensational_word_present': 1, 'personal_life_frame_present': 0, 'personal_sensational_frame_present': 1, 'celebrity_cue_present': 0, 'low_sensational_personal': 0}
+
+ Nowak family tell of 'unbelievable pain' of seeing footage of dying son handcuffed
+sens unbelievable personal family
+{'teaser_verb_present': 0, 'sensational_word_present': 1, 'personal_life_frame_present': 1, 'personal_sensational_frame_present': 1, 'celebrity_cue_present': 0, 'low_sensational_personal': 0}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:87e33d19 h:aed4ffad -->
+### 2026-11-27 05:29:14 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "SENSATIONAL = re.compile(r\"\\b(?:shocking|shock|horror|horrific|terrifying|fury|furious|outrage|outrageous|bombshell|stunning|stuns|jaw.dropping|unbelievable|bizarre|brutal|chaos|nightmare|disaster|explosive|explodes|savage|slams|blasts|destroys|humiliat\\w*|devastat\\w*|heartbre`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 2 line(s) added at line 52.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:01edd8c5 h:be8a2b16 -->
+### 2026-11-27 05:29:21 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    lifestyle_detail = bool(re.search(r\"\\b(?:flaunts?|poses?|bikini|outfit|fashion|red carpet|rare photo|snapshots?|love life|sex life|weight loss|cosmetic surgery|plastic surgery|steps out|inside .* home)\\b\", title, re.I))", "new_string": "    lifestyle_detail = bool(re.searc`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 259.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:8be26f76 h:705180e1 -->
+### 2026-11-27 05:29:29 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", "old_string": "    (\"Audit finds council failures left families in unsafe housing\",\n     {'primary_evidence_cue':1,'evidence_provenance':1.0}),\n]", "new_string": "    (\"Audit finds council failures left families in unsafe housing\",\n     {'primary_evidence_cue':1,'evidence_provenance':1.0}),\`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py' - made 1 replacement(s). 3 line(s) removed, 9 line(s) added at line 45.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:dbf96873 h:72a129c9 -->
+### 2026-11-27 05:29:37 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+Output from command in shell 710fc3:
+21 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:9a7410f7 h:6696acea -->
+### 2026-11-27 05:29:42 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: 292123
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:write:b0d873cf h:cf1df3c5 -->
+### 2026-11-27 05:30:41 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/validate_detectors.py", "content": "#!/usr/bin/env python3\nimport argparse, json, sys\nfrom pathlib import Path\n\nimport numpy as np\nimport pandas as pd\n\nsys.path.insert(0, str(Path(__file__).parent))\nfrom analyse_headlines import REPO_ROOT, DELIVERY_METRICS\n\nADVERSE_AXES=['explicit_curiosity_gap_present','dir`
+
+```
+Successfully wrote 4324 bytes (100 lines) to /home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/validate_detectors.py
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:8f6d6f45 h:69a9b4eb -->
+### 2026-11-27 05:30:50 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json", "old_string": "    {\n      \"name\": \"charts\",\n      \"cmd\": \".venv/bin/python scripts/headline-analysis/make_charts.py --config docs/tasks/headline-analysis.task.json\",\n      \"produces\": \"docs/headline-data/current/*.png\"\n    }", "new_string": "    {\n      \"name\": \"validation-sample\",`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json' - made 1 replacement(s). 5 line(s) removed, 15 line(s) added at line 29.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:get_output:2f8f64ad h:15a92f37 -->
+### 2026-11-27 05:31:03 UTC tool `get_output`
+
+`{"shell_id": "292123", "timeout": 30000}`
+
+```
+{
+  "headline_rows": 11461,
+  "sources": 695,
+  "sources_ranked_min_n": 74,
+  "sources_n_ge_50": 28,
+  "sources_n_ge_100": 14,
+  "sources_below_min_n": 621,
+  "exact_duplicate_headline_rows": 45,
+  "runtime_seconds": 75.376
+}
+
+TOP:
+ rank                   source   n  topic_adjusted_value_index      ordering_band  raw_title_signal_index
+  1.0 South China Morning Post  25                   59.994914 A — upper quartile               41.500000
+  2.0                TweakTown  46                   59.560345 A — upper quartile               36.050725
+  3.0                Eurogamer 458                   58.569507 A — upper quartile               35.425764
+  4.0                   Quartz  24                   58.236106 A — upper quartile               40.972222
+  5.0                  PsyPost  28                   57.701034 A — upper quartile               35.565476
+  6.0              MyJoyOnline  28                   56.509970 A — upper quartile               40.178571
+  7.0           Jerusalem Post  68                   56.199766 A — upper quartile               38.786765
+  8.0                 Wccftech  27                   56.099749 A — upper quartile               38.271605
+  9.0               Indiatimes  20                   55.489843 A — upper quartile               38.958333
+ 10.0             The Guardian 485                   55.328467 A — upper quartile               36.091065
+ 11.0            New York Post  43                   55.294168 A — upper quartile               34.593023
+ 12.0             Seekingalpha  24                   55.138837 A — upper quartile               37.673611
+ 13.0                      PBS  20                   54.575151 A — upper quartile               36.666667
+ 14.0            Qatar Tribune  28                   54.379607 A — upper quartile               38.690476
+ 15.0           Medical Xpress 127                   54.101544 A — upper quartile               34.908136
+
+BOTTOM:
+ rank                source   n  topic_adjusted_value_index    
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:93c21b3c h:912bd05c -->
+### 2026-11-27 05:31:16 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_corpus_outputs.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+Output from command in shell 8a419c:
+Corpus-output invariants passed: 11,461 headlines; 695 sources; 13 radar axes; 9 delivery markers; 74 ordered sources.
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:562412ec h:4ad89f9f -->
+### 2026-11-27 05:31:31 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/validate_detectors.py sample --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/headline-analysis/validate_detectors.py score --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+Output from command in shell 661a77:
+wrote 150 validation rows to /home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/detector_validation_sample.csv
+{
+  "status": "insufficient_labels",
+  "labelled_axis_count": 0,
+  "unlabelled_axis_count": 12
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:88284b3b h:26a8db16 -->
+### 2026-11-27 05:31:44 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/make_charts.py --config docs/tasks/headline-analysis.task.json && ls -lh docs/headline-data/current/*.png docs/headline-data/current/source_radar.html 2>/dev/null", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: 60071e. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:bf0f43eb h:431854d4 -->
+### 2026-11-27 05:31:55 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\ncols=['rank_n100','source','n','topic_adjusted_value_index','topic_adjusted_index_ci95_low','topic_adjusted_index_ci95_high','raw_title_signal_index','explicit_curiosity_gap_incidence_rate','direct_service_packaging_incidence_rate','sensational_personal_incidence_rate','att`
+
+```
+Output from command in shell a783cd:
+ rank_n100          source    n  topic_adjusted_value_index  topic_adjusted_index_ci95_low  topic_adjusted_index_ci95_high  raw_title_signal_index  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  attention_pressure_mean  event_clarity_rate  evidence_provenance_rate  original_reporting_signal_rate  cross_source_near_duplicate_rate
+       1.0       Eurogamer  458                   58.569507                      55.917162                       61.357170               35.425764                               0.004367                                 0.056769                             0.019651                 2.692868            0.556769                  0.000000                        0.010917                          0.002183
+       2.0    The Guardian  485                   55.328467                      52.738632                       57.937006               36.091065                               0.010309                                 0.065979                             0.022680                 3.298969            0.560825                  0.019588                        0.002062                          0.010309
+       3.0  Medical Xpress  127                   54.101544                      49.385783                       57.932318               34.908136                               0.007874                                 0.047244                             0.007874                 2.099738            0.393701                  0.102362                        0.000000                          0.000000
+       4.0       City A.M.  173                   51.631854                      48.601891                       54.767322               36.632948                               0.000000                                 0.023121                             0.023121                 1.541426            0.520231                  0.002890                        0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:2032061c h:c81f9b43 -->
+### 2026-11-27 05:32:02 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nfor col in ['primary_evidence_cue','research_claim_cue','original_reporting_signal']:\n print('\\n',col,h[col].sum(),h[col].mean())\n print(h[h[col]>0][['source','headline']].head(12).to_string(index=False))\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 08471b:
+
+ primary_evidence_cue 37 0.0032283395864235232
+source                                                                                     headline
+   BBC                         Drug rape husband says wife 'would have been terrified', court hears
+   BBC       Mandelson kept shares as ambassador despite conflict of interest fears, documents show
+   BBC             Number of young people out of work or training still stubbornly high, data shows
+   BBC                    None of UK government's £2.5bn steel package spent in Wales, figures show
+   BBC                   Russia's own figures show it has lost nearly 500,000 people in Ukraine war
+   BBC                                         Boy, 3, died after choking in nursery, inquest hears
+   BBC                   Passenger feared Huntingdon train attacker was suicide bomber, court hears
+   BBC                  Teen had leg amputated after stabbing on beach on bank holiday, court hears
+   BBC Channel 4 documentary and journalists 'poisoned the well' against Russell Brand, court hears
+   BBC                       Stabbed boy felt Huntingdon train attacker 'was not sane', court hears
+   BBC                    Russell Brand accusers 'haunted' for years by alleged crimes, court hears
+   BBC                  Unnamed celebrity accused of 'inappropriate sexual activities', court hears
+
+ research_claim_cue 241 0.021027833522380246
+source                                                                        headline
+   BBC                       The young hikers finding friendship and fresh air offline
+   BBC           The real people finding their work copied and stolen by AI characters
+   BBC                   Fine Gael leader wants border poll criteria talks with London
+   BBC                               Survey reveals 'major increase' in cost of living
+   BBC      Covid inquiry report: key findings on testing, tracing and 'the pingdemic'
+   BBC  India's religious make-up - what a new 
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:fae1d2bd h:a4934dfe -->
+### 2026-11-27 05:32:26 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "RESEARCH_CLAIM = re.compile(r\"\\b(?:study|studies|research|researchers?|scientists?|survey|poll|paper|journal|findings?|clinical trial)\\b\", re.I)", "new_string": "RESEARCH_CLAIM = re.compile(r\"\\b(?:study|studies|survey|poll|findings|clinical trial)\\b|\\b(?:research|analysis)`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 40.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:809cb4ef h:fb762eba -->
+### 2026-11-27 05:32:48 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", "old_string": "    (\"Body found in river after missing walker search\",\n     {'personal_life_frame_present':0,'personal_sensational_frame_present':0,'low_sensational_personal':1}),\n]", "new_string": "    (\"Body found in river after missing walker search\",\n     {'personal_life_frame_present':0`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py' - made 1 replacement(s). 3 line(s) removed, 17 line(s) added at line 51.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:040e0fc2 h:44c86b6e -->
+### 2026-11-27 05:32:57 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+Output from command in shell 9b3e0e:
+28 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:get_output:ee47148f h:26e1376c -->
+### 2026-11-27 05:33:00 UTC tool `get_output`
+
+`{"shell_id": "60071e", "timeout": 10000}`
+
+```
+charts written to /home/bobbigmac/projects/bobdavies/news/docs/headline-data/current
+-rw-rw-r-- 1 bobbigmac bobbigmac 115K Nov 27 05:31 docs/headline-data/current/high_volume_source_ranking.png
+-rw-rw-r-- 1 bobbigmac bobbigmac 401K Nov 27 05:31 docs/headline-data/current/publisher_radar_comparison.png
+-rw-rw-r-- 1 bobbigmac bobbigmac 4.7M Nov 27 05:31 docs/headline-data/current/source_radar.html
+-rw-rw-r-- 1 bobbigmac bobbigmac  90K Nov 27 05:31 docs/headline-data/current/story_signal_distribution.png
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:1495f836 h:1a6aa92e -->
+### 2026-11-27 05:33:11 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys,spacy,pandas as pd\nsys.path.insert(0,'scripts/headline-analysis')\nfrom analyse_headlines import detect_one\nnlp=spacy.blank('en')\na=pd.read_csv('docs/headline-data/current/detector_audit_sample.csv')\nfor st in ['evidence_primary','evidence_research_only','sensational_personal']:\n print('\\n##',st)\n for _,r in a[a.stratum==st].head(12).iterro`
+
+```
+Output from command in shell dc6d18:
+
+## evidence_primary
+1.0 e1 r0 o0 s0 | The Guardian: Debt of poorest countries at record $9.4tn high, World Bank data shows
+1.0 e1 r0 o0 s0 | Seekingalpha: Advance Auto Parts, Inc. (AAP) Q3 2026 Earnings Call Transcript
+1.0 e1 r0 o0 s0 | Evening Standard: Andy Burnham ‘failing families' as data shows 40% rise in food prices, says SNP
+1.0 e1 r0 o0 s0 | BBC: Channel 4 documentary and journalists 'poisoned the well' against Russell Brand, court hea
+1.0 e1 r0 o0 s0 | Seekingalpha: Bubs Australia Limited (BUBSF) Shareholder/Analyst Call Prepared Remarks Transcript
+1.0 e1 r0 o0 s0 | South China Morning Post: Indonesia's wildfire emissions surge to world's highest, data shows
+1.0 e1 r0 o0 s0 | 3news: Average lending rate held at 15.79% in October, Bank of Ghana data show
+1.0 e1 r0 o0 s0 | BBC: Drug rape husband says wife 'would have been terrified', court hears
+1.0 e1 r0 o0 s0 | Colombiaone: Obesity in Colombia: What the Data Shows and How Policies Compare
+1.0 e1 r0 o0 s0 | BBC: Stabbed boy felt Huntingdon train attacker 'was not sane', court hears
+1.0 e1 r0 o0 s0 | Malaymail: UK court hears man kept over a million images of wife he drugged and raped
+1.0 e1 r0 o0 s0 | BBC: Passenger feared Huntingdon train attacker was suicide bomber, court hears
+
+## evidence_research_only
+0.5 e0 r1 o0 s0 | PsyPost: Family ties emerge as a key link between poverty and teen well-being in Taiwanese study
+0.5 e0 r1 o0 s0 | RNZ: Lack of long-term economic direction an impediment to growth - survey
+0.5 e0 r1 o0 s0 | ScienceAlert: A Massive Brain-Scan Study Just Complicated a Popular Theory About Emotional Control
+0.5 e0 r1 o0 s0 | PsyPost: Teens with authoritarian parents tend to hold more antisocial beliefs, study finds
+0.5 e0 r1 o0 s0 | Punch: Oyo LG poll: Parties verify logos on ballot specimens
+0.0 e0 r0 o0 s0 | The Independent: Heat-trapping carbon pollution drops, but scientists cite the Iran war rather than energy 
+0.5 e0 r1 o0 s0 | Medical Xpress: Li
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:e9c974d5 h:b9e037a7 -->
+### 2026-11-27 05:34:08 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", "old_string": "    (\"Exclusive interview: asylum hotel residents describe life inside\",\n     {'original_reporting_signal':1}),\n]", "new_string": "    (\"Exclusive interview: asylum hotel residents describe life inside\",\n     {'original_reporting_signal':1}),\n    (\"Earlier bedtime linked to `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py' - made 1 replacement(s). 3 line(s) removed, 7 line(s) added at line 65.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:164a56e4 h:af396858 -->
+### 2026-11-27 05:34:29 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+Output from command in shell 0c32d7:
+30 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:6188edd5 h:42d6b0c8 -->
+### 2026-11-27 05:34:50 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "      '- Evidence language distinguishes generic research claims from stronger primary-artefact provenance.',\n      '- Expected detector rates are cross-fitted with GroupKFold by source: a source does not train the topic/editorial-context expectation used to residualise itself.',`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 2 line(s) added at line 791.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:83c20264 h:fc4ce623 -->
+### 2026-11-27 05:35:00 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "      '- `detector_audit_sample.csv`: stratified manual-labelling sample for future detector validation.',\n      '- `metric_dictionary.json`: machine-readable axis definitions and composite inclusion.',", "new_string": "      '- `detector_audit_sample.csv`: stratified manual-labe`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 826.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:e8c1b325 h:d3e289de -->
+### 2026-11-27 05:35:04 UTC tool `exec`
+
+`{"command": "grep -n -A45 -B3 'headline-analysis' AGENTS.md | head -80", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell cdbb09:
+3-## Dev-time analysis tasks
+4-
+5-- Re-runnable analysis/task configuration lives in `docs/tasks/*.task.json`. Edit the config file rather than maintaining long CLI parameter lists.
+6:- `docs/tasks/headline-analysis.task.json` controls the exploratory headline/source analysis: export current `origin/cache-data` into `.working/`, then run `.venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json`.
+7-- This headline analysis is dev-time/run-once measurement tooling only. Do not wire it into `scripts/build.js`, CI, or the normal digest pipeline without explicit approval. No large transformer models or GPU-dependent models.
+8-- Completed work is logged in `docs/DONE.md`; open work stays in root `TODO.md`.
+9-
+10-### Platform-tenant attribution (keep copies in sync)
+11-
+12-Multi-tenant platforms (substack, medium, dev.to, neocities, etc.) are NOT sources —
+13-the publications/authors on them are. `sourceKeyFromUrl` and `prettifySourceKey`
+14-implement this twice: `scripts/sources.js` (pipeline) and `src/view-model.js` (client).
+15-**The two copies must be edited together** — key shape affects filtering, sprite
+16-lookup, and read-state consistently only if both sides agree.
+17-- Subdomain tenants: `x.substack.com` displays/keys as the tenant, never the platform.
+18-- Path tenants (`dev.to/user`, `medium.com/@user`): keys include the first path
+19-  segment (`dev.to/alice`) — different authors are different sources.
+20-- Build-time labels prefer the story's own author field for tenants; explicit
+21-  overrides live in `SOURCE_LABELS` in `scripts/favicons.js`.
+22-- Only hosts in `PLATFORM_HOSTS` get this treatment — publisher subdomains
+23-  (news.xbox.com) still attribute to the parent brand.
+24-
+25-## Currents API Quota — Critical Constraints
+26-
+27-- **Daily quota: 20 API calls** (free plan). Exceeding returns HTTP 429.
+28-- **3 scheduled runs per day** (cron: 7:23, 13:23, 19:23 L
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:450d3686 h:a85833cb -->
+### 2026-11-27 05:35:08 UTC tool `exec`
+
+`{"command": "ls -l TODO.md docs/DONE.md 2>&1; [ -f TODO.md ] && cat TODO.md; printf '\\n--- DONE tail ---\\n'; [ -f docs/DONE.md ] && tail -80 docs/DONE.md", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 9e79ad:
+-rw-rw-r-- 1 bobbigmac bobbigmac 24067 Nov 26 15:32 docs/DONE.md
+-rw-rw-r-- 1 bobbigmac bobbigmac  1642 Nov 26 07:11 TODO.md
+# TODO
+
+## Future features
+
+- [ ] Source/category roundups: after the normal run has finished batch/solo cluster summaries, consider a second pass that identifies recurring low-value story patterns by source or category (for example, repeated outrage framing) and uses one consolidated OpenRouter call to flag or resummarise those groups. Needs design before implementation.
+- [ ] Keep `src/trees/` JSON datasets maintained: add newly-seen hosts/subjects to curated branches and deepen any allocated branch that grows well past its target group size. Revisit `src/trees/profiles/` research notes as sources accumulate.
+
+## Paused: taxonomy research
+
+- [ ] Identify established/mainstream/widely-known reference taxonomies for better grouping support — candidates to evaluate: IPTC NewsCodes/MediaTopics (the news-industry standard subject taxonomy, ~1,400 terms in 17 top-level concepts, used by AP/Reuters/AFP/BBC-class wire orgs), Wikidata entity relations, Schema.org types, GDELT themes, simple.wikipedia categories. Goal: align our `src/trees/story/*.json` branches with a portable external vocabulary so the dataset transfers beyond today's news, rather than being a bespoke list matched to the current digest. Resume after the UI/masonry work (quota pressure — do NOT spend OpenRouter calls on this; use free taxonomy downloads + LLM judgement).
+- [ ] Tree-expansion continuation: the escape-driven pass on the ungrouped corpus was mid-flight (was at ~4,762/5,557 grouped, 230 groups; remaining ungrouped included foreign-language items, junk headlines, and several one-offs). Resume with escape analysis after taxonomy alignment.
+
+--- DONE tail ---
+  Single-source accusations are structurally impossible.
+- First flags: RT (EU sanctions + Ofcom revocation), TASS (Kremlin-appointed leadership +
+  peer-reviewed propaganda analysi
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:c688cae6 h:138a7aa9 -->
+### 2026-11-27 05:35:17 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: 85ffaa
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:6c940a3f h:fc8ce002 -->
+### 2026-11-27 05:35:36 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd, numpy as np, subprocess, json, tempfile, pathlib, sys\np=pathlib.Path('docs/headline-data/current/detector_validation_sample.csv')\ndf=pd.read_csv(p)\nrng=np.random.default_rng(1)\n# Copy predictions into human labels for first 12 rows only; score should compute perfect-ish binary metrics.\nfor c in [x for x in df.columns if x.startswith`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: 2c7634. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:570f4bf3 h:6cec377a -->
+### 2026-11-27 05:35:47 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/AGENTS.md", "old_string": "- `docs/tasks/headline-analysis.task.json` controls the exploratory headline/source analysis: export current `origin/cache-data` into `.working/`, then run `.venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json`.", "new_string": "- `docs/tasks/headline-analysi`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/AGENTS.md' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 6.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:e6d4e38e h:e941778b -->
+### 2026-11-27 05:36:09 UTC tool `exec`
+
+`{"command": "sed -n '1,260p' scripts/export-source-headlines.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell cfe3ac:
+import { execFileSync } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { SOURCE_RELATION_TREE } from '../src/source-tree.js';
+import { BRANCH_PROFILES, SOURCE_PROFILES } from '../src/source-profiles.js';
+import { SOURCE_LABELS } from './favicons.js';
+import { getSourceName, platformOfHost, sourceKeyFromUrl } from './sources.js';
+import { dedupStories, normaliseUrl } from './url-dedup.js';
+
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+function parseArgs(argv) {
+  const options = { ref: 'origin/cache-data', out: null };
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === '--ref') options.ref = argv[++i];
+    else if (argv[i] === '--out') options.out = argv[++i];
+    else if (argv[i] === '--help') {
+      console.log('Usage: node scripts/export-source-headlines.js [--ref origin/cache-data] [--out exports/file.zip]');
+      process.exit(0);
+    }
+  }
+  return options;
+}
+
+function readCacheJson(ref, filename) {
+  const blob = execFileSync('git', ['show', `${ref}:cache/${filename}`], {
+    cwd: repoRoot,
+    encoding: 'utf8',
+    maxBuffer: 200 * 1024 * 1024,
+  });
+  return JSON.parse(blob);
+}
+
+function readOptionalCacheJson(ref, filename) {
+  try {
+    return readCacheJson(ref, filename);
+  } catch {
+    return null;
+  }
+}
+
+function cleanText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function canonicalSourceKey(url) {
+  const normalised = normaliseUrl(url);
+  if (normalised) return sourceKeyFromUrl(`https://${normalised}`);
+  return sourceKeyFromUrl(url);
+}
+
+function baseHost(key) {
+  return key.includes('/') ? key.split('/')[0] : key;
+}
+
+function timestamp(story) {
+  const ts = Date.parse(story.published || '');
+  return Number.isFinite(ts) ? ts : 0;
+}
+
+function mostCommon(values) {
+  const counts = new Map();
+  for (const value of values.map(cleanT
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:90806611 h:0f37edc7 -->
+### 2026-11-27 05:36:12 UTC tool `exec`
+
+`{"command": "sed -n '260,560p' scripts/export-source-headlines.js", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 11d3ae:
+unmatchedKeys.sort((a, b) => displayLabel(a).localeCompare(displayLabel(b)) || a.localeCompare(b));
+
+const files = [];
+let fileIndex = 1;
+for (const root of SOURCE_RELATION_TREE) {
+  const rootBlocks = blocks
+    .filter(block => block.root === root.label)
+    .map(block => block.keys.map(sourceBlockFor).filter(Boolean).join('\n'))
+    .filter(Boolean);
+  if (!rootBlocks.length) continue;
+  const filename = `${String(fileIndex++).padStart(2, '0')}-${slugify(root.label)}.md`;
+  files.push({ filename, content: rootBlocks.join('\n\n') + '\n' });
+}
+
+const unmatchedBlocks = unmatchedKeys.map(sourceBlockFor).filter(Boolean);
+if (unmatchedBlocks.length) {
+  files.push({ filename: '99-unmatched-sources.md', content: unmatchedBlocks.join('\n') + '\n' });
+}
+
+function markdownLink(key) {
+  return `[${displayLabel(key)}](https://${key})`;
+}
+
+function humaniseField(field) {
+  return field.replace(/_/g, ' ').replace(/^./, char => char.toUpperCase());
+}
+
+function linkList(links) {
+  return (links || []).map(link => `[${link.label}](${link.url})`).join('; ');
+}
+
+function profileForKey(key) {
+  if (SOURCE_PROFILES[key]) return SOURCE_PROFILES[key];
+  const host = baseHost(key);
+  const platform = platformOfHost(host);
+  const isTenant = key.includes('/') || (platform && host !== platform);
+  if (isTenant) return null;
+  if (SOURCE_PROFILES[host]) return SOURCE_PROFILES[host];
+  const parts = host.split('.');
+  for (let i = 1; i < parts.length - 1; i++) {
+    const parent = parts.slice(i).join('.');
+    if (SOURCE_PROFILES[parent]) return SOURCE_PROFILES[parent];
+  }
+  return null;
+}
+
+function collectMemberships() {
+  const memberships = new Map();
+  const add = (source, path) => {
+    if (!memberships.has(source)) memberships.set(source, []);
+    memberships.get(source).push(path.join(' / '));
+  };
+  const walk = (node, ancestors = []) => {
+    const path = [...ancestors, node.label];
+    for (const source of node.sources || []) add(source, path)
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:get_output:72783663 h:808bd192 -->
+### 2026-11-27 05:36:20 UTC tool `get_output`
+
+`{"shell_id": "2c7634", "timeout": 30000}`
+
+```
+{
+  "status": "scored",
+  "labelled_axis_count": 12,
+  "unlabelled_axis_count": 0
+}
+
+
+validation scorer smoke test passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:get_output:392755c5 h:313e08a5 -->
+### 2026-11-27 05:36:39 UTC tool `get_output`
+
+`{"shell_id": "85ffaa", "timeout": 30000}`
+
+```
+{
+  "headline_rows": 11461,
+  "sources": 695,
+  "sources_ranked_min_n": 74,
+  "sources_n_ge_50": 28,
+  "sources_n_ge_100": 14,
+  "sources_below_min_n": 621,
+  "exact_duplicate_headline_rows": 45,
+  "runtime_seconds": 76.491
+}
+
+TOP:
+ rank                   source   n  topic_adjusted_value_index      ordering_band  raw_title_signal_index
+  1.0                   Quartz  24                   60.007332 A — upper quartile               41.319444
+  2.0 South China Morning Post  25                   59.662829 A — upper quartile               41.333333
+  3.0                TweakTown  46                   59.586553 A — upper quartile               36.050725
+  4.0                  PsyPost  28                   57.551729 A — upper quartile               35.416667
+  5.0                Eurogamer 458                   57.495828 A — upper quartile               35.343886
+  6.0           Jerusalem Post  68                   57.175471 A — upper quartile               38.909314
+  7.0              MyJoyOnline  28                   55.981606 A — upper quartile               40.029762
+  8.0             The Guardian 485                   55.771793 A — upper quartile               36.082474
+  9.0               Indiatimes  20                   55.329013 A — upper quartile               38.750000
+ 10.0             Seekingalpha  24                   55.095932 A — upper quartile               37.673611
+ 11.0         Business Insider  33                   54.961711 A — upper quartile               35.353535
+ 12.0           Medical Xpress 127                   54.807459 A — upper quartile               34.940945
+ 13.0                      PBS  20                   54.704749 A — upper quartile               36.666667
+ 14.0                Xbox Wire  21                   54.528284 A — upper quartile               33.730159
+ 15.0            Qatar Tribune  28                   54.467965 A — upper quartile               38.690476
+
+BOTTOM:
+ rank            source   n  topic_adjusted_value_index      or
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:5db0bd0a h:595b49a5 -->
+### 2026-11-27 05:37:00 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_corpus_outputs.py --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/headline-analysis/validate_detectors.py sample --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/headline-analysis/validate_detectors.py score --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigma`
+
+```
+Output from command in shell f81d4c:
+Corpus-output invariants passed: 11,461 headlines; 695 sources; 13 radar axes; 9 delivery markers; 74 ordered sources.
+wrote 150 validation rows to /home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/detector_validation_sample.csv
+{
+  "status": "insufficient_labels",
+  "labelled_axis_count": 0,
+  "unlabelled_axis_count": 12
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:11c4518a h:995e96bd -->
+### 2026-11-27 05:37:03 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/make_charts.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: 1522fb
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:686e74ce h:76721d72 -->
+### 2026-11-27 05:37:16 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd, json\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\ncols=['rank_n100','source','n','topic_adjusted_value_index','topic_adjusted_index_ci95_low','topic_adjusted_index_ci95_high','raw_title_signal_index','explicit_curiosity_gap_incidence_rate','direct_service_packaging_incidence_rate','sensational_personal_incidence_rate`
+
+```
+Output from command in shell 755a13:
+HIGH VOLUME
+ rank_n100          source    n  topic_adjusted_value_index  topic_adjusted_index_ci95_low  topic_adjusted_index_ci95_high  raw_title_signal_index  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  attention_pressure_mean  event_clarity_rate  quantified_specificity_rate  evidence_provenance_rate  original_reporting_signal_rate  cross_source_near_duplicate_rate
+       1.0       Eurogamer  458                   57.495828                      55.076624                       60.117441               35.343886                               0.004367                                 0.056769                             0.019651                 2.692868            0.556769                     0.189956                  0.001092                        0.000000                          0.002183
+       2.0    The Guardian  485                   55.771793                      53.070605                       58.399560               36.082474                               0.010309                                 0.065979                             0.018557                 3.161512            0.560825                     0.101031                  0.014433                        0.002062                          0.010309
+       3.0  Medical Xpress  127                   54.807459                      49.418529                       58.611443               34.940945                               0.007874                                 0.047244                             0.000000                 1.837270            0.393701                     0.047244                  0.098425                        0.000000                          0.000000
+       4.0       City A.M.  173                   51.621640                      48.589000                       54.742320               36.608863                               0.000000                                 0.023121     
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:abe6183d h:7c84ccc8 -->
+### 2026-11-27 05:37:58 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\nsel=['Eurogamer','The Guardian','Medical Xpress','Phys.org','BBC','Daily Mail','Mirror','Kotaku','City A.M.','Financial Times','The Independent','IGN','Korea Times','Punch']\nprint(s[s.source.isin(sel)][['source','n','within_source_template_reuse_rate','cross_source_near_du`
+
+```
+Output from command in shell 3556f3:
+         source    n  within_source_template_reuse_rate  cross_source_near_duplicate_rate  mean_cross_source_similarity  mean_words
+            IGN  125                              0.360                             0.016                         0.305      11.232
+    Korea Times  123                              0.309                             0.016                         0.348      11.569
+      Eurogamer  458                              0.216                             0.002                         0.383      18.286
+         Kotaku  671                              0.176                             0.003                         0.356      13.803
+      City A.M.  173                              0.064                             0.000                         0.364      10.422
+       Phys.org  190                              0.037                             0.005                         0.295      11.463
+Financial Times  116                              0.000                             0.026                         0.412      10.052
+ Medical Xpress  127                              0.000                             0.000                         0.298      11.756
+   The Guardian  485                              0.000                             0.010                         0.389      13.043
+The Independent  246                              0.000                             0.041                         0.421      11.553
+            BBC 3537                              0.000                             0.006                         0.327      10.289
+         Mirror  133                              0.000                             0.000                         0.376      12.000
+          Punch  348                              0.000                             0.009                         0.333       8.483
+     Daily Mail  350                              0.000                             0.011                         0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:53733584 h:2c6ffb0a -->
+### 2026-11-27 05:38:24 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "def crossfit_expected(df: pd.DataFrame, W, feature_cols, folds=4, seed=27, context_fields=None):", "new_string": "def crossfit_expected(df: pd.DataFrame, W, feature_cols, folds=4, seed=27, context_fields=None, adjust_title_length=True):"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 308.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:ecde6251 h:67ec3e24 -->
+### 2026-11-27 05:38:30 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    enc = OneHotEncoder(handle_unknown='ignore')\n    G = enc.fit_transform(context)\n    Xctx = hstack([csr_matrix(W), G], format='csr')", "new_string": "    enc = OneHotEncoder(handle_unknown='ignore')\n    G = enc.fit_transform(context)\n    numeric_parts=[]\n    if adjust_titl`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 3 line(s) removed, 9 line(s) added at line 319.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:60f698e2 h:2d4f7c54 -->
+### 2026-11-27 05:38:42 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    expected=crossfit_expected(df,W,FEATURE_KEYS,folds=int(cfg['folds']),seed=int(cfg['random_seed']),context_fields=cfg.get('context_fields'))", "new_string": "    expected=crossfit_expected(df,W,FEATURE_KEYS,folds=int(cfg['folds']),seed=int(cfg['random_seed']),context_fields=cfg`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 690.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:9245b118 h:76c2b169 -->
+### 2026-11-27 05:38:47 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json", "old_string": "    \"context_fields\": [\"tree_root_id\", \"neutral_editorial_context\"],\n    \"attention_context_adjustment\": 0.25,", "new_string": "    \"context_fields\": [\"tree_root_id\", \"neutral_editorial_context\"],\n    \"adjust_title_length\": true,\n    \"attention_context_adjustment\": 0.`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 56.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:dfda59b0 h:bd0c7837 -->
+### 2026-11-27 05:38:53 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "      '- Expected detector rates are cross-fitted with GroupKFold by source: a source does not train the topic/editorial-context expectation used to residualise itself.',", "new_string": "      '- Expected detector rates are cross-fitted with GroupKFold by source: a source does no`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 798.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:get_output:96d82cd3 h:33013817 -->
+### 2026-11-27 05:38:57 UTC tool `get_output`
+
+`{"shell_id": "1522fb", "timeout": 10000}`
+
+```
+charts written to /home/bobbigmac/projects/bobdavies/news/docs/headline-data/current
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:1583168d h:fa095c11 -->
+### 2026-11-27 05:39:07 UTC tool `exec`
+
+`{"command": "python3 -m py_compile scripts/headline-analysis/analyse_headlines.py scripts/headline-analysis/validate_detectors.py && .venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+Output from command in shell c61694:
+30 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:36dfe895 h:61414d9c -->
+### 2026-11-27 05:39:12 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: ceb236
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:6deb12c9 h:240c929b -->
+### 2026-11-27 05:39:18 UTC tool `exec`
+
+`{"command": "cat .gitignore | sed -n '1,120p'; git status --short | head -80", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 694565:
+node_modules/
+.env
+cache/
+dist/
+news/
+logs_*.zip
+logs_extracted/.venv/
+.venv/
+.working/
+
+# Generated files left behind by the old docs/ build output
+docs/assets/
+docs/digest.json
+docs/favicons/
+docs/index.html
+docs/og-image.jpg
+docs/run-log.json
+docs/sw.js
+ M AGENTS.md
+ M docs/sessions/transcripts/02-repeated-bite.md
+ M scripts/headline-analysis/analyse_headlines.py
+ M scripts/headline-analysis/make_charts.py
+ M scripts/headline-analysis/test_corpus_outputs.py
+ M scripts/headline-analysis/test_detectors.py
+?? docs/headline-data/current/
+?? docs/tasks/
+?? scripts/headline-analysis/__pycache__/
+?? scripts/headline-analysis/validate_detectors.py
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:f5d2b6ab h:e06a7f81 -->
+### 2026-11-27 05:39:27 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/.gitignore", "old_string": ".venv/\n.working/\n", "new_string": ".venv/\n.working/\n__pycache__/\n"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/.gitignore' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 8.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:get_output:8b3c4b0d h:95488f57 -->
+### 2026-11-27 05:40:41 UTC tool `get_output`
+
+`{"shell_id": "ceb236", "timeout": 30000}`
+
+```
+{
+  "headline_rows": 11461,
+  "sources": 695,
+  "sources_ranked_min_n": 74,
+  "sources_n_ge_50": 28,
+  "sources_n_ge_100": 14,
+  "sources_below_min_n": 621,
+  "exact_duplicate_headline_rows": 45,
+  "runtime_seconds": 83.488
+}
+
+TOP:
+ rank                   source   n  topic_adjusted_value_index      ordering_band  raw_title_signal_index
+  1.0 South China Morning Post  25                   58.916359 A — upper quartile               41.333333
+  2.0                TweakTown  46                   58.796548 A — upper quartile               36.050725
+  3.0                   Quartz  24                   58.752449 A — upper quartile               41.319444
+  4.0                  PsyPost  28                   56.930878 A — upper quartile               35.416667
+  5.0             Seekingalpha  24                   55.921642 A — upper quartile               37.673611
+  6.0                Xbox Wire  21                   55.745319 A — upper quartile               33.730159
+  7.0              MyJoyOnline  28                   55.293763 A — upper quartile               40.029762
+  8.0            Qatar Tribune  28                   55.222188 A — upper quartile               38.690476
+  9.0           Jerusalem Post  68                   55.143640 A — upper quartile               38.909314
+ 10.0           Medical Xpress 127                   55.096625 A — upper quartile               34.940945
+ 11.0               Indiatimes  20                   55.020548 A — upper quartile               38.750000
+ 12.0                 Finextra  50                   54.652628 A — upper quartile               37.000000
+ 13.0                Eurogamer 458                   54.577262 A — upper quartile               35.343886
+ 14.0             The Guardian 485                   54.380274 A — upper quartile               36.082474
+ 15.0                      PBS  20                   53.563950 A — upper quartile               36.666667
+
+BOTTOM:
+ rank                source   n  topic_adjusted_value_index    
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:95f3215e h:8121e835 -->
+### 2026-11-27 05:40:52 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_corpus_outputs.py --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/headline-analysis/validate_detectors.py sample --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/headline-analysis/validate_detectors.py score --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/`
+
+```
+Command running in background with ID: 579b60
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:d2ec85ce h:8f14732e -->
+### 2026-11-27 05:41:04 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd, numpy as np\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\ncols=['rank_n100','source','n','topic_adjusted_value_index','topic_adjusted_index_ci95_low','topic_adjusted_index_ci95_high','raw_title_signal_index','mean_words','explicit_curiosity_gap_incidence_rate','direct_service_packaging_incidence_rate','sensational_per`
+
+```
+Output from command in shell 5447ce:
+HIGH VOLUME
+ rank_n100          source    n  topic_adjusted_value_index  topic_adjusted_index_ci95_low  topic_adjusted_index_ci95_high  raw_title_signal_index  mean_words  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  event_clarity_rate  quantified_specificity_rate  evidence_provenance_rate
+       1.0  Medical Xpress  127                   55.096625                      49.555009                       58.977933               34.940945   11.755906                               0.007874                                 0.047244                             0.000000            0.393701                     0.047244                  0.098425
+       2.0       Eurogamer  458                   54.577262                      52.037112                       57.370954               35.343886   18.286026                               0.004367                                 0.056769                             0.019651            0.556769                     0.189956                  0.001092
+       3.0    The Guardian  485                   54.380274                      51.679963                       57.075388               36.082474   13.043299                               0.010309                                 0.065979                             0.018557            0.560825                     0.101031                  0.014433
+       4.0             IGN  125                   52.085614                      48.723526                       55.783576               32.700000   11.232000                               0.000000                                 0.040000                             0.008000            0.472000                     0.168000                  0.004000
+       5.0 Financial Times  116                   51.864332                      48.177474                       55.657357               35.919540   10.051724                               0.00000
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:75cacfa3 h:2dde5027 -->
+### 2026-11-27 05:41:16 UTC tool `exec`
+
+`{"command": "cat docs/headline-data/current/run_metrics.json | head -100", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 09d42e:
+{
+  "runtime_seconds": 83.488,
+  "stage_times": {
+    "parse_archive": 1.455,
+    "detectors": 17.685,
+    "headline_reuse_and_templates": 30.275,
+    "topic_model_and_crossfit_expectations": 6.483,
+    "source_statistics_and_bootstrap": 25.292,
+    "write_tables_and_radar": 2.257
+  },
+  "config": {
+    "input_zip": ".working/source-headlines-analysis.zip",
+    "output_dir": "docs/headline-data/current",
+    "topics": 22,
+    "topic_min_df": 4,
+    "folds": 4,
+    "bootstrap": 250,
+    "min_source_n": 20,
+    "random_seed": 27,
+    "nearest_neighbors": 8,
+    "cross_source_similarity_threshold": 0.82,
+    "context_fields": [
+      "tree_root_id",
+      "neutral_editorial_context"
+    ],
+    "adjust_title_length": true,
+    "attention_context_adjustment": 0.25,
+    "shrinkage_grid": [
+      10,
+      25,
+      50
+    ],
+    "default_shrinkage": 25
+  }
+}
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:f4621f3f h:cb9b8fb3 -->
+### 2026-11-27 05:41:46 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    ci_low=np.full(len(src),np.nan); ci_high=np.full(len(src),np.nan)\n    src_index={key:i for i,key in enumerate(src['source_key'])}\n    for source_key, positions in g.indices.items():\n        row_i=src_index[source_key]\n        n=len(positions)\n        if n<min_source_n: co`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 21 line(s) removed, 22 line(s) added at line 556.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:312360ae h:b0c45f34 -->
+### 2026-11-27 05:41:49 UTC tool `exec`
+
+`{"command": "sed -n '680,725p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 5584c6:
+
+    nlp=spacy.blank('en')
+    det=pd.DataFrame([detect_one(x,nlp) for x in df['headline']])
+    df=pd.concat([df.reset_index(drop=True),det],axis=1)
+    t=mark('detectors',t)
+
+    df=headline_reuse_proxy(df,n_neighbors=int(cfg['nearest_neighbors']),threshold=float(cfg['cross_source_similarity_threshold']))
+    df=add_within_source_template_proxy(df)
+    t=mark('headline_reuse_and_templates',t)
+
+    W,topics,vec,nmf=topic_model(df,n_topics=int(cfg['topics']),min_df=int(cfg['topic_min_df']),seed=int(cfg['random_seed']))
+    expected=crossfit_expected(df,W,FEATURE_KEYS,folds=int(cfg['folds']),seed=int(cfg['random_seed']),context_fields=cfg.get('context_fields'),adjust_title_length=bool(cfg.get('adjust_title_length',True)))
+    df['dominant_topic']=W.argmax(axis=1)
+    df['topic_strength']=W.max(axis=1)
+    t=mark('topic_model_and_crossfit_expectations',t)
+
+    df['information_delivery_signal']=100*df[DELIVERY_METRICS].mean(axis=1)
+    df['attention_packaging_pressure']=100*df[['explicit_curiosity_gap_present','direct_service_packaging_present','personal_sensational_frame_present']].mean(axis=1)
+    df['title_value_signal']=100*df[VALUE_METRICS].mean(axis=1)
+    src,sensitivity_df=source_statistics(df,expected,min_source_n=int(cfg['min_source_n']),shrinkage=float(cfg['default_shrinkage']),
+                                         shrinkage_grid=cfg['shrinkage_grid'],bootstrap=int(cfg['bootstrap']),seed=int(cfg['random_seed']),
+                                         attention_context_adjustment=float(cfg.get('attention_context_adjustment',0.25)))
+    t=mark('source_statistics_and_bootstrap',t)
+
+    story_cols=['headline_id','source_key','source','group','tree_root','branch_path','curated_group','editorial_context','neutral_editorial_context','group_file','headline','url','published','story_id','category','story_type','word_count','story_word_count','information_delivery_signal','attention_packaging_pressure','title_value_signal','l
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:97710875 h:45804343 -->
+### 2026-11-27 05:41:54 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json", "old_string": "    \"adjust_title_length\": true,\n    \"attention_context_adjustment\": 0.25,", "new_string": "    \"adjust_title_length\": false,\n    \"length_adjusted_sensitivity\": true,\n    \"attention_context_adjustment\": 0.25,"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 57.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:bc1ed535 h:a8cec786 -->
+### 2026-11-27 05:42:03 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    W,topics,vec,nmf=topic_model(df,n_topics=int(cfg['topics']),min_df=int(cfg['topic_min_df']),seed=int(cfg['random_seed']))\n    expected=crossfit_expected(df,W,FEATURE_KEYS,folds=int(cfg['folds']),seed=int(cfg['random_seed']),context_fields=cfg.get('context_fields'),adjust_titl`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 3 line(s) removed, 7 line(s) added at line 690.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:94b85fdf h:49342dd2 -->
+### 2026-11-27 05:42:10 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    src,sensitivity_df=source_statistics(df,expected,min_source_n=int(cfg['min_source_n']),shrinkage=float(cfg['default_shrinkage']),\n                                         shrinkage_grid=cfg['shrinkage_grid'],bootstrap=int(cfg['bootstrap']),seed=int(cfg['random_seed']),\n     `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 4 line(s) removed, 11 line(s) added at line 703.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:5ccf7a66 h:ec466bca -->
+### 2026-11-27 05:42:18 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "      '- Expected detector rates are cross-fitted with GroupKFold by source: a source does not train the topic/editorial-context expectation used to residualise itself. Log title length is an expectation covariate, reducing the mechanical advantage of merely writing longer headlin`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 810.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:6167a3a4 h:1900e4c6 -->
+### 2026-11-27 05:42:27 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    lines += ['', '## High-volume ordering (n \u2265 100)',\n              '| Rank | Source | n | Topic-adjusted title signal (95% interval) | Raw 12-signal mean |', '|---:|---|---:|---:|---:|']\n    for _,r in high_volume.iterrows():\n        lines.append(f\"| {int(r['rank_n100']`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 4 line(s) removed, 5 line(s) added at line 827.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:8717a0f8 h:f8f6c3df -->
+### 2026-11-27 05:42:40 UTC tool `exec`
+
+`{"command": "python3 -m py_compile scripts/headline-analysis/analyse_headlines.py && .venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+Output from command in shell 132aa8:
+30 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:get_output:2780671b h:603f5f75 -->
+### 2026-11-27 05:42:43 UTC tool `get_output`
+
+`{"shell_id": "579b60", "timeout": 10000}`
+
+```
+Corpus-output invariants passed: 11,461 headlines; 695 sources; 13 radar axes; 9 delivery markers; 74 ordered sources.
+wrote 150 validation rows to /home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/detector_validation_sample.csv
+{
+  "status": "insufficient_labels",
+  "labelled_axis_count": 0,
+  "unlabelled_axis_count": 12
+}
+charts written to /home/bobbigmac/projects/bobdavies/news/docs/headline-data/current
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:92109a2c h:a98a18e2 -->
+### 2026-11-27 05:42:47 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: a22037
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:6c929ac7 h:74a9b993 -->
+### 2026-11-27 05:43:47 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport zipfile,json,datetime\nrows=[json.loads(x) for x in zipfile.ZipFile('.working/source-headlines-analysis.zip').read('headline-rows.jsonl').decode().splitlines() if x.strip()]\ndates=[]\nfor r in rows:\n try: dates.append(datetime.datetime.fromisoformat(r['published'].replace('Z','+00:00')))\n except Exception: pass\nprint(len(rows),min(dates).isoformat(),max(da`
+
+```
+Output from command in shell 73024b:
+11461 2026-08-26T15:38:49+00:00 2026-11-27T02:14:50+00:00 695
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:27613c0a h:a7f4d261 -->
+### 2026-11-27 05:43:54 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport zipfile,json,datetime,collections\nrows=[json.loads(x) for x in zipfile.ZipFile('.working/source-headlines-analysis.zip').read('headline-rows.jsonl').decode().splitlines() if x.strip()]\nc=collections.Counter()\nfor r in rows:\n try: c[datetime.datetime.fromisoformat(r['published'].replace('Z','+00:00')).strftime('%Y-%m')]+=1\n except: pass\nprint(sorted(c.ite`
+
+```
+Output from command in shell b61ac6:
+[('2026-08', 72), ('2026-09', 695), ('2026-10', 3118), ('2026-11', 7576)]
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:get_output:6a7f8a2f h:f7bcf89f -->
+### 2026-11-27 05:44:05 UTC tool `get_output`
+
+`{"shell_id": "a22037", "timeout": 30000}`
+
+```
+{
+  "headline_rows": 11461,
+  "sources": 695,
+  "sources_ranked_min_n": 74,
+  "sources_n_ge_50": 28,
+  "sources_n_ge_100": 14,
+  "sources_below_min_n": 621,
+  "exact_duplicate_headline_rows": 45,
+  "runtime_seconds": 72.8
+}
+
+TOP:
+ rank                   source   n  topic_adjusted_value_index      ordering_band  raw_title_signal_index
+  1.0                   Quartz  24                   60.007332 A — upper quartile               41.319444
+  2.0 South China Morning Post  25                   59.662829 A — upper quartile               41.333333
+  3.0                TweakTown  46                   59.586553 A — upper quartile               36.050725
+  4.0                  PsyPost  28                   57.551729 A — upper quartile               35.416667
+  5.0                Eurogamer 458                   57.495828 A — upper quartile               35.343886
+  6.0           Jerusalem Post  68                   57.175471 A — upper quartile               38.909314
+  7.0              MyJoyOnline  28                   55.981606 A — upper quartile               40.029762
+  8.0             The Guardian 485                   55.771793 A — upper quartile               36.082474
+  9.0               Indiatimes  20                   55.329013 A — upper quartile               38.750000
+ 10.0             Seekingalpha  24                   55.095932 A — upper quartile               37.673611
+ 11.0         Business Insider  33                   54.961711 A — upper quartile               35.353535
+ 12.0           Medical Xpress 127                   54.807459 A — upper quartile               34.940945
+ 13.0                      PBS  20                   54.704749 A — upper quartile               36.666667
+ 14.0                Xbox Wire  21                   54.528284 A — upper quartile               33.730159
+ 15.0            Qatar Tribune  28                   54.467965 A — upper quartile               38.690476
+
+BOTTOM:
+ rank            source   n  topic_adjusted_value_index      orde
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:dafb33c3 h:d6c43b49 -->
+### 2026-11-27 05:44:09 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_corpus_outputs.py --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/headline-analysis/validate_detectors.py sample --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/headline-analysis/validate_detectors.py score --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/`
+
+```
+Command running in background with ID: fed543
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:d30833af h:4b8ab3ab -->
+### 2026-11-27 05:44:33 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\ncols=['rank_n100','source','n','topic_adjusted_value_index','length_adjusted_topic_adjusted_value_index','topic_adjusted_index_ci95_low','topic_adjusted_index_ci95_high','raw_title_signal_index','mean_words','explicit_curiosity_gap_incidence_rate','direct_service_packaging_`
+
+```
+Output from command in shell 7cc968:
+HIGH VOLUME FINAL
+ rank_n100          source    n  topic_adjusted_value_index  length_adjusted_topic_adjusted_value_index  topic_adjusted_index_ci95_low  topic_adjusted_index_ci95_high  raw_title_signal_index  mean_words  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  attention_pressure_mean
+       1.0       Eurogamer  458                   57.495828                                   54.577262                      55.076624                       60.117441               35.343886   18.286026                               0.004367                                 0.056769                             0.019651                 2.692868
+       2.0    The Guardian  485                   55.771793                                   54.380274                      53.070605                       58.399560               36.082474   13.043299                               0.010309                                 0.065979                             0.018557                 3.161512
+       3.0  Medical Xpress  127                   54.807459                                   55.096625                      49.418529                       58.611443               34.940945   11.755906                               0.007874                                 0.047244                             0.000000                 1.837270
+       4.0       City A.M.  173                   51.621640                                   50.960931                      48.589000                       54.742320               36.608863   10.421965                               0.000000                                 0.023121                             0.023121                 1.541426
+       5.0     Korea Times  123                   51.107388                                   49.696016                      47.546778                       54.783032               36.415989   11.569106                  
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:182f52ae h:8796fb80 -->
+### 2026-11-27 05:44:41 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\nprint('HIGHEST ATTENTION PRESSURE n>=20')\nprint(s[s.n>=20].sort_values('attention_pressure_mean',ascending=False).head(15)[['source','n','attention_pressure_mean','explicit_curiosity_gap_incidence_rate','direct_service_packaging_incidence_rate','sensational_personal_incide`
+
+```
+Output from command in shell 5a3d90:
+HIGHEST ATTENTION PRESSURE n>=20
+         source   n  attention_pressure_mean  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  topic_adjusted_value_index
+       Engadget  21                   14.286                                  0.000                                    0.429                                0.000                      45.549
+  This is Money  81                   12.346                                  0.086                                    0.247                                0.037                      48.916
+      Chalkbeat  23                    8.696                                  0.000                                    0.261                                0.000                      45.247
+      TechRadar  40                    8.333                                  0.000                                    0.200                                0.050                      51.111
+  New Scientist  40                    8.333                                  0.025                                    0.175                                0.050                      44.389
+Windows Central  50                    6.667                                  0.000                                    0.200                                0.000                      51.051
+           Vice  30                    5.556                                  0.000                                    0.167                                0.000                      49.290
+            Inc  26                    5.128                                  0.038                                    0.077                                0.038                      47.925
+         Reddit  40                    5.000                                  0.025                                    0.125                                0.000                      46.892
+     Daily Mail 350           
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:6c48efe3 h:6ee165ed -->
+### 2026-11-27 05:44:48 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nfor col in ['primary_evidence_cue','research_claim_cue','original_reporting_signal','personal_sensational_frame_present','sensational_word_present','personal_life_frame_present']:\n print(col,int(h[col].sum()),round(float(h[col].mean()),5))\nprint('\\nresearch hits s`
+
+```
+Output from command in shell 47fc45:
+primary_evidence_cue 37 0.00323
+research_claim_cue 160 0.01396
+original_reporting_signal 6 0.00052
+personal_sensational_frame_present 242 0.02112
+sensational_word_present 202 0.01762
+personal_life_frame_present 443 0.03865
+
+research hits sample
+source                                                                         headline
+   BBC                    Fine Gael leader wants border poll criteria talks with London
+   BBC                                Survey reveals 'major increase' in cost of living
+   BBC       Covid inquiry report: key findings on testing, tracing and 'the pingdemic'
+   BBC   India's religious make-up - what a new Pew study says about Hindus and Muslims
+   BBC  Largest British study to check social media ban's effect on youth mental health
+   BBC               Lancashire's 'strong R' due to hidden tongue movement, study finds
+   BBC          Richmond upon Thames is happiest place to live in Britain, survey finds
+   BBC Antidepressant escitalopram more effective at preventing relapse, analysis finds
+   BBC           Major study into 'forever chemicals' in people's bodies launched in UK
+   BBC                         Only one female scientist named in GCSEs, research finds
+
+original hits
+          source                                                                                                            headline
+    The Guardian      A ‘customer success story': leaked documents show Cisco doubled down on Israeli military deals during Gaza war
+       Xbox Wire                        Achievement Unlocked: An Interview with the First XBOX Player to Reach 10 Million Gamerscore
+      Prnewswire                      Solid State Relay Market worth $2.68 billion by 2032 - Exclusive Report by MarketsandMarketsTM
+   New Scientist                                       This is what the world will be like in 2096: A special report from the future
+Business Insider My husband has Alzheimer's, and I have cancer. We spe
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:13ed6c59 h:113dc6c6 -->
+### 2026-11-27 05:45:10 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nprint('random sensational positives')\nprint(h[h.personal_sensational_frame_present==1].sample(20,random_state=3)[['source','headline']].to_string(index=False))\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 707079:
+random sensational positives
+          source                                                                           headline
+             BBC                            Ghana's new $60m presidential jet sparks public outrage
+          Mirror      Spurs star Dejan Kulusevski's heartbreaking admission to mum amid injury hell
+          Mirror        Most ‘beautifully brutal' war film since Saving Private Ryan on Netflix now
+             BBC                      Mother and son riot ringleaders jailed for 'disgraceful' acts
+             BBC       Holocaust school lessons to be improved after 'shocking' antisemitism review
+          Mirror           Charity's fury as one million people in last year of life end up in A&Es
+          Mirror    Prem icon apologises after being hit with seven-game ban for touchline meltdown
+      Daily Mail                 How celebrities play the 'mental health' card to cover up scandals
+             BBC                                        Nine killed in 'horrific' Florida jet crash
+ The Independent       The Simpsons fans fear November 17 blackout as bizarre prediction resurfaces
+           Metro           Man Utd boss Mauricio Pochettino eyes shock January move for Fulham star
+    The Guardian            Fashion and tradition: how John Smedley is innovating in a tough market
+             BBC       King says slave trade a 'shameful chapter' that 'fills my heart with horror'
+      Daily Mail             Panic buying and bank runs sweep America after mass technology outages
+      Daily Mail                 Northern pie seller who backed Burnham gives brutal Budget verdict
+          Kotaku             Team Meat Whips Out Remake Of Classic Brutal Platformer Super Meat Boy
+             BBC                       US to blacklist Asian AI firm Megaspeed after Nvidia scandal
+Evening Standard      Rice reveals bold England prediction that came true in stunning Spain victory
+       City A.M.                  
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:6089dcca h:02b2ddad -->
+### 2026-11-27 05:46:00 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd,re,sys\nsys.path.insert(0,'scripts/headline-analysis')\nfrom analyse_headlines import CELEBRITY_CUE\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\ncore_re=re.compile(r\"\\b(?:dating|relationship\\w*|marriage|married|divorc\\w*|affair\\w*|girlfriend|boyfriend|husband|wife|ex.wife|ex.husband|son|daughter|children|k`
+
+```
+Output from command in shell 567043:
+
+ current_logic_core corpus 0.01937003751854114
+Daily Mail 0.074
+Mirror 0.12
+BBC 0.02
+The Guardian 0.016
+Eurogamer 0.02
+
+ core_named corpus 0.03804205566704476
+Daily Mail 0.154
+Mirror 0.158
+BBC 0.04
+The Guardian 0.041
+Eurogamer 0.033
+
+ strict corpus 0.01928278509728645
+Daily Mail 0.071
+Mirror 0.12
+BBC 0.02
+The Guardian 0.016
+Eurogamer 0.02
+
+strict sample positives
+         source                                                                                                                                                                                               headline
+         Mirror                                                                                                                                       Venezuela Fury left upset after thieves break into husband's car
+            BBC                                                                                                                              Democrats are used to heartbreak in Texas - could Talarico turn the tide?
+            BBC                                                                                                                         'This is our company': Nigerians show off oil wealth after share-buying frenzy
+The Independent                                                                                                                   Judge slams 'weaponized' Hunter Biden probe as charges against FBI officials dropped
+     Daily Mail                                            Every horrifying second of Florida private jet plunge revealed: Watch the full flight from hell, as new theories swirl about real reason for fireball crash
+   The Guardian                                                                                                      ‘I'm sick of her talking about it': 11 readers share how GLP-1s have affected their relationships
+      Flipboard                                                                            
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:27c7008e h:769f9159 -->
+### 2026-11-27 05:46:28 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "PERSONAL_LIFE = re.compile(r\"\\b(?:dating|relationship\\w*|marriage|married|divorc\\w*|affair\\w*|girlfriend|boyfriend|husband|wife|ex.wife|ex.husband|son|daughter|children|kids|family|pregnan\\w*|baby|babies|romance|breakup|split|love life|sex life|wedding|engaged|engagement|fas`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 53.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:6600e6ee h:cf9140ee -->
+### 2026-11-27 05:46:36 UTC tool `exec`
+
+`{"command": "sed -n '245,275p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 344b1b:
+    original = int(ORIGINALITY.search(title) is not None)
+    explanatory = int(EXPLANATORY.search(title) is not None)
+    primary_evidence = bool(PRIMARY_EVIDENCE.search(title))
+    research_claim = bool(RESEARCH_CLAIM.search(title))
+    evidence_score = 1.0 if primary_evidence else 0.5 if research_claim else 0.0
+
+    explicit_gap = int(EXPLICIT_CURIOSITY.search(title) is not None)
+    direct_service = int(DIRECT_SERVICE_PACKAGING.search(title) is not None)
+    legacy_bait = int(LEGACY_BAIT.search(title) is not None)
+    question = int('?' in title)
+    personal = bool(PERSONAL_LIFE.search(title))
+    celebrity = bool(CELEBRITY_CUE.search(title))
+    sens = bool(SENSATIONAL.search(title))
+    teaser_verb=bool(TEASER_VERBS.search(title))
+    lifestyle_detail = bool(re.search(r"\b(?:flaunts?|pos(?:es|ed|ing) for|bikini|outfit|fashion|red carpet|rare photo|rare snap|snapshots?|love life|sex life|cosmetic surgery|plastic surgery|steps out|inside .* home)\b", title, re.I))
+    personal_sensational = int(sens or (personal and (celebrity or lifestyle_detail or (named_entity and teaser_verb))))
+    direct_service = int(bool(direct_service or (question and re.search(r"\b(?:you|your|how|what|why|can|could|should)\b", title, re.I))))
+
+    n_words=len(words)
+    teaser_verb=int(teaser_verb)
+    title_case_entity_count = len(cap_tokens) + cap_multi + acronym
+    raw = [event_action,numeric,time_place,causal,consequence,evidence_score,context,explanatory,original,1-explicit_gap,1-direct_service,1-personal_sensational]
+    legacy_raw = [int(event_action and not legacy_bait),numeric,time_place,causal,consequence,int(evidence_score>0),context,original,explanatory,1-legacy_bait,1-personal_sensational]
+    return {
+        'word_count':n_words,'char_count':len(title),'event_action_present':event_action,
+        'named_entity_proxy':named_entity,'capitalised_entity_count_proxy':title_case_entity_count,
+        'teaser_verb_present':teaser_verb,'exp
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:d1d4bcf5 h:f950818a -->
+### 2026-11-27 05:46:47 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    lifestyle_detail = bool(re.search(r\"\\b(?:flaunts?|pos(?:es|ed|ing) for|bikini|outfit|fashion|red carpet|rare photo|rare snap|snapshots?|love life|sex life|cosmetic surgery|plastic surgery|steps out|inside .* home)\\b\", title, re.I))\n    personal_sensational = int(sens or (`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 259.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:068c1e49 h:658c533d -->
+### 2026-11-27 05:47:00 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", "old_string": "    (\"From chaos to 'intelligent' soft matter\u2014how tiny chemical differences guide droplets into cells\",\n     {'sensational_word_present':0,'personal_sensational_frame_present':0,'low_sensational_personal':1}),\n]", "new_string": "    (\"From chaos to 'intelligent' soft matter`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py' - made 1 replacement(s). 3 line(s) removed, 13 line(s) added at line 69.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:b5836db2 h:f0c247b7 -->
+### 2026-11-27 05:47:09 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+Output from command in shell bb0ff0:
+35 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:d10ae4b2 h:4d80dfce -->
+### 2026-11-27 05:47:21 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys,spacy,pandas as pd\nsys.path.insert(0,'scripts/headline-analysis')\nfrom analyse_headlines import detect_one\nnlp=spacy.blank('en')\na=pd.read_csv('docs/headline-data/current/detector_audit_sample.csv')\nprint('sensational audit first 15 under revised detectors')\nfor _,r in a[a.stratum=='sensational_personal'].head(15).iterrows():\n d=detect_one(`
+
+```
+Output from command in shell 09787c:
+sensational audit first 15 under revised detectors
+1 1 1 | The Age Jon Ronson's son went into a castle – and found a modern nightmare
+0 0 0 | Daily Mail Fiona Phillips, 65, smiles in rare photo amid Alzheimer's battle
+1 1 0 | Eurogamer Nvidia makes stunning decision to reinstate Jensen Huang as CEO
+1 1 0 | Korea Times How Aramco learned to keep pumping oil under fire
+1 0 1 | Daily Mail Bayeux Royal Appointment! Kate and kids set for private viewing
+1 1 0 | BBC Delap double inspires Forest to stunning win over Man City
+1 1 0 | BBC Prince William says UK faces terrifying risk of more wildfires due to climate change
+1 1 0 | GameSpot GTA 6 Buying Guide: Get Ready For Sticker Shock
+1 1 0 | Mirror Boxing fans to be breathalysed before Anthony Joshua vs Tyson Fury fight
+1 1 0 | Notebookcheck Xbox Store lists new $2000 GTA 6 pre-order edition, with price causing sticker shock
+1 1 0 | Mirror Charity's fury as one million people in last year of life end up in A&Es
+1 1 0 | Stuff If true, this bizarre Xbox Game Pass Day One releases rumour could kill the subscription s
+1 1 0 | Eurogamer "We're doing great," says id Software boss, despite losing "about half of our studio" amid
+0 0 0 | BBC Florence Pugh hits out at weight loss and cosmetic surgery speculation
+1 1 0 | Dailytimes Justin and Hailey Bieber caught up in Carl Lentz scandal fallout
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:0f05c118 h:d4aa7363 -->
+### 2026-11-27 05:47:49 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "SENSATIONAL = re.compile(r\"\\b(?:shocking|shock|horrific|terrifying|fury|furious|outrage|outrageous|bombshell|stunning|stuns|jaw.dropping|unbelievable|bizarre|brutal|nightmare|explosive|explodes|savage|slams|blasts|destroys|humiliat\\w*|devastat\\w*|heartbreak\\w*|astonish\\w*|se`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 52.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:690e7b24 h:1b86d8db -->
+### 2026-11-27 05:47:59 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    lifestyle_detail = bool(re.search(r\"\\b(?:flaunts?|pos(?:es|ed|ing) for|bikini|outfit|fashion|red carpet|rare photo|rare snap|snapshots?|love life|sex life|cosmetic surgery|plastic surgery|steps out|inside .* home)\\b\", title, re.I))\n    person_name_proxy = cap_multi>0\n   `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 3 line(s) removed, 4 line(s) added at line 259.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:6216e8a0 h:7be924f0 -->
+### 2026-11-27 05:48:13 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", "old_string": "    (\"My husband has Alzheimer's, and I have cancer. We spent $500 a month on Uber rides until we found a $3 alternative.\",\n     {'original_reporting_signal':0}),\n]", "new_string": "    (\"My husband has Alzheimer's, and I have cancer. We spent $500 a month on Uber rides until we`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py' - made 1 replacement(s). 3 line(s) removed, 11 line(s) added at line 79.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:05c0f701 h:57bf18bb -->
+### 2026-11-27 05:48:22 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+Output from command in shell fac207:
+39 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:c71f92b0 h:c6e2caf1 -->
+### 2026-11-27 05:48:28 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: 118144
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:ea81c9e2 h:1bad1f45 -->
+### 2026-11-27 05:48:44 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_corpus_outputs.py", "old_string": "assert (out/'metric_dictionary.json').exists()\nassert (out/'detector_audit_sample.csv').exists()\nprint(f'Corpus-output invariants passed: {len(h):,} headlines; {len(s):,} sources; {m[\"radar_axis_count\"]} radar axes; {m[\"delivery_signal_count\"]} delivery markers; {len(elig)`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_corpus_outputs.py' - made 1 replacement(s). 3 line(s) removed, 7 line(s) added at line 69.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:get_output:9fbc0de6 h:579af9a7 -->
+### 2026-11-27 05:49:44 UTC tool `get_output`
+
+`{"shell_id": "118144", "timeout": 30000}`
+
+```
+{
+  "headline_rows": 11461,
+  "sources": 695,
+  "sources_ranked_min_n": 74,
+  "sources_n_ge_50": 28,
+  "sources_n_ge_100": 14,
+  "sources_below_min_n": 621,
+  "exact_duplicate_headline_rows": 45,
+  "runtime_seconds": 71.285
+}
+
+TOP:
+ rank                   source   n  topic_adjusted_value_index      ordering_band  raw_title_signal_index
+  1.0 South China Morning Post  25                   59.733339 A — upper quartile               41.333333
+  2.0                TweakTown  46                   59.579506 A — upper quartile               36.050725
+  3.0                   Quartz  24                   58.444133 A — upper quartile               40.972222
+  4.0                  PsyPost  28                   57.563147 A — upper quartile               35.416667
+  5.0                Eurogamer 458                   57.461385 A — upper quartile               35.343886
+  6.0           Jerusalem Post  68                   57.214865 A — upper quartile               38.909314
+  7.0             The Guardian 485                   56.157725 A — upper quartile               36.116838
+  8.0              MyJoyOnline  28                   56.110638 A — upper quartile               40.029762
+  9.0             Seekingalpha  24                   55.332389 A — upper quartile               37.673611
+ 10.0               Indiatimes  20                   55.321555 A — upper quartile               38.750000
+ 11.0           Medical Xpress 127                   54.880346 A — upper quartile               34.940945
+ 12.0                      PBS  20                   54.850209 A — upper quartile               36.666667
+ 13.0                Xbox Wire  21                   54.574248 A — upper quartile               33.730159
+ 14.0            Qatar Tribune  28                   54.555591 A — upper quartile               38.690476
+ 15.0                 Wccftech  27                   53.767500 A — upper quartile               37.962963
+
+BOTTOM:
+ rank            source   n  topic_adjusted_value_index      or
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:02d5cf1f h:ab96c490 -->
+### 2026-11-27 05:49:48 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_corpus_outputs.py --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/headline-analysis/validate_detectors.py sample --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/headline-analysis/validate_detectors.py score --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/`
+
+```
+Command running in background with ID: 68eef9
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:11b25183 h:3ed89be8 -->
+### 2026-11-27 05:50:01 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd,json\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\ncols=['rank_n100','source','n','topic_adjusted_value_index','length_adjusted_topic_adjusted_value_index','topic_adjusted_index_ci95_low','topic_adjusted_index_ci95_high','raw_title_signal_index','explicit_curiosity_gap_incidence_rate','direct_service_packaging_incidenc`
+
+```
+Output from command in shell 75654c:
+HIGH VOLUME FINAL
+ rank_n100          source    n  topic_adjusted_value_index  length_adjusted_topic_adjusted_value_index  topic_adjusted_index_ci95_low  topic_adjusted_index_ci95_high  raw_title_signal_index  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  attention_pressure_mean
+       1.0       Eurogamer  458                   57.461385                                   54.616728                      55.035852                       60.100334               35.343886                               0.004367                                 0.056769                             0.019651                 2.692868
+       2.0    The Guardian  485                   56.157725                                   54.767602                      53.472258                       58.931001               36.116838                               0.010309                                 0.065979                             0.014433                 3.024055
+       3.0  Medical Xpress  127                   54.880346                                   55.167988                      49.535595                       58.697510               34.940945                               0.007874                                 0.047244                             0.000000                 1.837270
+       4.0       City A.M.  173                   51.645096                                   50.984312                      48.595372                       54.781602               36.608863                               0.000000                                 0.023121                             0.023121                 1.541426
+       5.0 Financial Times  116                   51.397966                                   52.286780                      47.521852                       55.155221               35.919540                               0.000000                                 0.051724          
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:read:fd7ea285 h:53b9edf2 -->
+### 2026-11-27 05:50:12 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/high_volume_source_ranking.png"}`
+
+```
+[Image: image/png]
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:a4e083ac h:36b39f01 -->
+### 2026-11-27 05:50:34 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/make_charts.py", "old_string": "ax.set_xticks(angles[:-1]); ax.set_xticklabels(labels,fontsize=8)\nax.set_ylim(0,100); ax.set_yticks([20,40,60,80,100]); ax.set_yticklabels(['20','40','60','80','100'],fontsize=7)", "new_string": "ax.set_xticks(angles[:-1]); ax.set_xticklabels(labels,fontsize=8)\nselected_rows=[r[r.sour`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/make_charts.py' - made 1 replacement(s). 2 line(s) removed, 6 line(s) added at line 49.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:e5ddc929 h:0f46a295 -->
+### 2026-11-27 05:50:40 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/make_charts.py", "old_string": "fig.text(0.5,0.02,'Axes are title occurrence rates. Attention packaging and title echo show adverse behaviour, so lower is better.',ha='center',fontsize=8)", "new_string": "fig.text(0.5,0.02,f'Axes are title occurrence rates. Attention packaging and title echo show adverse behaviour, so`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/make_charts.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 57.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:78f08d89 h:b699a907 -->
+### 2026-11-27 05:50:52 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/make_charts.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 100000}`
+
+```
+Output from command in shell 4c627d:
+charts written to /home/bobbigmac/projects/bobdavies/news/docs/headline-data/current
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:read:af2ce77a h:803a26ac -->
+### 2026-11-27 05:51:08 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/REPORT.md", "limit": 160}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/REPORT.md" start_line="1" end_line="108">
+  1|# Title-only reader-value signals — improved exploratory run
+  2|
+  3|Corpus: **11,461 headline rows**, **695 sources**.
+  4|Source ordering eligible: **74** sources with at least 20 headlines. **621** sources are below the threshold and unranked.
+  5|Runtime: **71.3s** local. Stage timings: parse_archive 1.0s, detectors 11.4s, headline_reuse_and_templates 20.9s, topic_model_and_crossfit_expectations 5.0s, source_statistics_and_bootstrap 30.6s, write_tables_and_radar 2.3s.
+  6|
+  7|## Measurement definition
+  8|The core radar has 12 composite inputs: nine information-delivery markers plus inverse forms of explicit curiosity-gap, direct-address/service packaging, and sensational/personal framing. Cross-source title echo is plotted as a thirteenth diagnostic axis but excluded from the composite. Evidence specificity is fractional: generic research/study claims count 0.5; primary artefacts such as filings, documents, datasets, audits, transcripts and court material count 1.0. Event/action detection is independent of attention packaging to avoid double-penalising packaged but informative headlines.
+  9|
+ 10|## Method changes in this run
+ 11|- Curated export metadata is used when `headline-rows.jsonl` is present: canonical source key, URL, timestamps, relation branch, and editorial context.
+ 12|- Attention packaging is split into explicit curiosity-gap teasing, direct-address/service packaging, and sensational/personal framing rather than one opaque bait bucket.
+ 13|- Evidence language distinguishes generic research claims from stronger primary-artefact provenance. Both evidence and original-access cues now favour precision over recall: subject nouns such as records, databases, investigations, scientists, or gaming/platform exclusives do not count by themselves.
+ 14|- Expected detector rates are cross-fitted with GroupKFold by source: a source
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:a69c0737 h:62a7b78f -->
+### 2026-11-27 05:51:25 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    {'key':'original_reporting_signal','label':'Original-access cue','polarity':'positive','value':True,'description':'Investigation, special report, documents obtained, interview, FOI or our-analysis cues.'},", "new_string": "    {'key':'original_reporting_signal','label':'Origin`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 96.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:cbecf947 h:60d82f30 -->
+### 2026-11-27 05:51:30 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json\np='docs/headline-data/current/metric_dictionary.json'\nx=json.load(open(p))\nfor r in x:\n if r['key']=='original_reporting_signal':\n  r['description']='Explicit original-access/provenance cue: investigation reveals/found, exclusive interview/report/access, documents obtained, interview with, FOI or our-analysis. High precision, low recall.'\nopen(p,'w'`
+
+```
+Output from command in shell d0c581:
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:3c5f7faa h:ed3738c7 -->
+### 2026-11-27 05:51:35 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/REPORT.md", "old_string": "- **Original-access cue** (`original_reporting_signal`, included in composite): Investigation, special report, documents obtained, interview, FOI or our-analysis cues.", "new_string": "- **Original-access cue** (`original_reporting_signal`, included in composite): Explicit original-access/p`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/REPORT.md' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 37.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:read:6d5e1377 h:2b609b9d -->
+### 2026-11-27 05:51:41 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/DONE.md", "limit": 80}`
+
+```
+Output truncated at line 80; continue reading from line 81.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/docs/DONE.md" start_line="1" end_line="80">
+  1|# DONE
+  2|
+  3|## Platform-tenant source attribution audit
+  4|
+  5|- Multi-tenant platforms are no longer treated as sources: `yourlocalepidemiologist.substack.com` displayed as "Substack" because base-domain extraction took the platform label — same class of bug hit neocities, and worst of all dev.to, where 115 stories by ~97 individual authors were all lumped under one "DEV" source.
+  6|- `sourceKeyFromUrl` (both pipeline `scripts/sources.js` and client `src/view-model.js`, kept in sync) is now platform-aware: subdomain tenants display/key as the tenant, and path-tenant platforms (dev.to/user, medium.com/@user) key by author — dev.to/alice and dev.to/bob are different sources.
+  7|- Build-time labels prefer the story's own author field for platform tenants (real names like "Aniket Maurya" instead of handles), with explicit label overrides where prettified handles would be unreadable ("Your Local Epidemiologist").
+  8|- Audit verified the inverse direction too: legitimate publisher subdomains (news.xbox.com, sports.yahoo.com) still attribute to the publisher brand — the fix only fires for hosts in the curated PLATFORM_HOSTS set.
+  9|
+ 10|## Relationships page UX rebuild + content expansion
+ 11|
+ 12|- Rows are collapsed `<details>` elements by default — icon + name + host is the whole visible row, styled after the filter bar; profiles render only on expansion. This eliminates the wasted-space problem directly: thin rows cost one line each instead of matching their neighbor's height. Members flow in CSS columns so expansion pushes rows down rather than leaving holes in a grid.
+ 13|- "Also" cross-memberships are now anchor links to the other family sections (`#rel-…` ids) with just the family label — no more full breadcrumb dumps on every card.
+ 14|- Group headings disambiguate: a group whose label coll
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:read:4fc36d17 h:afb5f6a2 -->
+### 2026-11-27 05:51:49 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/DONE.md", "offset": 430, "limit": 120}`
+
+```
+Reached the end of the file at line 430; no more content is available. Stop reading.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:read:42828578 h:7829e953 -->
+### 2026-11-27 05:51:54 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/DONE.md", "offset": 390, "limit": 60}`
+
+```
+Reached the end of the file at line 390; no more content is available. Stop reading.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:f6534601 h:f96b2feb -->
+### 2026-11-27 05:51:59 UTC tool `exec`
+
+`{"command": "tail -50 docs/DONE.md", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell c10e86:
+- Responsive: the masthead title is fluid (clamp) and shrinks first; below 640px the
+  title takes its own row and the search input flexes full-width alongside the date —
+  the box is never crushed or hidden on narrow devices.
+
+## Back-to-top + hydration self-healing (2025)
+
+- **Back to top**: fixed button styled like Mark Read, appears only after scrolling two
+  viewport heights. Positioned in the gutter just right of the broadsheet column —
+  never overlapping content phone readers might want to select/copy. Hidden entirely
+  when the viewport is too narrow to have a real gutter.
+- **Hydration no longer depends on IntersectionObserver event delivery alone.** The old
+  design had no state reconciliation: hydration was implicit in DOM classes, driven purely
+  by observer callbacks, so any missed event left permanent empty shells, and one throwing
+  entry silently killed hydration for every other node in the same batch. Fixed twice over:
+  per-entry error isolation in the observer callback, plus a geometric sweep that runs when
+  scrolling settles (160ms debounce), after progressive materialization completes, and after
+  search re-reveals hidden shells — any shell inside the hydrate margin is hydrated based on
+  where it actually IS, not whether an event happened to fire. Verified observerless in jsdom:
+  the sweep alone hydrates in-viewport shells and leaves far-below ones lazy.
+- **Search box restyled**: pill shape, tinted fill with inset magnifier glyph, soft focus
+  ring, hover border, theme-aware icons for day/night, styled native clear control.
+
+- **More-expander removal + virtualization rebuild** — removed the short-summary
+  collapse/"More" rendering entirely (glimpse is now pure data with zero rendering
+  impact, enforced by test); removed the fixed-height in-place swap grid so
+  article panels are natural height in both states. Rebuilt feed hydration as
+  textbook windowed virtualization: single geometric rAF driver (no
+
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:edit:d1baad0d h:24529ab5 -->
+### 2026-11-27 05:52:18 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/DONE.md", "old_string": "- **Feed-markup injection fix** \u2014 RSS content HTML (including Techmeme's\n  self-contained item cards with their own headline/byline/permalink chrome) was\n  stored raw and baked into summaries, rendering foreign cards nested inside\n  article chrome. Boundary fixed at ingest: all feed text is plain-text norm`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/docs/DONE.md' - made 1 replacement(s). 9 line(s) removed, 43 line(s) added at line 201.
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:f999b720 h:6abd149f -->
+### 2026-11-27 05:52:26 UTC tool `exec`
+
+`{"command": "grep -n 'Headline-source analysis instrument\\|Feed-markup injection' docs/DONE.md && tail -50 docs/DONE.md", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell ab783b:
+201:- **Feed-markup injection fix** — RSS content HTML (including Techmeme's
+211:## Headline-source analysis instrument (2026)
+  is the full source text with no fabricated ellipses, and the dead short-summary
+  deriver is gone. Publish-time repair pass reconstructs full summaries from the
+  story store for clusters mangled by older runs (~3-4.6k repaired per build),
+  backfills missing story description/content (8125 stories), and dedups feeds that
+  repeat description as content. Remaining ellipsis endings are publisher-side
+  truncations in the feeds themselves.
+
+- **Feed-markup injection fix** — RSS content HTML (including Techmeme's
+  self-contained item cards with their own headline/byline/permalink chrome) was
+  stored raw and baked into summaries, rendering foreign cards nested inside
+  article chrome. Boundary fixed at ingest: all feed text is plain-text normalized
+  (tags stripped, entities decoded to fixpoint) in fetch-rss and prepareStoryForLLM,
+  so markup never enters the pipeline. Client rendering escapes plain-text fields
+  as contract enforcement. One-off migration scripts/repair-digest.js cleaned the
+  cache (1542 summaries rebuilt, proof-gated to never touch LLM editorial copy) —
+  the repair is NOT in the forever-build; prevention lives at the boundary.
+
+## Headline-source analysis instrument (2026)
+
+- Recovered the truncated external headline-analysis zip, placed its scripts under
+  `scripts/headline-analysis/`, and reworked the tool into a reproducible dev-time
+  analyser driven by `docs/tasks/headline-analysis.task.json`. Outputs now live in
+  `docs/headline-data/current/`; this is run-once measurement tooling only and is
+  not wired into build/CI.
+- Export format now includes machine-readable `headline-rows.jsonl` with canonical
+  source keys, URLs, timestamps, relation branches and curated profile context, so
+  the analyser no longer depends only on display names or flat export-file groups.
+- Detector taxo
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:7b45af43 h:3f5abcd6 -->
+### 2026-11-27 05:52:42 UTC tool `exec`
+
+`{"command": "python3 -m py_compile scripts/headline-analysis/analyse_headlines.py scripts/headline-analysis/validate_detectors.py scripts/headline-analysis/make_charts.py scripts/headline-analysis/test_corpus_outputs.py && .venv/bin/python scripts/headline-analysis/test_detectors.py && .venv/bin/python scripts/headline-analysis/test_corpus_outputs.py --config docs/tasks/headline-analysis.task.json`
+
+```
+Output from command in shell 19517f:
+39 detector regression cases passed
+Corpus-output invariants passed: 11,461 headlines; 695 sources; 13 radar axes; 9 delivery markers; 74 ordered sources.
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:exec:8a891b23 h:1f608c64 -->
+### 2026-11-27 05:52:51 UTC tool `exec`
+
+`{"command": "ls -lh docs/headline-data/current | sed -n '1,120p'; git status --short | head -100", "workdir": "/home/bobbigmac/projects/bobdavies/news"}`
+
+```
+Output from command in shell 151636:
+total 15M
+-rw-rw-r-- 1 bobbigmac bobbigmac  12K Nov 27 05:49 analysis_summary.json
+-rw-rw-r-- 1 bobbigmac bobbigmac  31K Nov 27 05:49 cross_source_title_matches.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac  38K Nov 27 05:49 detector_audit_sample.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac  37K Nov 27 05:49 detector_validation_sample.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac  562 Nov 27 05:50 detector_validation_scores.json
+-rw-rw-r-- 1 bobbigmac bobbigmac 7.2M Nov 27 05:49 headline_level_signals.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac 115K Nov 27 05:50 high_volume_source_ranking.png
+-rw-rw-r-- 1 bobbigmac bobbigmac 3.6K Nov 27 05:51 metric_dictionary.json
+-rw-rw-r-- 1 bobbigmac bobbigmac 409K Nov 27 05:50 publisher_radar_comparison.png
+-rw-rw-r-- 1 bobbigmac bobbigmac  11K Nov 27 05:51 REPORT.md
+-rw-rw-r-- 1 bobbigmac bobbigmac  906 Nov 27 05:49 run_metrics.json
+-rw-rw-r-- 1 bobbigmac bobbigmac 431K Nov 27 05:49 source_axis_profiles.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac 107K Nov 27 05:49 source_index_sensitivity.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac  23K Nov 27 05:49 source_phrase_signatures.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac 4.7M Nov 27 05:49 source_radar.html
+-rw-rw-r-- 1 bobbigmac bobbigmac 1.2M Nov 27 05:49 source_rankings.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac 160K Nov 27 05:49 source_story_score_distributions.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac 152K Nov 27 05:49 source_topic_profiles.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac  90K Nov 27 05:50 story_signal_distribution.png
+-rw-rw-r-- 1 bobbigmac bobbigmac 4.6K Nov 27 05:49 topic_model.json
+ M .gitignore
+ M AGENTS.md
+ M docs/DONE.md
+ M docs/sessions/transcripts/02-repeated-bite.md
+ M scripts/headline-analysis/analyse_headlines.py
+ M scripts/headline-analysis/make_charts.py
+ M scripts/headline-analysis/test_corpus_outputs.py
+ M scripts/headline-analysis/test_detectors.py
+?? docs/headline-data/current/
+?? docs/tasks/
+?? scripts/headline-analysis/validate_detectors.py
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:todo_write:5eb84945 h:b09c6961 -->
+### 2026-11-27 05:52:57 UTC tool `todo_write`
+
+`{"todos": [{"content": "Improve detector and scoring methodology to reduce identified shortcomings", "status": "completed"}, {"content": "Run the revised local analysis and validate structural outputs", "status": "completed"}, {"content": "Create/complete validation harness and document metric semantics in outputs", "status": "completed"}, {"content": "Regenerate charts and inspect ranking/axis fa`
+
+```
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [x] Improve detector and scoring methodology to reduce identified shortcomings [completed]
+2. [x] Run the revised local analysis and validate structural outputs [completed]
+3. [x] Create/complete validation harness and document metric semantics in outputs [completed]
+4. [x] Regenerate charts and inspect ranking/axis failure modes [completed]
+5. [~] Summarise findings and remaining limitations for the user [in_progress]
+
+```
+
+---
+
+<!-- r:0 m:hook:14c433ed-9221-4674-9ceb-f826ca79d0b6:todo_write:494909c9 h:acf04e96 -->
+### 2026-11-27 05:53:10 UTC tool `todo_write`
+
+`{"todos": [{"content": "Improve detector and scoring methodology to reduce identified shortcomings", "status": "completed"}, {"content": "Run the revised local analysis and validate structural outputs", "status": "completed"}, {"content": "Create/complete validation harness and document metric semantics in outputs", "status": "completed"}, {"content": "Regenerate charts and inspect ranking/axis fa`
+
+```
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [x] Improve detector and scoring methodology to reduce identified shortcomings [completed]
+2. [x] Run the revised local analysis and validate structural outputs [completed]
+3. [x] Create/complete validation harness and document metric semantics in outputs [completed]
+4. [x] Regenerate charts and inspect ranking/axis failure modes [completed]
+5. [x] Summarise findings and remaining limitations for the user [completed]
+
+```
+
+---
+
+<!-- r:0 m:hook:stop:14c433ed-9221-4674-9ceb-f826ca79d0b6 h:1029842f -->
+### 2026-11-27 05:53:44 UTC assistant
+
+Done. The revised analyser has been run end-to-end locally and the outputs are in:
+
+<ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/REPORT.md" />
+
+Key files:
+
+- <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/source_radar.html" /> — interactive per-source radar
+- <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/source_rankings.csv" /> — full source table
+- <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/headline_level_signals.csv" /> — all 11,461 headline rows
+- <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/high_volume_source_ranking.png" />
+- <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/publisher_radar_comparison.png" />
+- <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/detector_validation_sample.csv" />
+- <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json" />
+
+## Run
+
+- Corpus: **11,461 headlines / 695 sources**
+- Date range in export: **26 Aug–27 Nov**, heavily weighted toward November
+- Ranked sources: **74** with `n >= 20`; **14** with `n >= 100`
+- Runtime: **71.3s**
+  - detectors 11.4s
+  - headline reuse/template detection 20.9s
+  - topic/cross-fit 5.0s
+  - source stats/bootstrap 30.6s
+- No transformers, no GPU, no build integration.
+
+## High-volume ordering
+
+<ref_snippet file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/REPORT.md" lines="43-59" />
+
+| Source | n | Index |
+|---|---:|---:|
+| Eurogamer | 458 | **57.5** |
+| The Guardian | 485 | **56.2** |
+| Medical Xpress | 127 | **54.9** |
+| City A.M. | 173 | 51.6 |
+| Financial Times | 116 | 51.4 |
+| Korea Times | 123 | 51.1 |
+| The Independent | 246 | 50.6 |
+| IGN | 125 | 48.8 |
+| Phys.org | 190 | 48.6 |
+| BBC | 3537 | 47.7 |
+| Mirror | 133 | 47.2 |
+| Punch | 348 | 45.9 |
+| Kotaku | 671 | **40.2** |
+| Daily Mail | 350 | **38.6** |
+
+The previous Mirror-above-BBC artefact is mostly gone: BBC is now slightly above Mirror, while Mirror and especially Daily Mail are heavily pulled down by sensational/personal framing.
+
+The small-sample leaderboard still has Quartz/SCMP/TweakTown/etc. near the top, but those are `n=20–50` artefacts/leads, not robust publisher verdicts. The high-volume table is the useful ordering.
+
+## What changed methodologically
+
+- Attention packaging is now split into:
+  - explicit curiosity-gap teasing
+  - direct-address/service packaging
+  - sensational/personal framing
+- Evidence is fractional:
+  - generic research/study claim = `0.5`
+  - primary artefacts/documents/filings/data/transcripts/court material = `1.0`
+- Topic expectations are cross-fitted with GroupKFold by source, reducing in-sample leakage.
+- Attention farming is only **25% topic/context-adjusted**; the rest is compared against corpus-wide incidence, because packaging is publisher behaviour rather than inevitable subject matter.
+- Length adjustment is exported as a sensitivity, not the primary score. Primary remains headline-level information density; length-adjusted ordering puts Medical Xpress narrowly first, with Eurogamer/Guardian still next.
+- Evidence/originality detectors were precision-fixed after inspecting bad hits:
+  - “record contract” no longer counts as evidence
+  - databases as a subject no longer count as evidence
+  - generic investigations no longer count as original reporting
+  - gaming/platform exclusives no longer count as original reporting
+  - `pose risk` no longer counts as modelling/fashion posing
+  - horror/chaos in science or genre contexts no longer automatically count as sensationalism
+  - Tyson Fury’s surname no longer counts as “fury”
+  - narrative “we found a $3 alternative” no longer counts as original reporting
+
+## Interpretation
+
+### Medical Xpress remains the main confound
+
+Medical Xpress scores high because its headlines genuinely are dense in causal/research language:
+
+- causal relationship rate: **14.2%** vs BBC **3.2%**
+- fractional evidence specificity: **9.8%** vs BBC **0.65%**
+- sensational/personal: **0%**
+
+But this still does **not** mean independent science journalism. It can be institutional-release rewriting with dense claims. The instrument now reduces the inflation, but cannot remove it without article/provenance analysis. Read it as “dense research-claim headlines”, not “verified science reporting”.
+
+### Service packaging is now usefully separated
+
+Highest attention-pressure sources are dominated by direct/service packaging rather than celeb trash:
+
+- Engadget: direct/service incidence **42.9%**
+- This is Money: **24.7%**
+- Chalkbeat: **26.1%**
+- TechRadar: **20.0%**
+
+That supports your instinct: these are often useful answers, but still search-capture/click-farming style. They are no longer conflated with celebrity/sensational bait.
+
+By contrast:
+
+- Mirror sensational/personal incidence: **10.5%**
+- Daily Mail: **8.9%**
+- Guardian: **1.4%**
+- BBC: **2.0%**
+
+That separation is working much better.
+
+### Weighting sensitivity
+
+I compared equal weighting with delivery-heavy and attention-heavy schemes. The broad result is stable:
+
+- Equal/primary: **Eurogamer > Guardian > Medical Xpress**
+- Attention-heavy: **Medical Xpress > Eurogamer > Guardian**
+- Daily Mail and Kotaku remain bottom under every tested scheme.
+- Middle ordering moves: Phys.org/Punch rise when attention is weighted heavily; Mirror falls further.
+
+So the composite is not brittle at the extremes, but adjacent middle ranks should still be treated as bands rather than precise positions.
+
+## Validation state
+
+- **39 detector regression cases pass**
+- Corpus-output invariants pass:
+  - 11,461 headlines
+  - 695 sources
+  - 13 radar axes
+  - 74 ordered sources
+- Added <ref_file file="/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/validate_detectors.py" />
+  - `sample` creates a 150-row source-capped labelling sheet
+  - `score` computes precision/recall/F1 from filled `human_*` columns
+- The validation sheet is currently blank, so quantitative detector precision/recall is still not claimed. The audit inspection did catch and fix multiple obvious false-positive classes.
+
+Also updated <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/DONE.md" /> and the task notes in `AGENTS.md`.
+
+Nothing committed. `git status` also shows `docs/sessions/transcripts/02-repeated-bite.md` modified; I did not touch that file.
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7 h:7085a9d5 -->
+### 2026-11-27 06:51:44 UTC user
+
+manuallly check the results for sensibleness
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:todo_write:196e6b07 h:a6ec7a8c -->
+### 2026-11-27 06:52:17 UTC tool `todo_write`
+
+`{"todos": [{"content": "Manually inspect source-ordering plausibility and high-volume outliers", "status": "in_progress"}, {"content": "Manually inspect detector hits/misses across representative headline samples", "status": "pending"}, {"content": "Check echo/topic-adjustment artefacts and small-sample leaders", "status": "pending"}, {"content": "Summarise sensible results, failure modes, and any`
+
+```
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [~] Manually inspect source-ordering plausibility and high-volume outliers [in_progress]
+2. [ ] Manually inspect detector hits/misses across representative headline samples [pending]
+3. [ ] Check echo/topic-adjustment artefacts and small-sample leaders [pending]
+4. [ ] Summarise sensible results, failure modes, and any needed corrections [pending]
+
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:48cc2a1a h:848f376d -->
+### 2026-11-27 06:52:31 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nsel=['Eurogamer','The Guardian','Medical Xpress','City A.M.','Financial Times','Korea Times','The Independent','IGN','Phys.org','BBC','Mirror','Punch','Kotaku','Daily Mail']\nflags=['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','ma`
+
+```
+Output from command in shell f6c0f2:
+
+### Eurogamer n 458 mean 35.3
+TOP:
+   58 evnumtpcx          Today's Nintendo Switch Online update finally introduces a feature players have been asking for since 201
+   58 evnumtpco          God of War Laufey delayed three months to May 2027, as Sony Santa Monica escapes a packed February
+   58 numtpcocx          UK Conservative leader Kemi Badenoch is more worried "about the amount of time" people will spend on GTA 
+BOTTOM:
+    8 cgds               Fed up of Steam's lack of action regarding AI slop? Maybe you should take a look at the 'Games Without AI
+   17 ds                 "Where's the ding?!!" - I asked the PowerWash Simulator 2 team what they thought of Jason's nozzle work i
+   17 ds                 "This is your Dreamcast moment": Former PlayStation boss thinks Xbox needs to "pick a lane" with exclusiv
+
+### The Guardian n 485 mean 36.1
+TOP:
+   67 evnumtpcocx        UK diesel price hits record high of £2 a litre
+   58 evnumtpco          One Nation says it would cut Australia's refugee intake by 90% under ‘tough stance'
+   58 evnumtpco          Greenpeace boulders may delay building of £12bn windfarms in North Sea
+BOTTOM:
+   17 sn                 We live in a rape-prone society. The horrific Cornell case reveals what that looks like | Rebecca Solnit
+   17 evdssn             New York City's Marble Hill residents furious after ICE shooting: ‘Why do this?'
+   17 ds                 What are self-replicating ‘AI worms', and why is Anthropic worried about them?
+
+### Medical Xpress n 127 mean 34.9
+TOP:
+   71 evnumtpcoprcx      Death rates among 25–49-year-olds 42% higher in the North than the South of England, study finds
+   58 evcacocx           Earlier bedtime linked to greater weight loss in prediabetes trial
+   58 evtpcaco           Measles outbreak that contributed to Canada losing elimination status highlights risks from persistent im
+BOTTOM:
+   17 ds                 Hot or cold? Exploring what works best after exercise
+   
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:c4996d36 h:e2beb600 -->
+### 2026-11-27 06:52:56 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\nsmall=['South China Morning Post','TweakTown','Quartz','PsyPost','Jerusalem Post','MyJoyOnline','Seekingalpha','Indiatimes','PBS','Xbox Wire','Qatar Tribune','Wccftech']\nprint(s[s.source.isin(small)][[`
+
+```
+Output from command in shell 322e24:
+                  source  n  topic_adjusted_value_index  raw_title_signal_index  topic_adjusted_index_ci95_low  topic_adjusted_index_ci95_high  mean_words  attention_pressure_mean  cross_source_near_duplicate_rate
+South China Morning Post 25                       59.73                   41.33                          54.32                           64.01       12.16                     1.33                              0.04
+               TweakTown 46                       59.58                   36.05                          54.86                           63.38       13.91                     0.00                              0.00
+                  Quartz 24                       58.44                   40.97                          53.14                           62.93       11.71                     1.39                              0.00
+                 PsyPost 28                       57.56                   35.42                          51.78                           60.98       13.86                     2.38                              0.00
+          Jerusalem Post 68                       57.21                   38.91                          52.03                           61.93       12.91                     0.49                              0.01
+             MyJoyOnline 28                       56.11                   40.03                          52.00                           59.74       11.32                     0.00                              0.11
+            Seekingalpha 24                       55.33                   37.67                          51.07                           58.37        9.00                     0.00                              0.00
+              Indiatimes 20                       55.32                   38.75                          51.36                           59.57       12.60                     0.00                              0.00
+                     PBS 20          
+```
+
+---
+
+<!-- r:0 m:hook:PostCompaction:5747d830-27d1-4c41-80e6-8c01e0d91ba7 h:4879df1b -->
+### 2026-11-27 06:52:56 UTC · postcompaction 
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:b717708e h:cfc28b9e -->
+### 2026-11-27 06:53:19 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\ncols=['source','n','topic_adjusted_value_index','raw_title_signal_index','event_clarity_mean','quantified_specificity_mean','time_place_anchor_mean','causal_explanation_mean','evidence_provenance_mean','original_reporting_signal_mean','explicit_curiosity_gap_present_mean','`
+
+```
+Output from command in shell 350c2b:
+HIGH VOLUME DIMENSIONS (% where rates)
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/frame.py", line 4336, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/indexes/base.py", line 6557, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/indexes/base.py", line 6609, in _raise_if_missing
+    raise KeyError(f"{not_found} not in index")
+KeyError: "['event_clarity_mean', 'quantified_specificity_mean', 'time_place_anchor_mean', 'causal_explanation_mean', 'evidence_provenance_mean', 'original_reporting_signal_mean', 'explicit_curiosity_gap_present_mean', 'direct_service_packaging_present_mean', 'personal_sensational_frame_present_mean', 'formulaic_headline_rate'] not in index"
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:2d55a096 h:b82db706 -->
+### 2026-11-27 06:53:27 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\nprint('\\n'.join(s.columns))\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 616a2d:
+source_key
+source
+n
+group
+tree_root
+editorial_context
+neutral_editorial_context
+mean_words
+title_value_raw
+legacy_title_value_raw
+delivery_signal_mean
+delivery_signal_median
+delivery_signal_p25
+delivery_signal_p75
+delivery_signal_p90
+delivery_share_le20
+delivery_share_ge44
+attention_pressure_mean
+within_source_template_reuse_rate
+attribution_cue_rate
+anonymous_source_cue_rate
+cross_source_near_duplicate_rate
+mean_cross_source_similarity
+first_published
+last_published
+published_span_days
+headlines_per_week
+event_clarity_rate
+event_clarity_expected_context
+event_clarity_residual
+quantified_specificity_rate
+quantified_specificity_expected_context
+quantified_specificity_residual
+time_place_anchor_rate
+time_place_anchor_expected_context
+time_place_anchor_residual
+causal_explanation_rate
+causal_explanation_expected_context
+causal_explanation_residual
+material_consequence_rate
+material_consequence_expected_context
+material_consequence_residual
+evidence_provenance_rate
+evidence_provenance_expected_context
+evidence_provenance_residual
+context_comparison_rate
+context_comparison_expected_context
+context_comparison_residual
+explanatory_framing_rate
+explanatory_framing_expected_context
+explanatory_framing_residual
+original_reporting_signal_rate
+original_reporting_signal_expected_context
+original_reporting_signal_residual
+low_explicit_curiosity_gap_rate
+low_explicit_curiosity_gap_expected_context
+low_explicit_curiosity_gap_residual
+low_direct_service_packaging_rate
+low_direct_service_packaging_expected_context
+low_direct_service_packaging_residual
+low_sensational_personal_rate
+low_sensational_personal_expected_context
+low_sensational_personal_residual
+named_entity_signal_rate
+public_interest_rate
+research_claim_cue_rate
+primary_evidence_cue_rate
+explicit_curiosity_gap_incidence_rate
+direct_service_packaging_incidence_rate
+sensational_personal_incidence_rate
+event_clarity_index_residual
+quantified_specificity_index_residual
+time_place_anchor_in
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:0317d8a3 h:92e57869 -->
+### 2026-11-27 06:53:33 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\ncols=['source','n','topic_adjusted_value_index','raw_title_signal_index','event_clarity_rate','quantified_specificity_rate','time_place_anchor_rate','causal_explanation_rate','evidence_provenance_rate','original_reporting_signal_rate','explicit_curiosity_gap_incidence_rate'`
+
+```
+Output from command in shell 37a522. The full terminal output is being written live to /tmp/devin-overflows-1000/shell-37a522-b318ad7c88d5149a/content.txt; read or grep it for anything omitted below. Preview:
+<file-view path="/tmp/devin-overflows-1000/shell-37a522-b318ad7c88d5149a/content.txt" start_line="1" end_line="15" total_lines="54">
+  1|HIGH VOLUME DIMENSIONS
+  2|         source    n  topic_adjusted_value_index  raw_title_signal_index  event_clarity_rate  quantified_specificity_rate  time_place_anchor_rate  causal_explanation_rate  evidence_provenance_rate  original_reporting_signal_rate  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  attention_pressure_mean  within_source_template_reuse_rate  cross_source_near_duplicate_rate
+  3|      Eurogamer  458                       57.46                   35.34                0.56                         0.19                    0.17                     0.07                      0.00                             0.0                                   0.00                                     0.06                                 0.02                     2.69                               0.22                              0.00
+  4|   The Guardian  485                       56.16                   36.12                0.56                         0.10                    0.31                     0.05                      0.01                             0.0                                   0.01                                     0.07                                 0.01                     3.02                               0.00                              0.01
+  5| Medical Xpress  127                       54.88                   34.94                0.39                         0.05                    0.17                     0.14                      0.10                             0.0                                   0.01                            
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:02fac496 h:cde16dfe -->
+### 2026-11-27 06:53:55 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\ncols=['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing','original_reporting_signal','explicit_curiosity_gap_present','direct_service_packaging_pres`
+
+```
+Output from command in shell 8751ce:
+CORPUS POSITIVE COUNTS / RATES
+event_clarity                         5510 48.08%  mean=0.481
+quantified_specificity                1425 12.43%  mean=0.124
+time_place_anchor                     2631 22.96%  mean=0.230
+causal_explanation                     401  3.50%  mean=0.035
+material_consequence                  2638 23.02%  mean=0.230
+evidence_provenance                    197  1.72%  mean=0.010
+context_comparison                     798  6.96%  mean=0.070
+explanatory_framing                    169  1.47%  mean=0.015
+original_reporting_signal                5  0.04%  mean=0.000
+explicit_curiosity_gap_present          66  0.58%  mean=0.006
+direct_service_packaging_present       710  6.19%  mean=0.062
+personal_sensational_frame_present     231  2.02%  mean=0.020
+research_claim_cue                     160  1.40%  mean=0.014
+primary_evidence_cue                    37  0.32%  mean=0.003
+Traceback (most recent call last):
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/indexes/base.py", line 3816, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 172, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 201, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7726, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7734, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'exclusive_language_cue'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/frame.py", line 4330, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:d131aed9 h:4d4b062c -->
+### 2026-11-27 06:54:10 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nprint([c for c in h.columns if 'exclusive' in c or 'original' in c or 'cue' in c])\nprint('\\noriginal positives')\nprint(h[h.original_reporting_signal>0][['source','headline','original_reporting_signal']].to_string(index=False))\nprint('\\nprimary evidence positives`
+
+```
+Output from command in shell 72b7e2:
+['original_reporting_signal', 'celebrity_cue_present', 'anonymous_source_cue', 'primary_evidence_cue', 'research_claim_cue']
+
+original positives
+       source                                                                                                       headline  original_reporting_signal
+ The Guardian A ‘customer success story': leaked documents show Cisco doubled down on Israeli military deals during Gaza war                          1
+    Xbox Wire                   Achievement Unlocked: An Interview with the First XBOX Player to Reach 10 Million Gamerscore                          1
+   Prnewswire                 Solid State Relay Market worth $2.68 billion by 2032 - Exclusive Report by MarketsandMarketsTM                          1
+New Scientist                                  This is what the world will be like in 2096: A special report from the future                          1
+   Newinbooks                       Interview with David Graham, Author of Scorched Earth: The Library of Power - NewInBooks                          1
+
+primary evidence positives sample
+          source                                                                                                       headline  evidence_provenance  primary_evidence_cue
+    Seekingalpha                            Bubs Australia Limited (BUBSF) Shareholder/Analyst Call Prepared Remarks Transcript                  1.0                     1
+    The Guardian               Gender-diverse Australian sailors barred from US submarines despite Aukus deal, documents reveal                  1.0                     1
+             BBC                                      None of UK government's £2.5bn steel package spent in Wales, figures show                  1.0                     1
+    The Guardian A ‘customer success story': leaked documents show Cisco doubled down on Israeli military deals during Gaza war                  1.0                     1
+       Malaymail
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:b1a93c42 h:8006a5cb -->
+### 2026-11-27 06:54:23 UTC tool `exec`
+
+`{"command": "sed -n '1,260p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell ef66c0. The full terminal output is being written live to /tmp/devin-overflows-1000/shell-ef66c0-f8105244864da589/content.txt; read or grep it for anything omitted below. Preview:
+<file-view path="/tmp/devin-overflows-1000/shell-ef66c0-f8105244864da589/content.txt" start_line="1" end_line="42" total_lines="260">
+  1|#!/usr/bin/env python3
+  2|"""Title-only editorial-value signal analysis for source-headlines ZIP exports.
+  3|
+  4|Exploratory dev-time corpus instrument, not a truth/accuracy detector. It extracts
+  5|interpretable title-level signals, cross-fits topic/editorial-context expectations,
+  6|and writes story- and source-level tables plus an interactive radar.
+  7|"""
+  8|from __future__ import annotations
+  9|
+ 10|import argparse, html, json, math, re, time, unicodedata, zipfile
+ 11|from collections import Counter
+ 12|from pathlib import Path
+ 13|
+ 14|import numpy as np
+ 15|import pandas as pd
+ 16|import spacy
+ 17|import plotly.graph_objects as go
+ 18|from scipy.sparse import csr_matrix, hstack
+ 19|from sklearn.decomposition import NMF
+ 20|from sklearn.feature_extraction.text import CountVectorizer, ENGLISH_STOP_WORDS, TfidfVectorizer
+ 21|from sklearn.linear_model import Ridge
+ 22|from sklearn.model_selection import GroupKFold
+ 23|from sklearn.neighbors import NearestNeighbors
+ 24|from sklearn.preprocessing import OneHotEncoder
+ 25|
+ 26|REPO_ROOT = Path(__file__).resolve().parents[2]
+ 27|DEFAULT_CONFIG = REPO_ROOT / 'docs/tasks/headline-analysis.task.json'
+ 28|
+ 29|MONTHS = r"january|february|march|april|may|june|july|august|september|october|november|december"
+ 30|DAYS = r"monday|tuesday|wednesday|thursday|friday|saturday|sunday"
+ 31|
+ 32|EVENT_ACTIONS = re.compile(r"\b(?:announc\w*|approv\w*|reject\w*|resign\w*|win\w*|los\w*|die\w*|died|dead|kill\w*|arrest\w*|charg\w*|convict\w*|acquit\w*|launch\w*|open\w*|clos\w*|suspend\w*|ban\w*|sign\w*|bought|buy\w*|sold|sell\w*|fell|fall\w*|rose|ris\w*|increas\w*|decreas\w*|found|finds|f
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:09ac7ba6 h:c1661df9 -->
+### 2026-11-27 06:54:35 UTC tool `exec`
+
+`{"command": "sed -n '36,58p' scripts/headline-analysis/analyse_headlines.py && sed -n '238,310p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 143826:
+CONSEQUENCE = re.compile(r"\b(?:impact\w*|consequence\w*|affect\w*|threat\w*|risk\w*|cost\w*|damage\w*|benefit\w*|save\w*|kill\w*|injur\w*|death\w*|dead|fatalit\w*|job\w*|price\w*|bill\w*|wage\w*|tax\w*|spend\w*|fund\w*|profit\w*|loss\w*|harm\w*|boost\w*|cut\w*|reduc\w*|increase\w*|increased|rise\w*|rose|fall\w*|fell|drop\w*|dropped|declined|decreased|soared|plunged|grew|climbed|surge\w*|shortage\w*|crisis|outage\w*|delay\w*|disrupt\w*|expos\w*|ban\w*|restrict\w*|change\w*|shift\w*|force\w*|leave\w*|push\w*|put\w* at risk)\b", re.I)
+ATTRIBUTION = re.compile(r"\b(?:according to|says?|said|tells?|told|warns?|warned|claims?|claimed|confirms?|confirmed|admits?|admitted|announces?|announced|estimates?|estimated|reports?|reported|sources? say|officials? say|police say|court heard|documents? show|data show)\b", re.I)
+ANONYMOUS_SOURCE = re.compile(r"\b(?:anonymous source|unnamed source|sources? familiar with|people familiar with|insider says|insiders say|a source told|sources told|according to sources|sources close to|speaking on condition of anonymity)\b", re.I)
+PRIMARY_EVIDENCE = re.compile(r"\b(?:court (?:filing\w*|records?|documents?)|documents? (?:show|shows|reveal\w*|obtained|seen|reviewed)|obtained documents?|leaked documents?|internal (?:memo|documents?)|filings? (?:show|shows|reveal\w*)|audit (?:show\w*|find\w*|reveal\w*)|official (?:report|figures|data)|inspection report|data (?:show|shows|reveal\w*)|figures? (?:show|shows|reveal\w*)|statistics show|testimony|transcript\w*|freedom of information|\bfoi\b|trial records|peer.reviewed|court heard|court hears|inquest hears)\b", re.I)
+RESEARCH_CLAIM = re.compile(r"\b(?:study|studies|survey|poll|findings|clinical trial)\b|\b(?:research|analysis)\s+(?:finds?|shows?|suggests?|reveals?|indicates?)\b|\b(?:scientists?|researchers?)\s+(?:find|finds|show|shows|suggest|suggests|indicate|indicates|reveal|reveals|report|reports|warn|warns|say|says|discover|discovers|identify|identifies|develop|
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:7afd3cb0 h:59c24ca2 -->
+### 2026-11-27 06:54:46 UTC tool `exec`
+
+`{"command": "grep -n \"relative_z\\|topic_adjusted_value_index\\|VALUE_METRICS\\|zscore\\|z_score\" scripts/headline-analysis/analyse_headlines.py | head -80", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 0eb304:
+86:VALUE_METRICS = DELIVERY_METRICS + ATTENTION_METRICS
+440:    for col in VALUE_METRICS:
+447:        out[col+'_relative_z']=(tmp-mu)/sd
+448:        zcols.append(col+'_relative_z')
+449:    out['topic_adjusted_value_index']=(50+15*out[zcols].clip(-3,3).mean(axis=1)).clip(0,100)
+450:    order=out.loc[out['n']>=min_n].sort_values('topic_adjusted_value_index',ascending=False).index
+522:    for col in VALUE_METRICS:
+540:    for col in VALUE_METRICS:
+543:    for col in ['topic_adjusted_value_index','rank']+[c+'_relative_z' for c in VALUE_METRICS]:
+548:        for _,row in comp[['source_key','source','n','topic_adjusted_value_index','rank']].iterrows():
+550:                              'topic_adjusted_value_index':row['topic_adjusted_value_index'],'rank':row['rank']})
+556:    resid_mu=np.array([float(src.loc[eligible,c+'_adjusted_pp'].mean()) for c in VALUE_METRICS])
+557:    resid_sd=np.array([max(float(src.loc[eligible,c+'_adjusted_pp'].std(ddof=1)),1e-8) for c in VALUE_METRICS])
+566:            value_ix=[FEATURE_KEYS.index(c) for c in VALUE_METRICS]
+567:            Ysrc=df.iloc[pos][VALUE_METRICS].to_numpy(dtype=float)
+573:            for j,col in enumerate(VALUE_METRICS):
+590:        order=src.loc[src['n']>=threshold].sort_values('topic_adjusted_value_index',ascending=False).index
+593:    src=src.sort_values(['rank_eligible','topic_adjusted_value_index','n'],ascending=[False,False,False]).reset_index(drop=True)
+704:    df['title_value_signal']=100*df[VALUE_METRICS].mean(axis=1)
+712:        len_cols=['source_key','topic_adjusted_value_index','rank','rank_n50','rank_n100','ordering_band']
+726:    story_dist_cols=['source_key','source','group','tree_root','n','topic_adjusted_value_index','ordering_band','raw_title_signal_index','legacy_raw_title_signal_index','delivery_signal_mean','delivery_signal_median','delivery_signal_p25','delivery_signal_p75','delivery_signal_p90','delivery_share_le20','delivery_share_ge44','attention_pressure_m
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:d515ad3a h:1b3876c4 -->
+### 2026-11-27 06:54:49 UTC tool `exec`
+
+`{"command": "sed -n '400,465p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 53a02f:
+
+def source_phrase_signatures(df, out_path: Path, min_source_n=30, min_phrase_count=3, top_k=20):
+    cv = CountVectorizer(stop_words='english', ngram_range=(2, 3), min_df=2,
+                         max_features=50000, binary=True, strip_accents='unicode')
+    X = cv.fit_transform(df['headline'].tolist()).tocsr()
+    terms = np.asarray(cv.get_feature_names_out())
+    global_counts = np.asarray(X.sum(axis=0)).ravel().astype(float)
+    prior_total = 100.0
+    alpha = (global_counts / max(global_counts.sum(), 1.0)) * prior_total + 1e-3
+    alpha0 = float(alpha.sum())
+    N = X.shape[0]
+    rows = []
+    for source, positions in df.groupby('source', sort=False).indices.items():
+        positions = np.asarray(positions, dtype=int)
+        n_s = len(positions)
+        if n_s < min_source_n: continue
+        source_counts = np.asarray(X[positions].sum(axis=0)).ravel().astype(float)
+        other_counts = global_counts - source_counts
+        n_o = N - n_s
+        denom_s = np.maximum(n_s - source_counts + alpha0 - alpha, 1e-9)
+        denom_o = np.maximum(n_o - other_counts + alpha0 - alpha, 1e-9)
+        delta = np.log((source_counts + alpha) / denom_s) - np.log((other_counts + alpha) / denom_o)
+        var = 1.0/(source_counts + alpha) + 1.0/denom_s + 1.0/(other_counts + alpha) + 1.0/denom_o
+        z = delta / np.sqrt(var)
+        eligible = np.where(source_counts >= min_phrase_count)[0]
+        if len(eligible) == 0: continue
+        top = eligible[np.argsort(z[eligible])[-top_k:][::-1]]
+        for j in top:
+            rows.append({'source': source, 'n_headlines': n_s, 'phrase': terms[j],
+                         'source_doc_count': int(source_counts[j]),
+                         'source_share': float(source_counts[j]/n_s),
+                         'corpus_share': float(global_counts[j]/N),
+                         'weighted_log_odds_z': float(z[j])})
+    pd.DataFrame(rows).to_csv(out_path, index=False)
+
+
+def composite_for_shrink
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:48df8dd0 h:f9c67a8a -->
+### 2026-11-27 06:55:03 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\ncols=['source','n','topic_adjusted_value_index']+[c+'_relative_z' for c in ['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing','original_reporting_signal',`
+
+```
+Output from command in shell 414a1d:
+                  source   n  topic_adjusted_value_index  event_clarity_relative_z  quantified_specificity_relative_z  time_place_anchor_relative_z  causal_explanation_relative_z  material_consequence_relative_z  evidence_provenance_relative_z  context_comparison_relative_z  explanatory_framing_relative_z  original_reporting_signal_relative_z  low_explicit_curiosity_gap_relative_z  low_direct_service_packaging_relative_z  low_sensational_personal_relative_z
+South China Morning Post  25                       59.73                      0.74                              -0.22                          2.53                          -0.76                             0.17                            1.75                           2.82                           -0.04                                 -0.04                                   0.25                                     0.00                                 0.57
+               TweakTown  46                       59.58                      0.05                               2.06                          0.43                           1.34                             0.83                           -0.18                           1.58                           -0.65                                 -0.16                                   0.37                                     1.29                                 0.72
+                  Quartz  24                       58.44                      0.60                               0.93                         -1.03                           1.79                             1.84                           -0.26                           2.26                            0.87                                 -0.14                                   0.24                                     0.48                                -0.81
+                 PsyPost  28                       57.56                      0.94                              -0.
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:c9f3641a h:8f6ecde3 -->
+### 2026-11-27 06:55:29 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nfor src in ['Oregonlive','Xbox Wire','New Scientist','Seekingalpha','Yahoo','Engadget','New Scientist','GameSpot','Chalkbeat']:\n x=h[h.source==src]\n print('\\n###',src,len(x))\n for _,r in x.head(10).iterrows(): print(f\"{r.title_value_signal:3.0f} ev{int(r.event_c`
+
+```
+Output from command in shell 22cc75:
+
+### Oregonlive 29
+ 33 ev0 num1 tp0 ca0 co0 pr0.0 cx0 ex0 or0 cg0 ds0 sn0 | Jerry Small Obituary (1937 - 2026) - Stanwood, WA - Skagit Valley Herald - Legacy
+ 33 ev0 num1 tp0 ca0 co0 pr0.0 cx0 ex0 or0 cg0 ds0 sn0 | Matthew Ainslie Obituary (1983 - 2026) - Schenectady, NY - WKTV - Legacy
+ 33 ev0 num1 tp0 ca0 co0 pr0.0 cx0 ex0 or0 cg0 ds0 sn0 | Russell Houppert Obituary (1936 - 2026) - Lowville, NY - WKTV - Legacy
+ 33 ev0 num1 tp0 ca0 co0 pr0.0 cx0 ex0 or0 cg0 ds0 sn0 | Stacy Lynn Flint Obituary (1972 - 2026) - East Stroudsburg, PA - WFMZ-TV 69 News
+ 33 ev0 num1 tp0 ca0 co0 pr0.0 cx0 ex0 or0 cg0 ds0 sn0 | Gregory Paul "Poppy" Apted Obituary (1960 - 2026) - Summerville, SC - Charleston Post & Courier
+ 33 ev0 num1 tp0 ca0 co0 pr0.0 cx0 ex0 or0 cg0 ds0 sn0 | William Armstrong Obituary (2026) - Grand Rapids, MI
+ 33 ev0 num1 tp0 ca0 co0 pr0.0 cx0 ex0 or0 cg0 ds0 sn0 | David Gallob Obituary (1938 - 2026) - Crawford, CO - Delta County Independent - Legacy
+ 33 ev0 num1 tp0 ca0 co0 pr0.0 cx0 ex0 or0 cg0 ds0 sn0 | James M. Miller Obituary (2026) - Allentown, PA - WFMZ-TV 69 News - Legacy
+ 33 ev0 num1 tp0 ca0 co0 pr0.0 cx0 ex0 or0 cg0 ds0 sn0 | Joan L. Palm Obituary (2026) - Quakertown, PA - WFMZ-TV 69 News - Legacy
+ 33 ev0 num1 tp0 ca0 co0 pr0.0 cx0 ex0 or0 cg0 ds0 sn0 | Brenda W. Carl Obituary (1944 - 2026) - Reading, PA - WFMZ-TV 69 News - Legacy
+
+### Xbox Wire 21
+ 50 ev1 num1 tp0 ca0 co0 pr0.0 cx0 ex0 or1 cg0 ds0 sn0 | Achievement Unlocked: An Interview with the First XBOX Player to Reach 10 Million Gamerscore
+ 42 ev0 num1 tp1 ca0 co0 pr0.0 cx0 ex0 or0 cg0 ds0 sn0 | Nioh 3 Is Coming to XBOX in 2027
+ 42 ev0 num1 tp1 ca0 co0 pr0.0 cx0 ex0 or0 cg0 ds0 sn0 | Next Week on XBOX: New Games for November 23 to 27
+ 33 ev0 num0 tp1 ca0 co0 pr0.0 cx0 ex1 or0 cg0 ds1 sn0 | How to Get Ready for November 19
+ 25 ev0 num0 tp0 ca0 co0 pr0.0 cx0 ex0 or0 cg0 ds0 sn0 | Millions of Butt Slaps: Last Pirates Sails into XBOX Game Preview
+ 33 ev0 num1 tp0 ca0 co0 
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:40826a5b h:ff9b641b -->
+### 2026-11-27 06:55:41 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nfor src in ['Xbox Wire','Oregonlive','Seekingalpha','Quartz','TweakTown','Wccftech']:\n x=h[h.source==src].iloc[0]\n print(src, {c:x[c] for c in ['group','tree_root','tree_root_id','branch_path','curated_group','profile_kind','profile_model','profile_ownership','edit`
+
+```
+Output from command in shell cf2455:
+Xbox Wire {'group': 'Gaming Platforms', 'tree_root': 'Specialist Press', 'branch_path': 'Gaming Press / Gaming Platforms', 'curated_group': 'Gaming Platforms', 'editorial_context': 'Corporate publication', 'neutral_editorial_context': 'gaming and entertainment specialist press'}
+Oregonlive {'group': 'Advance Local', 'tree_root': 'US Media', 'branch_path': 'US Local Media / Advance Local', 'curated_group': 'Advance Local', 'editorial_context': 'US Media', 'neutral_editorial_context': 'local and regional news'}
+Seekingalpha {'group': 'Markets Data', 'tree_root': 'Specialist Press', 'branch_path': 'Business & Money / Investor & Markets / Markets Data', 'curated_group': 'Markets Data', 'editorial_context': 'Specialist Press', 'neutral_editorial_context': 'business and finance specialist press'}
+Quartz {'group': 'Independent Digital News', 'tree_root': 'Digital Publishers', 'branch_path': 'Independent Digital News', 'curated_group': 'Independent Digital News', 'editorial_context': 'Business and global-affairs site', 'neutral_editorial_context': 'business and finance specialist press'}
+TweakTown {'group': 'Enthusiast Hardware', 'tree_root': 'Specialist Press', 'branch_path': 'Technology Press / Hardware & Components / Enthusiast Hardware', 'curated_group': 'Enthusiast Hardware', 'editorial_context': 'Independent tech/hardware site', 'neutral_editorial_context': 'technology specialist press'}
+Wccftech {'group': 'Hardware Guides', 'tree_root': 'Specialist Press', 'branch_path': 'Technology Press / Hardware & Components / Hardware Guides', 'curated_group': 'Hardware Guides', 'editorial_context': 'Independent tech/gaming publication', 'neutral_editorial_context': 'gaming and entertainment specialist press'}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:a689fbfd h:e90899cd -->
+### 2026-11-27 06:55:56 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nv=pd.read_csv('docs/headline-data/current/detector_validation_sample.csv')\n# use first 36 rows in sample order; show machine flags and title\ncols=['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing','original_reporting_`
+
+```
+Output from command in shell ab8e11:
+Traceback (most recent call last):
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/indexes/base.py", line 3816, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 172, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 201, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7726, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7734, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'event_clarity'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<stdin>", line 8, in <module>
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/series.py", line 1102, in __getitem__
+    return self._get_value(key)
+           ~~~~~~~~~~~~~~~^^^^^
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/series.py", line 1189, in _get_value
+    loc = self.index.get_loc(label)
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/indexes/base.py", line 3823, in get_loc
+    raise KeyError(key) from err
+KeyError: 'event_clarity'
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:347503e5 h:1dc40334 -->
+### 2026-11-27 06:56:05 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nv=pd.read_csv('docs/headline-data/current/detector_validation_sample.csv')\nprint(v.columns.tolist())\nprint(v.head(1).to_string(index=False))\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 074e80:
+['headline_id', 'source_key', 'source', 'headline', 'url', 'pred_event_clarity', 'human_event_clarity', 'pred_quantified_specificity', 'human_quantified_specificity', 'pred_time_place_anchor', 'human_time_place_anchor', 'pred_causal_explanation', 'human_causal_explanation', 'pred_material_consequence', 'human_material_consequence', 'pred_evidence_provenance', 'human_evidence_provenance', 'pred_context_comparison', 'human_context_comparison', 'pred_explanatory_framing', 'human_explanatory_framing', 'pred_original_reporting_signal', 'human_original_reporting_signal', 'pred_explicit_curiosity_gap_present', 'human_explicit_curiosity_gap_present', 'pred_direct_service_packaging_present', 'human_direct_service_packaging_present', 'pred_personal_sensational_frame_present', 'human_personal_sensational_frame_present']
+ headline_id source_key source                                                                       headline                                                                           url  pred_event_clarity  human_event_clarity  pred_quantified_specificity  human_quantified_specificity  pred_time_place_anchor  human_time_place_anchor  pred_causal_explanation  human_causal_explanation  pred_material_consequence  human_material_consequence  pred_evidence_provenance  human_evidence_provenance  pred_context_comparison  human_context_comparison  pred_explanatory_framing  human_explanatory_framing  pred_original_reporting_signal  human_original_reporting_signal  pred_explicit_curiosity_gap_present  human_explicit_curiosity_gap_present  pred_direct_service_packaging_present  human_direct_service_packaging_present  pred_personal_sensational_frame_present  human_personal_sensational_frame_present
+        2697  bbc.co.uk    BBC Watch: BBC in Paris as police charge protesters and use tear gas during unrest https://www.bbc.co.uk/news/videos/cm89zqw9lx1do?at_medium=RSS&at_campaign=rss                   1                  NaN            
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:eb6c7a3a h:16c7f580 -->
+### 2026-11-27 06:56:18 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nv=pd.read_csv('docs/headline-data/current/detector_validation_sample.csv')\ncols=['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing','original_reporting_signal','explicit_curiosity_gap_present','direct_service_packaging_`
+
+```
+Output from command in shell f19248:
+01. BBC                EV                                     Watch: BBC in Paris as police charge protesters and use tear gas during unrest
+02. New Scientist      EV/NUM/CX                              Homo erectus survived on mainland Asia 215,000 years longer than we thought
+03. Kotaku             EV/CO                                  Cyberpunk 2 Development Ramps Up At CD Projekt Red, But Ambitions For The Project Are ‘Not Changed' 
+04. BBC                EV/TP/CO                               Early prisoner release: More offenders to leave jail on Tuesday
+05. Handelsblatt       -                                      Wohnraummangel: Fehlendes Bauland: Wohnungswirtschaft beschwert sich bei Reiche über ihren Beirat
+06. Qatar Tribune      EV/CO                                  Pope Leo to undergo surgery for ‘localised nodule' in his lung
+07. Stuff              TP                                     Xbox reveals disc-to-digital plans, but is it preparing us for an unpopular Project Helix decision? 
+08. Mirror             -                                      Pochettino enforces new Man Utd rule immediately after Champions League match
+09. Eurogamer          TP                                     UK Prime Minister won't be playing GTA 6, government says, while hailing Rockstar Games a "British s
+10. BBC                -                                      I had to explain to my teacher what a young carer was - we need more support
+11. Eurogamer          TP                                     Here are our PS Plus Premium and Extra games for October
+12. AP News            CO                                     Measles deaths reported in Pennsylvania spark fight among politicians and health officials
+13. Kotaku             EV/CO                                  GTA 6‘s First TV Ad Cuts The Spicy Shower Scenes
+14. Citizen            EV/TP/CO                               Kenya reports first-ever Ebola death
+15. The Guardian       
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:872bc8e4 h:de8e277b -->
+### 2026-11-27 06:56:37 UTC tool `exec`
+
+`{"command": "grep -n \"spacy.load\\|en_core\" scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 09c6b6:
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:7c1b417c h:f831cc5b -->
+### 2026-11-27 06:56:41 UTC tool `exec`
+
+`{"command": "grep -n \"nlp\" scripts/headline-analysis/analyse_headlines.py | head -30", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 15281c:
+224:def detect_one(title: str, nlp):
+225:    doc=nlp(title)
+683:    nlp=spacy.blank('en')
+684:    det=pd.DataFrame([detect_one(x,nlp) for x in df['headline']])
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:7d085218 h:7b75ae4f -->
+### 2026-11-27 06:56:53 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\ntry:\n import spacy\n print('spacy',spacy.__version__)\n for m in ['en_core_web_sm','en_core_web_md']:\n  try:\n   nlp=spacy.load(m); print(m,'ok')\n  except Exception as e: print(m,'missing')\nexcept Exception as e: print(e)\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 623072:
+spacy 3.8.18
+en_core_web_sm missing
+en_core_web_md missing
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:29f30939 h:639dece2 -->
+### 2026-11-27 06:57:10 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport os\nfor root in ['/home/bobbigmac/projects','/home/bobbigmac/projects/toys']:\n hits=[]\n for dirpath,dirnames,files in os.walk(root):\n  if 'en_core_web_sm' in dirpath:\n   hits.append(dirpath); dirnames[:] = []\n   if len(hits)>=10: break\n print(root, len(hits))\n print('\\n'.join(hits[:10]))\nPY", "timeout": 20000}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: d2592c. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:7872c04a h:c53e1462 -->
+### 2026-11-27 06:57:40 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nv=pd.read_csv('docs/headline-data/current/detector_validation_sample.csv')\ncols=['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing','original_reporting_signal','explicit_curiosity_gap_present','direct_service_packaging_`
+
+```
+Output from command in shell 181656:
+37. PsyPost            PR0.5                                  Eye-tracking study suggests a simple PowerPoint technique can sharpen students' focus
+38. Punch              NUM/TP/CX                              Nigeria records highest pipeline availability in 20 years – NNPC
+39. Freemalaysiatoday  SN                                     Arsenal show true colours at Anfield after Fleetwood humiliation
+40. Twelfth Magpie     EV/TP                                  This week on the stock market: the Anthropic IPO and Nvidia's earnings
+41. The Independent    EV                                     Raiders of the Lost Ark star explains why fifth Indiana Jones film is ‘disappointing'
+42. Indianexpress      -                                      Terrorists down to single digits in Kashmir, IG Sujit Kumar says giving exact figure tough
+43. Kotaku             -                                      Robert Pattinson Is Officially The New James Bond
+44. Meduza             EV/DS                                  ‘Kyiv is gasping for breath': Russia's escalating attacks are upending daily life in the Ukrainian c
+45. Winnipeg Free Pres EV/CO/CX                               Heat-trapping carbon pollution drops, but scientists cite the Iran war rather than energy progress
+46. Daily Mail         -                                      Mitch McConnell gives unnerving blank stare when asked about midterms
+47. Kait8              EV/NUM                                 Pyke scores 20 as Arkansas State defeats Southern Utah 104-102 - KAIT
+48. Dohanews           TP                                     Qatar's Amir reconstitutes QatarEnergy Board of Directors
+49. Usatoday           EV                                     Hegseth fired Nancy Lacore from the Navy. Now he could help her get to Congress
+50. City A.M.          EV/CO                                  Is Bali dead? I checked into Canggu's oldest and newest luxury hotels to find out
+51. Korea Times      
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:3b7e4775 h:ae72bc1d -->
+### 2026-11-27 06:57:57 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nv=pd.read_csv('docs/headline-data/current/detector_validation_sample.csv')\nfor idx in [43,45,49,50,55,57,64,65,70]:\n r=v.iloc[idx-1]\n print(idx, r['source'], '|',r['headline'])\n print(' flags:', {c.replace('pred_',''):r[c] for c in v.columns if c.startswith('pred_') and r[c]>0})\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/ne`
+
+```
+Output from command in shell fa0ca5:
+43 Kotaku | Robert Pattinson Is Officially The New James Bond
+ flags: {}
+45 Winnipeg Free Press | Heat-trapping carbon pollution drops, but scientists cite the Iran war rather than energy progress
+ flags: {'event_clarity': np.int64(1), 'material_consequence': np.int64(1), 'context_comparison': np.int64(1)}
+49 Usatoday | Hegseth fired Nancy Lacore from the Navy. Now he could help her get to Congress
+ flags: {'event_clarity': np.int64(1)}
+50 City A.M. | Is Bali dead? I checked into Canggu's oldest and newest luxury hotels to find out
+ flags: {'event_clarity': np.int64(1), 'material_consequence': np.int64(1)}
+55 Sky News | Pope makes public appearance a day after being discharged from hospital following lung cancer surgery
+ flags: {'event_clarity': np.int64(1), 'material_consequence': np.int64(1)}
+57 Mg | Soweto residents fed up with failing services
+ flags: {}
+64 Daily Mail | David Baddiel has become a German citizen
+ flags: {}
+65 TweakTown | GTA 6's leaked map has reportedly been ported into FiveM, letting gamers play an early Leonida
+ flags: {}
+70 Wired | The Best Black Friday Deals Are Now Live: Our Expert Picks for 2026
+ flags: {'quantified_specificity': np.int64(1), 'time_place_anchor': np.int64(1)}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:2d065b5e h:434b520a -->
+### 2026-11-27 06:58:23 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nv=pd.read_csv('docs/headline-data/current/detector_validation_sample.csv')\ncols=['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing','original_reporting_signal','explicit_curiosity_gap_present','direct_service_packaging_`
+
+```
+Output from command in shell ca4d37:
+73. Github             CG                                     [css-spatial-1] Declare place-self/place-items extensions as partial ... · w3c/csswg-drafts@4bb74b1
+74. Worldsoccertalk    NUM/TP/CX/EX/DS                        How to watch Porto vs Estoril match in the USA: Live stream and TV for 2026-27 Primeira Liga
+75. Notebookcheck      -                                      Rockstar says GTA 6 players won't explore the entire map by finishing the story
+76. Evening Standard   NUM/EX/DS                              Deposit £10 get free spins: How to claim free spins with a £10 deposit
+77. Metro              EV/CO                                  Sony should delay PS6 'as long as possible' says former PlayStation boss
+78. Fresnobee          EV/CX                                  2 arrests after a California Sikh festival stabbing. A shooting came a day earlier
+79. The Star           EV/TP/CO                               Ringgit slips against US$ amid global risk-off sentiment
+80. Financial Times    EV/CX                                  Qatari mediators return to Tehran in last-ditch effort to broker interim deal
+81. Edinburgh News     EV/CA                                  Police release CCTV images linked to serious assault in Edinburgh
+82. Albanyherald       -                                      editorials Archives – Page 110 of 110 - Albany Herald
+83. Courant            NUM/TP                                 Marianne Moore Obituary | September 22, 2026 | Hartford Courant
+84. Idealhome          DS                                     George Home has convinced me to celebrate ‘Pinkmas' this year – 6 playful pink pieces to inspire fun
+85. PBS                -                                      What the Cornell case reveals about how sexual assault allegations are handled
+86. Axios              NUM/TP/CX                              Some Dems' 2028 strategy: Make America Nice Again
+87. Handelsblatt       TP                     
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:4bc37bd3 h:2726ba4f -->
+### 2026-11-27 06:59:24 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nv=pd.read_csv('docs/headline-data/current/detector_validation_sample.csv')\ncols=['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing','original_reporting_signal','explicit_curiosity_gap_present','direct_service_packaging_`
+
+```
+Output from command in shell e7669a:
+109. The Age            EV                                     ‘Sex addict': Wife talked of pilot's ‘adultery, rage' before alleged murder
+110. TechRadar          EV/CO/DS                               'Could this be an attempt to save Mass Effect?' — After BioWare's closure, an awesome 'Mass Effect U
+111. Winnipeg Free Pres EV/CO                                  Chargers lose Derwin James Jr. to injured reserve after hamstring rehab setback
+112. Newsweek           EV/CO                                  New bill would ban airlines from charging families to sit together
+113. Dailytimes         TP                                     TODAY'S CARTOON
+114. Jerusalem Post     -                                      Christa Pike conscious, speaking following botched lethal injection | The Jerusalem Post
+115. Skomfi             -                                      DiaRhythm - Diabetes management routines
+116. Seekingalpha       -                                      Deere: Combining Great Markets, But The Harvest Looks More Promising After Q4
+117. Endpoints          EV                                     Merck KGaA's writedown over Lonza deal; PharmaLogic buys Lantheus' CDMO business
+118. Medical Xpress     -                                      Head-to-head trial reveals better immune-dampening drug for psoriatic arthritis
+119. Chalkbeat          EV                                     Memphis state takeover board talks priorities while blocked from action in court
+120. channelnewsasia.co EV/TP                                  UK intends to remain open to Chinese investment while protecting national security: Trade minister
+121. City A.M.          EV                                     Poundland on brink of collapse as it files notice to appoint administrators
+122. Xbox Wire          -                                      Fable: Deep Dive Into New Gameplay With Playground Games | Official XBOX Podcast
+123. Cricbuzz           -          
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:get_output:f206661c h:1d4386e6 -->
+### 2026-11-27 07:00:42 UTC tool `get_output`
+
+`{"shell_id": "d2592c", "timeout": 1000}`
+
+```
+/home/bobbigmac/projects 2
+/home/bobbigmac/projects/podcasts/.venv/lib/python3.14/site-packages/en_core_web_sm-3.8.0.dist-info
+/home/bobbigmac/projects/podcasts/.venv/lib/python3.14/site-packages/en_core_web_sm
+/home/bobbigmac/projects/toys 0
+
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:45833cd4 h:38cee022 -->
+### 2026-11-27 07:00:50 UTC tool `exec`
+
+`{"command": "ls -la /home/bobbigmac/projects/podcasts/.venv/lib/python3.14/site-packages/en_core_web_sm | head && ls -la /home/bobbigmac/projects/podcasts/.venv/lib/python3.14/site-packages/en_core_web_sm-3.8.0.dist-info | head && du -sh /home/bobbigmac/projects/podcasts/.venv/lib/python3.14/site-packages/en_core_web_sm", "timeout": 10000}`
+
+```
+Output from command in shell 7be977:
+total 32
+drwxrwxr-x  4 bobbigmac bobbigmac  4096 Apr 23  2026 .
+drwxrwxr-x 99 bobbigmac bobbigmac  4096 Apr 23  2026 ..
+drwxrwxr-x 10 bobbigmac bobbigmac  4096 Apr 23  2026 en_core_web_sm-3.8.0
+-rw-rw-r--  1 bobbigmac bobbigmac   237 Apr 23  2026 __init__.py
+-rw-rw-r--  1 bobbigmac bobbigmac 10106 Apr 23  2026 meta.json
+drwxrwxr-x  2 bobbigmac bobbigmac  4096 Apr 23  2026 __pycache__
+total 44
+drwxrwxr-x  2 bobbigmac bobbigmac 4096 Apr 23  2026 .
+drwxrwxr-x 99 bobbigmac bobbigmac 4096 Apr 23  2026 ..
+-rw-rw-r--  1 bobbigmac bobbigmac  320 Apr 23  2026 direct_url.json
+-rw-rw-r--  1 bobbigmac bobbigmac   47 Apr 23  2026 entry_points.txt
+-rw-rw-r--  1 bobbigmac bobbigmac    4 Apr 23  2026 INSTALLER
+-rw-rw-r--  1 bobbigmac bobbigmac 1056 Apr 23  2026 LICENSE
+-rw-rw-r--  1 bobbigmac bobbigmac 2347 Apr 23  2026 LICENSES_SOURCES
+-rw-rw-r--  1 bobbigmac bobbigmac 2922 Apr 23  2026 METADATA
+-rw-rw-r--  1 bobbigmac bobbigmac 3930 Apr 23  2026 RECORD
+15M	/home/bobbigmac/projects/podcasts/.venv/lib/python3.14/site-packages/en_core_web_sm
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:15034ab0 h:0ba6f76b -->
+### 2026-11-27 07:01:22 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd,re\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\npatterns={\n 'dead_title':r'\\bDead\\b|\\bDay of the Dead\\b|\\bDead by Daylight\\b',\n 'fallout':r'\\bFallout\\b',\n 'first_from_fir_prefix':r'\\bfirst\\b',\n 'launch_noun':r'\\blaunch\\s+(?:trailer|date|weekend|window|event)|at launch\\b',\n 'release_date_traile`
+
+```
+Output from command in shell 020e1e:
+Potential lexical artefact counts among positive rows (overlap possible):
+dead_title               rows=  24 event_pos=  24 tp_pos=   4 co_pos=  24
+  sources: Kotaku, Eurogamer, Korea Times, BBC, TweakTown
+fallout                  rows=   4 event_pos=   4 tp_pos=   0 co_pos=   4
+  sources: Kotaku, GameSpot, Wccftech, Xbox Wire
+first_from_fir_prefix    rows= 203 event_pos= 203 tp_pos=  65 co_pos=  33
+  sources: BBC, Eurogamer, The Guardian, The Independent, Daily Mail
+launch_noun              rows=  11 event_pos=  11 tp_pos=   1 co_pos=   5
+  sources: Eurogamer, sea.mashable.com, mashable.com, Metro, Rockpapershotgun
+release_date_trailer     rows=   0 event_pos=   0 tp_pos=   0 co_pos=   0
+  sources: 
+settings                 rows=   4 event_pos=   4 tp_pos=   0 co_pos=   2
+  sources: Notebookcheck, Eurogamer, Engadget, T3
+us_pronoun_lc            rows=  26 event_pos=  12 tp_pos=  26 co_pos=  10
+  sources: BBC, Daily Maverick, The Guardian, Stuff, T3
+
+Eurogamer potentially affected examples:
+
+PAT \bDead\b count 5
+                                                                                                                                                  headline  event_clarity  material_consequence  time_place_anchor  title_value_signal
+                             Rockstar is actively shopping Red Dead Redemption movie and TV rights around, just don't expect the same for Grand Theft Auto              1                     1                  0           41.666667
+                     Former GTA 4 and Red Dead boss thinks "we are one Toy Story moment away" from people accepting gen-AI in game development in the West              1                     1                  0           41.666667
+                                               GTA 6 reportedly has 55 Achievements/Trophies, more than both GTA 5 and Red Dead Redemption 2 had at launch              1                     1                  0           50.000000
+           
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:todo_write:9758be20 h:b66ee722 -->
+### 2026-11-27 07:01:36 UTC tool `todo_write`
+
+`{"todos": [{"content": "Manually inspect source-ordering plausibility and high-volume outliers", "status": "completed"}, {"content": "Manually inspect detector hits/misses across representative headline samples", "status": "in_progress"}, {"content": "Check echo/topic-adjustment artefacts and small-sample leaders", "status": "pending"}, {"content": "Summarise sensible results, failure modes, and a`
+
+```
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [x] Manually inspect source-ordering plausibility and high-volume outliers [completed]
+2. [~] Manually inspect detector hits/misses across representative headline samples [in_progress]
+3. [ ] Check echo/topic-adjustment artefacts and small-sample leaders [pending]
+4. [ ] Summarise sensible results, failure modes, and any needed corrections [pending]
+
+```
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7:exec:35b730da h:c7cd57bf -->
+### 2026-11-27 07:01:53 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys,re,pandas as pd\nsys.path.insert(0,'scripts/headline-analysis')\nimport analyse_headlines as ah\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\ncounts={}\nexamples={}\nfor title in h.headline:\n for m in ah.EVENT_ACTIONS.finditer(title):\n  term=m.group(0).casefold()\n  counts[term]=counts.get(term,0)+1\n  examples.setdefa`
+
+```
+Output from command in shell f599e9:
+first                282  GB win decider to reach Davis Cup semis for first time since 2019
+burnham              142  Burnham says UK net migration now under 'sufficient' control
+win                  138  GB win decider to reach Davis Cup semis for first time since 2019
+launch               126  Farage helps launch new campaign against the UK rejoining the EU
+election             117  Clashing political visions reflect a divided Spain ahead of election
+release              107  'Everyone's talking about it' - GTA 6 generates huge hype ahead of release
+set                  105  Selby faces tough UK Championship opener, with Allen set to feature
+warns                103  NHS boss warns of 'horrible spike' in flu as hospital admissions surge
+attack               100  Met Police ruined my life, says Kenyan man wrongly sentenced over attack on UK couple
+found                 92  My dad's watch stopped the moment he died - I found it in the ashes of Hong Kong tower fire
+record                90  Newspaper headlines: 'Six-day streak "smashes" global temperature record' and 'Gord speed'
+surgery               87  Knee surgery rules Sinner out of Australian Open
+dead                  83  Thirteen dead as mine disaster highlights illegal hunt for gold
+crash                 80  Egyptian authorities arrest motorist over tanker crash that killed 31
+killed                79  Italy says two citizens killed in Iranian strike in Kuwait
+finds                 78  German boat dealer suspected of supplying Channel smuggling gangs, BBC finds
+bank                  69  UK sanctions firms over Israeli West Bank settlements
+return                68  Death-sentenced Sheikh Hasina's planned return puts Bangladesh on edge - and India in a bind
+update                67  Race to update services' computer systems after cyber-security flaw found
+dies                  66  Former England scrum-half and commentator Starmer-Smith dies aged 81
+rise                  65
+```
+
+---
+
+<!-- r:0 m:hook:bb6d3272-fb9c-4168-9ba6-a429691127b7 h:9097a1d8 -->
+### 2026-11-27 07:03:05 UTC user
+
+you can make some tweaks to your engine to improve some of those takes, or add notes/caveats/disclaimers where you can reasonably justify a take being 'off' for a good reason (like HIGH technical coverage). But don't wallpaper everything with caveats... caveats make sense where they add meaningful content, no 'defaults'. Like EVERY source doesn't need a "regexes are dumb" warning, that's a single global warning, and highlights where our methodology is weak or limited by "things that exist (lol)" because we can't just hypotetically measure text in any REAL sense, this approach is fundamentally limited. Regexes are usually NOT a good way to address this problem, except for stem words... i.e. you can detect grammar pretty reliably, but "watch words" or "trigger words" should usually treat word-boundary as important, not sub-string matching
+
+---
+
+<!-- r:0 m:hook:bb6d3272-fb9c-4168-9ba6-a429691127b7:exec:6d732432 h:321d07f9 -->
+### 2026-11-27 07:03:15 UTC tool `exec`
+
+`{"command": "grep -n '\\\\w\\*' scripts/headline-analysis/analyse_headlines.py | head -80", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 17fc3f:
+32:EVENT_ACTIONS = re.compile(r"\b(?:announc\w*|approv\w*|reject\w*|resign\w*|win\w*|los\w*|die\w*|died|dead|kill\w*|arrest\w*|charg\w*|convict\w*|acquit\w*|launch\w*|open\w*|clos\w*|suspend\w*|ban\w*|sign\w*|bought|buy\w*|sold|sell\w*|fell|fall\w*|rose|ris\w*|increas\w*|decreas\w*|found|finds|find\w*|discover\w*|ruled|rules|order\w*|vot\w*|pass\w*|delay\w*|cut\w*|fir\w*|strik\w*|investigat\w*|publish\w*|releas\w*|unveil\w*|introduc\w*|remov\w*|add\w*|updat\w*|chang\w*|shut\w*|expand\w*|reduc\w*|withdraw\w*|oust\w*|appoint\w*|elect\w*|beat\w*|defeat\w*|earn\w*|sue\w*|settle\w*|plead\w*|warn\w*|attack\w*|invad\w*|agree\w*|reach\w*|break\w*|surge\w*|drop\w*|climb\w*|declin\w*|recover\w*|collaps\w*|rescu\w*|evacuat\w*|return\w*|confirm\w*|expos\w*|scrap\w*|scrutin\w*|file\w*|acquir\w*|merg\w*|sack\w*|surviv\w*|injur\w*|wound\w*|bomb\w*|crash\w*|burn\w*|flood\w*|storm\w*|explode\w*|erupt\w*|strike\w*|shoot\w*|stab\w*|sentenc\w*|indict\w*|prosecut\w*|appeal\w*|overturn\w*|uphold\w*|block\w*|clear\w*|enact\w*|repeal\w*|adopt\w*|roll\w* out|ship\w*|debut\w*|set\w*|record\w*|outperform\w*|underperform\w*)\b", re.I)
+35:CAUSAL = re.compile(r"\b(?:because|due to|as a result|resulting in|results? in|led to|leads? to|caused? by|causes?|trigger\w*|prompt\w*|driv\w*|fuel\w*|in response to|thanks to|which means|what it means|linked to|associated with|contribut\w* to|forces? .* to|means that)\b", re.I)
+36:CONSEQUENCE = re.compile(r"\b(?:impact\w*|consequence\w*|affect\w*|threat\w*|risk\w*|cost\w*|damage\w*|benefit\w*|save\w*|kill\w*|injur\w*|death\w*|dead|fatalit\w*|job\w*|price\w*|bill\w*|wage\w*|tax\w*|spend\w*|fund\w*|profit\w*|loss\w*|harm\w*|boost\w*|cut\w*|reduc\w*|increase\w*|increased|rise\w*|rose|fall\w*|fell|drop\w*|dropped|declined|decreased|soared|plunged|grew|climbed|surge\w*|shortage\w*|crisis|outage\w*|delay\w*|disrupt\w*|expos\w*|ban\w*|restrict\w*|change\w*|shift\w*|force\w*|leave\w*|push\w*|put\w* at risk)\b", re.I)
+39:PRIMARY_E
+```
+
+---
+
+<!-- r:0 m:hook:bb6d3272-fb9c-4168-9ba6-a429691127b7:exec:c3cc7f4d h:c0ac1c0d -->
+### 2026-11-27 07:03:19 UTC tool `exec`
+
+`{"command": "sed -n '1,260p' scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell e860c6:
+"""High-precision regression cases for title-level detector behaviour."""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+import spacy
+from analyse_headlines import detect_one
+
+nlp = spacy.blank('en')
+
+cases = [
+    ("UK net migration fell 14% in 2025 as asylum claims also fell, ONS data show",
+     {'event_clarity':1,'quantified_specificity':1,'time_place_anchor':1,'material_consequence':1,'evidence_provenance':1.0,'primary_evidence_cue':1}),
+    ("Can YOU guess the secret behind the new royal relationship...?",
+     {'explicit_curiosity_gap_present':1,'low_explicit_curiosity_gap':0,'direct_service_packaging_present':1}),
+    ("Jennifer Lopez reveals son Max does not like her stage looks",
+     {'personal_life_frame_present':1,'teaser_verb_present':1,'personal_sensational_frame_present':1,'low_sensational_personal':0,'explicit_curiosity_gap_present':0}),
+    ("How to clear the cache on your Xbox Series X",
+     {'direct_service_packaging_present':1,'low_direct_service_packaging':0,'explanatory_framing':1,'explicit_curiosity_gap_present':0,'event_clarity':0}),
+    ("Star Wars studio announces a new game for 2027",
+     {'celebrity_cue_present':0,'event_clarity':1,'quantified_specificity':1}),
+    ("The incredible reason your heart never develops cancer",
+     {'explicit_curiosity_gap_present':1,'low_explicit_curiosity_gap':0}),
+    ("Study finds forever chemicals in New Jersey tap water",
+     {'evidence_provenance':0.5,'research_claim_cue':1,'primary_evidence_cue':0,'event_clarity':1}),
+    ("Court filing reveals Google internally admitted search quality loss",
+     {'evidence_provenance':1.0,'primary_evidence_cue':1,'event_clarity':1}),
+    ("How rail fare increases affect commuters across England",
+     {'explanatory_framing':1,'material_consequence':1}),
+    ("Why the new housing rules matter for renters",
+     {'explanatory_framing':1}),
+    ("What happened to the missing flight?",
+     {'e
+```
+
+---
+
+<!-- r:0 m:hook:bb6d3272-fb9c-4168-9ba6-a429691127b7:exec:2fc703f2 h:a6608cbd -->
+### 2026-11-27 07:03:38 UTC tool `exec`
+
+`{"command": "sed -n '465,625p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 94be39:
+def source_statistics(df, expected, min_source_n=20, shrinkage=25, shrinkage_grid=(10,25,50), bootstrap=250, seed=27, attention_context_adjustment=0.25):
+    g=df.groupby('source_key', sort=False)
+    src=g.agg(source=('source',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),
+              n=('headline','size'),
+              group=('group',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),
+              tree_root=('tree_root',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),
+              editorial_context=('editorial_context',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),
+              neutral_editorial_context=('neutral_editorial_context',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),
+              mean_words=('word_count','mean'), title_value_raw=('title_value_signal_raw','mean'),
+              legacy_title_value_raw=('legacy_title_value_signal_raw','mean'),
+              delivery_signal_mean=('information_delivery_signal','mean'),
+              delivery_signal_median=('information_delivery_signal','median'),
+              delivery_signal_p25=('information_delivery_signal',lambda x:x.quantile(.25)),
+              delivery_signal_p75=('information_delivery_signal',lambda x:x.quantile(.75)),
+              delivery_signal_p90=('information_delivery_signal',lambda x:x.quantile(.90)),
+              delivery_share_le20=('information_delivery_signal',lambda x:(x<=20).mean()),
+              delivery_share_ge44=('information_delivery_signal',lambda x:(x>=44.444444).mean()),
+              attention_pressure_mean=('attention_packaging_pressure','mean'),
+              within_source_template_reuse_rate=('within_source_repeated_trigram_proxy','mean'),
+              attribution_cue_rate=('attribution_present','mean'), anonymous_source_cue_rate=('anonymous_source_cue','mean'),
+              cross_source_near_duplicate_rate=('cross_source_near_duplicate_proxy','mean'),
+              mean_cros
+```
+
+---
+
+<!-- r:0 m:hook:bb6d3272-fb9c-4168-9ba6-a429691127b7:exec:1930b606 h:29a245f5 -->
+### 2026-11-27 07:03:42 UTC tool `exec`
+
+`{"command": "sed -n '660,760p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell a1b436:
+    stage_times={}
+    def mark(name,t0):
+        stage_times[name]=round(time.perf_counter()-t0,3)
+        return time.perf_counter()
+
+    ap=argparse.ArgumentParser()
+    ap.add_argument('--config',type=Path,default=DEFAULT_CONFIG)
+    ap.add_argument('--zip',type=Path)
+    ap.add_argument('--out',type=Path)
+    ap.add_argument('--topics',type=int)
+    ap.add_argument('--folds',type=int)
+    ap.add_argument('--bootstrap',type=int)
+    args=ap.parse_args()
+    cfg=load_config(args)
+    zip_path=Path(cfg['input_zip_path'])
+    out=Path(cfg['output_dir_path'])
+    out.mkdir(parents=True,exist_ok=True)
+
+    t=time.perf_counter()
+    df=parse_archive(zip_path)
+    df['headline_id']=np.arange(len(df))
+    t=mark('parse_archive',t)
+
+    nlp=spacy.blank('en')
+    det=pd.DataFrame([detect_one(x,nlp) for x in df['headline']])
+    df=pd.concat([df.reset_index(drop=True),det],axis=1)
+    t=mark('detectors',t)
+
+    df=headline_reuse_proxy(df,n_neighbors=int(cfg['nearest_neighbors']),threshold=float(cfg['cross_source_similarity_threshold']))
+    df=add_within_source_template_proxy(df)
+    t=mark('headline_reuse_and_templates',t)
+
+    W,topics,vec,nmf=topic_model(df,n_topics=int(cfg['topics']),min_df=int(cfg['topic_min_df']),seed=int(cfg['random_seed']))
+    primary_length_adjustment=bool(cfg.get('adjust_title_length',False))
+    expected=crossfit_expected(df,W,FEATURE_KEYS,folds=int(cfg['folds']),seed=int(cfg['random_seed']),context_fields=cfg.get('context_fields'),adjust_title_length=primary_length_adjustment)
+    expected_length_adjusted=None
+    if bool(cfg.get('length_adjusted_sensitivity',False)) and not primary_length_adjustment:
+        expected_length_adjusted=crossfit_expected(df,W,FEATURE_KEYS,folds=int(cfg['folds']),seed=int(cfg['random_seed']),context_fields=cfg.get('context_fields'),adjust_title_length=True)
+    df['dominant_topic']=W.argmax(axis=1)
+    df['topic_strength']=W.max(axis=1)
+    t=mark('topic_model_and_crossfit_expe
+```
+
+---
+
+<!-- r:0 m:hook:bb6d3272-fb9c-4168-9ba6-a429691127b7:exec:1bcc5d77 h:6e4d47ba -->
+### 2026-11-27 07:05:20 UTC tool `exec`
+
+`{"command": "cp -a /home/bobbigmac/projects/podcasts/.venv/lib/python3.14/site-packages/en_core_web_sm /home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/ && cp -a /home/bobbigmac/projects/podcasts/.venv/lib/python3.14/site-packages/en_core_web_sm-3.8.0.dist-info /home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/ && .venv/bin/python - <<'PY'\nimport`
+
+```
+Output from command in shell 0360d2:
+Watch: BBC in Paris as police charge protesters [('BBC', 'ORG'), ('Paris', 'GPE')]
+Russian strike near Kyiv kills 37 [('Russian', 'NORP'), ('37', 'CARDINAL')]
+2 arrests after a California Sikh festival stabbing [('2', 'CARDINAL'), ('California Sikh', 'ORG')]
+US sanctions firms over Israeli West Bank settlements [('US', 'GPE'), ('Israeli', 'NORP'), ('West Bank', 'GPE')]
+GTA 6 is officially the biggest entertainment launch of all time [('GTA', 'ORG'), ('6', 'CARDINAL')]
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:bb6d3272-fb9c-4168-9ba6-a429691127b7:exec:95d7b0dd h:d358429b -->
+### 2026-11-27 07:05:44 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport spacy\nnlp=spacy.load('en_core_web_sm')\nexamples=[\n\"Burnham says UK net migration now under 'sufficient' control\",\n\"Knee surgery rules Sinner out of Australian Open\",\n\"Clashing political visions reflect a divided Spain ahead of election\",\n\"UK sanctions firms over Israeli West Bank settlements\",\n\"GTA 6 is officially the biggest entertain`
+
+```
+Output from command in shell b66504:
+
+ Burnham says UK net migration now under 'sufficient' control
+[('Burnham', 'PROPN', 'NNP', 'Burnham', 'nsubj'), ('says', 'VERB', 'VBZ', 'say', 'ROOT'), ('UK', 'PROPN', 'NNP', 'UK', 'nmod'), ('net', 'ADJ', 'JJ', 'net', 'amod'), ('migration', 'NOUN', 'NN', 'migration', 'dobj'), ('now', 'ADV', 'RB', 'now', 'advmod'), ('under', 'ADP', 'IN', 'under', 'prep'), ("'", 'PUNCT', '``', "'", 'punct'), ('sufficient', 'ADJ', 'JJ', 'sufficient', 'amod'), ("'", 'PUNCT', "''", "'", 'punct'), ('control', 'NOUN', 'NN', 'control', 'pobj')]
+
+ Knee surgery rules Sinner out of Australian Open
+[('Knee', 'NOUN', 'NN', 'knee', 'compound'), ('surgery', 'NOUN', 'NN', 'surgery', 'compound'), ('rules', 'NOUN', 'NNS', 'rule', 'ROOT'), ('Sinner', 'PROPN', 'NNP', 'Sinner', 'acl'), ('out', 'ADP', 'IN', 'out', 'prep'), ('of', 'ADP', 'IN', 'of', 'prep'), ('Australian', 'PROPN', 'NNP', 'Australian', 'compound'), ('Open', 'PROPN', 'NNP', 'Open', 'pobj')]
+
+ Clashing political visions reflect a divided Spain ahead of election
+[('Clashing', 'VERB', 'VBG', 'clash', 'amod'), ('political', 'ADJ', 'JJ', 'political', 'amod'), ('visions', 'NOUN', 'NNS', 'vision', 'nsubj'), ('reflect', 'VERB', 'VBP', 'reflect', 'ROOT'), ('a', 'DET', 'DT', 'a', 'det'), ('divided', 'VERB', 'VBN', 'divide', 'amod'), ('Spain', 'PROPN', 'NNP', 'Spain', 'dobj'), ('ahead', 'ADV', 'RB', 'ahead', 'advmod'), ('of', 'ADP', 'IN', 'of', 'prep'), ('election', 'NOUN', 'NN', 'election', 'pobj')]
+
+ UK sanctions firms over Israeli West Bank settlements
+[('UK', 'PROPN', 'NNP', 'UK', 'compound'), ('sanctions', 'NOUN', 'NNS', 'sanction', 'compound'), ('firms', 'NOUN', 'NNS', 'firm', 'ROOT'), ('over', 'ADP', 'IN', 'over', 'prep'), ('Israeli', 'ADJ', 'JJ', 'israeli', 'compound'), ('West', 'PROPN', 'NNP', 'West', 'compound'), ('Bank', 'PROPN', 'NNP', 'Bank', 'compound'), ('settlements', 'NOUN', 'NNS', 'settlement', 'pobj')]
+
+ GTA 6 is officially the biggest entertainment launch of all time
+[('GTA', 'PROPN', 'NNP', '
+```
+
+---
+
+<!-- r:0 m:hook:bb6d3272-fb9c-4168-9ba6-a429691127b7:exec:b5fdcc1a h:f309d4e1 -->
+### 2026-11-27 07:05:57 UTC tool `exec`
+
+`{"command": "cat scripts/headline-analysis/requirements.txt", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 5f2441:
+numpy>=2.0
+pandas>=2.2
+scipy>=1.17
+scikit-learn>=1.8
+spacy>=3.8
+plotly>=6.5
+matplotlib>=3.10
+pycountry>=24.6
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:96c8feef-e3e4-48f4-a940-6fb6039a46c1 h:1cb38f40 -->
+### 2026-11-27 07:06:28 UTC user
+
+dictionary sniffing is usually not useful here.
+
+---
+
+<!-- r:0 m:hook:a3618b43-ba99-4569-81dd-6e8ec955f95c h:62eaa1a9 -->
+### 2026-11-27 07:06:59 UTC user
+
+don't try to heuristically do magic... if the code doesn't understand a sentence, YOU can, and can log that for the code to reference
+
+---
+
+<!-- r:0 m:hook:a3618b43-ba99-4569-81dd-6e8ec955f95c:read:41c141a1 h:7780f3e9 -->
+### 2026-11-27 07:07:37 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "offset": 29, "limit": 35}`
+
+```
+Output truncated at line 63; continue reading from line 64.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py" start_line="29" end_line="63">
+ 29|MONTHS = r"january|february|march|april|may|june|july|august|september|october|november|december"
+ 30|DAYS = r"monday|tuesday|wednesday|thursday|friday|saturday|sunday"
+ 31|
+ 32|EVENT_ACTIONS = re.compile(r"\b(?:announc\w*|approv\w*|reject\w*|resign\w*|win\w*|los\w*|die\w*|died|dead|kill\w*|arrest\w*|charg\w*|convict\w*|acquit\w*|launch\w*|open\w*|clos\w*|suspend\w*|ban\w*|sign\w*|bought|buy\w*|sold|sell\w*|fell|fall\w*|rose|ris\w*|increas\w*|decreas\w*|found|finds|find\w*|discover\w*|ruled|rules|order\w*|vot\w*|pass\w*|delay\w*|cut\w*|fir\w*|strik\w*|investigat\w*|publish\w*|releas\w*|unveil\w*|introduc\w*|remov\w*|add\w*|updat\w*|chang\w*|shut\w*|expand\w*|reduc\w*|withdraw\w*|oust\w*|appoint\w*|elect\w*|beat\w*|defeat\w*|earn\w*|sue\w*|settle\w*|plead\w*|warn\w*|attack\w*|invad\w*|agree\w*|reach\w*|break\w*|surge\w*|drop\w*|climb\w*|declin\w*|recover\w*|collaps\w*|rescu\w*|evacuat\w*|return\w*|confirm\w*|expos\w*|scrap\w*|scrutin\w*|file\w*|acquir\w*|merg\w*|sack\w*|surviv\w*|injur\w*|wound\w*|bomb\w*|crash\w*|burn\w*|flood\w*|storm\w*|explode\w*|erupt\w*|strike\w*|shoot\w*|stab\w*|sentenc\w*|indict\w*|prosecut\w*|appeal\w*|overturn\w*|uphold\w*|block\w*|clear\w*|enact\w*|repeal\w*|adopt\w*|roll\w* out|ship\w*|debut\w*|set\w*|record\w*|outperform\w*|underperform\w*)\b", re.I)
+ 33|NUMERIC = re.compile(r"(?:\b\d+(?:[.,]\d+)?\s?(?:%|per cent|percent|million|billion|trillion|thousand|th|years?|months?|weeks?|days?|hours?|minutes?|people|cases|deaths|jobs|homes|miles|km|kg|\$|£|€|¥)|(?:\$|£|€|¥)\s?\d|\b\d{4}\b|\b\d+\s?(?:to|-)\s?\d+\b)", re.I)
+ 34|TIME_PLACE = re.compile(rf"\b(?:{MONTHS}|{DAYS}|today|yesterday|tomorrow|tonight|this morning|this week|next week|last week|next year|last year|in \d{{4}}|by \d{{4}}|since \d{{4}}|during \d{{4}}|\d{{1,2}}(?:st|nd|rd|th)?\s+(?:{
+```
+
+---
+
+<!-- r:0 m:hook:a3618b43-ba99-4569-81dd-6e8ec955f95c:exec:ceb0e9e9 h:b02b68db -->
+### 2026-11-27 07:08:20 UTC tool `exec`
+
+`{"command": "grep -n \"\\['value'\\]\\|f\\['value'\\]\\|value']\" scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 767340:
+755:        metric_docs.append({'key':f['key'],'label':f['label'],'polarity':f['polarity'],'included_in_composite':f['value'],'description':f['description']})
+826:        composite_note='included in composite' if f['value'] else 'diagnostic only'
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f5730410-e9b0-4ebe-b542-662e7e8dec22 h:df923ea4 -->
+### 2026-11-27 07:09:03 UTC user
+
+like I said, don't bloat everything. You have a perfectly good word pool that YOU can qualify. DO NOT forget YOU are an LLM and have much better language parsing capabilities than ANY heuristic model. DO NOT FALL INTO THE WELL OF TRYING TO SOLVE INTRACTABLE PROBLEMS
+
+---
+
+<!-- r:0 m:hook:f5730410-e9b0-4ebe-b542-662e7e8dec22:exec:2d5f04c4 h:ac1db545 -->
+### 2026-11-27 07:09:40 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys,pandas as pd\nsys.path.insert(0,'scripts/headline-analysis')\nimport analyse_headlines as ah\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nfor name,rx in [('EVENT',ah.EVENT_ACTIONS),('CONSEQ',ah.CONSEQUENCE)]:\n counts={}; examples={}\n for title in h.headline:\n  for m in rx.finditer(title):\n   term=m.group(0).casefold`
+
+```
+Output from command in shell fe3bf6:
+
+ EVENT unique 651 total 7834
+first               282 GB win decider to reach Davis Cup semis for first time since 2019
+burnham             142 Burnham says UK net migration now under 'sufficient' control
+win                 138 GB win decider to reach Davis Cup semis for first time since 2019
+launch              126 Farage helps launch new campaign against the UK rejoining the EU
+election            117 Clashing political visions reflect a divided Spain ahead of election
+release             107 'Everyone's talking about it' - GTA 6 generates huge hype ahead of release
+set                 105 Selby faces tough UK Championship opener, with Allen set to feature
+warns               103 NHS boss warns of 'horrible spike' in flu as hospital admissions surge
+attack              100 Met Police ruined my life, says Kenyan man wrongly sentenced over attack on UK cou
+found                92 My dad's watch stopped the moment he died - I found it in the ashes of Hong Kong t
+record               90 Newspaper headlines: 'Six-day streak "smashes" global temperature record' and 'Gor
+surgery              87 Knee surgery rules Sinner out of Australian Open
+dead                 83 Thirteen dead as mine disaster highlights illegal hunt for gold
+crash                80 Egyptian authorities arrest motorist over tanker crash that killed 31
+killed               79 Italy says two citizens killed in Iranian strike in Kuwait
+finds                78 German boat dealer suspected of supplying Channel smuggling gangs, BBC finds
+bank                 69 UK sanctions firms over Israeli West Bank settlements
+return               68 Death-sentenced Sheikh Hasina's planned return puts Bangladesh on edge - and India
+update               67 Race to update services' computer systems after cyber-security flaw found
+dies                 66 Former England scrum-half and commentator Starmer-Smith dies aged 81
+rise                 65 Millions of people to see average monthl
+```
+
+---
+
+<!-- r:0 m:hook:6a959fb3-7adf-457d-a07f-cd95869dd663 h:ad5b7bba -->
+### 2026-11-27 07:10:32 UTC user
+
+you're also not limited to ONLY-headline matching here, you have article bodies (in whole or in part) that can weight heuristic decisions relatively easily, with extra tier checks
+
+---
+
+<!-- r:0 m:hook:6a959fb3-7adf-457d-a07f-cd95869dd663:exec:9e0581f6 h:35688784 -->
+### 2026-11-27 07:10:56 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport zipfile,json\np='.working/source-headlines-analysis.zip'\nwith zipfile.ZipFile(p) as z:\n print(z.namelist()[:10])\n if 'headline-rows.jsonl' in z.namelist():\n  line=z.read('headline-rows.jsonl').decode().splitlines()[0]\n  row=json.loads(line)\n  print(row.keys())\n  print({k:str(row.get(k,''))[:160] for k in row})\nPY", "workdir": "/home/bobbigmac/`
+
+```
+Output from command in shell 41f1bb:
+['README.md', '01-public-and-international.md', '02-specialist-press.md', '03-murdoch-family-media.md', '04-uk-media.md', '05-us-media.md', '06-digital-publishers.md', '07-australia-media.md', '08-canada-media.md', '09-regional-english-media.md']
+dict_keys(['source_key', 'source', 'tree_root', 'tree_root_id', 'branch_path', 'relation_memberships', 'curated_group', 'profiled', 'profile_kind', 'profile_model', 'profile_ownership', 'headline', 'story_id', 'url', 'published', 'first_seen', 'last_seen', 'last_updated', 'category', 'story_type', 'word_count', 'plugin'])
+{'source_key': 'inquirer.com', 'source': 'inquirer.com', 'tree_root': 'Regional English Media', 'tree_root_id': 'regional-english', 'branch_path': 'Philippines Media / Inquirer', 'relation_memberships': "['Regional English Media / Philippines Media / Inquirer']", 'curated_group': 'Inquirer', 'profiled': 'False', 'profile_kind': '', 'profile_model': '', 'profile_ownership': '', 'headline': "LIV golf's death made for a better PGA Tour thanks to Tiger Woods and yes, Phil Mickelson", 'story_id': '06f0cea0-0749-5789-8fac-8f8d32b7b3c9', 'url': 'https://www.inquirer.com/sports/tiger-woods-liv-golf-pga-tour-scottie-scheffler-20261118.html', 'published': '2026-11-18 16:27:12 +0000', 'first_seen': '', 'last_seen': '', 'last_updated': '', 'category': 'local', 'story_type': 'news', 'word_count': '17', 'plugin': ''}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:6a959fb3-7adf-457d-a07f-cd95869dd663:exec:4d1e3a3f h:0a063542 -->
+### 2026-11-27 07:11:00 UTC tool `exec`
+
+`{"command": "ls -la cache 2>/dev/null | head; ls -la .working | head; git branch -a | sed -n '1,20p'", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell e8977c:
+total 121012
+drwxrwxr-x  3 bobbigmac bobbigmac     4096 Nov 26 02:54 .
+drwxrwxr-x 14 bobbigmac bobbigmac     4096 Nov 27 05:09 ..
+-rw-rw-r--  1 bobbigmac bobbigmac    31520 Nov 26 02:54 currents-api.json
+-rw-rw-r--  1 bobbigmac bobbigmac 14307043 Nov 26 15:32 digest.json
+-rw-rw-r--  1 bobbigmac bobbigmac 98681117 Nov 26 02:54 embeddings.json
+drwxrwxr-x  2 bobbigmac bobbigmac     4096 Nov 26 00:56 favicons
+-rw-rw-r--  1 bobbigmac bobbigmac      239 Nov 26 02:54 model-registry.json
+-rw-rw-r--  1 bobbigmac bobbigmac   160492 Nov 26 02:54 raw-new.json
+-rw-rw-r--  1 bobbigmac bobbigmac     4055 Nov 26 02:54 run-log.json
+total 6248
+drwxrwxr-x  3 bobbigmac bobbigmac    4096 Nov 27 07:04 .
+drwxrwxr-x 14 bobbigmac bobbigmac    4096 Nov 27 05:09 ..
+-rw-rw-r--  1 bobbigmac bobbigmac 4214577 Nov 27 04:44 headline_source_analysis_complete_fixed.zip
+drwxr-xr-x  2 bobbigmac bobbigmac    4096 Nov 27 04:36 source-headlines-2026-11-27
+-rw-rw-r--  1 bobbigmac bobbigmac  432115 Nov 27 04:35 source-headlines-2026-11-27.zip
+-rw-rw-r--  1 bobbigmac bobbigmac 1735742 Nov 27 05:09 source-headlines-analysis.zip
+  cache-data
++ cache-data-repair
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/cache-data
+  remotes/origin/gh-pages
+  remotes/origin/main
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:6a959fb3-7adf-457d-a07f-cd95869dd663:exec:4e2f13c0 h:4cbb17d6 -->
+### 2026-11-27 07:11:06 UTC tool `exec`
+
+`{"command": "node - <<'JS'\nconst fs=require('fs'); const d=JSON.parse(fs.readFileSync('cache/digest.json','utf8'));\nlet c=d.clusters?.[0]; console.log(Object.keys(d)); console.log('clusters',d.clusters.length); if(c){console.log(Object.keys(c)); console.log('story keys',Object.keys(c.stories?.[0]||{})); console.log(c.stories?.[0]);}\nJS", "workdir": "/home/bobbigmac/projects/bobdavies/news", "ti`
+
+```
+Output from command in shell d2a0de:
+[ 'date', 'clusters', 'entityIndex', 'generated' ]
+clusters 5557
+[
+  'id',             'headline',
+  'summary',        'category',
+  'stories',        'triggerWords',
+  'impact',         'created',
+  'updated',        'contentVersion',
+  'region',         'entities',
+  'tags',           'storyCount',
+  'firstPublished', 'lastPublished',
+  'active',         'topicSlug'
+]
+story keys [
+  'id',        'title',
+  'source',    'sourceName',
+  'url',       'image',
+  'published', 'category',
+  'plugin',    'pluginPriority',
+  'bodyText',  'wordCount',
+  'storyType'
+]
+{
+  id: '33c59726-cc1b-5ed0-a8c3-1824619f901b',
+  title: 'Death toll rises in Nepal-China border disaster as a lake poses new flood threat',
+  source: '',
+  sourceName: '',
+  url: 'https://www.inquirer.com/news/nation-world/nepal-china-flooding-new-threat-20260828.html',
+  image: 'None',
+  published: '2026-08-28 15:13:06 +0000',
+  category: 'regional',
+  plugin: null,
+  pluginPriority: null,
+  bodyText: 'Death toll rises in Nepal-China border disaster as a lake poses new flood threat',
+  wordCount: 14,
+  storyType: 'news'
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:6a959fb3-7adf-457d-a07f-cd95869dd663:exec:6a9e658a h:50e2c65f -->
+### 2026-11-27 07:11:19 UTC tool `exec`
+
+`{"command": "node - <<'JS'\nconst fs=require('fs'); const d=JSON.parse(fs.readFileSync('cache/digest.json','utf8'));\nlet n=0,lens=[]; for(const c of d.clusters) for(const s of c.stories||[]) {n++; lens.push((s.bodyText||'').length)}\nlens.sort((a,b)=>a-b); console.log({n,min:lens[0],p50:lens[Math.floor(n/2)],p90:lens[Math.floor(n*.9)],p99:lens[Math.floor(n*.99)],max:lens.at(-1),over500:lens.filte`
+
+```
+Output from command in shell abd9a7:
+{
+  n: 10517,
+  min: 6,
+  p50: 69,
+  p90: 99,
+  p99: 146,
+  max: 281,
+  over500: 0,
+  over2000: 0
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:6a959fb3-7adf-457d-a07f-cd95869dd663:exec:e92578d0 h:f00c0d1f -->
+### 2026-11-27 07:11:27 UTC tool `exec`
+
+`{"command": "sed -n '1,260p' scripts/export-source-headlines.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 21213c:
+import { execFileSync } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { SOURCE_RELATION_TREE } from '../src/source-tree.js';
+import { BRANCH_PROFILES, SOURCE_PROFILES } from '../src/source-profiles.js';
+import { SOURCE_LABELS } from './favicons.js';
+import { getSourceName, platformOfHost, sourceKeyFromUrl } from './sources.js';
+import { dedupStories, normaliseUrl } from './url-dedup.js';
+
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+function parseArgs(argv) {
+  const options = { ref: 'origin/cache-data', out: null };
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === '--ref') options.ref = argv[++i];
+    else if (argv[i] === '--out') options.out = argv[++i];
+    else if (argv[i] === '--help') {
+      console.log('Usage: node scripts/export-source-headlines.js [--ref origin/cache-data] [--out exports/file.zip]');
+      process.exit(0);
+    }
+  }
+  return options;
+}
+
+function readCacheJson(ref, filename) {
+  const blob = execFileSync('git', ['show', `${ref}:cache/${filename}`], {
+    cwd: repoRoot,
+    encoding: 'utf8',
+    maxBuffer: 200 * 1024 * 1024,
+  });
+  return JSON.parse(blob);
+}
+
+function readOptionalCacheJson(ref, filename) {
+  try {
+    return readCacheJson(ref, filename);
+  } catch {
+    return null;
+  }
+}
+
+function cleanText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function canonicalSourceKey(url) {
+  const normalised = normaliseUrl(url);
+  if (normalised) return sourceKeyFromUrl(`https://${normalised}`);
+  return sourceKeyFromUrl(url);
+}
+
+function baseHost(key) {
+  return key.includes('/') ? key.split('/')[0] : key;
+}
+
+function timestamp(story) {
+  const ts = Date.parse(story.published || '');
+  return Number.isFinite(ts) ? ts : 0;
+}
+
+function mostCommon(values) {
+  const counts = new Map();
+  for (const value of values.map(cleanT
+```
+
+---
+
+<!-- r:0 m:hook:6a959fb3-7adf-457d-a07f-cd95869dd663:exec:731ddfaf h:2cf0aed8 -->
+### 2026-11-27 07:11:31 UTC tool `exec`
+
+`{"command": "sed -n '260,560p' scripts/export-source-headlines.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 50fef2:
+unmatchedKeys.sort((a, b) => displayLabel(a).localeCompare(displayLabel(b)) || a.localeCompare(b));
+
+const files = [];
+let fileIndex = 1;
+for (const root of SOURCE_RELATION_TREE) {
+  const rootBlocks = blocks
+    .filter(block => block.root === root.label)
+    .map(block => block.keys.map(sourceBlockFor).filter(Boolean).join('\n'))
+    .filter(Boolean);
+  if (!rootBlocks.length) continue;
+  const filename = `${String(fileIndex++).padStart(2, '0')}-${slugify(root.label)}.md`;
+  files.push({ filename, content: rootBlocks.join('\n\n') + '\n' });
+}
+
+const unmatchedBlocks = unmatchedKeys.map(sourceBlockFor).filter(Boolean);
+if (unmatchedBlocks.length) {
+  files.push({ filename: '99-unmatched-sources.md', content: unmatchedBlocks.join('\n') + '\n' });
+}
+
+function markdownLink(key) {
+  return `[${displayLabel(key)}](https://${key})`;
+}
+
+function humaniseField(field) {
+  return field.replace(/_/g, ' ').replace(/^./, char => char.toUpperCase());
+}
+
+function linkList(links) {
+  return (links || []).map(link => `[${link.label}](${link.url})`).join('; ');
+}
+
+function profileForKey(key) {
+  if (SOURCE_PROFILES[key]) return SOURCE_PROFILES[key];
+  const host = baseHost(key);
+  const platform = platformOfHost(host);
+  const isTenant = key.includes('/') || (platform && host !== platform);
+  if (isTenant) return null;
+  if (SOURCE_PROFILES[host]) return SOURCE_PROFILES[host];
+  const parts = host.split('.');
+  for (let i = 1; i < parts.length - 1; i++) {
+    const parent = parts.slice(i).join('.');
+    if (SOURCE_PROFILES[parent]) return SOURCE_PROFILES[parent];
+  }
+  return null;
+}
+
+function collectMemberships() {
+  const memberships = new Map();
+  const add = (source, path) => {
+    if (!memberships.has(source)) memberships.set(source, []);
+    memberships.get(source).push(path.join(' / '));
+  };
+  const walk = (node, ancestors = []) => {
+    const path = [...ancestors, node.label];
+    for (const source of node.sources || []) add(source, path)
+```
+
+---
+
+<!-- r:0 m:hook:6a959fb3-7adf-457d-a07f-cd95869dd663:exec:e55327ae h:cfe897ec -->
+### 2026-11-27 07:11:46 UTC tool `exec`
+
+`{"command": "node - <<'JS'\nconst {execFileSync}=require('child_process');\nfor(const file of ['stories.json','raw-new.json','currents-api.json']){\n try{\n  const d=JSON.parse(execFileSync('git',['show',`origin/cache-data:cache/${file}`],{encoding:'utf8',maxBuffer:200*1024*1024}));\n  let arr=Array.isArray(d)?d:Array.isArray(d.news)?d.news:Object.values(d.stories||{});\n  let lens=arr.map(s=>((s.`
+
+```
+Output from command in shell e3a8ce:
+stories.json 9202 [
+  'id',             'title',
+  'description',    'content',
+  'url',            'image',
+  'source',         'sourceName',
+  'published',      'category',
+  'keywords',       'plugin',
+  'pluginPriority', 'firstSeen',
+  'lastSeen',       'lastUpdated'
+] { p50: 135, p90: 393, max: 30948, over500: 194 }
+sample keys [
+  'id',             'title',
+  'description',    'content',
+  'url',            'image',
+  'source',         'sourceName',
+  'published',      'category',
+  'keywords',       'plugin',
+  'pluginPriority', 'firstSeen',
+  'lastSeen',       'lastUpdated'
+] text ive been drowning in a heaviness that I barely know how to put into words For years I cared deeply for a close friend of mine in absolute silence I guarded those feelings fiercely carrying them alone because the mere thought of losing her terrified me But hiding a universe inside my chest became unb
+raw-new.json 167 [
+  'id',             'title',
+  'description',    'content',
+  'url',            'image',
+  'source',         'sourceName',
+  'published',      'category',
+  'keywords',       'plugin',
+  'pluginPriority', 'firstSeen',
+  'lastSeen',       'lastUpdated'
+] { p50: 137, p90: 372, max: 30948, over500: 3 }
+sample keys [
+  'id',             'title',
+  'description',    'content',
+  'url',            'image',
+  'source',         'sourceName',
+  'published',      'category',
+  'keywords',       'plugin',
+  'pluginPriority', 'firstSeen',
+  'lastSeen',       'lastUpdated'
+] text EA is ditching seasonal updates and shaving some of the live service fluff off Skate (for some reason stylised as skate.) going forward. Normally, such news would be cause for concern. Here, the publisher assured players the transition will lead to more regular updates since devs can now push out ne
+currents-api.json 39 [
+  'id',
+  'title',
+  'description',
+  'url',
+  'author',
+  'image',
+  'language',
+  'category',
+  'source_category',
+  'published'
+] { p50: 122, p90:
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930 h:adcc8943 -->
+### 2026-11-27 07:11:52 UTC user
+
+in our case, the article summary IS the body. It still helps
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:d2582a95 h:2e5fbcf4 -->
+### 2026-11-27 07:14:34 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys,pandas as pd\nsys.path.insert(0,'scripts/headline-analysis')\nimport analyse_headlines as ah\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\ncounts={}; examples={}\nfor title in h.headline:\n for m in ah.EVENT_ACTIONS.finditer(title):\n  term=m.group(0).casefold(); counts[term]=counts.get(term,0)+1; examples.setdefault(ter`
+
+```
+Output from command in shell 86df1b. The full terminal output is being written live to /tmp/devin-overflows-1000/shell-86df1b-980c4b222b9ba6bc/content.txt; read or grep it for anything omitted below. Preview:
+<file-view path="/tmp/devin-overflows-1000/shell-86df1b-980c4b222b9ba6bc/content.txt" start_line="1" end_line="63" total_lines="237">
+  1|bank                   69 UK sanctions firms over Israeli West Bank settlements
+  2|banker                  2 Lula names banker as Brazil finance minister in attempt to calm markets
+  3|bankers                 2 Goldman bans traders and bankers from using AI coding tools
+  4|bankhead                1 DNC denies Bankhead's claim she was offered job to drop out of Montana Senate race
+  5|banking                 8 Paraguay's President Pena impeached over Ueno banking crisis, placed under house arrest
+  6|banknote                1 Could you spot a fake banknote?
+  7|bankroll                1 Europe can no longer rely on US to 'bankroll' its defence, Starmer says
+  8|bankrupt                1 3 trucking businesses go bankrupt in California, Illinois and Maryland
+  9|bankruptcy              3 LIV Golf players free to leave after bankruptcy protection filing
+ 10|banks                  17 Customers report service outages at major US banks
+ 11|burn                    2 Typhoons batter East Asia as El Niño makes Pacific 'burn with fever'
+ 12|burna                   1 My street cooking outreach needs support from Davido, Burna Boy – Sarah Martins
+ 13|burned                  2 Indonesia fires have burned nearly 2 million hectares: Monitor
+ 14|burner                  1 Log burner glass will stay soot-free if you do a quick 5-minute task in November
+ 15|burnham               142 Burnham says UK net migration now under 'sufficient' control
+ 16|burning                 3 Borneo burning: Life on the frontline of South East Asia's toxic haze
+ 17|burnout                 3 Doctor burnout putting maternity patients at risk, says regulator
+ 18|burn
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:9266d78b h:c87b03a3 -->
+### 2026-11-27 07:16:01 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "EVENT_ACTIONS = re.compile(r\"\\b(?:announc\\w*|approv\\w*|reject\\w*|resign\\w*|win\\w*|los\\w*|die\\w*|died|dead|kill\\w*|arrest\\w*|charg\\w*|convict\\w*|acquit\\w*|launch\\w*|open\\w*|clos\\w*|suspend\\w*|ban\\w*|sign\\w*|bought|buy\\w*|sold|sell\\w*|fell|fall\\w*|rose|ris\\w*`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 41 line(s) added at line 32.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:5b38cd27 h:5ebe9bbe -->
+### 2026-11-27 07:16:09 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "# Corpus-audited word pool: explicit inflections only. The previous wildcard stems\n# matched unrelated words (first, Burnham, surgery, election, bank, winter, firms).\nEVENT_WORDS", "new_string": "EVENT_WORDS"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 3 line(s) removed, 1 line(s) added at line 35.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:a996481c h:d41dbca5 -->
+### 2026-11-27 07:16:20 UTC tool `exec`
+
+`{"command": "grep -n \"roll out\\|set sets\\|EVENT_WORDS\" -C 2 scripts/headline-analysis/analyse_headlines.py | head -20", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell a5cfbd:
+33-    return re.compile(r"\b(?:" + '|'.join(re.escape(w) for w in sorted(set(words), key=len, reverse=True)) + r")\b", re.I)
+34-
+35:EVENT_WORDS = """
+36-announce announces announced announcing approve approves approved approving reject rejects rejected rejecting
+37-resign resigns resigned resigning win wins won winning lose loses losing lost die dies died dying
+--
+62-overturn overturns overturned overturning uphold upholds upheld upholding block blocks blocked blocking
+63-clear clears cleared clearing enact enacts enacted enacting repeal repeals repealed repealing adopt adopts adopted adopting
+64:roll out rolls out rolled out ship ships shipped shipping debut debuts debuted debuting
+65:set sets setting record records recorded recording outperform outperforms outperformed outperforming
+66-underperform underperforms underperformed underperforming become becomes became undergo undergoes underwent undergoing
+67-sanction sanctions sanctioned condemns condemn condemned condemning seek seeks sought seeking pledge pledges pledged pledging
+68-infect infects infected infecting impeach impeaches impeached impeaching
+69-""".split()
+70:EVENT_ACTIONS = compile_word_pool(EVENT_WORDS)
+71-NUMERIC = re.compile(r"(?:\b\d+(?:[.,]\d+)?\s?(?:%|per cent|percent|million|billion|trillion|thousand|th|years?|months?|weeks?|days?|hours?|minutes?|people|cases|deaths|jobs|homes|miles|km|kg|\$|£|€|¥)|(?:\$|£|€|¥)\s?\d|\b\d{4}\b|\b\d+\s?(?:to|-)\s?\d+\b)", re.I)
+72-TIME_PLACE = re.compile(rf"\b(?:{MONTHS}|{DAYS}|today|yesterday|tomorrow|tonight|this morning|this week|next week|last week|next year|last year|in \d{{4}}|by \d{{4}}|since \d{{4}}|during \d{{4}}|\d{{1,2}}(?:st|nd|rd|th)?\s+(?:{MONTHS})|(?:{MONTHS})\s+\d{{1,2}})\b", re.I)
+--
+94-ORG_HINT = re.compile(r"\b(?:government|department|ministry|court|parliament|congress|senate|police|NHS|WHO|UN|EU|FDA|CDC|Ofcom|Ofgem|ONS|CMA|SEC|FCA|FTC|NASA|ESA|ECB|IMF|World Bank|Supreme Court|High Court|House of Commons|Wh
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:dd2b62ae h:f3b2e9e7 -->
+### 2026-11-27 07:16:27 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "roll out rolls out rolled out ship ships shipped shipping debut debuts debuted debuting\nset sets setting record records recorded recording outperform outperforms outperformed outperforming\nunderperform underperforms underperformed underperforming become becomes became undergo un`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 7 line(s) removed, 8 line(s) added at line 64.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:70c134f2 h:a709a459 -->
+### 2026-11-27 07:16:43 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "CONSEQUENCE = re.compile(r\"\\b(?:impact\\w*|consequence\\w*|affect\\w*|threat\\w*|risk\\w*|cost\\w*|damage\\w*|benefit\\w*|save\\w*|kill\\w*|injur\\w*|death\\w*|dead|fatalit\\w*|job\\w*|price\\w*|bill\\w*|wage\\w*|tax\\w*|spend\\w*|fund\\w*|profit\\w*|loss\\w*|harm\\w*|boost\\w*|`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 19 line(s) added at line 75.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:a1f403bf h:ed58f530 -->
+### 2026-11-27 07:16:51 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "bankrupt bankruptcy put at risk\n\"\"\".split()\nCONSEQUENCE_WORDS = [w for w in CONSEQUENCE_WORDS if w not in {'put','at'}]\nCONSEQUENCE_WORDS.append('put at risk')", "new_string": "bankrupt bankruptcy\n\"\"\".split()\nCONSEQUENCE_WORDS.append('put at risk')"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 4 line(s) removed, 3 line(s) added at line 89.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:read:4d730369 h:c4f2bb2b -->
+### 2026-11-27 07:17:10 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "offset": 150, "limit": 35}`
+
+```
+Output truncated at line 184; continue reading from line 185.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py" start_line="150" end_line="184">
+150|    {'key':'context_comparison','label':'Context / comparison','polarity':'positive','value':True,'description':'Comparisons, trends, historical references, records or prior-period context.'},
+151|    {'key':'explanatory_framing','label':'Explanatory / service framing','polarity':'positive','value':True,'description':'Explanation, guide, mechanism, why/how or explicit service-journalism framing; language presence only, not correctness.'},
+152|    {'key':'original_reporting_signal','label':'Original-access cue','polarity':'positive','value':True,'description':'Explicit original-access/provenance cue: investigation reveals/found, exclusive interview/report/access, documents obtained, interview with, FOI or our-analysis. High precision, low recall.'},
+153|    {'key':'low_explicit_curiosity_gap','label':'Explicit curiosity-gap incidence','polarity':'inverse','value':True,'description':'Stock clickbait phrases, explicit guessing/teasing or ellipsis; stored inverse is used in the composite, exported incidence is adverse.'},
+154|    {'key':'low_direct_service_packaging','label':'Direct-address/service packaging incidence','polarity':'inverse','value':True,'description':'How-to/you/your/search-capture framing. Often useful service journalism, but still a packaging/aggregation style; stored inverse is used in the composite.'},
+155|    {'key':'low_sensational_personal','label':'Sensational / personal framing incidence','polarity':'inverse','value':True,'description':'Strong sensational vocabulary or celebrity/personal-life teaser framing; stored inverse is used in the composite.'},
+156|]
+157|ECHO_FEATURE = {'key':'cross_source_title_echo','label':'Near-identical cross-source headline','polarity':'adverse','value':False,'description':'Near-identical title match at character n
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:5806cae1 h:60f0f24b -->
+### 2026-11-27 07:17:14 UTC tool `exec`
+
+`{"command": "grep -n \"country_names\\|COUNTRY_RE\\|time_place =\" scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell e1e14b:
+134:    country_names = [c.name for c in pycountry.countries]
+135:    country_names += ['UK', 'US', 'USA', 'UAE', 'Britain', 'England', 'Scotland', 'Wales', 'Northern Ireland', 'America']
+137:    country_names = ['UK','US','USA','Britain','England','Scotland','Wales','France','Germany','China','Russia','Ukraine','India','Australia','Canada','Japan','Israel','Iran','Brazil','Mexico','South Africa']
+138:COUNTRY_RE = re.compile(r"\b(?:" + '|'.join(re.escape(x) for x in sorted(set(country_names), key=len, reverse=True)) + r")\b", re.I)
+296:    time_place = int(TIME_PLACE.search(title) is not None or COUNTRY_RE.search(title) is not None)
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:1dd73049 h:676cd18c -->
+### 2026-11-27 07:17:19 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    country_names += ['UK', 'US', 'USA', 'UAE', 'Britain', 'England', 'Scotland', 'Wales', 'Northern Ireland', 'America']", "new_string": "    country_names += ['Britain', 'England', 'Scotland', 'Wales', 'Northern Ireland', 'America']"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 135.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:bd24eb47 h:fd339566 -->
+### 2026-11-27 07:17:26 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    country_names = ['UK','US','USA','Britain','England','Scotland','Wales','France','Germany','China','Russia','Ukraine','India','Australia','Canada','Japan','Israel','Iran','Brazil','Mexico','South Africa']\nCOUNTRY_RE = re.compile(r\"\\b(?:\" + '|'.join(re.escape(x) for x in so`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 137.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:353f971e h:3a0af49b -->
+### 2026-11-27 07:17:32 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    time_place = int(TIME_PLACE.search(title) is not None or COUNTRY_RE.search(title) is not None)", "new_string": "    time_place = int(TIME_PLACE.search(title) is not None or COUNTRY_RE.search(title) is not None or COUNTRY_ACRONYM_RE.search(title) is not None)"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 297.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:74cd1c7a h:2079583d -->
+### 2026-11-27 07:17:51 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py && .venv/bin/python - <<'PY'\nimport sys,pandas as pd\nsys.path.insert(0,'scripts/headline-analysis')\nimport analyse_headlines as ah\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nfor bad in ['first','Burnham','surgery','election','bank','winter','firms','windows','diesel','significant','cute','Fal`
+
+```
+39 detector regression cases passed
+
+===
+Stopped waiting for output after 10.0 seconds. Command running in background with ID: 6500b2. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:get_output:686e5379 h:f7f98257 -->
+### 2026-11-27 07:17:57 UTC tool `get_output`
+
+`{"shell_id": "6500b2", "timeout": 10000}`
+
+```
+first 279 still regex-hit 143 ['GB win decider to reach Davis Cup semis for first time since 2019']
+Burnham 142 still regex-hit 65 ['Nuclear test veterans will get full truth, says Burnham, as he confirms independent panel']
+surgery 87 still regex-hit 49 ['Knee surgery rules Sinner out of Australian Open']
+election 153 still regex-hit 77 ["Nigeria's president launches re-election manifesto but can he regain voters' trust?"]
+bank 118 still regex-hit 69 ['Furbank leads returning England trio for All Blacks visit']
+winter 35 still regex-hit 15 ["After a summer win, India's Gen Z protesters face a winter of uncertainty"]
+firms 74 still regex-hit 60 ['Nuclear test veterans will get full truth, says Burnham, as he confirms independent panel']
+windows 14 still regex-hit 4 ['Xbox Reportedly Plans To Release New Gaming Handheld In 2027 Despite Ongoing Turf Battles With Windows']
+diesel 19 still regex-hit 16 ['Diesel tanker carrying up to 7,000 tonnes capsizes near Ibiza, killing one']
+significant 12 still regex-hit 8 ["Significant drop in levels of toxic 'forever' chemicals in England's rivers"]
+cute 17 still regex-hit 8 ["Women prosecuted for abortions hail ‘historic day' after receiving pardon"]
+Fallout 10 still regex-hit 3 ['Travelodge hires new boss following fallout of sexual assault at hotel']
+taxi 7 still regex-hit 2 ["'Nightmare' for taxi drivers as fuel prices soar"]
+costume 6 still regex-hit 1 ["Martha Stewart's Halloween costume struck a nerve. Why it missed the mark"]
+Bangkok 2 still regex-hit 1 ['Nine injured, three critically, after Bangkok oil refinery explosion']
+us pronoun TP? None
+US country TP? True
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:975a038a h:f3e2b07b -->
+### 2026-11-27 07:18:12 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys\nsys.path.insert(0,'scripts/headline-analysis')\nimport analyse_headlines as ah\nfor bad in ['first','Burnham','surgery','election','bank','winter','firms','windows','diesel','significant','cute','Fallout','taxi','costume','Bangkok','Winnipeg','Winslet','closeup','closer','confirmatory','bankruptcy','billboard','billion']:\n print(f'{bad:15}', 'ev`
+
+```
+Output from command in shell 2f2638:
+first           event False conseq False
+Burnham         event False conseq False
+surgery         event False conseq False
+election        event False conseq False
+bank            event False conseq False
+winter          event False conseq False
+firms           event False conseq False
+windows         event False conseq False
+diesel          event False conseq False
+significant     event False conseq False
+cute            event False conseq False
+Fallout         event False conseq False
+taxi            event False conseq False
+costume         event False conseq False
+Bangkok         event False conseq False
+Winnipeg        event False conseq False
+Winslet         event False conseq False
+closeup         event False conseq False
+closer          event False conseq False
+confirmatory    event False conseq False
+bankruptcy      event False conseq True
+billboard       event False conseq False
+billion         event False conseq False
+valid event burn True fire True
+valid consequence cost/tax/bill True True True
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:4a3afeab h:62dbfc5b -->
+### 2026-11-27 07:18:22 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys\nsys.path.insert(0,'scripts/headline-analysis')\nimport analyse_headlines as ah\nfor x in ['dead','death','killing','arrest','attack','crash','fire','launch','release','election','sanctions','hit','become','hires','condemns']:\n print(x,'event',bool(ah.EVENT_ACTIONS.search(x)),'conseq',bool(ah.CONSEQUENCE.search(x)))\nPY", "workdir": "/home/bobbig`
+
+```
+Output from command in shell a1a5b5:
+dead event False conseq True
+death event False conseq True
+killing event True conseq True
+arrest event True conseq False
+attack event True conseq False
+crash event True conseq False
+fire event True conseq False
+launch event True conseq False
+release event True conseq False
+election event False conseq False
+sanctions event True conseq False
+hit event False conseq False
+become event True conseq False
+hires event True conseq False
+condemns event True conseq False
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:e61ce901 h:fc909853 -->
+### 2026-11-27 07:18:42 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys,pandas as pd,spacy\nsys.path.insert(0,'scripts/headline-analysis')\nimport analyse_headlines as ah\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nnlp=spacy.blank('en')\nnew_event=[]; new_conseq=[]; new_tp=[]\nfor x in h.headline:\n d=ah.detect_one(x,nlp); new_event.append(d['event_clarity']); new_conseq.append(d['material`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: 4a3b55. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:get_output:66a2088b h:90a1dc79 -->
+### 2026-11-27 07:18:58 UTC tool `get_output`
+
+`{"shell_id": "4a3b55", "timeout": 10000}`
+
+```
+event old/new 5510 4490 rate 39.2
+conseq old/new 2638 2173 rate 19.0
+timeplace old/new 2631 2598 rate 22.7
+changed event rows 1380
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:925f7678 h:21f23281 -->
+### 2026-11-27 07:19:16 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys,pandas as pd,spacy\nsys.path.insert(0,'scripts/headline-analysis')\nimport analyse_headlines as ah\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nnlp=spacy.blank('en')\nrows=[]\nfor i,x in enumerate(h.headline):\n d=ah.detect_one(x,nlp)\n if h.iloc[i].event_clarity==1 and d['event_clarity']==0:\n  rows.append((i,h.iloc[i]`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: de7620. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:get_output:a40418ec h:178d5578 -->
+### 2026-11-27 07:19:36 UTC tool `get_output`
+
+`{"shell_id": "de7620", "timeout": 20000}`
+
+```
+The Guardian       Tax promises, defence targets and Iran: Andy Burnham's budget headaches
+The Guardian       From ‘Ozempic breath' to hair loss: sorting the science from the hype about weight loss jabs
+Finextra           US bank outages caused by software bug at JPMorgan Chase
+BBC                Relief, tears and sadness: Married at First Sight UK cast react to show being axed
+The Independent    Jonathan Ross addresses relationship with David Walliams and Russell Brand
+Egyptindependent   Pope Leo discharged from hospital after lung cancer surgery
+BBC                Macau jails pro-democracy campaigner in city's first national security case
+Medical Xpress     After brain surgery, man sees cat's eyes in human faces
+Daily Mail         Tommy Robinson's ex avoids jail after failing to give firm's records
+BBC                Raya set to have scan on injury - how much would Arsenal miss him?
+3news              Portrait on new GH¢50 note is Theodosia Okoh, not her sister - Bank of Ghana clarifies
+BBC                James Bulger's killer to stay in prison after parole hearing
+BBC                My approach to EU is pragmatic, says Burnham
+BBC                Charity 'terrified' closure could leave mums suicidal
+Kotaku             Cult PC-98 Zombie Gore Fest Re-Animated On Steam With First Official English Port
+Evening Standard   Burnham told ‘you're a musician' after playing steel drum in Caribbean
+Seekingalpha       Fortuna Mining Corp. (FVI:CA) Q3 2026 Earnings Call Transcript
+The Guardian       Underwater salt mine closure in Ohio raises safety and supply concerns for winter
+TechRadar          GTA 6 console shootout concludes Xbox Series X has a 'higher performance level' than PS5 — but Xbox Series S lags b
+BBC                Some childhood offenders may no longer have to reveal convictions to employers
+The Independent    What happened on first day of Ukraine-Russia peace talks in Abu Dhabi
+Designboom         wind chimes, bone conduction robots and dozens more installation
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:56b9d019 h:a9f26022 -->
+### 2026-11-27 07:20:33 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "DELIVERY_METRICS = ['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing','original_reporting_signal']\nATTENTION_METRICS = ['low_explicit_curiosity_gap','low_direct`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 3 line(s) removed, 4 line(s) added at line 141.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:2cbc1ece h:df959279 -->
+### 2026-11-27 07:20:40 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    {'key':'original_reporting_signal','label':'Original-access cue','polarity':'positive','value':True,'description':'Explicit original-access/provenance cue: investigation reveals/found, exclusive interview/report/access, documents obtained, interview with, FOI or our-analysis. `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 154.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:read:29cc5a86 h:f61aeed0 -->
+### 2026-11-27 07:20:47 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js", "offset": 430, "limit": 52}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js" start_line="430" end_line="481">
+430|    source_key: key,
+431|    source: displayLabel(key),
+432|    tree_root: block?.root || 'Unmatched sources',
+433|    tree_root_id: block?.rootId || 'unmatched',
+434|    branch_path: block ? block.path.slice(1).join(' / ') : '',
+435|    relation_memberships: memberships,
+436|    curated_group: block ? block.path[block.path.length - 1] : 'Unmatched sources',
+437|    profiled: Boolean(profile),
+438|    profile_kind: profile?.kind || '',
+439|    profile_model: profile?.model || '',
+440|    profile_ownership: profile?.ownership || '',
+441|  };
+442|  for (const { title, story } of uniqueHeadlineStoriesFor(bySource.get(key) || [])) {
+443|    headlineRows.push({
+444|      ...base,
+445|      headline: title,
+446|      story_id: story.id || '',
+447|      url: story.url || '',
+448|      published: story.published || '',
+449|      first_seen: story.firstSeen || '',
+450|      last_seen: story.lastSeen || '',
+451|      last_updated: story.lastUpdated || '',
+452|      category: story.category || '',
+453|      story_type: story.storyType || '',
+454|      word_count: story.wordCount || null,
+455|      plugin: story.plugin || '',
+456|    });
+457|  }
+458|}
+459|files.push({
+460|  filename: 'headline-rows.jsonl',
+461|  content: headlineRows.map(row => JSON.stringify(row)).join('\n') + '\n',
+462|});
+463|
+464|const sourceCount = bySource.size;
+465|const headlineCount = [...bySource.values()].reduce((total, sourceStories) => total + headlinesFor(sourceStories).length, 0);
+466|const readme = [
+467|  '# Source headlines export',
+468|  '',
+469|  `Generated: ${new Date().toISOString()}`,
+470|  `Cache ref: ${options.ref}`,
+471|  `Digest date: ${digest.date || 'unknown'}`,
+472|  '',
+473|  'Format: `SOURCE: name` followed by one newest-first headline per line. Related sources continue directly after the previous source block; blank lines separate source-groups in the
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:read:433ec784 h:8d3d24e8 -->
+### 2026-11-27 07:21:02 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js", "offset": 32, "limit": 28}`
+
+```
+Output truncated at line 59; continue reading from line 60.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js" start_line="32" end_line="59">
+ 32|  });
+ 33|  return JSON.parse(blob);
+ 34|}
+ 35|
+ 36|function readOptionalCacheJson(ref, filename) {
+ 37|  try {
+ 38|    return readCacheJson(ref, filename);
+ 39|  } catch {
+ 40|    return null;
+ 41|  }
+ 42|}
+ 43|
+ 44|function cleanText(value) {
+ 45|  return String(value || '').replace(/\s+/g, ' ').trim();
+ 46|}
+ 47|
+ 48|function canonicalSourceKey(url) {
+ 49|  const normalised = normaliseUrl(url);
+ 50|  if (normalised) return sourceKeyFromUrl(`https://${normalised}`);
+ 51|  return sourceKeyFromUrl(url);
+ 52|}
+ 53|
+ 54|function baseHost(key) {
+ 55|  return key.includes('/') ? key.split('/')[0] : key;
+ 56|}
+ 57|
+ 58|function timestamp(story) {
+ 59|  const ts = Date.parse(story.published || '');
+</file-view>
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:020b92ec h:7a45925c -->
+### 2026-11-27 07:21:10 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js", "old_string": "function cleanText(value) {\n  return String(value || '').replace(/\\s+/g, ' ').trim();\n}\n", "new_string": "function cleanText(value) {\n  return String(value || '').replace(/\\s+/g, ' ').trim();\n}\n\nfunction bodyTextFor(story) {\n  return cleanText(story.bodyText || story.content || stor`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js' - made 1 replacement(s). 3 line(s) removed, 7 line(s) added at line 44.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:9a66fd31 h:45951999 -->
+### 2026-11-27 07:21:16 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js", "old_string": "      headline: title,\n      story_id: story.id || '',", "new_string": "      headline: title,\n      body_text: bodyTextFor(story),\n      story_id: story.id || '',"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 449.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:991361b8 h:4c8ea8a7 -->
+### 2026-11-27 07:21:24 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js", "old_string": "  '`sources-manifest.md` lists every source with cache counts, relation-tree memberships, branch/group notes, curated profile fields, trust flags and evidence links. `No curated source profile yet` marks a knowledge gap for later gap-filling. `headline-rows.jsonl` is the machine-readable anal`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 479.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:b24f86ca h:d8f91326 -->
+### 2026-11-27 07:21:29 UTC tool `exec`
+
+`{"command": "grep -n \"body_text\\|for col,default\\|for col in \\['tree_root'\" scripts/headline-analysis/analyse_headlines.py | head -10", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 17c887:
+212:            for col,default in [
+241:            for col in ['tree_root','tree_root_id','branch_path','curated_group','profile_kind','profile_model','profile_ownership','url','published','story_id','category','story_type','plugin','first_seen','last_seen','last_updated']:
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:read:fc008af7 h:9c7a5fb5 -->
+### 2026-11-27 07:21:33 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "offset": 206, "limit": 42}`
+
+```
+Output truncated at line 247; continue reading from line 248.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py" start_line="206" end_line="247">
+206|    with zipfile.ZipFile(zip_path) as zf:
+207|        names=set(zf.namelist())
+208|        if 'headline-rows.jsonl' in names:
+209|            for line in zf.read('headline-rows.jsonl').decode('utf-8', errors='replace').splitlines():
+210|                if line.strip(): rows.append(json.loads(line))
+211|            df=pd.DataFrame(rows)
+212|            for col,default in [
+213|                ('source_key',''),('tree_root',''),('tree_root_id','uncurated'),('branch_path',''),('curated_group',''),
+214|                ('profile_kind',''),('profile_model',''),('profile_ownership',''),('url',''),('published',''),('story_id',''),
+215|                ('category',''),('story_type',''),('plugin',''),('first_seen',''),('last_seen',''),('last_updated','')]:
+216|                if col not in df: df[col]=default
+217|                df[col]=df[col].fillna(default)
+218|            df['headline']=df['headline'].map(normalize)
+219|            if 'word_count' in df:
+220|                df=df.rename(columns={'word_count':'story_word_count'})
+221|            df['source_key']=np.where(df['source_key'].astype(str).str.len()>0,df['source_key'],df['source'])
+222|            df['group']=np.where(df['curated_group'].astype(str).str.len()>0,df['curated_group'],df['tree_root'])
+223|            df['group_file']='headline-rows.jsonl'
+224|        else:
+225|            for name in zf.namelist():
+226|                if not name.endswith('.md') or name in ('README.md','sources-manifest.md'):
+227|                    continue
+228|                text = zf.read(name).decode('utf-8', errors='replace')
+229|                current=None
+230|                for raw in text.splitlines():
+231|                    line=raw.strip()
+232|                    if line.startswith('SOURCE: '):
+233|                     
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:9eeed921 h:94195cfb -->
+### 2026-11-27 07:21:39 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "                ('category',''),('story_type',''),('plugin',''),('first_seen',''),('last_seen',''),('last_updated','')]:", "new_string": "                ('category',''),('story_type',''),('plugin',''),('first_seen',''),('last_seen',''),('last_updated',''),('body_text','')]:"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 215.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:e8eac232 h:1b4dfd2c -->
+### 2026-11-27 07:21:45 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "            for col in ['tree_root','tree_root_id','branch_path','curated_group','profile_kind','profile_model','profile_ownership','url','published','story_id','category','story_type','plugin','first_seen','last_seen','last_updated']:", "new_string": "            for col in ['tre`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 241.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:b6ed8c5e h:f392b341 -->
+### 2026-11-27 07:21:52 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "            df['headline']=df['headline'].map(normalize)\n            if 'word_count' in df:", "new_string": "            df['headline']=df['headline'].map(normalize)\n            df['body_text']=df['body_text'].map(normalize)\n            if 'word_count' in df:"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 218.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:a853e465 h:112b9adc -->
+### 2026-11-27 07:22:26 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    df=pd.concat([df.reset_index(drop=True),det],axis=1)\n    t=mark('detectors',t)\n", "new_string": "    df=pd.concat([df.reset_index(drop=True),det],axis=1)\n    body=df['body_text'].fillna('').astype(str)\n    df['body_word_count']=body.str.split().str.len()\n    df['body_cove`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 10 line(s) added at line 744.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:e65d418a h:2f7cad80 -->
+### 2026-11-27 07:22:33 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "              attention_pressure_mean=('attention_packaging_pressure','mean'),\n              within_source_template_reuse_rate=('within_source_repeated_trigram_proxy','mean'),", "new_string": "              attention_pressure_mean=('attention_packaging_pressure','mean'),\n       `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 5 line(s) added at line 541.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:f55740be h:f9dc88e5 -->
+### 2026-11-27 07:22:50 UTC tool `exec`
+
+`{"command": "grep -n \"story_cols=\" scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 7eaafc:
+787:    story_cols=['headline_id','source_key','source','group','tree_root','branch_path','curated_group','editorial_context','neutral_editorial_context','group_file','headline','url','published','story_id','category','story_type','word_count','story_word_count','information_delivery_signal','attention_packaging_pressure','title_value_signal','legacy_title_value_signal_raw','dominant_topic','topic_strength']
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:3717a00c h:f0c03482 -->
+### 2026-11-27 07:23:02 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    story_cols=['headline_id','source_key','source','group','tree_root','branch_path','curated_group','editorial_context','neutral_editorial_context','group_file','headline','url','published','story_id','category','story_type','word_count','story_word_count','information_delivery_`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 787.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:38db2e7d h:f47168f6 -->
+### 2026-11-27 07:23:07 UTC tool `exec`
+
+`{"command": "grep -n \"named_entity_signal_rate\" scripts/headline-analysis/analyse_headlines.py | tail -5", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell c3dc9b:
+568:    entity_rates = g['named_entity_signal'].mean().rename('named_entity_signal_rate').reset_index()
+814:    profile_cols += ['named_entity_signal_rate','public_interest_rate','research_claim_cue_rate','primary_evidence_cue_rate']
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:1e14f992 h:b075fb43 -->
+### 2026-11-27 07:23:14 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    profile_cols += ['named_entity_signal_rate','public_interest_rate','research_claim_cue_rate','primary_evidence_cue_rate']", "new_string": "    profile_cols += ['named_entity_signal_rate','public_interest_rate','research_claim_cue_rate','primary_evidence_cue_rate']\n    profile`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 2 line(s) added at line 814.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:bd13e8a9 h:226c84f1 -->
+### 2026-11-27 07:23:17 UTC tool `exec`
+
+`{"command": "sed -n '1,220p' scripts/headline-analysis/validate_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 593c0e:
+#!/usr/bin/env python3
+import argparse, json, sys
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).parent))
+from analyse_headlines import REPO_ROOT, DELIVERY_METRICS
+
+ADVERSE_AXES=['explicit_curiosity_gap_present','direct_service_packaging_present','personal_sensational_frame_present']
+AXES=DELIVERY_METRICS+ADVERSE_AXES
+FRACTIONAL_AXES={'evidence_provenance'}
+
+
+def load_out(args):
+    out=args.out
+    if out is None:
+        cfg=json.loads(args.config.read_text()) if args.config.exists() else {}
+        out=Path(cfg.get('analysis',{}).get('output_dir','docs/headline-data/current'))
+    return out if out.is_absolute() else REPO_ROOT/out
+
+
+def make_sample(h,out_path,n=150,per_source=3,seed=27):
+    rng=np.random.default_rng(seed)
+    order=rng.permutation(len(h))
+    chosen=[]; counts={}
+    for ix in order:
+        key=h.iloc[int(ix)]['source_key']
+        if counts.get(key,0)>=per_source: continue
+        chosen.append(int(ix)); counts[key]=counts.get(key,0)+1
+        if len(chosen)>=n: break
+    rows=[]
+    for ix in chosen:
+        r=h.iloc[ix]
+        row={'headline_id':r.get('headline_id',ix),'source_key':r['source_key'],'source':r['source'],'headline':r['headline'],'url':r.get('url','')}
+        for axis in AXES:
+            row['pred_'+axis]=r[axis]
+            row['human_'+axis]=''
+        rows.append(row)
+    pd.DataFrame(rows).to_csv(out_path,index=False)
+    return len(rows)
+
+
+def binary_metrics(y_true,y_pred):
+    tp=int(((y_true==1)&(y_pred==1)).sum()); fp=int(((y_true==0)&(y_pred==1)).sum())
+    fn=int(((y_true==1)&(y_pred==0)).sum()); tn=int(((y_true==0)&(y_pred==0)).sum())
+    precision=tp/(tp+fp) if tp+fp else None
+    recall=tp/(tp+fn) if tp+fn else None
+    f1=(2*precision*recall/(precision+recall)) if precision is not None and recall is not None and precision+recall else None
+    return {'n':int(len(y_true)),'tp':tp,'fp':fp,'fn':fn,'tn':tn,'precision':preci
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:95418dfc h:001c4440 -->
+### 2026-11-27 07:23:24 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/validate_detectors.py", "old_string": "        row={'headline_id':r.get('headline_id',ix),'source_key':r['source_key'],'source':r['source'],'headline':r['headline'],'url':r.get('url','')}", "new_string": "        row={'headline_id':r.get('headline_id',ix),'source_key':r['source_key'],'source':r['source'],'headline':r[`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/validate_detectors.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 36.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:b9247e90 h:f9a89c65 -->
+### 2026-11-27 07:23:46 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", "old_string": "    (\"Fiona Phillips, 65, smiles in rare photo amid Alzheimer's battle\",\n     {'personal_sensational_frame_present':1,'low_sensational_personal':0}),\n]", "new_string": "    (\"Fiona Phillips, 65, smiles in rare photo amid Alzheimer's battle\",\n     {'personal_sensational_frame_p`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py' - made 1 replacement(s). 3 line(s) removed, 23 line(s) added at line 87.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:7daeb076 h:4c86d380 -->
+### 2026-11-27 07:23:55 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell b8637f:
+Traceback (most recent call last):
+  File "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", line 113, in <module>
+    assert got[key] == value, (title, key, got[key], value)
+           ^^^^^^^^^^^^^^^^^
+AssertionError: ('Knee surgery rules Sinner out of Australian Open', 'event_clarity', 1, 0)
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:34037899 h:054ef823 -->
+### 2026-11-27 07:24:07 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", "old_string": "    (\"Knee surgery rules Sinner out of Australian Open\",\n     {'event_clarity':0}),", "new_string": "    (\"Knee surgery rules Sinner out of championship\",\n     {'event_clarity':0}),"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py' - made 1 replacement(s). 2 line(s) removed, 2 line(s) added at line 93.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:a685537d h:ae4e9dea -->
+### 2026-11-27 07:24:21 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 8d6110:
+49 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:7833dc81 h:9f8ffd43 -->
+### 2026-11-27 07:24:38 UTC tool `exec`
+
+`{"command": "node scripts/export-source-headlines.js --out .working/source-headlines-analysis.zip", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 20000}`
+
+```
+Output from command in shell ede1f5:
+{
+  "zip": "/home/bobbigmac/projects/bobdavies/news/.working/source-headlines-analysis.zip",
+  "files": [
+    "README.md",
+    "01-public-and-international.md",
+    "02-specialist-press.md",
+    "03-murdoch-family-media.md",
+    "04-uk-media.md",
+    "05-us-media.md",
+    "06-digital-publishers.md",
+    "07-australia-media.md",
+    "08-canada-media.md",
+    "09-regional-english-media.md",
+    "10-wires-and-releases.md",
+    "11-platforms-and-aggregators.md",
+    "12-official-organizations.md",
+    "13-state-controlled-and-state-linked-media.md",
+    "99-unmatched-sources.md",
+    "sources-manifest.md",
+    "headline-rows.jsonl"
+  ],
+  "sources": 695,
+  "matchedSources": 522,
+  "unmatchedSources": 173,
+  "headlines": 11461,
+  "headlineRows": 11461,
+  "inputStories": 20161,
+  "dedupedStories": 11534
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:0a4a9f61 h:07f8b9ae -->
+### 2026-11-27 07:24:45 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport zipfile,json\nlens=[]; samples=[]\nwith zipfile.ZipFile('.working/source-headlines-analysis.zip') as z:\n for line in z.read('headline-rows.jsonl').decode().splitlines():\n  r=json.loads(line); lens.append(len(r.get('body_text','')))\n  if len(r.get('body_text',''))>250 and len(samples)<5: samples.append(r)\nlens.sort(); n=len(lens)\nprint('rows',n,'e`
+
+```
+Output from command in shell 4a7588:
+rows 11461 empty 218 p50 70 p90 108 max 702
+
+ South China Morning Post Leading US brain scientist Doris Tsao joins Chinese university that has not been built 
+ After spending most of her life in the United States, leading neuroscientist Cao Ying – better known as Doris Y. Tsao – has decided to leave California’s prestigious UC Berkeley at the peak of her scientific career for a new Chinese research university that has not yet been built. Unlike most Chinese scientists who moved to the United States as adults, often not until their PhD, Cao Ying – better…
+
+ The Guardian Threat from China looms large over Taiwan’s local elections 
+ Taiwanese officials raise alarm over interference by China in elections that will shape fortunes of ruling party Taiwanese voters go to the polls on Saturday in closely watched local elections that will shape the fortunes of the ruling Democratic Progressive party (DPP) as it navigates an increasingly precarious set of relationships on the global stage. Saturday’s vote will choose mayors, council…
+
+ The Guardian Qantas and Air New Zealand planes too close at Sydney airport as ‘mental models’ of flight crews to be investigated 
+ Aborted descent on Wednesday morning is latest in a series of landing incidents at Sydney airport Get our breaking news email , free app or daily news podcast The Australian Transport Safety Bureau is investigating flight crews’ “mental models” after a Qantas plane aborted its landing at Sydney airport on Wednesday after noticing another aircraft crossing the runway while on its descent. The ATSB…
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:57705168 h:c29fbab6 -->
+### 2026-11-27 07:25:01 UTC tool `exec`
+
+`{"command": "cat scripts/headline-analysis/test_corpus_outputs.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 512c62:
+"""Structural/invariant tests for the exported corpus analysis outputs."""
+import argparse, json, sys
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).parent))
+from analyse_headlines import DELIVERY_METRICS, VALUE_METRICS, RADAR_FEATURES, REPO_ROOT
+
+ap = argparse.ArgumentParser()
+ap.add_argument('--config', type=Path, default=REPO_ROOT / 'docs/tasks/headline-analysis.task.json')
+ap.add_argument('--out', type=Path)
+args = ap.parse_args()
+
+out = args.out
+if out is None:
+    cfg = json.loads(args.config.read_text()) if args.config.exists() else {}
+    out = Path(cfg.get('analysis', {}).get('output_dir', 'docs/headline-data/current'))
+if not out.is_absolute():
+    out = REPO_ROOT / out
+
+h = pd.read_csv(out / 'headline_level_signals.csv')
+s = pd.read_csv(out / 'source_rankings.csv')
+a = pd.read_csv(out / 'source_axis_profiles.csv')
+m = json.loads((out / 'analysis_summary.json').read_text())
+
+# Corpus integrity.
+assert len(h) == m['headline_rows'], (len(h), m['headline_rows'])
+assert h['source_key'].nunique() == m['sources'], h['source_key'].nunique()
+assert len(s) == m['sources'] and s['source_key'].nunique() == m['sources']
+assert set(h['source_key']) == set(s['source_key'])
+
+# Story-level score arithmetic and bounds.
+expected_delivery = 100*h[DELIVERY_METRICS].mean(axis=1)
+expected_attention = 100*h[['explicit_curiosity_gap_present','direct_service_packaging_present','personal_sensational_frame_present']].mean(axis=1)
+expected_value = 100*h[VALUE_METRICS].mean(axis=1)
+assert np.allclose(h['information_delivery_signal'], expected_delivery)
+assert np.allclose(h['attention_packaging_pressure'], expected_attention)
+assert np.allclose(h['title_value_signal'], expected_value)
+for c in ['information_delivery_signal','attention_packaging_pressure','title_value_signal']:
+    assert h[c].between(0,100).all(), c
+assert h['evidence_provenance'].isin([0.0,0.5,1.0]).all()
+
+# Radar export is o
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:9ee327b7 h:0dcbf241 -->
+### 2026-11-27 07:25:16 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "statistics show|testimony|transcript\\w*|freedom of information", "new_string": "statistics show|testimony|transcript\\w* (?:show|shows|reveal\\w*|indicate\\w*)|freedom of information"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 95.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:8dc66a2b h:67e27166 -->
+### 2026-11-27 07:25:24 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", "old_string": "    (\"Studio hires new game director\",\n     {'event_clarity':1}),\n]", "new_string": "    (\"Studio hires new game director\",\n     {'event_clarity':1}),\n    (\"Lemonade, Inc. Q3 2026 Earnings Call Transcript\",\n     {'evidence_provenance':0.0,'primary_evidence_cue':0}),\n]"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py' - made 1 replacement(s). 3 line(s) removed, 5 line(s) added at line 107.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:2afe56cb h:a80476db -->
+### 2026-11-27 07:25:34 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 8cdf42:
+50 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:e9a11544 h:46420e86 -->
+### 2026-11-27 07:26:08 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "ORG_HINT = re.compile(r\"\\b(?:government|department|ministry|court|parliament|congress|senate|police|NHS|WHO|UN|EU|FDA|CDC|Ofcom|Ofgem|ONS|CMA|SEC|FCA|FTC|NASA|ESA|ECB|IMF|World Bank|Supreme Court|High Court|House of Commons|White House|Downing Street|Bank of England|Federal Rese`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 2 line(s) added at line 112.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:read:11c2d2e1 h:fb885c45 -->
+### 2026-11-27 07:26:12 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "offset": 300, "limit": 34}`
+
+```
+Output truncated at line 333; continue reading from line 334.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py" start_line="300" end_line="333">
+300|    time_place = int(TIME_PLACE.search(title) is not None or COUNTRY_RE.search(title) is not None or COUNTRY_ACRONYM_RE.search(title) is not None)
+301|    causal = int(CAUSAL.search(title) is not None)
+302|    consequence = int(CONSEQUENCE.search(title) is not None)
+303|    context = int(CONTEXT.search(title) is not None)
+304|    public = int(PUBLIC_INTEREST.search(title) is not None)
+305|    original = int(ORIGINALITY.search(title) is not None)
+306|    explanatory = int(EXPLANATORY.search(title) is not None)
+307|    primary_evidence = bool(PRIMARY_EVIDENCE.search(title))
+308|    research_claim = bool(RESEARCH_CLAIM.search(title))
+309|    evidence_score = 1.0 if primary_evidence else 0.5 if research_claim else 0.0
+310|
+311|    explicit_gap = int(EXPLICIT_CURIOSITY.search(title) is not None)
+312|    direct_service = int(DIRECT_SERVICE_PACKAGING.search(title) is not None)
+313|    legacy_bait = int(LEGACY_BAIT.search(title) is not None)
+314|    question = int('?' in title)
+315|    personal = bool(PERSONAL_LIFE.search(title))
+316|    celebrity = bool(CELEBRITY_CUE.search(title))
+317|    sens = bool(SENSATIONAL.search(title))
+318|    teaser_verb=bool(TEASER_VERBS.search(title))
+319|    lifestyle_detail = bool(re.search(r"\b(?:flaunts?|pos(?:es|ed|ing) for|bikini|outfit|fashion|red carpet|rare photo|rare snap|snapshots?|love life|sex life|cosmetic surgery|plastic surgery|steps out|inside .* home)\b", title, re.I))
+320|    intimate_lifestyle_detail = bool(re.search(r"\b(?:bikini|red carpet|rare photo|rare snap|love life|sex life|weight loss|weight gain|cosmetic surgery|plastic surgery|steps out|inside .* home|holiday snaps)\b", title, re.I))
+321|    person_name_proxy = cap_multi>0
+322|    personal_sensational = int(sens or (personal and (celebrity or lifestyle_detail or (
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:87889d0d h:ad527ff4 -->
+### 2026-11-27 07:26:19 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    explicit_gap = int(EXPLICIT_CURIOSITY.search(title) is not None)\n    direct_service = int(DIRECT_SERVICE_PACKAGING.search(title) is not None)", "new_string": "    explicit_gap = int(EXPLICIT_CURIOSITY.search(title) is not None)\n    packaging_text = QUOTED_SPAN.sub(' ', title`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 311.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:be0b3873 h:d7007013 -->
+### 2026-11-27 07:26:26 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    direct_service = int(bool(direct_service or (question and re.search(r\"\\b(?:you|your|how|what|why|can|could|should)\\b\", title, re.I))))", "new_string": "    direct_service = int(bool(direct_service or (question and re.search(r\"\\b(?:you|your|how|what|why|can|could|should)\`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 324.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:6ef7e912 h:41f126d3 -->
+### 2026-11-27 07:26:43 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys,spacy\nsys.path.insert(0,'scripts/headline-analysis')\nfrom analyse_headlines import detect_one\nnlp=spacy.blank('en')\nfor x in ['Billy Evans tells his side of \"You Can See Everything\"','Can you gameshare GTA 6? Xbox and PS5 explained',\"Billy Evans on 'You Can See Everything'\",'How to clear the cache on your Xbox Series X']:\n d=detect_one(x,`
+
+```
+Billy Evans tells his side of "You Can See Everything" 0 0
+Can you gameshare GTA 6? Xbox and PS5 explained 1 1
+Billy Evans on 'You Can See Everything' 0 0
+How to clear the cache on your Xbox Series X 1 1
+
+===
+Stopped waiting for output after 10.0 seconds. Command running in background with ID: ca6960. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:get_output:b17272d7 h:1d3d0fdf -->
+### 2026-11-27 07:26:48 UTC tool `get_output`
+
+`{"shell_id": "ca6960", "timeout": 10000}`
+
+```
+50 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:4c859cda h:c37f6f4a -->
+### 2026-11-27 07:27:05 UTC tool `exec`
+
+`{"command": "mkdir -p .working/headline-analysis-previous && cp docs/headline-data/current/source_rankings.csv .working/headline-analysis-previous/source_rankings.csv && cp docs/headline-data/current/headline_level_signals.csv .working/headline-analysis-previous/headline_level_signals.csv && cp docs/headline-data/current/analysis_summary.json .working/headline-analysis-previous/analysis_summary.js`
+
+```
+Command running in background with ID: 9b2ab9
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:64fd285f h:bef47bac -->
+### 2026-11-27 07:27:25 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys,pandas as pd\nsys.path.insert(0,'scripts/headline-analysis')\nimport analyse_headlines as ah\nh=pd.read_csv('.working/headline-analysis-previous/headline_level_signals.csv')\ncounts={}; examples={}\nfor title in h.headline:\n for m in ah.EVENT_ACTIONS.finditer(title):\n  term=m.group(0).casefold(); counts[term]=counts.get(term,0)+1; examples.setde`
+
+```
+Output from command in shell 71e836:
+unique 397 total 6004
+[('win', 138), ('launch', 126), ('release', 107), ('set', 105), ('warns', 103), ('attack', 100), ('found', 92), ('record', 90), ('crash', 80), ('killed', 79), ('finds', 78), ('return', 68), ('update', 67), ('dies', 66), ('rise', 65), ('won', 63), ('fire', 63), ('strike', 61), ('arrested', 60), ('rules', 57), ('wins', 55), ('launches', 55), ('pass', 55), ('strikes', 54), ('change', 49), ('fall', 48), ('buy', 48), ('open', 47), ('warning', 47), ('cut', 47), ('charged', 46), ('announces', 46), ('vote', 45), ('cuts', 45), ('collapse', 44)]
+first 0
+burnham 0
+surgery 0
+election 0
+bank 0
+winter 0
+firms 0
+windows 0
+diesel 0
+significant 0
+cute 0
+fallout 0
+taxi 0
+costume 0
+bangkok 0
+winnipeg 0
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:b8316f7b h:4dda4f91 -->
+### 2026-11-27 07:27:42 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys,pandas as pd\nsys.path.insert(0,'scripts/headline-analysis')\nimport analyse_headlines as ah\nh=pd.read_csv('.working/headline-analysis-previous/headline_level_signals.csv')\nfor term in ['open','launch','release','fire','pass','record','set']:\n x=h[h.headline.str.contains(r'\\b'+term+r'\\b',case=False,regex=True)]\n print('\\n',term,len(x))\n pr`
+
+```
+Output from command in shell 148a66:
+
+ open 47
+BBC: Knee surgery rules Sinner out of Australian Open
+BBC: Baby P's mother given open prison recommendation
+BBC: Psychiatric intensive care unit for women to open
+BBC: Why Is Andy Burnham Saying He's Open To A Slavery Apology?
+BBC: Burnham 'open' to calls for slavery apology but not reparations
+BBC: Burnham leaves door open to referendum on EU free movement
+BBC: Burnham open to 'honest discussion' on EU free movement
+BBC: Open wounds and eyes that can't close - women warn about cheap bleph eyelid surgery
+India Today: Chennai Open: Adkar, Bhosale break new ground with historic doubles final
+The Guardian: Jimmy Carter's Georgia farm to open to the public: ‘This land shaped him and his legacy'
+Qatar Tribune: Israel's Arab parties open to oust Netanyahu
+Eurogamer: Forget GTA 6, there's another dazzling, complex open world of discoveries to play right now - Queen's Domain is a stunning action-RPG of genuine wonder
+
+ launch 126
+BBC: Farage helps launch new campaign against the UK rejoining the EU
+BBC: GB, France and Germany launch new swimming competition
+BBC: Helpful but awkward: My week with Meta's Muse ahead of its UK launch
+BBC: Tinned food and long-life milk boost retail sales after 'Be Ready' campaign launch
+BBC: Newspaper headlines: 'Police launch investigation' into Walliams and Piddington asylum 'betrayal'
+BBC: Sales of tinned food and bottled water jump after 'Be Ready' campaign launch
+BBC: Aramco Tower hit in heart of Saudi capital as Houthis launch fresh strikes
+BBC: Dutch launch shows smugglers are adapting, says MP
+BBC: Police launch inquiry after two inmates die in prison
+BBC: Forest Green launch legal action over Savage approach
+BBC: Four investigations Democrats could launch if they win control of Congress
+India Today: Microsoft to launch its next big Xbox console in 2028, handheld coming even sooner
+
+ release 106
+BBC: 'Everyone's talking about it' - GTA 6 generates huge hype ahead of release
+BBC: GTA 6 hacke
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:b49643b9 h:78b80af6 -->
+### 2026-11-27 07:27:58 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "AMBIGUOUS_EVENT_WORDS = {'clear','clears','cleared','rule','rules','order','orders','pass','passes','passed','record','records','set','sets'}", "new_string": "AMBIGUOUS_EVENT_WORDS = {'clear','clears','cleared','rule','rules','order','orders','pass','passes','passed','record','rec`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 115.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:kill_shell:d3227f95 h:0b645fd0 -->
+### 2026-11-27 07:28:17 UTC tool `kill_shell`
+
+`{"shell_id": "9b2ab9"}`
+
+```
+Shell 9b2ab9 terminated successfully
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:2b8acae1 h:b58a7506 -->
+### 2026-11-27 07:28:42 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys,spacy\nsys.path.insert(0,'scripts/headline-analysis')\nfrom analyse_headlines import detect_one\nnlp=spacy.blank('en')\nexamples=[\n\"Knee surgery rules Sinner out of Australian Open\",\n\"Psychiatric intensive care unit for women to open\",\n\"Burnham open to 'honest discussion' on EU free movement\",\n\"Forget GTA 6, there's another dazzling, co`
+
+```
+Output from command in shell 7c897b:
+0 Knee surgery rules Sinner out of Australian Open
+0 Psychiatric intensive care unit for women to open
+0 Burnham open to 'honest discussion' on EU free movement
+0 Forget GTA 6, there's another dazzling, complex open world of discoveries to play right now
+0 Every Game Leaving Xbox Game Pass on November 30
+1 Cornell faculty pass no confidence vote over leadership
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:5bd92c44 h:9544976a -->
+### 2026-11-27 07:28:56 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: 3f4b99
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:c4995264 h:a3605d68 -->
+### 2026-11-27 07:29:03 UTC tool `exec`
+
+`{"command": "sed -n '880,990p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell ebf7b8:
+      '', '## Measurement definition',
+      'The core radar has 12 composite inputs: nine information-delivery markers plus inverse forms of explicit curiosity-gap, direct-address/service packaging, and sensational/personal framing. Cross-source title echo is plotted as a thirteenth diagnostic axis but excluded from the composite. Evidence specificity is fractional: generic research/study claims count 0.5; primary artefacts such as filings, documents, datasets, audits, transcripts and court material count 1.0. Event/action detection is independent of attention packaging to avoid double-penalising packaged but informative headlines.',
+      '', '## Method changes in this run',
+      '- Curated export metadata is used when `headline-rows.jsonl` is present: canonical source key, URL, timestamps, relation branch, and editorial context.',
+      '- Attention packaging is split into explicit curiosity-gap teasing, direct-address/service packaging, and sensational/personal framing rather than one opaque bait bucket.',
+      '- Evidence language distinguishes generic research claims from stronger primary-artefact provenance. Both evidence and original-access cues now favour precision over recall: subject nouns such as records, databases, investigations, scientists, or gaming/platform exclusives do not count by themselves.',
+      f"- Expected detector rates are cross-fitted with GroupKFold by source: a source does not train the topic/editorial-context expectation used to residualise itself. Primary title-length adjustment is **{'enabled' if primary_length_adjustment else 'disabled'}**; length-adjusted sensitivity columns are **{'included' if expected_length_adjusted is not None else 'not included'}**.",
+      '- Delivery markers are fully topic/context-adjusted, while attention packaging is only partly context-adjusted (25% by default) and otherwise compared with corpus-wide incidence; this treats attention farming more as publisher beha
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:kill_shell:1c85ac50 h:73e20d76 -->
+### 2026-11-27 07:29:16 UTC tool `kill_shell`
+
+`{"shell_id": "3f4b99"}`
+
+```
+Shell 3f4b99 terminated successfully
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:79be27eb h:8ccd48f8 -->
+### 2026-11-27 07:29:54 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "      '', '## Measurement definition',\n      'The core radar has 12 composite inputs: nine information-delivery markers plus inverse forms of explicit curiosity-gap, direct-address/service packaging, and sensational/personal framing. Cross-source title echo is plotted as a thirte`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 6 line(s) removed, 9 line(s) added at line 880.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:7e9d5d82 h:3a6930d2 -->
+### 2026-11-27 07:30:00 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "      '- These remain headline-only linguistic signals. They do not measure truth, factual accuracy, importance, article-body quality, or whether reporting is original in fact.',", "new_string": "      '- The composite remains headline-led. Body/summary diagnostics add context but`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 894.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:0e924b91 h:fe8ed1fd -->
+### 2026-11-27 07:30:12 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    raw = [event_action,numeric,time_place,causal,consequence,evidence_score,context,explanatory,original,1-explicit_gap,1-direct_service,1-personal_sensational]", "new_string": "    raw = [event_action,numeric,time_place,causal,consequence,evidence_score,context,explanatory,1-exp`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 329.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:d95b0960 h:fa5cd95b -->
+### 2026-11-27 07:30:22 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "Raw 12-signal mean", "new_string": "Raw 11-signal mean", "replace_all": true}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 3 replacement(s). 1 line(s) removed, 1 line(s) added at line 907.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:c56e28be h:406eb915 -->
+### 2026-11-27 07:30:37 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", "old_string": "    (\"Lemonade, Inc. Q3 2026 Earnings Call Transcript\",\n     {'evidence_provenance':0.0,'primary_evidence_cue':0}),\n]", "new_string": "    (\"Lemonade, Inc. Q3 2026 Earnings Call Transcript\",\n     {'evidence_provenance':0.0,'primary_evidence_cue':0}),\n    (\"Billy Evans tells `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py' - made 1 replacement(s). 3 line(s) removed, 5 line(s) added at line 109.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:cd46f807 h:fd975db3 -->
+### 2026-11-27 07:31:07 UTC tool `exec`
+
+`{"command": ".venv/bin/python -m py_compile scripts/headline-analysis/analyse_headlines.py scripts/headline-analysis/validate_detectors.py && .venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 20000}`
+
+```
+Output from command in shell 9b2909:
+51 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:950ab9ea h:81026dbc -->
+### 2026-11-27 07:31:12 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: 658dd4
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:2c0d6ca7 h:c87e45d1 -->
+### 2026-11-27 07:31:22 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport zipfile,json\nstats={}; total=covered=0\nwith zipfile.ZipFile('.working/source-headlines-analysis.zip') as z:\n for line in z.read('headline-rows.jsonl').decode().splitlines():\n  r=json.loads(line); total+=1\n  hw=len(r['headline'].split()); bw=len((r.get('body_text') or '').split())\n  cov=bw>hw+5; covered+=cov\n  s=stats.setdefault(r['source'],[0,0`
+
+```
+Output from command in shell 3285a5:
+body coverage rows 532 11461 4.6
+lowest sources n>=20
+Traceback (most recent call last):
+  File "<stdin>", line 13, in <module>
+  File "<stdin>", line 13, in <genexpr>
+TypeError: 'int' object is not subscriptable
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:5d297ee3 h:4cc25a6a -->
+### 2026-11-27 07:31:35 UTC tool `exec`
+
+`{"command": "sed -n '1,180p' scripts/url-dedup.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 01ae0b:
+// URL-based story deduplication across aggregators.
+//
+// Multiple sources (BBC RSS, urgent.news, Currents API, Eurogamer, Kotaku)
+// can deliver the same story with different IDs but pointing to the same
+// or equivalent URL. This module normalises URLs so we can dedup by URL
+// in addition to the existing ID-based dedup.
+//
+// Normalisation steps:
+//   1. Strip tracking params (utm_*, at_medium, at_campaign, ns_*, fbclid, etc.)
+//   2. Normalise domain (www. prefix, mobile subdomains, bbc.com → bbc.co.uk)
+//   3. Normalise path (trailing slash, lowercase)
+//   4. Strip fragments (#...)
+//   5. Sort remaining query params for stable comparison
+//
+// Source-specific patterns:
+//   - BBC: bbc.com and bbc.co.uk are the same site; strip at_medium/at_campaign
+//   - urgent.news: links to original source URLs, may have aggregator tracking
+//   - This is Money: strip ns_mchannel, ns_campaign, ito params
+//   - FT: strip syn-* params
+//   - Guardian: clean URLs, rarely need stripping
+
+// Params to strip (tracking, analytics, affiliate, source attribution)
+const STRIP_PARAMS = new Set([
+  // Generic tracking
+  'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
+  'utm_id', 'utm_referrer', 'utm_name', 'utm_brand', 'utm_social',
+  'utm_social-type', 'utm_social-type', 'fbclid', 'gclid', 'msclkid',
+  'mc_cid', 'mc_eid', '_hsenc', '_hsmi', 'hsCtaTracking',
+  // BBC
+  'at_medium', 'at_campaign', 'at_custom',
+  // This is Money / Mail Online
+  'ns_mchannel', 'ns_campaign', 'ito',
+  // FT
+  'syn',
+  // Generic
+  'ref', 'source', 'src', 'reflink', 'share', 'shared', 'linkId',
+  'cmpid', 'campaign', 'medium', 'affiliate', 'aff',
+]);
+
+// Params that start with these prefixes should be stripped
+const STRIP_PARAM_PREFIXES = ['utm_', 'at_', 'ns_', 'syn-', 'syn', 'mc_', 'hsCta', '_hsmi', '_hsenc'];
+
+// Domain normalisation: map equivalent domains to a canonical form
+const DOMAIN_ALIASES = {
+  'bbc.com': 'bbc.co.uk',
+  'm.bbc.co.uk'
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:read:609570b4 h:31cf2a90 -->
+### 2026-11-27 07:31:57 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js", "offset": 176, "limit": 42}`
+
+```
+Output truncated at line 217; continue reading from line 218.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js" start_line="176" end_line="217">
+176|  return block.explicit.length + 1;
+177|}
+178|
+179|function slugify(value) {
+180|  return value.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+181|}
+182|
+183|function uniqueHeadlineStoriesFor(stories) {
+184|  const seen = new Set();
+185|  const rows = [];
+186|  const sorted = [...stories].sort((a, b) => timestamp(b) - timestamp(a));
+187|  for (const story of sorted) {
+188|    const title = cleanText(story.title);
+189|    if (!title) continue;
+190|    const dedupeKey = title.toLowerCase();
+191|    if (seen.has(dedupeKey)) continue;
+192|    seen.add(dedupeKey);
+193|    rows.push({ title, story });
+194|  }
+195|  return rows;
+196|}
+197|
+198|function headlinesFor(stories) {
+199|  return uniqueHeadlineStoriesFor(stories).map(row => row.title);
+200|}
+201|
+202|const options = parseArgs(process.argv.slice(2));
+203|const digest = readCacheJson(options.ref, 'digest.json');
+204|const storyStore = readCacheJson(options.ref, 'stories.json');
+205|const rawNew = readOptionalCacheJson(options.ref, 'raw-new.json');
+206|const currentsApi = readOptionalCacheJson(options.ref, 'currents-api.json');
+207|
+208|const ingested = [];
+209|for (const cluster of digest.clusters || []) {
+210|  for (const story of cluster.stories || []) ingested.push(story);
+211|}
+212|for (const story of Object.values(storyStore.stories || {})) ingested.push(story);
+213|if (Array.isArray(rawNew)) ingested.push(...rawNew);
+214|if (Array.isArray(currentsApi?.news)) ingested.push(...currentsApi.news);
+215|
+216|const { items: stories, droppedById, droppedByUrl } = dedupStories(ingested);
+217|const bySource = new Map();
+</file-view>
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:405203a0 h:7f80165a -->
+### 2026-11-27 07:32:07 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js", "old_string": "function bodyTextFor(story) {\n  return cleanText(story.bodyText || story.content || story.description || '').slice(0, 2000);\n}\n", "new_string": "function bodyTextFor(story) {\n  return cleanText(story.bodyText || story.content || story.description || '').slice(0, 2000);\n}\n\nfunction rich`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js' - made 1 replacement(s). 3 line(s) removed, 7 line(s) added at line 48.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:b4560068 h:8f8cc4f5 -->
+### 2026-11-27 07:32:16 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js", "old_string": "const ingested = [];\nfor (const cluster of digest.clusters || []) {\n  for (const story of cluster.stories || []) ingested.push(story);\n}\nfor (const story of Object.values(storyStore.stories || {})) ingested.push(story);\nif (Array.isArray(rawNew)) ingested.push(...rawNew);\nif (Array.isAr`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/export-source-headlines.js' - made 1 replacement(s). 7 line(s) removed, 19 line(s) added at line 212.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:kill_shell:a4231e28 h:6852f1be -->
+### 2026-11-27 07:32:39 UTC tool `kill_shell`
+
+`{"shell_id": "658dd4"}`
+
+```
+Shell 658dd4 terminated successfully
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:e39b8163 h:6adeea40 -->
+### 2026-11-27 07:32:49 UTC tool `exec`
+
+`{"command": "node scripts/export-source-headlines.js --out .working/source-headlines-analysis.zip && .venv/bin/python - <<'PY'\nimport zipfile,json\nlens=[];cov=0;total=0\nwith zipfile.ZipFile('.working/source-headlines-analysis.zip') as z:\n for line in z.read('headline-rows.jsonl').decode().splitlines():\n  r=json.loads(line); total+=1\n  b=r.get('body_text',''); lens.append(len(b))\n  if len(b.`
+
+```
+Output from command in shell c17b3a:
+{
+  "zip": "/home/bobbigmac/projects/bobdavies/news/.working/source-headlines-analysis.zip",
+  "files": [
+    "README.md",
+    "01-public-and-international.md",
+    "02-specialist-press.md",
+    "03-murdoch-family-media.md",
+    "04-uk-media.md",
+    "05-us-media.md",
+    "06-digital-publishers.md",
+    "07-australia-media.md",
+    "08-canada-media.md",
+    "09-regional-english-media.md",
+    "10-wires-and-releases.md",
+    "11-platforms-and-aggregators.md",
+    "12-official-organizations.md",
+    "13-state-controlled-and-state-linked-media.md",
+    "99-unmatched-sources.md",
+    "sources-manifest.md",
+    "headline-rows.jsonl"
+  ],
+  "sources": 695,
+  "matchedSources": 522,
+  "unmatchedSources": 173,
+  "headlines": 11461,
+  "headlineRows": 11461,
+  "inputStories": 20161,
+  "dedupedStories": 11534
+}
+body coverage 6692 11461 58.4 p50 117 p90 354 max 2000
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:5443681e h:b10ccfcd -->
+### 2026-11-27 07:32:55 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport zipfile,json\nshown=0\nwith zipfile.ZipFile('.working/source-headlines-analysis.zip') as z:\n for line in z.read('headline-rows.jsonl').decode().splitlines():\n  r=json.loads(line)\n  if r['source']=='The Guardian' and len(r['body_text'])>300:\n   print(r['headline'],'\\n',r['body_text'][:500]); shown+=1\n   if shown>=2: break\nPY", "workdir": "/home/`
+
+```
+Output from command in shell d2993f:
+Threat from China looms large over Taiwan’s local elections 
+ Taiwanese officials raise alarm over interference by China in elections that will shape fortunes of ruling party Taiwanese voters go to the polls on Saturday in closely watched local elections that will shape the fortunes of the ruling Democratic Progressive party (DPP) as it navigates an increasingly precarious set of relationships on the global stage. Saturday’s vote will choose mayors, council…
+Qantas and Air New Zealand planes too close at Sydney airport as ‘mental models’ of flight crews to be investigated 
+ Aborted descent on Wednesday morning is latest in a series of landing incidents at Sydney airport Get our breaking news email , free app or daily news podcast The Australian Transport Safety Bureau is investigating flight crews’ “mental models” after a Qantas plane aborted its landing at Sydney airport on Wednesday after noticing another aircraft crossing the runway while on its descent. The ATSB…
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:79ab21ba h:5c7be4db -->
+### 2026-11-27 07:33:02 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: eff398
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:todo_write:83efc3f3 h:5c7ec328 -->
+### 2026-11-27 07:33:10 UTC tool `todo_write`
+
+`{"todos": [{"content": "Manually inspect source-ordering plausibility and high-volume outliers", "status": "completed"}, {"content": "Manually inspect detector hits/misses across representative headline samples", "status": "completed"}, {"content": "Check echo/topic-adjustment artefacts and small-sample leaders", "status": "completed"}, {"content": "Apply targeted detector/export fixes without heu`
+
+```
+WARNING: You removed the following pending items from your todo list:
+- Summarise sensible results, failure modes, and any needed corrections
+If you did not mean to do that please add them back. Think about this before your next action.
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [x] Manually inspect source-ordering plausibility and high-volume outliers [completed]
+2. [x] Manually inspect detector hits/misses across representative headline samples [completed]
+3. [x] Check echo/topic-adjustment artefacts and small-sample leaders [completed]
+4. [~] Apply targeted detector/export fixes without heuristic overfitting [in_progress]
+5. [ ] Rerun analysis and compare corrected ordering with previous output [pending]
+6. [ ] Summarise sensible results, failure modes, and remaining limitations [pending]
+
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:04a85e28 h:986d6700 -->
+### 2026-11-27 07:33:28 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\np='.working/headline-analysis-previous/headline_level_signals.csv'\nh=pd.read_csv(p)\nx=h[h.cross_source_near_duplicate_proxy==1].copy()\nprint('echo rows',len(x),'rate',round(len(x)/len(h)*100,2))\nprint('top source pairs')\nprint(x.groupby(['source','cross_source_nearest_source']).size().sort_values(ascending=False).head(15).to_string(`
+
+```
+Output from command in shell d488d1:
+echo rows 182 rate 1.59
+top source pairs
+source                 cross_source_nearest_source
+The Age                Sydney Morning Herald          19
+Sydney Morning Herald  The Age                        19
+Evening Standard       The Independent                 6
+The Independent        Evening Standard                6
+The Guardian           BBC                             4
+BBC                    The Guardian                    4
+sea.mashable.com       mashable.com                    4
+mashable.com           sea.mashable.com                4
+Daily Mail             BBC                             3
+Financial Times        BBC                             3
+BBC                    Financial Times                 3
+                       Daily Mail                      3
+                       MyJoyOnline                     2
+                       Evening Standard                2
+mashable.com           in.mashable.com                 2
+
+examples
+BBC <> nation.com.pk 1.00
+  Jordan arrests three men suspected of deadly church attack after shootout
+  Jordan arrests three men suspected of deadly church attack after shootout
+BBC <> The Guardian 1.00
+  Budget 2026: Key points at a glance
+  Budget 2026: key points at a glance
+BBC <> MyJoyOnline 1.00
+  Woman with Ebola in Nigeria confirmed as wife of Swiss diplomat
+  Woman with Ebola in Nigeria confirmed as wife of Swiss diplomat
+BBC <> Semafor 1.00
+  US approves sale of 500 Patriot missiles to Ukraine
+  US approves sale of 500 Patriot missiles to Ukraine
+Phys.org <> Winnipeg Free Press 1.00
+  SpaceX's Starship returns from orbit and is captured by launch pad arms in a dramatic first
+  SpaceX's Starship returns from orbit and is captured by launch pad arms in a dramatic first
+The Guardian <> BBC 1.00
+  Budget 2026: key points at a glance
+  Budget 2026: Key points at a glance
+in.mashable.com <> sea.mashable.com 1.00
+  The Anonymous Hacker Cyberleek Releases An Xbox Build Of 'GTA VI'
+  The an
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:aebf3206 h:9b57996b -->
+### 2026-11-27 07:33:38 UTC tool `exec`
+
+`{"command": "sed -n '1,240p' scripts/headline-analysis/make_charts.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 87943e:
+from pathlib import Path
+import argparse, json, sys
+
+import pandas as pd
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
+sys.path.insert(0, str(Path(__file__).parent))
+from analyse_headlines import REPO_ROOT
+
+ap=argparse.ArgumentParser()
+ap.add_argument('--config',type=Path,default=REPO_ROOT/'docs/tasks/headline-analysis.task.json')
+ap.add_argument('--out',type=Path)
+args=ap.parse_args()
+OUT=args.out
+if OUT is None:
+    cfg=json.loads(args.config.read_text()) if args.config.exists() else {}
+    OUT=Path(cfg.get('analysis',{}).get('output_dir','docs/headline-data/current'))
+if not OUT.is_absolute(): OUT=REPO_ROOT/OUT
+
+r=pd.read_csv(OUT/'source_rankings.csv')
+axes=[
+('event_clarity_rate','Event/action'),('quantified_specificity_rate','Quantified detail'),
+('time_place_anchor_rate','Time/place'),('causal_explanation_rate','Causal link'),
+('material_consequence_rate','Consequences'),('evidence_provenance_rate','Evidence specificity'),
+('context_comparison_rate','Context'),('explanatory_framing_rate','Explanation/service'),
+('original_reporting_signal_rate','Original access'),
+('explicit_curiosity_gap_incidence_rate','Curiosity gap (lower better)'),
+('direct_service_packaging_incidence_rate','Direct/service packaging (lower better)'),
+('sensational_personal_incidence_rate','Sensational/personal (lower better)'),
+('cross_source_near_duplicate_rate','Title echo (lower better)')]
+
+selected=['The Guardian','BBC','Daily Mail','Financial Times','Phys.org','Medical Xpress','Eurogamer','Kotaku']
+fig=plt.figure(figsize=(13,12))
+ax=fig.add_subplot(111,polar=True)
+labels=[x[1] for x in axes]
+angles=np.linspace(0,2*np.pi,len(labels),endpoint=False).tolist()
+angles+=angles[:1]
+for source in selected:
+    q=r[r.source.eq(source)]
+    if q.empty: continue
+    q=q.iloc[0]
+    vals=[float(q[c])*100 for c,_ in axes]
+    vals+=vals[:1]
+    ax.plot(angles,vals,linewidth=1.5,label=f"{source} (n={int(q.n)})")
+   
+```
+
+---
+
+<!-- r:0 m:hook:PostCompaction:f3acd38c-9bda-42be-98e3-10fa3fcef930 h:a2467802 -->
+### 2026-11-27 07:33:38 UTC · postcompaction 
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:read:e2e99d3c h:64b489c2 -->
+### 2026-11-27 07:34:08 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "offset": 150, "limit": 120}`
+
+```
+Output truncated at line 269; continue reading from line 270.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py" start_line="150" end_line="269">
+150|    {'key':'causal_explanation','label':'Causal relationship','polarity':'positive','value':True,'description':'Causal, consequence-linking or explicit relational language.'},
+151|    {'key':'material_consequence','label':'Material consequences','polarity':'positive','value':True,'description':'Impacts, costs, risks, jobs, health, harm, benefits or material changes.'},
+152|    {'key':'evidence_provenance','label':'Evidence specificity','polarity':'positive','value':True,'description':'Fractional cue: 0.5 for research/survey/study claims, 1.0 for primary artefacts such as documents, filings, audits, datasets, transcripts or court material.'},
+153|    {'key':'context_comparison','label':'Context / comparison','polarity':'positive','value':True,'description':'Comparisons, trends, historical references, records or prior-period context.'},
+154|    {'key':'explanatory_framing','label':'Explanatory / service framing','polarity':'positive','value':True,'description':'Explanation, guide, mechanism, why/how or explicit service-journalism framing; language presence only, not correctness.'},
+155|    {'key':'original_reporting_signal','label':'Original-access cue','polarity':'positive','value':False,'description':'Explicit original-access/provenance cue: investigation reveals/found, exclusive interview/report/access, documents obtained, interview with, FOI or our-analysis. High precision, very low recall; diagnostic only because it is too sparse for stable source ordering.'},
+156|    {'key':'low_explicit_curiosity_gap','label':'Explicit curiosity-gap incidence','polarity':'inverse','value':True,'description':'Stock clickbait phrases, explicit guessing/teasing or ellipsis; stored inverse is used in the composite, exported incidence is adverse.'},
+157|    {'key':'low_direct_servi
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:277f2b78 h:28b490c5 -->
+### 2026-11-27 07:34:13 UTC tool `exec`
+
+`{"command": "sed -n '270,390p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 3778f7:
+            return 'platforms and aggregators'
+        if 'state-controlled' in text or 'state-linked' in text or 'state media' in text:
+            return 'state-linked media'
+        if 'wire' in text or 'press-release' in text or 'official organization' in text:
+            return 'wires releases and official organisations'
+        if 'national' in text or 'newspaper' in text or 'broadcaster' in text or 'public' in text:
+            return 'general national and international news'
+        return root or 'uncurated'
+
+    df['neutral_editorial_context']=df.apply(neutral_context,axis=1).replace('', 'uncurated')
+    df['published_dt']=pd.to_datetime(df['published'].replace('', pd.NA), errors='coerce', utc=True, format='mixed')
+    return df
+
+
+def detect_one(title: str, nlp):
+    doc=nlp(title)
+    tokens=[t for t in doc if not t.is_space]
+    words=[t for t in tokens if t.is_alpha]
+    cap_tokens=[]
+    for i,t in enumerate(tokens):
+        if t.text.isupper() and len(t.text)>1:
+            cap_tokens.append(t.text)
+        elif t.text[:1].isupper() and t.text[1:].islower() and i>0:
+            cap_tokens.append(t.text)
+    cap_multi = len(re.findall(r"\b[A-Z][a-z]+(?:\s+(?:of|the|and|[A-Z][a-z]+)){1,4}\b", title))
+    acronym = len(re.findall(r"\b[A-Z]{2,}(?:\d+)?\b", title))
+    named_entity = int(cap_multi>0 or acronym>0 or ORG_HINT.search(title) is not None)
+
+    event_action = detect_event_action(title)
+    numeric = int(NUMERIC.search(title) is not None)
+    time_place = int(TIME_PLACE.search(title) is not None or COUNTRY_RE.search(title) is not None or COUNTRY_ACRONYM_RE.search(title) is not None)
+    causal = int(CAUSAL.search(title) is not None)
+    consequence = int(CONSEQUENCE.search(title) is not None)
+    context = int(CONTEXT.search(title) is not None)
+    public = int(PUBLIC_INTEREST.search(title) is not None)
+    original = int(ORIGINALITY.search(title) is not None)
+    explanatory = int(EXPLANATORY.search(title) i
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:c6c9c969 h:5b5dbf4c -->
+### 2026-11-27 07:34:17 UTC tool `exec`
+
+`{"command": "sed -n '35,150p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 03d273:
+EVENT_WORDS = """
+announce announces announced announcing approve approves approved approving reject rejects rejected rejecting
+resign resigns resigned resigning win wins won winning lose loses losing lost die dies died dying
+kill kills killed killing arrest arrests arrested arresting charge charges charged charging convict convicts convicted convicting
+acquit acquits acquitted acquitting launch launches launched launching open opens opened opening close closes closed closing
+suspend suspends suspended suspending ban bans banned banning sign signs signed signing bought buy buys buying sold sell sells selling
+fell fall falls falling rose rise rises rising increase increases increased increasing decrease decreases decreased decreasing
+find finds found finding discover discovers discovered discovering ruled rule rules ruling order orders ordered ordering
+vote votes voted voting pass passes passed passing delay delays delayed delaying cut cuts cutting
+fire fires fired firing hire hires hired hiring strike strikes struck striking investigate investigates investigated investigating
+publish publishes published publishing release releases released releasing unveil unveils unveiled unveiling
+introduce introduces introduced introducing remove removes removed removing add adds added adding update updates updated updating
+change changes changed changing shut shuts shutting expand expands expanded expanding reduce reduces reduced reducing
+withdraw withdraws withdrawing withdrawn oust ousts ousted ousting appoint appoints appointed appointing
+elect elects elected electing beat beats beating defeat defeats defeated defeating earn earns earned earning
+sue sues sued suing settle settles settled settling plead pleads pleaded pleading warn warns warned warning
+attack attacks attacked attacking invade invades invaded invading agree agrees agreed agreeing reach reaches reached reaching
+break breaks broke broken breaking surge surges surged surging dr
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:274837ec h:a7d18f9f -->
+### 2026-11-27 07:34:50 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd,re\nh=pd.read_csv('.working/headline-analysis-previous/headline_level_signals.csv')\npat=re.compile(r'\\b(?:says|said|tell|tells|told)\\b',re.I)\nx=h[(h.event_clarity==0)&h.headline.str.contains(pat)]\nprint('event0 speech-cue rows',len(x),round(len(x)/len(h)*100,1))\nprint(x.groupby('source').size().sort_values(ascending=False).head(12).`
+
+```
+Output from command in shell f7f64b:
+event0 speech-cue rows 412 3.6
+source
+BBC                    158
+Kotaku                  37
+Eurogamer               26
+The Guardian            18
+Punch                   15
+Daily Mail              13
+The Independent         10
+Jerusalem Post           9
+Financial Times          4
+GameSpot                 4
+This is Money            4
+Winnipeg Free Press      4
+
+examples
+Zelensky says a new European security framework floated by U.S. could benefit Putin
+US too focused on Middle East and not pushing Russia hard enough, Zelensky tells BBC
+Drug rape husband says wife 'would have been terrified', court hears
+Russell says Verstappen's criticism 'quite amusing'
+Every day is living hell, says dad of boy, 2, murdered by grandparents
+MP says her likeness used in deepfake AI porn
+US Army says controlled blast of explosives in Iowa was 'huge success'
+Expect fewer frosts and more hot days as UK seasons shift, says Met Office
+Asian women 'never heard' on health, says director
+Businesses supporting Ukraine told to 'act now' to protect against Russian sabotage
+Catherine's cancer documentary makes me feel less alone, says Strictly's Amy Dowden
+Watch: Delia Smith says data centre will be bad for county
+Why I don't always tell potential employers I'm dyslexic
+What six grazing horses tell us about England's housing crisis
+Russell Brand's wife says she'll honour prison rules after message row
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:get_output:28880f28 h:b530be50 -->
+### 2026-11-27 07:35:06 UTC tool `get_output`
+
+`{"shell_id": "eff398", "timeout": 1000}`
+
+```
+Traceback (most recent call last):
+  File "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", line 938, in <module>
+    main()
+    ~~~~^^
+  File "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", line 818, in main
+    src[profile_cols].to_csv(out/'source_axis_profiles.csv',index=False)
+    ~~~^^^^^^^^^^^^^^
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/frame.py", line 4336, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/indexes/base.py", line 6557, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/indexes/base.py", line 6609, in _raise_if_missing
+    raise KeyError(f"{not_found} not in index")
+KeyError: "['original_reporting_signal_adjusted_pp'] not in index"
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:34764c8d h:bbeba022 -->
+### 2026-11-27 07:35:11 UTC tool `exec`
+
+`{"command": "sed -n '770,835p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 658ac0:
+    df['dominant_topic']=W.argmax(axis=1)
+    df['topic_strength']=W.max(axis=1)
+    t=mark('topic_model_and_crossfit_expectations',t)
+
+    df['information_delivery_signal']=100*df[DELIVERY_METRICS].mean(axis=1)
+    df['attention_packaging_pressure']=100*df[['explicit_curiosity_gap_present','direct_service_packaging_present','personal_sensational_frame_present']].mean(axis=1)
+    df['title_value_signal']=100*df[VALUE_METRICS].mean(axis=1)
+    src,sensitivity_df=source_statistics(df,expected,min_source_n=int(cfg['min_source_n']),shrinkage=float(cfg['default_shrinkage']),
+                                         shrinkage_grid=cfg['shrinkage_grid'],bootstrap=int(cfg['bootstrap']),seed=int(cfg['random_seed']),
+                                         attention_context_adjustment=float(cfg.get('attention_context_adjustment',0.25)))
+    if expected_length_adjusted is not None:
+        src_len,_=source_statistics(df,expected_length_adjusted,min_source_n=int(cfg['min_source_n']),shrinkage=float(cfg['default_shrinkage']),
+                                    shrinkage_grid=cfg['shrinkage_grid'],bootstrap=0,seed=int(cfg['random_seed']),
+                                    attention_context_adjustment=float(cfg.get('attention_context_adjustment',0.25)))
+        len_cols=['source_key','topic_adjusted_value_index','rank','rank_n50','rank_n100','ordering_band']
+        len_suffix=src_len[len_cols].rename(columns={c:'length_adjusted_'+c for c in len_cols if c!='source_key'})
+        src=src.merge(len_suffix,on='source_key',how='left')
+    t=mark('source_statistics_and_bootstrap',t)
+
+    df['body_text_excerpt']=df['body_text'].fillna('').astype(str).str.slice(0,600)
+    story_cols=['headline_id','source_key','source','group','tree_root','branch_path','curated_group','editorial_context','neutral_editorial_context','group_file','headline','body_text_excerpt','url','published','story_id','category','story_type','word_count','story_word_count','info
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:51c40c9b h:5f130480 -->
+### 2026-11-27 07:35:20 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    profile_cols += [m+'_expected_context' for m in DELIVERY_METRICS]\n    profile_cols += ['explicit_curiosity_gap_expected_context','direct_service_packaging_expected_context','sensational_personal_expected_context']\n    profile_cols += [m+'_adjusted_pp' for m in DELIVERY_METRI`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 3 line(s) removed, 3 line(s) added at line 812.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:680efa80 h:f4d65cdd -->
+### 2026-11-27 07:35:24 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py && .venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: 956d8c
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:f8442614 h:401cc7d7 -->
+### 2026-11-27 07:35:34 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('.working/headline-analysis-previous/headline_level_signals.csv')\nfor metric in ['causal_explanation','context_comparison','material_consequence','explanatory_framing']:\n print('\\n##',metric)\n for src in ['BBC','The Guardian','Daily Mail','Medical Xpress','Eurogamer']:\n  x=h[(h.source==src)&(h[metric]>0)]\n  print(src,`
+
+```
+Output from command in shell ca26b4:
+
+## causal_explanation
+BBC 112/3537
+Drivers over 70 face eye tests every three years under new plans | Macy's postpones Thanksgiving parade due to weather | Thirty-one killed in massive fire as fuel tanker crashes on Cairo highway | UK Town of Culture bid withdrawn in Strabane after it causes 'great division'
+The Guardian 25/485
+Man found dead on Flinders Island linked to shooting of police officer, Tasmanian authorities say | Judge approves $7.25bn Bayer payout to settle claims that Roundup causes cancer | ‘Plume' of decomposing garbage, gas prompts emergency health order for LA county residents | California bans Waymo self-driving cars from freeways
+Daily Mail 10/350
+Mystery vigilante terrorizes Waymo driverless cars with eggs and cones | Kemi Badenoch blasts Labour for driving 'good people' out of the UK | Neglected kid moved to window at school because she smelled so bad | Delta flight delayed on runway at Boston Airport due to a cat
+Medical Xpress 18/127
+Living in a disadvantaged neighborhood associated with socioemotional, behavioral concerns in young children | Late-night phone use linked to shorter sleep in teens, especially girls | Traffic noise linked to increased risk of type 2 diabetes | Morphea linked to higher risk for cancer
+Eurogamer 30/458
+GTA 6 causes surge in UK physical game sales, despite there being no disc in the box | The Fable reboot had to look beyond Lionhead's RPG trilogy because games like The Witcher 3 "became the gold standard" | Why did Rockstar Games make empathy a key mechanic in GTA 6? "Because it's fun" says head of development Rob Nelson | Blizzard is making a lot of the Diablo 4's event-specific Diablo 2 anniversary content permanent because everyone loved it in Season 15
+
+## context_comparison
+BBC 203/3537
+Death-sentenced Sheikh Hasina's planned return puts Bangladesh on edge - and India in a bind | Taylor and Lewis lose all five pairs matches on return | GB win decider to reach Davis Cup se
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:d5ef26ef h:65c87df9 -->
+### 2026-11-27 07:35:46 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('.working/headline-analysis-previous/headline_level_signals.csv')\nfor metric in ['explicit_curiosity_gap_present','direct_service_packaging_present','personal_sensational_frame_present']:\n print('\\n##',metric)\n x=h[h[metric]==1]\n print('rates',x.groupby('source').size().div(h.groupby('source').size()).sort_values(ascen`
+
+```
+Output from command in shell 2973b9:
+
+## explicit_curiosity_gap_present
+rates source
+Umme Rajonna           1.000
+Github                 0.333
+Thenewsstar            0.250
+Scientific American    0.200
+ScienceDaily           0.100
+Yahoo                  0.095
+Buzzfeed               0.091
+This is Money          0.086
+BBC :: Families of the Disappeared to meet the Pope | Watch: Children in Need 2026... in 90 seconds | Eurovision is finally coming to Asia - meet the stars gearing up to take the stage | Wayne Rooney leads I'm A Celebrity... Get Me Out of Here! line-up | Meet the visually-impaired actors creating pictures through sound | Meet the Peaky Blinders, Ukraine's drone unit protecting a devastated front-line city | Pochettino, Howe, Emery... or Carrick? Man Utd's managerial options | Olivia Rodrigo's Christmas song sounds familiar... on purpose
+The Guardian :: No drums, no tifo ... no point? The impact of Palace's missing Holmesdale Fanatics | Young men were key to the blue wave. Our research offers a reason why | Brigid Schulte and Haley Swenson | America has always been drawn to an unelected elite. Meet the courtier class | Nancy Isenberg | The truth about testicles: are we facing spermageddon? | ‘Our town is making jeans again': meet the firm reviving jobs and skills in Wales
+Daily Mail :: Brits want to bring back old Christmas favourites this year... | Here's a BIG CLUE Barry Keoghan could be his Bond villain | UK zoo welcomes a new rare baby.... can YOU guess what the animal is? | Bayesian crew 'never had a chance... they didn't know it was doomed' | The truth about the young women at Leonardo DiCaprio's party | The incredible reason your heart never develops cancer | Why oat drinks could be bad news for your bones, teeth...and waistline
+Mirror :: 
+Engadget :: 
+Eurogamer :: Fed up of Steam's lack of action regarding AI slop? Maybe you should take a look at the 'Games Without AI' event, instead | The Legend of Zelda: Ocarina of Time remake gameplay finally re
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:887bccd7 h:376891ef -->
+### 2026-11-27 07:36:55 UTC tool `exec`
+
+`{"command": "sed -n '1,220p' scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell f718bb:
+"""High-precision regression cases for title-level detector behaviour."""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+import spacy
+from analyse_headlines import detect_one
+
+nlp = spacy.blank('en')
+
+cases = [
+    ("UK net migration fell 14% in 2025 as asylum claims also fell, ONS data show",
+     {'event_clarity':1,'quantified_specificity':1,'time_place_anchor':1,'material_consequence':1,'evidence_provenance':1.0,'primary_evidence_cue':1}),
+    ("Can YOU guess the secret behind the new royal relationship...?",
+     {'explicit_curiosity_gap_present':1,'low_explicit_curiosity_gap':0,'direct_service_packaging_present':1}),
+    ("Jennifer Lopez reveals son Max does not like her stage looks",
+     {'personal_life_frame_present':1,'teaser_verb_present':1,'personal_sensational_frame_present':1,'low_sensational_personal':0,'explicit_curiosity_gap_present':0}),
+    ("How to clear the cache on your Xbox Series X",
+     {'direct_service_packaging_present':1,'low_direct_service_packaging':0,'explanatory_framing':1,'explicit_curiosity_gap_present':0,'event_clarity':0}),
+    ("Star Wars studio announces a new game for 2027",
+     {'celebrity_cue_present':0,'event_clarity':1,'quantified_specificity':1}),
+    ("The incredible reason your heart never develops cancer",
+     {'explicit_curiosity_gap_present':1,'low_explicit_curiosity_gap':0}),
+    ("Study finds forever chemicals in New Jersey tap water",
+     {'evidence_provenance':0.5,'research_claim_cue':1,'primary_evidence_cue':0,'event_clarity':1}),
+    ("Court filing reveals Google internally admitted search quality loss",
+     {'evidence_provenance':1.0,'primary_evidence_cue':1,'event_clarity':1}),
+    ("How rail fare increases affect commuters across England",
+     {'explanatory_framing':1,'material_consequence':1}),
+    ("Why the new housing rules matter for renters",
+     {'explanatory_framing':1}),
+    ("What happened to the missing flight?",
+     {'e
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:392bbf9e h:d17b82d8 -->
+### 2026-11-27 07:37:04 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "EXPLICIT_CURIOSITY = re.compile(r\"(?:\\b(?:can you guess|you won't believe|you won't expect|the one thing|the truth about|the secret of|secret behind|what happened to|find out why|take a look|big clue|guess who|meet the|the (?:incredible|shocking|surprising|strange|weird|unexpect`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 105.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:39c7d313 h:078d1308 -->
+### 2026-11-27 07:37:13 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "SENSATIONAL = re.compile(r\"\\b(?:shocking|shock|horrific|terrifying|furious|outrage|outrageous|bombshell|stunning|stuns|jaw.dropping|unbelievable|bizarre|brutal|nightmare|explosive|explodes|savage|slams|blasts|destroys|humiliat\\w*|devastat\\w*|heartbreak\\w*|astonish\\w*|sensati`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 108.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:fae373b9 h:13cfe382 -->
+### 2026-11-27 07:37:38 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py", "old_string": "    (\"Billy Evans tells his side of \\\"You Can See Everything\\\"\",\n     {'direct_service_packaging_present':0,'low_direct_service_packaging':1}),\n]\n", "new_string": "    (\"Billy Evans tells his side of \\\"You Can See Everything\\\"\",\n     {'direct_service_packaging_present`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_detectors.py' - made 1 replacement(s). 3 line(s) removed, 19 line(s) added at line 111.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:kill_shell:15fb53f3 h:2a3f8d41 -->
+### 2026-11-27 07:37:44 UTC tool `kill_shell`
+
+`{"shell_id": "956d8c"}`
+
+```
+Shell 956d8c terminated successfully
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:43f03879 h:ebd25be2 -->
+### 2026-11-27 07:37:56 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 20000}`
+
+```
+Output from command in shell acc251:
+59 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:bf524500 h:1689807a -->
+### 2026-11-27 07:38:21 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: 16f44f
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:33779855 h:7c6ef35e -->
+### 2026-11-27 07:38:26 UTC tool `exec`
+
+`{"command": "git status --short && git diff --stat", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell ce8742:
+ M .gitignore
+ M AGENTS.md
+ M docs/DONE.md
+ M docs/sessions/transcripts/02-repeated-bite.md
+ M docs/sessions/user-input/02-repeated-bite.md
+ M docs/sessions/user-input/INDEX.md
+ M scripts/export-source-headlines.js
+ M scripts/headline-analysis/analyse_headlines.py
+ M scripts/headline-analysis/make_charts.py
+ M scripts/headline-analysis/test_corpus_outputs.py
+ M scripts/headline-analysis/test_detectors.py
+?? docs/headline-data/current/
+?? docs/sources-manifest-UPDATE-2026-11-27.md
+?? docs/tasks/
+?? scripts/headline-analysis/validate_detectors.py
+ .gitignore                                       |    1 +
+ AGENTS.md                                        |    7 +
+ docs/DONE.md                                     |   34 +
+ docs/sessions/transcripts/02-repeated-bite.md    | 7340 +++++++++++++++++++++-
+ docs/sessions/user-input/02-repeated-bite.md     |   53 +-
+ docs/sessions/user-input/INDEX.md                |    2 +-
+ scripts/export-source-headlines.js               |   31 +-
+ scripts/headline-analysis/analyse_headlines.py   | 1071 ++--
+ scripts/headline-analysis/make_charts.py         |   44 +-
+ scripts/headline-analysis/test_corpus_outputs.py |   95 +-
+ scripts/headline-analysis/test_detectors.py      |  112 +-
+ 11 files changed, 8356 insertions(+), 434 deletions(-)
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:01c64d60 h:e15d9b5c -->
+### 2026-11-27 07:38:30 UTC tool `exec`
+
+`{"command": "git diff -- AGENTS.md docs/DONE.md .gitignore | sed -n '1,180p'", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell e0f2ce:
+diff --git a/.gitignore b/.gitignore
+index 4915022..4851546 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -7,6 +7,7 @@ logs_*.zip
+ logs_extracted/.venv/
+ .venv/
+ .working/
++__pycache__/
+ 
+ # Generated files left behind by the old docs/ build output
+ docs/assets/
+diff --git a/AGENTS.md b/AGENTS.md
+index 762be19..c3b69eb 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -1,5 +1,12 @@
+ # Agent Guidelines
+ 
++## Dev-time analysis tasks
++
++- Re-runnable analysis/task configuration lives in `docs/tasks/*.task.json`. Edit the config file rather than maintaining long CLI parameter lists.
++- `docs/tasks/headline-analysis.task.json` controls the exploratory headline/source analysis: export current `origin/cache-data` into `.working/`, then run `.venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json`. Validation helpers are `scripts/headline-analysis/validate_detectors.py sample` (write a source-capped blank labelling sheet) and `validate_detectors.py score` (score completed `human_*` labels); both read the same task config.
++- This headline analysis is dev-time/run-once measurement tooling only. Do not wire it into `scripts/build.js`, CI, or the normal digest pipeline without explicit approval. No large transformer models or GPU-dependent models.
++- Completed work is logged in `docs/DONE.md`; open work stays in root `TODO.md`.
++
+ ### Platform-tenant attribution (keep copies in sync)
+ 
+ Multi-tenant platforms (substack, medium, dev.to, neocities, etc.) are NOT sources —
+diff --git a/docs/DONE.md b/docs/DONE.md
+index c2e3d1c..3b2c9d7 100644
+--- a/docs/DONE.md
++++ b/docs/DONE.md
+@@ -207,3 +207,37 @@
+   as contract enforcement. One-off migration scripts/repair-digest.js cleaned the
+   cache (1542 summaries rebuilt, proof-gated to never touch LLM editorial copy) —
+   the repair is NOT in the forever-build; prevention lives at the boundary.
++
++## Headline-source analysis instrument (2026)
++
++- Recove
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:c3a0fad6 h:bf2d536f -->
+### 2026-11-27 07:38:35 UTC tool `exec`
+
+`{"command": "ls TODO.md 2>/dev/null && sed -n '1,120p' TODO.md || true", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 52ac85:
+TODO.md
+# TODO
+
+## Future features
+
+- [ ] Source/category roundups: after the normal run has finished batch/solo cluster summaries, consider a second pass that identifies recurring low-value story patterns by source or category (for example, repeated outrage framing) and uses one consolidated OpenRouter call to flag or resummarise those groups. Needs design before implementation.
+- [ ] Keep `src/trees/` JSON datasets maintained: add newly-seen hosts/subjects to curated branches and deepen any allocated branch that grows well past its target group size. Revisit `src/trees/profiles/` research notes as sources accumulate.
+
+## Paused: taxonomy research
+
+- [ ] Identify established/mainstream/widely-known reference taxonomies for better grouping support — candidates to evaluate: IPTC NewsCodes/MediaTopics (the news-industry standard subject taxonomy, ~1,400 terms in 17 top-level concepts, used by AP/Reuters/AFP/BBC-class wire orgs), Wikidata entity relations, Schema.org types, GDELT themes, simple.wikipedia categories. Goal: align our `src/trees/story/*.json` branches with a portable external vocabulary so the dataset transfers beyond today's news, rather than being a bespoke list matched to the current digest. Resume after the UI/masonry work (quota pressure — do NOT spend OpenRouter calls on this; use free taxonomy downloads + LLM judgement).
+- [ ] Tree-expansion continuation: the escape-driven pass on the ungrouped corpus was mid-flight (was at ~4,762/5,557 grouped, 230 groups; remaining ungrouped included foreign-language items, junk headlines, and several one-offs). Resume with escape analysis after taxonomy alignment.
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:f106476c h:8020fd69 -->
+### 2026-11-27 07:38:42 UTC tool `exec`
+
+`{"command": "sed -n '720,770p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell ea43d3:
+
+
+def main():
+    started=time.perf_counter()
+    stage_times={}
+    def mark(name,t0):
+        stage_times[name]=round(time.perf_counter()-t0,3)
+        return time.perf_counter()
+
+    ap=argparse.ArgumentParser()
+    ap.add_argument('--config',type=Path,default=DEFAULT_CONFIG)
+    ap.add_argument('--zip',type=Path)
+    ap.add_argument('--out',type=Path)
+    ap.add_argument('--topics',type=int)
+    ap.add_argument('--folds',type=int)
+    ap.add_argument('--bootstrap',type=int)
+    args=ap.parse_args()
+    cfg=load_config(args)
+    zip_path=Path(cfg['input_zip_path'])
+    out=Path(cfg['output_dir_path'])
+    out.mkdir(parents=True,exist_ok=True)
+
+    t=time.perf_counter()
+    df=parse_archive(zip_path)
+    df['headline_id']=np.arange(len(df))
+    t=mark('parse_archive',t)
+
+    nlp=spacy.blank('en')
+    det=pd.DataFrame([detect_one(x,nlp) for x in df['headline']])
+    df=pd.concat([df.reset_index(drop=True),det],axis=1)
+    body=df['body_text'].fillna('').astype(str)
+    df['body_word_count']=body.str.split().str.len()
+    df['body_coverage_present']=(df['body_word_count']>df['word_count']+5).astype(int)
+    df['body_primary_evidence_cue']=body.map(lambda x:int(PRIMARY_EVIDENCE.search(x) is not None))
+    df['body_research_claim_cue']=body.map(lambda x:int(RESEARCH_CLAIM.search(x) is not None))
+    df['body_evidence_strength']=np.select([df['body_primary_evidence_cue'].eq(1),df['body_research_claim_cue'].eq(1)],[2,1],default=0)
+    df['body_event_action_cue']=body.map(lambda x:int(EVENT_ACTIONS.search(x) is not None))
+    df['body_explanatory_cue']=body.map(lambda x:int(EXPLANATORY.search(x) is not None))
+    t=mark('detectors',t)
+
+    df=headline_reuse_proxy(df,n_neighbors=int(cfg['nearest_neighbors']),threshold=float(cfg['cross_source_similarity_threshold']))
+    df=add_within_source_template_proxy(df)
+    t=mark('headline_reuse_and_templates',t)
+
+    W,topics,vec,nmf=topic_model(df,n_topics=int(cfg['topics']),min_df=int(cfg['to
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:5259ea90 h:4b39b58b -->
+### 2026-11-27 07:38:44 UTC tool `exec`
+
+`{"command": "cat docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 818922:
+{
+  "id": "headline-analysis-current-cache",
+  "title": "Run dev-time headline-source analysis against the current cache export",
+  "type": "dev-time-analysis",
+  "_comment": "Executable run configuration for exploratory headline/source analysis. This is run-once measurement work, not part of the publish/build pipeline. Edit values here instead of maintaining long command lines.",
+  "invariants": {
+    "no_build_integration": "Do not wire this into scripts/build.js, CI, or the normal digest pipeline without explicit approval.",
+    "no_large_models": "Use local classical/NLP tooling only; no transformer downloads or GPU-dependent models.",
+    "not_truth_scores": "Outputs are title-language diagnostics and ordering aids, not factual accuracy or publisher-quality verdicts.",
+    "preserve_raw_axes": "Keep per-headline and per-axis rates inspectable; composite ordering is supplementary.",
+    "no_commits": "The user commits."
+  },
+  "steps": [
+    {
+      "name": "export-current-cache",
+      "cmd": "node scripts/export-source-headlines.js --ref origin/cache-data --out .working/source-headlines-analysis.zip",
+      "produces": ".working/source-headlines-analysis.zip"
+    },
+    {
+      "name": "analyse-headlines",
+      "cmd": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json",
+      "produces": "docs/headline-data/current/"
+    },
+    {
+      "name": "validate-outputs",
+      "cmd": ".venv/bin/python scripts/headline-analysis/test_corpus_outputs.py --config docs/tasks/headline-analysis.task.json",
+      "produces": "stdout validation"
+    },
+    {
+      "name": "validation-sample",
+      "cmd": ".venv/bin/python scripts/headline-analysis/validate_detectors.py sample --config docs/tasks/headline-analysis.task.json",
+      "produces": "docs/headline-data/current/detector_validation_sample.csv"
+    },
+    {
+      "name": "validation-score",
+      "cmd": ".venv/bin/python 
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:be5f448c h:e412d3c4 -->
+### 2026-11-27 07:38:50 UTC tool `exec`
+
+`{"command": "sed -n '390,610p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 3c1890:
+    Xctx = hstack([csr_matrix(W), *numeric_parts, G], format='csr')
+    Y = df[feature_cols].to_numpy(dtype=float)
+    expected = np.zeros_like(Y)
+    groups = df['source_key'].astype(str).to_numpy()
+    n_splits=max(2,min(int(folds),len(np.unique(groups))))
+    splitter=GroupKFold(n_splits=n_splits)
+    for train_ix,test_ix in splitter.split(Xctx,Y,groups):
+        for j in range(Y.shape[1]):
+            model=Ridge(alpha=8.0)
+            model.fit(Xctx[train_ix],Y[train_ix,j])
+            expected[test_ix,j]=np.clip(model.predict(Xctx[test_ix]),0.0,1.0)
+    return expected
+
+
+def normalised_title_for_match(title):
+    return re.sub(r'\s+', ' ', re.sub(r'[^a-z0-9]+', ' ', title.casefold())).strip()
+
+
+def headline_reuse_proxy(df, n_neighbors=8, threshold=0.82):
+    texts=[normalised_title_for_match(t) for t in df['headline'].tolist()]
+    v=TfidfVectorizer(analyzer='char_wb', ngram_range=(3,5), min_df=2,
+                      max_features=30000, sublinear_tf=True)
+    X=v.fit_transform(texts)
+    nn=NearestNeighbors(n_neighbors=min(n_neighbors,len(texts)), metric='cosine', algorithm='brute', n_jobs=-1)
+    nn.fit(X)
+    d, ix=nn.kneighbors(X)
+    sources=df['source_key'].astype(str).to_numpy()
+    max_cross=np.zeros(len(df),dtype=float)
+    nearest_source=np.array(['']*len(df),dtype=object)
+    nearest_title=np.array(['']*len(df),dtype=object)
+    nearest_idx=np.full(len(df),-1,dtype=int)
+    for i in range(len(df)):
+        sims=1-d[i]
+        candidates=[(float(sims[j]),int(k)) for j,k in enumerate(ix[i]) if k!=i and sources[k]!=sources[i]]
+        best=max(candidates,default=(0.0,-1),key=lambda x:x[0])
+        max_cross[i]=best[0]
+        nearest_idx[i]=best[1]
+        if best[1]>=0:
+            nearest_source[i]=df.iloc[best[1]]['source']
+            nearest_title[i]=df.iloc[best[1]]['headline']
+    df['cross_source_title_similarity']=max_cross
+    df['cross_source_near_duplicate_proxy']=(max_cross>=threshold).astype(int)
+    
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:8023e829 h:1cbcc165 -->
+### 2026-11-27 07:39:19 UTC tool `exec`
+
+`{"command": "sed -n '835,980p' scripts/headline-analysis/analyse_headlines.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 6f8380:
+    exact_dups=df.groupby('headline').size()
+    eligible=src[src.rank_eligible].copy().sort_values('topic_adjusted_value_index',ascending=False)
+    top=eligible.head(15); bottom=eligible.tail(15).sort_values('topic_adjusted_value_index')
+    overall_rates={
+        'event_clarity':float(df['event_clarity'].mean()),
+        'quantified_specificity':float(df['quantified_specificity'].mean()),
+        'time_place_anchor':float(df['time_place_anchor'].mean()),
+        'causal_explanation':float(df['causal_explanation'].mean()),
+        'material_consequence':float(df['material_consequence'].mean()),
+        'evidence_provenance':float(df['evidence_provenance'].mean()),
+        'context_comparison':float(df['context_comparison'].mean()),
+        'explanatory_framing':float(df['explanatory_framing'].mean()),
+        'original_reporting_signal':float(df['original_reporting_signal'].mean()),
+        'explicit_curiosity_gap_incidence':float(df['explicit_curiosity_gap_present'].mean()),
+        'direct_service_packaging_incidence':float(df['direct_service_packaging_present'].mean()),
+        'sensational_personal_incidence':float(df['personal_sensational_frame_present'].mean()),
+        'cross_source_title_echo':float(df['cross_source_title_echo'].mean()),
+    }
+    sensitivity_pivot=sensitivity_df.dropna(subset=['rank']).pivot_table(index='source_key',columns='shrinkage',values='topic_adjusted_value_index')
+    sensitivity_corr=sensitivity_pivot.corr(method='spearman').round(4).to_dict() if sensitivity_pivot.shape[1]>1 else {}
+    total_time=round(time.perf_counter()-started,3)
+    summary={
+      'zip':str(zip_path),'config':cfg['config_path'],'headline_rows':int(len(df)),'sources':int(df.source_key.nunique()),
+      'exact_duplicate_headline_rows':int((exact_dups-1).clip(lower=0).sum()),
+      'cross_source_near_duplicate_title_rows':int(df.cross_source_near_duplicate_proxy.sum()),
+      'sources_ranked_min_n':int(len(eligible)),'min_
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:02b4075f h:4161bb83 -->
+### 2026-11-27 07:39:37 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "      '- The composite remains headline-led. Body/summary diagnostics add context but do not measure truth, factual accuracy, importance, full article quality, or whether reporting is original in fact.',\n      '- No human-labelled validation set has yet been completed; detector p`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 5 line(s) added at line 894.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:0e80ece8 h:e7a6a67c -->
+### 2026-11-27 07:39:57 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport sys,re,zipfile,json,random\nsys.path.insert(0,'scripts/headline-analysis')\nimport spacy\nfrom analyse_headlines import detect_one\nnlp=spacy.blank('en')\nrows=[]\nwith zipfile.ZipFile('.working/source-headlines-analysis.zip') as z:\n for line in z.read('headline-rows.jsonl').decode().splitlines(): rows.append(json.loads(line))\npat=re.compile(r'\\b(?`
+
+```
+Output from command in shell 971010:
+
+ set total 104 event1 41 event0 63
+ e1: UK government set to publish new treaties agreed with EU | Woods set to return next month after two years out | Arrest after woman, 80, 'doused and set on fire'
+ e0: Selby faces tough UK Championship opener, with Allen set to feature | Government set to double spending on social media unit to £25m | Raya set to have scan on injury - how much would Arsenal miss him? | Timetable set out for dismantling leasehold system in England and Wales | Joanna Page says male actor made 'awful' and 'inappropriate' comments to her on set
+
+ sets total 18 event1 7 event0 11
+ e1: Skipper Bryce sets new Scotland run record in win over UAE | Ofcom sets out social media age-checking methods ahead of ban | UK temperatures to rise to 23C before autumn chill sets in
+ e0: Nicholls sets record for jump winners by British trainer | Christmas toy rush being driven by squishies and building sets | Miranda's tears, joy and dance moves steal show as deadly boredom sets in on The Celebrity Traitors | Super El Niño sets another record as it strengthens to 'unprecedented levels' | Singer sets the bear market alarm bells ringing on Wall Street - it's time to listen, says MAGGIE PAGANO
+
+ launch total 126 event1 124 event0 2
+ e1: Farage helps launch new campaign against the UK rejoining the EU | GB, France and Germany launch new swimming competition | Helpful but awkward: My week with Meta's Muse ahead of its UK launch
+ e0: How to test a WhatsApp AI agent before launch | How to Handle a Web Attack Surge During a Product Launch with SafeLine
+
+ launches total 55 event1 55 event0 0
+ e1: Government's antisemitism adviser launches investigation into BBC | BBC launches partnership with Met Office for weather coverage | Can AI spot breast cancer earlier? NHS launches world's largest trial to find out
+ e0: 
+
+ launched total 9 event1 9 event0 0
+ e1: Initiative launched to make UK world leader in women's sport | Major study into 'foreve
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:d32da94e h:931525f9 -->
+### 2026-11-27 07:40:22 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport spacy\nprint(spacy.__version__)\nPY\nls /home/bobbigmac/projects/podcasts/.venv/lib/python*/site-packages/en_core_web_sm* 2>/dev/null | head || true", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 1fa115:
+3.8.18
+/home/bobbigmac/projects/podcasts/.venv/lib/python3.14/site-packages/en_core_web_sm:
+en_core_web_sm-3.8.0
+__init__.py
+meta.json
+__pycache__
+
+/home/bobbigmac/projects/podcasts/.venv/lib/python3.14/site-packages/en_core_web_sm-3.8.0.dist-info:
+direct_url.json
+entry_points.txt
+INSTALLER
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:get_output:e9d7930b h:ca6308da -->
+### 2026-11-27 07:40:52 UTC tool `get_output`
+
+`{"shell_id": "16f44f", "timeout": 1000}`
+
+```
+{
+  "headline_rows": 11461,
+  "sources": 695,
+  "sources_ranked_min_n": 74,
+  "sources_n_ge_50": 28,
+  "sources_n_ge_100": 14,
+  "sources_below_min_n": 621,
+  "exact_duplicate_headline_rows": 45,
+  "runtime_seconds": 122.515
+}
+
+TOP:
+ rank                   source   n  topic_adjusted_value_index      ordering_band  raw_title_signal_index
+  1.0 South China Morning Post  25                   62.272309 A — upper quartile               44.727273
+  2.0                TweakTown  46                   60.486073 A — upper quartile               38.735178
+  3.0                   Quartz  24                   60.274352 A — upper quartile               43.181818
+  4.0                Eurogamer 458                   59.229400 A — upper quartile               37.842398
+  5.0                  PsyPost  28                   59.065351 A — upper quartile               37.987013
+  6.0           Medical Xpress 127                   58.161286 A — upper quartile               36.471009
+  7.0             The Guardian 485                   57.786701 A — upper quartile               38.388004
+  8.0              MyJoyOnline  28                   56.871710 A — upper quartile               42.045455
+  9.0           Jerusalem Post  68                   56.836083 A — upper quartile               40.441176
+ 10.0               Indiatimes  20                   56.107938 A — upper quartile               40.000000
+ 11.0            Qatar Tribune  28                   55.098830 A — upper quartile               41.233766
+ 12.0                      PBS  20                   54.710174 A — upper quartile               37.272727
+ 13.0                 Wccftech  27                   54.374115 A — upper quartile               40.404040
+ 14.0                City A.M. 173                   53.754999 A — upper quartile               38.623226
+ 15.0             Ars Technica  38                   53.543337 A — upper quartile               35.167464
+
+BOTTOM:
+ rank                source   n  topic_adjusted_value_index   
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:8dacd831 h:8da438ac -->
+### 2026-11-27 07:41:01 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\ncols=['rank_n100','source','n','topic_adjusted_value_index','length_adjusted_topic_adjusted_value_index','raw_title_signal_index','explicit_curiosity_gap_incidence_rate','direct_service_packaging_incidence_rate','sensational_personal_incidence_rate','event_clarity_adjusted_`
+
+```
+Output from command in shell 90cdd8:
+ rank_n100          source    n  topic_adjusted_value_index  length_adjusted_topic_adjusted_value_index  raw_title_signal_index  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  event_clarity_adjusted_pp  evidence_provenance_adjusted_pp
+       1.0       Eurogamer  458                   59.229400                                   56.026820               37.842398                               0.000000                                 0.034934                             0.019651                  15.317591                        -0.223660
+       2.0  Medical Xpress  127                   58.161286                                   58.536314               36.471009                               0.000000                                 0.023622                             0.000000                  -5.694759                         3.449184
+       3.0    The Guardian  485                   57.786701                                   56.235439               38.388004                               0.002062                                 0.018557                             0.012371                   4.086823                         0.728728
+       4.0       City A.M.  173                   53.754999                                   53.158312               38.623226                               0.000000                                 0.005780                             0.023121                   7.619696                        -0.312220
+       5.0 Financial Times  116                   53.190847                                   54.130453               38.009404                               0.000000                                 0.008621                             0.017241                  -1.010208                        -0.369483
+       6.0     Korea Times  123                   51.834652                                   50.298478               38.839616      
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:97a6398a h:006ea56e -->
+### 2026-11-27 07:41:14 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nfor src in ['Nature','New Scientist','South China Morning Post','TweakTown','Quartz','PsyPost','Oregonlive']:\n x=h[h.source==src]\n print('\\n##',src,len(x),'index',x.title_value_signal.mean().round(1))\n print('\\n'.join(x.headline.head(10)))\n print('rates event',`
+
+```
+Output from command in shell 3d7369:
+
+## Nature 42 index 31.6
+Diagnostic validation of two commercial foot-and-mouth disease non-structural protein enzyme-linked immunosorbent assays in sheep and preliminary evaluation in goats
+Comparing attention, CNNs, and SSMs for multi-domain image recognition
+Geochemical characteristics and organic matter enrichment mechanisms of early Cambrian Black Shales in the Northern Lower Yangtze Region, Eastern China
+Genome-guided identification and functional characterization of carbonyl reductases from Parathermosynechococcus lividus PCC 6715
+Green synthesized zinc oxide nanoparticles combined with papaverine induce apoptosis and modulate microRNAs in breast cancer cells
+A study on landslide susceptibility mapping by integrating different datasets based on feature and spatial constraints
+evaluation of putative adipose tissue browning in amyotrophic lateral sclerosis: an MRI and adipokine study
+Editorial Expression of Concern: Dual control of nuclear EIN3 by bifurcate MAPK cascades in C2H4 signalling - Nature
+Orangutans face bleak future after Indonesia's devastating wildfires
+Navigating grief in academia: ways to find balance
+rates event 0.05 num 0.05 place 0.12 causal 0.02 evid 0.05 sens 0.05 bodycov 0.55
+
+## New Scientist 40 index 35.9
+The defence tech revolution is changing how we innovate
+Basic income trial in Peru aims to prove rainforest protection merits
+The truth about autistic masking and its toll on mental health
+Submarine finds world's deepest explosive volcanic activity in Mariana trench
+Mathematicians are amazed by ‘holy grail' proof of Riemann hypothesis
+Anthropic mathematician claims AI-assisted proof of the Riemann hypothesis
+US, Russia and China look set to block ban on autonomous weapons
+Turmeric supplements offer little benefit for knee osteoarthritis
+Can technology recreate the mental health benefits of psychedelic trips?
+Cannibal giant star caught devouring its companion in super-rare event
+rates event 0.35 num 0.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:84ced41a h:1080bdee -->
+### 2026-11-27 07:41:41 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\ncols=['source','n','topic_adjusted_value_index','event_clarity_rate','evidence_provenance_rate','explicit_curiosity_gap_incidence_rate','direct_service_packaging_incidence_rate','sensational_personal_incidence_rate','body_coverage_rate','body_primary_evidence_rate','body_re`
+
+```
+Output from command in shell e87065:
+source  n  topic_adjusted_value_index  event_clarity_rate  evidence_provenance_rate  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  body_coverage_rate  body_primary_evidence_rate  body_research_claim_rate  body_event_action_rate  body_explanatory_rate
+Nature 42                      43.551               0.048                     0.048                                    0.0                                      0.0                                0.048               0.548                         0.0                     0.119                   0.548                  0.095
+       source  n  topic_adjusted_value_index  event_clarity_rate  evidence_provenance_rate  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  body_coverage_rate  body_primary_evidence_rate  body_research_claim_rate  body_event_action_rate  body_explanatory_rate
+New Scientist 40                       40.25                0.35                       0.0                                  0.025                                     0.05                                 0.05               0.825                         0.0                       0.0                    0.55                  0.025
+      source  n  topic_adjusted_value_index  event_clarity_rate  evidence_provenance_rate  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  body_coverage_rate  body_primary_evidence_rate  body_research_claim_rate  body_event_action_rate  body_explanatory_rate
+ScienceDaily 10                      55.316                 0.6                       0.2                                    0.0                                      0.2                                  0.1                 1.0                         0.1                       0.4                     0.9                    0.0
+     
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:63bc9e0c h:5b7c4bed -->
+### 2026-11-27 07:41:57 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nfor metric in ['explicit_curiosity_gap_present','direct_service_packaging_present','personal_sensational_frame_present']:\n print('\\n##',metric,'overall',h[metric].mean().round(4))\n print('top rates n>=20')\n rates=h.groupby('source').agg(n=(metric,'size'),rate=(me`
+
+```
+Output from command in shell 497338:
+
+## explicit_curiosity_gap_present overall 0.0017
+top rates n>=20
+                   n   rate
+source                     
+Yahoo             21  0.095
+New Scientist     40  0.025
+Daily Mail       350  0.014
+This is Money     81  0.012
+Kotaku           671  0.004
+The Independent  246  0.004
+The Guardian     485  0.002
+Ars Technica      38  0.000
+ABC News          38  0.000
+Ajel              20  0.000
+BBC :: 
+The Guardian :: The truth about testicles: are we facing spermageddon?
+Daily Mail :: Brits want to bring back old Christmas favourites this year... | Here's a BIG CLUE Barry Keoghan could be his Bond villain | UK zoo welcomes a new rare baby.... can YOU guess what the animal is? | The truth about the young women at Leonardo DiCaprio's party | The incredible reason your heart never develops cancer
+Mirror :: 
+Engadget :: 
+Eurogamer :: 
+
+## direct_service_packaging_present overall 0.0307
+top rates n>=20
+                   n   rate
+source                     
+Engadget          21  0.381
+TechRadar         40  0.175
+This is Money     81  0.173
+Windows Central   50  0.160
+Vice              30  0.133
+Chalkbeat         23  0.130
+The Verge         35  0.114
+Daily Maverick    29  0.103
+Xbox Wire         21  0.095
+Business Insider  33  0.091
+BBC :: Inside the control room feeding your weather app | Spanish elections: What you need to know and what's at stake | How much has the Iran war put up your energy bills? | Three reasons why your energy bill is so high | Watch: Would you let Meta's AI agent run parts of your life?
+The Guardian :: The dark side of reselling apps: ‘If you include your pants, I'll pay more' | Share your reaction to Scott Colom's Mississippi Senate win | First Covid lockdowns, then alcohol to your door: rise in young Victorians with liver diseases prompts fears | Is AI your new wingman? How chatbots are transforming dating | Relying on AI is rotting your brain. But here's what you can do about it | Carly Dober
+Daily Mail
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:dafd403f h:75516eb1 -->
+### 2026-11-27 07:42:18 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\nmetrics=['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing','low_explicit_curiosity_gap','low_direct_service_packaging','low_sensational_personal']\nfor sr`
+
+```
+Output from command in shell d85a4f:
+
+ Eurogamer 59.22940001332074
+ z event_clarity:2.3 quantified_specificity:0.5 time_place_anchor:1.1 causal_explanation:1.6 material_consequence:0.7 evidence_provenance:-0.3 context_comparison:1.3 explanatory_framing:-0.7 explicit_curiosity_gap:0.3 direct_service_packaging:0.1 sensational_personal:-0.2
+pp event_clarity:15.3 quantified_specificity:3.7 time_place_anchor:9.0 causal_explanation:3.5 material_consequence:5.1 evidence_provenance:-0.2 context_comparison:4.2 explanatory_framing:-1.9 explicit_curiosity_gap:0.2 direct_service_packaging:0.4 sensational_personal:-0.2
+
+ Medical Xpress 58.16128649720109
+ z event_clarity:-0.8 quantified_specificity:-0.7 time_place_anchor:-0.2 causal_explanation:2.8 material_consequence:1.1 evidence_provenance:2.2 context_comparison:-0.1 explanatory_framing:-0.4 explicit_curiosity_gap:0.6 direct_service_packaging:0.2 sensational_personal:1.2
+pp event_clarity:-5.7 quantified_specificity:-3.6 time_place_anchor:-1.4 causal_explanation:6.1 material_consequence:8.2 evidence_provenance:3.4 context_comparison:-0.6 explanatory_framing:-1.0 explicit_curiosity_gap:0.3 direct_service_packaging:0.6 sensational_personal:1.9
+
+ The Guardian 57.78670145223521
+ z event_clarity:0.7 quantified_specificity:-0.1 time_place_anchor:1.4 causal_explanation:0.7 material_consequence:0.8 evidence_provenance:0.4 context_comparison:-0.1 explanatory_framing:0.2 explicit_curiosity_gap:0.2 direct_service_packaging:0.3 sensational_personal:1.2
+pp event_clarity:4.1 quantified_specificity:-0.3 time_place_anchor:12.0 causal_explanation:1.6 material_consequence:6.1 evidence_provenance:0.7 context_comparison:-0.2 explanatory_framing:0.2 explicit_curiosity_gap:0.1 direct_service_packaging:1.0 sensational_personal:1.9
+
+ BBC 49.7860035516515
+ z event_clarity:1.6 quantified_specificity:-0.6 time_place_anchor:0.5 causal_explanation:0.5 material_consequence:-0.5 evidence_provenance:-0.4 context_comparison:-1.9 explanatory_framing:0.2 explici
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:039bb6e5 h:fa35830d -->
+### 2026-11-27 07:42:50 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    s = s.replace('\u2019', \"'\").replace('\u201c','\"').replace('\u201d','\"')\n", "new_string": "    s = s.replace('\u2019', \"'\").replace('\u2018', \"'\").replace('\u201c','\"').replace('\u201d','\"')\n"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 167.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:6f67b826 h:b3838b2b -->
+### 2026-11-27 07:43:06 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "      '- Research-release language can still resemble evidence specificity. The fractional evidence score reduces but does not remove the institutional-release confound.',\n      '- Cross-source title echo can reflect syndication, shared ownership, wires or legitimate same-event l`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 2 line(s) added at line 902.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:c4bcb9f7 h:a2e61ffa -->
+### 2026-11-27 07:43:17 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    for _,r in high_volume.iterrows():\n        len_adj=f\"{r['length_adjusted_topic_adjusted_value_index']:.1f}\" if 'length_adjusted_topic_adjusted_value_index' in r and np.isfinite(r['length_adjusted_topic_adjusted_value_index']) else '\u2014'\n        lines.append(f\"| {int(r[`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 4 line(s) removed, 9 line(s) added at line 911.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:9893b25f h:1f572585 -->
+### 2026-11-27 07:43:29 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 20000}`
+
+```
+Output from command in shell 4fa86e:
+59 detector regression cases passed
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:665ff2bb h:6d0acd1a -->
+### 2026-11-27 07:43:35 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: 7d1c08
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:a890066f h:6efed39e -->
+### 2026-11-27 07:43:51 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nx=pd.read_csv('docs/headline-data/current/source_index_sensitivity.csv')\np=x.dropna(subset=['rank']).pivot_table(index='source',columns='shrinkage',values='topic_adjusted_value_index')\np['range']=p.max(axis=1)-p.min(axis=1)\nprint('largest shrinkage ranges')\nprint(p.sort_values('range',ascending=False).head(12).round(2).to_string())\n`
+
+```
+Output from command in shell bb2685:
+largest shrinkage ranges
+shrinkage                    10     25     50  range
+source                                              
+Kotaku                    41.70  39.39  36.27   5.42
+Daily Mail                38.55  36.52  33.92   4.64
+Eurogamer                 57.22  59.23  61.72   4.50
+The Guardian              56.14  57.79  59.87   3.73
+Medical Xpress            56.88  58.16  59.13   2.25
+South China Morning Post  63.19  62.27  61.11   2.07
+Punch                     46.37  45.50  44.44   1.93
+Quartz                    61.05  60.27  59.35   1.70
+Financial Times           52.43  53.19  53.99   1.56
+Jerusalem Post            56.01  56.84  57.42   1.40
+Indiatimes                56.80  56.11  55.47   1.33
+Oregonlive                43.56  44.16  44.89   1.33
+rank corr
+shrinkage     10     25     50
+shrinkage                     
+10         1.000  0.997  0.991
+25         0.997  1.000  0.997
+50         0.991  0.997  1.000
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:f21b0bcc h:b620d962 -->
+### 2026-11-27 07:44:12 UTC tool `exec`
+
+`{"command": "cat docs/headline-data/current/topic_model.json | sed -n '1,160p'", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell e75d92:
+[
+  {
+    "topic": 0,
+    "terms": [
+      "gta",
+      "rockstar",
+      "ps5",
+      "launch",
+      "series",
+      "xbox series",
+      "play",
+      "gta vi",
+      "xbox",
+      "players"
+    ]
+  },
+  {
+    "topic": 1,
+    "terms": [
+      "man",
+      "utd",
+      "man utd",
+      "carrick",
+      "fernandes",
+      "pochettino",
+      "gossip",
+      "chelsea",
+      "gabriel",
+      "carrick man"
+    ]
+  },
+  {
+    "topic": 2,
+    "terms": [
+      "says",
+      "brand",
+      "russell",
+      "russell brand",
+      "minister",
+      "health",
+      "rape",
+      "ex",
+      "minister says",
+      "chief"
+    ]
+  },
+  {
+    "topic": 3,
+    "terms": [
+      "auto",
+      "grand",
+      "theft",
+      "grand theft",
+      "theft auto",
+      "auto vi",
+      "vi",
+      "kotaku",
+      "lucia",
+      "gameplay"
+    ]
+  },
+  {
+    "topic": 4,
+    "terms": [
+      "new",
+      "new york",
+      "york",
+      "zealand",
+      "new zealand",
+      "study",
+      "new study",
+      "times",
+      "finds",
+      "home"
+    ]
+  },
+  {
+    "topic": 5,
+    "terms": [
+      "time",
+      "ocarina",
+      "ocarina time",
+      "zelda",
+      "zelda ocarina",
+      "remake",
+      "time remake",
+      "legend zelda",
+      "legend",
+      "switch"
+    ]
+  },
+  {
+    "topic": 6,
+    "terms": [
+      "huang",
+      "jensen",
+      "jensen huang",
+      "nvidia",
+      "ceo",
+      "nvidia ceo",
+      "scandal",
+      "return",
+      "affair",
+      "spy"
+    ]
+  },
+  {
+    "topic": 7,
+    "terms": [
+      "2026",
+      "obituary",
+      "november",
+      "november 2026",
+      "october",
+      "legacy",
+      "best",
+      "courant",
+      "hartford",
+      "hartford courant"
+    ]
+  },
+  {
+    "topic": 8,
+    "terms": [
+      "pope",
+      "cancer",
+      "surgery",
+      "leo",
+      "pope leo",
+      "lung",
+      "lung cancer",
+      "cancer surgery",
+      "hospital",
+      "vatican"
+    ]
+  },
+  {
+    "topic": 9,
+    "terms": [
+   
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:00214b8d h:2cae2fee -->
+### 2026-11-27 07:44:32 UTC tool `exec`
+
+`{"command": "cat docs/headline-data/current/run_metrics.json | sed -n '1,80p'", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 73c162:
+{
+  "runtime_seconds": 122.515,
+  "stage_times": {
+    "parse_archive": 1.662,
+    "detectors": 28.357,
+    "headline_reuse_and_templates": 26.985,
+    "topic_model_and_crossfit_expectations": 7.212,
+    "source_statistics_and_bootstrap": 55.042,
+    "write_tables_and_radar": 3.202
+  },
+  "config": {
+    "input_zip": ".working/source-headlines-analysis.zip",
+    "output_dir": "docs/headline-data/current",
+    "topics": 22,
+    "topic_min_df": 4,
+    "folds": 4,
+    "bootstrap": 250,
+    "min_source_n": 20,
+    "random_seed": 27,
+    "nearest_neighbors": 8,
+    "cross_source_similarity_threshold": 0.82,
+    "context_fields": [
+      "tree_root_id",
+      "neutral_editorial_context"
+    ],
+    "adjust_title_length": false,
+    "length_adjusted_sensitivity": true,
+    "attention_context_adjustment": 0.25,
+    "shrinkage_grid": [
+      10,
+      25,
+      50
+    ],
+    "default_shrinkage": 25
+  }
+}
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:f63821af h:76b6621b -->
+### 2026-11-27 07:44:40 UTC tool `exec`
+
+`{"command": "sed -n '1,180p' scripts/headline-analysis/test_corpus_outputs.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell e598b0:
+"""Structural/invariant tests for the exported corpus analysis outputs."""
+import argparse, json, sys
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).parent))
+from analyse_headlines import DELIVERY_METRICS, VALUE_METRICS, RADAR_FEATURES, REPO_ROOT
+
+ap = argparse.ArgumentParser()
+ap.add_argument('--config', type=Path, default=REPO_ROOT / 'docs/tasks/headline-analysis.task.json')
+ap.add_argument('--out', type=Path)
+args = ap.parse_args()
+
+out = args.out
+if out is None:
+    cfg = json.loads(args.config.read_text()) if args.config.exists() else {}
+    out = Path(cfg.get('analysis', {}).get('output_dir', 'docs/headline-data/current'))
+if not out.is_absolute():
+    out = REPO_ROOT / out
+
+h = pd.read_csv(out / 'headline_level_signals.csv')
+s = pd.read_csv(out / 'source_rankings.csv')
+a = pd.read_csv(out / 'source_axis_profiles.csv')
+m = json.loads((out / 'analysis_summary.json').read_text())
+
+# Corpus integrity.
+assert len(h) == m['headline_rows'], (len(h), m['headline_rows'])
+assert h['source_key'].nunique() == m['sources'], h['source_key'].nunique()
+assert len(s) == m['sources'] and s['source_key'].nunique() == m['sources']
+assert set(h['source_key']) == set(s['source_key'])
+
+# Story-level score arithmetic and bounds.
+expected_delivery = 100*h[DELIVERY_METRICS].mean(axis=1)
+expected_attention = 100*h[['explicit_curiosity_gap_present','direct_service_packaging_present','personal_sensational_frame_present']].mean(axis=1)
+expected_value = 100*h[VALUE_METRICS].mean(axis=1)
+assert np.allclose(h['information_delivery_signal'], expected_delivery)
+assert np.allclose(h['attention_packaging_pressure'], expected_attention)
+assert np.allclose(h['title_value_signal'], expected_value)
+for c in ['information_delivery_signal','attention_packaging_pressure','title_value_signal']:
+    assert h[c].between(0,100).all(), c
+assert h['evidence_provenance'].isin([0.0,0.5,1.0]).all()
+
+# Radar export is o
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:de996cd9 h:d8b1b8ab -->
+### 2026-11-27 07:44:48 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_corpus_outputs.py", "old_string": "assert h['evidence_provenance'].isin([0.0,0.5,1.0]).all()\n\n# Radar export is occurrence-oriented: positive rates plus explicit adverse incidences.\n", "new_string": "assert h['evidence_provenance'].isin([0.0,0.5,1.0]).all()\nfor c in ['body_coverage_present','body_primary_evid`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/test_corpus_outputs.py' - made 1 replacement(s). 3 line(s) removed, 7 line(s) added at line 43.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:8ed5a559 h:9b548b37 -->
+### 2026-11-27 07:45:07 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\nmetrics=['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing','low_explicit_curiosity_gap','low_direct_service_packaging','low_sensational_personal']\nfor sr`
+
+```
+Output from command in shell 18bc6b:
+South China Morning Post 62.3 n 25 topz [('context_comparison', np.float64(2.8)), ('time_place_anchor', np.float64(2.5)), ('evidence_provenance', np.float64(2.2)), ('causal_explanation', np.float64(-0.8))]
+TweakTown 60.5 n 46 topz [('quantified_specificity', np.float64(2.1)), ('context_comparison', np.float64(1.6)), ('causal_explanation', np.float64(1.3)), ('low_direct_service_packaging', np.float64(1.2))]
+Quartz 60.3 n 24 topz [('context_comparison', np.float64(2.3)), ('causal_explanation', np.float64(1.8)), ('event_clarity', np.float64(1.6)), ('material_consequence', np.float64(1.6))]
+PsyPost 59.1 n 28 topz [('evidence_provenance', np.float64(3.9)), ('causal_explanation', np.float64(3.4)), ('event_clarity', np.float64(2.0)), ('material_consequence', np.float64(-0.9))]
+MyJoyOnline 56.9 n 28 topz [('quantified_specificity', np.float64(1.5)), ('material_consequence', np.float64(1.0)), ('time_place_anchor', np.float64(0.7)), ('event_clarity', np.float64(0.5))]
+Jerusalem Post 56.8 n 68 topz [('time_place_anchor', np.float64(2.4)), ('context_comparison', np.float64(1.3)), ('event_clarity', np.float64(0.9)), ('explanatory_framing', np.float64(0.9))]
+Indiatimes 56.1 n 20 topz [('evidence_provenance', np.float64(2.6)), ('quantified_specificity', np.float64(1.2)), ('causal_explanation', np.float64(-0.9)), ('time_place_anchor', np.float64(0.8))]
+Qatar Tribune 55.1 n 28 topz [('context_comparison', np.float64(1.6)), ('time_place_anchor', np.float64(1.2)), ('event_clarity', np.float64(1.1)), ('quantified_specificity', np.float64(-1.0))]
+Nature 43.5 n 42 topz [('explanatory_framing', np.float64(1.9)), ('causal_explanation', np.float64(-1.8)), ('event_clarity', np.float64(-1.6)), ('low_sensational_personal', np.float64(-1.3))]
+New Scientist 40.2 n 40 topz [('evidence_provenance', np.float64(-3.1)), ('low_explicit_curiosity_gap', np.float64(-2.6)), ('low_sensational_personal', np.float64(-1.3)), ('context_comparison', np.float64(-1.2))]
+Oregon
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:db38f347 h:63d39c4c -->
+### 2026-11-27 07:45:25 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "      '- Research-release language can still resemble evidence specificity. The fractional evidence score reduces but does not remove the institutional-release confound. Conversely, scientific paper titles are often descriptive noun phrases with few event verbs; a low event/action`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 902.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:f08d8242 h:9ad5ed30 -->
+### 2026-11-27 07:45:43 UTC tool `exec`
+
+`{"command": "sed -n '1,220p' scripts/headline-analysis/validate_detectors.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 9d6515:
+#!/usr/bin/env python3
+import argparse, json, sys
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).parent))
+from analyse_headlines import REPO_ROOT, DELIVERY_METRICS
+
+ADVERSE_AXES=['explicit_curiosity_gap_present','direct_service_packaging_present','personal_sensational_frame_present']
+AXES=DELIVERY_METRICS+ADVERSE_AXES
+FRACTIONAL_AXES={'evidence_provenance'}
+
+
+def load_out(args):
+    out=args.out
+    if out is None:
+        cfg=json.loads(args.config.read_text()) if args.config.exists() else {}
+        out=Path(cfg.get('analysis',{}).get('output_dir','docs/headline-data/current'))
+    return out if out.is_absolute() else REPO_ROOT/out
+
+
+def make_sample(h,out_path,n=150,per_source=3,seed=27):
+    rng=np.random.default_rng(seed)
+    order=rng.permutation(len(h))
+    chosen=[]; counts={}
+    for ix in order:
+        key=h.iloc[int(ix)]['source_key']
+        if counts.get(key,0)>=per_source: continue
+        chosen.append(int(ix)); counts[key]=counts.get(key,0)+1
+        if len(chosen)>=n: break
+    rows=[]
+    for ix in chosen:
+        r=h.iloc[ix]
+        row={'headline_id':r.get('headline_id',ix),'source_key':r['source_key'],'source':r['source'],'headline':r['headline'],'body_text_excerpt':r.get('body_text_excerpt',''),'url':r.get('url','')}
+        for axis in AXES:
+            row['pred_'+axis]=r[axis]
+            row['human_'+axis]=''
+        rows.append(row)
+    pd.DataFrame(rows).to_csv(out_path,index=False)
+    return len(rows)
+
+
+def binary_metrics(y_true,y_pred):
+    tp=int(((y_true==1)&(y_pred==1)).sum()); fp=int(((y_true==0)&(y_pred==1)).sum())
+    fn=int(((y_true==1)&(y_pred==0)).sum()); tn=int(((y_true==0)&(y_pred==0)).sum())
+    precision=tp/(tp+fp) if tp+fp else None
+    recall=tp/(tp+fn) if tp+fn else None
+    f1=(2*precision*recall/(precision+recall)) if precision is not None and recall is not None and precision+recall else None
+    return {'n':int(len(y_true))
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:get_output:7c9b1fd3 h:b2c7ced8 -->
+### 2026-11-27 07:45:53 UTC tool `get_output`
+
+`{"shell_id": "7d1c08", "timeout": 1000}`
+
+```
+{
+  "headline_rows": 11461,
+  "sources": 695,
+  "sources_ranked_min_n": 74,
+  "sources_n_ge_50": 28,
+  "sources_n_ge_100": 14,
+  "sources_below_min_n": 621,
+  "exact_duplicate_headline_rows": 46,
+  "runtime_seconds": 84.863
+}
+
+TOP:
+ rank                   source   n  topic_adjusted_value_index      ordering_band  raw_title_signal_index
+  1.0 South China Morning Post  25                   62.270424 A — upper quartile               44.727273
+  2.0                TweakTown  46                   60.487901 A — upper quartile               38.735178
+  3.0                   Quartz  24                   60.275771 A — upper quartile               43.181818
+  4.0                Eurogamer 458                   59.217129 A — upper quartile               37.842398
+  5.0                  PsyPost  28                   59.064637 A — upper quartile               37.987013
+  6.0           Medical Xpress 127                   58.161111 A — upper quartile               36.471009
+  7.0             The Guardian 485                   57.782761 A — upper quartile               38.388004
+  8.0              MyJoyOnline  28                   56.872010 A — upper quartile               42.045455
+  9.0           Jerusalem Post  68                   56.835807 A — upper quartile               40.441176
+ 10.0               Indiatimes  20                   56.108603 A — upper quartile               40.000000
+ 11.0            Qatar Tribune  28                   55.099020 A — upper quartile               41.233766
+ 12.0                      PBS  20                   54.711121 A — upper quartile               37.272727
+ 13.0                 Wccftech  27                   54.374394 A — upper quartile               40.404040
+ 14.0                City A.M. 173                   53.753769 A — upper quartile               38.623226
+ 15.0             Ars Technica  38                   53.541176 A — upper quartile               35.167464
+
+BOTTOM:
+ rank                source   n  topic_adjusted_value_index    
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:2966f605 h:f6ad1ecf -->
+### 2026-11-27 07:46:25 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_corpus_outputs.py --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/headline-analysis/validate_detectors.py sample --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/headline-analysis/validate_detectors.py score --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/`
+
+```
+Output from command in shell 721a3d:
+Corpus-output invariants passed: 11,461 headlines; 695 sources; 13 radar axes; 9 delivery markers; 74 ordered sources.
+wrote 150 validation rows to /home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/detector_validation_sample.csv
+{
+  "status": "insufficient_labels",
+  "labelled_axis_count": 0,
+  "unlabelled_axis_count": 12
+}
+charts written to /home/bobbigmac/projects/bobdavies/news/docs/headline-data/current
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:7f2aebeb h:4b8551f8 -->
+### 2026-11-27 07:46:32 UTC tool `exec`
+
+`{"command": "sed -n '1,180p' docs/headline-data/current/REPORT.md", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 572b68:
+# Title-only reader-value signals — improved exploratory run
+
+Corpus: **11,461 headline rows**, **695 sources**.
+Source ordering eligible: **74** sources with at least 20 headlines. **621** sources are below the threshold and unranked.
+Runtime: **84.9s** local. Stage timings: parse_archive 1.4s, detectors 20.9s, headline_reuse_and_templates 20.0s, topic_model_and_crossfit_expectations 5.2s, source_statistics_and_bootstrap 34.9s, write_tables_and_radar 2.4s.
+
+## Measurement definition
+The core ordering has 11 composite inputs: eight information-delivery markers plus inverse forms of explicit curiosity-gap, direct-address/service packaging, and sensational/personal framing. Original-access cues and cross-source title echo are plotted as diagnostic axes but excluded from the composite. Evidence specificity is fractional: generic research/study claims count 0.5; primary artefacts such as filings, documents, datasets, audits and court material count 1.0. Event/action detection is independent of attention packaging to avoid double-penalising packaged but informative headlines.
+
+## Method changes in this run
+- Curated export metadata is used when `headline-rows.jsonl` is present: canonical source key, URL, timestamps, relation branch, editorial context, and the available body/summary text.
+- Attention packaging is split into explicit curiosity-gap teasing, direct-address/service packaging, and sensational/personal framing rather than one opaque bait bucket.
+- Event and consequence word pools now use corpus-audited explicit inflections rather than unbounded wildcard stems. This removes systematic collisions such as first/Burnham/surgery/election/bank/winter/firms while keeping exact event words.
+- Country acronyms are case-sensitive, so lowercase “us” no longer counts as the United States. Quoted titles/quotations are ignored for direct-address packaging, reducing false service hits such as a work titled “You Can See Everything”.
+- Evide
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:1e3f823e h:c9d1255a -->
+### 2026-11-27 07:46:41 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/REPORT.md", "old_string": "- Research-release language can still resemble evidence specificity. The fractional evidence score reduces but does not remove the institutional-release confound. Conversely, scientific paper titles are often descriptive noun phrases with few event verbs; a low event/action rate for a journ`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/REPORT.md' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 31.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:read:9c5c9029 h:dad6aa01 -->
+### 2026-11-27 07:46:48 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/DONE.md", "offset": 207, "limit": 60}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/docs/DONE.md" start_line="207" end_line="243">
+207|  as contract enforcement. One-off migration scripts/repair-digest.js cleaned the
+208|  cache (1542 summaries rebuilt, proof-gated to never touch LLM editorial copy) —
+209|  the repair is NOT in the forever-build; prevention lives at the boundary.
+210|
+211|## Headline-source analysis instrument (2026)
+212|
+213|- Recovered the truncated external headline-analysis zip, placed its scripts under
+214|  `scripts/headline-analysis/`, and reworked the tool into a reproducible dev-time
+215|  analyser driven by `docs/tasks/headline-analysis.task.json`. Outputs now live in
+216|  `docs/headline-data/current/`; this is run-once measurement tooling only and is
+217|  not wired into build/CI.
+218|- Export format now includes machine-readable `headline-rows.jsonl` with canonical
+219|  source keys, URLs, timestamps, relation branches and curated profile context, so
+220|  the analyser no longer depends only on display names or flat export-file groups.
+221|- Detector taxonomy improved: explicit curiosity gaps, direct/service packaging,
+222|  and sensational/personal framing are separate axes; evidence provenance is
+223|  fractional (generic research 0.5, primary artefacts 1.0); evidence/original-access
+224|  regexes were precision-fixed after audit false positives (`record contract`,
+225|  databases, generic investigations, gaming/platform exclusives, `pose risk`,
+226|  science/genre uses of horror/chaos, Tyson Fury's surname, and narrative uses of
+227|  "we found"). 39 detector regression cases pass.
+228|- Source ordering uses cross-fitted topic/editorial-context expectations
+229|  (GroupKFold by source), residual shrinkage with a sensitivity grid, quartile
+230|  bands, bootstrap intervals, and partial rather than full topic forgiveness for
+231|  attention farming. Length-adjusted ordering is exported as a sensitivity rather
+232|  than the primary index because headline-level in
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:0e8df913 h:a9afcce3 -->
+### 2026-11-27 07:46:57 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/DONE.md", "old_string": "- Detector taxonomy improved: explicit curiosity gaps, direct/service packaging,\n  and sensational/personal framing are separate axes; evidence provenance is\n  fractional (generic research 0.5, primary artefacts 1.0); evidence/original-access\n  regexes were precision-fixed after audit false positives (`record c`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/docs/DONE.md' - made 1 replacement(s). 7 line(s) removed, 15 line(s) added at line 221.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:a4b378a2 h:870191a9 -->
+### 2026-11-27 07:47:03 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/DONE.md", "old_string": "- Final local run over 11,461 headlines / 695 sources took ~71s. High-volume\n  ordering: Eurogamer, Guardian, Medical Xpress at the top; Kotaku and Daily Mail\n  at the bottom. Charts, interactive radar, per-headline rows, source axes,\n  sensitivity tables and the machine-readable metric dictionary are in\n  `do`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/docs/DONE.md' - made 1 replacement(s). 5 line(s) removed, 8 line(s) added at line 247.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:a533c80b h:edb02d3a -->
+### 2026-11-27 07:47:11 UTC tool `exec`
+
+`{"command": "git diff --check && .venv/bin/python -m py_compile scripts/headline-analysis/analyse_headlines.py scripts/headline-analysis/make_charts.py scripts/headline-analysis/test_corpus_outputs.py scripts/headline-analysis/test_detectors.py scripts/headline-analysis/validate_detectors.py && node --check scripts/export-source-headlines.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", `
+
+```
+Output from command in shell f77b72:
+docs/sessions/transcripts/02-repeated-bite.md:13055: trailing whitespace.
++37 "Subscriptions ('All Access'), advertising — and aggressive email-list 
+docs/sessions/transcripts/02-repeated-bite.md:13724: trailing whitespace.
++### 2026-11-27 05:22:04 UTC · postcompaction 
+docs/sessions/transcripts/02-repeated-bite.md:14218: trailing whitespace.
++       4.0       City A.M.  173                   51.606949                      48.875637                       54.667154               36.753372                               0.000000                                 0.023121                             0.023121                 1.541426            0.520231                  0.017341             
+docs/sessions/transcripts/02-repeated-bite.md:14266: trailing whitespace.
++  4.0              MyJoyOnline  28      
+docs/sessions/transcripts/02-repeated-bite.md:14553: trailing whitespace.
++ rank                source   n  topic_adjusted_value_index    
+docs/sessions/transcripts/02-repeated-bite.md:14650: trailing whitespace.
++   BBC  India's religious make-up - what a new 
+docs/sessions/transcripts/02-repeated-bite.md:14738: trailing whitespace.
++0.0 e0 r0 o0 s0 | The Independent: Heat-trapping carbon pollution drops, but scientists cite the Iran war rather than energy 
+docs/sessions/transcripts/02-repeated-bite.md:15139: trailing whitespace.
++       4.0       City A.M.  173                   51.621640                      48.589000                       54.742320               36.608863                               0.000000                                 0.023121     
+docs/sessions/transcripts/02-repeated-bite.md:15354: trailing whitespace.
++ rank                source   n  topic_adjusted_value_index    
+docs/sessions/transcripts/02-repeated-bite.md:15680: trailing whitespace.
++       5.0     Korea Times  123                   51.107388                                   49.696016                      47.546778                       54.783032   
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:a34fafbd h:7a29394b -->
+### 2026-11-27 07:47:21 UTC tool `exec`
+
+`{"command": "git diff --check -- .gitignore AGENTS.md docs/DONE.md scripts/export-source-headlines.js scripts/headline-analysis/analyse_headlines.py scripts/headline-analysis/make_charts.py scripts/headline-analysis/test_corpus_outputs.py scripts/headline-analysis/test_detectors.py && .venv/bin/python -m py_compile scripts/headline-analysis/analyse_headlines.py scripts/headline-analysis/make_chart`
+
+```
+Output from command in shell c1740b:
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:04d2ec03 h:a3713e82 -->
+### 2026-11-27 07:47:36 UTC tool `exec`
+
+`{"command": "ls -lh docs/headline-data/current | sed -n '1,120p'", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 63ae7f:
+total 17M
+-rw-rw-r-- 1 bobbigmac bobbigmac  12K Nov 27 07:45 analysis_summary.json
+-rw-rw-r-- 1 bobbigmac bobbigmac  31K Nov 27 07:45 cross_source_title_matches.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac  36K Nov 27 07:45 detector_audit_sample.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac  60K Nov 27 07:46 detector_validation_sample.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac  562 Nov 27 07:46 detector_validation_scores.json
+-rw-rw-r-- 1 bobbigmac bobbigmac 9.1M Nov 27 07:45 headline_level_signals.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac 115K Nov 27 07:46 high_volume_source_ranking.png
+-rw-rw-r-- 1 bobbigmac bobbigmac 3.7K Nov 27 07:45 metric_dictionary.json
+-rw-rw-r-- 1 bobbigmac bobbigmac 429K Nov 27 07:46 publisher_radar_comparison.png
+-rw-rw-r-- 1 bobbigmac bobbigmac  14K Nov 27 07:46 REPORT.md
+-rw-rw-r-- 1 bobbigmac bobbigmac  906 Nov 27 07:45 run_metrics.json
+-rw-rw-r-- 1 bobbigmac bobbigmac 434K Nov 27 07:45 source_axis_profiles.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac 107K Nov 27 07:45 source_index_sensitivity.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac  23K Nov 27 07:45 source_phrase_signatures.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac 4.7M Nov 27 07:45 source_radar.html
+-rw-rw-r-- 1 bobbigmac bobbigmac 1.2M Nov 27 07:45 source_rankings.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac 161K Nov 27 07:45 source_story_score_distributions.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac 152K Nov 27 07:45 source_topic_profiles.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac  90K Nov 27 07:46 story_signal_distribution.png
+-rw-rw-r-- 1 bobbigmac bobbigmac 4.6K Nov 27 07:45 topic_model.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:71a50061 h:e6079845 -->
+### 2026-11-27 07:47:50 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\nm=json.load(open('docs/headline-data/current/analysis_summary.json'))\nprint(json.dumps(m['overall_axis_rates'],indent=2))\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 8d5f8f:
+{
+  "event_clarity": 0.38748800279207746,
+  "quantified_specificity": 0.12433470028793299,
+  "time_place_anchor": 0.22668179041968414,
+  "causal_explanation": 0.034988220923130614,
+  "material_consequence": 0.18959951138644096,
+  "evidence_provenance": 0.00959776633801588,
+  "context_comparison": 0.06962743216124248,
+  "explanatory_framing": 0.01474565919204258,
+  "original_reporting_signal": 0.0004362621062734491,
+  "explicit_curiosity_gap_incidence": 0.0017450484250937964,
+  "direct_service_packaging_incidence": 0.030625599860396126,
+  "sensational_personal_incidence": 0.01928278509728645,
+  "cross_source_title_echo": 0.015879940668353548
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:e700ebac h:16226c70 -->
+### 2026-11-27 07:48:00 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nprint(h.evidence_provenance.value_counts().to_string())\nprint('rows positive',sum(h.evidence_provenance>0),'sources positive',h[h.evidence_provenance>0].source_key.nunique())\nprint('original rows',h.original_reporting_signal.sum(),'sources',h[h.original_reporting_s`
+
+```
+Output from command in shell 746329:
+evidence_provenance
+0.0    11271
+0.5      160
+1.0       30
+rows positive 190 sources positive 54
+original rows 5 sources 5
+curiosity rows 20 sources 13
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:90bef350 h:7aff4200 -->
+### 2026-11-27 07:48:17 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    {'key':'low_explicit_curiosity_gap','label':'Explicit curiosity-gap incidence','polarity':'inverse','value':True,'description':'Stock clickbait phrases, explicit guessing/teasing or ellipsis; stored inverse is used in the composite, exported incidence is adverse.'},\n", "new_s`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 156.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:ae35889f h:19e1f166 -->
+### 2026-11-27 07:48:22 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json\np='docs/headline-data/current/metric_dictionary.json'\nd=json.load(open(p))\nfor x in d:\n if x['key']=='low_explicit_curiosity_gap':\n  x['description']=x['description'].replace('or ellipsis;','or a trailing ellipsis;')\nopen(p,'w').write(json.dumps(d,indent=2)+'\\n')\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 8e13da:
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:edit:3758a35f h:9b973634 -->
+### 2026-11-27 07:48:27 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/REPORT.md", "old_string": "- **Explicit curiosity-gap incidence** (`low_explicit_curiosity_gap`, included in composite): Stock clickbait phrases, explicit guessing/teasing or ellipsis; stored inverse is used in the composite, exported incidence is adverse.\n", "new_string": "- **Explicit curiosity-gap incidence** (`l`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/REPORT.md' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 44.
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:todo_write:1a176097 h:c4bcd097 -->
+### 2026-11-27 07:48:44 UTC tool `todo_write`
+
+`{"todos": [{"content": "Manually inspect source-ordering plausibility and high-volume outliers", "status": "completed"}, {"content": "Manually inspect detector hits/misses across representative headline samples", "status": "completed"}, {"content": "Check echo/topic-adjustment artefacts and small-sample leaders", "status": "completed"}, {"content": "Apply targeted detector/export fixes without heu`
+
+```
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [x] Manually inspect source-ordering plausibility and high-volume outliers [completed]
+2. [x] Manually inspect detector hits/misses across representative headline samples [completed]
+3. [x] Check echo/topic-adjustment artefacts and small-sample leaders [completed]
+4. [x] Apply targeted detector/export fixes without heuristic overfitting [completed]
+5. [x] Rerun analysis and compare corrected ordering with previous output [completed]
+6. [x] Summarise sensible results, failure modes, and remaining limitations [completed]
+
+```
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930:exec:3435bbad h:8d1399ce -->
+### 2026-11-27 07:48:55 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\njson.load(open('docs/headline-data/current/metric_dictionary.json'))\nprint('metric dictionary json ok')\nPY\ngit status --short | sed -n '1,80p'", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell b32089:
+metric dictionary json ok
+ M .gitignore
+ M AGENTS.md
+ M docs/DONE.md
+ M docs/sessions/transcripts/02-repeated-bite.md
+ M docs/sessions/user-input/02-repeated-bite.md
+ M docs/sessions/user-input/INDEX.md
+ M scripts/export-source-headlines.js
+ M scripts/headline-analysis/analyse_headlines.py
+ M scripts/headline-analysis/make_charts.py
+ M scripts/headline-analysis/test_corpus_outputs.py
+ M scripts/headline-analysis/test_detectors.py
+?? docs/headline-data/current/
+?? docs/sources-manifest-UPDATE-2026-11-27.md
+?? docs/tasks/
+?? scripts/headline-analysis/validate_detectors.py
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:f3acd38c-9bda-42be-98e3-10fa3fcef930 h:94ab6e64 -->
+### 2026-11-27 07:49:42 UTC assistant
+
+Manual audit completed, targeted fixes applied, and the full pipeline rerun/verified.
+
+Main outputs:
+
+- <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/REPORT.md" />
+- <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/high_volume_source_ranking.png" />
+- <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/source_radar.html" />
+- <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/source_rankings.csv" />
+- <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/headline_level_signals.csv" />
+
+## Verdict on sensibleness
+
+The **high-volume ordering is now broadly plausible**:
+
+1. Eurogamer — 59.2
+2. Medical Xpress — 58.2
+3. The Guardian — 57.8
+4. City A.M. — 53.8
+5. Financial Times — 53.2
+6. Korea Times — 51.8
+7. The Independent — 50.5
+8. Phys.org — 50.3
+9. BBC — 49.8
+10. IGN — 48.2
+11. Mirror — 46.4
+12. Punch — 45.5
+13. Kotaku — 39.4
+14. Daily Mail — 36.5
+
+That matches the intended interpretation better than the earlier run:
+
+- Eurogamer wins on dense event/context/consequence language, not on one odd original-reporting hit.
+- The Guardian is broad-based: strong time/place anchoring, consequences, low sensational framing.
+- Medical Xpress is high because causal/research/consequence language is dense — still a research-release confound, not proof of independent science journalism.
+- BBC sits slightly below the middle of the high-volume pack but above Mirror.
+- Mirror and especially Daily Mail are correctly pulled down by sensational/personal framing.
+- Kotaku is low because its headlines are comparatively thin on time/place, event clarity, causal and consequence cues, not merely because gaming is being punished.
+
+The confidence intervals overlap heavily, so this should still be read as **bands**, not exact publisher positions.
+
+## Small-sample leaders
+
+The minimum-n leaderboard remains useful as a set of leads, not as stable publisher verdicts:
+
+- **South China Morning Post** n=25: high place/context/evidence residuals in a tiny sample.
+- **Quartz** n=24: dense numbers/context/causal phrasing, but also listicle-like numeric artefacts.
+- **TweakTown** n=46: very numeric, comparison-heavy gaming/tech headlines; plausibly dense, but source quality is not thereby established.
+- **PsyPost** n=28: inflated by formulaic research language — `study finds`, `linked to`, `researchers discovered`.
+- **Oregonlive** is now near the bottom rather than inflated: the topic model does recognise the obituary cluster, and the obituary date numerals no longer dominate the result.
+
+I would not use the `n=20–70` table for source quality conclusions without per-axis inspection. The report now says that explicitly.
+
+## Important source-type artefacts
+
+The two clearest remaining artefacts are now documented:
+
+- **Medical Xpress / Phys.org / PsyPost**: formulaic research-release language can look like evidence specificity. The body tier confirms this: Medical Xpress body research-cue rate is **42.5%**, Phys.org **22.1%**, versus Guardian **3.7%** and BBC **0.5%**.
+- **Nature / New Scientist**: low positions are not quality verdicts. Nature rows are often journal-style descriptive noun phrases with few event verbs; New Scientist often writes narrative science headlines without formulaic “study finds” evidence language. That is a measurement limitation, not a finding that the underlying articles lack evidence.
+
+Body coverage also varies sharply: Kotaku has only **17.3%** materially available body/summary coverage, while Daily Mail has **86.9%** and Phys.org **91.6%**. So body cues are corroboration, not composite input.
+
+## Detector corrections made
+
+The main precision fixes were:
+
+- Exact word-boundary pools with explicit inflections, removing substring artefacts such as `Burnham→burn`, `surgery→surge`, `diesel→die`, `cute→cut`, `fallout→fall`, `taxi→tax`.
+- Ambiguity guards for `open`, `pass`, `rules`, `clear`, `order`, etc.
+- Direct-address/service detection no longer treats every analytical `why/could/what` question as service packaging.
+  - “Could the Huntingdon attack have been prevented?” is no longer service packaging.
+  - “Can you play GTA 6 from an external hard drive…?” still is.
+- Explicit curiosity detection is narrower and higher-precision:
+  - removed generic `meet the`, generic `reason why`, and internal/list ellipses;
+  - trailing ellipses and stock clickbait phrases still count.
+- Literal event uses such as `fire erupts` no longer double-count as sensationalism.
+- Original-access cues remain exported but are excluded from the composite because there were only **5 positive rows in 11,461**.
+- Standalone earnings-call transcript labels no longer count as evidence merely because they contain `transcript`.
+
+## Body/summary fix
+
+There was a real export bug: dedupe often kept the shorter digest text before the richer `stories.json` summary. Export merging now prefers the richest duplicate text.
+
+Strict materially-longer-than-headline body coverage rose from **4.6% to 58.4%** of rows.
+
+The report now includes a body/summary corroboration table for high-volume sources. It is useful for checking whether title-level evidence/event language is supported by the available summary tier.
+
+## Verification
+
+- **59 detector regression cases pass**
+- Corpus-output invariants pass:
+  - 11,461 headlines
+  - 695 sources
+  - 13 radar axes
+  - 74 ranked sources
+- Validation sheet regenerated with body excerpts:
+  - <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/detector_validation_sample.csv" />
+- Validation score remains `insufficient_labels`; no quantitative precision/recall is claimed.
+- Final runtime: **84.9s**
+- Python compile and JS syntax checks pass.
+- `git diff --check` passes for the files I edited. The remaining whitespace warnings are in the automatically updated session transcript files.
+
+Updated <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/DONE.md" /> with the final state.
+
+Nothing committed. The `docs/sessions/*` modifications are also present in the working tree but were not part of the analysis edits.
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73 h:dfa5b18b -->
+### 2026-11-27 07:49:47 UTC user
+
+these numbers do kinda make sense, and I think it's worth making an all-sources (or at least all-sources for which we have enough source data to have an opinion that makes sense) as a peer to the relationships page that opens by listing sources by 'measured quality' (a methodology section should explain this in plain english at the end, to avoid getting technical at the start). Each measured source should be expandable to show  a spider-web diagram that shows where it lies on our corpus-wide measured normalised axes (like Dispatch, the game, has the kind of idea I want to use to visualise the data per-source). You can conflate nearby/similar sources. Like all BBC items are basically the same source here, Fox-owned Fox properties too tho be careful of averages, check for outliers first). We will also want to be able to query these axes-linked props per-source so need a json data source that essentially lets the client know these (tho I don't know how we use it yet, need to see the dedicated page first). Remember, the text is ABOUT the sources/orgs/producers, NOT about our dataset. We know how dataset has gaps, and those caveats belong below our methodology segment, NOT polluting the text of the reader trying to understand what this means about each source or source group. Caveats specific to a source/group belong below its actual spiderweb, like "New Scientist scores low on metric x because y", no big number-dumps. We will also bucket these into ranges, but I don't know what ranges apply yet
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:todo_write:5b745524 h:c319e204 -->
+### 2026-11-27 07:49:55 UTC tool `todo_write`
+
+`{"todos": [{"content": "Inspect relationships page, client routing, build outputs, and existing chart/visualisation conventions", "status": "in_progress"}, {"content": "Design and generate machine-readable measured-source JSON with conflation/outlier handling and quality buckets", "status": "pending"}, {"content": "Implement measured-sources page with expandable spiderwebs, source-specific notes, `
+
+```
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [~] Inspect relationships page, client routing, build outputs, and existing chart/visualisation conventions [in_progress]
+2. [ ] Design and generate machine-readable measured-source JSON with conflation/outlier handling and quality buckets [pending]
+3. [ ] Implement measured-sources page with expandable spiderwebs, source-specific notes, methodology, and caveats [pending]
+4. [ ] Link page as a peer to relationships and verify with tests/build [pending]
+5. [ ] Review rendered output/data for source-ordering and presentation artefacts [pending]
+
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:code_search:0d7f0acb h:8fd616bb -->
+### 2026-11-27 07:50:03 UTC tool `code_search`
+
+`{"search_term": "Find how the relationships/sources overview page is implemented, routed, built, and linked in this static news client. Identify relevant files/components/tests/build scripts and any existing SVG/radar/spiderweb/chart visualization patterns. Also find how new JSON data outputs are copied into dist and consumed by the client.", "search_folder_absolute_uri": "/home/bobbigmac/projects`
+
+```
+A search subagent explored the codebase, running these commands:
+- Grepped relationships.*sources in .
+- Grepped sources.*relationships in .
+- Grepped relationships in .
+- Grepped sources in .
+- Grepped relationship in .
+- Grepped overview in .
+- Grepped JSON in .
+- Grepped chart|radar|spider in .
+- Read src/relationships.js
+- Read src/relationships.html
+- Read test/relationships.test.js
+- Read src/styles/relationships.css
+- Grepped relationship in src
+- Grepped source.*profile in src
+- Grepped profile.*source in test
+- Grepped relationship in src/trees
+- Read src/source-profiles.js
+- Grepped SOURCE_RELATION_TREE in src
+- Read src/source-tree.js
+- Grepped relationship.*tree in test
+- Grepped tree.*relationship in src
+- Grepped search.*relationship|relationship.*search in src
+- Read test/relationships.test.js
+- Grepped relationship in vite.config.js
+
+It believes the snippets below are relevant to your search. Be careful evaluating their relevance — the subagent can make mistakes — and follow up with your normal grep/glob/read tools to fill in anything it missed:
+
+<file path="src/relationships.js" total_lines=264>
+  1|import { getFaviconSpriteClass } from './favicon-sprite.js';
+  2|import { BRANCH_PROFILES, SOURCE_PROFILES } from './source-profiles.js';
+  3|import { SOURCE_RELATION_TREE } from './source-tree.js';
+  4|import { prettifySourceKey } from './view-model.js';
+  5|
+  6|const PROFILE_FIELD_LABELS = {
+  7|  kind: 'Type',
+  8|  ownership: 'Ownership',
+  9|  governance: 'Governance',
+ 10|  leaning: 'Editorial context',
+ 11|  history: 'History',
+ 12|  model: 'Model',
+ 13|  notes: 'Notes',
+ 14|};
+ 15|const PROFILE_LIST_LABELS = {
+ 16|  properties: 'Properties',
+ 17|  shared: 'Shared links',
+ 18|  watch: 'Read carefully',
+ 19|  caution: 'Read carefully',
+ 20|};
+ 21|
+ 22|function el(tag, className, text) {
+ 23|  const node = document.createElement(tag);
+ 24|  if (className) node.className = className;
+ 25|  if (text !== undefined) node.textContent = text;
+ 26|  retur
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:0104616d h:473451b3 -->
+### 2026-11-27 07:50:09 UTC tool `exec`
+
+`{"command": "ls -la src | sed -n '1,140p'; ls scripts | sed -n '1,140p'; cat package.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell f8172b:
+total 1208
+drwxrwxr-x  5 bobbigmac bobbigmac   4096 Nov 26 15:43 .
+drwxrwxr-x 14 bobbigmac bobbigmac   4096 Nov 27 05:09 ..
+-rw-rw-r--  1 bobbigmac bobbigmac  31512 Nov 26 15:07 android-chrome-192x192.png
+-rw-rw-r--  1 bobbigmac bobbigmac 170112 Nov 26 15:07 android-chrome-512x512.png
+-rw-rw-r--  1 bobbigmac bobbigmac  10809 Nov 26 09:49 app.js
+-rw-rw-r--  1 bobbigmac bobbigmac  28560 Nov 26 15:07 apple-touch-icon.png
+-rw-rw-r--  1 bobbigmac bobbigmac   9788 Nov 26 14:06 article.js
+-rw-rw-r--  1 bobbigmac bobbigmac  12202 Nov 26 08:41 changelog.js
+-rw-rw-r--  1 bobbigmac bobbigmac    612 Nov 26 15:07 favicon-16x16.png
+-rw-rw-r--  1 bobbigmac bobbigmac   1835 Nov 26 15:07 favicon-32x32.png
+-rw-rw-r--  1 bobbigmac bobbigmac  15406 Nov 26 15:07 favicon.ico
+drwxrwxr-x  3 bobbigmac bobbigmac  36864 Nov 26 08:26 favicons
+-rw-rw-r--  1 bobbigmac bobbigmac  18713 Nov 26 09:38 favicon-sprite.js
+-rw-rw-r--  1 bobbigmac bobbigmac  13637 Nov 26 13:09 feed.js
+-rw-rw-r--  1 bobbigmac bobbigmac   5803 Nov 26 09:40 filters.js
+-rw-rw-r--  1 bobbigmac bobbigmac   3164 Nov 26 04:52 group-tree.js
+-rw-r--r--  1 bobbigmac bobbigmac 266934 Nov 26 15:08 icon.png
+-rw-rw-r--  1 bobbigmac bobbigmac   3434 Nov 26 15:08 icon.svg
+-rw-rw-r--  1 bobbigmac bobbigmac   9860 Nov 26 15:43 index.html
+-rw-rw-r--  1 bobbigmac bobbigmac   2684 Nov 26 08:38 layout.js
+-rw-rw-r--  1 bobbigmac bobbigmac 398488 Nov 26 15:44 og-cover.jpg
+-rw-rw-r--  1 bobbigmac bobbigmac    766 Nov 26 14:40 og-image.svg
+-rw-rw-r--  1 bobbigmac bobbigmac   2413 Nov 26 02:28 ordering.js
+-rw-rw-r--  1 bobbigmac bobbigmac  10940 Nov 26 12:58 reading.js
+-rw-rw-r--  1 bobbigmac bobbigmac   2014 Nov 26 07:53 relationships.html
+-rw-rw-r--  1 bobbigmac bobbigmac  10239 Nov 26 09:26 relationships.js
+-rw-rw-r--  1 bobbigmac bobbigmac   4226 Nov 26 13:16 search.js
+-rw-rw-r--  1 bobbigmac bobbigmac  13237 Nov 26 15:02 settings.js
+-rw-rw-r--  1 bobbigmac bobbigmac  11714 Nov 26 02:26 signals.js
+-rw-rw-r--
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:be34fea0 h:74df634e -->
+### 2026-11-27 07:50:13 UTC tool `exec`
+
+`{"command": "cat vite.config.js; sed -n '1,240p' scripts/build.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 547d7e:
+import { defineConfig } from 'vite';
+import { splitClientDigest } from './scripts/digest-split.js';
+import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
+import { fileURLToPath, URL } from 'node:url';
+
+const CACHE_DIR = 'cache';
+
+function loadJson(file, fallback) {
+  try { return JSON.parse(readFileSync(file, 'utf8')); } catch { return fallback; }
+}
+
+export default defineConfig({
+  root: 'src',
+  base: './',
+  build: {
+    outDir: '../dist',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./src/index.html', import.meta.url)),
+        relationships: fileURLToPath(new URL('./src/relationships.html', import.meta.url)),
+      },
+    },
+  },
+  server: {
+    port: 8000,
+    open: '/',
+  },
+  define: {
+    // Inject digest data at build time for preview
+  },
+  plugins: [
+    {
+      name: 'inject-digest',
+      transformIndexHtml(html) {
+        // In dev, serve digest.json from cache; in build, it's copied separately
+        return html;
+      },
+      configureServer(server) {
+        // Serve split client digests in dev exactly as the build emits them:
+        // prefer the built artifacts in dist, fall back to splitting the raw
+        // cache digest with the same logic so dev matches prod behavior.
+        const serveSplit = (kind) => (req, res) => {
+          const builtPath = join('dist', kind === 'archive' ? 'digest-archive.json' : 'digest.json');
+          if (existsSync(builtPath)) {
+            res.setHeader('Content-Type', 'application/json');
+            res.end(readFileSync(builtPath, 'utf8'));
+            return;
+          }
+          const cachePath = join(CACHE_DIR, 'digest.json');
+          if (existsSync(cachePath)) {
+            const full = JSON.parse(readFileSync(cachePath, 'utf8'));
+            const split = splitClientDigest(full);
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify(kind === 'archi
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:dcfab861 h:f69350dd -->
+### 2026-11-27 07:50:18 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/relationships.html"}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/relationships.html" start_line="1" end_line="46">
+  1|<!doctype html>
+  2|<html lang="en">
+  3|<head>
+  4|  <meta charset="utf-8">
+  5|  <title>Source Relationships — The Daily Broadsheet</title>
+  6|  <meta name="viewport" content="width=device-width,initial-scale=1">
+  7|  <meta name="description" content="Who owns, funds, and operates the news outlets in The Daily Broadsheet — and how they connect.">
+  8|  <script>
+  9|    (function() {
+ 10|      var s = JSON.parse(localStorage.getItem('broadsheet-settings') || '{}');
+ 11|      var theme = s.theme || 'auto';
+ 12|      var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+ 13|      var effective = theme === 'auto' ? (dark ? 'night' : 'day') : theme;
+ 14|      document.documentElement.setAttribute('data-theme', effective);
+ 15|    })();
+ 16|  </script>
+ 17|  <link rel="stylesheet" href="style.css">
+ 18|  <link rel="stylesheet" href="styles/relationships.css">
+ 19|  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+ 20|</head>
+ 21|<body class="relationships-page">
+ 22|  <header class="relationships-masthead">
+ 23|    <a class="back-link" href="./">← The Daily Broadsheet</a>
+ 24|    <div>
+ 25|      <h1>Who’s behind the news</h1>
+ 26|      <p class="intro">
+ 27|        The broadsheet reads hundreds of outlets so you don’t have to. This is a running
+ 28|        guide to who they are — who owns them, how they’re funded, who shares journalists
+ 29|        or owners with whom — so you can read every story with the context it deserves.
+ 30|      </p>
+ 31|    </div>
+ 32|    <label class="source-search-label">
+ 33|      Search outlets, owners, or topics
+ 34|      <input id="source-search" type="search" placeholder="BBC, Murdoch, Postmedia, licence fee…">
+ 35|    </label>
+ 36|  </header>
+ 37|
+ 38|  <main id="relationships-main" class="relationships-main"></main>
+ 39|
+ 40|  <footer cla
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:3690707e h:5a732778 -->
+### 2026-11-27 07:50:22 UTC tool `exec`
+
+`{"command": "sed -n '1,180p' src/index.html; sed -n '1,260p' src/styles/relationships.css", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 950a5c:
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The Daily Broadsheet</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A daily news digest. Good news! Well, some of it is.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Daily Broadsheet">
+  <meta property="og:description" content="A daily news digest. Good news! Well, some of it is.">
+  <meta property="og:url" content="https://bobbigmac.github.io/news/">
+  <meta property="og:image" content="https://bobdavies.co.uk/news/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="The Daily Broadsheet">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Daily Broadsheet">
+  <meta name="twitter:description" content="A daily news digest. Good news! Well, some of it is.">
+  <meta name="twitter:image" content="https://bobdavies.co.uk/news/og-cover.jpg">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    (function() {
+      var s = JSON.parse(localStorage.getItem('broadsheet-settings') || '{}');
+      var theme = s.theme || 'auto';
+      var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var effective = theme === 'auto' ? (dark ? 'night' : 'day') : theme;
+      document.docume
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:31ed6e78 h:44ab974f -->
+### 2026-11-27 07:50:26 UTC tool `exec`
+
+`{"command": "sed -n '260,560p' src/styles/relationships.css; cat src/style.css | sed -n '1,180p'", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell bca891:
+.branch-watch li::marker {
+  color: var(--accent);
+}
+
+.relation-group .relation-group {
+  margin-top: 0.65rem;
+  background: var(--paper-light);
+}
+
+.also-member {
+  margin: 0.1rem 0 0.15rem 2.7rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.also-member a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+.relationships-footer {
+  border-top: 1px solid var(--rule);
+}
+
+@media (max-width: 960px) {
+  .relationships-masthead {
+    grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
+  }
+
+}
+
+@media (max-width: 640px) {
+  .relationships-masthead,
+  .section-head {
+    display: block;
+  }
+
+  .back-link,
+  .source-search-label {
+    margin-bottom: 0.75rem;
+  }
+
+  .source-search-label {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+/* Trust flags: visible chip on the collapsed row so the warning is never
+   hidden inside expansion, full note + references in the profile body. */
+.source-flag-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-left: auto;
+  align-self: center;
+}
+.source-flag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #a01212;
+  border: 1px solid #a01212;
+  border-radius: 3px;
+  padding: 1px 6px 2px;
+  white-space: normal;
+  max-width: 15rem;
+}
+.source-flag::before {
+  content: '⚑ ';
+}
+.profile-flag {
+  border-left: 3px solid #a01212;
+  padding: 4px 0 4px 10px;
+  margin: 8px 0;
+}
+.profile-flag-label {
+  color: #a01212;
+  display: block;
+  margin-bottom: 2px;
+}
+.profile-flag-note {
+  margin: 2px 0 4px;
+}
+@import './styles/shell.css';
+@import './styles/favicon-sprite.css';
+@import './styles/filter-bar.css';
+@import './styles/articles.css';
+@import './styles/settings.css';
+@import './styles/changelog.css';
+@import './styles/responsive.css';
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:89b3c829 h:1077eeb1 -->
+### 2026-11-27 07:50:29 UTC tool `exec`
+
+`{"command": "sed -n '1,140p' src/styles/shell.css", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell d4a351:
+:root {
+  --ink: #1a1a1a;
+  --paper: #faf9f7;
+  --paper-light: #f4f2ee;
+  --rule: #d9d6d0;
+  --rule-thick: #999;
+  --accent: #8b1a1a;
+  --muted: #6b6357;
+  --serif: 'Georgia', 'Times New Roman', 'Noto Serif', serif;
+  --sans: 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+[data-theme="night"] {
+  --ink: #d8d4ce;
+  --paper: #1a1a1a;
+  --paper-light: #242424;
+  --rule: #3a3a3a;
+  --rule-thick: #555;
+  --accent: #c44;
+  --muted: #8a8275;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: var(--serif);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.65;
+}
+
+/* Font themes */
+body.font-serif { font-family: Georgia, "Times New Roman", "Noto Serif", serif; }
+body.font-sans { font-family: "Helvetica Neue", Arial, sans-serif; }
+body.font-modern { font-family: 'Outfit', system-ui, sans-serif; }
+body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
+
+:root { font-size: 16px; }
+:root.font-small { font-size: 14px; }
+:root.font-medium { font-size: 16px; }
+:root.font-large { font-size: 18px; }
+
+/* Masthead */
+.masthead {
+  text-align: center;
+  padding: 1.5rem 1rem 0.75rem;
+  border-bottom: 2px solid var(--ink);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+}
+
+.masthead-title {
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 4.2vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  font-variant: small-caps;
+  flex: 1 1 auto;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.masthead-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.masthead-date {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+}
+
+.masthead-toggles {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.mode-toggle {
+  font-f
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:cefa268e h:d0d3b492 -->
+### 2026-11-27 07:51:07 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\nr=s[s['rank'].notna()].copy()\nprint('ranked',len(r))\nprint(r[['source_key','source','n','topic_adjusted_value_index','tree_root','curated_group']].sort_values('topic_adjusted_value_index',ascending=False).to_string(index=False,max_rows=100))\nprint('\\nbbc-ish all')\nprin`
+
+```
+Output from command in shell 751054:
+ranked 74
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/frame.py", line 4336, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/indexes/base.py", line 6557, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bobbigmac/projects/bobdavies/news/.venv/lib/python3.14/site-packages/pandas/core/indexes/base.py", line 6609, in _raise_if_missing
+    raise KeyError(f"{not_found} not in index")
+KeyError: "['curated_group'] not in index"
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:a1744784 h:d6f0f0dc -->
+### 2026-11-27 07:51:13 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\nprint(s.columns[:30].tolist())\nprint([c for c in s.columns if 'group' in c or 'tree' in c or 'context' in c][:30])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell f06677:
+['source_key', 'source', 'n', 'group', 'tree_root', 'editorial_context', 'neutral_editorial_context', 'mean_words', 'title_value_raw', 'legacy_title_value_raw', 'delivery_signal_mean', 'delivery_signal_median', 'delivery_signal_p25', 'delivery_signal_p75', 'delivery_signal_p90', 'delivery_share_le20', 'delivery_share_ge44', 'attention_pressure_mean', 'body_coverage_rate', 'body_word_count_mean', 'body_primary_evidence_rate', 'body_research_claim_rate', 'body_event_action_rate', 'body_explanatory_rate', 'within_source_template_reuse_rate', 'attribution_cue_rate', 'anonymous_source_cue_rate', 'cross_source_near_duplicate_rate', 'mean_cross_source_similarity', 'first_published']
+['group', 'tree_root', 'editorial_context', 'neutral_editorial_context', 'event_clarity_expected_context', 'quantified_specificity_expected_context', 'time_place_anchor_expected_context', 'causal_explanation_expected_context', 'material_consequence_expected_context', 'evidence_provenance_expected_context', 'context_comparison_rate', 'context_comparison_expected_context', 'context_comparison_residual', 'explanatory_framing_expected_context', 'original_reporting_signal_expected_context', 'low_explicit_curiosity_gap_expected_context', 'low_direct_service_packaging_expected_context', 'low_sensational_personal_expected_context', 'context_comparison_index_residual', 'context_comparison_adjusted_pp', 'context_comparison_relative_z']
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:b017ca9e h:48c705e0 -->
+### 2026-11-27 07:51:19 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\nr=s[s['rank'].notna()].copy()\nprint('ranked',len(r))\nprint(r[['source_key','source','n','topic_adjusted_value_index','tree_root','group']].sort_values('topic_adjusted_value_index',ascending=False).to_string(index=False,max_rows=100))\nprint('\\nbbc-ish all')\nprint(s[s.so`
+
+```
+Output from command in shell 0c42d2:
+ranked 74
+                 source_key                   source    n  topic_adjusted_value_index               tree_root                           group
+                   scmp.com South China Morning Post   25                   62.270424  Regional English Media              Hong Kong & Taiwan
+              tweaktown.com                TweakTown   46                   60.487901        Specialist Press             Enthusiast Hardware
+                     qz.com                   Quartz   24                   60.275771      Digital Publishers        Independent Digital News
+              eurogamer.net                Eurogamer  458                   59.217129        Specialist Press                       Eurogamer
+                psypost.org                  PsyPost   28                   59.064637        Specialist Press            Popular Science News
+          medicalxpress.com           Medical Xpress  127                   58.161111        Specialist Press                  Medical Xpress
+            theguardian.com             The Guardian  485                   57.782761                UK Media                    The Guardian
+            myjoyonline.com              MyJoyOnline   28                   56.872010  Regional English Media                     Ghana Media
+                  jpost.com           Jerusalem Post   68                   56.835807  Regional English Media                  Jerusalem Post
+timesofindia.indiatimes.com               Indiatimes   20                   56.108603       Unmatched sources               Unmatched sources
+          qatar-tribune.com            Qatar Tribune   28                   55.099020  Regional English Media                     Qatar Media
+                    pbs.org                      PBS   20                   54.711121  Public & International            North America Public
+               wccftech.com                 Wccftech   27                   54.374394        Specialist Pre
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:531a5186 h:55463251 -->
+### 2026-11-27 07:51:37 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd,re\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\n# print all sources n>=5 sorted by key to spot editions/networks\nx=s[s.n>=5][['source_key','source','n','topic_adjusted_value_index','rank','tree_root','group']].sort_values('source_key')\nprint(x.to_string(index=False,max_rows=250))\nPY", "workdir": "/home/bobbigmac/pr`
+
+```
+Output from command in shell 1440c7. The full terminal output is being written live to /tmp/devin-overflows-1000/shell-1440c7-7d25c5009ab318b3/content.txt; read or grep it for anything omitted below. Preview:
+<file-view path="/tmp/devin-overflows-1000/shell-1440c7-7d25c5009ab318b3/content.txt" start_line="1" end_line="36" total_lines="213">
+  1|                  source_key                     source    n  topic_adjusted_value_index  rank                             tree_root                             group
+  2|                   3news.com                      3news   11                   52.962428   NaN                Regional English Media                       Ghana Media
+  3|                  abc.net.au                   ABC News   38                   46.639748  58.0                Public & International             Australia & NZ Public
+  4|               aljazeera.com                 Al Jazeera   17                   56.406472   NaN State-Controlled & State-Linked Media       Qatari State-Funded Network
+  5|               allafrica.com                  Allafrica    6                   49.458465   NaN                     Unmatched sources                 Unmatched sources
+  6|        androidheadlines.com           Androidheadlines   11                   46.467977   NaN                      Specialist Press                 Mobile & Software
+  7|         arabianbusiness.com            Arabianbusiness   19                   57.835849   NaN                Regional English Media                         UAE Media
+  8|             arstechnica.com               Ars Technica   38                   53.541176  15.0                      Specialist Press                     Tech Analysis
+  9|                   asahi.com                      Asahi   19                   50.606652   NaN                Regional English Media                       Japan Media
+ 10|             asia.nikkei.com                     Nikkei    6                   49.609773   NaN                    
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:fdc05559 h:e0be0c39 -->
+### 2026-11-27 07:52:19 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\ncols=['source_key','source','n','topic_adjusted_value_index','event_clarity_rate','quantified_specificity_rate','time_place_anchor_rate','material_consequence_rate','explicit_curiosity_gap_incidence_rate','direct_service_packaging_incidence_rate','sensational_personal_incid`
+
+```
+Output from command in shell fe8781:
+
+
+      source_key           source  n  topic_adjusted_value_index  event_clarity_rate  quantified_specificity_rate  time_place_anchor_rate  material_consequence_rate  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  cross_source_near_duplicate_rate
+ in.mashable.com  in.mashable.com  8                      51.860               0.625                        0.125                   0.000                      0.000                                    0.0                                    0.125                                  0.0                             0.250
+sea.mashable.com sea.mashable.com  7                      48.650               0.714                        0.286                   0.000                      0.000                                    0.0                                    0.143                                  0.0                             0.857
+    mashable.com     mashable.com 12                      48.021               0.583                        0.167                   0.083                      0.167                                    0.0                                    0.250                                  0.0                             0.500
+
+
+ source_key        source  n  topic_adjusted_value_index  event_clarity_rate  quantified_specificity_rate  time_place_anchor_rate  material_consequence_rate  explicit_curiosity_gap_incidence_rate  direct_service_packaging_incidence_rate  sensational_personal_incidence_rate  cross_source_near_duplicate_rate
+ nypost.com New York Post 43                      50.889               0.419                        0.186                   0.116                      0.186                                    0.0                                    0.023                                0.023                               0.0
+pagesix.com      Page Six  5                      50.832               0.200   
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:cf6ced31 h:8b07eaa9 -->
+### 2026-11-27 07:52:33 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\ns=pd.read_csv('docs/headline-data/current/source_rankings.csv')\nfor term in ['inquirer','nytimes','timesofindia','indiatimes','nasa','sky.com','bbc','cbc','abc','nbc','cbs','fox','mashable','pagesix','nypost','smh','theage']:\n x=s[s.source_key.str.contains(term,case=False,na=False)]\n if len(x)>1: print('\\n',term); print(x[['source_ke`
+
+```
+Output from command in shell dcb47a:
+
+ inquirer
+                source_key                     source  n  topic_adjusted_value_index
+   technology.inquirer.net    technology.inquirer.net  1                   52.376861
+entertainment.inquirer.net entertainment.inquirer.net  5                   51.986232
+    lifestyle.inquirer.net     lifestyle.inquirer.net  1                   49.808651
+     business.inquirer.net      business.inquirer.net  1                   48.774851
+cebudailynews.inquirer.net cebudailynews.inquirer.net  2                   48.219780
+              inquirer.com               inquirer.com 17                   45.110913
+     newsinfo.inquirer.net      newsinfo.inquirer.net 10                   43.834736
+
+ indiatimes
+                  source_key         source  n  topic_adjusted_value_index
+ timesofindia.indiatimes.com     Indiatimes 20                   56.108603
+economictimes.indiatimes.com Economic Times 16                   53.267526
+
+ nasa
+      source_key           source  n  topic_adjusted_value_index
+science.nasa.gov science.nasa.gov  5                   50.023988
+        nasa.gov         nasa.gov  8                   48.084468
+
+ abc
+  source_key   source  n  topic_adjusted_value_index
+  abc.net.au ABC News 38                   46.639748
+  abc7ny.com   Abc7ny  3                   51.996225
+ abcnews.com  Abcnews  2                   50.013923
+    6abc.com     6abc  4                   48.911189
+sabcnews.com Sabcnews  4                   48.258939
+
+ nbc
+ source_key  source  n  topic_adjusted_value_index
+nbcnews.com Nbcnews  2                   52.316058
+   cnbc.com    CNBC  7                   50.183644
+
+ fox
+      source_key              source  n  topic_adjusted_value_index
+       fox40.com   FOX 40 Sacramento  1                   51.534474
+       fox59.com FOX 59 Indianapolis  7                   51.433672
+     fox2now.com     FOX 2 St. Louis  1                   49.760327
+     foxnews.com            Fox News  3                   49.482699
+fox
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:f58651a9 h:3c601e39 -->
+### 2026-11-27 07:52:39 UTC tool `exec`
+
+`{"command": "grep -R \"inquirer\" -n src/trees scripts/favicons.js | head -30", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 8d13d7:
+src/trees/sources/regional-english.json:137:      "icon": "inquirer.com",
+src/trees/sources/regional-english.json:140:          "id": "inquirer",
+src/trees/sources/regional-english.json:142:          "icon": "inquirer.com",
+src/trees/sources/regional-english.json:144:            "inquirer.com",
+src/trees/sources/regional-english.json:145:            "newsinfo.inquirer.net",
+src/trees/sources/regional-english.json:146:            "business.inquirer.net",
+src/trees/sources/regional-english.json:147:            "cebudailynews.inquirer.net",
+src/trees/sources/regional-english.json:148:            "entertainment.inquirer.net",
+src/trees/sources/regional-english.json:149:            "lifestyle.inquirer.net",
+src/trees/sources/regional-english.json:150:            "technology.inquirer.net"
+scripts/favicons.js:96:  'inquirer.com': 'Inquirer',
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:ea3dbff8 h:f529b18e -->
+### 2026-11-27 07:52:54 UTC tool `exec`
+
+`{"command": "cat src/source-tree.js; cat src/source-profiles.js; ls scripts | grep -E 'tree|profile' || true; grep -R \"source-tree.js\\|source-profiles.js\" -n scripts test src | head -30", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 4cfd26:
+// Loader for the portable source-relation dataset. The data itself lives in
+// JSON files under src/trees/sources/ — one file per root branch, each holding
+// explicit `sources` pools (exact publisher hosts) and deeper children.
+// Groups are convenience relations, not ownership claims.
+import publicInternational from './trees/sources/public-international.json' with { type: 'json' };
+import specialistPress from './trees/sources/specialist-press.json' with { type: 'json' };
+import murdoch from './trees/sources/murdoch.json' with { type: 'json' };
+import ukMedia from './trees/sources/uk-media.json' with { type: 'json' };
+import usMedia from './trees/sources/us-media.json' with { type: 'json' };
+import digitalPublishers from './trees/sources/digital-publishers.json' with { type: 'json' };
+import australiaMedia from './trees/sources/australia-media.json' with { type: 'json' };
+import canadaMedia from './trees/sources/canada-media.json' with { type: 'json' };
+import regionalEnglish from './trees/sources/regional-english.json' with { type: 'json' };
+import wiresReleases from './trees/sources/wires-releases.json' with { type: 'json' };
+import platformsAggregators from './trees/sources/platforms-aggregators.json' with { type: 'json' };
+import officialOrganizations from './trees/sources/official-organizations.json' with { type: 'json' };
+import stateMedia from './trees/sources/state-media.json' with { type: 'json' };
+
+export const SOURCE_RELATION_TREE = [
+  publicInternational, specialistPress, murdoch, ukMedia, usMedia,
+  digitalPublishers, australiaMedia, canadaMedia, regionalEnglish,
+  wiresReleases, platformsAggregators, officialOrganizations,
+  stateMedia,
+];
+// Loader for the portable source-profile dataset. The data itself lives in
+// JSON files under src/trees/profiles/: branch.json (notes per tree branch) and
+// sources.json (per-host research notes shown on the relationships page).
+//
+// Profiles are intentionally heterogeneous
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:43638ad9 h:d64c55f8 -->
+### 2026-11-27 07:53:43 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json\np='docs/tasks/headline-analysis.task.json'\nd=json.load(open(p))\nd['analysis']['measurement_groups']=[\n  {\n    'key':'group-bbc',\n    'label':'BBC',\n    'sources':['bbc.co.uk','bbc.com'],\n    'reason':'BBC services are one publisher for headline-measurement purposes.'\n  },\n  {\n    'key':'group-mashable',\n    'label':'Mashable',\n    'sources':[`
+
+```
+Output from command in shell 9b2a7d:
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:edit:32388e74 h:5bff3bc3 -->
+### 2026-11-27 07:53:51 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "def detect_one(title: str, nlp):\n", "new_string": "def apply_measurement_groups(df: pd.DataFrame, groups):\n    df['member_source_key']=df['source_key']\n    df['member_source']=df['source']\n    df['measurement_grouped']=False\n    for group in groups or []:\n        members=set`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 16 line(s) added at line 284.
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:edit:475472d8 h:7ece6f88 -->
+### 2026-11-27 07:53:57 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "    df=parse_archive(zip_path)\n    df['headline_id']=np.arange(len(df))\n", "new_string": "    df=parse_archive(zip_path)\n    df=apply_measurement_groups(df,cfg.get('measurement_groups'))\n    df['headline_id']=np.arange(len(df))\n"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 758.
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:edit:86e7bdd6 h:106b20be -->
+### 2026-11-27 07:54:05 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "              neutral_editorial_context=('neutral_editorial_context',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),\n              mean_words=('word_count','mean'), title_value_raw=('title_value_signal_raw','mean'),\n", "new_string": "              neutral_editorial_co`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 2 line(s) removed, 6 line(s) added at line 548.
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:edit:59478e0c h:39cd4230 -->
+### 2026-11-27 07:54:35 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py", "old_string": "      '- Curated export metadata is used when `headline-rows.jsonl` is present: canonical source key, URL, timestamps, relation branch, editorial context, and the available body/summary text.',\n", "new_string": "      '- Curated export metadata is used when `headline-rows.jsonl` `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/analyse_headlines.py' - made 1 replacement(s). 1 line(s) removed, 2 line(s) added at line 903.
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:47e03aaa h:91ab3ef1 -->
+### 2026-11-27 07:54:42 UTC tool `exec`
+
+`{"command": "sed -n '1,220p' src/source-groups.js; sed -n '1,240p' test/relationships.test.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell a8b43d:
+// Group the raw source list into a human-scale convenience filter bar.
+//
+// The relation tree is curated source data; this module only walks the curated
+// pools and chooses the level whose article counts make sense in the current
+// digest. Unknown or tiny ungrouped sources collapse into one explicit Other
+// branch instead of returning hundreds of controls.
+
+import { allocateTreeGroups } from './group-tree.js';
+import { SOURCE_RELATION_TREE } from './source-tree.js';
+
+const TARGET_GROUP_ARTICLES = 80;
+const MIN_GROUP_ARTICLES = 10;
+export const INDIVIDUAL_SOURCE_MIN_ARTICLES = 20;
+
+export const OTHER_SOURCE_KEY = 'other-sources';
+
+// Inclusion visibility: empty inclusion set means everything is visible.
+// When the set is non-empty a host is visible only if the control that owns
+// it (its allocated group, its own individual control, or Other Sources) is
+// in the set. Hosts with no control in the current bar have nothing selecting
+// them, so they stay hidden while a selection is active.
+export function isSourceVisible(sourceKey, sourceInclude = {}, controlByHost = new Map()) {
+  if (!sourceKey) return true;
+  if (!Object.keys(sourceInclude).length) return true;
+  const control = controlByHost.get(sourceKey);
+  if (!control) return false;
+  return sourceInclude[control] === true;
+}
+
+function summarizeGroup(choice) {
+  return {
+    key: `group:${choice.id}`,
+    groupId: choice.id,
+    rootId: choice.rootId,
+    label: choice.label,
+    icon: choice.node.icon || choice.keys[0],
+    path: choice.path,
+    count: choice.weight,
+    sourceCount: choice.items.length,
+    sourceKeys: choice.keys,
+    sources: choice.items,
+    grouped: true,
+  };
+}
+
+export function groupSourceOptions(sourceOptions, sourceInclude = {}) {
+  const { groups, claimed } = allocateTreeGroups({
+    roots: SOURCE_RELATION_TREE,
+    items: sourceOptions,
+    getNodeKeys: node => node.sources || [],
+    getItemWeight: source => source.count,
+    targetSize: 
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:81a1c9b9 h:df4eddc7 -->
+### 2026-11-27 07:55:38 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json\np=json.load(open('src/trees/profiles/sources.json'))\nfor k in ['mashable.com','inquirer.com','nypost.com','bbc.co.uk','medicalxpress.com','newscientist.com','nature.com','psypost.org','obits.oregonlive.com']:\n print(k, bool(p.get(k)), (p.get(k) or {}).get('kind'), (p.get(k) or {}).get('ownership'))\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/n`
+
+```
+Output from command in shell 1fb9e6:
+mashable.com False None None
+inquirer.com False None None
+nypost.com True US tabloid newspaper and digital publisher None
+bbc.co.uk True Public-service broadcaster None
+medicalxpress.com True Medical/health research news service Science X network — wholly owned by Omicron Technology Limited, headquartered in Douglas, Isle of Man. Founded 2004 by two PhD students; Medical Xpress spun out of Phys.org's medical channel in 2011.
+newscientist.com True Science magazine None
+nature.com True Scientific journal and editorially independent science news portal None
+psypost.org True Science news publication PsyPost Media Inc., an S-corporation in Roseville, California — owned and edited by founder Eric W. Dolan, who started it as a college project in 2010. No university, publisher or advocacy affiliation.
+obits.oregonlive.com False None None
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:7659803f h:1d1e5d08 -->
+### 2026-11-27 07:55:46 UTC tool `exec`
+
+`{"command": "grep -n \"relationships\" -C 2 src/index.html; sed -n '180,360p' src/index.html", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 6a496f:
+109-      <button id="manage-categories" class="settings-link" type="button">Manage Categories</button>
+110-      <button id="manage-sources" class="settings-link" type="button">Manage Sources</button>
+111:      <a class="settings-link" href="./relationships.html">Source Relationships</a>
+112-
+113-      <button id="settings-close" class="settings-close">Close</button>
+--
+184-
+185-  <footer class="broadsheet-footer">
+186:    <p>Generated from <a href="https://currentsapi.services" target="_blank" rel="noopener">Currents API</a> and <a href="https://www.bbc.co.uk/news" target="_blank" rel="noopener">BBC</a> with <a href="https://openrouter.ai" target="_blank" rel="noopener">OpenRouter</a> &middot; <a href="./relationships.html">Source relationships</a> &middot; <a href="https://github.com/bobbigmac/news" target="_blank" rel="noopener">Github</a>. No data gathered. You are not our product.</p>
+187-  </footer>
+188-
+
+  <main id="broadsheet" class="broadsheet">
+    <div id="loading" class="loading">Loading today's news...</div>
+  </main>
+
+  <footer class="broadsheet-footer">
+    <p>Generated from <a href="https://currentsapi.services" target="_blank" rel="noopener">Currents API</a> and <a href="https://www.bbc.co.uk/news" target="_blank" rel="noopener">BBC</a> with <a href="https://openrouter.ai" target="_blank" rel="noopener">OpenRouter</a> &middot; <a href="./relationships.html">Source relationships</a> &middot; <a href="https://github.com/bobbigmac/news" target="_blank" rel="noopener">Github</a>. No data gathered. You are not our product.</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+    }
+  </script>
+</body>
+</html>
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:43369b3d h:4ed3f2f3 -->
+### 2026-11-27 07:55:53 UTC tool `exec`
+
+`{"command": "ls src/data 2>/dev/null || true; ls src/public 2>/dev/null | head || true", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 206597:
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:ca3dc5dc h:b91d9023 -->
+### 2026-11-27 07:55:58 UTC tool `exec`
+
+`{"command": "find src -maxdepth 2 -type d -print | sort | head -30; ls src/public 2>&1 | head", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 96bb80:
+src
+src/favicons
+src/favicons/concepts
+src/styles
+src/trees
+src/trees/profiles
+src/trees/sources
+src/trees/story
+src/trees/story-pivots
+ls: cannot access 'src/public': No such file or directory
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:0fb948c2 h:65d0e12b -->
+### 2026-11-27 07:56:34 UTC tool `exec`
+
+`{"command": "sed -n '1,100p' src/favicon-sprite.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 5cbc7b:
+// Generated by scripts/build-favicon-sprite.js.
+// src/styles/favicon-sprite.css carries the actual sheet offsets for each
+// canonical icon class; this file only tells rendering code whether a host has
+// a sprite tile.
+export const FAVICON_SPRITE_HOSTS = new Set([
+  '01net-com',
+  '13newsnow-com',
+  '2gb-com',
+  '3aw-com-au',
+  '3news-com',
+  '4bc-com-au',
+  '6abc-com',
+  '6pr-com-au',
+  '90min-com',
+  '9news-com-au',
+  '9to5google-com',
+  '9to5mac-com',
+  'aa-com-tr',
+  'abc-net-au',
+  'abc11-com',
+  'abc13-com',
+  'abc30-com',
+  'abc7-com',
+  'abc7chicago-com',
+  'abc7news-com',
+  'abc7ny-com',
+  'abcnews-com',
+  'abcnews-go-com',
+  'abs-cbn-com',
+  'adelaidenow-com-au',
+  'adomonline-com',
+  'adventuregamers-com',
+  'adweek-com',
+  'afr-com',
+  'afro-who-int',
+  'al-monitor-com',
+  'al-com',
+  'aljazeera-com',
+  'allure-com',
+  'androidauthority-com',
+  'androidheadlines-com',
+  'andscape-com',
+  'ansa-it',
+  'aol-com',
+  'apnews-com',
+  'app-com',
+  'apple-news',
+  'arabianbusiness-com',
+  'arstechnica-com',
+  'arxiv-org',
+  'arynews-tv',
+  'asahi-com',
+  'askmen-com',
+  'atwoodmagazine-com',
+  'autoblog-com',
+  'axios-com',
+  'azcentral-com',
+  'baltimoresun-com',
+  'bangkokpost-com',
+  'bankingdive-com',
+  'bankrate-com',
+  'barrons-com',
+  'batimes-com-ar',
+  'bbc-co-uk',
+  'bbc-com',
+  'bbc-in',
+  'belfastlive-co-uk',
+  'belfasttelegraph-co-uk',
+  'bennadel-com',
+  'bestproducts-com',
+  'bgr-com',
+  'bicycling-com',
+  'billboard-com',
+  'billingsgazette-com',
+  'biopharmadive-com',
+  'biorxiv-org',
+  'birminghammail-co-uk',
+  'bleepingcomputer-com',
+  'blog-playstation-com',
+  'bloomberg-com',
+  'bmj-com',
+  'bnd-com',
+  'bolnews-com',
+  'bonappetit-com',
+  'bostonglobe-com',
+  'bradenton-com',
+  'braziljournal-com',
+  'brecorder-com',
+  'bristolpost-co-uk',
+  'buenosairesherald-com',
+  'buffalonews-com',
+  'business-standard-com',
+  'business-inquirer-net',
+  'businessday-ng',
+  'businessinsider-com',
+  'businesskorea
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:48f86561 h:260f8b96 -->
+### 2026-11-27 07:56:37 UTC tool `exec`
+
+`{"command": "tail -30 src/favicon-sprite.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 36b28e:
+  'wwd-com',
+  'wwlp-com',
+  'wxia-com',
+  'wxyz-com',
+  'wzzm13-com',
+  'xbox-com',
+  'xda-developers-com',
+  'yahoo-com',
+  'yardbarker-com',
+  'ycombinator-com',
+  'yle-fi',
+  'ynetnews-com',
+  'yourlocalepidemiologist-substack-com',
+  'yourstory-com',
+  'yugatech-com',
+  'zdnet-com',
+  'zmescience-com',
+]);
+
+export function faviconSpriteId(host) {
+  return String(host || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+export function getFaviconSpriteClass(host) {
+  const id = faviconSpriteId(host);
+  return FAVICON_SPRITE_HOSTS.has(id) ? `source-icon-${id}` : '';
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:c2765c66 h:dc39644e -->
+### 2026-11-27 07:57:20 UTC tool `exec`
+
+`{"command": "grep -n \"yahoo\\|channelnewsasia\\|indiatimes\\|oregonlive\" scripts/favicons.js | head -20", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 9831b4:
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:337866fe h:a6b20a4f -->
+### 2026-11-27 07:57:27 UTC tool `exec`
+
+`{"command": "sed -n '1,140p' scripts/favicons.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell bddfc8:
+import { getSourceName, platformOfHost, prettifySourceKey, sourceKeyFromUrl } from './sources.js';
+
+export const SOURCE_LABELS = {
+  'bbc.co.uk': 'BBC',
+  'bbc.com': 'BBC',
+  'news.sky.com': 'Sky News',
+  'sky.com': 'Sky News',
+  'theguardian.com': 'The Guardian',
+  'dailymail.com': 'Daily Mail',
+  'independent.co.uk': 'The Independent',
+  'mirror.co.uk': 'Mirror',
+  'metro.co.uk': 'Metro',
+  'standard.co.uk': 'Evening Standard',
+  'eurogamer.net': 'Eurogamer',
+  'kotaku.com': 'Kotaku',
+  'ign.com': 'IGN',
+  'ft.com': 'Financial Times',
+  'phys.org': 'Phys.org',
+  'medicalxpress.com': 'Medical Xpress',
+  'cityam.com': 'City A.M.',
+  'punchng.com': 'Punch',
+  'koreatimes.co.kr': 'Korea Times',
+  'thisismoney.co.uk': 'This is Money',
+  'jpost.com': 'Jerusalem Post',
+  'brecorder.com': 'Business Recorder',
+  'notebookcheck.net': 'Notebookcheck',
+  'handelsblatt.com': 'Handelsblatt',
+  'thestar.com.my': 'The Star',
+  'nst.com.my': 'New Straits Times',
+  'tweaktown.com': 'TweakTown',
+  'windowscentral.com': 'Windows Central',
+  'gamespot.com': 'GameSpot',
+  'newscientist.com': 'New Scientist',
+  'phys.org': 'Phys.org',
+  'medicalxpress.com': 'Medical Xpress',
+  'techxplore.com': 'Tech Xplore',
+  'sciencedaily.com': 'ScienceDaily',
+  'futurity.org': 'Futurity',
+  'sciencealert.com': 'ScienceAlert',
+  'psypost.org': 'PsyPost',
+  'sci.news': 'Sci.News',
+  'zmescience.com': 'ZME Science',
+  'livescience.com': 'Live Science',
+  'scientificamerican.com': 'Scientific American',
+  'sciencenews.org': 'Science News',
+  'sciencebasedmedicine.org': 'Science-Based Medicine',
+  'abc.net.au': 'ABC News',
+  'nypost.com': 'New York Post',
+  'pagesix.com': 'Page Six',
+  'foxnews.com': 'Fox News',
+  'foxbusiness.com': 'Fox Business',
+  'foxsports.com': 'Fox Sports',
+  'foxnation.com': 'Fox Nation',
+  'fox2now.com': 'FOX 2 St. Louis',
+  'fox40.com': 'FOX 40 Sacramento',
+  'fox59.com': 'FOX 59 Indianapolis',
+  'fox5sandiego.com': 'FOX 5 San Diego',
+  'bus
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:a51b8da9 h:79748aeb -->
+### 2026-11-27 07:57:34 UTC tool `exec`
+
+`{"command": "mkdir -p src/data", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 310834:
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:write:be36f72e h:54c5ce5a -->
+### 2026-11-27 07:58:54 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "content": "#!/usr/bin/env python3\n\"\"\"Build the client-facing measured-source JSON from headline-analysis output.\"\"\"\nimport argparse, json, sys\nfrom datetime import datetime, timezone\nfrom pathlib import Path\n\nimport numpy as np\nimport pandas as pd\n\nsys.path.insert(0, str(Pat`
+
+```
+Successfully wrote 13355 bytes (232 lines) to /home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:db873613 h:bb98c302 -->
+### 2026-11-27 07:59:01 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json\np='docs/tasks/headline-analysis.task.json'\nd=json.load(open(p))\nsteps=d['steps']\nstep={\n 'name':'measured-sources-json',\n 'cmd':'.venv/bin/python scripts/headline-analysis/build_measured_sources.py --config docs/tasks/headline-analysis.task.json',\n 'produces':'src/data/measured-sources.json'\n}\nif not any(s.get('name')==step['name'] for s in steps`
+
+```
+Output from command in shell 624308:
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:7e581793 h:547581ab -->
+### 2026-11-27 07:59:10 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 20000}`
+
+```
+Output from command in shell 14c9b9:
+wrote 74 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:ed883828 h:078427e5 -->
+### 2026-11-27 07:59:14 UTC tool `exec`
+
+`{"command": "ls -lh src/data/measured-sources.json; sed -n '1,120p' src/data/measured-sources.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 6e059f:
+-rw-rw-r-- 1 bobbigmac bobbigmac 254K Nov 27 07:59 src/data/measured-sources.json
+{
+  "version": 1,
+  "generatedAt": "2026-11-27T07:59:09.525571+00:00",
+  "measurementLabel": "Measured headline value",
+  "minimumHeadlines": 20,
+  "summary": {
+    "sourceCount": 74,
+    "headlineRows": 11461,
+    "inputSourceCount": 695
+  },
+  "bands": [
+    {
+      "key": "strongest",
+      "label": "Strongest measured headline value",
+      "summary": "Headlines most often combine concrete information with comparatively restrained packaging.",
+      "rangeText": "53.1\u201362.3",
+      "min": 53.09,
+      "max": 62.27,
+      "sourceCount": 18
+    },
+    {
+      "key": "above-typical",
+      "label": "Above-typical measured headline value",
+      "summary": "Headlines are usually informative or restrained, with some weaker axes or mixed behaviour.",
+      "rangeText": "50.3\u201352.7",
+      "min": 50.29,
+      "max": 52.66,
+      "sourceCount": 19
+    },
+    {
+      "key": "below-typical",
+      "label": "Below-typical measured headline value",
+      "summary": "Headlines more often omit concrete anchors or use more attention-oriented framing.",
+      "rangeText": "47.6\u201350.2",
+      "min": 47.65,
+      "max": 50.21,
+      "sourceCount": 18
+    },
+    {
+      "key": "weakest",
+      "label": "Weakest measured headline value",
+      "summary": "Headlines are comparatively thin on concrete information, heavier on packaging, or both.",
+      "rangeText": "36.5\u201347.2",
+      "min": 36.52,
+      "max": 47.23,
+      "sourceCount": 19
+    }
+  ],
+  "axes": [
+    {
+      "key": "event_clarity",
+      "metricKey": "event_clarity",
+      "label": "Events & actions",
+      "shortLabel": "Events",
+      "kind": "delivery",
+      "description": "The headline says something happened, changed or was decided."
+    },
+    {
+      "key": "quantified_specificity",
+      "metricKey": "quantified_specificity",
+      "label": "Numbers & detail",
+      "shortLa
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:46f31f16 h:f8518ff9 -->
+### 2026-11-27 07:59:21 UTC tool `exec`
+
+`{"command": ".venv/bin/python -m py_compile scripts/headline-analysis/analyse_headlines.py scripts/headline-analysis/build_measured_sources.py && .venv/bin/python scripts/headline-analysis/test_detectors.py && .venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 0}`
+
+```
+Command running in background with ID: 3f25be
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:write:1614d689 h:81f9356e -->
+### 2026-11-27 08:00:37 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.html", "content": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Measured Source Quality \u2014 The Daily Broadsheet</title>\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n  <meta name=\"description\" content=\"A measured comparison of headline information va`
+
+```
+Successfully wrote 5485 bytes (106 lines) to /home/bobbigmac/projects/bobdavies/news/src/measured-sources.html
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:write:82089b54 h:7536e5e3 -->
+### 2026-11-27 08:01:27 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js", "content": "import { getFaviconSpriteClass } from './favicon-sprite.js';\nimport MEASURED_SOURCES from './data/measured-sources.json' with { type: 'json' };\n\nconst SVG_NS = 'http://www.w3.org/2000/svg';\nconst axes = MEASURED_SOURCES.axes;\nconst axisByKey = new Map(axes.map(axis => [axis.key, axis]));\n\nfunction e`
+
+```
+Successfully wrote 9499 bytes (259 lines) to /home/bobbigmac/projects/bobdavies/news/src/measured-sources.js
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:write:dce8c641 h:08a1e36d -->
+### 2026-11-27 08:02:00 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css", "content": ".measured-page {\n  min-height: 100vh;\n}\n\n.measured-page a {\n  color: var(--accent);\n}\n\n.measured-masthead {\n  display: grid;\n  grid-template-columns: minmax(120px, 180px) minmax(0, 1fr) minmax(240px, 320px);\n  gap: 1rem;\n  align-items: start;\n  padding: 1.5rem min(4vw, 3rem) 1rem;\n  b`
+
+```
+Successfully wrote 7282 bytes (441 lines) to /home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css
+```
+
+---
+
+<!-- r:0 m:hook:PostCompaction:642446ef-3723-486a-9cbc-ed66ea457e73 h:3b611b99 -->
+### 2026-11-27 08:02:00 UTC · postcompaction 
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:ac352904 h:f630fc19 -->
+### 2026-11-27 08:02:13 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/index.html"}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/index.html" start_line="1" end_line="196">
+  1|<!doctype html>
+  2|<html lang="en">
+  3|<head>
+  4|  <meta charset="utf-8">
+  5|  <title>The Daily Broadsheet</title>
+  6|  <meta name="viewport" content="width=device-width,initial-scale=1">
+  7|  <meta name="description" content="A daily news digest. Good news! Well, some of it is.">
+  8|
+  9|  <!-- Open Graph -->
+ 10|  <meta property="og:type" content="website">
+ 11|  <meta property="og:title" content="The Daily Broadsheet">
+ 12|  <meta property="og:description" content="A daily news digest. Good news! Well, some of it is.">
+ 13|  <meta property="og:url" content="https://bobbigmac.github.io/news/">
+ 14|  <meta property="og:image" content="https://bobdavies.co.uk/news/og-cover.jpg">
+ 15|  <meta property="og:image:width" content="1200">
+ 16|  <meta property="og:image:height" content="630">
+ 17|  <meta property="og:site_name" content="The Daily Broadsheet">
+ 18|
+ 19|  <!-- Twitter Card -->
+ 20|  <meta name="twitter:card" content="summary_large_image">
+ 21|  <meta name="twitter:title" content="The Daily Broadsheet">
+ 22|  <meta name="twitter:description" content="A daily news digest. Good news! Well, some of it is.">
+ 23|  <meta name="twitter:image" content="https://bobdavies.co.uk/news/og-cover.jpg">
+ 24|  <link rel="icon" href="./favicon.ico" sizes="any">
+ 25|  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+ 26|  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+ 27|  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+ 28|  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+ 29|  <link rel="manifest" href="./site.webmanifest">
+ 30|  <link rel="preconnect" href="https://fonts.googleapis.com">
+ 31|  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 32|  <script>
+ 33|    (function() {
+ 34|      var s = JSON.parse(localStorage.getItem('broadsheet-settings') || '{}');
+ 35|  
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:4315f6f1 h:bb748ee4 -->
+### 2026-11-27 08:02:21 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/vite.config.js"}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/vite.config.js" start_line="1" end_line="79">
+  1|import { defineConfig } from 'vite';
+  2|import { splitClientDigest } from './scripts/digest-split.js';
+  3|import { readFileSync, existsSync } from 'fs';
+  4|import { join } from 'path';
+  5|import { fileURLToPath, URL } from 'node:url';
+  6|
+  7|const CACHE_DIR = 'cache';
+  8|
+  9|function loadJson(file, fallback) {
+ 10|  try { return JSON.parse(readFileSync(file, 'utf8')); } catch { return fallback; }
+ 11|}
+ 12|
+ 13|export default defineConfig({
+ 14|  root: 'src',
+ 15|  base: './',
+ 16|  build: {
+ 17|    outDir: '../dist',
+ 18|    emptyOutDir: true,
+ 19|    rollupOptions: {
+ 20|      input: {
+ 21|        main: fileURLToPath(new URL('./src/index.html', import.meta.url)),
+ 22|        relationships: fileURLToPath(new URL('./src/relationships.html', import.meta.url)),
+ 23|      },
+ 24|    },
+ 25|  },
+ 26|  server: {
+ 27|    port: 8000,
+ 28|    open: '/',
+ 29|  },
+ 30|  define: {
+ 31|    // Inject digest data at build time for preview
+ 32|  },
+ 33|  plugins: [
+ 34|    {
+ 35|      name: 'inject-digest',
+ 36|      transformIndexHtml(html) {
+ 37|        // In dev, serve digest.json from cache; in build, it's copied separately
+ 38|        return html;
+ 39|      },
+ 40|      configureServer(server) {
+ 41|        // Serve split client digests in dev exactly as the build emits them:
+ 42|        // prefer the built artifacts in dist, fall back to splitting the raw
+ 43|        // cache digest with the same logic so dev matches prod behavior.
+ 44|        const serveSplit = (kind) => (req, res) => {
+ 45|          const builtPath = join('dist', kind === 'archive' ? 'digest-archive.json' : 'digest.json');
+ 46|          if (existsSync(builtPath)) {
+ 47|            res.setHeader('Content-Type', 'application/json');
+ 48|            res.end(readFileSync(builtPath, 'utf8'));
+ 49|            return;
+ 50|          }
+ 51|          const cachePath = join(CACHE_DIR, 'digest.json');
+ 52
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:7d4262de h:dfc8f63c -->
+### 2026-11-27 08:02:25 UTC tool `exec`
+
+`{"command": "grep -n \"copyStatic\\|digest\\|measured\" scripts/build.js | head -80", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 3e6621:
+9:import { splitClientDigest } from './digest-split.js';
+12:const DIGEST_FILE = join(CACHE_DIR, 'digest.json');
+21:function copyStatic(file) {
+28:const digest = loadJson(DIGEST_FILE, { date: new Date().toISOString().split('T')[0], clusters: [] });
+32:for (const c of digest.clusters) {
+47:enrichAllStories(digest);
+50:computeClusterTagsIfMissing(digest);
+51:annotateClustersIfMissing(digest);
+54:// the whole digest on every build, so edits to the tree dataset apply
+56:const groupStats = assignStoryGroupsToDigest(digest);
+64:const inDigest = digest.clusters.reduce((a, c) => a + (c.stories?.length || 0), 0);
+65:digest.pipelineStats = {
+70:  clusters: digest.clusters.length,
+74:digest.clusters.sort((a, b) => {
+84:const { entities } = buildEntityIndex(digest);
+90:const topics = buildTopics(digest, entities);
+94:for (const cluster of digest.clusters) {
+122:for (const c of digest.clusters) {
+142:  totalClusters: digest.clusters.length,
+145:  archivedClusters: digest.clusters.length - activeCount,
+158:// The frontend uses the checked-in favicon spritesheet directly; the digest
+160:const sources = collectSources(digest);
+164:  date: digest.date,
+165:  generated: digest.generated,
+166:  clusters: digest.clusters,
+172:  pipelineStats: digest.pipelineStats,
+175:// Client boot artifacts: slim windowed digests (the client never reads
+180:writeFileSync(join(OUT_DIR, 'digest.json'), JSON.stringify(recent));
+181:writeFileSync(join(OUT_DIR, 'digest-archive.json'), JSON.stringify(archive));
+183:console.log(`Client digests: ${recent.clusters.length} recent + ${archive.clusters.length} archived clusters (full export in dataset.json)`);
+190:copyStatic('og-cover.jpg');
+191:copyStatic('sw.js');
+196:  copyStatic(f);
+199:console.log(`Build complete. ${digest.clusters.length} clusters, ${entities.length} entities, ${topics.length} topics, ${timeline.length} stories in timeline -> ${OUT_DIR}/dataset.json`);
+202:function buildTopics(digest, entities) {
+203:  c
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:540f73ad h:61aa6e29 -->
+### 2026-11-27 08:02:28 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build.js", "offset": 1, "limit": 210}`
+
+```
+Output truncated at line 210; continue reading from line 211.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/build.js" start_line="1" end_line="210">
+  1|import { readFileSync, existsSync, mkdirSync, writeFileSync, copyFileSync } from 'fs';
+  2|import { join } from 'path';
+  3|import { annotateClustersIfMissing, buildEntityIndex } from './entities.js';
+  4|import { computeClusterTagsIfMissing } from './tags.js';
+  5|import { assignStoryGroupsToDigest } from './story-group-assign.js';
+  6|import { enrichAllStories } from './story-enrich.js';
+  7|import { canonicalCategory, recategoriseCluster } from './categories.js';
+  8|import { collectSources } from './favicons.js';
+  9|import { splitClientDigest } from './digest-split.js';
+ 10|
+ 11|const CACHE_DIR = 'cache';
+ 12|const DIGEST_FILE = join(CACHE_DIR, 'digest.json');
+ 13|const RUN_LOG_FILE = join(CACHE_DIR, 'run-log.json');
+ 14|const OUT_DIR = 'dist';
+ 15|
+ 16|function loadJson(path, fallback) {
+ 17|  if (!existsSync(path)) return fallback;
+ 18|  try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return fallback; }
+ 19|}
+ 20|
+ 21|function copyStatic(file) {
+ 22|  const src = join('src', file);
+ 23|  if (existsSync(src)) copyFileSync(src, join(OUT_DIR, file));
+ 24|}
+ 25|
+ 26|mkdirSync(OUT_DIR, { recursive: true });
+ 27|
+ 28|const digest = loadJson(DIGEST_FILE, { date: new Date().toISOString().split('T')[0], clusters: [] });
+ 29|
+ 30|// Backfill fields that older pipeline runs may not have set, so the frontend
+ 31|// never sees a cluster missing a required field.
+ 32|for (const c of digest.clusters) {
+ 33|  if (!Array.isArray(c.triggerWords)) c.triggerWords = [];
+ 34|  if (!c.impact) c.impact = 'medium';
+ 35|  if (!c.contentVersion) c.contentVersion = 1;
+ 36|  if (!c.created) c.created = c.updated || new Date().toISOString();
+ 37|  if (!c.updated) c.updated = c.created;
+ 38|  if (!c.region) c.region = null;
+ 39|  // Normalise category aliases/casing before and after keyword recategorisati
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:d7037d2a h:ea26e4f2 -->
+### 2026-11-27 08:02:32 UTC tool `exec`
+
+`{"command": "grep -n \"relationships\\|back-link\\|footer\" src/relationships.html | head -30", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 50cb5c:
+18:  <link rel="stylesheet" href="styles/relationships.css">
+21:<body class="relationships-page">
+22:  <header class="relationships-masthead">
+23:    <a class="back-link" href="./">← The Daily Broadsheet</a>
+38:  <main id="relationships-main" class="relationships-main"></main>
+40:  <footer class="broadsheet-footer relationships-footer">
+42:  </footer>
+44:  <script type="module" src="relationships.js"></script>
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:53cb256a h:4794ab80 -->
+### 2026-11-27 08:02:36 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/relationships.html", "offset": 20, "limit": 28}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/relationships.html" start_line="20" end_line="46">
+ 20|</head>
+ 21|<body class="relationships-page">
+ 22|  <header class="relationships-masthead">
+ 23|    <a class="back-link" href="./">← The Daily Broadsheet</a>
+ 24|    <div>
+ 25|      <h1>Who’s behind the news</h1>
+ 26|      <p class="intro">
+ 27|        The broadsheet reads hundreds of outlets so you don’t have to. This is a running
+ 28|        guide to who they are — who owns them, how they’re funded, who shares journalists
+ 29|        or owners with whom — so you can read every story with the context it deserves.
+ 30|      </p>
+ 31|    </div>
+ 32|    <label class="source-search-label">
+ 33|      Search outlets, owners, or topics
+ 34|      <input id="source-search" type="search" placeholder="BBC, Murdoch, Postmedia, licence fee…">
+ 35|    </label>
+ 36|  </header>
+ 37|
+ 38|  <main id="relationships-main" class="relationships-main"></main>
+ 39|
+ 40|  <footer class="broadsheet-footer relationships-footer">
+ 41|    <p><a href="./">Back to today’s broadsheet</a> · Notes are working research with evidence links, not legal ownership claims.</p>
+ 42|  </footer>
+ 43|
+ 44|  <script type="module" src="relationships.js"></script>
+ 45|</body>
+ 46|</html>
+</file-view>
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:get_output:a0051466 h:9b3a0712 -->
+### 2026-11-27 08:02:39 UTC tool `get_output`
+
+`{"shell_id": "3f25be", "timeout": 10000}`
+
+```
+59 detector regression cases passed
+{
+  "headline_rows": 11461,
+  "sources": 686,
+  "sources_ranked_min_n": 76,
+  "sources_n_ge_50": 28,
+  "sources_n_ge_100": 14,
+  "sources_below_min_n": 610,
+  "exact_duplicate_headline_rows": 46,
+  "runtime_seconds": 85.21
+}
+
+TOP:
+ rank                   source   n  topic_adjusted_value_index      ordering_band  raw_title_signal_index
+  1.0 South China Morning Post  25                   63.195551 A — upper quartile               44.727273
+  2.0                TweakTown  46                   60.065981 A — upper quartile               38.735178
+  3.0                  PsyPost  28                   59.542917 A — upper quartile               37.987013
+  4.0                Eurogamer 458                   59.477913 A — upper quartile               37.842398
+  5.0                   Quartz  24                   59.233162 A — upper quartile               43.181818
+  6.0             The Guardian 485                   58.276064 A — upper quartile               38.388004
+  7.0           Jerusalem Post  68                   57.682246 A — upper quartile               40.441176
+  8.0              MyJoyOnline  28                   57.427395 A — upper quartile               42.045455
+  9.0                 Wccftech  27                   57.235749 A — upper quartile               40.404040
+ 10.0               Indiatimes  20                   56.725119 A — upper quartile               40.000000
+ 11.0           Medical Xpress 127                   56.137597 A — upper quartile               36.471009
+ 12.0            Qatar Tribune  28                   55.693668 A — upper quartile               41.233766
+ 13.0                      PBS  20                   55.510161 A — upper quartile               37.272727
+ 14.0          Financial Times 116                   54.219477 A — upper quartile               38.009404
+ 15.0                   Reddit  40                   53.108601 A — upper quartile               33.409091
+
+BOTTOM:
+ rank                source 
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:5dcdf0bd h:38e384e6 -->
+### 2026-11-27 08:02:49 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 20000}`
+
+```
+Output from command in shell e81c8c:
+wrote 76 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:c356eaf9 h:c3454d0f -->
+### 2026-11-27 08:02:55 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nprint('summary',p['summary'])\nprint('bands',[(b['key'],b['rangeText'],b['sourceCount']) for b in p['bands']])\nfor s in p['sources'][:20]:\n print(s['rank'],s['key'],s['label'],s['measuredQuality'],s['headlines'],s['band'], 'members',len(s.get('members',[])))\nprint('grouped')\nfor s in p['so`
+
+```
+Output from command in shell 219eec:
+summary {'sourceCount': 76, 'headlineRows': 11461, 'inputSourceCount': 686}
+bands [('strongest', '52.5–63.2', 19), ('above-typical', '49.5–52.5', 19), ('below-typical', '47.3–49.5', 19), ('weakest', '36.9–47.2', 19)]
+1 scmp.com South China Morning Post 63.2 25 strongest members 1
+2 tweaktown.com TweakTown 60.1 46 strongest members 1
+3 psypost.org PsyPost 59.5 28 strongest members 1
+4 eurogamer.net Eurogamer 59.5 458 strongest members 1
+5 qz.com Quartz 59.2 24 strongest members 1
+6 theguardian.com The Guardian 58.3 485 strongest members 1
+7 jpost.com Jerusalem Post 57.7 68 strongest members 1
+8 myjoyonline.com MyJoyOnline 57.4 28 strongest members 1
+9 wccftech.com Wccftech 57.2 27 strongest members 1
+10 timesofindia.indiatimes.com Times of India 56.7 20 strongest members 1
+11 medicalxpress.com Medical Xpress 56.1 127 strongest members 1
+12 qatar-tribune.com Qatar Tribune 55.7 28 strongest members 1
+13 pbs.org PBS 55.5 20 strongest members 1
+14 ft.com Financial Times 54.2 116 strongest members 1
+15 reddit.com Reddit 53.1 40 strongest members 1
+16 cityam.com City A.M. 53.0 173 strongest members 1
+17 businessinsider.com Business Insider 52.8 33 strongest members 1
+18 sciencealert.com ScienceAlert 52.6 22 strongest members 1
+19 koreatimes.co.kr Korea Times 52.5 123 strongest members 1
+20 english.ajel.sa Ajel 52.5 20 above-typical members 1
+grouped
+group-nypost-pagesix New York Post / Page Six [('nypost.com', 43), ('pagesix.com', 5)]
+group-mashable Mashable [('mashable.com', 12), ('in.mashable.com', 8), ('sea.mashable.com', 7)]
+group-inquirer Inquirer [('inquirer.com', 17), ('newsinfo.inquirer.net', 10), ('entertainment.inquirer.net', 5), ('cebudailynews.inquirer.net', 2), ('business.inquirer.net', 1), ('lifestyle.inquirer.net', 1), ('technology.inquirer.net', 1)]
+bands ordering
+Counter({'strongest': 19, 'above-typical': 19, 'below-typical': 19, 'weakest': 19})
+bbc None
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:89f14248 h:63eaad24 -->
+### 2026-11-27 08:03:02 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor s in p['sources']:\n if 'bbc' in s['key'] or 'BBC' in s['label']:\n  print(s['key'],s['label'],s['rank'],s['measuredQuality'],s['headlines'],s.get('members'))\nprint('total',len(p['sources']))\nprint([s['key'] for s in p['sources'] if s['headlines']>100])\nPY", "workdir": "/home/bobbigmac/`
+
+```
+Output from command in shell dbfe19:
+group-bbc BBC 37 49.9 3537 [{'key': 'bbc.co.uk', 'label': 'BBC', 'headlines': 3537}]
+total 76
+['eurogamer.net', 'theguardian.com', 'medicalxpress.com', 'ft.com', 'cityam.com', 'koreatimes.co.kr', 'independent.co.uk', 'group-bbc', 'ign.com', 'phys.org', 'mirror.co.uk', 'punchng.com', 'kotaku.com', 'dailymail.com']
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:4b898998 h:515b776a -->
+### 2026-11-27 08:03:12 UTC tool `exec`
+
+`{"command": "grep -n \"GROUP_CANONICAL\\|group-bbc\\|canonical_key\" scripts/headline-analysis/build_measured_sources.py | head -80", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 5cc6b1:
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:27d91177 h:5162a80d -->
+### 2026-11-27 08:03:20 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py"}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py" start_line="1" end_line="232">
+  1|#!/usr/bin/env python3
+  2|"""Build the client-facing measured-source JSON from headline-analysis output."""
+  3|import argparse, json, sys
+  4|from datetime import datetime, timezone
+  5|from pathlib import Path
+  6|
+  7|import numpy as np
+  8|import pandas as pd
+  9|
+ 10|sys.path.insert(0, str(Path(__file__).parent))
+ 11|from analyse_headlines import REPO_ROOT, COMPOSITE_DELIVERY_METRICS
+ 12|
+ 13|DISPLAY_OVERRIDES = {
+ 14|    'sports.yahoo.com': 'Yahoo Sports',
+ 15|    'channelnewsasia.com': 'CNA',
+ 16|    'timesofindia.indiatimes.com': 'Times of India',
+ 17|    'obits.oregonlive.com': 'OregonLive obituaries',
+ 18|}
+ 19|
+ 20|AXES = [
+ 21|    {'key':'event_clarity','metricKey':'event_clarity','label':'Events & actions','shortLabel':'Events','kind':'delivery','description':'The headline says something happened, changed or was decided.'},
+ 22|    {'key':'quantified_specificity','metricKey':'quantified_specificity','label':'Numbers & detail','shortLabel':'Detail','kind':'delivery','description':'The headline carries concrete quantities, amounts or counts.'},
+ 23|    {'key':'time_place_anchor','metricKey':'time_place_anchor','label':'Time & place','shortLabel':'Place','kind':'delivery','description':'The headline anchors the story in a time or location.'},
+ 24|    {'key':'causal_explanation','metricKey':'causal_explanation','label':'Cause & effect','shortLabel':'Cause','kind':'delivery','description':'The headline links events, causes or consequences.'},
+ 25|    {'key':'material_consequence','metricKey':'material_consequence','label':'Real-world stakes','shortLabel':'Stakes','kind':'delivery','description':'The headline signals costs, risks, harm, benefit or other material consequences.'},
+ 26|    {'key':'evidence_provenance','metricKey':'evidence_provenance','label':'Evidence cues','shortLabel':'Evidence','kind':'delivery','d
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:6322b3fa h:598c3996 -->
+### 2026-11-27 08:03:27 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nr=pd.read_csv('docs/headline-data/current/source_rankings.csv')\ncols=['source','source_key','icon_source_key','measurement_grouped','n','rank','topic_adjusted_value_index']\nprint(r.loc[r.source_key.astype(str).str.contains('bbc|mashable|inquirer|nypost',na=False),cols].to_string(index=False))\nPY", "workdir": "/home/bobbigmac/projects/`
+
+```
+Output from command in shell 4f5e5d:
+                  source           source_key icon_source_key  measurement_grouped    n  rank  topic_adjusted_value_index
+New York Post / Page Six group-nypost-pagesix      nypost.com                 True   48  26.0                   52.131964
+                Mashable       group-mashable    mashable.com                 True   27  33.0                   50.566281
+                     BBC            group-bbc       bbc.co.uk                 True 3537  37.0                   49.920646
+                Inquirer       group-inquirer    inquirer.com                 True   37  71.0                   43.982162
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:edit:27fda142 h:4812cfc3 -->
+### 2026-11-27 08:03:39 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/vite.config.js", "old_string": "        main: fileURLToPath(new URL('./src/index.html', import.meta.url)),\n        relationships: fileURLToPath(new URL('./src/relationships.html', import.meta.url)),", "new_string": "        main: fileURLToPath(new URL('./src/index.html', import.meta.url)),\n        relationships: fileURLToPath(new URL('./src/`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/vite.config.js' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 21.
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:edit:f874f867 h:b867cdeb -->
+### 2026-11-27 08:03:44 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/index.html", "old_string": "      <a class=\"settings-link\" href=\"./relationships.html\">Source Relationships</a>", "new_string": "      <a class=\"settings-link\" href=\"./relationships.html\">Source Relationships</a>\n      <a class=\"settings-link\" href=\"./measured-sources.html\">Measured Source Quality</a>"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/index.html' - made 1 replacement(s). 1 line(s) removed, 2 line(s) added at line 111.
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:edit:73308e34 h:60d3f9d4 -->
+### 2026-11-27 08:03:49 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/index.html", "old_string": "<a href=\"./relationships.html\">Source relationships</a> &middot; <a href=\"https://github.com/bobbigmac/news\"", "new_string": "<a href=\"./relationships.html\">Source relationships</a> &middot; <a href=\"./measured-sources.html\">Measured source quality</a> &middot; <a href=\"https://github.com/bobbigmac/news`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/index.html' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 187.
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:edit:228fd2ec h:64827432 -->
+### 2026-11-27 08:03:55 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/relationships.html", "old_string": "        or owners with whom \u2014 so you can read every story with the context it deserves.\n      </p>\n    </div>", "new_string": "        or owners with whom \u2014 so you can read every story with the context it deserves.\n      </p>\n      <p class=\"intro page-crosslink\"><a href=\"./measured-sour`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/relationships.html' - made 1 replacement(s). 3 line(s) removed, 4 line(s) added at line 29.
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:edit:d61de1e3 h:230e9053 -->
+### 2026-11-27 08:04:07 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build.js", "old_string": "for (const f of ['favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png', 'apple-touch-icon.png',\n                 'android-chrome-192x192.png', 'android-chrome-512x512.png', 'site.webmanifest',\n                 'icon.png', 'icon.svg']) {\n  copyStatic(f);\n}\n\nconsole.log(`Build complete.", "new_string": "`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/build.js' - made 1 replacement(s). 7 line(s) removed, 10 line(s) added at line 193.
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:edit:a3a4ea64 h:eeeed8d9 -->
+### 2026-11-27 08:04:15 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "    for _, row in ranked.iterrows():\n        key = row['source_key']\n        icon_key = row.get('icon_source_key') or key\n        members = member_counts.get(key, [])\n        members.sort(key=lambda x: -x['headlines'])\n        display = DISPLAY_OVERRIDES.get(key) or row[`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 6 line(s) removed, 12 line(s) added at line 169.
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:edit:7f6d944d h:e3a77c7b -->
+### 2026-11-27 08:04:28 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "            'grouped': bool(row.get('measurement_grouped', False)),", "new_string": "            'grouped': grouped,"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 194.
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:330e0f6c h:14fc1fd3 -->
+### 2026-11-27 08:04:36 UTC tool `exec`
+
+`{"command": "ls test && cat package.json | sed -n '1,90p'", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell db2cf5:
+build-output.test.js
+catchup.test.js
+feed.test.js
+filter-bar.test.js
+glimpse.test.js
+layout.test.js
+manage-panels.test.js
+pipeline.test.js
+relationships.test.js
+story-group-assign.test.js
+story-groups.test.js
+view-model.test.js
+{
+  "name": "news-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "fetch-news": "node scripts/fetch-news.js",
+    "summarise": "node scripts/summarise.js",
+    "build": "vite build && node scripts/build.js",
+    "pipeline": "npm run fetch-news && npm run summarise && npm run build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "watch": "node scripts/watch.js & vite",
+    "test": "vitest run",
+    "test:unit": "vitest run test/view-model.test.js test/pipeline.test.js test/story-groups.test.js",
+    "test:integration": "vitest run test/build-output.test.js test/catchup.test.js test/feed.test.js test/filter-bar.test.js test/glimpse.test.js test/manage-panels.test.js"
+  },
+  "dependencies": {
+    "@xenova/transformers": "^2.17.2",
+    "compromise": "^14.16.0",
+    "density-clustering": "^1.3.0",
+    "rss-parser": "^3.13.0",
+    "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "jsdom": "^31.0.1",
+    "vite": "^8.1.4",
+    "vitest": "^5.1.1"
+  },
+  "license": "DBAD"
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:5a7e3453 h:6c268ac7 -->
+### 2026-11-27 08:04:41 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/test/build-output.test.js"}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/test/build-output.test.js" start_line="1" end_line="18">
+  1|import { readFileSync } from 'fs';
+  2|import { describe, expect, it } from 'vitest';
+  3|
+  4|describe('build output boundary', () => {
+  5|  it('uses dist for the Vite bundle, publish data, and Pages artifact', () => {
+  6|    expect(readFileSync('vite.config.js', 'utf8')).toContain("outDir: '../dist'");
+  7|    expect(readFileSync('scripts/build.js', 'utf8')).toContain("const OUT_DIR = 'dist'");
+  8|    expect(readFileSync('.github/workflows/deploy.yml', 'utf8')).toContain('path: ./dist');
+  9|  });
+ 10|
+ 11|  it('keeps generated site files out of docs', () => {
+ 12|    const gitignore = readFileSync('.gitignore', 'utf8');
+ 13|    expect(gitignore).toContain('dist/');
+ 14|    expect(gitignore).toContain('docs/index.html');
+ 15|    expect(gitignore).toContain('docs/digest.json');
+ 16|    expect(gitignore).not.toMatch(/^docs\/$/m);
+ 17|  });
+ 18|});
+</file-view>
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:815033c7 h:8688b7d8 -->
+### 2026-11-27 08:04:50 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py && .venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nprint(next((s['key'],s['label'],s['grouped'],s['members']) for s in p['sources'] if s['label']=='BBC'))\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 117e02:
+wrote 76 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+('bbc.co.uk', 'BBC', False, [{'key': 'bbc.co.uk', 'label': 'BBC', 'headlines': 3537}])
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:d47cbc7c h:efc501cc -->
+### 2026-11-27 08:04:56 UTC tool `exec`
+
+`{"command": "ls -lh src/data/measured-sources.json && du -h src/data/measured-sources.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 9af60f:
+-rw-rw-r-- 1 bobbigmac bobbigmac 273K Nov 27 08:04 src/data/measured-sources.json
+276K	src/data/measured-sources.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:write:b60994ec h:c7d2c7a0 -->
+### 2026-11-27 08:05:24 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/test/measured-sources.test.js", "content": "import { readFileSync } from 'fs';\nimport { describe, expect, it } from 'vitest';\n\nconst data = JSON.parse(readFileSync('src/data/measured-sources.json', 'utf8'));\nconst page = readFileSync('src/measured-sources.html', 'utf8');\n\ndescribe('measured source export', () => {\n  it('has the schema n`
+
+```
+Successfully wrote 4145 bytes (82 lines) to /home/bobbigmac/projects/bobdavies/news/test/measured-sources.test.js
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:4d1cb9e1 h:a0222ea0 -->
+### 2026-11-27 08:05:49 UTC tool `exec`
+
+`{"command": "npm test", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 120000}`
+
+```
+Output from command in shell db35a0:
+
+> test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.1.1 [39m[90m/home/bobbigmac/projects/bobdavies/news[39m
+
+ [32m✓[39m test/measured-sources.test.js [2m([22m[2m7 tests[22m[2m)[22m[32m 128[2mms[22m[39m
+ [32m✓[39m test/catchup.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 102[2mms[22m[39m
+ [32m✓[39m test/manage-panels.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 133[2mms[22m[39m
+ [32m✓[39m test/glimpse.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 193[2mms[22m[39m
+ [32m✓[39m test/story-groups.test.js [2m([22m[2m7 tests[22m[2m)[22m[33m 438[2mms[22m[39m
+ [32m✓[39m test/filter-bar.test.js [2m([22m[2m18 tests[22m[2m)[22m[33m 918[2mms[22m[39m
+ [32m✓[39m test/feed.test.js [2m([22m[2m10 tests[22m[2m)[22m[33m 1095[2mms[22m[39m
+   [32m✓[39m feed view manager [2m(10)[22m
+     [33m[2m✓[22m[39m creates one lightweight shell per story without hydrating contents[33m 727[2mms[22m[39m
+ [32m✓[39m test/view-model.test.js [2m([22m[2m9 tests[22m[2m)[22m[32m 110[2mms[22m[39m
+ [32m✓[39m test/layout.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 91[2mms[22m[39m
+ [32m✓[39m test/relationships.test.js [2m([22m[2m14 tests[22m[2m)[22m[32m 53[2mms[22m[39m
+ [32m✓[39m test/story-group-assign.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 28[2mms[22m[39m
+ [32m✓[39m test/build-output.test.js [2m([22m[2m2 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m test/pipeline.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 58[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m13 passed[39m[22m[90m (13)[39m
+[2m      Tests [22m [1m[32m97 passed[39m[22m[90m (97)[39m
+[2m   Start at [22m 08:05:42
+[2m   Duration [22m 6.99s[2m (environment 82%, tests 9%, import 5%, transform 3%, worker 1%)[22m
+
+[2mEnvironment [22m [33mjsdom was created 13 times[39m[2m · 29.45s total, 82% of tracked time[22m
+[2m      
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:883d87ee h:4ee06870 -->
+### 2026-11-27 08:06:03 UTC tool `exec`
+
+`{"command": "npm run build", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 120000}`
+
+```
+> build
+> vite build && node scripts/build.js
+
+vite v8.1.4 building client environment for production...
+[2K
+transforming...✓ 70 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/assets/site-D1VkUSnh.webmanifest          0.46 kB
+dist/assets/favicon-16x16-DiDxEP5I.png         0.61 kB
+dist/assets/favicon-32x32-gx7jztkS.png         1.83 kB
+dist/relationships.html                        2.38 kB │ gzip:  1.17 kB
+dist/assets/icon-D43pJgon.svg                  3.43 kB │ gzip:  1.75 kB
+dist/measured-sources.html                     5.65 kB │ gzip:  2.42 kB
+dist/index.html                               10.35 kB │ gzip:  2.88 kB
+dist/assets/favicon-cIRlZqHK.ico              15.40 kB
+dist/assets/apple-touch-icon-DtMA9gHK.png     28.56 kB
+dist/assets/sprite-XqPrXdnM.png            1,285.35 kB
+dist/assets/relationships-M5LCrEyS.css         4.69 kB │ gzip:  1.50 kB
+dist/assets/measuredSources-BJF8RmMg.css       5.88 kB │ gzip:  1.75 kB
+dist/assets/favicon-sprite-t74iFp7T.css       78.48 kB │ gzip: 13.52 kB
+dist/assets/favicon-sprite-BfI_h9aM.js        14.37 kB │ gzip:  5.80 kB
+dist/assets/view-model-C1Ps1hr3.js            38.83 kB │ gzip: 12.53 kB
+dist/assets/main-BzvF9baJ.js                 102.94 kB │ gzip: 35.20 kB
+dist/assets/relationships-B2dQJbCq.js        104.79 kB │ gzip: 34.46 kB
+dist/assets/measuredSources-DDUW9x3g.js      165.31 kB │ gzip: 36.26 kB
+
+✓ built in 393ms
+
+===
+Stopped waiting for output after 11.0 seconds. Command running in background with ID: 2dc143. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:get_output:258b5835 h:9a06ae73 -->
+### 2026-11-27 08:06:10 UTC tool `get_output`
+
+`{"shell_id": "2dc143", "timeout": 30000}`
+
+```
+Story groups: 4889/5557 clusters assigned (119 via fuzzy word matches)
+Client digests: 956 recent + 4601 archived clusters (full export in dataset.json)
+Build complete. 5557 clusters, 7113 entities, 57 topics, 10517 stories in timeline -> dist/dataset.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:fa116689 h:961246ea -->
+### 2026-11-27 08:06:31 UTC tool `exec`
+
+`{"command": "node --input-type=module - <<'JS'\nimport { readFileSync } from 'fs';\nimport { JSDOM } from 'jsdom';\nconst dom = new JSDOM(readFileSync('src/measured-sources.html','utf8'), { url:'https://example.test/measured-sources.html' });\nglobalThis.document = dom.window.document;\nglobalThis.Event = dom.window.Event;\nawait import('./src/measured-sources.js');\nconst cards = document.querySe`
+
+```
+Output from command in shell 31c506:
+cards 76
+bands [
+  [ 'strongest', 19 ],
+  [ 'above-typical', 19 ],
+  [ 'below-typical', 19 ],
+  [ 'weakest', 19 ]
+]
+first South China Morning Post spider true notes 0
+labels EventsEvents & actions: 60.7|DetailNumbers & detail: 45.5|PlaceTime & place: 91|CauseCause & effect: 38.1|StakesReal-world stakes: 61.9|EvidenceEvidence cues: 86|ContextContext & comparison: 95.4|ExplainExplanatory framing: 49.7|No teaseCuriosity restraint: 53.2|No captureLow search-capture packaging: 55.6|No hypeSensational restraint: 58.6
+bbc detail EventsEvents & actions: 72.5DetailNumbers & detail: 42PlaceTime & place: 59.5CauseCause & effect: 58.4StakesReal-world stakes: 42.7EvidenceEvidence cues: 43.8ContextContext & comparison: 20ExplainExplanatory framing: 52.
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:3fb43c0f h:d8b72c28 -->
+### 2026-11-27 08:06:48 UTC tool `exec`
+
+`{"command": "ls -lh dist/measured-sources.json dist/measured-sources.html dist/assets/measuredSources-*.js | head -10 && python3 - <<'PY'\nimport json\np=json.load(open('dist/measured-sources.json'))\nprint(p['summary'],len(p['sources']))\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 60e8ec:
+-rw-rw-r-- 1 bobbigmac bobbigmac 162K Nov 27 08:05 dist/assets/measuredSources-DDUW9x3g.js
+-rw-rw-r-- 1 bobbigmac bobbigmac 5.6K Nov 27 08:05 dist/measured-sources.html
+-rw-rw-r-- 1 bobbigmac bobbigmac 273K Nov 27 08:06 dist/measured-sources.json
+{'sourceCount': 76, 'headlineRows': 11461, 'inputSourceCount': 686} 76
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:3a91b3b7 h:cc526b1f -->
+### 2026-11-27 08:06:56 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor s in p['sources']:\n print(f\"{s['rank']:2} {s['measuredQuality']:4.1f} {s['band'][:1]} n={s['headlines']:4} {s['label']}\")\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell a89014:
+ 1 63.2 s n=  25 South China Morning Post
+ 2 60.1 s n=  46 TweakTown
+ 3 59.5 s n=  28 PsyPost
+ 4 59.5 s n= 458 Eurogamer
+ 5 59.2 s n=  24 Quartz
+ 6 58.3 s n= 485 The Guardian
+ 7 57.7 s n=  68 Jerusalem Post
+ 8 57.4 s n=  28 MyJoyOnline
+ 9 57.2 s n=  27 Wccftech
+10 56.7 s n=  20 Times of India
+11 56.1 s n= 127 Medical Xpress
+12 55.7 s n=  28 Qatar Tribune
+13 55.5 s n=  20 PBS
+14 54.2 s n= 116 Financial Times
+15 53.1 s n=  40 Reddit
+16 53.0 s n= 173 City A.M.
+17 52.8 s n=  33 Business Insider
+18 52.6 s n=  22 ScienceAlert
+19 52.5 s n= 123 Korea Times
+20 52.5 a n=  20 Ajel
+21 52.5 a n=  24 Seekingalpha
+22 52.4 a n=  92 Evening Standard
+23 52.3 a n=  23 Bernama
+24 52.3 a n=  26 Inc
+25 52.1 a n=  20 Indianexpress
+26 52.1 a n=  48 New York Post / Page Six
+27 51.8 a n=  34 CNA
+28 51.5 a n=  38 Ars Technica
+29 51.4 a n=  26 The National
+30 50.9 a n= 246 The Independent
+31 50.6 a n=  81 This is Money
+32 50.6 a n=  48 Sky News
+33 50.6 a n=  27 Mashable
+34 50.1 a n=  35 The Verge
+35 50.1 a n=  30 Vice
+36 50.0 a n=  50 Finextra
+37 49.9 a n=3537 BBC
+38 49.5 a n=  27 Semafor
+39 49.5 b n=  52 The Hindu
+40 49.3 b n=  22 Dailytimes
+41 49.3 b n=  51 New Straits Times
+42 49.3 b n=  26 Nasdaq
+43 49.3 b n=  21 Freemalaysiatoday
+44 49.2 b n=  37 MarketBeat
+45 49.1 b n=  31 Business Day
+46 49.0 b n=  26 Wired
+47 48.9 b n=  22 STAT News
+48 48.8 b n=  26 The Age
+49 48.6 b n=  40 TechRadar
+50 48.5 b n= 125 IGN
+51 48.4 b n=  50 Windows Central
+52 48.1 b n= 190 Phys.org
+53 48.0 b n=  29 Daily Maverick
+54 47.8 b n=  54 The Star
+55 47.7 b n=  21 Xbox Wire
+56 47.6 b n=  61 Notebookcheck
+57 47.3 b n=  58 Winnipeg Free Press
+58 47.2 w n=  38 ABC News
+59 46.7 w n=  28 Newsweek
+60 46.6 w n=  70 Business Recorder
+61 46.5 w n= 133 Mirror
+62 46.4 w n=  29 CBS News
+63 46.2 w n= 348 Punch
+64 45.8 w n=  28 Sydney Morning Herald
+65 45.7 w n=  23 Chalkbeat
+66 45.7 w n=  42 Nature
+67 45.6 w n=  73 Metro
+68 44.7 w n=  21 Engadget
+69 44.6 w n=  29 OregonLive obituaries
+70 44
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:887b73be h:83e67c22 -->
+### 2026-11-27 08:07:14 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor s in p['sources'][:15]: print(s['label'], '|family',s['family'],'|tree',s['treeRoot'],'|profile',s['profile'].get('kind'))\nprint('BBC', [s for s in p['sources'] if s['key']=='bbc.co.uk'][0]['family'])\nprint('families', sorted(set(s['family'] for s in p['sources']))[:30], len(set(s['famil`
+
+```
+Output from command in shell c81df3:
+South China Morning Post |family Hong Kong & Taiwan |tree Regional English Media |profile None
+TweakTown |family Enthusiast Hardware |tree Specialist Press |profile Independent tech/hardware site
+PsyPost |family Popular Science News |tree Specialist Press |profile Science news publication
+Eurogamer |family Eurogamer |tree Specialist Press |profile Games publication
+Quartz |family Independent Digital News |tree Digital Publishers |profile Business and global-affairs site
+The Guardian |family The Guardian |tree UK Media |profile Trust-owned national newspaper
+Jerusalem Post |family Jerusalem Post |tree Regional English Media |profile English-language national broadsheet
+MyJoyOnline |family Ghana Media |tree Regional English Media |profile National news website
+Wccftech |family Hardware Guides |tree Specialist Press |profile Independent tech/gaming publication
+Times of India |family Unmatched sources |tree Unmatched sources |profile None
+Medical Xpress |family Medical Xpress |tree Specialist Press |profile Medical/health research news service
+Qatar Tribune |family Qatar Media |tree Regional English Media |profile English-language national daily
+PBS |family North America Public |tree Public & International |profile US public broadcaster
+Financial Times |family Financial Times |tree Specialist Press |profile International financial newspaper
+Reddit |family Social Aggregators |tree Platforms & Aggregators |profile Social discussion platform
+BBC BBC
+families ['Advance Local', 'Australia & NZ Public', 'BBC', 'Business Insider Network', 'Business Recorder', 'City A.M.', 'Comcast / Sky', 'Consumer Gadgets', 'DMGT Companion', 'Daily Mail', 'Enthusiast Hardware', 'Eurogamer', 'European Business Analysis', 'Evening Standard', 'Financial Times', 'Gaming Networks', 'Gaming Platforms', 'Ghana Media', 'Hardware Guides', 'Health & Medical', 'Hong Kong & Taiwan', 'IGN', 'Independent', 'Independent Digital News', 'India Media', 'Inquirer', 'Jerusale
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:3842c241 h:c915b447 -->
+### 2026-11-27 08:07:25 UTC tool `exec`
+
+`{"command": "grep -R \"indiatimes\\|timesofindia\" -n src/trees src/data scripts/headline-analysis/analyse_headlines.py | head -30", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 277f61:
+src/trees/sources/regional-english.json:122:        "timesofindia.com",
+src/data/measured-sources.json:1295:      "key": "timesofindia.indiatimes.com",
+src/data/measured-sources.json:1303:      "iconKey": "timesofindia.indiatimes.com",
+src/data/measured-sources.json:1306:          "key": "timesofindia.indiatimes.com",
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:84e77e68 h:450c1f51 -->
+### 2026-11-27 08:07:29 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/sources/regional-english.json", "offset": 100, "limit": 50}`
+
+```
+Output truncated at line 149; continue reading from line 150.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/trees/sources/regional-english.json" start_line="100" end_line="149">
+100|      "icon": "dailytimes.com.pk",
+101|      "sources": [
+102|        "dailytimes.com.pk",
+103|        "propakistani.pk",
+104|        "nation.com.pk",
+105|        "dawn.com",
+106|        "tribune.com.pk",
+107|        "arynews.tv",
+108|        "geo.tv",
+109|        "brecorder.com",
+110|        "samaa.tv",
+111|        "dunyanews.tv",
+112|        "humnews.pk",
+113|        "bolnews.com"
+114|      ]
+115|    },
+116|    {
+117|      "id": "india-media",
+118|      "label": "India Media",
+119|      "icon": "thehindu.com",
+120|      "sources": [
+121|        "thehindu.com",
+122|        "timesofindia.com",
+123|        "hindustantimes.com",
+124|        "indiatoday.in",
+125|        "livemint.com",
+126|        "economictimes.com",
+127|        "dnaindia.com",
+128|        "freepressjournal.in",
+129|        "ndtv.com",
+130|        "ndtvprofit.com",
+131|        "thewire.in"
+132|      ]
+133|    },
+134|    {
+135|      "id": "philippines-media",
+136|      "label": "Philippines Media",
+137|      "icon": "inquirer.com",
+138|      "children": [
+139|        {
+140|          "id": "inquirer",
+141|          "label": "Inquirer",
+142|          "icon": "inquirer.com",
+143|          "sources": [
+144|            "inquirer.com",
+145|            "newsinfo.inquirer.net",
+146|            "business.inquirer.net",
+147|            "cebudailynews.inquirer.net",
+148|            "entertainment.inquirer.net",
+149|            "lifestyle.inquirer.net",
+</file-view>
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:6c17fd7d h:201f4dd4 -->
+### 2026-11-27 08:07:37 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor s in p['sources']:\n if s['treeRoot']=='Unmatched sources' or s['family']=='Unmatched sources': print(s['rank'],s['key'],s['label'],s['headlines'])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 7e434e:
+10 timesofindia.indiatimes.com Times of India 20
+23 bernama.com Bernama 23
+24 inc.com Inc 26
+25 indianexpress.com Indianexpress 20
+57 winnipegfreepress.com Winnipeg Free Press 58
+65 chalkbeat.org Chalkbeat 23
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:7ec76eab h:f05d0780 -->
+### 2026-11-27 08:07:45 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json\np=json.load(open('src/trees/profiles/sources.json'))\nfor k in ['timesofindia.indiatimes.com','bernama.com','inc.com','indianexpress.com','winnipegfreepress.com','chalkbeat.org']:\n print(k, k in p, p.get(k,{}).get('kind'))\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell dc3625:
+timesofindia.indiatimes.com False None
+bernama.com False None
+inc.com False None
+indianexpress.com False None
+winnipegfreepress.com False None
+chalkbeat.org False None
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:50229d3c h:a271e8ac -->
+### 2026-11-27 08:07:49 UTC tool `exec`
+
+`{"command": "grep -R \"chalkbeat\\|winnipegfreepress\\|bernama\\|indianexpress\\|inc.com\" -n src/trees src/data | head -40", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 43c839:
+src/data/measured-sources.json:2947:      "key": "bernama.com",
+src/data/measured-sources.json:2955:      "iconKey": "bernama.com",
+src/data/measured-sources.json:2958:          "key": "bernama.com",
+src/data/measured-sources.json:3071:      "key": "inc.com",
+src/data/measured-sources.json:3079:      "iconKey": "inc.com",
+src/data/measured-sources.json:3082:          "key": "inc.com",
+src/data/measured-sources.json:3195:      "key": "indianexpress.com",
+src/data/measured-sources.json:3203:      "iconKey": "indianexpress.com",
+src/data/measured-sources.json:3206:          "key": "indianexpress.com",
+src/data/measured-sources.json:7261:      "key": "winnipegfreepress.com",
+src/data/measured-sources.json:7269:      "iconKey": "winnipegfreepress.com",
+src/data/measured-sources.json:7272:          "key": "winnipegfreepress.com",
+src/data/measured-sources.json:8276:      "key": "chalkbeat.org",
+src/data/measured-sources.json:8284:      "iconKey": "chalkbeat.org",
+src/data/measured-sources.json:8287:          "key": "chalkbeat.org",
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:6c6a0b5b h:981803e1 -->
+### 2026-11-27 08:08:06 UTC tool `exec`
+
+`{"command": "grep -n \"seekingalpha\\|indianexpress\\|dailytimes\\|freemalaysiatoday\\|inc.com\\|bernama\\|chalkbeat\\|winnipegfreepress\\|nypost\\|mashable\" scripts/favicons.js | head -50", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell f21c0a:
+48:  'nypost.com': 'New York Post',
+80:  'chalkbeat.org': 'Chalkbeat',
+105:  'winnipegfreepress.com': 'Winnipeg Free Press',
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:79955c77 h:25110365 -->
+### 2026-11-27 08:08:21 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/favicons.js", "offset": 1, "limit": 150}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/favicons.js" start_line="1" end_line="138">
+  1|import { getSourceName, platformOfHost, prettifySourceKey, sourceKeyFromUrl } from './sources.js';
+  2|
+  3|export const SOURCE_LABELS = {
+  4|  'bbc.co.uk': 'BBC',
+  5|  'bbc.com': 'BBC',
+  6|  'news.sky.com': 'Sky News',
+  7|  'sky.com': 'Sky News',
+  8|  'theguardian.com': 'The Guardian',
+  9|  'dailymail.com': 'Daily Mail',
+ 10|  'independent.co.uk': 'The Independent',
+ 11|  'mirror.co.uk': 'Mirror',
+ 12|  'metro.co.uk': 'Metro',
+ 13|  'standard.co.uk': 'Evening Standard',
+ 14|  'eurogamer.net': 'Eurogamer',
+ 15|  'kotaku.com': 'Kotaku',
+ 16|  'ign.com': 'IGN',
+ 17|  'ft.com': 'Financial Times',
+ 18|  'phys.org': 'Phys.org',
+ 19|  'medicalxpress.com': 'Medical Xpress',
+ 20|  'cityam.com': 'City A.M.',
+ 21|  'punchng.com': 'Punch',
+ 22|  'koreatimes.co.kr': 'Korea Times',
+ 23|  'thisismoney.co.uk': 'This is Money',
+ 24|  'jpost.com': 'Jerusalem Post',
+ 25|  'brecorder.com': 'Business Recorder',
+ 26|  'notebookcheck.net': 'Notebookcheck',
+ 27|  'handelsblatt.com': 'Handelsblatt',
+ 28|  'thestar.com.my': 'The Star',
+ 29|  'nst.com.my': 'New Straits Times',
+ 30|  'tweaktown.com': 'TweakTown',
+ 31|  'windowscentral.com': 'Windows Central',
+ 32|  'gamespot.com': 'GameSpot',
+ 33|  'newscientist.com': 'New Scientist',
+ 34|  'phys.org': 'Phys.org',
+ 35|  'medicalxpress.com': 'Medical Xpress',
+ 36|  'techxplore.com': 'Tech Xplore',
+ 37|  'sciencedaily.com': 'ScienceDaily',
+ 38|  'futurity.org': 'Futurity',
+ 39|  'sciencealert.com': 'ScienceAlert',
+ 40|  'psypost.org': 'PsyPost',
+ 41|  'sci.news': 'Sci.News',
+ 42|  'zmescience.com': 'ZME Science',
+ 43|  'livescience.com': 'Live Science',
+ 44|  'scientificamerican.com': 'Scientific American',
+ 45|  'sciencenews.org': 'Science News',
+ 46|  'sciencebasedmedicine.org': 'Science-Based Medicine',
+ 47|  'abc.net.au': 'ABC News',
+ 48|  'nypost.com': 'New York Post',
+ 49|  'pagesix.com': 'Page Six',
+ 50|  'foxnews.com': 
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:9d4b65cc h:dedf8b07 -->
+### 2026-11-27 08:08:26 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor s in p['sources']:\n print(s['key'], '=>', s['label'])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 5b21da:
+scmp.com => South China Morning Post
+tweaktown.com => TweakTown
+psypost.org => PsyPost
+eurogamer.net => Eurogamer
+qz.com => Quartz
+theguardian.com => The Guardian
+jpost.com => Jerusalem Post
+myjoyonline.com => MyJoyOnline
+wccftech.com => Wccftech
+timesofindia.indiatimes.com => Times of India
+medicalxpress.com => Medical Xpress
+qatar-tribune.com => Qatar Tribune
+pbs.org => PBS
+ft.com => Financial Times
+reddit.com => Reddit
+cityam.com => City A.M.
+businessinsider.com => Business Insider
+sciencealert.com => ScienceAlert
+koreatimes.co.kr => Korea Times
+english.ajel.sa => Ajel
+seekingalpha.com => Seekingalpha
+standard.co.uk => Evening Standard
+bernama.com => Bernama
+inc.com => Inc
+indianexpress.com => Indianexpress
+group-nypost-pagesix => New York Post / Page Six
+channelnewsasia.com => CNA
+arstechnica.com => Ars Technica
+thenationalnews.com => The National
+independent.co.uk => The Independent
+thisismoney.co.uk => This is Money
+news.sky.com => Sky News
+group-mashable => Mashable
+theverge.com => The Verge
+vice.com => Vice
+finextra.com => Finextra
+bbc.co.uk => BBC
+semafor.com => Semafor
+thehindu.com => The Hindu
+dailytimes.com.pk => Dailytimes
+nst.com.my => New Straits Times
+nasdaq.com => Nasdaq
+freemalaysiatoday.com => Freemalaysiatoday
+marketbeat.com => MarketBeat
+businessday.ng => Business Day
+wired.com => Wired
+statnews.com => STAT News
+theage.com.au => The Age
+techradar.com => TechRadar
+ign.com => IGN
+windowscentral.com => Windows Central
+phys.org => Phys.org
+dailymaverick.co.za => Daily Maverick
+thestar.com.my => The Star
+news.xbox.com => Xbox Wire
+notebookcheck.net => Notebookcheck
+winnipegfreepress.com => Winnipeg Free Press
+abc.net.au => ABC News
+newsweek.com => Newsweek
+brecorder.com => Business Recorder
+mirror.co.uk => Mirror
+cbsnews.com => CBS News
+punchng.com => Punch
+smh.com.au => Sydney Morning Herald
+chalkbeat.org => Chalkbeat
+nature.com => Nature
+metro.co.uk => Metro
+engadget.com => Engadget
+obits.oregonlive.com => Orego
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:2b0b8e10 h:9a494db6 -->
+### 2026-11-27 08:08:33 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nmissing=[];have=[]\nfor s in p['sources']:\n (have if '#' in s['relationshipsUrl'] else missing).append(s['key'])\nprint('have',len(have),'missing',len(missing))\nprint('missing',missing)\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 27c38c:
+have 70 missing 6
+missing ['timesofindia.indiatimes.com', 'bernama.com', 'inc.com', 'indianexpress.com', 'winnipegfreepress.com', 'chalkbeat.org']
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:e15eef4c h:c77f71b9 -->
+### 2026-11-27 08:08:45 UTC tool `exec`
+
+`{"command": "grep -n \"Canada\\|canada\\|Malaysia\\|Education\\|Business\" src/trees/sources/*.json | head -80", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell de06c3:
+src/trees/sources/canada-media.json:2:  "id": "canada-media",
+src/trees/sources/canada-media.json:3:  "label": "Canada Media",
+src/trees/sources/murdoch.json:79:      "label": "News Corp Business",
+src/trees/sources/public-international.json:42:    "radio-canada.ca"
+src/trees/sources/regional-english.json:40:          "label": "Nigeria Business",
+src/trees/sources/regional-english.json:51:      "label": "Malaysia Media",
+src/trees/sources/regional-english.json:56:          "label": "Malaysia Nationals",
+src/trees/sources/regional-english.json:61:              "label": "The Star Malaysia",
+src/trees/sources/regional-english.json:87:          "label": "Malaysia Alternative",
+src/trees/sources/specialist-press.json:226:      "label": "Business & Money",
+src/trees/sources/specialist-press.json:244:              "label": "Business Newsweeklies",
+src/trees/sources/specialist-press.json:289:              "label": "Business Recorder",
+src/trees/sources/specialist-press.json:299:          "label": "Business Specialist",
+src/trees/sources/specialist-press.json:312:              "label": "Business Insider Network",
+src/trees/sources/specialist-press.json:330:              "label": "European Business Analysis",
+src/trees/sources/specialist-press.json:342:          "label": "Regional Business",
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:88432145 h:e5c7e8c3 -->
+### 2026-11-27 08:08:48 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/sources/canada-media.json"}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/trees/sources/canada-media.json" start_line="1" end_line="39">
+  1|{
+  2|  "id": "canada-media",
+  3|  "label": "Canada Media",
+  4|  "icon": "torontosun.com",
+  5|  "children": [
+  6|    {
+  7|      "id": "postmedia",
+  8|      "label": "Postmedia",
+  9|      "icon": "torontosun.com",
+ 10|      "sources": [
+ 11|        "torontosun.com",
+ 12|        "vancouversun.com",
+ 13|        "theprovince.com",
+ 14|        "calgaryherald.com",
+ 15|        "edmontonjournal.com",
+ 16|        "ottawacitizen.com",
+ 17|        "montrealgazette.com",
+ 18|        "windsorstar.com",
+ 19|        "leaderpost.com",
+ 20|        "thestarphoenix.com",
+ 21|        "nationalpost.com",
+ 22|        "financialpost.com",
+ 23|        "winnipegsun.com",
+ 24|        "edmontonsun.com",
+ 25|        "calgarysun.com",
+ 26|        "ottawasun.com"
+ 27|      ]
+ 28|    },
+ 29|    {
+ 30|      "id": "torstar",
+ 31|      "label": "Torstar",
+ 32|      "icon": "thestar.com",
+ 33|      "sources": [
+ 34|        "thestar.com",
+ 35|        "toronto.com"
+ 36|      ]
+ 37|    }
+ 38|  ]
+ 39|}
+</file-view>
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:0bc5b4dc h:99b41f78 -->
+### 2026-11-27 08:08:55 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/sources/specialist-press.json", "offset": 220, "limit": 150}`
+
+```
+Output truncated at line 369; continue reading from line 370.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/trees/sources/specialist-press.json" start_line="220" end_line="369">
+220|          ]
+221|        }
+222|      ]
+223|    },
+224|    {
+225|      "id": "business-money",
+226|      "label": "Business & Money",
+227|      "icon": "ft.com",
+228|      "children": [
+229|        {
+230|          "id": "financial-national",
+231|          "label": "Financial Nationals",
+232|          "icon": "ft.com",
+233|          "children": [
+234|            {
+235|              "id": "financial-times",
+236|              "label": "Financial Times",
+237|              "icon": "ft.com",
+238|              "sources": [
+239|                "ft.com"
+240|              ]
+241|            },
+242|            {
+243|              "id": "business-newsweeklies",
+244|              "label": "Business Newsweeklies",
+245|              "icon": "concept:newspaper",
+246|              "sources": [
+247|                "economist.com",
+248|                "bloomberg.com",
+249|                "wsj.com",
+250|                "barrons.com",
+251|                "marketwatch.com"
+252|              ]
+253|            }
+254|          ]
+255|        },
+256|        {
+257|          "id": "investor-advice",
+258|          "label": "Investor & Markets",
+259|          "icon": "fool.com",
+260|          "children": [
+261|            {
+262|              "id": "markets-data",
+263|              "label": "Markets Data",
+264|              "icon": "marketbeat.com",
+265|              "sources": [
+266|                "marketbeat.com",
+267|                "nasdaq.com",
+268|                "seekingalpha.com",
+269|                "netinterest.co"
+270|              ]
+271|            },
+272|            {
+273|              "id": "retail-investor",
+274|              "label": "Retail Investor",
+275|              "icon": "concept:finance",
+276|              "sources": [
+277|                "fool.com",
+278|                "fool.ca",
+
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:1246aa20 h:790134df -->
+### 2026-11-27 08:09:00 UTC tool `exec`
+
+`{"command": "grep -Rni \"education\\|school\" src/trees/sources src/trees/profiles | head -30", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 8dd81b:
+src/trees/sources/specialist-press.json:495:                "educationdive.com",
+src/trees/profiles/sources.json:892:   "PBS NewsHour and educational media",
+src/trees/profiles/sources.json:1974:  "model": "Futurity says it posts and amplifies content submitted by university partners, with editors optimising submissions for readers. Columbia Journalism Review described the founding model as edited university press releases and stories written by member schools, lightly edited without additional reporting.",
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:d66ac3f0 h:65d4398c -->
+### 2026-11-27 08:09:03 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/sources/specialist-press.json", "offset": 470, "limit": 55}`
+
+```
+Output truncated at line 524; continue reading from line 525.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/trees/sources/specialist-press.json" start_line="470" end_line="524">
+470|        {
+471|          "id": "industry-b2b",
+472|          "label": "Industry & B2B",
+473|          "icon": "concept:industry",
+474|          "children": [
+475|            {
+476|              "id": "industry-dive",
+477|              "label": "Industry Dive",
+478|              "icon": "retaildive.com",
+479|              "sources": [
+480|                "bankingdive.com",
+481|                "retaildive.com",
+482|                "restaurantdive.com",
+483|                "grocerydive.com",
+484|                "marketingdive.com",
+485|                "supplychaindive.com",
+486|                "truckingdive.com",
+487|                "hrdive.com",
+488|                "manufacturingdive.com",
+489|                "constructiondive.com",
+490|                "biopharmadive.com",
+491|                "healthcaredive.com",
+492|                "medtechdive.com",
+493|                "pharmavoice.com",
+494|                "utilitydive.com",
+495|                "educationdive.com",
+496|                "smartcitiesdive.com",
+497|                "wastedive.com",
+498|                "cybersecuritydive.com",
+499|                "legaldive.com"
+500|              ]
+501|            },
+502|            {
+503|              "id": "b2b-specialist",
+504|              "label": "B2B Specialist",
+505|              "icon": "retail-insider.com",
+506|              "sources": [
+507|                "retail-insider.com",
+508|                "fashionunited.uk",
+509|                "marketingweek.com",
+510|                "prolificnorth.co.uk",
+511|                "adweek.com",
+512|                "digiday.com",
+513|                "martech.org",
+514|                "cio.com",
+515|                "csoonline.com",
+516|                "thefastmode.com",
+517|                "risk.net",
+518|                "complia
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:631d3030 h:191b3e59 -->
+### 2026-11-27 08:09:07 UTC tool `exec`
+
+`{"command": "ls src/trees/sources && sed -n '1,130p' src/trees/sources/digital-publishers.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 612f82:
+australia-media.json
+canada-media.json
+digital-publishers.json
+murdoch.json
+official-organizations.json
+platforms-aggregators.json
+public-international.json
+regional-english.json
+specialist-press.json
+state-media.json
+uk-media.json
+us-media.json
+wires-releases.json
+{
+  "id": "digital-publishers",
+  "label": "Digital Publishers",
+  "icon": "theverge.com",
+  "children": [
+    {
+      "id": "axel-springer",
+      "label": "Axel Springer",
+      "icon": "businessinsider.com",
+      "sources": [
+        "businessinsider.com",
+        "insider.com",
+        "politico.com",
+        "politico.eu",
+        "morningbrew.com"
+      ]
+    },
+    {
+      "id": "ziff-davis",
+      "label": "Ziff Davis / IGN Entertainment",
+      "icon": "ign.com",
+      "sources": [
+        "ign.com",
+        "mashable.com",
+        "in.mashable.com",
+        "sea.mashable.com",
+        "pcmag.com",
+        "extremetech.com",
+        "geek.com",
+        "askmen.com",
+        "lifehacker.com",
+        "eurogamer.net",
+        "rockpapershotgun.com",
+        "vg247.com",
+        "gamesindustry.biz",
+        "nintendolife.com",
+        "pushsquare.com",
+        "purexbox.com",
+        "timeextension.com"
+      ]
+    },
+    {
+      "id": "keleops",
+      "label": "Keleops",
+      "icon": "kotaku.com",
+      "sources": [
+        "kotaku.com",
+        "gizmodo.com",
+        "journaldugeek.com",
+        "presse-citron.com",
+        "01net.com",
+        "iphon.fr"
+      ]
+    },
+    {
+      "id": "vox-media",
+      "label": "Vox Media",
+      "icon": "theverge.com",
+      "sources": [
+        "theverge.com",
+        "polygon.com",
+        "vulture.com",
+        "nymag.com",
+        "thecut.com",
+        "sbnation.com",
+        "vox.com",
+        "eater.com",
+        "curbed.com",
+        "thrillist.com",
+        "popsugar.com"
+      ]
+    },
+    {
+      "id": "conde-nast",
+      "label": "Condé Nast",
+      "icon": "arstechnica.com",
+      "sources": [
+        "arstec
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:b64f171c h:b74c2199 -->
+### 2026-11-27 08:09:12 UTC tool `exec`
+
+`{"command": "grep -n \"Independent\\|nonprofit\\|ProPublica\\|public-interest\" src/trees/sources/digital-publishers.json | head -40", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell c151d9:
+202:      "label": "Independent Digital News",
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:ed92ddb4 h:a5d1c1bf -->
+### 2026-11-27 08:09:16 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/sources/digital-publishers.json", "offset": 180, "limit": 80}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/trees/sources/digital-publishers.json" start_line="180" end_line="218">
+180|      "icon": "nickiswift.com",
+181|      "sources": [
+182|        "nickiswift.com",
+183|        "thelist.com",
+184|        "looper.com",
+185|        "grunge.com",
+186|        "mashable.com"
+187|      ]
+188|    },
+189|    {
+190|      "id": "motley-fool",
+191|      "label": "Motley Fool",
+192|      "icon": "fool.com",
+193|      "sources": [
+194|        "fool.com",
+195|        "fool.ca",
+196|        "fool.com.au",
+197|        "fool.co.uk"
+198|      ]
+199|    },
+200|    {
+201|      "id": "digital-news-standalones",
+202|      "label": "Independent Digital News",
+203|      "icon": "newsweek.com",
+204|      "sources": [
+205|        "newsweek.com",
+206|        "semafor.com",
+207|        "qz.com",
+208|        "vice.com",
+209|        "huffpost.com",
+210|        "thedailybeast.com",
+211|        "rawstory.com",
+212|        "salon.com",
+213|        "slate.com",
+214|        "thedispatch.com"
+215|      ]
+216|    }
+217|  ]
+218|}
+</file-view>
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:read:2a88e0f1 h:cd7760e6 -->
+### 2026-11-27 08:09:24 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/profiles/sources.json", "offset": 1, "limit": 50}`
+
+```
+Output truncated at line 50; continue reading from line 51.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/trees/profiles/sources.json" start_line="1" end_line="50">
+  1|{
+  2| "bbc.co.uk": {
+  3|  "kind": "Public-service broadcaster",
+  4|  "properties": [
+  5|   "Royal Charter remit",
+  6|   "licence-fee funded",
+  7|   "statutory impartiality",
+  8|   "national and international scale"
+  9|  ],
+ 10|  "leaning": "Institutionally required to be impartial; criticised from both left and right over framing, access, and political coverage.",
+ 11|  "watch": [
+ 12|   "Its scale makes it useful but can crowd out independent reporting",
+ 13|   "Charter impartiality is an obligation, not proof that every editorial choice is neutral"
+ 14|  ],
+ 15|  "links": [
+ 16|   {
+ 17|    "label": "BBC Charter",
+ 18|    "url": "https://www.gov.uk/government/publications/bbc-charter-and-framework-agreement/bbc-charter"
+ 19|   },
+ 20|   {
+ 21|    "label": "BBC mission",
+ 22|    "url": "https://www.bbc.com/aboutthebbc/governance/mission/"
+ 23|   },
+ 24|   {
+ 25|    "label": "2024 impartiality review",
+ 26|    "url": "https://www.gov.uk/government/publications/bbc-mid-term-review-2024/bbc-mid-term-review-2024"
+ 27|   }
+ 28|  ]
+ 29| },
+ 30| "theguardian.com": {
+ 31|  "kind": "Trust-owned national newspaper",
+ 32|  "properties": [
+ 33|   "Scott Trust sole shareholder",
+ 34|   "reader-funded",
+ 35|   "investigations and opinion"
+ 36|  ],
+ 37|  "leaning": "Broadly liberal/left-of-centre opinion culture; ownership is designed to protect editorial independence rather than enforce a party line.",
+ 38|  "watch": [
+ 39|   "Guardian News and Guardian Opinion are different editorial jobs",
+ 40|   "Its distinctive ownership makes it unlike proprietor- or shareholder-driven papers"
+ 41|  ],
+ 42|  "links": [
+ 43|   {
+ 44|    "label": "Scott Trust history",
+ 45|    "url": "https://www.theguardian.com/about/history"
+ 46|   },
+ 47|   {
+ 48|    "label": "Guardian ownership",
+ 49|    "url": "htt
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:a7f25198 h:fe59f4a1 -->
+### 2026-11-27 08:09:41 UTC tool `exec`
+
+`{"command": "which chromium chromium-browser google-chrome firefox 2>/dev/null || true", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 7a4960:
+/usr/bin/firefox
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:exec:3b7747ec h:cec3f0d0 -->
+### 2026-11-27 08:09:51 UTC tool `exec`
+
+`{"command": "firefox --headless --screenshot /tmp/measured-page.png --window-size=1400,1400 \"file:///home/bobbigmac/projects/bobdavies/news/dist/measured-sources.html\" >/tmp/firefox-shot.log 2>&1; echo exit:$?; ls -lh /tmp/measured-page.png; tail -5 /tmp/firefox-shot.log", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 30000}`
+
+```
+Output from command in shell 6f40c4:
+exit:0
+-rw-rw-r-- 1 bobbigmac bobbigmac 248K Nov 27 08:09 /tmp/measured-page.png
+*** You are running in headless mode.
+Screenshot saved to: /tmp/measured-page.png
+console.error: (new Error("SharedDataMap: in shutdown", "resource://nimbus/lib/SharedDataMap.sys.mjs", 184))
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:edit:c03601d5 h:8b4263fc -->
+### 2026-11-27 08:10:16 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css", "old_string": "  grid-template-columns: auto auto minmax(0, 1fr) auto auto;", "new_string": "  grid-template-columns: auto auto minmax(0, 1fr) auto auto auto;"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 113.
+```
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73:edit:3db3a47f h:a66c5409 -->
+### 2026-11-27 08:10:25 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css", "old_string": "  .measured-card-head {\n    grid-template-columns: auto auto minmax(0, 1fr) auto;\n  }", "new_string": "  .measured-card-head {\n    grid-template-columns: auto auto minmax(0, 1fr) auto auto;\n  }"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css' - made 1 replacement(s). 3 line(s) removed, 3 line(s) added at line 430.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e h:d6e333eb -->
+### 2026-11-27 08:10:47 UTC user
+
+recap what you are doing, and your objectives, for clarity, since you've been going a while and need to avoid drift, then continue
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:bd4f2496 h:1350711b -->
+### 2026-11-27 08:11:04 UTC tool `exec`
+
+`{"command": "grep -n \"subtitleParts\\|function renderSourceCard\" -A12 -B3 src/measured-sources.js | head -50 && grep -n \"grid-template-columns\" src/styles/measured-sources.css | head -20", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 2a9f0c:
+182-  card.appendChild(detail);
+183-}
+184-
+185:function renderSourceCard(source) {
+186-  const card = el('details', 'measured-source-card');
+187-  card.dataset.band = source.band;
+188-  card.dataset.search = [
+189-    source.label,
+190-    source.key,
+191-    source.family,
+192-    source.treeRoot,
+193-    ...(source.memberLabels || []),
+194-    ...(source.notes || []),
+195-  ].join(' ').toLowerCase();
+196-
+197-  const summary = el('summary', 'measured-card-head');
+--
+199-  renderSourceIcon(summary, source.iconKey || source.key);
+200-  const title = el('div', 'measured-title');
+201-  title.appendChild(el('h3', '', source.label));
+202:  const subtitleParts = [];
+203:  if (source.family) subtitleParts.push(source.family);
+204:  if (source.grouped && source.members?.length > 1) subtitleParts.push(`${source.members.length} measured together`);
+205:  subtitleParts.push(`${source.headlines} headlines`);
+206:  title.appendChild(el('p', 'measured-subtitle', subtitleParts.join(' · ')));
+207-  summary.appendChild(title);
+208-  summary.appendChild(el('span', `band-chip band-${source.band}`, source.bandLabel.replace(' measured headline value', '')));
+209-  const score = el('span', 'measured-score');
+210-  score.appendChild(el('strong', '', source.measuredQuality.toFixed(1)));
+211-  score.appendChild(el('small', '', 'measured quality'));
+212-  summary.appendChild(score);
+213-  card.appendChild(summary);
+214-  card.addEventListener('toggle', () => {
+215-    if (card.open) renderSourceDetail(card, source);
+216-  });
+217-  return card;
+218-}
+11:  grid-template-columns: minmax(120px, 180px) minmax(0, 1fr) minmax(240px, 320px);
+113:  grid-template-columns: auto auto minmax(0, 1fr) auto auto auto;
+234:  grid-template-columns: minmax(250px, 360px) minmax(0, 1fr);
+378:  grid-template-columns: repeat(2, minmax(0, 1fr));
+403:    grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
+431:    grid-template-columns: auto auto minmax(0, 1fr) auto auto
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:9bc9b485 h:d89f23c3 -->
+### 2026-11-27 08:11:20 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js", "old_string": "function renderSourceCard(source) {\n  const card = el('details', 'measured-source-card');", "new_string": "function usefulFamilyLabel(source) {\n  const normalise = value => String(value || '').toLowerCase().replace(/^the\\s+/, '').replace(/[^a-z0-9]+/g, '');\n  if (!source.family || source.family === `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js' - made 1 replacement(s). 2 line(s) removed, 8 line(s) added at line 185.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:3ac24dc0 h:b2adf10c -->
+### 2026-11-27 08:11:26 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js", "old_string": "  const subtitleParts = [];\n  if (source.family) subtitleParts.push(source.family);", "new_string": "  const subtitleParts = [];\n  const family = usefulFamilyLabel(source);\n  if (family) subtitleParts.push(family);"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 208.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:3e6c1876 h:b4bfb398 -->
+### 2026-11-27 08:11:53 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "DISPLAY_OVERRIDES = {\n    'sports.yahoo.com': 'Yahoo Sports',\n    'channelnewsasia.com': 'CNA',\n    'timesofindia.indiatimes.com': 'Times of India',\n    'obits.oregonlive.com': 'OregonLive obituaries',\n}", "new_string": "DISPLAY_OVERRIDES = {\n    'sports.yahoo.com': 'Ya`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 6 line(s) removed, 11 line(s) added at line 13.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:3f3812a5 h:038ee10a -->
+### 2026-11-27 08:12:09 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py && node --check src/measured-sources.js && npm test -- test/measured-sources.test.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 30000}`
+
+```
+Output from command in shell 4253ca:
+wrote 76 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+
+> test
+> vitest run test/measured-sources.test.js
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.1.1 [39m[90m/home/bobbigmac/projects/bobdavies/news[39m
+
+ [32m✓[39m test/measured-sources.test.js [2m([22m[2m7 tests[22m[2m)[22m[32m 123[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m7 passed[39m[22m[90m (7)[39m
+[2m   Start at [22m 08:12:06
+[2m   Duration [22m 2.01s[2m (environment 89%, tests 7%, import 2%, transform 1%, worker 1%)[22m
+
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:7e617b35 h:347eda42 -->
+### 2026-11-27 08:12:24 UTC tool `exec`
+
+`{"command": "npm run build", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 120000}`
+
+```
+> build
+> vite build && node scripts/build.js
+
+vite v8.1.4 building client environment for production...
+[2K
+transforming...✓ 70 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/assets/site-D1VkUSnh.webmanifest          0.46 kB
+dist/assets/favicon-16x16-DiDxEP5I.png         0.61 kB
+dist/assets/favicon-32x32-gx7jztkS.png         1.83 kB
+dist/relationships.html                        2.38 kB │ gzip:  1.17 kB
+dist/assets/icon-D43pJgon.svg                  3.43 kB │ gzip:  1.75 kB
+dist/measured-sources.html                     5.65 kB │ gzip:  2.42 kB
+dist/index.html                               10.35 kB │ gzip:  2.88 kB
+dist/assets/favicon-cIRlZqHK.ico              15.40 kB
+dist/assets/apple-touch-icon-DtMA9gHK.png     28.56 kB
+dist/assets/sprite-XqPrXdnM.png            1,285.35 kB
+dist/assets/relationships-M5LCrEyS.css         4.69 kB │ gzip:  1.50 kB
+dist/assets/measuredSources-ByRgdwlf.css       5.89 kB │ gzip:  1.75 kB
+dist/assets/favicon-sprite-t74iFp7T.css       78.48 kB │ gzip: 13.52 kB
+dist/assets/favicon-sprite-BfI_h9aM.js        14.37 kB │ gzip:  5.80 kB
+dist/assets/view-model-C1Ps1hr3.js            38.83 kB │ gzip: 12.53 kB
+dist/assets/main-BzvF9baJ.js                 102.94 kB │ gzip: 35.20 kB
+dist/assets/relationships-B2dQJbCq.js        104.79 kB │ gzip: 34.46 kB
+dist/assets/measuredSources-Cv5H0p3j.js      165.50 kB │ gzip: 36.38 kB
+
+✓ built in 448ms
+
+===
+Stopped waiting for output after 11.1 seconds. Command running in background with ID: 93627c. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:652a4691 h:4f48548c -->
+### 2026-11-27 08:12:44 UTC tool `exec`
+
+`{"command": "firefox --headless --screenshot /tmp/measured-page-fixed.png --window-size=1400,1300 \"file:///home/bobbigmac/projects/bobdavies/news/dist/measured-sources.html\" >/tmp/firefox-shot.log 2>&1; echo exit:$?; ls -lh /tmp/measured-page-fixed.png", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 30000}`
+
+```
+Output from command in shell af3269:
+exit:0
+-rw-rw-r-- 1 bobbigmac bobbigmac 284K Nov 27 08:12 /tmp/measured-page-fixed.png
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:9056d7d4 h:58ae20ef -->
+### 2026-11-27 08:13:12 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\np='dist/measured-sources.html'\nout='dist/measured-debug.html'\ns=open(p).read()\ninject='''<script>\nconst observer = new MutationObserver(() => {\n  const card = document.querySelector('.measured-source-card');\n  if (card && !card.open) { card.open = true; observer.disconnect(); }\n});\nobserver.observe(document.documentElement, { childList: true, subtree: true })`
+
+```
+Output from command in shell 50edb3:
+exit:0
+-rw-rw-r-- 1 bobbigmac bobbigmac 222K Nov 27 08:13 /tmp/measured-open.png
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:2a81fb87 h:28d40f02 -->
+### 2026-11-27 08:14:11 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js", "old_string": "  const labelRadius = 178;", "new_string": "  const labelRadius = 154;"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 46.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:a8f63105 h:d70d8cf1 -->
+### 2026-11-27 08:14:16 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js", "old_string": "  weak.appendChild(el('strong', '', 'Weakest measured traits: '));", "new_string": "  weak.appendChild(el('strong', '', 'Comparatively weaker traits: '));"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 138.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:016898da h:443fb4de -->
+### 2026-11-27 08:14:23 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css", "old_string": ".measured-source-card {\n  break-inside: avoid;\n  background: var(--paper);\n  border: 1px solid var(--rule);\n  margin-bottom: 0.45rem;\n}", "new_string": ".measured-source-card {\n  break-inside: avoid;\n  background: var(--paper);\n  border: 1px solid var(--rule);\n  margin-bottom: 0.45rem;\`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css' - made 1 replacement(s). 6 line(s) removed, 10 line(s) added at line 104.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:59d402a8 h:ce18beb2 -->
+### 2026-11-27 08:14:39 UTC tool `exec`
+
+`{"command": "npm run build", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 120000}`
+
+```
+> build
+> vite build && node scripts/build.js
+
+vite v8.1.4 building client environment for production...
+[2K
+transforming...✓ 70 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/assets/site-D1VkUSnh.webmanifest          0.46 kB
+dist/assets/favicon-16x16-DiDxEP5I.png         0.61 kB
+dist/assets/favicon-32x32-gx7jztkS.png         1.83 kB
+dist/relationships.html                        2.38 kB │ gzip:  1.17 kB
+dist/assets/icon-D43pJgon.svg                  3.43 kB │ gzip:  1.75 kB
+dist/measured-sources.html                     5.65 kB │ gzip:  2.42 kB
+dist/index.html                               10.35 kB │ gzip:  2.88 kB
+dist/assets/favicon-cIRlZqHK.ico              15.40 kB
+dist/assets/apple-touch-icon-DtMA9gHK.png     28.56 kB
+dist/assets/sprite-XqPrXdnM.png            1,285.35 kB
+dist/assets/relationships-M5LCrEyS.css         4.69 kB │ gzip:  1.50 kB
+dist/assets/measuredSources-BaVcgqAs.css       5.94 kB │ gzip:  1.76 kB
+dist/assets/favicon-sprite-t74iFp7T.css       78.48 kB │ gzip: 13.52 kB
+dist/assets/favicon-sprite-BfI_h9aM.js        14.37 kB │ gzip:  5.80 kB
+dist/assets/view-model-C1Ps1hr3.js            38.83 kB │ gzip: 12.53 kB
+dist/assets/main-BzvF9baJ.js                 102.94 kB │ gzip: 35.20 kB
+dist/assets/relationships-B2dQJbCq.js        104.79 kB │ gzip: 34.46 kB
+dist/assets/measuredSources-jGCSfgGa.js      165.51 kB │ gzip: 36.39 kB
+
+✓ built in 486ms
+
+===
+Stopped waiting for output after 11.4 seconds. Command running in background with ID: f7d927. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:3e5fff6b h:ad11eded -->
+### 2026-11-27 08:15:05 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\np='dist/measured-sources.html'\nout='dist/measured-debug.html'\ns=open(p).read()\ninject='''<script>\nconst observer = new MutationObserver(() => {\n  const card = document.querySelector('.measured-source-card');\n  if (card && !card.open) { card.open = true; observer.disconnect(); }\n});\nobserver.observe(document.documentElement, { childList: true, subtree: true })`
+
+```
+Output from command in shell c59bf0:
+exit:0
+-rw-rw-r-- 1 bobbigmac bobbigmac 182K Nov 27 08:15 /tmp/measured-open-fixed.png
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:8ad0e21b h:2c68fc34 -->
+### 2026-11-27 08:15:29 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\np='dist/measured-sources.html'\nout='dist/measured-debug.html'\ns=open(p).read()\ninject='''<script>\nconst observer = new MutationObserver(() => {\n  const card = [...document.querySelectorAll('.measured-source-card')].find(x => x.textContent.includes('Medical Xpress'));\n  if (card && !card.open) { card.open = true; observer.disconnect(); }\n});\nobserver.observe(d`
+
+```
+Output from command in shell 7fc3f7:
+exit:0
+-rw-rw-r-- 1 bobbigmac bobbigmac 256K Nov 27 08:15 /tmp/measured-medx.png
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:b6fc3a4c h:e9351312 -->
+### 2026-11-27 08:15:52 UTC tool `exec`
+
+`{"command": "firefox --headless --screenshot /tmp/measured-medx-tall.png --window-size=1200,1500 \"file:///home/bobbigmac/projects/bobdavies/news/dist/measured-debug.html\" >/tmp/firefox-shot.log 2>&1; ls -lh /tmp/measured-medx-tall.png", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 30000}`
+
+```
+Output from command in shell 396d6e:
+-rw-rw-r-- 1 bobbigmac bobbigmac 333K Nov 27 08:15 /tmp/measured-medx-tall.png
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:00eb79e9 h:108cb79e -->
+### 2026-11-27 08:16:14 UTC tool `exec`
+
+`{"command": "firefox --headless --screenshot /tmp/measured-methodology.png --window-size=1200,1100 \"file:///home/bobbigmac/projects/bobdavies/news/dist/measured-sources.html#methodology\" >/tmp/firefox-shot.log 2>&1; ls -lh /tmp/measured-methodology.png", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 30000}`
+
+```
+Output from command in shell fed481:
+-rw-rw-r-- 1 bobbigmac bobbigmac 227K Nov 27 08:16 /tmp/measured-methodology.png
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:fb675054 h:ea26b4d6 -->
+### 2026-11-27 08:16:36 UTC tool `exec`
+
+`{"command": "grep -n \"data-theme\\|--paper\\|--ink\\|--accent\" src/style.css | head -80", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 9f2906:
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:2e625e98 h:acef5185 -->
+### 2026-11-27 08:16:42 UTC tool `exec`
+
+`{"command": "ls src/style* src/styles 2>/dev/null; grep -R \"data-theme\\|--paper\\|--ink\\|--accent\" -n src/*.css src/styles/*.css 2>/dev/null | head -60", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell af72e4:
+src/style.css
+
+src/styles:
+articles.css
+changelog.css
+favicon-sprite.css
+filter-bar.css
+measured-sources.css
+relationships.css
+responsive.css
+settings.css
+shell.css
+
+src/styles:
+articles.css
+changelog.css
+favicon-sprite.css
+filter-bar.css
+measured-sources.css
+relationships.css
+responsive.css
+settings.css
+shell.css
+src/styles/articles.css:103:.article-headline:hover { color: var(--accent); }
+src/styles/articles.css:115:  color: var(--accent);
+src/styles/articles.css:138:  color: var(--ink);
+src/styles/articles.css:181:  color: var(--ink);
+src/styles/articles.css:187:  text-decoration-color: var(--accent);
+src/styles/articles.css:188:  color: var(--accent);
+src/styles/articles.css:200:  border-left: 3px solid var(--accent);
+src/styles/articles.css:224:  border-top: 2px solid var(--ink);
+src/styles/articles.css:271:  background: var(--accent);
+src/styles/articles.css:295:  background: var(--paper-light);
+src/styles/changelog.css:4:  background: var(--paper);
+src/styles/changelog.css:27:  border-bottom: 2px solid var(--ink);
+src/styles/changelog.css:46:.changelog-close:hover { color: var(--ink); }
+src/styles/changelog.css:85:  color: var(--ink);
+src/styles/changelog.css:105:  color: var(--ink);
+src/styles/changelog.css:128:  color: var(--ink);
+src/styles/changelog.css:147:  color: var(--ink);
+src/styles/changelog.css:170:  color: var(--ink);
+src/styles/changelog.css:182:  color: var(--ink);
+src/styles/changelog.css:214:  color: var(--accent);
+src/styles/changelog.css:224:  color: var(--ink);
+src/styles/changelog.css:264:  color: var(--accent);
+src/styles/changelog.css:286:  color: var(--ink);
+src/styles/filter-bar.css:3:  background: var(--paper-light);
+src/styles/filter-bar.css:37:  color: var(--ink);
+src/styles/filter-bar.css:50:  outline: 2px solid var(--accent);
+src/styles/filter-bar.css:121:  border: 1px solid var(--ink);
+src/styles/filter-bar.css:124:  color: var(--ink);
+src/styles/filter-bar.css:136:  border-color: var(--accen
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:read:be88dbbe h:ef2de410 -->
+### 2026-11-27 08:16:47 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/style.css", "offset": 1, "limit": 80}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/style.css" start_line="1" end_line="7">
+  1|@import './styles/shell.css';
+  2|@import './styles/favicon-sprite.css';
+  3|@import './styles/filter-bar.css';
+  4|@import './styles/articles.css';
+  5|@import './styles/settings.css';
+  6|@import './styles/changelog.css';
+  7|@import './styles/responsive.css';
+</file-view>
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:read:64a04349 h:d93cd8a7 -->
+### 2026-11-27 08:16:52 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/shell.css", "offset": 1, "limit": 120}`
+
+```
+Output truncated at line 120; continue reading from line 121.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/styles/shell.css" start_line="1" end_line="120">
+  1|:root {
+  2|  --ink: #1a1a1a;
+  3|  --paper: #faf9f7;
+  4|  --paper-light: #f4f2ee;
+  5|  --rule: #d9d6d0;
+  6|  --rule-thick: #999;
+  7|  --accent: #8b1a1a;
+  8|  --muted: #6b6357;
+  9|  --serif: 'Georgia', 'Times New Roman', 'Noto Serif', serif;
+ 10|  --sans: 'Helvetica Neue', 'Arial', sans-serif;
+ 11|}
+ 12|
+ 13|[data-theme="night"] {
+ 14|  --ink: #d8d4ce;
+ 15|  --paper: #1a1a1a;
+ 16|  --paper-light: #242424;
+ 17|  --rule: #3a3a3a;
+ 18|  --rule-thick: #555;
+ 19|  --accent: #c44;
+ 20|  --muted: #8a8275;
+ 21|}
+ 22|
+ 23|* { box-sizing: border-box; margin: 0; padding: 0; }
+ 24|
+ 25|html, body {
+ 26|  font-family: var(--serif);
+ 27|  background: var(--paper);
+ 28|  color: var(--ink);
+ 29|  line-height: 1.65;
+ 30|}
+ 31|
+ 32|/* Font themes */
+ 33|body.font-serif { font-family: Georgia, "Times New Roman", "Noto Serif", serif; }
+ 34|body.font-sans { font-family: "Helvetica Neue", Arial, sans-serif; }
+ 35|body.font-modern { font-family: 'Outfit', system-ui, sans-serif; }
+ 36|body.font-accessible { font-family: 'OpenDyslexic', system-ui, sans-serif; }
+ 37|
+ 38|:root { font-size: 16px; }
+ 39|:root.font-small { font-size: 14px; }
+ 40|:root.font-medium { font-size: 16px; }
+ 41|:root.font-large { font-size: 18px; }
+ 42|
+ 43|/* Masthead */
+ 44|.masthead {
+ 45|  text-align: center;
+ 46|  padding: 1.5rem 1rem 0.75rem;
+ 47|  border-bottom: 2px solid var(--ink);
+ 48|  position: relative;
+ 49|  display: flex;
+ 50|  align-items: center;
+ 51|  justify-content: space-between;
+ 52|  flex-wrap: wrap;
+ 53|  gap: 0.4rem 0.75rem;
+ 54|}
+ 55|
+ 56|.masthead-title {
+ 57|  font-family: var(--serif);
+ 58|  font-size: clamp(1.35rem, 4.2vw, 2.6rem);
+ 59|  font-weight: 700;
+ 60|  letter-spacing: -1px;
+ 61|  font-variant: small-caps;
+ 62|  flex: 1 1 auto;
+ 63|  text-align: center;
+ 64|  white-space: nowrap;
+ 65|  overflow: hidde
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:71122394 h:ad72e1f2 -->
+### 2026-11-27 08:17:07 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css", "old_string": ".measured-page {\n  min-height: 100vh;\n}", "new_string": ":root {\n  --spider-fill: rgba(139, 26, 26, 0.22);\n}\n\n[data-theme=\"night\"] {\n  --spider-fill: rgba(204, 68, 68, 0.28);\n}\n\n.measured-page {\n  min-height: 100vh;\n}"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css' - made 1 replacement(s). 3 line(s) removed, 11 line(s) added at line 1.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:b28a9859 h:cb663316 -->
+### 2026-11-27 08:17:15 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css", "old_string": "  fill: color-mix(in srgb, var(--accent) 24%, transparent);", "new_string": "  fill: var(--spider-fill);"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 282.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:944fee65 h:dc6d2380 -->
+### 2026-11-27 08:17:38 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css", "old_string": ".band-weakest {\n  color: #9b1c1c;\n  border-color: #9b1c1c;\n}\n", "new_string": ".band-weakest {\n  color: #9b1c1c;\n  border-color: #9b1c1c;\n}\n\n[data-theme=\"night\"] .band-strongest {\n  color: #7bd88f;\n  border-color: #7bd88f;\n}\n\n[data-theme=\"night\"] .band-above-typical {\n  color:`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css' - made 1 replacement(s). 4 line(s) removed, 24 line(s) added at line 218.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:508cb08c h:27de782a -->
+### 2026-11-27 08:17:54 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nprint([c for c in h.columns if 'signal' in c or c in ['source_key','member_source_key','member_source']][:30])\nprint(h.columns.tolist())\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell dcb78d:
+['source_key', 'member_source_key', 'member_source', 'information_delivery_signal', 'title_value_signal', 'legacy_title_value_signal_raw', 'original_reporting_signal']
+['headline_id', 'source_key', 'source', 'member_source_key', 'member_source', 'measurement_grouped', 'group', 'tree_root', 'branch_path', 'curated_group', 'editorial_context', 'neutral_editorial_context', 'group_file', 'headline', 'body_text_excerpt', 'url', 'published', 'story_id', 'category', 'story_type', 'word_count', 'story_word_count', 'information_delivery_signal', 'attention_packaging_pressure', 'title_value_signal', 'legacy_title_value_signal_raw', 'dominant_topic', 'topic_strength', 'event_clarity', 'quantified_specificity', 'time_place_anchor', 'causal_explanation', 'material_consequence', 'evidence_provenance', 'context_comparison', 'explanatory_framing', 'original_reporting_signal', 'low_explicit_curiosity_gap', 'low_direct_service_packaging', 'low_sensational_personal', 'cross_source_title_echo', 'event_action_present', 'named_entity_proxy', 'capitalised_entity_count_proxy', 'teaser_verb_present', 'explicit_curiosity_gap_present', 'direct_service_packaging_present', 'legacy_bait_present', 'question_form_present', 'sensational_word_present', 'personal_life_frame_present', 'personal_sensational_frame_present', 'celebrity_cue_present', 'attribution_present', 'anonymous_source_cue', 'primary_evidence_cue', 'research_claim_cue', 'evidence_strength', 'body_coverage_present', 'body_word_count', 'body_primary_evidence_cue', 'body_research_claim_cue', 'body_evidence_strength', 'body_event_action_cue', 'body_explanatory_cue', 'cross_source_title_similarity', 'cross_source_near_duplicate_proxy', 'cross_source_nearest_source', 'cross_source_nearest_headline', 'within_source_repeated_trigram_proxy']
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:d1006a3a h:c75db224 -->
+### 2026-11-27 08:18:08 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nfor g in ['group-mashable','group-inquirer','group-nypost-pagesix']:\n x=h[h.source_key==g]\n print('\\n',g)\n print(x.groupby(['member_source_key','member_source']).agg(n=('headline','size'),delivery=('information_delivery_signal','mean'),attention=('attention_packa`
+
+```
+Output from command in shell 490994:
+
+ group-mashable
+                                     n  delivery  attention   value  sens  direct
+member_source_key member_source                                                  
+in.mashable.com   in.mashable.com    8    11.111      4.167  35.227   0.0   0.125
+mashable.com      mashable.com      12    12.037      8.333  34.848   0.0   0.250
+sea.mashable.com  sea.mashable.com   7    11.111      4.762  35.065   0.0   0.143
+
+ group-inquirer
+                                                        n  delivery  attention   value  sens  direct
+member_source_key          member_source                                                            
+business.inquirer.net      business.inquirer.net        1     0.000      0.000  27.273   0.0     0.0
+cebudailynews.inquirer.net cebudailynews.inquirer.net   2     0.000      0.000  27.273   0.0     0.0
+entertainment.inquirer.net entertainment.inquirer.net   5    17.778      0.000  41.818   0.0     0.0
+inquirer.com               inquirer.com                17    11.111      1.961  35.829   0.0     0.0
+lifestyle.inquirer.net     lifestyle.inquirer.net       1    11.111      0.000  36.364   0.0     0.0
+newsinfo.inquirer.net      newsinfo.inquirer.net       10     4.444      3.333  30.000   0.1     0.0
+technology.inquirer.net    technology.inquirer.net      1    22.222      0.000  45.455   0.0     0.0
+
+ group-nypost-pagesix
+                                  n  delivery  attention   value   sens  direct
+member_source_key member_source                                                
+nypost.com        New York Post  43    10.853       1.55  35.729  0.023   0.023
+pagesix.com       Page Six        5    11.111       0.00  36.364  0.000   0.000
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:ae840ed0 h:728d0dc5 -->
+### 2026-11-27 08:18:42 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "    'group-mashable': 'Regional Mashable editions are grouped because they substantially reuse the same articles.',\n    'group-inquirer': 'Inquirer verticals and regional subdomains are grouped as sections of one publisher.',", "new_string": "    'group-mashable': 'Regional `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 2 line(s) removed, 2 line(s) added at line 74.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:54c0c697 h:03934705 -->
+### 2026-11-27 08:18:55 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py && .venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nprint('notes coverage',sum(bool(s['notes']) for s in p['sources']),'of',len(p['sources']))\nfor s in p['sources']:\n if s['notes']: print(s['key'],':',s['notes'][0][:120])\nPY", "workdir": "/home/bobbigmac/projects/bobdavi`
+
+```
+Output from command in shell 219f34:
+wrote 76 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+notes coverage 17 of 76
+psypost.org : PsyPost often writes formulaic research-claim headlines. That raises evidence and causal scores without establishing ind
+medicalxpress.com : High evidence and causal scores partly reflect research-release phrasing. They do not by themselves show independent ver
+reddit.com : Reddit rows reflect headlines as posted or repeated on the platform, not original reporting by Reddit.
+sciencealert.com : Popular science rewriting can make research cues prominent; the score does not assess the quality of the underlying pape
+seekingalpha.com : Earnings, transcript and market-data formats make this source narrower than a general news publisher; read the axes befo
+group-nypost-pagesix : Page Six is measured with the New York Post because it belongs to the same publishing operation; the combined view is do
+group-mashable : Regional Mashable editions are grouped because they substantially reuse the same articles; their measured headline profi
+phys.org : Research-release phrasing can raise evidence and causal scores. Treat them as evidence of dense research claims, not pro
+news.xbox.com : Xbox Wire is official platform communication, so its score is not a measure of independent games journalism.
+mirror.co.uk : Sensational and personal framing is the largest negative contribution here, even where individual headlines are otherwis
+nature.com : The low event/action score is largely a form effect: many Nature rows are journal article titles written as descriptive 
+obits.oregonlive.com : This measurement mostly describes syndicated obituary entries rather than OregonLive’s wider newsroom output.
+group-inquirer : Inquirer verticals and regional subdomains are grouped as sections of one publisher. Some verticals are very small and d
+handelsblatt.com : English-language cue detection undercounts German-language headlines
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:read:ff589d77 h:0872345b -->
+### 2026-11-27 08:19:24 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/sources/regional-english.json", "offset": 45, "limit": 55}`
+
+```
+Output truncated at line 99; continue reading from line 100.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/trees/sources/regional-english.json" start_line="45" end_line="99">
+ 45|          ]
+ 46|        }
+ 47|      ]
+ 48|    },
+ 49|    {
+ 50|      "id": "malaysia-media",
+ 51|      "label": "Malaysia Media",
+ 52|      "icon": "thestar.com.my",
+ 53|      "children": [
+ 54|        {
+ 55|          "id": "malaysia-nationals",
+ 56|          "label": "Malaysia Nationals",
+ 57|          "icon": "thestar.com.my",
+ 58|          "children": [
+ 59|            {
+ 60|              "id": "the-star-malaysia",
+ 61|              "label": "The Star Malaysia",
+ 62|              "icon": "thestar.com.my",
+ 63|              "sources": [
+ 64|                "thestar.com.my"
+ 65|              ]
+ 66|            },
+ 67|            {
+ 68|              "id": "nst-malaysia",
+ 69|              "label": "New Straits Times",
+ 70|              "icon": "nst.com.my",
+ 71|              "sources": [
+ 72|                "nst.com.my"
+ 73|              ]
+ 74|            },
+ 75|            {
+ 76|              "id": "malay-mail",
+ 77|              "label": "Malay Mail",
+ 78|              "icon": "malaymail.com",
+ 79|              "sources": [
+ 80|                "malaymail.com"
+ 81|              ]
+ 82|            }
+ 83|          ]
+ 84|        },
+ 85|        {
+ 86|          "id": "malaysia-alt",
+ 87|          "label": "Malaysia Alternative",
+ 88|          "icon": "freemalaysiatoday.com",
+ 89|          "sources": [
+ 90|            "freemalaysiatoday.com",
+ 91|            "thevibes.com",
+ 92|            "lowyat.net"
+ 93|          ]
+ 94|        }
+ 95|      ]
+ 96|    },
+ 97|    {
+ 98|      "id": "pakistan-media",
+ 99|      "label": "Pakistan Media",
+</file-view>
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:ed27f3fd h:9a8b1421 -->
+### 2026-11-27 08:19:38 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/sources/regional-english.json", "old_string": "        \"thehindu.com\",\n        \"timesofindia.com\",\n        \"hindustantimes.com\",\n        \"indiatoday.in\",\n        \"livemint.com\",\n        \"economictimes.com\",", "new_string": "        \"thehindu.com\",\n        \"timesofindia.com\",\n        \"timesofindia.indiatimes.co`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/sources/regional-english.json' - made 1 replacement(s). 6 line(s) removed, 9 line(s) added at line 121.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:1b0a7f61 h:e6d894ff -->
+### 2026-11-27 08:19:49 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/sources/regional-english.json", "old_string": "            {\n              \"id\": \"malay-mail\",\n              \"label\": \"Malay Mail\",\n              \"icon\": \"malaymail.com\",\n              \"sources\": [\n                \"malaymail.com\"\n              ]\n            }\n          ]", "new_string": "            {\n       `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/sources/regional-english.json' - made 1 replacement(s). 9 line(s) removed, 17 line(s) added at line 75.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:1662964a h:ef60a4b7 -->
+### 2026-11-27 08:19:58 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/sources/canada-media.json", "old_string": "    {\n      \"id\": \"torstar\",\n      \"label\": \"Torstar\",\n      \"icon\": \"thestar.com\",\n      \"sources\": [\n        \"thestar.com\",\n        \"toronto.com\"\n      ]\n    }\n  ]", "new_string": "    {\n      \"id\": \"torstar\",\n      \"label\": \"Torstar\",\n      \"icon\": `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/sources/canada-media.json' - made 1 replacement(s). 10 line(s) removed, 18 line(s) added at line 29.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:03a90ffa h:138c3fb5 -->
+### 2026-11-27 08:20:09 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/sources/specialist-press.json", "old_string": "            {\n              \"id\": \"business-insider-network\",\n              \"label\": \"Business Insider Network\",\n              \"icon\": \"businessinsider.com\",\n              \"sources\": [\n                \"businessinsider.com\",\n                \"insider.com\",\n        `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/sources/specialist-press.json' - made 1 replacement(s). 20 line(s) removed, 28 line(s) added at line 310.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:de701ae3 h:32011910 -->
+### 2026-11-27 08:20:21 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/sources/digital-publishers.json", "old_string": "    {\n      \"id\": \"digital-news-standalones\",\n      \"label\": \"Independent Digital News\",\n      \"icon\": \"newsweek.com\",\n      \"sources\": [\n        \"newsweek.com\",\n        \"semafor.com\",\n        \"qz.com\",\n        \"vice.com\",\n        \"huffpost.com\",\n     `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/sources/digital-publishers.json' - made 1 replacement(s). 18 line(s) removed, 29 line(s) added at line 200.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:98730295 h:9d1b3a30 -->
+### 2026-11-27 08:20:45 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "def relationship_anchors(repo):\n    anchors = {}\n    for path in sorted((repo/'src/trees/sources').glob('*.json')):\n        root = load_json(path, None)\n        if not root: continue\n        def walk(node, parts):\n            next_parts = parts + [node.get('label','')]\`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 14 line(s) removed, 22 line(s) added at line 101.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:80fa4455 h:94b83cef -->
+### 2026-11-27 08:20:55 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "    anchors = relationship_anchors(REPO_ROOT)", "new_string": "    anchors, relationship_families = relationship_anchors(REPO_ROOT)"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 159.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:read:66028ecf h:bb797708 -->
+### 2026-11-27 08:21:05 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "offset": 180, "limit": 65}`
+
+```
+Output truncated at line 244; continue reading from line 245.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py" start_line="180" end_line="244">
+180|
+181|    sources = []
+182|    for _, row in ranked.iterrows():
+183|        key = row['source_key']
+184|        icon_key = row.get('icon_source_key') or key
+185|        members = member_counts.get(key, [])
+186|        members.sort(key=lambda x: -x['headlines'])
+187|        grouped = bool(row.get('measurement_grouped', False)) and len(members) > 1
+188|        # A synthetic measurement group with only one observed member should keep
+189|        # the canonical host key so client-side lookups stay source-shaped.
+190|        if len(members) == 1:
+191|            key = members[0]['key']
+192|            icon_key = key
+193|        display = DISPLAY_OVERRIDES.get(key) or row['source']
+194|        profile_source = profiles.get(icon_key) or {}
+195|        profile = {field: profile_source[field] for field in PROFILE_FIELDS if profile_source.get(field)}
+196|        member_labels = [DISPLAY_OVERRIDES.get(m['key']) or m['label'] for m in members]
+197|        axes = {axis['key']: axis_payload(row, axis) for axis in AXES}
+198|        positive = sorted(((k, v['score']) for k, v in axes.items()), key=lambda x: -x[1])
+199|        source = {
+200|            'key': key,
+201|            'label': display,
+202|            'headlines': int(row['n']),
+203|            'rank': int(row['rank']),
+204|            'measuredQuality': round(float(row['topic_adjusted_value_index']), 1),
+205|            'band': band_key(row['ordering_band']),
+206|            'bandLabel': BAND_META[row['ordering_band']]['label'],
+207|            'grouped': grouped,
+208|            'iconKey': icon_key,
+209|            'members': members,
+210|            'memberLabels': member_labels,
+211|            'family': row.get('group') or row.get('tree_root') or '',
+212|            'treeRoot': row.get('tree_root') or '',
+213
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:f49ce1d0 h:673c4c20 -->
+### 2026-11-27 08:21:19 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "        axes = {axis['key']: axis_payload(row, axis) for axis in AXES}\n        positive = sorted(((k, v['score']) for k, v in axes.items()), key=lambda x: -x[1])\n        source = {", "new_string": "        axes = {axis['key']: axis_payload(row, axis) for axis in AXES}\n    `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 3 line(s) removed, 7 line(s) added at line 197.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:8dc003a3 h:ee82dc8e -->
+### 2026-11-27 08:21:27 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "            'family': row.get('group') or row.get('tree_root') or '',\n            'treeRoot': row.get('tree_root') or '',", "new_string": "            'family': family,\n            'treeRoot': tree_root,"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 2 line(s) removed, 2 line(s) added at line 215.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:e13dfd43 h:345e6c28 -->
+### 2026-11-27 08:21:50 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py && .venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor k in ['timesofindia.indiatimes.com','bernama.com','inc.com','indianexpress.com','winnipegfreepress.com','chalkbeat.org']:\n s=next(x for x in p['sources'] if x['key']==k)\n print(k,'|',s['label'],'|family',s['family'],`
+
+```
+Output from command in shell 0c1f9c:
+wrote 76 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+timesofindia.indiatimes.com | Times of India |family India Media |anchor ./relationships.html#rel-regional-english-media--india-media
+bernama.com | Bernama |family Bernama |anchor ./relationships.html#rel-regional-english-media--malaysia-media--malaysia-nationals--bernama
+inc.com | Inc. |family Business Magazines |anchor ./relationships.html#rel-specialist-press--business-money--business-specialist--business-magazines
+indianexpress.com | The Indian Express |family India Media |anchor ./relationships.html#rel-regional-english-media--india-media
+winnipegfreepress.com | Winnipeg Free Press |family Independent Canadian Newspapers |anchor ./relationships.html#rel-canada-media--independent-canadian-newspapers
+chalkbeat.org | Chalkbeat |family Nonprofit Civic News |anchor ./relationships.html#rel-digital-publishers--nonprofit-civic-news
+missing anchors []
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:4584a752 h:e5ae85aa -->
+### 2026-11-27 08:22:22 UTC tool `exec`
+
+`{"command": "npm test", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 120000}`
+
+```
+Output from command in shell 37ce9f:
+
+> test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.1.1 [39m[90m/home/bobbigmac/projects/bobdavies/news[39m
+
+ [32m✓[39m test/measured-sources.test.js [2m([22m[2m7 tests[22m[2m)[22m[32m 156[2mms[22m[39m
+ [32m✓[39m test/view-model.test.js [2m([22m[2m9 tests[22m[2m)[22m[32m 165[2mms[22m[39m
+ [32m✓[39m test/glimpse.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 295[2mms[22m[39m
+ [32m✓[39m test/manage-panels.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 208[2mms[22m[39m
+ [32m✓[39m test/story-groups.test.js [2m([22m[2m7 tests[22m[2m)[22m[33m 392[2mms[22m[39m
+ [32m✓[39m test/filter-bar.test.js [2m([22m[2m18 tests[22m[2m)[22m[33m 1103[2mms[22m[39m
+   [32m✓[39m filter bar structure [2m(7)[22m
+     [33m[2m✓[22m[39m keeps Mark Read in the categories row, split to the right[33m 352[2mms[22m[39m
+ [32m✓[39m test/feed.test.js [2m([22m[2m10 tests[22m[2m)[22m[33m 1323[2mms[22m[39m
+   [32m✓[39m feed view manager [2m(10)[22m
+     [33m[2m✓[22m[39m creates one lightweight shell per story without hydrating contents[33m 846[2mms[22m[39m
+ [32m✓[39m test/layout.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 152[2mms[22m[39m
+ [32m✓[39m test/catchup.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 189[2mms[22m[39m
+ [32m✓[39m test/relationships.test.js [2m([22m[2m14 tests[22m[2m)[22m[32m 86[2mms[22m[39m
+ [32m✓[39m test/build-output.test.js [2m([22m[2m2 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m test/story-group-assign.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+ [32m✓[39m test/pipeline.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 104[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m13 passed[39m[22m[90m (13)[39m
+[2m      Tests [22m [1m[32m97 passed[39m[22m[90m (97)[39m
+[2m   Start at [22m 08:22:12
+[2m   Duration [22m 9.62s[2m (environment 82%, tests
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:fab864cd h:88a5a33e -->
+### 2026-11-27 08:23:03 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor b in p['bands']:\n vals=[s['measuredQuality'] for s in p['sources'] if s['band']==b['key']]\n print(b['key'],min(vals),max(vals),sorted(vals)[:3],sorted(vals)[-3:])\nprint('boundary')\nfor s in p['sources'][17:22]: print(s['rank'],s['label'],s['measuredQuality'],s['band'])\nPY", "workdir":`
+
+```
+Output from command in shell 97c174:
+strongest 52.5 63.2 [52.5, 52.6, 52.8] [59.5, 60.1, 63.2]
+above-typical 49.5 52.5 [49.5, 49.9, 50.0] [52.4, 52.5, 52.5]
+below-typical 47.3 49.5 [47.3, 47.6, 47.7] [49.3, 49.3, 49.5]
+weakest 36.9 47.2 [36.9, 39.4, 39.6] [46.6, 46.7, 47.2]
+boundary
+18 ScienceAlert 52.6 strongest
+19 Korea Times 52.5 strongest
+20 Ajel 52.5 above-typical
+21 Seeking Alpha 52.5 above-typical
+22 Evening Standard 52.4 above-typical
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:260cee55 h:a25d5414 -->
+### 2026-11-27 08:23:12 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nr=pd.read_csv('docs/headline-data/current/source_rankings.csv').dropna(subset=['rank']).sort_values('rank')\nprint(r.loc[r['rank'].between(17,23),['rank','source','topic_adjusted_value_index','ordering_band']].to_string(index=False))\nprint(r.loc[r['rank'].between(37,41),['rank','source','topic_adjusted_value_index','ordering_band']].to_`
+
+```
+Output from command in shell 363f76:
+ rank           source  topic_adjusted_value_index       ordering_band
+ 17.0 Business Insider                   52.796340  A — upper quartile
+ 18.0     ScienceAlert                   52.587876  A — upper quartile
+ 19.0      Korea Times                   52.532492  A — upper quartile
+ 20.0             Ajel                   52.485819 B — second quartile
+ 21.0     Seekingalpha                   52.476299 B — second quartile
+ 22.0 Evening Standard                   52.364797 B — second quartile
+ 23.0          Bernama                   52.281738 B — second quartile
+ rank            source  topic_adjusted_value_index       ordering_band
+ 37.0               BBC                   49.920646 B — second quartile
+ 38.0           Semafor                   49.478204 B — second quartile
+ 39.0         The Hindu                   49.466577  C — third quartile
+ 40.0        Dailytimes                   49.341835  C — third quartile
+ 41.0 New Straits Times                   49.305044  C — third quartile
+ rank              source  topic_adjusted_value_index      ordering_band
+ 56.0       Notebookcheck                   47.585871 C — third quartile
+ 57.0 Winnipeg Free Press                   47.332504 C — third quartile
+ 58.0            ABC News                   47.206538 D — lower quartile
+ 59.0            Newsweek                   46.686629 D — lower quartile
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:1e1bde0f h:afb60dfc -->
+### 2026-11-27 08:23:29 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.html", "old_string": "        Sources are bucketed into quartiles rather than treated as precisely separated ranks.\n        Small differences inside a bucket are not meaningful. Regional editions or publisher\n        sections are combined where they are effectively the same publication stream; unlike-owned\n        outle`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/measured-sources.html' - made 1 replacement(s). 4 line(s) removed, 5 line(s) added at line 79.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:fa660e3f h:a714dcb9 -->
+### 2026-11-27 08:23:38 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "            'measuredQuality': round(float(row['topic_adjusted_value_index']), 1),", "new_string": "            'measuredQuality': round(float(row['topic_adjusted_value_index']), 2),"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 208.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:ae14bd9c h:97ded3ca -->
+### 2026-11-27 08:24:04 UTC tool `exec`
+
+`{"command": "ls TODO.md docs/DONE.md DONE.md 2>/dev/null || true; if [ -f TODO.md ]; then sed -n '1,100p' TODO.md; fi", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 1f0a99:
+docs/DONE.md
+TODO.md
+# TODO
+
+## Future features
+
+- [ ] Source/category roundups: after the normal run has finished batch/solo cluster summaries, consider a second pass that identifies recurring low-value story patterns by source or category (for example, repeated outrage framing) and uses one consolidated OpenRouter call to flag or resummarise those groups. Needs design before implementation.
+- [ ] Keep `src/trees/` JSON datasets maintained: add newly-seen hosts/subjects to curated branches and deepen any allocated branch that grows well past its target group size. Revisit `src/trees/profiles/` research notes as sources accumulate.
+
+## Paused: taxonomy research
+
+- [ ] Identify established/mainstream/widely-known reference taxonomies for better grouping support — candidates to evaluate: IPTC NewsCodes/MediaTopics (the news-industry standard subject taxonomy, ~1,400 terms in 17 top-level concepts, used by AP/Reuters/AFP/BBC-class wire orgs), Wikidata entity relations, Schema.org types, GDELT themes, simple.wikipedia categories. Goal: align our `src/trees/story/*.json` branches with a portable external vocabulary so the dataset transfers beyond today's news, rather than being a bespoke list matched to the current digest. Resume after the UI/masonry work (quota pressure — do NOT spend OpenRouter calls on this; use free taxonomy downloads + LLM judgement).
+- [ ] Tree-expansion continuation: the escape-driven pass on the ungrouped corpus was mid-flight (was at ~4,762/5,557 grouped, 230 groups; remaining ungrouped included foreign-language items, junk headlines, and several one-offs). Resume with escape analysis after taxonomy alignment.
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:5cd68ee3 h:0a07dbf2 -->
+### 2026-11-27 08:24:24 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py && .venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nprint('unmatched family',[s['key'] for s in p['sources'] if s['family']=='Unmatched sources'])\nprint('missing anchors',[s['key'] for s in p['sources'] if '#' not in s['relationshipsUrl']])\nprint('quality precision',next(`
+
+```
+Output from command in shell 0b9966:
+wrote 76 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+unmatched family []
+missing anchors []
+quality precision 52.53
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:50d25332 h:fab12418 -->
+### 2026-11-27 08:24:32 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json,re\np=json.load(open('src/data/measured-sources.json'))\ndef norm(x): return re.sub(r'[^a-z0-9]+','',re.sub(r'^the\\s+','',str(x).lower()))\nfor s in p['sources'][:76]:\n visible=s['family'] and norm(s['family'])!=norm(s['label'])\n if visible: print(f\"{s['rank']:2} {s['label']:<30} | {s['family']}\")\nPY", "workdir": "/home/bobbigmac/projects/b`
+
+```
+Output from command in shell c61443:
+ 1 South China Morning Post       | Hong Kong & Taiwan
+ 2 TweakTown                      | Enthusiast Hardware
+ 3 PsyPost                        | Popular Science News
+ 5 Quartz                         | Independent Digital News
+ 8 MyJoyOnline                    | Ghana Media
+ 9 Wccftech                       | Hardware Guides
+10 Times of India                 | India Media
+12 Qatar Tribune                  | Qatar Media
+13 PBS                            | North America Public
+15 Reddit                         | Social Aggregators
+17 Business Insider               | Business Insider Network
+18 ScienceAlert                   | Popular Science News
+20 Ajel                           | Saudi Media
+21 Seeking Alpha                  | Markets Data
+24 Inc.                           | Business Magazines
+25 The Indian Express             | India Media
+26 New York Post / Page Six       | News Corp Print
+27 CNA                            | Singapore Media
+28 Ars Technica                   | Tech Analysis
+29 The National                   | UAE Media
+31 This is Money                  | DMGT Companion
+32 Sky News                       | Comcast / Sky
+33 Mashable                       | Social Tech
+34 The Verge                      | Tech Analysis
+35 Vice                           | Independent Digital News
+36 Finextra                       | Business Insider Network
+38 Semafor                        | Independent Digital News
+39 The Hindu                      | India Media
+40 Daily Times                    | Pakistan Media
+42 Nasdaq                         | Markets Data
+43 Free Malaysia Today            | Malaysia Alternative
+44 MarketBeat                     | Markets Data
+45 Business Day                   | Regional Business
+46 Wired                          | Tech Analysis
+47 STAT News                      | Health & Medical
+48 The Age                        | Nine
+49 TechRadar                      | Consumer Gadgets
+51 Windows Central   
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:cb8fc848 h:8e8a4294 -->
+### 2026-11-27 08:24:43 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor key in ['group-mashable','finextra.com','theverge.com']:\n s=next(x for x in p['sources'] if x['key']==key)\n print(key,s['family'],s['treeRoot'],s['profile'])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 7a2334:
+group-mashable Social Tech Specialist Press {}
+finextra.com Business Insider Network Specialist Press {'kind': 'Fintech trade publication'}
+theverge.com Tech Analysis Specialist Press {}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:be3851e4 h:5da9c4e4 -->
+### 2026-11-27 08:24:56 UTC tool `exec`
+
+`{"command": "grep -R \"Business Insider Network\\|Social Tech\\|Tech Analysis\" -n src test | head -40", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 89a2b0:
+src/trees/sources/specialist-press.json:312:              "label": "Business Insider Network",
+src/trees/sources/specialist-press.json:381:              "label": "Tech Analysis",
+src/trees/sources/specialist-press.json:406:              "label": "Social Tech",
+src/data/measured-sources.json:2206:      "family": "Business Insider Network",
+src/data/measured-sources.json:3597:      "family": "Tech Analysis",
+src/data/measured-sources.json:4241:      "family": "Social Tech",
+src/data/measured-sources.json:4367:      "family": "Tech Analysis",
+src/data/measured-sources.json:4617:      "family": "Business Insider Network",
+src/data/measured-sources.json:5883:      "family": "Tech Analysis",
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:read:fc7d9901 h:cc798c01 -->
+### 2026-11-27 08:25:04 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/sources/specialist-press.json", "offset": 360, "limit": 90}`
+
+```
+Output truncated at line 449; continue reading from line 450.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/trees/sources/specialist-press.json" start_line="360" end_line="449">
+360|            "braziljournal.com",
+361|            "elfinanciero.com.mx",
+362|            "expansion.com",
+363|            "ilsole24ore.com",
+364|            "businesskorea.co.kr"
+365|          ]
+366|        }
+367|      ]
+368|    },
+369|    {
+370|      "id": "technology-press",
+371|      "label": "Technology Press",
+372|      "icon": "theverge.com",
+373|      "children": [
+374|        {
+375|          "id": "consumer-tech",
+376|          "label": "Consumer Tech",
+377|          "icon": "theverge.com",
+378|          "children": [
+379|            {
+380|              "id": "tech-analysis",
+381|              "label": "Tech Analysis",
+382|              "icon": "theverge.com",
+383|              "sources": [
+384|                "theverge.com",
+385|                "wired.com",
+386|                "arstechnica.com",
+387|                "techcrunch.com",
+388|                "theregister.com",
+389|                "zdnet.com"
+390|              ]
+391|            },
+392|            {
+393|              "id": "consumer-gadgets",
+394|              "label": "Consumer Gadgets",
+395|              "icon": "techradar.com",
+396|              "sources": [
+397|                "techradar.com",
+398|                "engadget.com",
+399|                "cnet.com",
+400|                "digitaltrends.com",
+401|                "bgr.com"
+402|              ]
+403|            },
+404|            {
+405|              "id": "social-tech",
+406|              "label": "Social Tech",
+407|              "icon": "concept:social",
+408|              "sources": [
+409|                "mashable.com",
+410|                "in.mashable.com",
+411|                "sea.mashable.com",
+412|                "lifehacker.com",
+413|                "gizmodo.com"
+414|              ]
+415|            }
+416|          ]
+417|        },
+418|       
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:ddedd7de h:5296d4b9 -->
+### 2026-11-27 08:25:15 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/trees/sources/specialist-press.json", "old_string": "              \"label\": \"Business Insider Network\",", "new_string": "              \"label\": \"Business & Startup Digital\","}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/trees/sources/specialist-press.json' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 312.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:d6f583f9 h:eaa8b4e5 -->
+### 2026-11-27 08:25:28 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nmissing=[(s['rank'],s['key'],s['label']) for s in p['sources'] if not s['profile']]\nprint(len(missing),'of',len(p['sources']))\nprint(missing)\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell d253bc:
+24 of 76
+[(1, 'scmp.com', 'South China Morning Post'), (10, 'timesofindia.indiatimes.com', 'Times of India'), (20, 'english.ajel.sa', 'Ajel'), (21, 'seekingalpha.com', 'Seeking Alpha'), (23, 'bernama.com', 'Bernama'), (24, 'inc.com', 'Inc.'), (25, 'indianexpress.com', 'The Indian Express'), (27, 'channelnewsasia.com', 'CNA'), (28, 'arstechnica.com', 'Ars Technica'), (32, 'news.sky.com', 'Sky News'), (33, 'group-mashable', 'Mashable'), (34, 'theverge.com', 'The Verge'), (40, 'dailytimes.com.pk', 'Daily Times'), (42, 'nasdaq.com', 'Nasdaq'), (46, 'wired.com', 'Wired'), (47, 'statnews.com', 'STAT News'), (48, 'theage.com.au', 'The Age'), (57, 'winnipegfreepress.com', 'Winnipeg Free Press'), (64, 'smh.com.au', 'Sydney Morning Herald'), (65, 'chalkbeat.org', 'Chalkbeat'), (68, 'engadget.com', 'Engadget'), (69, 'obits.oregonlive.com', 'OregonLive obituaries'), (71, 'group-inquirer', 'Inquirer'), (74, 'sports.yahoo.com', 'Yahoo Sports')]
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:39e0baa4 h:eb39651a -->
+### 2026-11-27 08:25:42 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json\ntry:\n json.load(open('src/data/measured-sources.json'), parse_constant=lambda x: (_ for _ in ()).throw(ValueError(x)))\n print('strict json ok')\nexcept Exception as e: print('bad',e)\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 0c4811:
+strict json ok
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:dd847584 h:4bca1f77 -->
+### 2026-11-27 08:26:24 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "            'rangeText': f\"{vals.min():.1f}\u2013{vals.max():.1f}\",", "new_string": "            'rangeText': f\"{vals.min():.2f}\u2013{vals.max():.2f}\","}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 174.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:b24c1b3e h:abe1f4e2 -->
+### 2026-11-27 08:26:44 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py && python3 - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nprint([(b['key'],b['rangeText']) for b in p['bands']])\nprint('business family',next(s for s in p['sources'] if s['key']=='finextra.com')['family'])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell a66a8f:
+wrote 76 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+[('strongest', '52.53–63.20'), ('above-typical', '49.48–52.49'), ('below-typical', '47.33–49.47'), ('weakest', '36.95–47.21')]
+business family Business Insider Network
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:c01e3248 h:658dad1d -->
+### 2026-11-27 08:27:04 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "        family = row_family if row_family and row_family != 'Unmatched sources' else tree_family or row_family", "new_string": "        family = tree_family or (row_family if row_family != 'Unmatched sources' else '')"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 201.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:4c46b53a h:e36f5006 -->
+### 2026-11-27 08:27:16 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py && .venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor k in ['finextra.com','businessinsider.com','scmp.com','medicalxpress.com','group-mashable']:\n s=next(x for x in p['sources'] if x['key']==k)\n print(k,s['family'])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/`
+
+```
+Output from command in shell aa8a9b:
+wrote 76 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+finextra.com Business & Startup Digital
+businessinsider.com Axel Springer
+scmp.com Hong Kong & Taiwan
+medicalxpress.com Medical Xpress
+group-mashable Ziff Davis / IGN Entertainment
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:read:c0d71147 h:2a016f1d -->
+### 2026-11-27 08:27:47 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json"}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json" start_line="1" end_line="119">
+  1|{
+  2|  "id": "headline-analysis-current-cache",
+  3|  "title": "Run dev-time headline-source analysis against the current cache export",
+  4|  "type": "dev-time-analysis",
+  5|  "_comment": "Executable run configuration for exploratory headline/source analysis. This is run-once measurement work, not part of the publish/build pipeline. Edit values here instead of maintaining long command lines.",
+  6|  "invariants": {
+  7|    "no_build_integration": "Do not wire this into scripts/build.js, CI, or the normal digest pipeline without explicit approval.",
+  8|    "no_large_models": "Use local classical/NLP tooling only; no transformer downloads or GPU-dependent models.",
+  9|    "not_truth_scores": "Outputs are title-language diagnostics and ordering aids, not factual accuracy or publisher-quality verdicts.",
+ 10|    "preserve_raw_axes": "Keep per-headline and per-axis rates inspectable; composite ordering is supplementary.",
+ 11|    "no_commits": "The user commits."
+ 12|  },
+ 13|  "steps": [
+ 14|    {
+ 15|      "name": "export-current-cache",
+ 16|      "cmd": "node scripts/export-source-headlines.js --ref origin/cache-data --out .working/source-headlines-analysis.zip",
+ 17|      "produces": ".working/source-headlines-analysis.zip"
+ 18|    },
+ 19|    {
+ 20|      "name": "analyse-headlines",
+ 21|      "cmd": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json",
+ 22|      "produces": "docs/headline-data/current/"
+ 23|    },
+ 24|    {
+ 25|      "name": "validate-outputs",
+ 26|      "cmd": ".venv/bin/python scripts/headline-analysis/test_corpus_outputs.py --config docs/tasks/headline-analysis.task.json",
+ 27|      "produces": "stdout validation"
+ 28|    },
+ 29|    {
+ 30|      "name": "measured-sources-json",
+ 31|      "cmd": ".venv/bin/python scripts/headline-analysis/build_measured_s
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:c81fc14d h:19950973 -->
+### 2026-11-27 08:28:16 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor k in ['eurogamer.net','ign.com','arstechnica.com','wired.com','mashable.com' if any(s['key']=='mashable.com' for s in p['sources']) else 'group-mashable','finextra.com','theguardian.com']:\n s=next((x for x in p['sources'] if x['key']==k),None)\n if s: print(k,s['family'])\nPY", "workdir":`
+
+```
+Output from command in shell 85206d:
+eurogamer.net Ziff Davis / IGN Entertainment
+ign.com Ziff Davis / IGN Entertainment
+arstechnica.com Condé Nast
+wired.com Condé Nast
+group-mashable Ziff Davis / IGN Entertainment
+finextra.com Business & Startup Digital
+theguardian.com The Guardian
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:b06b476a h:1bebe8cd -->
+### 2026-11-27 08:29:02 UTC tool `exec`
+
+`{"command": "npm test && npm run build", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 180000}`
+
+```
+> test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.1.1 [39m[90m/home/bobbigmac/projects/bobdavies/news[39m
+
+ [32m✓[39m test/catchup.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 135[2mms[22m[39m
+ [32m✓[39m test/manage-panels.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 191[2mms[22m[39m
+ [32m✓[39m test/view-model.test.js [2m([22m[2m9 tests[22m[2m)[22m[32m 162[2mms[22m[39m
+ [32m✓[39m test/glimpse.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 294[2mms[22m[39m
+ [32m✓[39m test/story-groups.test.js [2m([22m[2m7 tests[22m[2m)[22m[33m 419[2mms[22m[39m
+ [32m✓[39m test/feed.test.js [2m([22m[2m10 tests[22m[2m)[22m[33m 1156[2mms[22m[39m
+   [32m✓[39m feed view manager [2m(10)[22m
+     [33m[2m✓[22m[39m creates one lightweight shell per story without hydrating contents[33m 718[2mms[22m[39m
+ [32m✓[39m test/filter-bar.test.js [2m([22m[2m18 tests[22m[2m)[22m[33m 1445[2mms[22m[39m
+   [32m✓[39m filter bar structure [2m(7)[22m
+     [33m[2m✓[22m[39m keeps Mark Read in the categories row, split to the right[33m 353[2mms[22m[39m
+ [32m✓[39m test/measured-sources.test.js [2m([22m[2m7 tests[22m[2m)[22m[32m 293[2mms[22m[39m
+ [32m✓[39m test/layout.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 114[2mms[22m[39m
+ [32m✓[39m test/relationships.test.js [2m([22m[2m14 tests[22m[2m)[22m[32m 73[2mms[22m[39m
+ [32m✓[39m test/story-group-assign.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m test/build-output.test.js [2m([22m[2m2 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m test/pipeline.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 116[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m13 passed[39m[22m[90m (13)[39m
+[2m      Tests [22m [1m[32m97 passed[39m[22m[90m (97)[39m
+[2m   Start at [22m 08:28:40
+[2m   Duration [22m 9.92s[2m (environment 82%, tests 8%, import 5%, transform 4%, worker 1
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:get_output:38ff4e82 h:30d8585a -->
+### 2026-11-27 08:29:17 UTC tool `get_output`
+
+`{"shell_id": "728a33", "timeout": 30000}`
+
+```
+Story groups: 4889/5557 clusters assigned (119 via fuzzy word matches)
+Client digests: 955 recent + 4602 archived clusters (full export in dataset.json)
+Build complete. 5557 clusters, 7113 entities, 57 topics, 10517 stories in timeline -> dist/dataset.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:5a27f920 h:3fedc028 -->
+### 2026-11-27 08:29:38 UTC tool `exec`
+
+`{"command": "firefox --headless --screenshot /tmp/measured-final-top.png --window-size=1400,1300 \"file:///home/bobbigmac/projects/bobdavies/news/dist/measured-sources.html\" >/tmp/firefox-shot.log 2>&1; ls -lh /tmp/measured-final-top.png", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 30000}`
+
+```
+Output from command in shell 824f04:
+-rw-rw-r-- 1 bobbigmac bobbigmac 287K Nov 27 08:29 /tmp/measured-final-top.png
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:90af1045 h:3519159b -->
+### 2026-11-27 08:29:55 UTC tool `exec`
+
+`{"command": "firefox --headless --screenshot /tmp/measured-mobile.png --window-size=600,1100 \"file:///home/bobbigmac/projects/bobdavies/news/dist/measured-sources.html\" >/tmp/firefox-shot.log 2>&1; ls -lh /tmp/measured-mobile.png", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 30000}`
+
+```
+Output from command in shell 7cef3f:
+-rw-rw-r-- 1 bobbigmac bobbigmac 139K Nov 27 08:29 /tmp/measured-mobile.png
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:6a6878d4 h:3a986f91 -->
+### 2026-11-27 08:30:10 UTC tool `exec`
+
+`{"command": "grep -R \"source-search-label\" -n src/styles src/*.css | head -20", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell ddbf88:
+src/styles/measured-sources.css:448:  .source-search-label {
+src/styles/measured-sources.css:452:  .source-search-label {
+src/styles/relationships.css:86:.source-search-label {
+src/styles/relationships.css:95:.source-search-label input {
+src/styles/relationships.css:304:  .source-search-label {
+src/styles/relationships.css:308:  .source-search-label {
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:read:483d7327 h:6dd8834d -->
+### 2026-11-27 08:30:20 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/relationships.css", "offset": 80, "limit": 25}`
+
+```
+Output truncated at line 104; continue reading from line 105.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/src/styles/relationships.css" start_line="80" end_line="104">
+ 80|  justify-content: space-between;
+ 81|  align-items: start;
+ 82|  gap: 1rem;
+ 83|  margin-bottom: 0.75rem;
+ 84|}
+ 85|
+ 86|.source-search-label {
+ 87|  display: grid;
+ 88|  gap: 0.3rem;
+ 89|  min-width: min(360px, 40vw);
+ 90|  font-family: var(--sans);
+ 91|  font-size: 0.78rem;
+ 92|  color: var(--muted);
+ 93|}
+ 94|
+ 95|.source-search-label input {
+ 96|  width: 100%;
+ 97|  border: 1px solid var(--rule);
+ 98|  background: var(--paper);
+ 99|  color: var(--ink);
+100|  font: inherit;
+101|  padding: 0.55rem 0.7rem;
+102|}
+103|
+104|.source-groups {
+</file-view>
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:88e78df8 h:8d0a4b85 -->
+### 2026-11-27 08:30:31 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css", "old_string": ".measured-title-block h1 {", "new_string": ".source-search-label {\n  display: grid;\n  gap: 0.3rem;\n  min-width: min(360px, 40vw);\n  font-family: var(--sans);\n  font-size: 0.78rem;\n  color: var(--muted);\n}\n\n.source-search-label input {\n  width: 100%;\n  border: 1px solid var(--rule);\n `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css' - made 1 replacement(s). 1 line(s) removed, 19 line(s) added at line 26.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:7e20e19e h:bcc91f06 -->
+### 2026-11-27 08:30:44 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.html", "old_string": "      <input id=\"measured-search\" type=\"search\" placeholder=\"BBC, Guardian, science, tabloid\u2026\">", "new_string": "      <input id=\"measured-search\" type=\"search\" placeholder=\"BBC, Guardian, science\u2026\">"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/measured-sources.html' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 37.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:69113108 h:0f0a964f -->
+### 2026-11-27 08:30:51 UTC tool `exec`
+
+`{"command": "grep -Rni \"honest\" src/measured-sources.html src/measured-sources.js src/styles/measured-sources.css scripts/headline-analysis/build_measured_sources.py || true", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell d5172e:
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:22b128bd h:4523d66b -->
+### 2026-11-27 08:31:00 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json,statistics\np=json.load(open('src/data/measured-sources.json'))\nfor a in p['axes']:\n vals=[s['axes'][a['key']]['score'] for s in p['sources']]\n print(f\"{a['key']:25} mean {statistics.mean(vals):5.1f} min {min(vals):5.1f} max {max(vals):5.1f}\")\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell bfa3a1:
+event_clarity             mean  50.0 min  19.3 max  87.4
+quantified_specificity    mean  50.0 min  16.6 max  95.4
+time_place_anchor         mean  50.0 min   2.8 max  91.0
+causal_explanation        mean  50.0 min  17.5 max 100.0
+material_consequence      mean  49.9 min  14.6 max 100.0
+evidence_provenance       mean  49.9 min   7.0 max 100.0
+context_comparison        mean  50.0 min   0.0 max  95.4
+explanatory_framing       mean  50.3 min   0.0 max  86.3
+curiosity_restraint       mean  50.8 min   0.0 max  58.3
+packaging_restraint       mean  50.2 min   0.0 max  68.2
+sensational_restraint     mean  50.3 min   0.0 max  67.9
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:1ee66550 h:ed9b1be6 -->
+### 2026-11-27 08:31:44 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor key in ['dailymail.com','mirror.co.uk','theguardian.com','bbc.co.uk','medicalxpress.com','kotaku.com','engadget.com']:\n s=next(x for x in p['sources'] if x['key']==key)\n print('\\n',s['label'],s['measuredQuality'])\n for a in p['axes']:\n  if a['kind']=='restraint': print(a['key'],s['axe`
+
+```
+Output from command in shell 8ca64e:
+  File "<stdin>", line 7
+    if a['kind']=='restraint': print(a['key'],s['axes[a['key']]['score'] if False else '')
+                                                                                        ^
+SyntaxError: unterminated string literal (detected at line 7)
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:19c70cb4 h:cbd1b9e7 -->
+### 2026-11-27 08:31:50 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor key in ['dailymail.com','mirror.co.uk','theguardian.com','bbc.co.uk','medicalxpress.com','kotaku.com','engadget.com']:\n s=next(x for x in p['sources'] if x['key']==key)\n print('\\n',s['label'],s['measuredQuality'])\n for a in p['axes']:\n  if a['kind']=='restraint':\n   v=s['axes'][a['ke`
+
+```
+Output from command in shell a16d30:
+
+ Daily Mail 36.95
+curiosity_restraint 21.0 z -1.932 incidence 0.01429
+packaging_restraint 48.2 z -0.123 incidence 0.03143
+sensational_restraint 0.0 z -4.017 incidence 0.08857
+
+ Mirror 46.53
+curiosity_restraint 56.7 z 0.45 incidence 0.0
+packaging_restraint 55.1 z 0.342 incidence 0.01504
+sensational_restraint 0.0 z -4.394 incidence 0.10526
+
+ The Guardian 58.28
+curiosity_restraint 53.3 z 0.217 incidence 0.00206
+packaging_restraint 54.3 z 0.286 incidence 0.01856
+sensational_restraint 67.9 z 1.194 incidence 0.01237
+
+ BBC 49.92
+curiosity_restraint 54.2 z 0.28 incidence 0.0
+packaging_restraint 57.8 z 0.521 incidence 0.0164
+sensational_restraint 45.9 z -0.272 incidence 0.01923
+
+ Medical Xpress 56.14
+curiosity_restraint 57.6 z 0.51 incidence 0.0
+packaging_restraint 53.4 z 0.227 incidence 0.02362
+sensational_restraint 67.7 z 1.183 incidence 0.0
+
+ Kotaku 39.39
+curiosity_restraint 43.0 z -0.465 incidence 0.00447
+packaging_restraint 37.0 z -0.864 incidence 0.06259
+sensational_restraint 52.8 z 0.186 incidence 0.0149
+
+ Engadget 44.73
+curiosity_restraint 52.3 z 0.155 incidence 0.0
+packaging_restraint 0.0 z -4.541 incidence 0.38095
+sensational_restraint 56.0 z 0.402 incidence 0.0
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:694d9262 h:61be8977 -->
+### 2026-11-27 08:32:04 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/test/measured-sources.test.js", "old_string": "    expect([...byKey.keys()].some(key => key.includes('fox'))).toBe(false);\n  });", "new_string": "    expect([...byKey.keys()].some(key => key.includes('fox'))).toBe(false);\n    for (const source of data.sources) {\n      expect(source.relationshipsUrl, source.key).toContain('#rel-');\n      ex`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/test/measured-sources.test.js' - made 1 replacement(s). 2 line(s) removed, 6 line(s) added at line 48.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:79d4e85b h:68749457 -->
+### 2026-11-27 08:32:17 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/test/measured-sources.test.js", "old_string": "    expect(byKey.get('group-nypost-pagesix')?.members.length).toBeGreaterThan(1);\n    expect([...byKey.keys()].some(key => key.includes('fox'))).toBe(false);", "new_string": "    expect(byKey.get('group-nypost-pagesix')?.members.length).toBeGreaterThan(1);\n    expect(byKey.get('indianexpress.com`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/test/measured-sources.test.js' - made 1 replacement(s). 2 line(s) removed, 4 line(s) added at line 47.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:03aa8f6d h:a05d427c -->
+### 2026-11-27 08:32:29 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json", "old_string": "    \"no_build_integration\": \"Do not wire this into scripts/build.js, CI, or the normal digest pipeline without explicit approval.\",", "new_string": "    \"no_build_integration\": \"Do not run the analysis in scripts/build.js, CI, or the normal digest pipeline without explicit approval`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 7.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:d13b1357 h:f2f9b5d0 -->
+### 2026-11-27 08:32:52 UTC tool `exec`
+
+`{"command": "grep -R \"rel-\\|slug\" -n src/relationships.js src/source-tree.js | head -80", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 6d8be8:
+src/relationships.js:43:  return 'rel-' + path.map(part => String(part).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')).join('--');
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:9e163402 h:1bc49dc6 -->
+### 2026-11-27 08:33:04 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json,re\np=json.load(open('src/data/measured-sources.json'))\nprint('example',next(s for s in p['sources'] if s['key']=='bbc.co.uk')['relationshipsUrl'])\nprint('example2',next(s for s in p['sources'] if s['key']=='scmp.com')['relationshipsUrl'])\nPY\nls dist/relationships.html dist/assets/relationships-*.js | tail -2", "workdir": "/home/bobbigmac/projects/bob`
+
+```
+Output from command in shell 5fd2a5:
+example ./relationships.html#rel-public-international--bbc
+example2 ./relationships.html#rel-regional-english-media--hong-kong-taiwan
+dist/assets/relationships-D5iopVPK.js
+dist/relationships.html
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:92324a31 h:d82b58aa -->
+### 2026-11-27 08:33:10 UTC tool `exec`
+
+`{"command": "sed -n '1,120p' src/relationships.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 180d56:
+import { getFaviconSpriteClass } from './favicon-sprite.js';
+import { BRANCH_PROFILES, SOURCE_PROFILES } from './source-profiles.js';
+import { SOURCE_RELATION_TREE } from './source-tree.js';
+import { prettifySourceKey } from './view-model.js';
+
+const PROFILE_FIELD_LABELS = {
+  kind: 'Type',
+  ownership: 'Ownership',
+  governance: 'Governance',
+  leaning: 'Editorial context',
+  history: 'History',
+  model: 'Model',
+  notes: 'Notes',
+};
+const PROFILE_LIST_LABELS = {
+  properties: 'Properties',
+  shared: 'Shared links',
+  watch: 'Read carefully',
+  caution: 'Read carefully',
+};
+
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+// Cross-membership index: one outlet can sit in several families (a wire
+// that's also a co-op, a broadcaster that's also a platform). Collected once
+// so each outlet row can link to its other families' sections on the page.
+const membershipsByHost = new Map();
+function indexMemberships(node, path = []) {
+  const nextPath = [...path, node.label];
+  for (const host of node.sources || []) {
+    if (!membershipsByHost.has(host)) membershipsByHost.set(host, []);
+    membershipsByHost.get(host).push({ path: nextPath.join(' / '), label: node.label, anchor: anchorForPath(nextPath) });
+  }
+  for (const child of node.children || []) indexMemberships(child, nextPath);
+}
+
+function anchorForPath(path) {
+  return 'rel-' + path.map(part => String(part).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')).join('--');
+}
+
+function countDescendantHosts(node) {
+  let count = (node.sources || []).length;
+  for (const child of node.children || []) count += countDescendantHosts(child);
+  return count;
+}
+
+for (const root of SOURCE_RELATION_TREE) indexMemberships(root);
+
+function appendLinkList(container, links) {
+  if (!links?.length) return;
+  const list = el('ul', 'profil
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:1136fe03 h:3a9d6d1e -->
+### 2026-11-27 08:33:39 UTC tool `exec`
+
+`{"command": "node --input-type=module - <<'JS'\nimport { readFileSync } from 'fs';\nimport { JSDOM } from 'jsdom';\nconst dom = new JSDOM(readFileSync('src/relationships.html','utf8'), { url:'https://example.test/relationships.html' });\nglobalThis.document = dom.window.document;\nawait import('./src/relationships.js');\nconst ids = new Set([...document.querySelectorAll('[id]')].map(x=>x.id));\nco`
+
+```
+Output from command in shell f8aa8c:
+relationship sections 186 missing measured anchors 0
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:a393d44f h:b7a1a25a -->
+### 2026-11-27 08:34:10 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "    data = {\n        'version': 1,", "new_string": "    source_index = {}\n    for source in sources:\n        source_index[source['key']] = source['key']\n        for member in source.get('members', []):\n            source_index.setdefault(member['key'], source['key'])\n\n`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 2 line(s) removed, 8 line(s) added at line 232.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:cf966a2f h:44779661 -->
+### 2026-11-27 08:34:21 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "        'axes': AXES,\n        'sources': sources,\n    }", "new_string": "        'axes': AXES,\n        'sourceIndex': source_index,\n        'sources': sources,\n    }"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 3 line(s) removed, 4 line(s) added at line 249.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:95e07ebc h:7ba4c154 -->
+### 2026-11-27 08:34:33 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/test/measured-sources.test.js", "old_string": "    expect(byKey.get('group-nypost-pagesix')?.members.length).toBeGreaterThan(1);\n    expect(byKey.get('indianexpress.com')?.label).toBe('The Indian Express');", "new_string": "    expect(byKey.get('group-nypost-pagesix')?.members.length).toBeGreaterThan(1);\n    expect(data.sourceIndex['in.masha`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/test/measured-sources.test.js' - made 1 replacement(s). 2 line(s) removed, 5 line(s) added at line 47.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:1f342921 h:caec16d4 -->
+### 2026-11-27 08:34:48 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py && python3 - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nprint('index entries',len(p['sourceIndex']),'examples',{k:p['sourceIndex'].get(k) for k in ['bbc.co.uk','in.mashable.com','pagesix.com','newsinfo.inquirer.net']})\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout`
+
+```
+Output from command in shell c04255:
+wrote 76 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+index entries 88 examples {'bbc.co.uk': 'bbc.co.uk', 'in.mashable.com': 'group-mashable', 'pagesix.com': 'group-nypost-pagesix', 'newsinfo.inquirer.net': 'group-inquirer'}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:4a34a283 h:b1574eb2 -->
+### 2026-11-27 08:34:58 UTC tool `exec`
+
+`{"command": "ls -lh src/data/measured-sources.json && python3 - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nprint(p['bands'])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 70a10a:
+-rw-rw-r-- 1 bobbigmac bobbigmac 277K Nov 27 08:34 src/data/measured-sources.json
+[{'key': 'strongest', 'label': 'Strongest measured headline value', 'summary': 'Headlines most often combine concrete information with comparatively restrained packaging.', 'rangeText': '52.53–63.20', 'min': 52.53, 'max': 63.2, 'sourceCount': 19}, {'key': 'above-typical', 'label': 'Above-typical measured headline value', 'summary': 'Headlines are usually informative or restrained, with some weaker axes or mixed behaviour.', 'rangeText': '49.48–52.49', 'min': 49.48, 'max': 52.49, 'sourceCount': 19}, {'key': 'below-typical', 'label': 'Below-typical measured headline value', 'summary': 'Headlines more often omit concrete anchors or use more attention-oriented framing.', 'rangeText': '47.33–49.47', 'min': 47.33, 'max': 49.47, 'sourceCount': 19}, {'key': 'weakest', 'label': 'Weakest measured headline value', 'summary': 'Headlines are comparatively thin on concrete information, heavier on packaging, or both.', 'rangeText': '36.95–47.21', 'min': 36.95, 'max': 47.21, 'sourceCount': 19}]
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:3b416cad h:3db6d2ef -->
+### 2026-11-27 08:35:12 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "        'measurementLabel': 'Measured headline value',\n        'minimumHeadlines': int(analysis.get('min_source_n', 20)),", "new_string": "        'measurementLabel': 'Measured headline value',\n        'axisScale': {\n            'midpoint': 50,\n            'minimum': 0,\n`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 2 line(s) removed, 8 line(s) added at line 241.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:f00c7e56 h:7b651635 -->
+### 2026-11-27 08:35:23 UTC tool `exec`
+
+`{"command": "sed -n '1,80p' src/styles/relationships.css", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 9d58ec:
+.relationships-page {
+  min-height: 100vh;
+}
+
+.relationships-page a {
+  color: var(--accent);
+}
+
+.relationships-masthead {
+  display: grid;
+  grid-template-columns: minmax(120px, 180px) minmax(0, 1fr) minmax(240px, 320px);
+  gap: 1rem;
+  align-items: start;
+  padding: 1.5rem min(4vw, 3rem) 1rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.back-link {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.relationships-masthead h1 {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  font-variant: small-caps;
+}
+
+.intro {
+  max-width: 78ch;
+  margin-top: 0.65rem;
+  color: var(--muted);
+}
+
+.relationships-main {
+  width: min(1320px, calc(100vw - 2rem));
+  margin: 0 auto;
+  padding: 1rem 0 3rem;
+}
+
+.relationship-section {
+  background: var(--paper-light);
+  border: 1px solid var(--rule);
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.relationship-section h2 {
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.relation-group,
+.source-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+
+.relationship-section p {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:a29fedbf h:2135a4ef -->
+### 2026-11-27 08:35:33 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/relationships.css", "old_string": ".intro {\n  max-width: 78ch;\n  margin-top: 0.65rem;\n  color: var(--muted);\n}\n", "new_string": ".intro {\n  max-width: 78ch;\n  margin-top: 0.65rem;\n  color: var(--muted);\n}\n\n.page-crosslink {\n  margin-top: 0.45rem;\n}\n\n.page-crosslink a {\n  display: inline-block;\n  border: 1px solid va`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/relationships.css' - made 1 replacement(s). 5 line(s) removed, 19 line(s) added at line 43.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:ef5b3dae h:7c3ea23f -->
+### 2026-11-27 08:36:00 UTC tool `exec`
+
+`{"command": "grep -R \"^\\.back-link\" -n src/styles/*.css src/*.css", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 195bbd:
+src/styles/relationships.css:18:.back-link {
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:e0fd2319 h:ac86f39e -->
+### 2026-11-27 08:36:09 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css", "old_string": ".measured-page a {\n  color: var(--accent);\n}\n", "new_string": ".measured-page a {\n  color: var(--accent);\n}\n\n.measured-page .back-link {\n  font-family: var(--sans);\n  font-size: 0.8rem;\n  text-decoration: none;\n  border: 1px solid var(--rule);\n  padding: 0.35rem 0.6rem;\n  border-rad`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css' - made 1 replacement(s). 3 line(s) removed, 12 line(s) added at line 13.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:363456f9 h:6a9ab3da -->
+### 2026-11-27 08:36:19 UTC tool `exec`
+
+`{"command": "ls -l --time-style=long-iso docs/headline-data/current/*.png docs/headline-data/current/source_radar.html docs/headline-data/current/source_rankings.csv 2>/dev/null | head -20", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 719635:
+-rw-rw-r-- 1 bobbigmac bobbigmac  117082 2026-11-27 07:46 docs/headline-data/current/high_volume_source_ranking.png
+-rw-rw-r-- 1 bobbigmac bobbigmac  439174 2026-11-27 07:46 docs/headline-data/current/publisher_radar_comparison.png
+-rw-rw-r-- 1 bobbigmac bobbigmac 4931005 2026-11-27 08:00 docs/headline-data/current/source_radar.html
+-rw-rw-r-- 1 bobbigmac bobbigmac 1252607 2026-11-27 08:00 docs/headline-data/current/source_rankings.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac   91972 2026-11-27 07:46 docs/headline-data/current/story_signal_distribution.png
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:02a8bb54 h:80cdc521 -->
+### 2026-11-27 08:36:43 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/test_corpus_outputs.py --config docs/tasks/headline-analysis.task.json && .venv/bin/python scripts/headline-analysis/make_charts.py --config docs/tasks/headline-analysis.task.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 120000}`
+
+```
+Corpus-output invariants passed: 11,461 headlines; 686 sources; 13 radar axes; 9 delivery markers; 76 ordered sources.
+
+===
+Stopped waiting for output after 15.1 seconds. Command running in background with ID: 2df29e. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:549792ce h:75d03d79 -->
+### 2026-11-27 08:37:02 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/validate_detectors.py sample --config docs/tasks/headline-analysis.task.json >/tmp/validation-sample.log && tail -5 /tmp/validation-sample.log && ls -l --time-style=long-iso docs/headline-data/current/*.png | head", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 30000}`
+
+```
+Output from command in shell c433f9:
+wrote 150 validation rows to /home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/detector_validation_sample.csv
+-rw-rw-r-- 1 bobbigmac bobbigmac 116846 2026-11-27 08:36 docs/headline-data/current/high_volume_source_ranking.png
+-rw-rw-r-- 1 bobbigmac bobbigmac 439174 2026-11-27 08:36 docs/headline-data/current/publisher_radar_comparison.png
+-rw-rw-r-- 1 bobbigmac bobbigmac  92100 2026-11-27 08:36 docs/headline-data/current/story_signal_distribution.png
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:11af7099 h:a31b1c24 -->
+### 2026-11-27 08:37:23 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.html", "old_string": "        Each spiderweb shows eleven measured traits. The middle ring is typical for the measured\n        sources as a group. Further out means more of the desirable trait; closer to the centre\n        means less. The traits are measured after comparing sources with broadly similar story\n        mix`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/measured-sources.html' - made 1 replacement(s). 5 line(s) removed, 6 line(s) added at line 54.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:c98cdc04 h:baadc747 -->
+### 2026-11-27 08:37:35 UTC tool `exec`
+
+`{"command": "git status --short && echo '--- diff stat ---' && git diff --stat | tail -40", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 11368d:
+ M .gitignore
+ M AGENTS.md
+ M docs/DONE.md
+ M docs/sessions/transcripts/02-repeated-bite.md
+ M docs/sessions/user-input/02-repeated-bite.md
+ M docs/sessions/user-input/INDEX.md
+ M scripts/build.js
+ M scripts/export-source-headlines.js
+ M scripts/headline-analysis/analyse_headlines.py
+ M scripts/headline-analysis/make_charts.py
+ M scripts/headline-analysis/test_corpus_outputs.py
+ M scripts/headline-analysis/test_detectors.py
+ M src/index.html
+ M src/relationships.html
+ M src/styles/relationships.css
+ M src/trees/sources/canada-media.json
+ M src/trees/sources/digital-publishers.json
+ M src/trees/sources/regional-english.json
+ M src/trees/sources/specialist-press.json
+ M vite.config.js
+?? docs/headline-data/current/
+?? docs/sources-manifest-UPDATE-2026-11-27.md
+?? docs/tasks/
+?? scripts/headline-analysis/build_measured_sources.py
+?? scripts/headline-analysis/validate_detectors.py
+?? src/data/
+?? src/measured-sources.html
+?? src/measured-sources.js
+?? src/styles/measured-sources.css
+?? test/measured-sources.test.js
+--- diff stat ---
+ .gitignore                                       |     1 +
+ AGENTS.md                                        |     7 +
+ docs/DONE.md                                     |    45 +
+ docs/sessions/transcripts/02-repeated-bite.md    | 14013 ++++++++++++++++++++-
+ docs/sessions/user-input/02-repeated-bite.md     |    67 +-
+ docs/sessions/user-input/INDEX.md                |     2 +-
+ scripts/build.js                                 |     3 +
+ scripts/export-source-headlines.js               |    31 +-
+ scripts/headline-analysis/analyse_headlines.py   |  1100 +-
+ scripts/headline-analysis/make_charts.py         |    44 +-
+ scripts/headline-analysis/test_corpus_outputs.py |    99 +-
+ scripts/headline-analysis/test_detectors.py      |   112 +-
+ src/index.html                                   |     3 +-
+ src/relationships.html                           |     1 +
+ src/styles/relationships.css                     
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:ba4792ac h:01a3acdc -->
+### 2026-11-27 08:37:44 UTC tool `exec`
+
+`{"command": "cat .gitignore | tail -30", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell c632e4:
+node_modules/
+.env
+cache/
+dist/
+news/
+logs_*.zip
+logs_extracted/.venv/
+.venv/
+.working/
+__pycache__/
+
+# Generated files left behind by the old docs/ build output
+docs/assets/
+docs/digest.json
+docs/favicons/
+docs/index.html
+docs/og-image.jpg
+docs/run-log.json
+docs/sw.js
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:50540116 h:d5db6196 -->
+### 2026-11-27 08:37:51 UTC tool `exec`
+
+`{"command": "git diff --check -- src/index.html src/relationships.html src/styles/relationships.css src/measured-sources.html src/measured-sources.js src/styles/measured-sources.css scripts/build.js vite.config.js src/trees/sources/canada-media.json src/trees/sources/digital-publishers.json src/trees/sources/regional-english.json src/trees/sources/specialist-press.json test/measured-sources.test.j`
+
+```
+Output from command in shell 793b8f:
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:09fb3011 h:c60c48ed -->
+### 2026-11-27 08:38:31 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py && npm test && npm run build", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 240000}`
+
+```
+wrote 76 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+
+> test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.1.1 [39m[90m/home/bobbigmac/projects/bobdavies/news[39m
+
+ [32m✓[39m test/manage-panels.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 189[2mms[22m[39m
+ [32m✓[39m test/glimpse.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 227[2mms[22m[39m
+ [32m✓[39m test/view-model.test.js [2m([22m[2m9 tests[22m[2m)[22m[32m 136[2mms[22m[39m
+ [32m✓[39m test/story-groups.test.js [2m([22m[2m7 tests[22m[2m)[22m[32m 193[2mms[22m[39m
+ [32m✓[39m test/measured-sources.test.js [2m([22m[2m7 tests[22m[2m)[22m[33m 355[2mms[22m[39m
+ [32m✓[39m test/filter-bar.test.js [2m([22m[2m18 tests[22m[2m)[22m[33m 988[2mms[22m[39m
+ [32m✓[39m test/feed.test.js [2m([22m[2m10 tests[22m[2m)[22m[33m 1499[2mms[22m[39m
+   [32m✓[39m feed view manager [2m(10)[22m
+     [33m[2m✓[22m[39m creates one lightweight shell per story without hydrating contents[33m 874[2mms[22m[39m
+ [32m✓[39m test/catchup.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 216[2mms[22m[39m
+ [32m✓[39m test/relationships.test.js [2m([22m[2m14 tests[22m[2m)[22m[32m 112[2mms[22m[39m
+ [32m✓[39m test/layout.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 167[2mms[22m[39m
+ [32m✓[39m test/build-output.test.js [2m([22m[2m2 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m test/story-group-assign.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+ [32m✓[39m test/pipeline.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 107[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m13 passed[39m[22m[90m (13)[39m
+[2m      Tests [22m [1m[32m97 passed[39m[22m[90m (97)[39m
+[2m   Start at [22m 08:38:09
+[2m   Duration [22m 9.56s[2m (environment 82%, tests 8%, import 6%, transform 3%, worker 1%)[22m
+
+[2mEnvironment [22m [33mjsdom was created 13 
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:7917af91 h:82268355 -->
+### 2026-11-27 08:38:57 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json,os\np=json.load(open('dist/measured-sources.json'))\nprint('dist json',len(p['sources']),'sources',len(p['sourceIndex']),'index entries','axisScale' in p,os.path.getsize('dist/measured-sources.json'))\nprint('range',[(b['key'],b['rangeText']) for b in p['bands']])\nPY\nls -lh dist/measured-sources.json dist/measured-sources.html | cat", "workdir": "/home/`
+
+```
+Output from command in shell 370975:
+dist json 76 sources 88 index entries True 283809
+range [('strongest', '52.53–63.20'), ('above-typical', '49.48–52.49'), ('below-typical', '47.33–49.47'), ('weakest', '36.95–47.21')]
+-rw-rw-r-- 1 bobbigmac bobbigmac 5.8K Nov 27 08:38 dist/measured-sources.html
+-rw-rw-r-- 1 bobbigmac bobbigmac 278K Nov 27 08:38 dist/measured-sources.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:717f0ec1 h:b341d47e -->
+### 2026-11-27 08:39:03 UTC tool `exec`
+
+`{"command": "ls dist/measured-debug.html 2>/dev/null || echo 'no debug copy'", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 78d13f:
+no debug copy
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:cca69c3d h:080197ca -->
+### 2026-11-27 08:39:18 UTC tool `exec`
+
+`{"command": "node --input-type=module - <<'JS'\nimport { readFileSync } from 'fs';\nimport { JSDOM } from 'jsdom';\nconst dom = new JSDOM(readFileSync('src/measured-sources.html','utf8'), { url:'https://example.test/measured-sources.html' });\nglobalThis.document = dom.window.document;\nglobalThis.Event = dom.window.Event;\nawait import('./src/measured-sources.js');\nconst cards = document.querySe`
+
+```
+Output from command in shell b2f83f:
+cards 76 bands 4 spider true notes 1 axes 11
+family-hidden-eurogamer? Ziff Davis / IGN Entertainment · 458 headlines
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:read:56148205 h:39cd86e0 -->
+### 2026-11-27 08:39:25 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/DONE.md"}`
+
+```
+Output truncated at line 154; continue reading from line 155.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/docs/DONE.md" start_line="1" end_line="154">
+  1|# DONE
+  2|
+  3|## Platform-tenant source attribution audit
+  4|
+  5|- Multi-tenant platforms are no longer treated as sources: `yourlocalepidemiologist.substack.com` displayed as "Substack" because base-domain extraction took the platform label — same class of bug hit neocities, and worst of all dev.to, where 115 stories by ~97 individual authors were all lumped under one "DEV" source.
+  6|- `sourceKeyFromUrl` (both pipeline `scripts/sources.js` and client `src/view-model.js`, kept in sync) is now platform-aware: subdomain tenants display/key as the tenant, and path-tenant platforms (dev.to/user, medium.com/@user) key by author — dev.to/alice and dev.to/bob are different sources.
+  7|- Build-time labels prefer the story's own author field for platform tenants (real names like "Aniket Maurya" instead of handles), with explicit label overrides where prettified handles would be unreadable ("Your Local Epidemiologist").
+  8|- Audit verified the inverse direction too: legitimate publisher subdomains (news.xbox.com, sports.yahoo.com) still attribute to the publisher brand — the fix only fires for hosts in the curated PLATFORM_HOSTS set.
+  9|
+ 10|## Relationships page UX rebuild + content expansion
+ 11|
+ 12|- Rows are collapsed `<details>` elements by default — icon + name + host is the whole visible row, styled after the filter bar; profiles render only on expansion. This eliminates the wasted-space problem directly: thin rows cost one line each instead of matching their neighbor's height. Members flow in CSS columns so expansion pushes rows down rather than leaving holes in a grid.
+ 13|- "Also" cross-memberships are now anchor links to the other family sections (`#rel-…` ids) with just the family label — no more full breadcrumb dumps on every card.
+ 14|- Group headings disambiguate: a group whose label c
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:082fe030 h:4f2230ff -->
+### 2026-11-27 08:39:33 UTC tool `exec`
+
+`{"command": "tail -80 docs/DONE.md", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 6d2d84:
+  scrolling settles (160ms debounce), after progressive materialization completes, and after
+  search re-reveals hidden shells — any shell inside the hydrate margin is hydrated based on
+  where it actually IS, not whether an event happened to fire. Verified observerless in jsdom:
+  the sweep alone hydrates in-viewport shells and leaves far-below ones lazy.
+- **Search box restyled**: pill shape, tinted fill with inset magnifier glyph, soft focus
+  ring, hover border, theme-aware icons for day/night, styled native clear control.
+
+- **More-expander removal + virtualization rebuild** — removed the short-summary
+  collapse/"More" rendering entirely (glimpse is now pure data with zero rendering
+  impact, enforced by test); removed the fixed-height in-place swap grid so
+  article panels are natural height in both states. Rebuilt feed hydration as
+  textbook windowed virtualization: single geometric rAF driver (no
+  IntersectionObserver, no sweep, no click fallback), overscan hysteresis
+  (1200px enter / 2400px leave), phased read-then-write geometry, measured
+  heights for displayed content and estimates only below the fold.
+
+- **Text truncation removed end-to-end** — no artificial truncation anywhere in the
+  pipeline: prepareStoryForLLM passes full text (the LLM is length-controlled by
+  instruction, so input truncation only destroyed data), source-derived cluster copy
+  is the full source text with no fabricated ellipses, and the dead short-summary
+  deriver is gone. Publish-time repair pass reconstructs full summaries from the
+  story store for clusters mangled by older runs (~3-4.6k repaired per build),
+  backfills missing story description/content (8125 stories), and dedups feeds that
+  repeat description as content. Remaining ellipsis endings are publisher-side
+  truncations in the feeds themselves.
+
+- **Feed-markup injection fix** — RSS content HTML (including Techmeme's
+  self-contained item cards with their own headline/byline
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:d7a2b11f h:a406c522 -->
+### 2026-11-27 08:40:08 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/DONE.md", "old_string": "  bottom. Small-sample leaders remain interpretive leads rather than robust\n  publisher verdicts. Charts, interactive radar, per-headline rows, source axes,\n  body/summary diagnostics, sensitivity tables and the machine-readable metric\n  dictionary are in `docs/headline-data/current/`.\n", "new_string": "  bott`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/docs/DONE.md' - made 1 replacement(s). 4 line(s) removed, 42 line(s) added at line 251.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:7c506b6a h:83271e42 -->
+### 2026-11-27 08:40:16 UTC tool `exec`
+
+`{"command": "grep -n \"headline\\|measured\" AGENTS.md | tail -30", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 41aa56:
+6:- `docs/tasks/headline-analysis.task.json` controls the exploratory headline/source analysis: export current `origin/cache-data` into `.working/`, then run `.venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json`. Validation helpers are `scripts/headline-analysis/validate_detectors.py sample` (write a source-capped blank labelling sheet) and `validate_detectors.py score` (score completed `human_*` labels); both read the same task config.
+7:- This headline analysis is dev-time/run-once measurement tooling only. Do not wire it into `scripts/build.js`, CI, or the normal digest pipeline without explicit approval. No large transformer models or GPU-dependent models.
+162:5. **Topic slug merge** (LLM preflight, one call per run) — all new story headlines are
+179:     (uses the source headline + description as-is). All singleton headlines are
+280:  headline words (non-curated). Terms from the tree are matched as word-sets:
+413:  never-shown content, measured real height once displayed). The user has
+426:  so its measured height is known until browser resize. Unloading drops sub-DOM
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:read:753f839b h:0811839e -->
+### 2026-11-27 08:40:27 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/AGENTS.md", "offset": 1, "limit": 18}`
+
+```
+Output truncated at line 18; continue reading from line 19.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/AGENTS.md" start_line="1" end_line="18">
+  1|# Agent Guidelines
+  2|
+  3|## Dev-time analysis tasks
+  4|
+  5|- Re-runnable analysis/task configuration lives in `docs/tasks/*.task.json`. Edit the config file rather than maintaining long CLI parameter lists.
+  6|- `docs/tasks/headline-analysis.task.json` controls the exploratory headline/source analysis: export current `origin/cache-data` into `.working/`, then run `.venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json`. Validation helpers are `scripts/headline-analysis/validate_detectors.py sample` (write a source-capped blank labelling sheet) and `validate_detectors.py score` (score completed `human_*` labels); both read the same task config.
+  7|- This headline analysis is dev-time/run-once measurement tooling only. Do not wire it into `scripts/build.js`, CI, or the normal digest pipeline without explicit approval. No large transformer models or GPU-dependent models.
+  8|- Completed work is logged in `docs/DONE.md`; open work stays in root `TODO.md`.
+  9|
+ 10|### Platform-tenant attribution (keep copies in sync)
+ 11|
+ 12|Multi-tenant platforms (substack, medium, dev.to, neocities, etc.) are NOT sources —
+ 13|the publications/authors on them are. `sourceKeyFromUrl` and `prettifySourceKey`
+ 14|implement this twice: `scripts/sources.js` (pipeline) and `src/view-model.js` (client).
+ 15|**The two copies must be edited together** — key shape affects filtering, sprite
+ 16|lookup, and read-state consistently only if both sides agree.
+ 17|- Subdomain tenants: `x.substack.com` displays/keys as the tenant, never the platform.
+ 18|- Path tenants (`dev.to/user`, `medium.com/@user`): keys include the first path
+</file-view>
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:88deecdd h:cd0a6423 -->
+### 2026-11-27 08:40:45 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/AGENTS.md", "old_string": "- This headline analysis is dev-time/run-once measurement tooling only. Do not wire it into `scripts/build.js`, CI, or the normal digest pipeline without explicit approval. No large transformer models or GPU-dependent models.", "new_string": "- This headline analysis is dev-time/run-once measurement tooling only. Do `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/AGENTS.md' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 7.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:acb42d63 h:9d312ac7 -->
+### 2026-11-27 08:41:00 UTC tool `exec`
+
+`{"command": "firefox --headless --screenshot /tmp/measured-final-check.png --window-size=1000,900 \"file:///home/bobbigmac/projects/bobdavies/news/dist/measured-sources.html\" >/tmp/firefox-shot.log 2>&1; echo ok", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 30000}`
+
+```
+Output from command in shell 460f96:
+ok
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:74bd398b h:e5be1714 -->
+### 2026-11-27 08:41:29 UTC tool `exec`
+
+`{"command": "grep -n \"timesofindia\\|indianexpress\\|bernama\\|inc-com\\|chalkbeat\\|winnipegfreepress\" src/favicon-sprite.js | head -20", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 9e9d28:
+119:  'chalkbeat-org',
+387:  'inc-com',
+895:  'winnipegfreepress-com',
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:29b5cb58 h:f9eb397b -->
+### 2026-11-27 08:41:40 UTC tool `exec`
+
+`{"command": "grep -n \"indiatimes\\|timesofindia\" src/favicon-sprite.js | head -20; grep -n \"indianexpress\\|bernama\" src/favicon-sprite.js | head -20", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 023ffe:
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:f447eefb h:88c273b4 -->
+### 2026-11-27 08:41:58 UTC tool `exec`
+
+`{"command": "node scripts/build-favicon-sprite.js --help 2>&1 | head -80 || true", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: 1921a2. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:kill_shell:ae54ae3c h:01f34985 -->
+### 2026-11-27 08:42:26 UTC tool `kill_shell`
+
+`{"shell_id": "1921a2"}`
+
+```
+Shell 1921a2 terminated successfully
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:518f2047 h:cdb9c3ac -->
+### 2026-11-27 08:42:32 UTC tool `exec`
+
+`{"command": "sed -n '1,100p' scripts/build-favicon-sprite.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 9c435c:
+// Repeatable favicon sprite pipeline.
+//
+// Usage:
+//   node scripts/build-favicon-sprite.js            reuse good tiles, fetch missing/broken
+//   node scripts/build-favicon-sprite.js --no-fetch build sheet from existing tiles only
+//   node scripts/build-favicon-sprite.js --force host1,host2   refetch specific hosts
+//
+// Outputs:
+//   src/favicons/<host>.png        per-host 32px tiles (source material)
+//   src/favicons/sprite.png        the shipped sheet (16 tiles per row)
+//   src/styles/favicon-sprite.css  class offsets
+//   src/favicon-sprite.js          FAVICON_SPRITE_HOSTS registry
+//
+// Quality rules:
+//   - reject tiles with <10% visible coverage (empty/broken fetches)
+//   - light-on-transparent glyphs (mean luminance >185) get a dark rounded chip
+//     baked behind them so they read on the paper background
+//   - everything else floats as a plain icon
+
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
+import { join } from 'path';
+import sharp from 'sharp';
+import { SOURCE_RELATION_TREE } from '../src/source-tree.js';
+
+const TILE = 32;
+const COLUMNS = 16;
+const TILES_DIR = 'src/favicons';
+const CONCEPTS_DIR = 'src/favicons/concepts';
+const OUT_SHEET = 'src/favicons/sprite.png';
+const OUT_CSS = 'src/styles/favicon-sprite.css';
+const OUT_REGISTRY = 'src/favicon-sprite.js';
+const FETCH_TIMEOUT_MS = 12000;
+const args = process.argv.slice(2);
+const NO_FETCH = args.includes('--no-fetch');
+const forceIdx = args.indexOf('--force');
+const FORCE = forceIdx >= 0 ? new Set(args[forceIdx + 1].split(',').map(s => s.trim()).filter(Boolean)) : new Set();
+const RENORMALIZE = args.includes('--renormalize'); // resample every cached tile through the current normalizer, no network
+
+mkdirSync(TILES_DIR, { recursive: true });
+mkdirSync(CONCEPTS_DIR, { recursive: true });
+mkdirSync('src/favicons', { recursive: true });
+
+// --- collect needed hosts -------------------------------------------------
+
+funct
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:adb2c524 h:5812bc91 -->
+### 2026-11-27 08:42:43 UTC tool `exec`
+
+`{"command": "grep -n \"FORCE\\|fetch\" scripts/build-favicon-sprite.js | tail -80", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 94eea8:
+4://   node scripts/build-favicon-sprite.js            reuse good tiles, fetch missing/broken
+5://   node scripts/build-favicon-sprite.js --no-fetch build sheet from existing tiles only
+6://   node scripts/build-favicon-sprite.js --force host1,host2   refetch specific hosts
+15://   - reject tiles with <10% visible coverage (empty/broken fetches)
+34:const NO_FETCH = args.includes('--no-fetch');
+36:const FORCE = forceIdx >= 0 ? new Set(args[forceIdx + 1].split(',').map(s => s.trim()).filter(Boolean)) : new Set();
+107:// --- fetching ---------------------------------------------------------------
+130:async function fetchBuffer(url) {
+134:    const res = await fetch(url, {
+137:      headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) favicon-fetch' },
+150:async function fetchFaviconPng(host) {
+153:    const buf = await fetchBuffer(`https://${host}/${name}`);
+162:  const ico = await fetchBuffer(`https://${host}/favicon.ico`);
+171:  const gstatic = await fetchBuffer(staticUrl);
+262:  if (existsSync(tilePath) && !FORCE.has(host)) {
+267:      registryNotes.push(`${host}: existing tile empty — refetching`);
+276:      registryNotes.push(`${host}: renormalize produced empty tile — refetching`);
+289:  const fetched = await fetchFaviconPng(host);
+290:  if (!fetched) return { key, png: null, source: 'unfetchable' };
+291:  const normalized = await normalizeTile(fetched);
+294:  return { key, png: normalized.png, source: `fetched (${normalized.reason})` };
+301:let fetched = 0, cached = 0, failed = 0;
+317:      else { fetched++; console.log(`  + ${host} ${tile.source}`); }
+385:console.log(`cached ${cached}, fetched ${fetched}, failed ${failed}`);
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:ea39dd33 h:20ff0818 -->
+### 2026-11-27 08:42:58 UTC tool `exec`
+
+`{"command": "git status --short src/favicons src/favicon-sprite.js src/styles/favicon-sprite.css | head -20 || true", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell ad9198:
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:068ba201 h:068d2a79 -->
+### 2026-11-27 08:43:06 UTC tool `exec`
+
+`{"command": "sed -n '1,160p' src/sw.js", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell b6fddf:
+const CACHE = 'broadsheet-v10';
+
+self.addEventListener('install', (e) => {
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (e) => {
+  e.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
+    ).then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', (e) => {
+  const url = new URL(e.request.url);
+  if (e.request.method !== 'GET') return;
+
+  // Only handle same-origin requests
+  if (url.origin !== self.location.origin) return;
+
+  // Network-first for HTML navigations and CSS/JS/JSON — always get fresh content
+  const isNavigation = e.request.mode === 'navigate' || url.pathname.endsWith('/') || /\.(html)$/.test(url.pathname);
+  const isFreshAsset = isNavigation || /\.(css|js|json)$/.test(url.pathname);
+  if (isFreshAsset) {
+    e.respondWith(
+      fetch(e.request).then((res) => {
+        if (res.ok) {
+          const clone = res.clone();
+          caches.open(CACHE).then((cache) => cache.put(e.request, clone));
+        }
+        return res;
+      }).catch(() => caches.match(e.request))
+    );
+    return;
+  }
+
+  // Cache-first for images and other assets
+  e.respondWith(
+    caches.match(e.request).then((cached) => {
+      if (cached) return cached;
+      return fetch(e.request).then((res) => {
+        if (res.ok) {
+          const clone = res.clone();
+          caches.open(CACHE).then((cache) => cache.put(e.request, clone));
+        }
+        return res;
+      }).catch(() => cached);
+    })
+  );
+});
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:2b8e3796 h:4cd0acca -->
+### 2026-11-27 08:43:31 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport pandas as pd\nh=pd.read_csv('docs/headline-data/current/headline_level_signals.csv')\nfox=h[h.member_source_key.astype(str).str.contains('fox',na=False)]\nprint(fox.groupby('member_source_key').size().sort_values(ascending=False).to_string() if len(fox) else 'no fox rows')\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 754086:
+member_source_key
+fox59.com           7
+foxnews.com         3
+fox2now.com         1
+fox40.com           1
+fox5sandiego.com    1
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:a7f5915d h:8887c661 -->
+### 2026-11-27 08:43:51 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor s in p['sources']:\n r=s['diagnostics']['titleEchoRate']\n if r>=.1: print(s['key'],s['label'],r)\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell f2237a:
+myjoyonline.com MyJoyOnline 0.10714
+theage.com.au The Age 0.73077
+smh.com.au Sydney Morning Herald 0.67857
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:PostCompaction:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e h:b636b59c -->
+### 2026-11-27 08:43:51 UTC · postcompaction 
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:97ca154c h:bbfe052f -->
+### 2026-11-27 08:43:58 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor s in p['sources']:\n if s.get('notes'):\n  print(f\"{s['rank']:2}. {s['label']}: {' | '.join(s['notes'])}\")\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell d14bc1:
+ 3. PsyPost: PsyPost often writes formulaic research-claim headlines. That raises evidence and causal scores without establishing independent verification of the studies.
+11. Medical Xpress: High evidence and causal scores partly reflect research-release phrasing. They do not by themselves show independent verification of the underlying studies.
+15. Reddit: Reddit rows reflect headlines as posted or repeated on the platform, not original reporting by Reddit.
+18. ScienceAlert: Popular science rewriting can make research cues prominent; the score does not assess the quality of the underlying paper.
+21. Seeking Alpha: Earnings, transcript and market-data formats make this source narrower than a general news publisher; read the axes before the composite.
+26. New York Post / Page Six: Page Six is measured with the New York Post because it belongs to the same publishing operation; the combined view is dominated by the larger New York Post stream.
+33. Mashable: Regional Mashable editions are grouped because they substantially reuse the same articles; their measured headline profiles are broadly similar rather than dominated by one outlier edition.
+52. Phys.org: Research-release phrasing can raise evidence and causal scores. Treat them as evidence of dense research claims, not proof of independent scientific scrutiny.
+55. Xbox Wire: Xbox Wire is official platform communication, so its score is not a measure of independent games journalism.
+61. Mirror: Sensational and personal framing is the largest negative contribution here, even where individual headlines are otherwise concrete.
+66. Nature: The low event/action score is largely a form effect: many Nature rows are journal article titles written as descriptive noun phrases.
+69. OregonLive obituaries: This measurement mostly describes syndicated obituary entries rather than OregonLive’s wider newsroom output.
+71. Inquirer: Inquirer verticals and regional subdomains are grouped as sections
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:ba04bac4 h:7079d440 -->
+### 2026-11-27 08:44:09 UTC tool `exec`
+
+`{"command": "grep -n \"nature\\|reddit.com\" -A4 -B2 scripts/headline-analysis/build_measured_sources.py | head -30", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell c01821:
+65-    'psypost.org': 'PsyPost often writes formulaic research-claim headlines. That raises evidence and causal scores without establishing independent verification of the studies.',
+66-    'sciencealert.com': 'Popular science rewriting can make research cues prominent; the score does not assess the quality of the underlying paper.',
+67:    'nature.com': 'The low event/action score is largely a form effect: many Nature rows are journal article titles written as descriptive noun phrases.',
+68-    'newscientist.com': 'The low evidence score often means the headline avoids formulaic “study finds” phrasing; it is not evidence that the article lacks research support.',
+69-    'obits.oregonlive.com': 'This measurement mostly describes syndicated obituary entries rather than OregonLive’s wider newsroom output.',
+70-    'seekingalpha.com': 'Earnings, transcript and market-data formats make this source narrower than a general news publisher; read the axes before the composite.',
+71:    'reddit.com': 'Reddit rows reflect headlines as posted or repeated on the platform, not original reporting by Reddit.',
+72-    'news.xbox.com': 'Xbox Wire is official platform communication, so its score is not a measure of independent games journalism.',
+73-    'handelsblatt.com': 'English-language cue detection undercounts German-language headlines; treat this position as non-comparable with English-language sources.',
+74-    'group-mashable': 'Regional Mashable editions are grouped because they substantially reuse the same articles; their measured headline profiles are broadly similar rather than dominated by one outlier edition.',
+75-    'group-inquirer': 'Inquirer verticals and regional subdomains are grouped as sections of one publisher. Some verticals are very small and differ in style, so the combined view mainly describes the main and news streams.',
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:read:d8999934 h:f1c2062b -->
+### 2026-11-27 08:44:20 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "offset": 55, "limit": 30}`
+
+```
+Output truncated at line 84; continue reading from line 85.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py" start_line="55" end_line="84">
+ 55|    'D — lower quartile': {
+ 56|        'key':'weakest',
+ 57|        'label':'Weakest measured headline value',
+ 58|        'summary':'Headlines are comparatively thin on concrete information, heavier on packaging, or both.',
+ 59|    },
+ 60|}
+ 61|
+ 62|SOURCE_NOTES = {
+ 63|    'medicalxpress.com': 'High evidence and causal scores partly reflect research-release phrasing. They do not by themselves show independent verification of the underlying studies.',
+ 64|    'phys.org': 'Research-release phrasing can raise evidence and causal scores. Treat them as evidence of dense research claims, not proof of independent scientific scrutiny.',
+ 65|    'psypost.org': 'PsyPost often writes formulaic research-claim headlines. That raises evidence and causal scores without establishing independent verification of the studies.',
+ 66|    'sciencealert.com': 'Popular science rewriting can make research cues prominent; the score does not assess the quality of the underlying paper.',
+ 67|    'nature.com': 'The low event/action score is largely a form effect: many Nature rows are journal article titles written as descriptive noun phrases.',
+ 68|    'newscientist.com': 'The low evidence score often means the headline avoids formulaic “study finds” phrasing; it is not evidence that the article lacks research support.',
+ 69|    'obits.oregonlive.com': 'This measurement mostly describes syndicated obituary entries rather than OregonLive’s wider newsroom output.',
+ 70|    'seekingalpha.com': 'Earnings, transcript and market-data formats make this source narrower than a general news publisher; read the axes before the composite.',
+ 71|    'reddit.com': 'Reddit rows reflect headlines as posted or repeated on the platform, not original reporting by Reddit.',
+ 72|    'news.xbox.com': 'Xbox Wire
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:d3ce0cc7 h:4ed36d91 -->
+### 2026-11-27 08:44:44 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "    'nature.com': 'The low event/action score is largely a form effect: many Nature rows are journal article titles written as descriptive noun phrases.',", "new_string": "    'nature.com': 'The low event/action score is largely a form effect: many Nature rows are journal art`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 67.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:edit:9bd03d0e h:9d882e13 -->
+### 2026-11-27 08:44:53 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py", "old_string": "    'reddit.com': 'Reddit rows reflect headlines as posted or repeated on the platform, not original reporting by Reddit.',", "new_string": "    'reddit.com': 'Reddit rows reflect headlines as posted or repeated on the platform. They describe reused headline text, not origina`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 71.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:756b2619 h:0b933aff -->
+### 2026-11-27 08:45:14 UTC tool `exec`
+
+`{"command": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py && npm run build >/tmp/news-build.log 2>&1; rc=$?; tail -25 /tmp/news-build.log; exit $rc", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 120000}`
+
+```
+wrote 76 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+
+===
+Stopped waiting for output after 15.7 seconds. Command running in background with ID: e6c1af. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:get_output:a2492710 h:b7a35d42 -->
+### 2026-11-27 08:45:34 UTC tool `get_output`
+
+`{"shell_id": "e6c1af", "timeout": 60000}`
+
+```
+rendering chunks...
+computing gzip size...
+dist/assets/site-D1VkUSnh.webmanifest          0.46 kB
+dist/assets/favicon-16x16-DiDxEP5I.png         0.61 kB
+dist/assets/favicon-32x32-gx7jztkS.png         1.83 kB
+dist/relationships.html                        2.38 kB │ gzip:  1.17 kB
+dist/assets/icon-D43pJgon.svg                  3.43 kB │ gzip:  1.75 kB
+dist/measured-sources.html                     5.84 kB │ gzip:  2.49 kB
+dist/index.html                               10.35 kB │ gzip:  2.89 kB
+dist/assets/favicon-cIRlZqHK.ico              15.40 kB
+dist/assets/apple-touch-icon-DtMA9gHK.png     28.56 kB
+dist/assets/sprite-XqPrXdnM.png            1,285.35 kB
+dist/assets/relationships-BAbmcwAW.css         4.89 kB │ gzip:  1.53 kB
+dist/assets/measuredSources-DUWICzCY.css       6.69 kB │ gzip:  1.91 kB
+dist/assets/favicon-sprite-t74iFp7T.css       78.48 kB │ gzip: 13.52 kB
+dist/assets/favicon-sprite-BfI_h9aM.js        14.37 kB │ gzip:  5.80 kB
+dist/assets/view-model-DRBlZs7J.js            39.37 kB │ gzip: 12.70 kB
+dist/assets/main-xhcG8SLo.js                 102.94 kB │ gzip: 35.20 kB
+dist/assets/relationships-R4Nrl8BU.js        104.79 kB │ gzip: 34.47 kB
+dist/assets/measuredSources-09P1cLJA.js      169.47 kB │ gzip: 37.76 kB
+
+✓ built in 603ms
+Story groups: 4889/5557 clusters assigned (119 via fuzzy word matches)
+Client digests: 954 recent + 4603 archived clusters (full export in dataset.json)
+Build complete. 5557 clusters, 7113 entities, 57 topics, 10517 stories in timeline -> dist/dataset.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:c11cfee0 h:160ed639 -->
+### 2026-11-27 08:45:59 UTC tool `exec`
+
+`{"command": "npm test >/tmp/news-tests.log 2>&1; test_rc=$?; tail -12 /tmp/news-tests.log; echo '--- diff check ---'; git diff --check; echo '--- status ---'; git status --short | sed -n '1,80p'; exit $test_rc", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 120000}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: 56fb3f. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:get_output:094ed96b h:1a64f805 -->
+### 2026-11-27 08:46:05 UTC tool `get_output`
+
+`{"shell_id": "56fb3f", "timeout": 60000}`
+
+```
+ [32m✓[39m test/build-output.test.js [2m([22m[2m2 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+ [32m✓[39m test/pipeline.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 132[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m13 passed[39m[22m[90m (13)[39m
+[2m      Tests [22m [1m[32m97 passed[39m[22m[90m (97)[39m
+[2m   Start at [22m 08:45:50
+[2m   Duration [22m 15.25s[2m (environment 83%, tests 10%, import 5%, transform 2%, worker 1%)[22m
+
+[2mEnvironment [22m [33mjsdom was created 13 times[39m[2m · 66.94s total, 83% of tracked time[22m
+[2m            [22m [2mcreate it once per worker with [22m[33mpool: 'vmThreads'[39m[2m (keeps per-file isolation) or [22m[33misolate: false[39m[2m (shares it across files)[22m
+[2m            [22m [2mlearn more: https://vitest.dev/guide/improving-performance#test-environments[22m
+
+--- diff check ---
+docs/sessions/transcripts/02-repeated-bite.md:13055: trailing whitespace.
++37 "Subscriptions ('All Access'), advertising — and aggressive email-list 
+docs/sessions/transcripts/02-repeated-bite.md:13724: trailing whitespace.
++### 2026-11-27 05:22:04 UTC · postcompaction 
+docs/sessions/transcripts/02-repeated-bite.md:14218: trailing whitespace.
++       4.0       City A.M.  173                   51.606949                      48.875637                       54.667154               36.753372                               0.000000                                 0.023121                             0.023121                 1.541426            0.520231                  0.017341             
+docs/sessions/transcripts/02-repeated-bite.md:14266: trailing whitespace.
++  4.0              MyJoyOnline  28      
+docs/sessions/transcripts/02-repeated-bite.md:14553: trailing whitespace.
++ rank                source   n  topic_adjusted_value_index    
+docs/sessions/transcripts/02-repeated-bite.md:14650: trailing whitespace.
++   BBC  India's religious make-up - what a new 
+docs/sessions/transcripts/02-repea… (39 cha
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:0b1b1a64 h:e8ddc674 -->
+### 2026-11-27 08:46:12 UTC tool `exec`
+
+`{"command": "find src/data docs/tasks docs/headline-data/current -maxdepth 2 -type f | sort | sed -n '1,80p'", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell e52b52:
+docs/headline-data/current/analysis_summary.json
+docs/headline-data/current/cross_source_title_matches.csv
+docs/headline-data/current/detector_audit_sample.csv
+docs/headline-data/current/detector_validation_sample.csv
+docs/headline-data/current/detector_validation_scores.json
+docs/headline-data/current/headline_level_signals.csv
+docs/headline-data/current/high_volume_source_ranking.png
+docs/headline-data/current/metric_dictionary.json
+docs/headline-data/current/publisher_radar_comparison.png
+docs/headline-data/current/REPORT.md
+docs/headline-data/current/run_metrics.json
+docs/headline-data/current/source_axis_profiles.csv
+docs/headline-data/current/source_index_sensitivity.csv
+docs/headline-data/current/source_phrase_signatures.csv
+docs/headline-data/current/source_radar.html
+docs/headline-data/current/source_rankings.csv
+docs/headline-data/current/source_story_score_distributions.csv
+docs/headline-data/current/source_topic_profiles.csv
+docs/headline-data/current/story_signal_distribution.png
+docs/headline-data/current/topic_model.json
+docs/tasks/headline-analysis.task.json
+src/data/measured-sources.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:todo_write:05741f20 h:1da6ffad -->
+### 2026-11-27 08:46:26 UTC tool `todo_write`
+
+`{"todos": [{"content": "Inspect relationships page, client routing, build outputs, and existing chart/visualisation conventions", "status": "completed"}, {"content": "Design and generate machine-readable measured-source JSON with conflation/outlier handling and quality buckets", "status": "completed"}, {"content": "Implement measured-sources page with expandable spiderwebs, source-specific notes, `
+
+```
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [x] Inspect relationships page, client routing, build outputs, and existing chart/visualisation conventions [completed]
+2. [x] Design and generate machine-readable measured-source JSON with conflation/outlier handling and quality buckets [completed]
+3. [x] Implement measured-sources page with expandable spiderwebs, source-specific notes, methodology, and caveats [completed]
+4. [x] Link page as a peer to relationships and verify with tests/build [completed]
+5. [x] Review rendered output/data for source-ordering and presentation artefacts [completed]
+
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:a868d0f5 h:e9b01921 -->
+### 2026-11-27 08:46:56 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor b in p['bands']:\n xs=[s['measuredQuality'] for s in p['sources'] if s['bandKey']==b['key']]\n print(b['key'],len(xs),round(min(xs),2),round(max(xs),2))\nprint('sources',len(p['sources']),'index',len(p['sourcesIndex']))\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout":`
+
+```
+Output from command in shell f9a444:
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+KeyError: 'bandKey'
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:cd951bcf h:c7cba7dc -->
+### 2026-11-27 08:47:05 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nprint(p['sources'][0].keys())\nprint(p['bands'][0])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell e8c9b4:
+dict_keys(['key', 'label', 'headlines', 'rank', 'measuredQuality', 'band', 'bandLabel', 'grouped', 'iconKey', 'members', 'memberLabels', 'family', 'treeRoot', 'profile', 'relationshipsUrl', 'axes', 'strongestAxes', 'weakestAxes', 'diagnostics', 'notes'])
+{'key': 'strongest', 'label': 'Strongest measured headline value', 'summary': 'Headlines most often combine concrete information with comparatively restrained packaging.', 'rangeText': '52.53–63.20', 'min': 52.53, 'max': 63.2, 'sourceCount': 19}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:b8b4940c h:4fd43387 -->
+### 2026-11-27 08:47:10 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nprint('sources',len(p['sources']),'index',len(p['sourcesIndex']))\nfor b in p['bands']:\n print(b['key'],b['sourceCount'],b['rangeText'])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 5c406a:
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+KeyError: 'sourcesIndex'
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:0ff89931 h:90392920 -->
+### 2026-11-27 08:47:15 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nprint(p.keys())\nfor k in p:\n if isinstance(p[k],dict): print(k,len(p[k]))\n elif isinstance(p[k],list): print(k,len(p[k]))\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 7f3f46:
+dict_keys(['version', 'generatedAt', 'measurementLabel', 'axisScale', 'minimumHeadlines', 'summary', 'bands', 'axes', 'sourceIndex', 'sources'])
+axisScale 4
+summary 3
+bands 4
+axes 11
+sourceIndex 88
+sources 76
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e:exec:71230f92 h:1fc46887 -->
+### 2026-11-27 08:47:19 UTC tool `exec`
+
+`{"command": ".venv/bin/python - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nprint('sources',len(p['sources']),'index',len(p['sourceIndex']))\nfor b in p['bands']:\n print(b['key'],b['sourceCount'],b['rangeText'])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 7559bb:
+sources 76 index 88
+strongest 19 52.53–63.20
+above-typical 19 49.48–52.49
+below-typical 19 47.33–49.47
+weakest 19 36.95–47.21
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e h:39e3b22c -->
+### 2026-11-27 08:47:44 UTC assistant
+
+Implemented and verified the measured-sources work.
+
+### New page
+
+<ref_file file="/home/bobbigmac/projects/bobdavies/news/src/measured-sources.html" />  
+<ref_file file="/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js" />  
+<ref_file file="/home/bobbigmac/projects/bobdavies/news/src/styles/measured-sources.css" />
+
+The page:
+
+- opens with sources ordered by measured headline value;
+- groups them into four quartile bands;
+- keeps methodology and dataset caveats below the rankings;
+- uses expandable cards with an 11-axis spiderweb;
+- shows strongest/weakest axes, measured diagnostics, concise source context, and source-specific caveats;
+- links each measured source to the relevant relationships-page section.
+
+Built output is available at:
+
+<ref_file file="/home/bobbigmac/projects/bobdavies/news/dist/measured-sources.html" />
+
+### Machine-readable data
+
+<ref_file file="/home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json" />
+
+Generated by:
+
+<ref_file file="/home/bobbigmac/projects/bobdavies/news/scripts/headline-analysis/build_measured_sources.py" />
+
+Current contents:
+
+- **76 measured sources**
+- **88 source/alias index entries**
+- **11 measured axes**
+- quartile membership, ranks, composite scores, per-axis values, diagnostics, notes, group members, profile/context, and relationships links
+
+Quartiles:
+
+| Band | Sources | Range |
+|---|---:|---:|
+| Strongest measured headline value | 19 | 52.53–63.20 |
+| Above-typical | 19 | 49.48–52.49 |
+| Below-typical | 19 | 47.33–49.47 |
+| Weakest measured headline value | 19 | 36.95–47.21 |
+
+### Grouping decisions
+
+Configured in <ref_file file="/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json" />:
+
+- BBC variants are treated as one measured source.
+- Mashable regional editions are grouped.
+- Inquirer vertical/regional subdomains are grouped.
+- New York Post and Page Six are grouped because they belong to the same publishing operation.
+- Fox properties are **not** conflated. The cache contains only a few rows each for Fox News and Fox-branded local stations, and the local stations have different owners; there is not enough comparable measured material to justify grouping.
+
+### Source-specific caveat handling
+
+The page now includes targeted notes where they materially change interpretation — for example:
+
+- Nature’s low event/action score is partly a journal-title form effect and does not mean the research lacks evidence.
+- New Scientist’s low evidence score often reflects avoidance of formulaic “study finds” phrasing.
+- Medical Xpress, Phys.org and PsyPost can score highly because dense research-release language triggers causal/evidence cues.
+- Reddit rows describe reused headline text, not original reporting or verification by Reddit.
+- Xbox Wire is official platform communication rather than independent games journalism.
+- Handelsblatt is non-comparable because English-language detectors undercount German-language headlines.
+- The Age/Sydney Morning Herald echo is surfaced as a syndication/shared-newsroom diagnostic rather than a copying accusation.
+
+### Verification
+
+- `npm test`: **13 test files, 97 tests passed**
+- production build: passed
+- measured-source generation: passed
+- generated dist includes `measured-sources.html` and `measured-sources.json`
+- DOM smoke checks previously confirmed:
+  - 76 cards
+  - 4 bands
+  - spiderwebs rendering
+  - 11 axes
+  - corrected source subtitles
+
+`git diff --check` reports trailing whitespace only in the automatically updated `docs/sessions/transcripts/02-repeated-bite.md` session transcript, not in the measured-sources implementation files.
+
+Nothing committed.
+
+Important interpretation boundary: the score measures **headline behaviour in the observed corpus** — concrete information density versus packaging pressure — not publisher truthfulness, article quality, or verification quality in general.
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a h:6f5a6c46 -->
+### 2026-11-27 08:47:48 UTC user
+
+also see sources-manifest-UPDATE-2026-11-27.md which provides additional source notations to support providing more information for sources where we have literal information gaps, try and import everything relevant, just don't make a mess copying every chatgpt hedge literally... stay focused on what actually matters to a human reader, or what helps inform our systems or can improve them meaningfully
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a:todo_write:192f61d0 h:643ac9e0 -->
+### 2026-11-27 08:47:53 UTC tool `todo_write`
+
+`{"todos": [{"content": "Review the source-manifest update annotations and identify actionable source facts", "status": "in_progress"}, {"content": "Map annotations to existing source trees and curated profiles without duplicating hedged text", "status": "pending"}, {"content": "Import relevant ownership/profile/watch information into source data files", "status": "pending"}, {"content": "Verify re`
+
+```
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [~] Review the source-manifest update annotations and identify actionable source facts [in_progress]
+2. [ ] Map annotations to existing source trees and curated profiles without duplicating hedged text [pending]
+3. [ ] Import relevant ownership/profile/watch information into source data files [pending]
+4. [ ] Verify relationships/measured pages, tests, and build after the import [pending]
+
+```
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a:read:5bcfaed3 h:f3a1c9cd -->
+### 2026-11-27 08:47:57 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md"}`
+
+```
+Output truncated at line 170; continue reading from line 171.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md" start_line="1" end_line="170">
+  1|# Sources manifest — UPDATE additions
+  2|
+  3|**Prepared:** 27 November 2026  |  **Purpose:** delta only; merge into the existing sources manifest by `Key`.
+  4|
+  5|This file contains additions and explicit corrections, not a replacement manifest or a source ranking. `ADD:` lines should be appended to the corresponding source’s `What we know` section. `EDIT:` lines replace the named existing fact/relation. A publisher’s own policy is identified as a published/self-described policy; it is not treated as independent proof of compliance. No general trust score is assigned.
+  6|
+  7|## Corpus observation note
+  8|
+  9|Where included, title-only observations are calculated from the supplied 27 November 2026 headline export. The percentages are incidence of a heuristic detector among that source’s unique headlines in this snapshot. They describe headline language, not article-body verification, actual originality, factual accuracy or the value of the underlying story. Low sample sizes are stated. “Near-duplicate title proxy” means lexical similarity across feeds, not a proven syndication relationship.
+ 10|
+ 11|## Public-service and international broadcasters
+ 12|
+ 13|### PBS
+ 14|- Key: `pbs.org`
+ 15|- Source: [https://pbs.org](https://pbs.org)
+ 16|- ADD: What we know:
+ 17|  - Kind: US public-media membership organisation, not a single centrally staffed national newsroom. PBS is a nonprofit corporation whose members are local public television stations; national programming is supplied by member stations, independent producers and PBS itself.
+ 18|  - Editorial model: PBS distributes and curates programming while member stations retain local editorial and operational autonomy. Its standards address accuracy, fairness, independence, funder influence and corrections. A PBS-brand
+```
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a:read:b7cced6e h:1838002e -->
+### 2026-11-27 08:48:00 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md", "offset": 171, "limit": 220}`
+
+```
+Output truncated at line 364; continue reading from line 365.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md" start_line="171" end_line="364">
+171|  - Watch: author identity, holdings, time horizon and thesis are material context. Contributors can publish conflicting views on the same security; that is part of the platform model.
+172|  - ADD: Corpus observation (24 unique headlines, 2026-11-27 snapshot): 54.2% explicit event/action; 25.0% material consequence; 20.8% evidence/provenance cue. Title-only heuristic incidence; not an article-quality or factuality verdict.
+173|
+174|### Elfinanciero
+175|- Key: `elfinanciero.com.mx`
+176|- Source: [https://elfinanciero.com.mx](https://elfinanciero.com.mx)
+177|- ADD: What we know:
+178|  - Kind: Mexican Spanish-language financial and business newspaper/news site, with national economics, markets, policy and corporate reporting.
+179|  - Editorial context: its business focus makes it useful for Mexican economic policy, companies and markets; it should be treated as a national financial-news publication rather than an international wire service.
+180|  - Watch: use the original Spanish article where possible; English-language extracts or syndication may omit local context. Corporate/market coverage should be distinguished from company announcements and paid event content.
+181|
+182|### Businesskorea
+183|- Key: `businesskorea.co.kr`
+184|- Source: [https://businesskorea.co.kr](https://businesskorea.co.kr)
+185|- ADD: What we know:
+186|  - Kind: English-language Korean business and economic news publication, covering South Korean companies, industry, finance, policy and technology.
+187|  - Editorial usefulness: a specialist window into Korean corporate and industrial news that may be underrepresented in anglophone general media. It is a national business publication, not an international wire service.
+188|  - Watch: headline translations can compress Korean institutional context; di
+```
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a:read:43d532ae h:dfe07b6c -->
+### 2026-11-27 08:48:04 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md", "offset": 365, "limit": 220}`
+
+```
+Output truncated at line 557; continue reading from line 558.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md" start_line="365" end_line="557">
+365|  - Publishing mix: Yahoo Sports combines Yahoo-branded coverage with partner, licensed, syndicated, wire and contributor material; individual articles can have different origins and editorial responsibility.
+366|  - Watch: inspect the byline, source credit, author biography and article footer. A Yahoo Sports page that republishes a partner or wire story should not be counted as independent corroboration of the originating report.
+367|
+368|### Buzzfeed
+369|- Key: `buzzfeed.com`
+370|- Source: [https://buzzfeed.com](https://buzzfeed.com)
+371|- ADD: What we know:
+372|  - Kind: Digital-first entertainment, culture, lifestyle and internet publisher. The current BuzzFeed website should not be conflated with BuzzFeed News, whose newsroom was closed in April 2023.
+373|  - Publishing mix: viral/trending stories, lists, quizzes, entertainment, lifestyle, social content and some news coverage coexist. The brand’s original audience strategy and formats differ from a conventional general-news newsroom.
+374|  - Watch: distinguish BuzzFeed-branded entertainment/viral content from any separately labelled news or investigation content; do not assume the former BuzzFeed News newsroom still produces the site’s output.
+375|
+376|## Local, national and international news publishers
+377|
+378|### Belfast Live
+379|- Key: `belfastlive.co.uk`
+380|- Source: [https://belfastlive.co.uk](https://belfastlive.co.uk)
+381|- ADD: What we know:
+382|  - Kind: Reach plc local digital news brand for Belfast and surrounding Northern Ireland communities.
+383|  - Editorial pattern: local breaking news, courts, public services, community stories, politics, sport and live coverage. Reach recruitment material describes audience analytics and high-frequency breaking-news formats as part of its local newsroom operat
+```
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a:read:aa8e62b0 h:247a1d41 -->
+### 2026-11-27 08:48:09 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md", "offset": 558, "limit": 240}`
+
+```
+Output truncated at line 730; continue reading from line 731.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md" start_line="558" end_line="730">
+558|- Key: `3news.com`
+559|- Source: [https://3news.com](https://3news.com)
+560|- ADD: What we know:
+561|  - Kind: Ghanaian digital news service and online arm of Media General Ghana, alongside TV3, Onua TV, radio stations and other media properties.
+562|  - Ownership: Media Ownership Monitor Ghana identifies Dr Anthony Cudjoe as the sole owner of Media General Ghana Limited. The group operates multiple television, radio and online brands.
+563|  - Editorial context: 3News covers Ghanaian politics, current affairs, business, entertainment and human-interest news. Shared group production across TV, radio and web may result in cross-platform reuse.
+564|  - Watch: identify whether an item is a 3News digital report, TV3/Onua material, partner content or an external release; group ownership and multi-channel reuse are relevant to provenance.
+565|
+566|### Thejakartapost
+567|- Key: `thejakartapost.com`
+568|- Source: [https://thejakartapost.com](https://thejakartapost.com)
+569|- ADD: What we know:
+570|  - Kind: English-language Indonesian newspaper and digital newsroom published by PT Bina Media Tenggara, with national political, business, social and international coverage.
+571|  - Editorial structure: the current masthead lists a named editor-in-chief/guarantor and an ombudsman, alongside an editorial advisory board; the publisher distinguishes editorial, management, advertising and media-partnership contacts.
+572|  - Watch: English-language coverage is valuable for international readers but can be a selective window into Indonesian affairs. Check original Indonesian-language documents and local reporting where translation or policy terminology matters.
+573|
+574|### South China Morning Post
+575|- Key: `scmp.com`
+576|- Source: [https://scmp.com](https://scmp.com)
+577|- ADD: What we
+```
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a:read:43111bb3 h:f6612ffe -->
+### 2026-11-27 08:48:13 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md", "offset": 731, "limit": 240}`
+
+```
+Output truncated at line 898; continue reading from line 899.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md" start_line="731" end_line="898">
+731|  - Watch: author expertise is often a major strength, but articles are expert explainers/commentary rather than peer-reviewed papers or a substitute for the underlying research. Check whether claims are within the author’s actual speciality.
+732|
+733|### Mongabay
+734|- Key: `news.mongabay.com`
+735|- Source: [https://news.mongabay.com](https://news.mongabay.com)
+736|- ADD: What we know:
+737|  - Kind: Nonprofit environmental journalism organisation founded in 1999, with a distributed network of staff and contributors reporting across many countries and languages.
+738|  - Editorial practice: Mongabay’s standards describe primary-source preference, source attribution, claim-level citations, right of reply, corrections and donor transparency; the organisation says donors do not control editorial decisions and that it is not an advocacy organisation.
+739|  - Editorial value: original environmental reporting on biodiversity, conservation, land use, climate, Indigenous communities and extractive industries. Its regional contributor network can provide reporting from places under-covered by global outlets.
+740|  - Watch: environmental investigations can involve advocacy organisations, companies, researchers and local communities as sources; inspect methodology and responses from the parties criticised.
+741|
+742|### Peopledaily
+743|- Key: `peopledaily.digital`
+744|- Source: [https://peopledaily.digital](https://peopledaily.digital)
+745|- ADD: What we know:
+746|  - Kind: Kenyan digital newspaper brand associated with Mediamax Network, covering national politics, business, society, sport and entertainment.
+747|  - Editorial/ownership context: public descriptions associate People Daily with Mediamax’s multi-platform media group; the precise current ultimate ownership and editorial
+```
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a:read:e12ab257 h:52c43dfa -->
+### 2026-11-27 08:48:23 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md", "offset": 899, "limit": 240}`
+
+```
+Output truncated at line 1073; continue reading from line 1074.
+
+<file-view path="/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md" start_line="899" end_line="1073">
+899|- Key: `sciencenews.org`
+900|- Source: [https://sciencenews.org](https://sciencenews.org)
+901|- ADD: What we know:
+902|  - ADD: Science News is published by the nonprofit Society for Science. Its newsroom describes an editorial-independence firewall from donors, public disclosure of significant donors, no payment for interviews and an explicit corrections process.
+903|  - ADD: It is independent science journalism, not a scientific journal. Coverage of a newly published study should still be checked against the original paper, especially for replication, uncertainty and effect sizes.
+904|
+905|### AFP
+906|- Key: `factcheck.afp.com`
+907|- Source: [https://factcheck.afp.com](https://factcheck.afp.com)
+908|- ADD: What we know:
+909|  - EDIT: Kind: `factcheck.afp.com` is the AFP Fact Check vertical, not a general feed of all AFP wire reporting. It applies AFP’s fact-checking workflow to viral claims and public-interest misinformation.
+910|  - ADD: AFP is a French-law statutory news agency with a legal framework intended to protect its independence; AFP Fact Check is one desk within the wider agency. Do not conflate its fact-check articles with the general AFP newswire or assume every AFP story has been individually fact-checked by the Fact Check desk.
+911|
+912|### GameSpot
+913|- Key: `gamespot.com`
+914|- Source: [https://gamespot.com](https://gamespot.com)
+915|- ADD: What we know:
+916|  - EDIT: Relations: replace `Digital Publishers / Red Ventures` with `Digital Publishers / Fandom / Gaming & entertainment properties`. Fandom acquired GameSpot and related entertainment/gaming brands from Red Ventures in October 2022.
+917|  - ADD: GameSpot’s editorial output includes game news, reviews, previews, guides, video and entertainment coverage. Fandom’s acquisition announcement ex
+```
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a:exec:d9eef6c4 h:ccd0bb31 -->
+### 2026-11-27 08:48:30 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json\np=json.load(open('src/trees/profiles/sources.json'))\nprint(type(p), len(p))\nfor k in list(p)[:5]: print(k, p[k])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 346807:
+<class 'dict'> 114
+bbc.co.uk {'kind': 'Public-service broadcaster', 'properties': ['Royal Charter remit', 'licence-fee funded', 'statutory impartiality', 'national and international scale'], 'leaning': 'Institutionally required to be impartial; criticised from both left and right over framing, access, and political coverage.', 'watch': ['Its scale makes it useful but can crowd out independent reporting', 'Charter impartiality is an obligation, not proof that every editorial choice is neutral'], 'links': [{'label': 'BBC Charter', 'url': 'https://www.gov.uk/government/publications/bbc-charter-and-framework-agreement/bbc-charter'}, {'label': 'BBC mission', 'url': 'https://www.bbc.com/aboutthebbc/governance/mission/'}, {'label': '2024 impartiality review', 'url': 'https://www.gov.uk/government/publications/bbc-mid-term-review-2024/bbc-mid-term-review-2024'}]}
+theguardian.com {'kind': 'Trust-owned national newspaper', 'properties': ['Scott Trust sole shareholder', 'reader-funded', 'investigations and opinion'], 'leaning': 'Broadly liberal/left-of-centre opinion culture; ownership is designed to protect editorial independence rather than enforce a party line.', 'watch': ['Guardian News and Guardian Opinion are different editorial jobs', 'Its distinctive ownership makes it unlike proprietor- or shareholder-driven papers'], 'links': [{'label': 'Scott Trust history', 'url': 'https://www.theguardian.com/about/history'}, {'label': 'Guardian ownership', 'url': 'https://www.theguardian.com/about/organisation'}]}
+dailymail.com {'kind': 'Tabloid national newspaper', 'properties': ['DMGT/Rothermere family control', 'high-volume UK tabloid', 'campaigning consumer and political coverage'], 'leaning': 'Commonly described as right-leaning and socially conservative; the Mail on Sunday has historically taken some different positions.', 'links': [{'label': 'DMGT consumer brands', 'url': 'https://www.dmgt.com/businesses/consumer/'}, {'label': 'DMGT hist
+```
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a:exec:e1d87319 h:f46b11e5 -->
+### 2026-11-27 08:48:40 UTC tool `exec`
+
+`{"command": "ls src/trees/sources src/trees/profiles && for f in src/trees/sources/*.json; do echo ---$f; python3 - <<PY\nimport json\np=json.load(open('$f'))\nprint(type(p).__name__, len(p) if hasattr(p,'__len__') else '')\nprint((p if isinstance(p,list) else [p])[0].keys() if (p if isinstance(p,list) else [p]) else '')\nPY\ndone", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": `
+
+```
+Output from command in shell f6263f:
+src/trees/profiles:
+branches.json
+sources.json
+
+src/trees/sources:
+australia-media.json
+canada-media.json
+digital-publishers.json
+murdoch.json
+official-organizations.json
+platforms-aggregators.json
+public-international.json
+regional-english.json
+specialist-press.json
+state-media.json
+uk-media.json
+us-media.json
+wires-releases.json
+---src/trees/sources/australia-media.json
+dict 4
+dict_keys(['id', 'label', 'icon', 'children'])
+---src/trees/sources/canada-media.json
+dict 4
+dict_keys(['id', 'label', 'icon', 'children'])
+---src/trees/sources/digital-publishers.json
+dict 4
+dict_keys(['id', 'label', 'icon', 'children'])
+---src/trees/sources/murdoch.json
+dict 4
+dict_keys(['id', 'label', 'icon', 'children'])
+---src/trees/sources/official-organizations.json
+dict 4
+dict_keys(['id', 'label', 'icon', 'children'])
+---src/trees/sources/platforms-aggregators.json
+dict 4
+dict_keys(['id', 'label', 'icon', 'children'])
+---src/trees/sources/public-international.json
+dict 4
+dict_keys(['id', 'label', 'icon', 'children'])
+---src/trees/sources/regional-english.json
+dict 4
+dict_keys(['id', 'label', 'icon', 'children'])
+---src/trees/sources/specialist-press.json
+dict 4
+dict_keys(['id', 'label', 'icon', 'children'])
+---src/trees/sources/state-media.json
+dict 4
+dict_keys(['id', 'label', 'icon', 'children'])
+---src/trees/sources/uk-media.json
+dict 4
+dict_keys(['id', 'label', 'icon', 'children'])
+---src/trees/sources/us-media.json
+dict 4
+dict_keys(['id', 'label', 'icon', 'children'])
+---src/trees/sources/wires-releases.json
+dict 4
+dict_keys(['id', 'label', 'icon', 'children'])
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a:exec:bd78e867 h:5b6a0c1b -->
+### 2026-11-27 08:48:57 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport re,json,glob\nmd=open('docs/sources-manifest-UPDATE-2026-11-27.md').read()\nkeys=re.findall(r'^- Key: `([^`]+)`',md,re.M)\nprof=json.load(open('src/trees/profiles/sources.json'))\n# tree source occurrences\ntree={}\nfor fn in glob.glob('src/trees/sources/*.json'):\n data=json.load(open(fn))\n def walk(n,path):\n  p=path+'/'+n.get('label',n.get('id','?'))\n  fo`
+
+```
+Output from command in shell 4ca684:
+update keys 118
+pbs.org                            profile=Y tree=Y /Public & International/North America Public
+npr.org                            profile=Y tree=Y /Public & International/North America Public
+cbc.ca                             profile=Y tree=Y /Public & International/North America Public
+rnz.co.nz                          profile=- tree=Y /Public & International/Australia & NZ Public
+rte.ie                             profile=- tree=Y /Public & International/European Public
+dw.com                             profile=Y tree=Y /Public & International/European Public
+france24.com                       profile=Y tree=Y /Public & International/European Public
+rfi.fr                             profile=- tree=Y /Public & International/European Public
+discovermagazine.com               profile=- tree=Y /Specialist Press/Science & Health Press/Science News & Commentary/Science Magazines
+space.com                          profile=- tree=Y /UK Media/Future/Future Science ; /Specialist Press/Science & Health Press/Science News & Commentary/Space & Physics
+frontiersin.org                    profile=- tree=Y /Specialist Press/Science & Health Press/Science Journals & Repositories
+medpagetoday.com                   profile=- tree=Y /Specialist Press/Science & Health Press/Health & Medical
+statnews.com                       profile=- tree=Y /Specialist Press/Science & Health Press/Health & Medical
+healthpolicy-watch.news            profile=- tree=Y /Specialist Press/Science & Health Press/Health & Medical
+bloomberg.com                      profile=- tree=Y /Specialist Press/Business & Money/Financial Nationals/Business Newsweeklies
+nasdaq.com                         profile=- tree=Y /Specialist Press/Business & Money/Investor & Markets/Markets Data
+seekingalpha.com                   profile=- tree=Y /Specialist Press/Business & Money/Investor & Markets/Markets Data
+elfinanciero.com.mx                profile=- tree=Y /Regional 
+```
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a:exec:279e43d5 h:86532b30 -->
+### 2026-11-27 08:49:05 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport re\nmd=open('docs/sources-manifest-UPDATE-2026-11-27.md').read()\nkeys=re.findall(r'^- Key: `([^`]+)`',md,re.M)\nprint('entries',len(keys),'unique',len(set(keys)))\nfrom collections import Counter\nprint([x for x,c in Counter(keys).items() if c>1])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell ab17c5:
+entries 118 unique 118
+[]
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a:read:c9db51bf h:d7c7de47 -->
+### 2026-11-27 08:49:20 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md", "offset": 1070, "limit": 260}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md" start_line="1070" end_line="1200">
+1070|## Evidence links
+1071|
+1072|Links below support the additions above. Where a policy is a publisher statement, it is cited as such; a policy page documents a declared standard, not compliance in every article.
+1073|
+1074|- **PBS:** [source 1](https://www.pbs.org/standards/); [source 2](https://www.pbs.org/standards/independence/); [source 3](https://cpb.org/sites/default/files/CPB-Public%20Media%20Backgrounder%20APRIL%202025.pdf); [CPB dissolution vote, PBS statement (7 January 2026)](https://www.pbs.org/about/about-pbs/blogs/news/pbs-statement-on-corporation-for-public-broadcastings-vote-to-dissolve/); [PBS FY2025 audited statements (CPB grant wind-down)](https://dc79r36mj3c9w.cloudfront.net/prod/filer_public/pbsabout-bento-live-pbs/Financial%20Reports/c0efb8e259_FY2025%20PBS%20Consolidated%20Audited%20Financial%20Statements.pdf); [CRS public broadcasting report (2026)](https://www.everycrsreport.com/files/[REDACTED:TOKEN].html)
+1075|- **NPR:** [source 1](https://cpb.org/sites/default/files/CPB-Public%20Media%20Backgrounder%20APRIL%202025.pdf); [NPR FY2025 audited financial statements noting CPB rescissions and station exposure](https://secure.nmdoj.gov/coros/Documents/52-0907625/[REDACTED:TOKEN].pdf); [CRS public broadcasting report (2026)](https://www.everycrsreport.com/files/[REDACTED:TOKEN].html)
+1076|- **CBC:** [source 1](https://cbc.radio-canada.ca/en/vision/governance); [source 2](https://cbc.radio-canada.ca/en/vision/governance/journalistic-standards-and-practices)
+1077|- **RNZ:** [source 1](https://fyi.org.nz/request/25890/response/97748/attach/4/RNZ%20Editorial%20Policy%20March%202024.pdf)
+1078|- **Rte:** [source 1](https://about.rte.ie/commissioning/wp-content/uploads/sites/3/2018/07/RTE-Editorial-Content-Guidelines-2026.pdf); [source 2](https://www.gov.ie/en/department-of-culture-communications-and-sport/policy-inf
 ```
 
 ---

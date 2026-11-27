@@ -1,0 +1,119 @@
+{
+  "id": "headline-analysis-current-cache",
+  "title": "Run dev-time headline-source analysis against the current cache export",
+  "type": "dev-time-analysis",
+  "_comment": "Executable run configuration for exploratory headline/source analysis. This is run-once measurement work, not part of the publish/build pipeline. Edit values here instead of maintaining long command lines.",
+  "invariants": {
+    "no_build_integration": "Do not run the analysis in scripts/build.js, CI, or the normal digest pipeline without explicit approval. The frozen measured-sources.json export may be copied as static site data for the measured-sources page.",
+    "no_large_models": "Use local classical/NLP tooling only; no transformer downloads or GPU-dependent models.",
+    "not_truth_scores": "Outputs are title-language diagnostics and ordering aids, not factual accuracy or publisher-quality verdicts.",
+    "preserve_raw_axes": "Keep per-headline and per-axis rates inspectable; composite ordering is supplementary.",
+    "no_commits": "The user commits."
+  },
+  "steps": [
+    {
+      "name": "export-current-cache",
+      "cmd": "node scripts/export-source-headlines.js --ref origin/cache-data --out .working/source-headlines-analysis.zip",
+      "produces": ".working/source-headlines-analysis.zip"
+    },
+    {
+      "name": "analyse-headlines",
+      "cmd": ".venv/bin/python scripts/headline-analysis/analyse_headlines.py --config docs/tasks/headline-analysis.task.json",
+      "produces": "docs/headline-data/current/"
+    },
+    {
+      "name": "validate-outputs",
+      "cmd": ".venv/bin/python scripts/headline-analysis/test_corpus_outputs.py --config docs/tasks/headline-analysis.task.json",
+      "produces": "stdout validation"
+    },
+    {
+      "name": "measured-sources-json",
+      "cmd": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py --config docs/tasks/headline-analysis.task.json",
+      "produces": "src/data/measured-sources.json"
+    },
+    {
+      "name": "validation-sample",
+      "cmd": ".venv/bin/python scripts/headline-analysis/validate_detectors.py sample --config docs/tasks/headline-analysis.task.json",
+      "produces": "docs/headline-data/current/detector_validation_sample.csv"
+    },
+    {
+      "name": "validation-score",
+      "cmd": ".venv/bin/python scripts/headline-analysis/validate_detectors.py score --config docs/tasks/headline-analysis.task.json",
+      "produces": "docs/headline-data/current/detector_validation_scores.json"
+    },
+    {
+      "name": "charts",
+      "cmd": ".venv/bin/python scripts/headline-analysis/make_charts.py --config docs/tasks/headline-analysis.task.json",
+      "produces": "docs/headline-data/current/*.png"
+    }
+  ],
+  "analysis": {
+    "input_zip": ".working/source-headlines-analysis.zip",
+    "output_dir": "docs/headline-data/current",
+    "topics": 22,
+    "topic_min_df": 4,
+    "folds": 4,
+    "bootstrap": 250,
+    "min_source_n": 20,
+    "random_seed": 27,
+    "nearest_neighbors": 8,
+    "cross_source_similarity_threshold": 0.82,
+    "context_fields": [
+      "tree_root_id",
+      "neutral_editorial_context"
+    ],
+    "adjust_title_length": false,
+    "length_adjusted_sensitivity": true,
+    "attention_context_adjustment": 0.25,
+    "shrinkage_grid": [
+      10,
+      25,
+      50
+    ],
+    "default_shrinkage": 25,
+    "measurement_groups": [
+      {
+        "key": "group-bbc",
+        "label": "BBC",
+        "sources": [
+          "bbc.co.uk",
+          "bbc.com"
+        ],
+        "reason": "BBC services are one publisher for headline-measurement purposes."
+      },
+      {
+        "key": "group-mashable",
+        "label": "Mashable",
+        "sources": [
+          "mashable.com",
+          "in.mashable.com",
+          "sea.mashable.com"
+        ],
+        "reason": "Regional Mashable editions substantially reuse the same articles."
+      },
+      {
+        "key": "group-inquirer",
+        "label": "Inquirer",
+        "sources": [
+          "inquirer.com",
+          "newsinfo.inquirer.net",
+          "business.inquirer.net",
+          "cebudailynews.inquirer.net",
+          "entertainment.inquirer.net",
+          "lifestyle.inquirer.net",
+          "technology.inquirer.net"
+        ],
+        "reason": "Inquirer vertical and regional subdomains are sections of the same publisher."
+      },
+      {
+        "key": "group-nypost-pagesix",
+        "label": "New York Post / Page Six",
+        "sources": [
+          "nypost.com",
+          "pagesix.com"
+        ],
+        "reason": "Page Six is part of the New York Post publishing operation."
+      }
+    ]
+  }
+}

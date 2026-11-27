@@ -213,6 +213,17 @@
         "slate.com",
         "thedispatch.com"
       ]
+    },
+    {
+      "id": "nonprofit-civic-news",
+      "label": "Nonprofit Civic News",
+      "icon": "chalkbeat.org",
+      "sources": [
+        "chalkbeat.org",
+        "propublica.org",
+        "thetrace.org",
+        "marshallproject.org"
+      ]
     }
   ]
 }

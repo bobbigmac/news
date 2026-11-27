@@ -1,0 +1,80 @@
+{
+  "runtime_seconds": 85.21,
+  "stage_times": {
+    "parse_archive": 1.257,
+    "detectors": 19.695,
+    "headline_reuse_and_templates": 19.861,
+    "topic_model_and_crossfit_expectations": 5.062,
+    "source_statistics_and_bootstrap": 36.678,
+    "write_tables_and_radar": 2.616
+  },
+  "config": {
+    "input_zip": ".working/source-headlines-analysis.zip",
+    "output_dir": "docs/headline-data/current",
+    "topics": 22,
+    "topic_min_df": 4,
+    "folds": 4,
+    "bootstrap": 250,
+    "min_source_n": 20,
+    "random_seed": 27,
+    "nearest_neighbors": 8,
+    "cross_source_similarity_threshold": 0.82,
+    "context_fields": [
+      "tree_root_id",
+      "neutral_editorial_context"
+    ],
+    "adjust_title_length": false,
+    "length_adjusted_sensitivity": true,
+    "attention_context_adjustment": 0.25,
+    "shrinkage_grid": [
+      10,
+      25,
+      50
+    ],
+    "default_shrinkage": 25,
+    "measurement_groups": [
+      {
+        "key": "group-bbc",
+        "label": "BBC",
+        "sources": [
+          "bbc.co.uk",
+          "bbc.com"
+        ],
+        "reason": "BBC services are one publisher for headline-measurement purposes."
+      },
+      {
+        "key": "group-mashable",
+        "label": "Mashable",
+        "sources": [
+          "mashable.com",
+          "in.mashable.com",
+          "sea.mashable.com"
+        ],
+        "reason": "Regional Mashable editions substantially reuse the same articles."
+      },
+      {
+        "key": "group-inquirer",
+        "label": "Inquirer",
+        "sources": [
+          "inquirer.com",
+          "newsinfo.inquirer.net",
+          "business.inquirer.net",
+          "cebudailynews.inquirer.net",
+          "entertainment.inquirer.net",
+          "lifestyle.inquirer.net",
+          "technology.inquirer.net"
+        ],
+        "reason": "Inquirer vertical and regional subdomains are sections of the same publisher."
+      },
+      {
+        "key": "group-nypost-pagesix",
+        "label": "New York Post / Page Six",
+        "sources": [
+          "nypost.com",
+          "pagesix.com"
+        ],
+        "reason": "Page Six is part of the New York Post publishing operation."
+      }
+    ]
+  }
+}

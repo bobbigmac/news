@@ -309,7 +309,7 @@
             },
             {
               "id": "business-insider-network",
-              "label": "Business Insider Network",
+              "label": "Business & Startup Digital",
               "icon": "businessinsider.com",
               "sources": [
                 "businessinsider.com",
@@ -323,6 +323,14 @@
                 "startupdaily.net",
                 "fintechnews.sg",
                 "e27.co"
+              ]
+            },
+            {
+              "id": "business-magazines",
+              "label": "Business Magazines",
+              "icon": "inc.com",
+              "sources": [
+                "inc.com"
               ]
             },
             {

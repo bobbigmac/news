@@ -79,6 +79,14 @@
               "sources": [
                 "malaymail.com"
               ]
+            },
+            {
+              "id": "bernama",
+              "label": "Bernama",
+              "icon": "bernama.com",
+              "sources": [
+                "bernama.com"
+              ]
             }
           ]
         },
@@ -120,10 +128,13 @@
       "sources": [
         "thehindu.com",
         "timesofindia.com",
+        "timesofindia.indiatimes.com",
         "hindustantimes.com",
+        "indianexpress.com",
         "indiatoday.in",
         "livemint.com",
         "economictimes.com",
+        "economictimes.indiatimes.com",
         "dnaindia.com",
         "freepressjournal.in",
         "ndtv.com",

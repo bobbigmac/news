@@ -45,6 +45,14 @@ function cleanText(value) {
   return String(value || '').replace(/\s+/g, ' ').trim();
 }
 
+function bodyTextFor(story) {
+  return cleanText(story.bodyText || story.content || story.description || '').slice(0, 2000);
+}
+
+function richestText(...values) {
+  return values.map(cleanText).sort((a, b) => b.length - a.length)[0] || '';
+}
+
 function canonicalSourceKey(url) {
   const normalised = normaliseUrl(url);
   if (normalised) return sourceKeyFromUrl(`https://${normalised}`);
@@ -201,13 +209,25 @@ const storyStore = readCacheJson(options.ref, 'stories.json');
 const rawNew = readOptionalCacheJson(options.ref, 'raw-new.json');
 const currentsApi = readOptionalCacheJson(options.ref, 'currents-api.json');
 
+const storedStories = Object.values(storyStore.stories || {});
+const storedById = new Map(storedStories.filter(story => story.id).map(story => [story.id, story]));
+const storedByUrl = new Map(storedStories.map(story => [normaliseUrl(story.url), story]).filter(([key]) => key));
+function enrichStory(story) {
+  const stored = storedById.get(story.id) || storedByUrl.get(normaliseUrl(story.url));
+  return {
+    ...stored,
+    ...story,
+    bodyText: richestText(story.bodyText, story.content, story.description, stored?.bodyText, stored?.content, stored?.description),
+  };
+}
+
 const ingested = [];
 for (const cluster of digest.clusters || []) {
-  for (const story of cluster.stories || []) ingested.push(story);
+  for (const story of cluster.stories || []) ingested.push(enrichStory(story));
 }
-for (const story of Object.values(storyStore.stories || {})) ingested.push(story);
-if (Array.isArray(rawNew)) ingested.push(...rawNew);
-if (Array.isArray(currentsApi?.news)) ingested.push(...currentsApi.news);
+for (const story of storedStories) ingested.push(enrichStory(story));
+if (Array.isArray(rawNew)) ingested.push(...rawNew.map(enrichStory));
+if (Array.isArray(currentsApi?.news)) ingested.push(...currentsApi.news.map(enrichStory));
 
 const { items: stories, droppedById, droppedByUrl } = dedupStories(ingested);
 const bySource = new Map();
@@ -443,6 +463,7 @@ for (const key of bySource.keys()) {
     headlineRows.push({
       ...base,
       headline: title,
+      body_text: bodyTextFor(story),
       story_id: story.id || '',
       url: story.url || '',
       published: story.published || '',
@@ -471,7 +492,7 @@ const readme = [
   `Digest date: ${digest.date || 'unknown'}`,
   '',
   'Format: `SOURCE: name` followed by one newest-first headline per line. Related sources continue directly after the previous source block; blank lines separate source-groups in the relation tree. `99-unmatched-sources.md` uses single line breaks throughout because no curated relation is known.',
-  '`sources-manifest.md` lists every source with cache counts, relation-tree memberships, branch/group notes, curated profile fields, trust flags and evidence links. `No curated source profile yet` marks a knowledge gap for later gap-filling. `headline-rows.jsonl` is the machine-readable analysis input: one row per source/unique headline with canonical source key, URL, timestamps, relation memberships and curated profile context.',
+  '`sources-manifest.md` lists every source with cache counts, relation-tree memberships, branch/group notes, curated profile fields, trust flags and evidence links. `No curated source profile yet` marks a knowledge gap for later gap-filling. `headline-rows.jsonl` is the machine-readable analysis input: one row per source/unique headline with canonical source key, URL, timestamps, relation memberships, curated profile context, and the available body/summary text (capped at 2,000 characters).',
   '',
   `Input stories from digest.json, stories.json, raw-new.json, and currents-api.json: ${ingested.length}; after id/URL dedupe: ${stories.length} (${droppedById} duplicate ids, ${droppedByUrl} duplicate URLs).`,
   `Sources: ${sourceCount}; matched to relation tree: ${sourceCount - unmatchedKeys.length}; unmatched: ${unmatchedKeys.length}; unique headlines per source: ${headlineCount}.`,

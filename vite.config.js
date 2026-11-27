@@ -20,6 +20,7 @@ export default defineConfig({
       input: {
         main: fileURLToPath(new URL('./src/index.html', import.meta.url)),
         relationships: fileURLToPath(new URL('./src/relationships.html', import.meta.url)),
+        measuredSources: fileURLToPath(new URL('./src/measured-sources.html', import.meta.url)),
       },
     },
   },

@@ -1,0 +1,93 @@
+[
+  {
+    "key": "event_clarity",
+    "label": "Explicit event / action",
+    "polarity": "positive",
+    "included_in_composite": true,
+    "description": "Specific event/action predicate. Independent of attention packaging so packaging is not double-counted."
+  },
+  {
+    "key": "quantified_specificity",
+    "label": "Quantified detail",
+    "polarity": "positive",
+    "included_in_composite": true,
+    "description": "Number, percentage, amount, age, count or other numeric detail."
+  },
+  {
+    "key": "time_place_anchor",
+    "label": "Time / place anchor",
+    "polarity": "positive",
+    "included_in_composite": true,
+    "description": "Explicit date/time/day or country/place anchor."
+  },
+  {
+    "key": "causal_explanation",
+    "label": "Causal relationship",
+    "polarity": "positive",
+    "included_in_composite": true,
+    "description": "Causal, consequence-linking or explicit relational language."
+  },
+  {
+    "key": "material_consequence",
+    "label": "Material consequences",
+    "polarity": "positive",
+    "included_in_composite": true,
+    "description": "Impacts, costs, risks, jobs, health, harm, benefits or material changes."
+  },
+  {
+    "key": "evidence_provenance",
+    "label": "Evidence specificity",
+    "polarity": "positive",
+    "included_in_composite": true,
+    "description": "Fractional cue: 0.5 for research/survey/study claims, 1.0 for primary artefacts such as documents, filings, audits, datasets, transcripts or court material."
+  },
+  {
+    "key": "context_comparison",
+    "label": "Context / comparison",
+    "polarity": "positive",
+    "included_in_composite": true,
+    "description": "Comparisons, trends, historical references, records or prior-period context."
+  },
+  {
+    "key": "explanatory_framing",
+    "label": "Explanatory / service framing",
+    "polarity": "positive",
+    "included_in_composite": true,
+    "description": "Explanation, guide, mechanism, why/how or explicit service-journalism framing; language presence only, not correctness."
+  },
+  {
+    "key": "original_reporting_signal",
+    "label": "Original-access cue",
+    "polarity": "positive",
+    "included_in_composite": false,
+    "description": "Explicit original-access/provenance cue: investigation reveals/found, exclusive interview/report/access, documents obtained, interview with, FOI or our-analysis. High precision, very low recall; diagnostic only because it is too sparse for stable source ordering."
+  },
+  {
+    "key": "low_explicit_curiosity_gap",
+    "label": "Explicit curiosity-gap incidence",
+    "polarity": "inverse",
+    "included_in_composite": true,
+    "description": "Stock clickbait phrases, explicit guessing/teasing or a trailing ellipsis; stored inverse is used in the composite, exported incidence is adverse."
+  },
+  {
+    "key": "low_direct_service_packaging",
+    "label": "Direct-address/service packaging incidence",
+    "polarity": "inverse",
+    "included_in_composite": true,
+    "description": "How-to/you/your/search-capture framing. Often useful service journalism, but still a packaging/aggregation style; stored inverse is used in the composite."
+  },
+  {
+    "key": "low_sensational_personal",
+    "label": "Sensational / personal framing incidence",
+    "polarity": "inverse",
+    "included_in_composite": true,
+    "description": "Strong sensational vocabulary or celebrity/personal-life teaser framing; stored inverse is used in the composite."
+  },
+  {
+    "key": "cross_source_title_echo",
+    "label": "Near-identical cross-source headline",
+    "polarity": "adverse",
+    "included_in_composite": false,
+    "description": "Near-identical title match at character n-gram cosine similarity above threshold; diagnostic only, excluded from the composite."
+  }
+]

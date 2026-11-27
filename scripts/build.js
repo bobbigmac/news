@@ -195,6 +195,9 @@ for (const f of ['favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png', 'apple
                  'icon.png', 'icon.svg']) {
   copyStatic(f);
 }
+// Machine-readable measured-source export, linked from measured-sources.html.
+const measuredSourcesFile = join('src', 'data', 'measured-sources.json');
+if (existsSync(measuredSourcesFile)) copyFileSync(measuredSourcesFile, join(OUT_DIR, 'measured-sources.json'));
 
 console.log(`Build complete. ${digest.clusters.length} clusters, ${entities.length} entities, ${topics.length} topics, ${timeline.length} stories in timeline -> ${OUT_DIR}/dataset.json`);
 

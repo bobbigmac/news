@@ -46,6 +46,20 @@
   color: var(--muted);
 }
 
+.page-crosslink {
+  margin-top: 0.45rem;
+}
+
+.page-crosslink a {
+  display: inline-block;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
 .relationships-main {
   width: min(1320px, calc(100vw - 2rem));
   margin: 0 auto;

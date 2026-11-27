@@ -1,0 +1,19 @@
+{
+  "input": "/home/bobbigmac/projects/bobdavies/news/docs/headline-data/current/detector_validation_sample.csv",
+  "labelled_axes": {},
+  "unlabelled_axes": [
+    "event_clarity",
+    "quantified_specificity",
+    "time_place_anchor",
+    "causal_explanation",
+    "material_consequence",
+    "evidence_provenance",
+    "context_comparison",
+    "explanatory_framing",
+    "original_reporting_signal",
+    "explicit_curiosity_gap_present",
+    "direct_service_packaging_present",
+    "personal_sensational_frame_present"
+  ],
+  "status": "insufficient_labels"
+}

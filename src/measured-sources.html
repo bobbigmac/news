@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Measured Source Quality — The Daily Broadsheet</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A measured comparison of headline information value and attention packaging across news sources.">
+  <script>
+    (function() {
+      var s = JSON.parse(localStorage.getItem('broadsheet-settings') || '{}');
+      var theme = s.theme || 'auto';
+      var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var effective = theme === 'auto' ? (dark ? 'night' : 'day') : theme;
+      document.documentElement.setAttribute('data-theme', effective);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/measured-sources.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="measured-page">
+  <header class="measured-masthead">
+    <a class="back-link" href="./">← The Daily Broadsheet</a>
+    <div class="measured-title-block">
+      <h1>Measured source quality</h1>
+      <p class="intro">
+        Sources ordered by how much concrete information their headlines usually carry,
+        balanced against how hard those headlines push attention packaging.
+      </p>
+      <nav class="page-peer-nav" aria-label="Source context pages">
+        <a href="./relationships.html">Who’s behind the news</a>
+        <a href="#methodology">What this measurement means</a>
+      </nav>
+    </div>
+    <label class="source-search-label">
+      Search measured sources
+      <input id="measured-search" type="search" placeholder="BBC, Guardian, science…">
+    </label>
+  </header>
+
+  <main id="measured-main" class="measured-main" aria-live="polite"></main>
+
+  <section id="methodology" class="methodology-section">
+    <div class="methodology-card">
+      <p class="eyebrow">Methodology</p>
+      <h2>What “measured quality” means here</h2>
+      <p>
+        This is a measure of headline value, not a truth score. It asks whether a headline
+        usually tells you something concrete — what happened, where, when, with what detail,
+        consequence, context or evidence — and whether it does so without leaning on teasing,
+        search-capture phrasing, celebrity framing or sensational language.
+      </p>
+      <p>
+        Each spiderweb shows eleven measured traits. The middle ring is typical for the measured
+        sources as a group. Further out means more of the desirable trait; closer to the centre
+        means less. These are relative positions within the measured group, not absolute marks
+        out of 100. The traits are measured after comparing sources with broadly similar story
+        mixes, so a games outlet is not automatically penalised for covering games and a science
+        outlet is not automatically rewarded for covering science.
+      </p>
+      <div class="methodology-grid">
+        <div>
+          <h3>What raises the score</h3>
+          <ul>
+            <li>Clear events, actions and decisions</li>
+            <li>Useful numbers, times, places and consequences</li>
+            <li>Causal links, evidence cues, context and explanation</li>
+          </ul>
+        </div>
+        <div>
+          <h3>What lowers it</h3>
+          <ul>
+            <li>Explicit curiosity-gap teasing</li>
+            <li>Direct-address/search-capture packaging, even when the article may still be useful</li>
+            <li>Sensational, celebrity and personal-life framing</li>
+          </ul>
+        </div>
+      </div>
+      <p>
+        Sources are bucketed into quartiles rather than treated as precisely separated ranks.
+        Small differences inside a bucket are not meaningful, and a source just inside one bucket
+        may be effectively tied with a source just outside it. Regional editions or publisher
+        sections are combined where they are effectively the same publication stream; unlike-owned
+        outlets that merely share a brand are not combined.
+      </p>
+      <h3>Known limits and coverage gaps</h3>
+      <ul class="limits-list">
+        <li>The measurement cannot tell whether a claim is true, important, fairly framed or verified in the article body.</li>
+        <li>Only sources with enough measured headlines appear. Fox News and Fox-branded local stations currently do not have enough separate measured material here, and the affiliates are not treated as Fox News because ownership differs.</li>
+        <li>Small samples remain fragile even above the inclusion threshold, especially for sources with syndicated, official-release, obituary or transcript-heavy streams.</li>
+        <li>English-language cues do not translate cleanly to non-English sources.</li>
+        <li>Research-release language can look like strong evidence use; descriptive journal article titles and narrative science writing can look weaker than the underlying work really is.</li>
+        <li>Article summaries are used as supporting evidence where available, but coverage varies by source and feed, so they do not determine the headline score.</li>
+      </ul>
+      <p class="data-link-note">
+        The machine-readable source measurements are available as
+        <a href="./measured-sources.json">measured-sources.json</a>.
+      </p>
+    </div>
+  </section>
+
+  <footer class="broadsheet-footer measured-footer">
+    <p><a href="./">Back to today’s broadsheet</a> · <a href="./relationships.html">Source relationships</a></p>
+  </footer>
+
+  <script type="module" src="measured-sources.js"></script>
+</body>
+</html>

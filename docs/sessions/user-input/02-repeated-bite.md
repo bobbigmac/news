@@ -3,8 +3,8 @@ devin-sessionlog: user-input
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-27 05:06:23 UTC
-entries: 24
+last_activity: 2026-11-27 08:47:48 UTC
+entries: 34
 ---
 
 # repeated-bite
@@ -249,6 +249,76 @@ we can slightly improve on this over time. It might even be worth pulling the la
 ### 2026-11-27 05:06:23 UTC
 
 on cli params. I prefer to run from a config file, because it's easier for you to edit a single line for changes, than to rewrite an entire long list of params (which you then forget). Neighbour projects use ./tasks folder and a tas***.json file to define rerunnable llm tasks, which I think here can live in ./docs/tasks/ if you need them, then link from AGENTS.md so you can use them. DONE.md should live in ./docs too
+
+---
+
+<!-- r:0 m:hook:5747d830-27d1-4c41-80e6-8c01e0d91ba7 h:7085a9d5 -->
+### 2026-11-27 06:51:44 UTC
+
+manuallly check the results for sensibleness
+
+---
+
+<!-- r:0 m:hook:bb6d3272-fb9c-4168-9ba6-a429691127b7 h:9097a1d8 -->
+### 2026-11-27 07:03:05 UTC
+
+you can make some tweaks to your engine to improve some of those takes, or add notes/caveats/disclaimers where you can reasonably justify a take being 'off' for a good reason (like HIGH technical coverage). But don't wallpaper everything with caveats... caveats make sense where they add meaningful content, no 'defaults'. Like EVERY source doesn't need a "regexes are dumb" warning, that's a single global warning, and highlights where our methodology is weak or limited by "things that exist (lol)" because we can't just hypotetically measure text in any REAL sense, this approach is fundamentally limited. Regexes are usually NOT a good way to address this problem, except for stem words... i.e. you can detect grammar pretty reliably, but "watch words" or "trigger words" should usually treat word-boundary as important, not sub-string matching
+
+---
+
+<!-- r:0 m:hook:96c8feef-e3e4-48f4-a940-6fb6039a46c1 h:1cb38f40 -->
+### 2026-11-27 07:06:28 UTC
+
+dictionary sniffing is usually not useful here.
+
+---
+
+<!-- r:0 m:hook:a3618b43-ba99-4569-81dd-6e8ec955f95c h:62eaa1a9 -->
+### 2026-11-27 07:06:59 UTC
+
+don't try to heuristically do magic... if the code doesn't understand a sentence, YOU can, and can log that for the code to reference
+
+---
+
+<!-- r:0 m:hook:f5730410-e9b0-4ebe-b542-662e7e8dec22 h:df923ea4 -->
+### 2026-11-27 07:09:03 UTC
+
+like I said, don't bloat everything. You have a perfectly good word pool that YOU can qualify. DO NOT forget YOU are an LLM and have much better language parsing capabilities than ANY heuristic model. DO NOT FALL INTO THE WELL OF TRYING TO SOLVE INTRACTABLE PROBLEMS
+
+---
+
+<!-- r:0 m:hook:6a959fb3-7adf-457d-a07f-cd95869dd663 h:ad5b7bba -->
+### 2026-11-27 07:10:32 UTC
+
+you're also not limited to ONLY-headline matching here, you have article bodies (in whole or in part) that can weight heuristic decisions relatively easily, with extra tier checks
+
+---
+
+<!-- r:0 m:hook:f3acd38c-9bda-42be-98e3-10fa3fcef930 h:adcc8943 -->
+### 2026-11-27 07:11:52 UTC
+
+in our case, the article summary IS the body. It still helps
+
+---
+
+<!-- r:0 m:hook:642446ef-3723-486a-9cbc-ed66ea457e73 h:dfa5b18b -->
+### 2026-11-27 07:49:47 UTC
+
+these numbers do kinda make sense, and I think it's worth making an all-sources (or at least all-sources for which we have enough source data to have an opinion that makes sense) as a peer to the relationships page that opens by listing sources by 'measured quality' (a methodology section should explain this in plain english at the end, to avoid getting technical at the start). Each measured source should be expandable to show  a spider-web diagram that shows where it lies on our corpus-wide measured normalised axes (like Dispatch, the game, has the kind of idea I want to use to visualise the data per-source). You can conflate nearby/similar sources. Like all BBC items are basically the same source here, Fox-owned Fox properties too tho be careful of averages, check for outliers first). We will also want to be able to query these axes-linked props per-source so need a json data source that essentially lets the client know these (tho I don't know how we use it yet, need to see the dedicated page first). Remember, the text is ABOUT the sources/orgs/producers, NOT about our dataset. We know how dataset has gaps, and those caveats belong below our methodology segment, NOT polluting the text of the reader trying to understand what this means about each source or source group. Caveats specific to a source/group belong below its actual spiderweb, like "New Scientist scores low on metric x because y", no big number-dumps. We will also bucket these into ranges, but I don't know what ranges apply yet
+
+---
+
+<!-- r:0 m:hook:2ee4be9f-07d0-4c57-84fb-fe5f3d366f5e h:d6e333eb -->
+### 2026-11-27 08:10:47 UTC
+
+recap what you are doing, and your objectives, for clarity, since you've been going a while and need to avoid drift, then continue
+
+---
+
+<!-- r:0 m:hook:6f5f366c-8d16-4128-9dd9-f016afe46a7a h:6f5a6c46 -->
+### 2026-11-27 08:47:48 UTC
+
+also see sources-manifest-UPDATE-2026-11-27.md which provides additional source notations to support providing more information for sources where we have literal information gaps, try and import everything relevant, just don't make a mess copying every chatgpt hedge literally... stay focused on what actually matters to a human reader, or what helps inform our systems or can improve them meaningfully
 
 ---
 
