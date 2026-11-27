@@ -58,10 +58,6 @@
    "campaigning consumer and political coverage"
   ],
   "leaning": "Commonly described as right-leaning and socially conservative; the Mail on Sunday has historically taken some different positions.",
-  "caution": [
-   "IPSO accuracy rulings are useful context but do not invalidate every story",
-   "Its criticism of institutions can be campaigning rather than detached analysis"
-  ],
   "links": [
    {
     "label": "DMGT consumer brands",
@@ -98,7 +94,30 @@
       "url": "https://www.theguardian.com/technology/2017/feb/12/wikipedia-daily-mail-reliability-ban-katherine-maher"
      }
     ]
+   },
+   {
+    "label": "High complaint volume with few adjudicated breaches",
+    "note": "IPSO\u2019s 2025 table records 491 Mail Online/dailymail.co.uk articles complained about, 231 complaints within remit and 633 complaints in total. Of the in-remit complaints, none were fully upheld, 2 were partially upheld, 3 were not upheld, 6 were mediated, 18 were resolved directly with the publication, 189 were rejected and 13 were not pursued. The volume is useful institutional evidence about standards friction, but it is not equivalent to 491 upheld complaints.",
+    "links": [
+     {
+      "label": "IPSO Annual Report 2025 complaints table",
+      "url": "https://ipso.co.uk/wp-content/uploads/2026/05/IPSO-Annual-Report-2025-Digital.pdf"
+     },
+     {
+      "label": "Press Gazette analysis of the 2025 figures",
+      "url": "https://pressgazette.co.uk/media_law/telegraph-recorded-most-editors-code-breaches-in-2025/"
+     },
+     {
+      "label": "Journalism.co.uk on the IPSO report",
+      "url": "https://www.journalism.co.uk/ipso-annual-report-two-thirds-of-complaints-resolved-in-favour-of-the-public-press-standards-on-the-rise/"
+     }
+    ]
    }
+  ],
+  "watch": [
+   "Complaint volume and adjudicated breaches are different measures: use both rather than treating complaint counts as upheld complaints",
+   "IPSO accuracy rulings are useful context but do not invalidate every story",
+   "Its criticism of institutions can be campaigning rather than detached analysis"
   ]
  },
  "metro.co.uk": {
@@ -212,44 +231,72 @@
  "foxnews.com": {
   "kind": "US cable news network",
   "properties": [
-   "Fox Corporation",
-   "news and opinion programming",
-   "high-volume political coverage"
+   "Fox News Media / Fox Corporation",
+   "national cable news and business-news programming",
+   "high-volume political coverage",
+   "news and opinion programmes share one audience-facing brand"
   ],
-  "leaning": "Opinion programming is strongly associated with the US right; straight news and prime-time opinion are different products.",
+  "leaning": "Opinion programming is strongly associated with the US right; straight news and prime-time opinion are different products, even where the boundary is not always clear to viewers.",
   "watch": [
-   "Fox Corporation is separate from News Corp despite shared Murdoch-family control",
-   "Local Fox affiliate sites can carry very different reporting from national Fox News opinion"
+   "Fox Corporation and News Corp are separate publicly traded companies; Fox News and the New York Post are not the same ownership operation",
+   "Fox-branded local stations are not Fox News Channel: some are Fox-owned local stations, while many affiliates are owned by companies such as Nexstar, Gray, Sinclair or Cox",
+   "A documented failure on one major story is important evidence, not a reason to treat every subsequent Fox report as false"
+  ],
+  "links": [
+   {
+    "label": "Fox Corporation 2026 Form 10-K",
+    "url": "https://www.sec.gov/Archives/edgar/data/1754301/000162828026053960/fox-20260630.htm"
+   },
+   {
+    "label": "2013 Fox/News Corp separation filing",
+    "url": "https://www.sec.gov/Archives/edgar/data/1308161/000156459014003642/fox-10k_20140630.htm"
+   }
   ],
   "flags": [
    {
-    "label": "Documented broadcast of election falsehoods",
-    "note": "Fox paid $787.5 million in 2023 \u2014 the largest known defamation settlement by an American media company \u2014 after the court ruled as proven fact that its 2020 election-fraud claims about Dominion were false. Internal messages showed executives and hosts privately dismissing the conspiracy claims they aired. Unlike UK broadcasters, US cable news has no impartiality regulator: the Fairness Doctrine was repealed in 1987 and does not apply to cable.",
+    "label": "Court-established false and defamatory election claims",
+    "note": "In the Dominion litigation, the Delaware Superior Court granted summary judgment on falsity and defamation per se: the evidence was \u201cCRYSTAL clear\u201d that none of the challenged 2020-election statements about Dominion were true, and the statements were defamatory as a matter of law. The separate actual-malice element remained for trial when Fox settled for $787.5 million. This is documented evidence of a serious editorial failure rather than mere disagreement with Fox\u2019s political orientation; it does not invalidate every Fox report.",
     "links": [
      {
-      "label": "Reuters on the $787.5m Dominion settlement",
+      "label": "Delaware Superior Court summary-judgment opinion",
+      "url": "https://courts.delaware.gov/Opinions/Download.aspx?id=345820"
+     },
+     {
+      "label": "NPR on the falsity ruling",
+      "url": "https://www.npr.org/2023/03/31/1167526374/judge-rules-fox-hosts-claims-about-dominion-were-false-says-trial-can-proceed"
+     },
+     {
+      "label": "Reuters on the $787.5m settlement",
       "url": "https://www.reuters.com/legal/dominions-defamation-case-against-fox-poised-trial-after-delay-2023-04-18/"
-     },
-     {
-      "label": "BBC on the settlement and false claims",
-      "url": "https://www.bbc.com/news/world-us-canada-65318654"
-     },
-     {
-      "label": "AP on the Dominion case",
-      "url": "https://apnews.com/article/fox-news-dominion-lawsuit-settlement-election-lies-fda05a63a1af8a111ce1efba024b88a0"
      }
     ]
    }
   ]
  },
  "nypost.com": {
-  "kind": "US tabloid",
+  "kind": "US tabloid newspaper and digital publisher",
   "properties": [
-   "News Corp",
-   "New York tabloid",
-   "sports, politics, celebrity and crime"
+   "News Corp / NYP Holdings",
+   "New York metropolitan tabloid",
+   "politics, crime, sports, business and celebrity coverage",
+   "publisher of PageSix.com and Decider.com"
   ],
-  "leaning": "Conservative tabloid sensibility; Page Six celebrity content and hard-news coverage have different evidentiary profiles."
+  "leaning": "Conservative tabloid sensibility; hard-news coverage, commentary, front-page framing and Page Six celebrity reporting have different evidentiary profiles.",
+  "watch": [
+   "News Corp and Fox Corporation have been separate publicly traded companies since 2013, so the New York Post is not a Fox News property",
+   "Assertive headlines and tabloid framing can outrun the strength of the underlying sourcing",
+   "Conservative political orientation is context, not by itself proof that a factual report is false"
+  ],
+  "links": [
+   {
+    "label": "News Corp 2025 Form 10-K on NYP Holdings",
+    "url": "https://www.sec.gov/Archives/edgar/data/1564708/000156470825000419/nws-20250630.htm"
+   },
+   {
+    "label": "2013 Fox/News Corp separation filing",
+    "url": "https://www.sec.gov/Archives/edgar/data/1564708/000119312513373501/d581644d10k.htm"
+   }
+  ]
  },
  "wsj.com": {
   "kind": "US business newspaper",
@@ -278,13 +325,44 @@
   ]
  },
  "express.co.uk": {
-  "kind": "Tabloid national newspaper",
+  "kind": "Tabloid national newspaper and high-volume digital publisher",
   "properties": [
    "Reach plc",
    "campaigning right-leaning identity",
-   "royal, health, weather and political coverage"
+   "royal, health, weather, television and political coverage",
+   "high-volume search and commodity-news output"
   ],
-  "leaning": "Commonly grouped with right-of-centre tabloids; format and topic mix make it useful to separate from broadsheet analysis."
+  "leaning": "Commonly grouped with right-of-centre tabloids; format and topic mix make it useful to separate from broadsheet analysis.",
+  "watch": [
+   "Sensational packaging, aggregation and commentary can be difficult to separate in a high-volume digital format",
+   "Complaint counts measure exposure to standards complaints, not automatic proof that each complaint was valid"
+  ],
+  "links": [
+   {
+    "label": "Reach plc brands",
+    "url": "https://www.reachplc.com/our-brands"
+   }
+  ],
+  "flags": [
+   {
+    "label": "Highest in-remit complaint count in IPSO 2025",
+    "note": "IPSO\u2019s 2025 table records 234 express.co.uk articles complained about, 1,366 complaints within remit and 1,417 complaints in total \u2014 the largest in-remit count in the table. Three complaints were fully upheld, three partially upheld, four not upheld, four mediated, 24 resolved directly with the publication and one closed through a satisfactory remedy; 1,320 were rejected and seven were not pursued. This is evidence of unusually high complaint exposure, not a claim that every complaint was valid or that every Express story is unreliable.",
+    "links": [
+     {
+      "label": "IPSO Annual Report 2025 complaints table",
+      "url": "https://ipso.co.uk/wp-content/uploads/2026/05/IPSO-Annual-Report-2025-Digital.pdf"
+     },
+     {
+      "label": "Press Gazette analysis of the 2025 figures",
+      "url": "https://pressgazette.co.uk/media_law/telegraph-recorded-most-editors-code-breaches-in-2025/"
+     },
+     {
+      "label": "Journalism.co.uk on the IPSO report",
+      "url": "https://www.journalism.co.uk/ipso-annual-report-two-thirds-of-complaints-resolved-in-favour-of-the-public-press-standards-on-the-rise/"
+     }
+    ]
+   }
+  ]
  },
  "dailystar.co.uk": {
   "kind": "Tabloid national newspaper",
@@ -474,18 +552,21 @@
   ]
  },
  "phys.org": {
-  "kind": "Science news portal",
+  "kind": "High-volume science and research news portal",
   "properties": [
    "Science X network",
-   "research-press-release plus staff coverage",
+   "mix of staff-written reports, licensed coverage and editor-processed institutional material",
    "high-volume daily science"
   ],
+  "model": "Science X says it is not a blind press-release service and that staff select, edit and fact-check material. Even accepting that self-description, the output is a high-volume mix whose provenance varies article by article: staff reporting, licensed copy and university or journal press material.",
   "watch": [
-   "Science X says it curates and edits university/research material rather than running blind PR aggregation; readers should still check whether an item is staff reporting, licensed copy, or institutional material"
+   "Editorial curation is not the same thing as independent scientific verification",
+   "Check whether an item is staff reporting, licensed copy, or institutional material before treating it as independent confirmation",
+   "Single-study institutional stories inherit the university press office\u2019s selection and emphasis incentives"
   ],
   "links": [
    {
-    "label": "Science X journalism",
+    "label": "Science X journalism statement",
     "url": "https://sciencex.com/help/journalism/"
    },
    {
@@ -493,8 +574,12 @@
     "url": "https://sciencex.com/help/about-physorg/"
    },
    {
-    "label": "Editorial process",
+    "label": "Science X editorial process",
     "url": "https://sciencex.com/help/editorial-process/"
+   },
+   {
+    "label": "BMJ study on press-release exaggeration",
+    "url": "https://www.bmj.com/content/349/bmj.g7015"
    }
   ]
  },
@@ -504,13 +589,22 @@
   "model": "Advertising-funded (plus voluntary donations). Network publishes 200+ articles daily \u2014 a high-volume mix of in-house reports and editor-processed university press releases, which the network insists are hand-curated rather than republished, though external assessors describe much of it as churnalism with straight press-release structure.",
   "leaning": "Pro-science, no political agenda \u2014 Media Bias/Fact Check rates it High for factual reporting with a clean fact-check record.",
   "watch": [
-   "Single-study coverage inherited from institutional press releases \u2014 universities' PR incentives shape what gets covered and how strongly",
-   "High volume means limited critical appraisal per story; check whether the named source is the institution's own press office"
+   "Editorial curation is not independent clinical or scientific verification",
+   "Single-study coverage inherited from institutional press releases means universities\u2019 PR incentives shape what gets covered and how strongly",
+   "High volume limits critical appraisal per story; check whether the named source is the institution\u2019s own press office"
   ],
   "links": [
    {
-    "label": "Science X's own journalism statement",
+    "label": "Science X journalism statement",
     "url": "https://sciencex.com/help/journalism/"
+   },
+   {
+    "label": "Science X editorial process",
+    "url": "https://sciencex.com/help/editorial-process/"
+   },
+   {
+    "label": "BMJ study on press-release exaggeration",
+    "url": "https://www.bmj.com/content/349/bmj.g7015"
    }
   ]
  },
@@ -519,26 +613,67 @@
   "properties": [
    "Science X network",
    "research-to-product translation",
-   "low-volume in the current feed"
+   "mix of staff-written and institutionally sourced material"
+  ],
+  "watch": [
+   "Technology-transfer and commercial-application claims often originate with the research institution or inventor",
+   "Editorial selection and rewriting should not be mistaken for independent validation of a prototype, patent or performance claim"
+  ],
+  "links": [
+   {
+    "label": "Science X journalism statement",
+    "url": "https://sciencex.com/help/journalism/"
+   },
+   {
+    "label": "Science X editorial process",
+    "url": "https://sciencex.com/help/editorial-process/"
+   }
   ]
  },
  "sciencealert.com": {
-  "kind": "Popular science site",
+  "kind": "Popular science news site",
   "properties": [
-   "science explainers",
-   "web-native science coverage",
-   "Australian editorial base"
+   "staff-written science news and explainers",
+   "Australian editorial team",
+   "web-native high-frequency coverage"
+  ],
+  "watch": [
+   "More editorially produced than a release-republish service, but still often dependent on single-study news cycles",
+   "Accessible compression can remove caveats about samples, replication, effect sizes or whether work is preliminary",
+   "Popular science journalism is not the same evidence class as the journal paper it reports"
+  ],
+  "links": [
+   {
+    "label": "ScienceAlert editorial values",
+    "url": "https://www.sciencealert.com/about-sciencealert"
+   },
+   {
+    "label": "ScienceAlert team",
+    "url": "https://www.sciencealert.com/our-team"
+   }
   ]
  },
  "nature.com": {
-  "kind": "Scientific journal and news portal",
+  "kind": "Scientific journal and editorially independent science news portal",
   "properties": [
-   "peer-reviewed journal",
-   "Nature news desk",
+   "Nature Portfolio peer-reviewed research journals",
+   "editorially independent Nature news and analysis desk",
    "Springer Nature"
   ],
   "watch": [
-   "Journal papers, Nature news, and press material are different evidence classes even under one domain"
+   "Nature journalism is not itself peer-reviewed research, even when produced to high editorial standards",
+   "Peer-review status is contribution-specific; not every page or article type under a Nature domain is peer-reviewed",
+   "Journal papers, Nature news, institutional press material and press coverage of those papers are different evidence classes"
+  ],
+  "links": [
+   {
+    "label": "Nature journalistic principles",
+    "url": "https://www.nature.com/nature/journalistic-principles"
+   },
+   {
+    "label": "Nature peer-review policy",
+    "url": "https://www.nature.com/nature/editorial-policies/peer-review"
+   }
   ]
  },
  "eurogamer.net": {
@@ -680,14 +815,20 @@
   "kind": "State-funded international network",
   "properties": [
    "Qatar-based network",
+   "owned and partially funded by the Qatari government",
    "global south and Middle East strength",
-   "public-benefit foundation structure"
+   "public-benefit foundation structure",
+   "documented critical coverage of some Qatari government policies"
   ],
-  "governance": "Al Jazeera says it is a Private Foundation for Public Benefit under Qatari law and not directed by the Qatari government; outside reporting and academic work still treat Qatari funding as an important structural property.",
+  "governance": "Al Jazeera says it is a Private Foundation for Public Benefit under Qatari law and not directed by the Qatari government. The US Congressional Research Service reports that the government owns and partially funds the network, while also noting examples of coverage critical of Qatari government policy. Outside academic work treats the network as a hybrid state-sponsored/private public-diplomacy actor rather than as either fully independent or directly state-controlled.",
   "links": [
    {
     "label": "Al Jazeera FAQ",
     "url": "https://network.aljazeera.net/en/more/faq"
+   },
+   {
+    "label": "Congressional Research Service: Qatar governance, security and U.S. policy",
+    "url": "https://www.congress.gov/crs-product/R44533"
    },
    {
     "label": "AP explainer",
@@ -695,8 +836,29 @@
    }
   ],
   "watch": [
-   "Broad editorial independence on foreign coverage is documented \u2014 but coverage of Qatar itself and its regional rivals follows state red lines",
-   "Funded by an absolute monarchy; the structural dependency matters even where day-to-day editorial quality is high"
+   "Broad editorial independence on foreign coverage is documented \u2014 but coverage of Qatar itself, its ruling elite, and priority foreign-policy conflicts follows state-influence red lines",
+   "Funded by an absolute monarchy; the structural dependency matters even where day-to-day editorial quality is high",
+   "State-funded and state-influenced are not the same evidentiary category as direct state control"
+  ],
+  "flags": [
+   {
+    "label": "State-funded with documented influence",
+    "note": "The Congressional Research Service reports that Qatar owns and partially funds Al Jazeera, that observers and former employees allege government influence, and that the network has also run stories criticising Qatari government policy, including treatment of expatriate labourers. Academic research describes a hybrid state-sponsored/private public-diplomacy model whose independence is constrained on issues important to the Qatari elite. This evidence supports a state-funded and state-influenced assessment, not automatic equivalence with directly controlled outlets such as RT, TASS or CGTN.",
+    "links": [
+     {
+      "label": "Congressional Research Service on ownership, influence and critical coverage",
+      "url": "https://www.congress.gov/crs-product/R44533"
+     },
+     {
+      "label": "Samuel-Azran: hybrid state-sponsored/private public diplomacy",
+      "url": "https://journals.sagepub.com/doi/10.1177/0002764213487736"
+     },
+     {
+      "label": "Pourhamzavi and Ferguson: Al Jazeera and Qatari foreign policy",
+      "url": "https://researchers.mq.edu.au/en/publications/al-jazeera-and-qatari-foreign-policy-a-critical-approach/"
+     }
+    ]
+   }
   ]
  },
  "dw.com": {
@@ -1196,8 +1358,12 @@
   "flags": [
    {
     "label": "State propaganda instrument",
-    "note": "The EU suspended RT's broadcasting as 'essential and instrumental' in Russia's aggression against Ukraine, and the UK regulator revoked its licence after concluding its Kremlin funding and Russian legal constraints made impartiality impossible.",
+    "note": "Oxford Journal of Communication interviews with RT journalists describe recruitment and socialisation mechanisms that internalised management's editorial expectations. The EU suspended RT's broadcasting as 'essential and instrumental' in Russia's aggression against Ukraine, and the UK regulator revoked its licence after concluding its Kremlin funding and Russian legal constraints made impartiality impossible.",
     "links": [
+     {
+      "label": "Oxford Journal of Communication study of RT organisational behaviour",
+      "url": "https://academic.oup.com/joc/article/70/5/623/5912109"
+     },
      {
       "label": "EU sanctions decision (Council of the EU)",
       "url": "https://www.consilium.europa.eu/en/press/press-releases/2022/03/02/eu-imposes-sanctions-on-state-owned-outlets-rtrussia-today-and-sputnik-s-broadcasting-in-the-eu/"
@@ -1225,7 +1391,7 @@
   ]
  },
  "tass.com": {
-  "kind": "State news agency",
+  "kind": "State-controlled news agency",
   "properties": [
    "wholly owned by the Russian federal government",
    "director general appointed by government order",
@@ -1396,10 +1562,10 @@
   ]
  },
  "eng.belta.by": {
-  "kind": "State news agency",
+  "kind": "State-controlled news agency",
   "properties": [
    "subordinate to the Administration of the President of Belarus",
-   "director-general appointed by the president's administration",
+   "director-general appointed directly by the president",
    "publishes the Presidential Administration's official bulletin"
   ],
   "leaning": "Independent analysis for State Media Monitor found a consistently propagandistic tone across its output; Belarusian journalist bodies describe total state control over state-owned media.",
@@ -1410,7 +1576,7 @@
   "flags": [
    {
     "label": "State propaganda instrument",
-    "note": "Directly subordinate to Lukashenko's Presidential Administration, which appoints its leadership. Monitoring found consistently propagandistic output, and the Belarusian Association of Journalists documents total legal, organisational and financial control of state media by the authorities.",
+    "note": "Directly subordinate to Lukashenko's Presidential Administration, with the president personally appointing its Director-General. Monitoring found consistently propagandistic output, and the Belarusian Association of Journalists documents total legal, organisational and financial control of state media by the authorities.",
     "links": [
      {
       "label": "State Media Monitor: BelTA",
@@ -1423,6 +1589,10 @@
      {
       "label": "Belarusian Propaganda Watch (Alliance4Europe)",
       "url": "https://alliance4europe.eu/wp-content/uploads/2025/09/BELARUSIAN-PROPAGANDA-WATCH_2025.pdf"
+     },
+     {
+      "label": "Belarusian presidency appointment record",
+      "url": "https://president.gov.by/en/events/rassmotrenie-kadrovyh-voprosov-1775748143"
      }
     ]
    }
@@ -1513,22 +1683,28 @@
   ]
  },
  "aa.com.tr": {
-  "kind": "State news agency",
+  "kind": "State-linked national news agency",
   "properties": [
-   "Turkey's state-run wire service",
+   "Turkey's national wire service",
+   "47.75% Ministry of Treasury and Finance capital share in 2024",
+   "related administrative unit: Presidency Directorate of Communications",
    "board members historically drawn from networks close to the ruling AKP",
    "subsidised and restructured in line with the government agenda"
   ],
-  "leaning": "Academic network analysis found its board concentrated among officials close to the AKP leadership; Reuters documents a newsroom direction system run through the government's Directorate of Communications.",
+  "leaning": "Turkey's official state-enterprise ownership report documents a 47.75% Treasury capital share and places the agency under the Presidency Directorate of Communications as its related administrative unit. Academic network analysis found its board concentrated among officials close to the AKP leadership; Reuters documents a newsroom direction system run through the government's Directorate of Communications.",
   "watch": [
    "Wire copy propagates into Turkish and international outlets that republish it uncritically",
    "Coverage of Kurdish issues, elections and foreign policy tracks the government line"
   ],
   "flags": [
    {
-    "label": "Government-aligned state wire",
-    "note": "Peer-reviewed analysis of Anadolu's board found political concentration in a small network close to the AKP leadership, with the agency 'subsidized and restructured in line with the government agenda'. Reuters reporting documents officials issuing directions to Turkish newsrooms.",
+    "label": "State-linked national wire",
+    "note": "T\u00fcrkiye's 2024 Annual Ownership Report of State Owned Enterprises lists a 47.75% Treasury capital share and names the Presidency Directorate of Communications as Anadolu's related administrative unit. Peer-reviewed analysis found political concentration in a small network close to the AKP leadership, with the agency 'subsidized and restructured in line with the government agenda', while Reuters documents officials issuing directions to Turkish newsrooms. The minority capital share makes this a distinct state-linked assessment rather than the simpler wholly-state-owned-wire model.",
     "links": [
+     {
+      "label": "T\u00fcrkiye Ministry of Treasury and Finance: 2024 SOE ownership report",
+      "url": "https://ms.hmb.gov.tr/uploads/sites/2/2025/11/KIR_2024-Ingilizce-23e165f1fda6113b.pdf"
+     },
      {
       "label": "Academic study of Anadolu Agency's political concentration",
       "url": "https://www.tandfonline.com/doi/full/10.1080/14683849.2016.1138287"
@@ -1540,7 +1716,12 @@
     ]
    }
   ],
-  "links": []
+  "links": [
+   {
+    "label": "2024 Annual Ownership Report of State Owned Enterprises",
+    "url": "https://ms.hmb.gov.tr/uploads/sites/2/2025/11/KIR_2024-Ingilizce-23e165f1fda6113b.pdf"
+   }
+  ]
  },
  "uatv.ua": {
   "kind": "State foreign-broadcasting channel",
@@ -1606,6 +1787,327 @@
       "url": "https://www.telegraph.co.uk/columnists/2023/12/06/uae-media-the-national-abu-dhabi-human-rights/"
      }
     ]
+   }
+  ]
+ },
+ "pagesix.com": {
+  "kind": "Celebrity and entertainment news vertical",
+  "properties": [
+   "New York Post / NYP Holdings",
+   "gossip-column origins",
+   "celebrity, entertainment and lifestyle coverage"
+  ],
+  "watch": [
+   "Page Six belongs to the New York Post publishing operation, not Fox News",
+   "Celebrity and PR-driven sourcing incentives differ from those in conventional hard-news reporting"
+  ],
+  "links": [
+   {
+    "label": "Page Six ownership statement",
+    "url": "https://pagesix.com/about-page-six/"
+   },
+   {
+    "label": "News Corp 2025 Form 10-K",
+    "url": "https://www.sec.gov/Archives/edgar/data/1564708/000156470825000419/nws-20250630.htm"
+   }
+  ]
+ },
+ "fox2now.com": {
+  "kind": "Fox-affiliated local television station site",
+  "properties": [
+   "KTVI in the St Louis market",
+   "Nexstar Media Group ownership",
+   "Fox network affiliation",
+   "local news operation"
+  ],
+  "watch": [
+   "Network affiliation is not ownership: this is a Nexstar-owned local station, not Fox News Channel",
+   "Fox branding does not make national Fox News opinion evidence about the quality of the station\u2019s local reporting"
+  ],
+  "links": [
+   {
+    "label": "Nexstar station directory",
+    "url": "https://www.nexstar.tv/stations/"
+   },
+   {
+    "label": "Fox Corporation\u2019s owned-stations business",
+    "url": "https://www.foxcorporation.com/businesses/fox-television-stations/"
+   }
+  ]
+ },
+ "fox40.com": {
+  "kind": "Fox-affiliated local television station site",
+  "properties": [
+   "KTXL in the Sacramento market",
+   "Nexstar Media Group ownership",
+   "Fox network affiliation",
+   "local news operation"
+  ],
+  "watch": [
+   "Network affiliation is not ownership: this is a Nexstar-owned local station, not Fox News Channel",
+   "Fox branding does not make national Fox News opinion evidence about the quality of the station\u2019s local reporting"
+  ],
+  "links": [
+   {
+    "label": "Nexstar station directory",
+    "url": "https://www.nexstar.tv/stations/"
+   },
+   {
+    "label": "Fox Corporation\u2019s owned-stations business",
+    "url": "https://www.foxcorporation.com/businesses/fox-television-stations/"
+   }
+  ]
+ },
+ "fox59.com": {
+  "kind": "Fox-affiliated local television station site",
+  "properties": [
+   "WXIN in the Indianapolis market",
+   "Nexstar Media Group ownership",
+   "Fox network affiliation",
+   "local news operation"
+  ],
+  "watch": [
+   "Network affiliation is not ownership: this is a Nexstar-owned local station, not Fox News Channel",
+   "Fox branding does not make national Fox News opinion evidence about the quality of the station\u2019s local reporting"
+  ],
+  "links": [
+   {
+    "label": "Nexstar station directory",
+    "url": "https://www.nexstar.tv/stations/"
+   },
+   {
+    "label": "Fox Corporation\u2019s owned-stations business",
+    "url": "https://www.foxcorporation.com/businesses/fox-television-stations/"
+   }
+  ]
+ },
+ "fox5sandiego.com": {
+  "kind": "Fox-affiliated local television station site",
+  "properties": [
+   "KSWB in the San Diego market",
+   "Nexstar Media Group ownership",
+   "Fox network affiliation",
+   "local news operation"
+  ],
+  "watch": [
+   "Network affiliation is not ownership: this is a Nexstar-owned local station, not Fox News Channel",
+   "Fox branding does not make national Fox News opinion evidence about the quality of the station\u2019s local reporting"
+  ],
+  "links": [
+   {
+    "label": "Nexstar station directory",
+    "url": "https://www.nexstar.tv/stations/"
+   },
+   {
+    "label": "Fox Corporation\u2019s owned-stations business",
+    "url": "https://www.foxcorporation.com/businesses/fox-television-stations/"
+   }
+  ]
+ },
+ "sciencedaily.com": {
+  "kind": "Institutional research-release republisher",
+  "properties": [
+   "selects science press material from universities, journals and research organisations",
+   "light-touch editing of supplied releases",
+   "links to source institutions and journal citations"
+  ],
+  "model": "ScienceDaily\u2019s editorial policy says it usually works with institutional public information officers, tries not to make substantial edits to original news releases, and routinely rewrites headlines and summaries. Its core value is selection, organisation and discovery rather than independent reporting.",
+  "watch": [
+   "Useful as a research-discovery surface, but not equivalent to independently reported science journalism",
+   "Institutional press offices have promotional incentives, and release-borne causal or practical overclaiming can survive light editing",
+   "Follow the cited paper and issuing institution before treating a claim as corroborated"
+  ],
+  "links": [
+   {
+    "label": "ScienceDaily editorial policy",
+    "url": "https://www.sciencedaily.com/editorial.htm"
+   },
+   {
+    "label": "ScienceDaily about page",
+    "url": "https://www.sciencedaily.com/about.htm"
+   },
+   {
+    "label": "BMJ study on exaggeration in academic press releases",
+    "url": "https://www.bmj.com/content/349/bmj.g7015"
+   },
+   {
+    "label": "Physics Today on ScienceDaily\u2019s minimal repackaging",
+    "url": "https://physicstoday.aip.org/opinion/does-it-matter-that-sciencedaily-republishes-press-releases"
+   },
+   {
+    "label": "Systematic review of churnalism research",
+    "url": "https://academic.oup.com/anncom/article/49/4/257/8228546"
+   }
+  ],
+  "flags": [
+   {
+    "label": "Lightly edited institutional press material",
+    "note": "ScienceDaily\u2019s own editorial policy says it normally works with institutional public information officers, tries not to make substantive edits to submitted releases, and routinely rewrites headlines and summaries. That makes much of the output repackaged institutional communication rather than independently verified science journalism. This is a weakness in verification and accountability, not proof that any individual article is false.",
+    "links": [
+     {
+      "label": "ScienceDaily editorial policy",
+      "url": "https://www.sciencedaily.com/editorial.htm"
+     },
+     {
+      "label": "ScienceDaily about page",
+      "url": "https://www.sciencedaily.com/about.htm"
+     },
+     {
+      "label": "BMJ: exaggeration in press releases is associated with exaggerated news",
+      "url": "https://www.bmj.com/content/349/bmj.g7015"
+     },
+     {
+      "label": "Physics Today on ScienceDaily\u2019s minimal repackaging",
+      "url": "https://physicstoday.aip.org/opinion/does-it-matter-that-sciencedaily-republishes-press-releases"
+     }
+    ]
+   }
+  ]
+ },
+ "futurity.org": {
+  "kind": "University research-news syndication service",
+  "properties": [
+   "content supplied by member universities",
+   "editorially optimised institutional research stories",
+   "science, health, environment and society coverage"
+  ],
+  "model": "Futurity says it posts and amplifies content submitted by university partners, with editors optimising submissions for readers. Columbia Journalism Review described the founding model as edited university press releases and stories written by member schools, lightly edited without additional reporting.",
+  "watch": [
+   "A direct university channel can be useful primary material, but it is not independent scrutiny of the university\u2019s claims",
+   "Member institutions both support the service and supply the research stories, so selection and framing have promotional incentives",
+   "Check whether the linked paper is peer-reviewed, a preprint, or an institutional summary"
+  ],
+  "links": [
+   {
+    "label": "Futurity about page",
+    "url": "https://www.futurity.org/about/"
+   },
+   {
+    "label": "Columbia Journalism Review on the launch model",
+    "url": "https://www.cjr.org/the_news_frontier/is_futurity_the_future.php"
+   },
+   {
+    "label": "Inside Higher Ed on Futurity aggregation",
+    "url": "https://www.insidehighered.com/news/2011/10/10/hello-aggregator"
+   }
+  ],
+  "flags": [
+   {
+    "label": "University-supplied research promotion",
+    "note": "Futurity posts and amplifies content submitted by member universities. Its own description and reporting about its launch indicate light editing rather than additional independent reporting. That does not make the underlying research weak, but it does mean the service should be treated as institutional research communication rather than independent science journalism.",
+    "links": [
+     {
+      "label": "Futurity on how the service works",
+      "url": "https://www.futurity.org/about/"
+     },
+     {
+      "label": "Columbia Journalism Review on edited university releases",
+      "url": "https://www.cjr.org/the_news_frontier/is_futurity_the_future.php"
+     },
+     {
+      "label": "Inside Higher Ed on university-supplied content",
+      "url": "https://www.insidehighered.com/news/2011/10/10/hello-aggregator"
+     }
+    ]
+   }
+  ]
+ },
+ "sci.news": {
+  "kind": "Popular science news site",
+  "properties": [
+   "small international team of science editors and reporters",
+   "daily study-led coverage",
+   "astronomy, archaeology, palaeontology, biology, physics and medicine"
+  ],
+  "watch": [
+   "Useful for concise study discovery, but coverage is often close to the paper or institutional announcement cycle",
+   "A short report of one study is not independent corroboration of the result"
+  ],
+  "links": [
+   {
+    "label": "Sci.News about page",
+    "url": "https://www.sci.news/about-us"
+   }
+  ]
+ },
+ "zmescience.com": {
+  "kind": "Popular science news site",
+  "properties": [
+   "staff-written science journalism and explainers",
+   "broad science, health, environment and technology coverage",
+   "web-native accessible format"
+  ],
+  "watch": [
+   "Readable synthesis can still compress methodological caveats from the underlying paper",
+   "Check whether a report is based on a peer-reviewed paper, preprint, conference claim or institutional announcement"
+  ],
+  "links": [
+   {
+    "label": "ZME Science about page",
+    "url": "https://www.zmescience.com/about/"
+   },
+   {
+    "label": "ZME Science editorial policy",
+    "url": "https://www.zmescience.com/editorial-policy/"
+   }
+  ]
+ },
+ "livescience.com": {
+  "kind": "Popular science magazine and news site",
+  "properties": [
+   "Future plc science portfolio",
+   "staff-written science news, explainers and features",
+   "broad consumer-science audience"
+  ],
+  "watch": [
+   "Editorially produced popular science is different from both institutional release republishing and peer-reviewed journals",
+   "News-cycle compression still makes it worth checking the underlying paper for caveats"
+  ]
+ },
+ "scientificamerican.com": {
+  "kind": "Science magazine",
+  "properties": [
+   "long-form science journalism and commentary",
+   "Springer Nature portfolio",
+   "staff and expert-contributed content"
+  ],
+  "watch": [
+   "Magazine reporting, expert opinion and peer-reviewed research are different evidence classes",
+   "Expert authorship can add depth while also carrying the author\u2019s interpretive perspective"
+  ]
+ },
+ "sciencenews.org": {
+  "kind": "Science news magazine",
+  "properties": [
+   "Society for Science publication",
+   "staff science journalism",
+   "news, explainers and long-form coverage"
+  ],
+  "watch": [
+   "Independent science journalism about research is not itself peer-reviewed research",
+   "Its editorial model is stronger evidence of independent selection than release-republish services, but single-study caveats still apply"
+  ]
+ },
+ "sciencebasedmedicine.org": {
+  "kind": "Medical science criticism and commentary publication",
+  "properties": [
+   "New England Skeptical Society",
+   "physician and expert contributors",
+   "critical evaluation of medical claims"
+  ],
+  "leaning": "Explicitly pro-evidence and sceptical of pseudoscience; its mission is evaluative commentary rather than neutral news aggregation.",
+  "watch": [
+   "A critical perspective can be valuable precisely because it is not neutral stenography",
+   "Editorial posts and evidence reviews should be read as expert argument, with their references checked like any other claim"
+  ],
+  "links": [
+   {
+    "label": "About Science-Based Medicine",
+    "url": "https://sciencebasedmedicine.org/about-science-based-medicine/"
+   },
+   {
+    "label": "SBM editorial policy",
+    "url": "https://sciencebasedmedicine.org/editorial-policy/"
    }
   ]
  }

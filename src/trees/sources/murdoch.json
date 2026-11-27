@@ -1,52 +1,51 @@
 {
   "id": "murdoch",
-  "label": "Fox / News Corp",
+  "label": "Murdoch-family media",
   "icon": "nypost.com",
   "children": [
     {
-      "id": "fox",
-      "label": "Fox",
+      "id": "fox-corporation",
+      "label": "Fox Corporation",
       "icon": "foxnews.com",
-      "sources": [
-        "foxnews.com",
-        "foxbusiness.com",
-        "foxsports.com",
-        "foxnation.com",
-        "fox2now.com",
-        "fox4news.com",
-        "fox5atlanta.com",
-        "fox5dc.com",
-        "fox5ny.com",
-        "fox5sandiego.com",
-        "fox5vegas.com",
-        "fox6now.com",
-        "fox7austin.com",
-        "fox8live.com",
-        "fox9.com",
-        "fox10phoenix.com",
-        "fox11online.com",
-        "fox12oregon.com",
-        "fox13news.com",
-        "fox13memphis.com",
-        "fox14tv.com",
-        "fox16.com",
-        "fox17.com",
-        "fox19.com",
-        "fox21online.com",
-        "fox23maine.com",
-        "fox25boston.com",
-        "fox26houston.com",
-        "fox28media.com",
-        "fox29.com",
-        "fox30jax.com",
-        "fox32chicago.com",
-        "fox35orlando.com",
-        "fox40.com",
-        "fox43.com",
-        "fox44.com",
-        "fox46charlotte.com",
-        "fox47news.com",
-        "fox59.com"
+      "children": [
+        {
+          "id": "fox-news-media",
+          "label": "Fox News Media",
+          "icon": "foxnews.com",
+          "sources": [
+            "foxnews.com",
+            "foxbusiness.com",
+            "foxnation.com"
+          ]
+        },
+        {
+          "id": "fox-sports",
+          "label": "Fox Sports",
+          "icon": "foxsports.com",
+          "sources": [
+            "foxsports.com"
+          ]
+        },
+        {
+          "id": "fox-television-stations",
+          "label": "Fox Television Stations",
+          "icon": "fox5ny.com",
+          "sources": [
+            "fox4news.com",
+            "fox5atlanta.com",
+            "fox5dc.com",
+            "fox5ny.com",
+            "fox6now.com",
+            "fox7austin.com",
+            "fox9.com",
+            "fox10phoenix.com",
+            "fox13news.com",
+            "fox26houston.com",
+            "fox29.com",
+            "fox32chicago.com",
+            "fox35orlando.com"
+          ]
+        }
       ]
     },
     {

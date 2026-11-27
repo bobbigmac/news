@@ -5,6 +5,8 @@ dist/
 news/
 logs_*.zip
 logs_extracted/.venv/
+.venv/
+.working/
 
 # Generated files left behind by the old docs/ build output
 docs/assets/

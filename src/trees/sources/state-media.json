@@ -1,66 +1,94 @@
 {
  "id": "state-media",
- "label": "Nationalist & State Media",
+ "label": "State-Controlled & State-Linked Media",
  "icon": "tass.com",
  "children": [
   {
-   "id": "russia-state-media",
-   "label": "Russian State Media",
+   "id": "direct-state-control",
+   "label": "Direct State & Party Control",
    "icon": "rt-english.com",
-   "sources": [
-    "rt-english.com",
-    "tass.com"
+   "children": [
+    {
+     "id": "russia-state-controlled",
+     "label": "Russian State-Controlled Media",
+     "icon": "rt-english.com",
+     "sources": [
+      "rt-english.com",
+      "tass.com"
+     ]
+    },
+    {
+     "id": "china-party-controlled",
+     "label": "Chinese Party-Controlled Media",
+     "icon": "news.cgtn.com",
+     "sources": [
+      "news.cgtn.com",
+      "cgtn.com",
+      "globaltimes.cn"
+     ]
+    },
+    {
+     "id": "belarus-state-controlled",
+     "label": "Belarusian State-Controlled Media",
+     "icon": "eng.belta.by",
+     "sources": [
+      "eng.belta.by"
+     ]
+    },
+    {
+     "id": "cuba-state-controlled",
+     "label": "Cuban State-Controlled Media",
+     "icon": "prensa-latina.cu",
+     "sources": [
+      "prensa-latina.cu"
+     ]
+    },
+    {
+     "id": "turkey-state-controlled-broadcasting",
+     "label": "Turkish State-Controlled Broadcasting",
+     "icon": "trtworld.com",
+     "sources": [
+      "trtworld.com"
+     ]
+    },
+    {
+     "id": "ukraine-state-directed-broadcasting",
+     "label": "Ukrainian State-Directed Broadcasting",
+     "icon": "uatv.ua",
+     "sources": [
+      "uatv.ua"
+     ]
+    }
    ]
   },
   {
-   "id": "china-state-media",
-   "label": "Chinese State Media",
-   "icon": "news.cgtn.com",
-   "sources": [
-    "news.cgtn.com",
-    "cgtn.com",
-    "globaltimes.cn"
+   "id": "state-linked-agencies",
+   "label": "State-Linked Agencies",
+   "icon": "aa.com.tr",
+   "children": [
+    {
+     "id": "turkey-state-linked-wire",
+     "label": "Turkish State-Linked Wire",
+     "icon": "aa.com.tr",
+     "sources": [
+      "aa.com.tr"
+     ]
+    }
    ]
   },
   {
-   "id": "turkey-state-media",
-   "label": "Turkish State Media",
-   "icon": "trtworld.com",
-   "sources": [
-    "trtworld.com",
-    "aa.com.tr"
-   ]
-  },
-  {
-   "id": "belarus-state-media",
-   "label": "Belarusian State Media",
-   "icon": "eng.belta.by",
-   "sources": [
-    "eng.belta.by"
-   ]
-  },
-  {
-   "id": "cuba-state-media",
-   "label": "Cuban State Media",
-   "icon": "prensa-latina.cu",
-   "sources": [
-    "prensa-latina.cu"
-   ]
-  },
-  {
-   "id": "ukraine-state-media",
-   "label": "Ukrainian State Media",
-   "icon": "uatv.ua",
-   "sources": [
-    "uatv.ua"
-   ]
-  },
-  {
-   "id": "qatar-state-media",
-   "label": "Qatari State Media",
+   "id": "state-funded-networks",
+   "label": "State-Funded Networks",
    "icon": "aljazeera.com",
-   "sources": [
-    "aljazeera.com"
+   "children": [
+    {
+     "id": "qatar-state-funded-network",
+     "label": "Qatari State-Funded Network",
+     "icon": "aljazeera.com",
+     "sources": [
+      "aljazeera.com"
+     ]
+    }
    ]
   }
  ]

@@ -1,0 +1,379 @@
+{
+  "zip": "/mnt/data/source_analysis/source-headlines-2026-11-27.zip",
+  "headline_rows": 11461,
+  "sources": 695,
+  "exact_duplicate_headline_rows": 45,
+  "cross_source_near_duplicate_title_rows": 176,
+  "sources_ranked_n_ge_20": 74,
+  "sources_n_ge_50": 28,
+  "sources_n_ge_100": 14,
+  "sources_lt_20": 621,
+  "nmf_topics": 22,
+  "value_signal_count": 11,
+  "delivery_signal_count": 9,
+  "radar_axis_count": 12,
+  "overall_axis_rates": {
+    "event_clarity": 0.49995637378937263,
+    "quantified_specificity": 0.12433470028793299,
+    "time_place_anchor": 0.2295611203210889,
+    "causal_explanation": 0.034988220923130614,
+    "material_consequence": 0.23017188726987173,
+    "evidence_provenance": 0.06011691824448129,
+    "context_comparison": 0.06962743216124248,
+    "explanatory_framing": 0.0239944158450397,
+    "original_reporting_signal": 0.007503708227903324,
+    "cross_source_title_echo": 0.015356426140825408,
+    "curiosity_bait_incidence": 0.0451967542099293,
+    "sensational_personal_incidence": 0.027833522380246056
+  },
+  "overall_stored_feature_means": {
+    "event_clarity": 0.49995637378937263,
+    "quantified_specificity": 0.12433470028793299,
+    "time_place_anchor": 0.2295611203210889,
+    "causal_explanation": 0.034988220923130614,
+    "material_consequence": 0.23017188726987173,
+    "evidence_provenance": 0.06011691824448129,
+    "context_comparison": 0.06962743216124248,
+    "explanatory_framing": 0.0239944158450397,
+    "original_reporting_signal": 0.007503708227903324,
+    "cross_source_title_echo": 0.015356426140825408,
+    "low_curiosity_bait": 0.9548032457900707,
+    "low_sensational_personal": 0.9721664776197539
+  },
+  "top_15": [
+    {
+      "rank": 1.0,
+      "source": "Wccftech",
+      "n": 27,
+      "topic_adjusted_value_index": 62.278406502945,
+      "raw_title_signal_index": 34.68013468013468
+    },
+    {
+      "rank": 2.0,
+      "source": "Jerusalem Post",
+      "n": 68,
+      "topic_adjusted_value_index": 59.920949553459955,
+      "raw_title_signal_index": 34.893048128342244
+    },
+    {
+      "rank": 3.0,
+      "source": "The Guardian",
+      "n": 485,
+      "topic_adjusted_value_index": 59.059389073732746,
+      "raw_title_signal_index": 31.4526710402999
+    },
+    {
+      "rank": 4.0,
+      "source": "TweakTown",
+      "n": 46,
+      "topic_adjusted_value_index": 58.769202861995545,
+      "raw_title_signal_index": 31.027667984189723
+    },
+    {
+      "rank": 5.0,
+      "source": "Reddit",
+      "n": 40,
+      "topic_adjusted_value_index": 57.83532544656808,
+      "raw_title_signal_index": 25.90909090909091
+    },
+    {
+      "rank": 6.0,
+      "source": "South China Morning Post",
+      "n": 25,
+      "topic_adjusted_value_index": 57.669912405973534,
+      "raw_title_signal_index": 37.09090909090909
+    },
+    {
+      "rank": 7.0,
+      "source": "PBS",
+      "n": 20,
+      "topic_adjusted_value_index": 57.25921742464686,
+      "raw_title_signal_index": 33.63636363636363
+    },
+    {
+      "rank": 8.0,
+      "source": "MyJoyOnline",
+      "n": 28,
+      "topic_adjusted_value_index": 56.556166341158246,
+      "raw_title_signal_index": 36.36363636363637
+    },
+    {
+      "rank": 9.0,
+      "source": "PsyPost",
+      "n": 28,
+      "topic_adjusted_value_index": 56.08200870455485,
+      "raw_title_signal_index": 31.493506493506494
+    },
+    {
+      "rank": 10.0,
+      "source": "Eurogamer",
+      "n": 458,
+      "topic_adjusted_value_index": 55.87222023316976,
+      "raw_title_signal_index": 29.515680825724495
+    },
+    {
+      "rank": 11.0,
+      "source": "Medical Xpress",
+      "n": 127,
+      "topic_adjusted_value_index": 55.69850202156811,
+      "raw_title_signal_index": 30.13600572655691
+    },
+    {
+      "rank": 12.0,
+      "source": "Indiatimes",
+      "n": 20,
+      "topic_adjusted_value_index": 54.95755554805436,
+      "raw_title_signal_index": 35.45454545454545
+    },
+    {
+      "rank": 13.0,
+      "source": "This is Money",
+      "n": 81,
+      "topic_adjusted_value_index": 54.501610074058746,
+      "raw_title_signal_index": 32.435465768799105
+    },
+    {
+      "rank": 14.0,
+      "source": "Quartz",
+      "n": 24,
+      "topic_adjusted_value_index": 54.317073796628755,
+      "raw_title_signal_index": 35.984848484848484
+    },
+    {
+      "rank": 15.0,
+      "source": "Qatar Tribune",
+      "n": 28,
+      "topic_adjusted_value_index": 53.49563316246247,
+      "raw_title_signal_index": 33.44155844155844
+    }
+  ],
+  "bottom_15": [
+    {
+      "rank": 74.0,
+      "source": "Daily Mail",
+      "n": 350,
+      "topic_adjusted_value_index": 37.82711240871778,
+      "raw_title_signal_index": 25.66233766233766
+    },
+    {
+      "rank": 73.0,
+      "source": "Handelsblatt",
+      "n": 55,
+      "topic_adjusted_value_index": 40.52156492033316,
+      "raw_title_signal_index": 24.793388429752067
+    },
+    {
+      "rank": 72.0,
+      "source": "Oregonlive",
+      "n": 29,
+      "topic_adjusted_value_index": 40.895295490318425,
+      "raw_title_signal_index": 28.213166144200624
+    },
+    {
+      "rank": 71.0,
+      "source": "Engadget",
+      "n": 21,
+      "topic_adjusted_value_index": 41.73679462368112,
+      "raw_title_signal_index": 19.480519480519483
+    },
+    {
+      "rank": 70.0,
+      "source": "Kotaku",
+      "n": 671,
+      "topic_adjusted_value_index": 41.86230757503828,
+      "raw_title_signal_index": 25.07790272320824
+    },
+    {
+      "rank": 69.0,
+      "source": "ABC News",
+      "n": 38,
+      "topic_adjusted_value_index": 43.08922980433169,
+      "raw_title_signal_index": 25.837320574162682
+    },
+    {
+      "rank": 68.0,
+      "source": "Business Recorder",
+      "n": 70,
+      "topic_adjusted_value_index": 43.26400823987464,
+      "raw_title_signal_index": 26.10389610389611
+    },
+    {
+      "rank": 67.0,
+      "source": "Mirror",
+      "n": 133,
+      "topic_adjusted_value_index": 43.60133806495436,
+      "raw_title_signal_index": 27.8879015721121
+    },
+    {
+      "rank": 66.0,
+      "source": "Punch",
+      "n": 348,
+      "topic_adjusted_value_index": 44.241460043487194,
+      "raw_title_signal_index": 28.474399164054336
+    },
+    {
+      "rank": 65.0,
+      "source": "GameSpot",
+      "n": 56,
+      "topic_adjusted_value_index": 45.35559397101295,
+      "raw_title_signal_index": 25.97402597402597
+    },
+    {
+      "rank": 64.0,
+      "source": "MarketBeat",
+      "n": 37,
+      "topic_adjusted_value_index": 45.945006411768134,
+      "raw_title_signal_index": 31.695331695331692
+    },
+    {
+      "rank": 63.0,
+      "source": "Business Day",
+      "n": 31,
+      "topic_adjusted_value_index": 46.07000961630887,
+      "raw_title_signal_index": 27.272727272727277
+    },
+    {
+      "rank": 62.0,
+      "source": "Notebookcheck",
+      "n": 61,
+      "topic_adjusted_value_index": 46.12976778143019,
+      "raw_title_signal_index": 25.78241430700447
+    },
+    {
+      "rank": 61.0,
+      "source": "Daily Maverick",
+      "n": 29,
+      "topic_adjusted_value_index": 46.16897125742746,
+      "raw_title_signal_index": 26.64576802507837
+    },
+    {
+      "rank": 60.0,
+      "source": "The Verge",
+      "n": 35,
+      "topic_adjusted_value_index": 46.23598880298627,
+      "raw_title_signal_index": 26.75324675324675
+    }
+  ],
+  "largest_sources": [
+    {
+      "source": "BBC",
+      "n": 3537,
+      "group": "Public And International",
+      "topic_adjusted_value_index": 49.647758242039615
+    },
+    {
+      "source": "Kotaku",
+      "n": 671,
+      "group": "Specialist Press",
+      "topic_adjusted_value_index": 41.86230757503828
+    },
+    {
+      "source": "The Guardian",
+      "n": 485,
+      "group": "Uk Media",
+      "topic_adjusted_value_index": 59.059389073732746
+    },
+    {
+      "source": "Eurogamer",
+      "n": 458,
+      "group": "Specialist Press",
+      "topic_adjusted_value_index": 55.87222023316976
+    },
+    {
+      "source": "Daily Mail",
+      "n": 350,
+      "group": "Uk Media",
+      "topic_adjusted_value_index": 37.82711240871778
+    },
+    {
+      "source": "Punch",
+      "n": 348,
+      "group": "Regional English Media",
+      "topic_adjusted_value_index": 44.241460043487194
+    },
+    {
+      "source": "The Independent",
+      "n": 246,
+      "group": "Uk Media",
+      "topic_adjusted_value_index": 51.5522249212358
+    },
+    {
+      "source": "Phys.org",
+      "n": 190,
+      "group": "Specialist Press",
+      "topic_adjusted_value_index": 52.56275937169934
+    },
+    {
+      "source": "City A.M.",
+      "n": 173,
+      "group": "Specialist Press",
+      "topic_adjusted_value_index": 50.39973138178492
+    },
+    {
+      "source": "Mirror",
+      "n": 133,
+      "group": "Uk Media",
+      "topic_adjusted_value_index": 43.60133806495436
+    },
+    {
+      "source": "Medical Xpress",
+      "n": 127,
+      "group": "Specialist Press",
+      "topic_adjusted_value_index": 55.69850202156811
+    },
+    {
+      "source": "IGN",
+      "n": 125,
+      "group": "Specialist Press",
+      "topic_adjusted_value_index": 48.52355808374449
+    },
+    {
+      "source": "Korea Times",
+      "n": 123,
+      "group": "Regional English Media",
+      "topic_adjusted_value_index": 48.912825780831625
+    },
+    {
+      "source": "Financial Times",
+      "n": 116,
+      "group": "Specialist Press",
+      "topic_adjusted_value_index": 51.630704639892066
+    },
+    {
+      "source": "Evening Standard",
+      "n": 92,
+      "group": "Uk Media",
+      "topic_adjusted_value_index": 49.86146907286609
+    },
+    {
+      "source": "This is Money",
+      "n": 81,
+      "group": "Uk Media",
+      "topic_adjusted_value_index": 54.501610074058746
+    },
+    {
+      "source": "Metro",
+      "n": 73,
+      "group": "Uk Media",
+      "topic_adjusted_value_index": 49.10186249619637
+    },
+    {
+      "source": "Business Recorder",
+      "n": 70,
+      "group": "Specialist Press",
+      "topic_adjusted_value_index": 43.26400823987464
+    },
+    {
+      "source": "Jerusalem Post",
+      "n": 68,
+      "group": "Regional English Media",
+      "topic_adjusted_value_index": 59.920949553459955
+    },
+    {
+      "source": "Notebookcheck",
+      "n": 61,
+      "group": "Specialist Press",
+      "topic_adjusted_value_index": 46.12976778143019
+    }
+  ]
+}

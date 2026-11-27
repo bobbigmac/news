@@ -4,8 +4,8 @@ session_id: absorbed-garment
 session_title: "Add Source Filters and Mark Read Top Bar; Audit Feed Sources and Recent Runs"
 cwd: /home/bobbigmac/projects/bobdavies/news
 created: 2026-11-26 00:33:29 UTC
-last_activity: 2026-11-26 15:34:54 UTC
-entries: 147
+last_activity: 2026-11-26 15:48:46 UTC
+entries: 160
 ---
 
 # add-source-filters-and-mark-read-top-bar-audit-feed-sources-
@@ -1136,6 +1136,113 @@ via the github api, can you see why our build actions are SO slow? is it just th
 ### 2026-11-26 15:34:54 UTC
 
 fucking commit stuff please, I told you already I'm knackered
+
+---
+
+<!-- r:0 m:hook:449ffb03-ad90-47e1-984a-4c990d1a449e h:c4c8eb35 -->
+### 2026-11-26 15:39:40 UTC
+
+okay good, yes we designed these slow-walls intentionally to not swamp (and expect openrouter free to be slow anyway). Do we have ANY way to say for commit-induced (not scheduled runs) to skip the new-news getting, and just ship the updated code? Like presumably ALL pushes do a FULL-everything run, but for code-based changes, we don't want to rehit all endpoints anyway cos we designed our entire system around 3-runs a day
+
+---
+
+<!-- r:0 m:hook:1343ed8f-c61c-443d-9224-d75f5f345ab1 h:06d16d60 -->
+### 2026-11-26 15:43:28 UTC
+
+"Good News! Well, some of it is." is missing the is. in the opengraph image
+
+---
+
+<!-- r:0 m:hook:24ad40ba-fd60-4ce0-990b-b06b6df7cd4f h:d3e59211 -->
+### 2026-11-26 15:46:44 UTC
+
+Triggered via push 1 minute ago
+[bobbigmac](https://github.com/bobbigmac)
+pushed [8a3821d](https://github.com/bobbigmac/news/commit/8a3821d493beba99e204073980fb4f86e4ff0a7d)
+[main](https://github.com/bobbigmac/news/tree/refs/heads/main)
+StatusFailure
+Total duration[57s](https://github.com/bobbigmac/news/actions/runs/45852241243/usage)
+Artifacts[1](https://github.com/bobbigmac/news/actions/runs/45852241243#artifacts)
+Annotations
+3 errors and 1 warning
+[build](https://github.com/bobbigmac/news/actions/runs/45852241243/job/140021312528#step:13:22)
+Error: No artifacts named "github-pages" were found for this workflow run. Ensure artifacts are uploaded with actions/upload-artifact@v4 or later.
+[build](https://github.com/bobbigmac/news/actions/runs/45852241243/job/140021312528#step:13:17)
+Error: No artifacts named "github-pages" were found for this workflow run. Ensure artifacts are uploaded with actions/upload-artifact@v4 or later. at getArtifactMetadata (/home/runner/work/_actions/actions/deploy-pages/v4/src/internal/api-client.js:85:1) at processTicksAndRejections (node:internal/process/task_queues:104:5) at Deployment.create (/home/runner/work/_actions/actions/deploy-pages/v4/src/internal/deployment.js:66:1) at main (/home/runner/work/_actions/actions/deploy-pages/v4/src/index.js:30:1)
+[build](https://github.com/bobbigmac/news/actions/runs/45852241243/job/140021312528#step:13:16)
+Fetching artifact metadata failed. Is githubstatus.com reporting issues with API requests, Pages, or Actions? Please re-run the deployment at a later time.
+[build](https://github.com/bobbigmac/news/actions/runs/45852241243/job/140021312528#step:27:4)
+Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/configure-pages@v5, actions/deploy-pages@v4, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+
+---
+
+<!-- r:19285452 m:05568730-894d-4bb8-a38c-03bfc6180618 h:60a35273 -->
+### [node 3013] 2026-11-26 15:48:44 UTC
+
+unhydrated can't be glimpsed
+
+---
+
+<!-- r:19285485 m:2739779a-3dfa-44f6-b383-dd985c6bb910 h:66b31946 -->
+### [node 3046] 2026-11-26 15:48:44 UTC
+
+Don't fuck with my layout
+
+---
+
+<!-- r:19285496 m:80b2f27a-809d-4b44-906c-61677ab6709f h:818b8266 -->
+### [node 3057] 2026-11-26 15:48:44 UTC
+
+DO NOT FUCKING FUCK WITH MY FUCKING LAYOUT
+
+---
+
+<!-- r:19285531 m:04b92f29-3999-43e2-bd1a-035af4b00203 h:bbe06bd7 -->
+### [node 3092] 2026-11-26 15:48:44 UTC
+
+isn't this a VERY common fucking pattern?
+
+---
+
+<!-- r:19290707 m:150e98c1-ddf9-469a-b0a0-47bdc6ca20d7 h:2762a96a -->
+### [node 8268] 2026-11-26 15:48:45 UTC
+
+article panels are still fixed height. WHY?
+
+---
+
+<!-- r:19290850 m:d8fcee22-ea0a-4745-9e0c-5c68be390292 h:9f93a89c -->
+### [node 8411] 2026-11-26 15:48:45 UTC
+
+I fucking hate fallbacks
+
+---
+
+<!-- r:19290985 m:1ea4c1ce-6d59-49ec-a4df-16c36b6415e2 h:213db619 -->
+### [node 8546] 2026-11-26 15:48:45 UTC
+
+okay I rebuilt and rerun dev
+
+---
+
+<!-- r:19291291 m:4592407e-0304-4216-b91d-a634d03353a7 h:eb5c1057 -->
+### [node 8852] 2026-11-26 15:48:46 UTC
+
+no fucking padding please, I said 
+
+---
+
+<!-- r:19291332 m:b2ea9daf-3dd4-435d-a18a-0263f230d5da h:4579de4f -->
+### [node 8893] 2026-11-26 15:48:46 UTC
+
+icons STILL have fucking padding
+
+---
+
+<!-- r:19291504 m:2eb22cc8-3eb7-4872-a1e4-472af46bd471 h:facca64c -->
+### [node 9065] 2026-11-26 15:48:46 UTC
+
+potrace didn't quite get it, weird streaks. 
 
 ---
 

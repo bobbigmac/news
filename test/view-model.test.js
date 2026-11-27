@@ -139,7 +139,7 @@ describe('buildViewModel', () => {
     const model = buildViewModel({ clusters, settings: settings() });
     const murdoch = model.sourceOptions.find(source => source.sourceKeys?.includes('foxnews.com'));
     expect(murdoch).toMatchObject({
-      label: 'Fox / News Corp',
+      label: 'Murdoch-family media',
       count: 2,
       sourceCount: 2,
       grouped: true,

@@ -206,7 +206,11 @@
             "wpix.com",
             "newsnationnow.com",
             "cw33.com",
-            "kron4.com"
+            "kron4.com",
+            "fox2now.com",
+            "fox40.com",
+            "fox59.com",
+            "fox5sandiego.com"
           ]
         },
         {
@@ -290,6 +294,35 @@
             "roanoke.com",
             "nwitimes.com",
             "wacotrib.com"
+          ]
+        },
+        {
+          "id": "fox-affiliated-local",
+          "label": "Fox-affiliated Local Stations",
+          "icon": "fox5ny.com",
+          "sources": [
+            "fox2now.com",
+            "fox5sandiego.com",
+            "fox5vegas.com",
+            "fox8live.com",
+            "fox11online.com",
+            "fox12oregon.com",
+            "fox13memphis.com",
+            "fox14tv.com",
+            "fox16.com",
+            "fox17.com",
+            "fox19.com",
+            "fox21online.com",
+            "fox23maine.com",
+            "fox25boston.com",
+            "fox28media.com",
+            "fox30jax.com",
+            "fox40.com",
+            "fox43.com",
+            "fox44.com",
+            "fox46charlotte.com",
+            "fox47news.com",
+            "fox59.com"
           ]
         }
       ]

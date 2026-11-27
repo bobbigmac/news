@@ -15,19 +15,24 @@
   ]
  },
  "murdoch": {
-  "summary": "News Corp/Fox branches share corporate infrastructure and recurring talent pipelines, but their titles have different formats, regulators, and audience contracts. The Sun is not treated as interchangeable with The Times or the Wall Street Journal.",
+  "summary": "Murdoch-family media spans two separate publicly traded companies: Fox Corporation and News Corp, separated in 2013. Shared family control and history are important context, but they are not the same thing as common corporate ownership or a single newsroom.",
   "watch": [
-   "News Corp and Fox Corporation are related by Murdoch-family control but are separate listed companies",
-   "News, comment, TV opinion, and tabloid formats carry different editorial cultures"
+   "Fox News and the New York Post sit in different listed companies",
+   "Page Six belongs to the New York Post publishing operation, not Fox News",
+   "News, comment, TV opinion, local TV and tabloid formats carry different editorial cultures"
   ],
   "links": [
    {
-    "label": "News UK brands",
-    "url": "https://www.news.co.uk/about-news-uk/"
+    "label": "21st Century Fox on the 2013 separation",
+    "url": "https://www.sec.gov/Archives/edgar/data/1308161/000156459014003642/fox-10k_20140630.htm"
    },
    {
-    "label": "Ofcom on Murdoch influence",
-    "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1035791/Annex_B_-_Ofcom_Advice_on_application_by_News_Corp_UK_and_Ireland_Limited__Redacted_v2.pdf"
+    "label": "News Corp 2013 separation filing",
+    "url": "https://www.sec.gov/Archives/edgar/data/1564708/000119312513373501/d581644d10k.htm"
+   },
+   {
+    "label": "News UK brands",
+    "url": "https://www.news.co.uk/about-news-uk/"
    }
   ]
  },
@@ -89,17 +94,179 @@
   ]
  },
  "state-media": {
-  "summary": "Outlets owned or directed by governments and ruling parties rather than operating as independent or public-service media. The degree of control varies \u2014 a wartime information channel is not the same creature as a censorship monopoly's wire \u2014 but in every case the state relationship shapes what can be published, and regulators or independent researchers have documented it.",
+  "summary": "Outlets with ownership, funding, appointment, or editorial-direction relationships to governments and ruling parties. Those relationships are not interchangeable: direct state or party control creates a structural conflict of interest, while state funding, minority state capital, and documented political influence describe different degrees of institutional dependency.",
   "watch": [
-   "State-funded is not the same as state-controlled: these outlets are grouped by documented direction, not by funding alone",
-   "State copy often carries accurate basic facts \u2014 the framing, selection and omissions are where the control shows",
-   "Flags cite regulators, court records, peer-reviewed studies and press-freedom monitors rather than editorial opinion"
+   "State-funded, state-owned, state-controlled and state-influenced are not synonyms",
+   "Directly controlled outlets can still carry accurate basic facts \u2014 the framing, selection and omissions are where the control shows",
+   "State-influenced outlets may produce independent or even critical coverage while still having red lines created by ownership and funding",
+   "Flags cite regulators, court records, peer-reviewed studies, official ownership reports and press-freedom monitors rather than editorial opinion"
   ],
   "links": [
    {
     "label": "State Media Monitor methodology",
     "url": "https://statemediamonitor.com/"
    }
+  ]
+ },
+ "direct-state-control": {
+  "summary": "Outlets where a state or ruling party owns the organisation, appoints its leadership, or is documented as directing its editorial output. These are structural conflicts of interest when covering the controlling government or its interests.",
+  "watch": [
+   "Control mechanisms differ: party control, government appointment, licence-holder sham arrangements and explicit information-warfare missions are not identical, but all defeat editorial independence",
+   "Wartime or defensive context may explain a state information mission; it does not make the output independent journalism"
+  ]
+ },
+ "state-linked-agencies": {
+  "summary": "Agencies with substantial state capital, board representation, or administrative attachment to a government, assessed individually because minority or indirect ownership does not prove the same control mechanism as a wholly state-owned wire.",
+  "watch": [
+   "State linkage is a structural conflict even when the state is not the sole shareholder",
+   "The relevant evidence is appointment power, administrative attachment, capital share and documented newsroom direction"
+  ]
+ },
+ "state-funded-networks": {
+  "summary": "Networks owned or funded by a state where evidence shows political influence but does not support automatic equivalence with directly controlled propaganda instruments. Editorial independence and critical coverage can exist alongside structural dependency.",
+  "watch": [
+   "State funding is not the same property as state control",
+   "Critical coverage does not eliminate the conflict created by ownership and funding; it helps define where the red lines actually are"
+  ]
+ },
+ "fox-corporation": {
+  "summary": "Fox Corporation contains national news, sports, broadcast-network and owned local-station businesses. Those are related commercially, but they are not one editorial product.",
+  "watch": [
+   "Fox News Media and Fox Television Stations are different operating units",
+   "Fox-owned local stations produce local news and should not automatically inherit the record of national Fox News opinion programming"
+  ],
+  "links": [
+   {
+    "label": "Fox Corporation 2026 Form 10-K",
+    "url": "https://www.sec.gov/Archives/edgar/data/1754301/000162828026053960/fox-20260630.htm"
+   },
+   {
+    "label": "Fox Corporation businesses",
+    "url": "https://www.foxcorporation.com/businesses/"
+   }
+  ]
+ },
+ "fox-news-media": {
+  "summary": "National Fox news, business-news and subscription products. The relevant distinction inside this branch is between reporting programmes and opinion/commentary programming, not simply the Fox name itself.",
+  "watch": [
+   "Prime-time opinion and straight-news output have different editorial functions",
+   "The Dominion record is significant evidence about a major editorial failure, not a blanket proof that every story is false"
+  ]
+ },
+ "fox-television-stations": {
+  "summary": "Fox Corporation-owned local television stations. They sit under the same corporate owner as Fox News, but they are local station operations rather than Fox News Channel output.",
+  "watch": [
+   "Even where ownership is shared, network news, cable opinion and local-station journalism are different editorial operations",
+   "Do not treat a Fox-owned local station as interchangeable with Fox News Channel"
+  ],
+  "links": [
+   {
+    "label": "Fox Television Stations business description",
+    "url": "https://www.foxcorporation.com/businesses/fox-television-stations/"
+   },
+   {
+    "label": "Fox Corporation 2026 Form 10-K",
+    "url": "https://www.sec.gov/Archives/edgar/data/1754301/000162828026053960/fox-20260630.htm"
+   }
+  ]
+ },
+ "fox-affiliated-local": {
+  "summary": "Fox-branded local stations that are affiliated with the Fox broadcast network but owned by other companies. This is a convenience grouping by brand/affiliation, not an ownership group.",
+  "watch": [
+   "Network affiliation is not ownership or editorial control",
+   "Many Fox affiliates are owned by Nexstar, Gray, Sinclair, Cox, Scripps or other local-TV groups",
+   "A Fox affiliate should not automatically inherit Fox News Channel\u2019s reputation, positive or negative"
+  ],
+  "links": [
+   {
+    "label": "Nexstar station directory",
+    "url": "https://www.nexstar.tv/stations/"
+   },
+   {
+    "label": "Fox Corporation\u2019s owned-stations business",
+    "url": "https://www.foxcorporation.com/businesses/fox-television-stations/"
+   }
+  ]
+ },
+ "science-health-press": {
+  "summary": "Science publishing here covers several different evidence classes: peer-reviewed journals, preprint repositories, independent science journalism, popular-science explainers, institutional release republishers and expert commentary. The shared subject matter does not make them interchangeable.",
+  "watch": [
+   "A report about a paper is not the same evidence as the paper itself",
+   "Institutional research communication can be accurate and useful while still carrying the institution\u2019s promotional incentives",
+   "Editorial curation, independent reporting and scientific verification are different activities"
+  ]
+ },
+ "science-xpress": {
+  "summary": "Science X network sites combine staff-written coverage, licensed material and editor-processed institutional research announcements at high volume. Their own process emphasises selection and editing, but provenance still varies article by article.",
+  "watch": [
+   "Do not treat every Science X article as the same kind of content: staff reporting, licensed copy and university material have different independence properties",
+   "High-volume curation is useful for discovery but is not independent scientific verification"
+  ],
+  "links": [
+   {
+    "label": "Science X journalism statement",
+    "url": "https://sciencex.com/help/journalism/"
+   },
+   {
+    "label": "Science X editorial process",
+    "url": "https://sciencex.com/help/editorial-process/"
+   }
+  ]
+ },
+ "institutional-research-releases": {
+  "summary": "Services built primarily around selecting, editing or amplifying research institutions\u2019 own announcements. These can be useful discovery surfaces and primary institutional material, but they are weaker evidence of independent journalistic scrutiny.",
+  "watch": [
+   "University press offices are interested parties in the visibility and impact of their research",
+   "Light editing can transmit exaggerated causal claims, human applicability claims and practical-impact framing from the original release",
+   "Follow the journal citation and distinguish peer-reviewed papers, preprints, conference presentations and institutional summaries"
+  ],
+  "links": [
+   {
+    "label": "ScienceDaily editorial policy",
+    "url": "https://www.sciencedaily.com/editorial.htm"
+   },
+   {
+    "label": "Futurity on university-supplied content",
+    "url": "https://www.futurity.org/about/"
+   },
+   {
+    "label": "BMJ study on press-release exaggeration",
+    "url": "https://www.bmj.com/content/349/bmj.g7015"
+   },
+   {
+    "label": "Systematic review of churnalism research",
+    "url": "https://academic.oup.com/anncom/article/49/4/257/8228546"
+   }
+  ]
+ },
+ "popular-science-news": {
+  "summary": "Popular science news sites with their own writers or editors. They are generally more editorially produced than release-republish services, but much of the coverage is still study-led, compressed and dependent on the research-announcement cycle.",
+  "watch": [
+   "Readable synthesis is not the same evidence as the underlying paper",
+   "Single-study coverage often strips out replication history, effect-size uncertainty and methodological caveats",
+   "Editorial production improves accountability but does not make a report independent confirmation of the science"
+  ]
+ },
+ "science-criticism": {
+  "summary": "Explicitly evaluative science and medicine commentary. These sources are useful because they scrutinise claims, not because they are neutral news wires.",
+  "watch": [
+   "Critical commentary should be read as expert argument, with references checked",
+   "A strong sceptical editorial position is a declared perspective, not hidden propaganda"
+  ]
+ },
+ "science-magazines": {
+  "summary": "Science magazines and magazine-style news sites. They sit between journals and high-volume aggregators: editorially produced journalism and explanation, but not themselves peer-reviewed evidence.",
+  "watch": [
+   "Magazine journalism about research is not peer-reviewed research",
+   "Long-form context and expert contribution can add depth while still carrying an interpretive frame"
+  ]
+ },
+ "science-journals": {
+  "summary": "Journal, publisher and repository domains. These are closer to primary scientific literature than science-news sites, but peer-review status is article- and journal-specific; preprints, news pages, press material and corrections are different evidence classes.",
+  "watch": [
+   "A prestigious journal domain does not make every page peer-reviewed research",
+   "Preprint repositories provide early access before peer review, not certified findings",
+   "Journal publication is important evidence, but not proof that a result is replicated, practically important or correctly reported elsewhere"
   ]
  }
 }

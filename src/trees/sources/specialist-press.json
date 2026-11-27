@@ -91,7 +91,7 @@
       "children": [
         {
           "id": "science-xpress",
-          "label": "Science Xpress",
+          "label": "Science X Network",
           "icon": "phys.org",
           "children": [
             {
@@ -121,22 +121,36 @@
           ]
         },
         {
-          "id": "science-popular",
-          "label": "Popular Science",
+          "id": "science-news-commentary",
+          "label": "Science News & Commentary",
           "icon": "livescience.com",
           "children": [
             {
-              "id": "science-aggregators",
-              "label": "Science Aggregators",
-              "icon": "sciencealert.com",
+              "id": "institutional-research-releases",
+              "label": "Institutional Research Releases",
+              "icon": "sciencedaily.com",
               "sources": [
                 "sciencedaily.com",
+                "futurity.org"
+              ]
+            },
+            {
+              "id": "popular-science-news",
+              "label": "Popular Science News",
+              "icon": "sciencealert.com",
+              "sources": [
                 "sciencealert.com",
                 "psypost.org",
                 "sci.news",
-                "zmescience.com",
-                "sciencebasedmedicine.org",
-                "futurity.org"
+                "zmescience.com"
+              ]
+            },
+            {
+              "id": "science-criticism",
+              "label": "Science Criticism",
+              "icon": "sciencebasedmedicine.org",
+              "sources": [
+                "sciencebasedmedicine.org"
               ]
             },
             {
@@ -166,7 +180,7 @@
         },
         {
           "id": "science-journals",
-          "label": "Science Journals",
+          "label": "Science Journals & Repositories",
           "icon": "nature.com",
           "sources": [
             "nature.com",

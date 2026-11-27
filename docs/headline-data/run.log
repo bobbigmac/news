@@ -1,0 +1,68 @@
+{
+  "headline_rows": 11461,
+  "sources": 695,
+  "sources_ranked_n_ge_20": 74,
+  "sources_n_ge_50": 28,
+  "sources_n_ge_100": 14,
+  "sources_lt_20": 621,
+  "exact_duplicate_headline_rows": 45
+}
+
+TOP:
+ rank                   source   n  topic_adjusted_value_index  raw_title_signal_index
+  1.0                 Wccftech  27                   62.278407               34.680135
+  2.0           Jerusalem Post  68                   59.920950               34.893048
+  3.0             The Guardian 485                   59.059389               31.452671
+  4.0                TweakTown  46                   58.769203               31.027668
+  5.0                   Reddit  40                   57.835325               25.909091
+  6.0 South China Morning Post  25                   57.669912               37.090909
+  7.0                      PBS  20                   57.259217               33.636364
+  8.0              MyJoyOnline  28                   56.556166               36.363636
+  9.0                  PsyPost  28                   56.082009               31.493506
+ 10.0                Eurogamer 458                   55.872220               29.515681
+ 11.0           Medical Xpress 127                   55.698502               30.136006
+ 12.0               Indiatimes  20                   54.957556               35.454545
+ 13.0            This is Money  81                   54.501610               32.435466
+ 14.0                   Quartz  24                   54.317074               35.984848
+ 15.0            Qatar Tribune  28                   53.495633               33.441558
+
+BOTTOM:
+ rank            source   n  topic_adjusted_value_index  raw_title_signal_index
+ 74.0        Daily Mail 350                   37.827112               25.662338
+ 73.0      Handelsblatt  55                   40.521565               24.793388
+ 72.0        Oregonlive  29                   40.895295               28.213166
+ 71.0          Engadget  21                   41.736795               19.480519
+ 70.0            Kotaku 671                   41.862308               25.077903
+ 69.0          ABC News  38                   43.089230               25.837321
+ 68.0 Business Recorder  70                   43.264008               26.103896
+ 67.0            Mirror 133                   43.601338               27.887902
+ 66.0             Punch 348                   44.241460               28.474399
+ 65.0          GameSpot  56                   45.355594               25.974026
+ 64.0        MarketBeat  37                   45.945006               31.695332
+ 63.0      Business Day  31                   46.070010               27.272727
+ 62.0     Notebookcheck  61                   46.129768               25.782414
+ 61.0    Daily Maverick  29                   46.168971               26.645768
+ 60.0         The Verge  35                   46.235989               26.753247
+
+LARGEST:
+           source    n  topic_adjusted_value_index  raw_title_signal_index
+              BBC 3537                   49.647758               29.642481
+           Kotaku  671                   41.862308               25.077903
+     The Guardian  485                   59.059389               31.452671
+        Eurogamer  458                   55.872220               29.515681
+       Daily Mail  350                   37.827112               25.662338
+            Punch  348                   44.241460               28.474399
+  The Independent  246                   51.552225               29.600887
+         Phys.org  190                   52.562759               27.655502
+        City A.M.  173                   50.399731               31.897005
+           Mirror  133                   43.601338               27.887902
+   Medical Xpress  127                   55.698502               30.136006
+              IGN  125                   48.523558               26.472727
+      Korea Times  123                   48.912826               31.929047
+  Financial Times  116                   51.630705               31.269592
+ Evening Standard   92                   49.861469               28.952569
+    This is Money   81                   54.501610               32.435466
+            Metro   73                   49.101862               28.268991
+Business Recorder   70                   43.264008               26.103896
+   Jerusalem Post   68                   59.920950               34.893048
+    Notebookcheck   61                   46.129768               25.782414
