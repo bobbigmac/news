@@ -1255,7 +1255,8 @@
         "label": "afp.com — Afp charters",
         "url": "https://www.afp.com/en/afp-charters"
       }
-    ]
+    ],
+    "governance": "AFP is a French-law statutory news agency whose legal framework is intended to protect editorial independence; AFP Fact Check is one desk within the wider agency."
   },
   "globenewswire.com": {
     "kind": "Press-release distributor",

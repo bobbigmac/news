@@ -3,8 +3,8 @@ devin-sessionlog: transcript
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-27 09:39:27 UTC
-entries: 1185
+last_activity: 2026-11-27 09:43:00 UTC
+entries: 1200
 ---
 
 # repeated-bite
@@ -33500,6 +33500,429 @@ AXES = [
 continue, tho you're hitting quota now, so be sure you document progress and actually remove content-blocks from the chatgpt-reserach UPDATE file so you don't import it again. you were working on `also see sources-manifest-UPDATE-2026-11-27.md which provides additional source notations to support providing more information for sources where we have literal information gaps, try and import everything relevant, just don't make a mess copying every chatgpt hedge literally... stay focused on what actually matters to a human reader, or what helps inform our systems or can improve them meaningfully`
 
 
+
+---
+
+<!-- r:0 m:hook:d3ed2092-ba0c-4e16-921e-246a97808809:exec:397d2614 h:59639367 -->
+### 2026-11-27 09:39:57 UTC tool `exec`
+
+`{"command": "git status --short | head -100; git log --oneline -3", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell c6e41c:
+36b4580 sources-notes
+51a6862 headline-anallysis
+19c6109 headline-text-metrics
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d3ed2092-ba0c-4e16-921e-246a97808809:exec:10edf406 h:6f4b7c17 -->
+### 2026-11-27 09:40:05 UTC tool `exec`
+
+`{"command": "git show --stat --oneline --summary 36b4580 | head -80; git show --name-only --format='%h %s %ad' 36b4580 | head -80", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 006e28:
+36b4580 sources-notes
+ docs/headline-data/current/REPORT.md               |   100 +-
+ docs/headline-data/current/analysis_summary.json   |   270 +-
+ .../current/cross_source_title_matches.csv         |    30 +-
+ .../current/detector_audit_sample.csv              |    32 +-
+ .../current/detector_validation_sample.csv         |    44 +-
+ .../current/headline_level_signals.csv             |  5244 ++++-----
+ .../current/high_volume_source_ranking.png         |   Bin 116846 -> 117039 bytes
+ docs/headline-data/current/run_metrics.json        |    21 +-
+ .../headline-data/current/source_axis_profiles.csv |  1373 +--
+ .../current/source_index_sensitivity.csv           |  4119 +++----
+ .../current/source_phrase_signatures.csv           |     4 -
+ docs/headline-data/current/source_radar.html       |     2 +-
+ docs/headline-data/current/source_rankings.csv     |  1373 +--
+ .../current/source_story_score_distributions.csv   |  1373 +--
+ .../current/source_topic_profiles.csv              |   129 +-
+ .../current/story_signal_distribution.png          |   Bin 92100 -> 91972 bytes
+ docs/sessions/transcripts/02-repeated-bite.md      |  5237 ++++++++-
+ docs/sessions/user-input/02-repeated-bite.md       |    13 +-
+ docs/sessions/user-input/INDEX.md                  |     2 +-
+ docs/tasks/headline-analysis.task.json             |     7 +-
+ scripts/favicons.js                                |   108 +-
+ scripts/headline-analysis/analyse_headlines.py     |     2 +-
+ .../headline-analysis/build_measured_sources.py    |     2 +-
+ scripts/sources.js                                 |     5 +-
+ src/data/measured-sources.json                     | 11142 ++++++++++---------
+ src/source-labels.js                               |   197 +
+ src/trees/profiles/sources.json                    |  6077 ++++++----
+ src/trees/sources/canada-media.json                |     8 +
+ src/trees/sources/digital-publishers.json          |    31 +-
+ src/trees/sources/platforms-agg
+```
+
+---
+
+<!-- r:0 m:hook:74ab9d7b-a409-4019-bcb8-4ffc7896023f h:98c7dc87 -->
+### 2026-11-27 09:40:17 UTC user
+
+all work is yours, I didn't make any edits, just committing your work
+
+---
+
+<!-- r:0 m:hook:74ab9d7b-a409-4019-bcb8-4ffc7896023f:todo_write:7fbe96b7 h:1ea084a9 -->
+### 2026-11-27 09:40:22 UTC tool `todo_write`
+
+`{"todos": [{"content": "Audit imported source-update coverage and close remaining data inconsistencies", "status": "in_progress"}, {"content": "Mark the ChatGPT source-update file as imported and remove processed source blocks", "status": "pending"}, {"content": "Document progress in DONE.md and run final tests/build verification", "status": "pending"}]}`
+
+```
+WARNING: You removed the following pending items from your todo list:
+- Verify relationships/measured pages, tests, and build after the import
+If you did not mean to do that please add them back. Think about this before your next action.
+Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable
+Current todo list:
+1. [~] Audit imported source-update coverage and close remaining data inconsistencies [in_progress]
+2. [ ] Mark the ChatGPT source-update file as imported and remove processed source blocks [pending]
+3. [ ] Document progress in DONE.md and run final tests/build verification [pending]
+
+```
+
+---
+
+<!-- r:0 m:hook:74ab9d7b-a409-4019-bcb8-4ffc7896023f:exec:3ff660be h:ccfa662f -->
+### 2026-11-27 09:40:30 UTC tool `exec`
+
+`{"command": "sed -n '1,120p' src/source-tree.js; grep -n \"engadget.com\" -B8 -A8 src/trees/sources/specialist-press.json src/trees/sources/digital-publishers.json", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell c8d70c:
+// Loader for the portable source-relation dataset. The data itself lives in
+// JSON files under src/trees/sources/ — one file per root branch, each holding
+// explicit `sources` pools (exact publisher hosts) and deeper children.
+// Groups are convenience relations, not ownership claims.
+import publicInternational from './trees/sources/public-international.json' with { type: 'json' };
+import specialistPress from './trees/sources/specialist-press.json' with { type: 'json' };
+import murdoch from './trees/sources/murdoch.json' with { type: 'json' };
+import ukMedia from './trees/sources/uk-media.json' with { type: 'json' };
+import usMedia from './trees/sources/us-media.json' with { type: 'json' };
+import digitalPublishers from './trees/sources/digital-publishers.json' with { type: 'json' };
+import australiaMedia from './trees/sources/australia-media.json' with { type: 'json' };
+import canadaMedia from './trees/sources/canada-media.json' with { type: 'json' };
+import regionalEnglish from './trees/sources/regional-english.json' with { type: 'json' };
+import wiresReleases from './trees/sources/wires-releases.json' with { type: 'json' };
+import platformsAggregators from './trees/sources/platforms-aggregators.json' with { type: 'json' };
+import officialOrganizations from './trees/sources/official-organizations.json' with { type: 'json' };
+import stateMedia from './trees/sources/state-media.json' with { type: 'json' };
+
+export const SOURCE_RELATION_TREE = [
+  publicInternational, specialistPress, murdoch, ukMedia, usMedia,
+  digitalPublishers, australiaMedia, canadaMedia, regionalEnglish,
+  wiresReleases, platformsAggregators, officialOrganizations,
+  stateMedia,
+];
+src/trees/sources/specialist-press.json-394-              ]
+src/trees/sources/specialist-press.json-395-            },
+src/trees/sources/specialist-press.json-396-            {
+src/trees/sources/specialist-press.json-397-              "id": "consumer-gadgets",
+src/trees/sources
+```
+
+---
+
+<!-- r:0 m:hook:74ab9d7b-a409-4019-bcb8-4ffc7896023f:exec:32837472 h:065cffac -->
+### 2026-11-27 09:40:51 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json\np=json.load(open('src/data/measured-sources.json'))\nfor key in ['eurogamer.net','kotaku.com','ign.com','engadget.com','gamespot.com','cnet.com','mashable.com','group-mashable']:\n s=next((x for x in p['sources'] if x['key']==key),None)\n if s: print(key,s['family'],s['treeRoot'],s['relationshipsUrl'])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies`
+
+```
+Output from command in shell 38bf48:
+eurogamer.net Ziff Davis / IGN Entertainment Specialist Press ./relationships.html#rel-digital-publishers--ziff-davis-ign-entertainment
+kotaku.com Keleops Specialist Press ./relationships.html#rel-digital-publishers--keleops
+ign.com Ziff Davis / IGN Entertainment Specialist Press ./relationships.html#rel-digital-publishers--ziff-davis-ign-entertainment
+engadget.com Static Media Specialist Press ./relationships.html#rel-digital-publishers--static-media
+gamespot.com Fandom Specialist Press ./relationships.html#rel-digital-publishers--fandom
+group-mashable Ziff Davis / IGN Entertainment Specialist Press ./relationships.html#rel-digital-publishers--ziff-davis-ign-entertainment
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:74ab9d7b-a409-4019-bcb8-4ffc7896023f:exec:ca2853a2 h:6f670b1c -->
+### 2026-11-27 09:40:56 UTC tool `exec`
+
+`{"command": "grep -n \"treeRoot\\|family\\|relationshipsUrl\" src/measured-sources.js | head -80", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell d21c62:
+121:  if (!rows.length && source.family) rows.push(['Family', source.family]);
+176:  rel.href = source.relationshipsUrl || './relationships.html';
+187:  if (!source.family || source.family === 'Unmatched sources') return '';
+188:  return normalise(source.family) === normalise(source.label) ? '' : source.family;
+197:    source.family,
+198:    source.treeRoot,
+209:  const family = usefulFamilyLabel(source);
+210:  if (family) subtitleParts.push(family);
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:74ab9d7b-a409-4019-bcb8-4ffc7896023f:exec:95d8f497 h:3f54f1a5 -->
+### 2026-11-27 09:41:07 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport csv\nfor r in csv.DictReader(open('docs/headline-data/current/source_rankings.csv')):\n if r['source_key'] in ['engadget.com','eurogamer.net','gamespot.com','kotaku.com','ign.com','group-mashable']:\n  print(r['source_key'],r['group'],r['tree_root'],r['editorial_context'])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell d98dca:
+eurogamer.net Eurogamer Specialist Press Games publication
+group-mashable Social Tech Specialist Press Digital consumer technology, internet culture and lifestyle publication
+ign.com IGN Specialist Press Games and entertainment publication
+gamespot.com Gaming Networks Specialist Press Games publication
+engadget.com Consumer Gadgets Specialist Press Consumer-technology publication
+kotaku.com Kotaku Specialist Press Games publication
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:74ab9d7b-a409-4019-bcb8-4ffc7896023f:exec:2053f152 h:f6d06b8f -->
+### 2026-11-27 09:41:25 UTC tool `exec`
+
+`{"command": "tail -100 docs/DONE.md", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell c8f50e:
+  instruction, so input truncation only destroyed data), source-derived cluster copy
+  is the full source text with no fabricated ellipses, and the dead short-summary
+  deriver is gone. Publish-time repair pass reconstructs full summaries from the
+  story store for clusters mangled by older runs (~3-4.6k repaired per build),
+  backfills missing story description/content (8125 stories), and dedups feeds that
+  repeat description as content. Remaining ellipsis endings are publisher-side
+  truncations in the feeds themselves.
+
+- **Feed-markup injection fix** — RSS content HTML (including Techmeme's
+  self-contained item cards with their own headline/byline/permalink chrome) was
+  stored raw and baked into summaries, rendering foreign cards nested inside
+  article chrome. Boundary fixed at ingest: all feed text is plain-text normalized
+  (tags stripped, entities decoded to fixpoint) in fetch-rss and prepareStoryForLLM,
+  so markup never enters the pipeline. Client rendering escapes plain-text fields
+  as contract enforcement. One-off migration scripts/repair-digest.js cleaned the
+  cache (1542 summaries rebuilt, proof-gated to never touch LLM editorial copy) —
+  the repair is NOT in the forever-build; prevention lives at the boundary.
+
+## Headline-source analysis instrument (2026)
+
+- Recovered the truncated external headline-analysis zip, placed its scripts under
+  `scripts/headline-analysis/`, and reworked the tool into a reproducible dev-time
+  analyser driven by `docs/tasks/headline-analysis.task.json`. Outputs now live in
+  `docs/headline-data/current/`; this is run-once measurement tooling only and is
+  not wired into build/CI.
+- Export format now includes machine-readable `headline-rows.jsonl` with canonical
+  source keys, URLs, timestamps, relation branches and curated profile context, so
+  the analyser no longer depends only on display names or flat export-file groups.
+- Detector taxonomy improved: explicit curiosity gaps, di
+```
+
+---
+
+<!-- r:0 m:hook:74ab9d7b-a409-4019-bcb8-4ffc7896023f:exec:072e922d h:c919ef44 -->
+### 2026-11-27 09:41:36 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json\np=json.load(open('src/trees/profiles/sources.json'))\nfor k in ['factcheck.afp.com','kbc.co.ke','thewest.com.au','courant.com','dailypost.ng','malaymail.com','scmp.com','en.interfax.com.ua','bloomberg.com','nasdaq.com','investing.com','benzinga.com','theconversation.com','news.mongabay.com','globalnews.ca','axios.com','thehill.com','irishtimes.com','news`
+
+```
+Output from command in shell 243554:
+
+### factcheck.afp.com
+{
+  "kind": "AFP Fact Check vertical",
+  "properties": [
+    "Agence France-Presse",
+    "fact-check and verification desk",
+    "international wire"
+  ],
+  "model": "Applies AFP’s fact-checking workflow to viral claims and public-interest misinformation; it is not a feed of all AFP wire reporting.",
+  "watch": [
+    "Do not assume every AFP story has been individually reviewed by the Fact Check desk."
+  ],
+  "links": [
+    {
+      "label": "factcheck.afp.com — About afp",
+      "url": "https://factcheck.afp.com/about-afp"
+    },
+    {
+      "label": "afp.com — Afp charters",
+      "url": "https://www.afp.com/en/afp-charters"
+    }
+  ]
+}
+
+### kbc.co.ke
+{
+  "kind": "Kenyan state-owned public broadcaster",
+  "ownership": "Kenya Broadcasting Corporation identifies the Government of Kenya as owner.",
+  "model": "Radio, television and digital services in English, Kiswahili and other languages under a statutory public-broadcasting mandate.",
+  "watch": [
+    "For politically sensitive stories, compare treatment of government, opposition and state institutions with independent Kenyan outlets and primary records."
+  ],
+  "links": [
+    {
+      "label": "KBC official legal mandate",
+      "url": "https://www.kbc.co.ke/about/"
+    },
+    {
+      "label": "KBC official public-broadcaster profile",
+      "url": "https://kbc.go.ke/about/"
+    }
+  ]
+}
+
+### thewest.com.au
+{
+  "kind": "West Australian newspaper and digital newsroom",
+  "ownership": "Southern Cross Media Group completed its acquisition of Seven West Media in January 2026; the combined listed entity adopted the Seven Media Group name.",
+  "model": "Publishing portfolio covering Western Australia within a group that also spans television and digital news services.",
+  "watch": [
+    "Identify whether an item is newspaper reporting, 7NEWS material, group-shared copy or commentary."
+  ],
+  "links": [
+    {
+      "label": "Seven West Media group editorial policy
+```
+
+---
+
+<!-- r:0 m:hook:74ab9d7b-a409-4019-bcb8-4ffc7896023f:exec:612736f4 h:9bf30f38 -->
+### 2026-11-27 09:41:51 UTC tool `exec`
+
+`{"command": "grep -n 'EDIT:' docs/sources-manifest-UPDATE-2026-11-27.md", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 027358:
+5:This file contains additions and explicit corrections, not a replacement manifest or a source ranking. `ADD:` lines should be appended to the corresponding source’s `What we know` section. `EDIT:` lines replace the named existing fact/relation. A publisher’s own policy is identified as a published/self-described policy; it is not treated as independent proof of compliance. No general trust score is assigned.
+270:  - EDIT: Relations: replace `Digital Publishers / Yahoo` with `Digital Publishers / Static Media`. Do not retain Yahoo as current owner; Yahoo was the previous owner until the April 2026 sale.
+415:  - EDIT: Kind: The manifest URL `obits.oregonlive.com` is an obituary-search/listing service hosted on Legacy.com infrastructure, not the OregonLive general newsroom at `oregonlive.com`.
+434:  - EDIT: Relations: move `news.sky.com` out of `US Media / US Broadcast Networks / Comcast / Sky` as a US source. Place it under `UK Media / National Broadcasters / Sky News UK`, retaining `Comcast / Sky UK` as its corporate ownership relationship.
+754:  - EDIT: Kind: This manifest entry is `dev.to/wlz`, an individual DEV Community author/profile feed, not a newsroom or the DEV platform as a whole.
+909:  - EDIT: Kind: `factcheck.afp.com` is the AFP Fact Check vertical, not a general feed of all AFP wire reporting. It applies AFP’s fact-checking workflow to viral claims and public-interest misinformation.
+916:  - EDIT: Relations: replace `Digital Publishers / Red Ventures` with `Digital Publishers / Fandom / Gaming & entertainment properties`. Fandom acquired GameSpot and related entertainment/gaming brands from Red Ventures in October 2022.
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:74ab9d7b-a409-4019-bcb8-4ffc7896023f:exec:ccbd71e1 h:082475b8 -->
+### 2026-11-27 09:41:55 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json\np=json.load(open('src/trees/profiles/sources.json'))\nfor k in ['obits.oregonlive.com','dev.to/wlz']:\n print(k,json.dumps(p[k],indent=2)[:1000])\nPY", "workdir": "/home/bobbigmac/projects/bobdavies/news", "timeout": 10000}`
+
+```
+Output from command in shell 75b2ef:
+obits.oregonlive.com {
+  "kind": "Obituary-search and notice-listing service",
+  "model": "Hosted on Legacy.com infrastructure; listings are typically supplied by funeral homes, families and newspaper/Legacy partners rather than reported by the OregonLive newsroom.",
+  "watch": [
+    "Do not score or interpret obituary notices as OregonLive general-news output."
+  ],
+  "links": [
+    {
+      "label": "obits.oregonlive.com \u2014 Search",
+      "url": "https://obits.oregonlive.com/obituaries/search"
+    },
+    {
+      "label": "legacy.com \u2014 10984861 how to find an obituary on legacy com",
+      "url": "https://www.legacy.com/contact/en/articles/10984861-how-to-find-an-obituary-on-legacy-com"
+    }
+  ]
+}
+dev.to/wlz {
+  "kind": "Individual DEV Community author feed",
+  "model": "User-contributed posts by the named author rather than newsroom content or the DEV platform as a whole.",
+  "watch": [
+    "Evaluate the author\u2019s expertise, code or reproduction links, documentation, version/date and independent reproducibility."
+  ],
+  "links": [
+    {
+      "label": "dev.to \u2014 Wlz",
+      "url": "https://dev.to/wlz"
+    },
+    {
+      "label": "dev.to \u2014 Code of conduct",
+      "url": "https://dev.to/code-of-conduct"
+    }
+  ]
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:74ab9d7b-a409-4019-bcb8-4ffc7896023f:exec:7641378b h:1579cfe1 -->
+### 2026-11-27 09:42:01 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nimport json\np='src/trees/profiles/sources.json'\nd=json.load(open(p))\nd['factcheck.afp.com']['governance']='AFP is a French-law statutory news agency whose legal framework is intended to protect editorial independence; AFP Fact Check is one desk within the wider agency.'\nopen(p,'w').write(json.dumps(d,indent=2,ensure_ascii=False)+'\\n')\nPY\nnode -e \"JSON.parse(r`
+
+```
+Output from command in shell bd5a2a:
+profiles json ok
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:74ab9d7b-a409-4019-bcb8-4ffc7896023f:exec:1310ef76 h:8f3f66b3 -->
+### 2026-11-27 09:42:54 UTC tool `exec`
+
+`{"command": "python3 - <<'PY'\nfrom pathlib import Path\nimport re\npath=Path('docs/sources-manifest-UPDATE-2026-11-27.md')\ntext=path.read_text()\nkeys=[]\nfor m in re.finditer(r'^- Key: `([^`]+)`', text, re.M):\n    if m.group(1) not in keys: keys.append(m.group(1))\nkey_lines='\\n'.join(f'- `{k}`' for k in sorted(keys))\ncontent=f'''# Sources manifest \u2014 UPDATE additions\n\n**Prepared:** 27`
+
+```
+Output from command in shell 4ea03d:
+rewrote update file; keys 118 bytes 4423
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:74ab9d7b-a409-4019-bcb8-4ffc7896023f:read:afc931f8 h:f056ba2a -->
+### 2026-11-27 09:43:00 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md", "offset": 1, "limit": 180}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/docs/sources-manifest-UPDATE-2026-11-27.md" start_line="1" end_line="143">
+  1|# Sources manifest — UPDATE additions
+  2|
+  3|**Prepared:** 27 November 2026  
+  4|**Import status:** completed 27 November 2026
+  5|
+  6|All 118 source blocks originally present in this delta have been reviewed and the relevant facts imported. The source blocks have been removed so this file is not mistaken for a reusable import queue. Do not import this file again; create a new dated update file for further source research.
+  7|
+  8|## What was imported
+  9|
+ 10|- Concise `kind`, ownership, governance, publishing-model, history and source-specific watch notes into `src/trees/profiles/sources.json`.
+ 11|- Evidence links supporting those claims, with publisher self-description kept distinct from independent evidence where that distinction matters.
+ 12|- Tree placements for previously unplaced or sparse sources, including Axios, BuzzFeed, The Hill, Global News, Economic Times/News18, Interfax-Ukraine, People Daily, The Conversation, Mongabay, Nautilus, Endpoints, Investing.com, Benzinga and `dev.to/wlz`.
+ 13|- Explicit relation corrections: Engadget/BGR under Static Media, GameSpot under Fandom, CNET under Ziff Davis, Mashable retained under Ziff Davis rather than Static Media, Sky News UK moved out of the US Comcast branch, and `inquirer.com` kept separate from the Philippine Daily Inquirer.
+ 14|- Kind corrections for `obits.oregonlive.com`, `factcheck.afp.com` and `dev.to/wlz`.
+ 15|- Measurement/display corrections needed by the systems: the Philippine Daily Inquirer measurement group excludes Philadelphia, canonical display labels are centralised in `src/source-labels.js`, and the measured-source export now resolves the corrected relationship anchors.
+ 16|
+ 17|## What was deliberately not copied
+ 18|
+ 19|- Corpus-observation percentage lines. They are snapshot-specific detector incidence, not durable source facts.
+ 20|- Repetitiv
+```
 
 ---
 
