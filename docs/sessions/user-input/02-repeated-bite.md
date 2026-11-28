@@ -3,8 +3,8 @@ devin-sessionlog: user-input
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 08:31:51 UTC
-entries: 84
+last_activity: 2026-11-28 08:35:13 UTC
+entries: 85
 ---
 
 # repeated-bite
@@ -681,6 +681,13 @@ good spot, obits should be considered events
 ### 2026-11-28 08:31:51 UTC
 
 don't get too bogged-down in special-case matching (STOP making massive complex heuristics for something you cN SIMPLY set once as a known data-source flag)
+
+---
+
+<!-- r:0 m:hook:898a38eb-a6d6-4e42-9f1f-b2cfdb7ee94f h:f833c409 -->
+### 2026-11-28 08:35:13 UTC
+
+an you tell why Nature scores low too?
 
 ---
 

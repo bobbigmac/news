@@ -1,5 +1,13 @@
 # DONE
 
+## Death-notice streams excluded as a source-level flag (2026-11-28)
+
+- OregonLive obituaries at rank ~137 was a false flag: notice-form obituaries ("Jerry Small Obituary (1937 - 2026) - Stanwood, WA") are the most information-dense headlines in the corpus — name, lifespan, town, zero teasing. Their floor position came from form, not content: "Obituary" is not a verb so event clarity read ~0, and bare year ranges plus "City, ST" datelines were invisible to time/place detection.
+- Cross-source comparison confirmed the artifact is structural: Courant death notices hit the same zero-event floor; BBC news-form "X dies aged 81" headlines score fine because "dies" is a verb. The OregonLive-vs-Courant score difference was mostly date typography ("| October 18, 2026" vs bare parenthetical years), not content quality.
+- Chosen fix: a single source-level flag, not heuristic machinery. (An earlier draft adding obituary-genre regex detection, year-range and city-state grammars was reverted in full — detection complexity is the wrong tool for a known stream shape.) `streamShapes` in `source-measurement-overrides.json` marks `obits.oregonlive.com` as `measurable: false` with streamType "death-notice listings" — a category error like non-English feeds, since the output is form-encoded public record, not editorial headline writing.
+- The unmeasurable tier is now reason-agnostic: builder merges language and stream-shape exclusions (5 feeds, 140 measurable sources); page copy and methodology explain both exclusion classes. og-measured.jpg regenerated without OregonLive obituaries.
+- Verification: 87 detector regression cases pass unchanged (corpus logic untouched — no analyser rerun needed); 15/15 test files, 110/110 tests including the obits exclusion invariant; production build passes; dist byte-identical.
+
 ## Non-English feeds excluded from measured quality (2026-11-28)
 
 - Handelsblatt's low score was a measurement artifact: its feed is majority German (~37% English headlines), so the English-only parse/lexicon pipeline could never score it fairly. Language judgements were made by directly reading every measured source's pooled headlines — no detector library or heuristic sniffing.

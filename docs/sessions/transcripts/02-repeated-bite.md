@@ -3,8 +3,8 @@ devin-sessionlog: transcript
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 08:33:42 UTC
-entries: 3014
+last_activity: 2026-11-28 08:36:14 UTC
+entries: 3025
 ---
 
 # repeated-bite
@@ -82499,6 +82499,240 @@ og-relationships: 3 lines -> src/og-relationships.jpg
 
 Exit code: 0
 ```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:exec:f7bff310 h:354a8018 -->
+### 2026-11-28 08:33:59 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && npm run build 2>&1 | tail -1 && for f in measured-sources.json source-quality.json og-measured.jpg og-relationships.jpg; do cmp -s src/data/$f dist/$f 2>/dev/null || cmp -s src/$f dist/$f 2>/dev/null && echo \"$f dist ok\" || echo \"$f MISSING/DIFF\"; done", "timeout": 240000, "shell_id": "buildv"}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: buildv. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:get_output:a3756d57 h:a0ea3f7f -->
+### 2026-11-28 08:34:20 UTC tool `get_output`
+
+`{"shell_id": "buildv", "timeout": 240000}`
+
+```
+Build complete. 5557 clusters, 7113 entities, 57 topics, 10517 stories in timeline -> dist/dataset.json
+measured-sources.json dist ok
+source-quality.json MISSING/DIFF
+og-measured.jpg dist ok
+og-relationships.jpg dist ok
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:exec:ff336712 h:2b2f5ecf -->
+### 2026-11-28 08:34:24 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && ls dist/source-quality.json 2>&1; grep -n \"source-quality\" scripts/build.js | head -3", "timeout": 10000}`
+
+```
+Output from command in shell 2bba54:
+ls: cannot access 'dist/source-quality.json': No such file or directory
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:exec:52bd3e29 h:459438e7 -->
+### 2026-11-28 08:34:29 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"measured-sources.json\\|copyStatic\\|src/data\" scripts/build.js | head -12", "timeout": 10000}`
+
+```
+Output from command in shell 6b0e8b:
+21:function copyStatic(file) {
+190:copyStatic('og-cover.jpg');
+191:copyStatic('og-measured.jpg');
+192:copyStatic('og-relationships.jpg');
+193:copyStatic('sw.js');
+198:  copyStatic(f);
+201:const measuredSourcesFile = join('src', 'data', 'measured-sources.json');
+202:if (existsSync(measuredSourcesFile)) copyFileSync(measuredSourcesFile, join(OUT_DIR, 'measured-sources.json'));
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:exec:b10e5928 h:ceb01864 -->
+### 2026-11-28 08:34:37 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"source-quality\\|SOURCE_QUALITY\" src/settings.js src/measured-sources.js | head -4 && grep -rn \"source-quality\" dist/assets/*.js 2>/dev/null | head -1 | cut -c1-80; grep -c \"measuredQuality\" dist/assets/*.js 2>/dev/null | grep -v \":0\" | head -2", "timeout": 10000}`
+
+```
+Output from command in shell e66af4:
+src/settings.js:22:import SOURCE_QUALITY from './data/source-quality.json' with { type: 'json' };
+src/settings.js:115:    const quality = SOURCE_QUALITY.sources[source.key];
+dist/assets/measuredSources-CIff8gPU.js:1
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:exec:d88334b8 h:7992c65e -->
+### 2026-11-28 08:34:53 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\ns=open('docs/DONE.md').read()\nentry='''# DONE\n\n## Death-notice streams excluded as a source-level flag (2026-11-28)\n\n- OregonLive obituaries at rank ~137 was a false flag: notice-form obituaries (\"Jerry Small Obituary (1937 - 2026) - Stanwood, WA\") are the most information-dense headlines in the corpus \u2014 name`
+
+```
+Output from command in shell 657073:
+done
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:5f297337-c0e7-4dff-8f1c-19796db8cdd2 h:1115712e -->
+### 2026-11-28 08:35:04 UTC assistant
+
+Done. Nothing committed.
+
+## What happened
+
+**Reverted all the detection machinery** — the obituary-genre regex with its capitalisation guard, the year-range grammar, the city/state dateline grammar, and the new test cases. `git checkout` restored all three files; the 87 original detector regression cases pass unchanged, so the corpus CSVs are still valid and no analyser rerun was needed.
+
+**One flag instead**: `obits.oregonlive.com` now carries `streamType: "death-notice listings"` + `measurable: false` in a new `streamShapes` block in `source-measurement-overrides.json` — same exclusion mechanics as the language gate, because it's the same kind of decision: this feed's output is form-encoded public record, not editorial headline writing, so ranking it is a category error. The documentation key in the block states plainly these are manual source-level flags.
+
+**The unmeasurable tier is now reason-agnostic**: the builder merges language and stream-shape exclusions — 5 feeds out, **140 measurable sources**. The page's bottom section copy now covers both classes ("most publish in languages other than English… some are structured notice or listing services"), and each item carries its specific note. Methodology panel updated likewise. og-measured regenerated — OregonLive obituaries no longer appears in the bottom seven.
+
+Verified: **15/15 files, 110/110 tests** (including the updated exclusion invariant covering all five feeds), production build passes, dist byte-identical. Also confirmed `source-quality.json` needs no dist copy — it's a bundled import, not a runtime fetch. Logged in `docs/DONE.md`.
+
+Worth noting what this means for Courant: its captured pool is 16-of-18 obituary notices but it *is* a newspaper — that's a sampling artifact of which feed got captured, not a stream type, so it stays measured. If the Hartford Courant's general feed never dilutes the pool, that may deserve the same flag later — but that's a judgement for a look at their feed mix, not something I'll automate.
+
+---
+
+<!-- r:0 m:hook:898a38eb-a6d6-4e42-9f1f-b2cfdb7ee94f h:f833c409 -->
+### 2026-11-28 08:35:13 UTC user
+
+an you tell why Nature scores low too?
+
+---
+
+<!-- r:0 m:hook:898a38eb-a6d6-4e42-9f1f-b2cfdb7ee94f:exec:5ecddfb9 h:3acc553c -->
+### 2026-11-28 08:35:22 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport csv, json\nrows=[r for r in csv.DictReader(open('docs/headline-data/current/headline_level_signals.csv')) if r.get('source_key')=='nature.com']\nprint('nature rows:',len(rows))\nfor r in rows[:20]: print('-',r.get('headline','')[:110])\nd=json.load(open('src/data/measured-sources.json'))\ns=[x for x in d['sources'`
+
+```
+Output from command in shell 8b6320:
+nature rows: 42
+- Diagnostic validation of two commercial foot-and-mouth disease non-structural protein enzyme-linked immunosorb
+- Comparing attention, CNNs, and SSMs for multi-domain image recognition
+- Geochemical characteristics and organic matter enrichment mechanisms of early Cambrian Black Shales in the Nor
+- Genome-guided identification and functional characterization of carbonyl reductases from Parathermosynechococc
+- Green synthesized zinc oxide nanoparticles combined with papaverine induce apoptosis and modulate microRNAs in
+- A study on landslide susceptibility mapping by integrating different datasets based on feature and spatial con
+- evaluation of putative adipose tissue browning in amyotrophic lateral sclerosis: an MRI and adipokine study
+- Editorial Expression of Concern: Dual control of nuclear EIN3 by bifurcate MAPK cascades in C2H4 signalling
+- Orangutans face bleak future after Indonesia's devastating wildfires
+- Navigating grief in academia: ways to find balance
+- Chromosome 'glue' could boost fertility by stabilizing ageing eggs
+- Has AI just cracked Internet encryption? Rumoured 'bombshell' stuns scientists
+- How Singapore has turned a nation into a smart-city testing ground
+- Dual proofs of legendary Riemann hypothesis stun mathematicians
+- What is the Riemann hypothesis? A guide to the famed conjecture that rules prime numbers
+- An in situ redox-converted molecule for all-perovskite tandem solar cells
+- How arteries keep their shape in the face of overgrowth-inducing mutations
+- Saving Nepal's wild orchids — in photos
+- A fine-grained reconstruction of barley's evolutionary history
+- The leading cities in the world for high-quality research in 2025
+
+rank 132 quality 31.4 n 42
+event_clarity: -11.6pp rate 0.08 vs expected 0.25
+material_consequence: -4.9pp rate 0.07 vs expected 0.14
+causal_explanation: -4.2pp rate 0.02 vs expected 0.08
+quantified_specificity: -4.0pp rate 0.05 vs expected 0.10
+time_place_anch
+```
+
+---
+
+<!-- r:0 m:hook:898a38eb-a6d6-4e42-9f1f-b2cfdb7ee94f:exec:d507dcff h:84b153e3 -->
+### 2026-11-28 08:35:38 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport csv\nrows=[r for r in csv.DictReader(open('docs/headline-data/current/headline_level_signals.csv')) if r.get('source_key')=='nature.com']\nfor i,r in enumerate(rows):\n    print(f\"{i:2d} ev={r.get('event_clarity','?'):4s} {r.get('headline','')[:100]}\")\nEOF", "timeout": 10000}`
+
+```
+Output from command in shell 5884f4:
+ 0 ev=0.0  Diagnostic validation of two commercial foot-and-mouth disease non-structural protein enzyme-linked 
+ 1 ev=0.0  Comparing attention, CNNs, and SSMs for multi-domain image recognition
+ 2 ev=0.0  Geochemical characteristics and organic matter enrichment mechanisms of early Cambrian Black Shales 
+ 3 ev=0.0  Genome-guided identification and functional characterization of carbonyl reductases from Parathermos
+ 4 ev=0.0  Green synthesized zinc oxide nanoparticles combined with papaverine induce apoptosis and modulate mi
+ 5 ev=0.0  A study on landslide susceptibility mapping by integrating different datasets based on feature and s
+ 6 ev=0.0  evaluation of putative adipose tissue browning in amyotrophic lateral sclerosis: an MRI and adipokin
+ 7 ev=0.0  Editorial Expression of Concern: Dual control of nuclear EIN3 by bifurcate MAPK cascades in C2H4 sig
+ 8 ev=0.0  Orangutans face bleak future after Indonesia's devastating wildfires
+ 9 ev=1.0  Navigating grief in academia: ways to find balance
+10 ev=0.0  Chromosome 'glue' could boost fertility by stabilizing ageing eggs
+11 ev=0.0  Has AI just cracked Internet encryption? Rumoured 'bombshell' stuns scientists
+12 ev=0.0  How Singapore has turned a nation into a smart-city testing ground
+13 ev=0.0  Dual proofs of legendary Riemann hypothesis stun mathematicians
+14 ev=0.0  What is the Riemann hypothesis? A guide to the famed conjecture that rules prime numbers
+15 ev=0.0  An in situ redox-converted molecule for all-perovskite tandem solar cells
+16 ev=0.0  How arteries keep their shape in the face of overgrowth-inducing mutations
+17 ev=0.0  Saving Nepal's wild orchids — in photos
+18 ev=0.0  A fine-grained reconstruction of barley's evolutionary history
+19 ev=0.0  The leading cities in the world for high-quality research in 2025
+20 ev=0.0  New horizons of mRNA vaccines
+21 ev=0.0  Vaccinology 2.0
+22 ev=0.0  Exploiting immunoregulatory functions of ILC2s for CAR therapy
+23 ev=0.0  Africa's
+```
+
+---
+
+<!-- r:0 m:hook:stop:898a38eb-a6d6-4e42-9f1f-b2cfdb7ee94f h:c78c01fb -->
+### 2026-11-28 08:36:14 UTC assistant
+
+Yes — and it's the same *class* of problem as the obits, but with a twist. Reading all 42 of Nature's pooled rows, they're two completely different products wearing one key:
+
+## What the feed actually contains
+
+**~70% journal-paper citations, not headlines** (roughly 30 of 42 rows):
+
+> "Geochemical characteristics and organic matter enrichment mechanisms of early Cambrian Black Shales"
+> "Nanopore epitranscriptomic profiling of influenza A infection in differentiated primary human airway"
+> "Vaccinology 2.0" · "Infection thresholds" · "Publisher Correction: Molecular predictors of minimal residual disease…"
+
+These are article titles from across the Springer Nature journal portfolio — including very non-Nature material like "Multi-scale graph attention multi-head aggregation autoencoder for electricity theft detection". They're **citations**, not editorial headline writing: descriptive noun phrases that structurally cannot carry an event verb, a quantity, a time/place anchor, or a consequence. Every axis reads ~0 on all of them — correctly, in a grammatical sense, but the comparison is a category error in the same way the death notices were.
+
+**~30% genuine Nature news-desk journalism** — and it's fine:
+
+> "Dual proofs of legendary Riemann hypothesis stun mathematicians"
+> "Orangutans face bleak future after Indonesia's devastating wildfires"
+> "Has AI just cracked Internet encryption?"
+> "NASA releases trove of Moon data from historic Artemis II flight"
+> "How arteries keep their shape in the face of overgrowth-inducing mutations"
+
+Plus some magazine/careers pieces ("Navigating grief in academia").
+
+## Why the axes can't rescue it
+
+The corpus-relative adjustment compares Nature against other science streams — but Phys.org/Medical Xpress write research-release headlines in event-ish phrasing ("Experimental drug shows promise in overcoming…"), so Nature's expected rates assume that shape. Paper titles can never match it. The result: event clarity −11.6pp (rate 0.08), plus smaller penalties on nearly every axis — all driven by the citation majority. The existing measurement note on the page already flags this ("journal-title stream… a form effect"), and the data confirms it's exactly that.
+
+One minor secondary point: even some of the real journalism reads 0 on event clarity because the desk favours soft verbs the lexicon doesn't count ("face", "stun", "could boost") — but that's marginal; the citation flood is the story.
+
+## The difference from the obits case
+
+OregonLive was a *pure* notice stream — one flag, done. Nature is a **mixed** stream: flagging the whole source unmeasurable would throw away a real newsroom's measurable journalism. The cleaner fix is upstream, not in measurement: check which Nature feed ingestion consumes. If it's the journal/content-mixed RSS rather than Nature's dedicated **news** feed (`nature.com/nature.rss` vs the news-specific feed), switching ingestion to the news feed fixes the pool at the source — the citations never enter measurement because they never enter the digest as "news". Want me to check what the feed configuration actually pulls?
 
 ---
 
