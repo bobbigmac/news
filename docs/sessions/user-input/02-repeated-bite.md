@@ -3,8 +3,8 @@ devin-sessionlog: user-input
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 08:11:54 UTC
-entries: 79
+last_activity: 2026-11-28 08:24:06 UTC
+entries: 81
 ---
 
 # repeated-bite
@@ -646,6 +646,20 @@ does handlesblatt score low becuase it's german? If so, exclude non-english from
 ### 2026-11-28 08:11:54 UTC
 
 don't make it a heuristic... YOU know what language they are, just log it so it drives logic. NNOo sniffing
+
+---
+
+<!-- r:0 m:hook:60f3f9fe-aca0-4739-bd8e-0988445c95a3 h:ea385fb7 -->
+### 2026-11-28 08:21:52 UTC
+
+make sure our favicon is being specified prperly, cos we're on a path, not the root, the default isn't correct for subpages
+
+---
+
+<!-- r:0 m:hook:ca564a68-8d93-49ac-bec3-8739e57c1317 h:e031dd08 -->
+### 2026-11-28 08:24:06 UTC
+
+The oregonlive obits are probably a false flag. It's worth checking why, and if death announcements from other sources also hit the same floor if you pretend they all come from one source, or if the oregonlive obits are especially low-value info (are they like "You'll never guess who just died", cos I doubt it
 
 ---
 

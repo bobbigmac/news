@@ -125,6 +125,12 @@ describe('measured sources page wiring', () => {
     expect(vite).toContain('measured-sources.html');
     expect(page).toContain('og:image" content="https://bobdavies.co.uk/news/og-measured.jpg');
     expect(existsSync('src/og-measured.jpg')).toBe(true);
+    // subpages must declare their own icons — the /favicon.ico browser default
+    // resolves at the domain root, not under /news/
+    for (const fragment of ['rel="icon" href="./favicon.ico"', 'icon.svg', 'apple-touch-icon']) {
+      expect(page, `measured page ${fragment}`).toContain(fragment);
+      expect(relationships, `relationships page ${fragment}`).toContain(fragment);
+    }
     expect(index).toContain('./measured-sources.html');
     expect(relationships).toContain('./measured-sources.html');
     expect(page).toContain('./relationships.html');

@@ -3,8 +3,8 @@ devin-sessionlog: transcript
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 08:18:39 UTC
-entries: 2970
+last_activity: 2026-11-28 08:24:06 UTC
+entries: 2981
 ---
 
 # repeated-bite
@@ -81400,6 +81400,209 @@ done
 
 Exit code: 0
 ```
+
+---
+
+<!-- r:0 m:hook:stop:d9c802f5-a818-42e6-996a-7c9afec12f51 h:e2c3f7ba -->
+### 2026-11-28 08:19:08 UTC assistant
+
+Yes — Handelsblatt's low score was substantially a language artifact, and it's now excluded along with three others. Nothing committed.
+
+## What I found reading the actual headlines
+
+- **handelsblatt.com**: majority German — only ~37% of its 55 pooled headlines are English ("Environment: EU bans export of plastic waste" among mostly "Anklage erhebt schwere Vorwürfe..."). German text can't tokenise or parse through the English-only pipeline, so its "score" was noise.
+- **e24.no**: fully Norwegian, 0% English.
+- **lemonde.fr**: genuinely mixed — ~56% English (Le Monde in English) but French articles flow through the same feed.
+- **elfinanciero.com.mx**: ~50% Spanish.
+- **politico.eu**: ~92% English (one French piece in 12) — stays measurable, above the 80% threshold.
+
+No sniffing involved — I read the headlines for every one of the 145 measured sources and logged the judgements as curated data in `source-measurement-overrides.json` under a new `languages` block, with a documentation note that these are manual judgements, not detector output.
+
+## What changed
+
+- **Export**: the four sub-80% feeds are excluded from the ranked ordering entirely — no rank, band, or score — and emitted in a separate `unmeasurableSources` array. Ranks recompute over **141 measurable sources**.
+- **Page**: new bottom section "Available in the digest, but not measurable" listing them with headline counts, the explanation, and a relationships link — no quality claim anywhere. The methodology panel now states plainly: "**We can only reliably score English-language sources.** Feeds publishing mostly in other languages are excluded from the ranking entirely."
+- **Manage sources**: the quality lookup no longer carries them — no phantom quality number.
+- **og-measured.jpg**: regenerated — Handelsblatt/E24 are out of the bottom seven, which now shows the true stable English-language low end (Nature 31.4 down to Kotaku 23.3); footer reads "141 news sources ranked by text-metrics".
+
+Verification: new test asserts all four are unranked and unscored but listed, and politico.eu stays measurable — **15/15 files, 110/110 tests**; production build passes; dist byte-identical. One process note: my first patch silently didn't apply because the script missing its final write — caught it when the export came back unchanged, reapplied, verified. Logged in `docs/DONE.md`.
+
+---
+
+<!-- r:0 m:hook:60f3f9fe-aca0-4739-bd8e-0988445c95a3 h:ea385fb7 -->
+### 2026-11-28 08:21:52 UTC user
+
+make sure our favicon is being specified prperly, cos we're on a path, not the root, the default isn't correct for subpages
+
+---
+
+<!-- r:0 m:hook:60f3f9fe-aca0-4739-bd8e-0988445c95a3:exec:ffd7743e h:39ee4d29 -->
+### 2026-11-28 08:22:04 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n -i \"icon\\|favicon\" src/index.html src/measured-sources.html src/relationships.html | head -12; ls src/*.ico src/*.png src/favicon* 2>/dev/null | head -5; ls dist/ | grep -i -E \"favicon|icon\" | head -5", "timeout": 10000}`
+
+```
+Output from command in shell 68e4f8:
+src/index.html:24:  <link rel="icon" href="./favicon.ico" sizes="any">
+src/index.html:25:  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+src/index.html:26:  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+src/index.html:27:  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+src/index.html:28:  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+src/index.html:159:      <button id="settings-toggle" class="masthead-icon" aria-label="Settings">
+src/android-chrome-192x192.png
+src/android-chrome-512x512.png
+src/apple-touch-icon.png
+src/favicon-16x16.png
+src/favicon-16x16.png
+apple-touch-icon.png
+favicon-16x16.png
+favicon-32x32.png
+favicon.ico
+icon.png
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:60f3f9fe-aca0-4739-bd8e-0988445c95a3:exec:9f79601c h:d81f1f7e -->
+### 2026-11-28 08:22:12 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -c -i \"rel=\\\"icon\\\"\\|apple-touch\" src/measured-sources.html src/relationships.html; ls dist/icon.svg dist/manifest* src/icon.svg src/manifest* 2>&1 | head -6; grep -n \"icon.svg\\|copyStatic\\|manifest\" scripts/build.js | head -10", "timeout": 10000}`
+
+```
+Output from command in shell 29bdc6:
+src/measured-sources.html:0
+src/relationships.html:0
+ls: cannot access 'dist/manifest*': No such file or directory
+ls: cannot access 'src/manifest*': No such file or directory
+dist/icon.svg
+src/icon.svg
+21:function copyStatic(file) {
+190:copyStatic('og-cover.jpg');
+191:copyStatic('og-measured.jpg');
+192:copyStatic('og-relationships.jpg');
+193:copyStatic('sw.js');
+196:                 'android-chrome-192x192.png', 'android-chrome-512x512.png', 'site.webmanifest',
+197:                 'icon.png', 'icon.svg']) {
+198:  copyStatic(f);
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:60f3f9fe-aca0-4739-bd8e-0988445c95a3:exec:27cc7329 h:d8959c62 -->
+### 2026-11-28 08:22:28 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && ls src/site.webmanifest 2>&1; grep -n \"viewport\" src/measured-sources.html src/relationships.html | head -4", "timeout": 10000}`
+
+```
+Output from command in shell 44ee57:
+src/site.webmanifest
+src/measured-sources.html:6:  <meta name="viewport" content="width=device-width,initial-scale=1">
+src/relationships.html:6:  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:60f3f9fe-aca0-4739-bd8e-0988445c95a3:exec:e27a463f h:2a5a80ea -->
+### 2026-11-28 08:22:34 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nblock='''  <link rel=\"icon\" href=\"./favicon.ico\" sizes=\"any\">\n  <link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"./favicon-32x32.png\">\n  <link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"./favicon-16x16.png\">\n  <link rel=\"icon\" type=\"image/svg+xml\" href=\"./icon.svg\">\n  <link rel=\`
+
+```
+Output from command in shell 06958c:
+icons added to src/measured-sources.html
+icons added to src/relationships.html
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:60f3f9fe-aca0-4739-bd8e-0988445c95a3:exec:31845592 h:bb4ef92b -->
+### 2026-11-28 08:22:42 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 193,200p scripts/build.js && grep -n \"webmanifest\" src/index.html src/measured-sources.html src/relationships.html; grep -rn \"rel=\\\"icon\\\"\" test/*.js | head -3", "timeout": 10000}`
+
+```
+Output from command in shell e0adcf:
+copyStatic('sw.js');
+// Favicon set (favicon.io output + the traced SVG master)
+for (const f of ['favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png', 'apple-touch-icon.png',
+                 'android-chrome-192x192.png', 'android-chrome-512x512.png', 'site.webmanifest',
+                 'icon.png', 'icon.svg']) {
+  copyStatic(f);
+}
+// Machine-readable measured-source export, linked from measured-sources.html.
+src/index.html:29:  <link rel="manifest" href="./site.webmanifest">
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:60f3f9fe-aca0-4739-bd8e-0988445c95a3:exec:07981cc7 h:34ba03e4 -->
+### 2026-11-28 08:23:03 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\np='test/measured-sources.test.js'\ns=open(p).read()\nold='''    expect(page).toContain('og:image\" content=\"https://bobdavies.co.uk/news/og-measured.jpg');\n    expect(existsSync('src/og-measured.jpg')).toBe(true);'''\nnew='''    expect(page).toContain('og:image\" content=\"https://bobdavies.co.uk/news/og-measured.jpg')`
+
+```
+test added
+
+===
+Stopped waiting for output after 10.1 seconds. Command running in background with ID: verify2. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:60f3f9fe-aca0-4739-bd8e-0988445c95a3:get_output:14c872ce h:4afc4d7f -->
+### 2026-11-28 08:23:32 UTC tool `get_output`
+
+`{"shell_id": "verify2", "timeout": 240000}`
+
+```
+[2m Test Files [22m [1m[32m15 passed[39m[22m[90m (15)[39m
+[2m      Tests [22m [1m[32m110 passed[39m[22m[90m (110)[39m
+Build complete. 5557 clusters, 7113 entities, 57 topics, 10517 stories in timeline -> dist/dataset.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:60f3f9fe-aca0-4739-bd8e-0988445c95a3 h:367e96f3 -->
+### 2026-11-28 08:23:39 UTC assistant
+
+Fixed. `measured-sources.html` and `relationships.html` had **no favicon declarations at all** — so browsers fell back to the default `/favicon.ico` at the domain root (`bobdavies.co.uk/favicon.ico`), not `/news/favicon.ico` where the site actually lives. Both pages now carry the same five-line icon block as the index:
+
+```
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+<link rel="icon" type="image/svg+xml" href="./icon.svg">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+```
+
+The relative `./` paths resolve correctly from each page since everything sits in the same `/news/` directory, and the build already copies the full favicon set (`favicon.ico`, both PNGs, `icon.svg`, apple-touch, android-chrome, webmanifest) into dist — confirmed in `build.js`.
+
+Added a regression test asserting all subpages declare their icons with a comment explaining why the browser default doesn't work for a path-hosted site. **15/15 files, 110/110 tests** pass; production build passes. Nothing committed.
+
+---
+
+<!-- r:0 m:hook:ca564a68-8d93-49ac-bec3-8739e57c1317 h:e031dd08 -->
+### 2026-11-28 08:24:06 UTC user
+
+The oregonlive obits are probably a false flag. It's worth checking why, and if death announcements from other sources also hit the same floor if you pretend they all come from one source, or if the oregonlive obits are especially low-value info (are they like "You'll never guess who just died", cos I doubt it
 
 ---
 
