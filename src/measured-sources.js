@@ -239,6 +239,41 @@ function render() {
     summary: 'The lowest-scoring sources in the corpus ordering: headlines comparatively thin on concrete information, heavier on attention packaging, or both.',
     sources: bottom,
   });
+  renderUnmeasurable(main);
+}
+
+// Feeds below roughly 80% English-language headlines cannot be fairly scored by the
+// English-only pipeline. They are listed without any quality claim — no score, no rank.
+function renderUnmeasurable(main) {
+  const sources = MEASURED_SOURCES.unmeasurableSources || [];
+  if (!sources.length) return;
+  const section = el('section', 'measurement-band unmeasurable-band');
+  section.dataset.band = 'unmeasurable';
+  const head = el('header', 'band-head');
+  const titleWrap = el('div');
+  titleWrap.appendChild(el('h2', '', 'Available in the digest, but not measurable'));
+  titleWrap.appendChild(el('p', '', 'These sources publish mostly in languages other than English. The measurement pipeline can only reliably score English-language headlines, so no quality claim is made about them.'));
+  head.appendChild(titleWrap);
+  head.appendChild(el('span', 'band-count', `${sources.length} sources`));
+  section.appendChild(head);
+  const list = el('div', 'unmeasurable-list');
+  for (const source of sources) {
+    const item = el('div', 'unmeasurable-item');
+    item.dataset.search = `${source.label} ${source.key} ${source.family || ''}`.toLowerCase();
+    const name = el('span', 'unmeasurable-name', source.label);
+    const meta = el('span', 'unmeasurable-meta', `${source.headlines} headlines · not measured`);
+    item.appendChild(name);
+    if (source.note) item.appendChild(el('span', 'unmeasurable-note', source.note));
+    item.appendChild(meta);
+    if (source.relationshipsUrl) {
+      const link = el('a', 'unmeasurable-rel', 'relationships');
+      link.href = source.relationshipsUrl;
+      item.appendChild(link);
+    }
+    list.appendChild(item);
+  }
+  section.appendChild(list);
+  main.appendChild(section);
 }
 
 let activeFilter = 'all';

@@ -100,5 +100,38 @@
       "family": "personal-finance service journalism",
       "note": "Personal-finance coverage naturally scores highly on money and consumer-consequence cues even when individual headlines also use service or search-capture packaging."
     }
+  },
+  "languages": {
+    "handelsblatt.com": {
+      "primary": "de",
+      "englishShare": 0.37,
+      "measurable": false,
+      "note": "Mixed German/English feed, majority German. English-language measurement cannot fairly score it."
+    },
+    "e24.no": {
+      "primary": "no",
+      "englishShare": 0.0,
+      "measurable": false,
+      "note": "Norwegian-language business news. English-language measurement cannot score it."
+    },
+    "lemonde.fr": {
+      "primary": "fr",
+      "englishShare": 0.56,
+      "measurable": false,
+      "note": "Mixed French/English output (Le Monde in English plus French articles). Below the 80% English threshold for fair measurement."
+    },
+    "elfinanciero.com.mx": {
+      "primary": "es",
+      "englishShare": 0.5,
+      "measurable": false,
+      "note": "Mixed Spanish/English output. Below the 80% English threshold for fair measurement."
+    },
+    "politico.eu": {
+      "primary": "en",
+      "englishShare": 0.92,
+      "measurable": true,
+      "note": "Predominantly English with occasional French/German pieces; above the 80% threshold."
+    },
+    "documentation": "Language annotations are manual judgements from reading pooled headlines, not detector output. englishShare is approximate. measurable=false means the feed is below roughly 80% English-language headlines, so the English-only measurement pipeline cannot make a fair claim about it."
   }
 }

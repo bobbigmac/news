@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-28T07:37:32.051790+00:00",
+ "generatedAt": "2026-11-28T08:15:32.633775+00:00",
  "sources": {
   "tweaktown.com": {
    "quality": 78.11,
@@ -121,10 +121,6 @@
   "sports.yahoo.com": {
    "quality": 64.35,
    "headlines": 21
-  },
-  "lemonde.fr": {
-   "quality": 64.34,
-   "headlines": 16
   },
   "timesofindia.indiatimes.com": {
    "quality": 63.63,
@@ -494,10 +490,6 @@
    "quality": 38.58,
    "headlines": 12
   },
-  "elfinanciero.com.mx": {
-   "quality": 38.51,
-   "headlines": 11
-  },
   "news.xbox.com": {
    "quality": 38.06,
    "headlines": 21
@@ -617,14 +609,6 @@
   "kotaku.com": {
    "quality": 23.29,
    "headlines": 671
-  },
-  "handelsblatt.com": {
-   "quality": 20.17,
-   "headlines": 55
-  },
-  "e24.no": {
-   "quality": 14.22,
-   "headlines": 10
   }
  }
 }

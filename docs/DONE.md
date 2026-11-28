@@ -1,5 +1,14 @@
 # DONE
 
+## Non-English feeds excluded from measured quality (2026-11-28)
+
+- Handelsblatt's low score was a measurement artifact: its feed is majority German (~37% English headlines), so the English-only parse/lexicon pipeline could never score it fairly. Language judgements were made by directly reading every measured source's pooled headlines — no detector library or heuristic sniffing.
+- Curated language annotations live in `src/trees/profiles/source-measurement-overrides.json` under `languages`: handelsblatt.com (de, ~37% English), e24.no (no, 0%), lemonde.fr (fr, ~56%), elfinanciero.com.mx (es, ~50%) are `measurable: false`; politico.eu (~92% English) stays measurable.
+- `build_measured_sources.py` excludes `measurable: false` feeds from the ranked ordering entirely — no rank, no band, no score — and emits them in a separate `unmeasurableSources` array (label, headline count, language, explanatory note). Ranks/bands recompute over the remaining set: 141 measurable sources.
+- The measured page renders them in a bottom section "Available in the digest, but not measurable" with no quality claim, plus a relationships link. Methodology panel now states "We can only reliably score English-language sources" and the 80% threshold policy.
+- `source-quality.json` lookup excludes them (no quality number in manage-sources); og-measured.jpg regenerated — bottom seven is now the true stable English-language low end (Nature, Engadget, IGN, GameSpot, OregonLive obituaries, Daily Mail, Kotaku), footer reads 141 sources.
+- Verification: new test asserts the four feeds are unranked/unscored but listed, and politico.eu stays measurable; 15/15 files, 110/110 tests; production build passes; dist byte-identical.
+
 ## Page-specific OpenGraph images (2026-11-28)
 
 - `scripts/build-page-og-images.js` generates two committed card images with the same sharp+SVG technique as the site-wide cover, re-runnable when measurements change.

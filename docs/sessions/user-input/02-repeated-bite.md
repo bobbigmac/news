@@ -3,8 +3,8 @@ devin-sessionlog: user-input
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 08:04:49 UTC
-entries: 77
+last_activity: 2026-11-28 08:11:54 UTC
+entries: 79
 ---
 
 # repeated-bite
@@ -632,6 +632,20 @@ oh wow, NPR lands down our list? why?
 ### 2026-11-28 08:04:49 UTC
 
 measured-masthead shouldn't have a border-bottom. It's worth excluding small-sample-counts from the opengraph image, as we'll reassess whn more articles available
+
+---
+
+<!-- r:0 m:hook:1869ffc3-bdd6-41a2-b5c5-55557f978d51 h:0c3f6290 -->
+### 2026-11-28 08:08:52 UTC
+
+does handlesblatt score low becuase it's german? If so, exclude non-english from the thumnbnail too. You might need to check their feed if they publish mixed, but we KNOW we cannot rank non-english effectively, so shouldn't make a claim about any feed <80% english-language (and can only mention them at the bottom of the page as available in the site but not possible to measure)
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51 h:cfe82059 -->
+### 2026-11-28 08:11:54 UTC
+
+don't make it a heuristic... YOU know what language they are, just log it so it drives logic. NNOo sniffing
 
 ---
 

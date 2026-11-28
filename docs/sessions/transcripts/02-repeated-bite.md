@@ -3,8 +3,8 @@ devin-sessionlog: transcript
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 08:05:49 UTC
-entries: 2915
+last_activity: 2026-11-28 08:18:39 UTC
+entries: 2970
 ---
 
 # repeated-bite
@@ -80120,6 +80120,1285 @@ sources-manifest-GAPS-2026-11-27.md
 - A meaningful share of the apparent gaps are not conventional publishers: corporate/government channels, press-release wires, community platforms, aggregation services, hosted author pages and specialist trade outlets need different treatment.
 - The strongest broad discovery layer located is TOLD’s global source catalogue. Its own documentation says its label describes structural editorial position (ownership, funding, focus), **not** truth, factuality or quality. It lists 503 sources and 316 live feeds; it cannot cover every item in this manifest.
 - For deeper structural evidence, State Media Monitor, Media Ownership Monitor and Media Power Monitor are more usef
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:f2822d7c h:dfba41a6 -->
+### 2026-11-28 08:05:57 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && head -60 .working/sources-manifest-GAPS-2026-11-27.md && ls scripts/ | grep -i -E \"gap|manifest\"; grep -rln \"GAPS\" scripts/*.js 2>/dev/null | head", "timeout": 10000}`
+
+```
+Output from command in shell 0c9c93:
+# Sources manifest — knowledge GAPS
+
+**Generated:** 27 November 2026
+**Input:** `.working/source-headlines-analysis.zip`
+
+This is a raw gap dump, not a research brief. It lists cache sources that have no curated profile, or only a minimal/thin one. Sorting is by unique cached headline count, so the first rows are the highest-value research targets.
+
+## UPDATE import validation
+
+- Parsed update keys: **118** (118 unique)
+- Keys resolving to a curated profile: **118/118**
+- Keys resolving to a curated relation: **118/118**
+- Keys with usable rather than minimal/thin profiles: **118/118**
+- Unprocessed markers left in update file: Key blocks **0**, ADD blocks **0**, EDIT lines **0**
+
+## Gap counts
+
+- No curated profile: **488**
+- Minimal profile: **15**
+- Thin profile: **14**
+- Total gap rows below: **517** of 695 cached source keys
+
+Format: `key` — label — unique headline count — relation — existing kind, if any — sample headline.
+
+## No curated profile (488)
+
+- `colombiaone.com` — **Colombiaone** — 11 unique headlines — relation: Latin America Media — sample: “Why NASA’s Voyager 2 Map May Never Lead Aliens to Earth”
+- `sempremilan.com` — **Sempremilan** — 11 unique headlines — relation: missing curated relation — sample: “Ramos sees Olympiacos clash as an 'opportunity' but admits: "It's now or never"”
+- `digitaltrends.com` — **Digitaltrends** — 9 unique headlines — relation: Technology Press / Consumer Tech / Consumer Gadgets — sample: “Xbox just got a bizarre co-op horror game where pirates lose their butts”
+- `nation.com.pk` — **nation.com.pk** — 9 unique headlines — relation: Pakistan Media — sample: “Pakistan, Bangladesh entering new era of bilateral ties: BD speaker”
+- `physicsworld.com` — **Physicsworld** — 9 unique headlines — relation: Science & Health Press / Science News & Commentary / Space & Physics — sample: “Close-up images reveal giant DART impact crater on asteroid Dimorphos”
+- `radiotimes.com` — **Radiotimes** — 9
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:32793624 h:f187968a -->
+### 2026-11-28 08:06:10 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport json\np=json.load(open('src/trees/profiles/sources.json'))\nprint('profiles:',len(p))\nk=next(iter(p))\nprint('sample key:',k)\nprint(json.dumps(p[k],indent=1)[:900])\na=json.load(open('src/trees/profiles/source-assessments.json'))\nprint('assessments:',len(a))\nka=next(iter(a))\nprint(json.dumps(a[ka],indent=1)[:`
+
+```
+Output from command in shell 7bc7f4:
+profiles: 424
+sample key: bbc.co.uk
+{
+ "kind": "Public-service broadcaster",
+ "properties": [
+  "Royal Charter remit",
+  "licence-fee funded",
+  "statutory impartiality",
+  "national and international scale"
+ ],
+ "leaning": "Institutionally required to be impartial; criticised from both left and right over framing, access, and political coverage.",
+ "watch": [
+  "Its scale makes it useful but can crowd out independent reporting",
+  "Charter impartiality is an obligation, not proof that every editorial choice is neutral"
+ ],
+ "links": [
+  {
+   "label": "BBC Charter",
+   "url": "https://www.gov.uk/government/publications/bbc-charter-and-framework-agreement/bbc-charter"
+  },
+  {
+   "label": "BBC mission",
+   "url": "https://www.bbc.com/aboutthebbc/governance/mission/"
+  },
+  {
+   "label": "2024 impartiality review",
+   "url": "https://www.gov.uk/government/publications/bbc-mid-term-review-2024/bbc-mid-term-review-2024"
+  }
+ ]
+assessments: 3
+"2026-11-27"
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:7ab8e67e h:868c08e6 -->
+### 2026-11-28 08:06:18 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport json\na=json.load(open('src/trees/profiles/source-assessments.json'))\nprint('top-level keys:',list(a.keys())[:5])\nd=a.get('2026-11-27')\nif isinstance(d,dict):\n    ks=list(d.keys())[:3]\n    print('dated keys:',len(d),ks)\n    print(json.dumps(d[ks[0]],indent=1)[:500])\nEOF\nls src/trees/*.json src/trees/*.js 2`
+
+```
+Output from command in shell 573bbb:
+top-level keys: ['snapshot', 'note', 'sources']
+cache/digest.json
+clusters: 5557
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:3b98269f h:7b90e553 -->
+### 2026-11-28 08:06:22 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport json\na=json.load(open('src/trees/profiles/source-assessments.json'))\nsrc=a['sources']\nprint('assessed sources:',len(src))\nk=next(iter(src))\nprint('sample:',k)\nprint(json.dumps(src[k],indent=1)[:700])\n# tree shape\nimport glob\nprint(glob.glob('src/trees/*'))\nEOF", "timeout": 10000}`
+
+```
+Output from command in shell 0777ba:
+assessed sources: 110
+sample: aa.com.tr
+[
+ {
+  "rater": "MBFC",
+  "type": "political leaning and factual reporting",
+  "rating": "Right (6.4)",
+  "url": "https://mediabiasfactcheck.com/anadolu-agency/",
+  "factual_reporting": "Mixed (5.0)",
+  "note": "MBFC describes strong pro-government framing and sourcing concerns; institutional state relationship matters more than a US-style partisan label"
+ },
+ {
+  "rater": "MediaBias.News index",
+  "type": "republished political-leaning index",
+  "rating": "Leans right",
+  "url": "https://mediabias.news/sources",
+  "subject": "Anadolu Ajans\u0131"
+ }
+]
+['src/trees/profiles', 'src/trees/story-pivots', 'src/trees/sources', 'src/trees/story']
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:37677a50 h:feaf08b1 -->
+### 2026-11-28 08:06:36 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"export\" scripts/sources.js | head && grep -rn \"SOURCE_RELATION_TREE\\|source-tree\" src/source-tree.js 2>/dev/null | head -3; ls src/trees/sources/ | head", "timeout": 10000}`
+
+```
+Output from command in shell 31e392:
+147:export const PLATFORM_HOSTS = new Set([
+157:export function platformOfHost(host) {
+168:export function tenantFromUrl(url) {
+186:export function getSourceName(url) {
+196:export function sourceKeyFromUrl(url) {
+213:export function prettifySourceKey(key) {
+19:export const SOURCE_RELATION_TREE = [
+australia-media.json
+canada-media.json
+digital-publishers.json
+murdoch.json
+official-organizations.json
+platforms-aggregators.json
+public-international.json
+regional-english.json
+specialist-press.json
+state-media.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:44958122 h:a0b31860 -->
+### 2026-11-28 08:06:40 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport json,glob,os\n# how are hosts stored in tree files?\nf=open('src/trees/sources/murdoch.json').read()[:400]\nprint(f)\nEOF", "timeout": 10000}`
+
+```
+Output from command in shell 508c71:
+{
+  "id": "murdoch",
+  "label": "Murdoch-family media",
+  "icon": "nypost.com",
+  "children": [
+    {
+      "id": "fox-corporation",
+      "label": "Fox Corporation",
+      "icon": "foxnews.com",
+      "children": [
+        {
+          "id": "fox-news-media",
+          "label": "Fox News Media",
+          "icon": "foxnews.com",
+          "sources": [
+            "foxnews.com",
+            "foxbusi
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:49f2ac05 h:55cd0d7a -->
+### 2026-11-28 08:07:08 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && cat > scripts/build-gaps-manifest.js <<'EOF'\n// Generates .working/sources-manifest-GAPS-<date>.md \u2014 a raw gap dump for the\n// next research round, across three dimensions:\n//   1. additional sources \u2014 corpus/digest keys with no or thin curated profiles\n//   2. relationships & connections \u2014 profiles missing ownership/fun`
+
+```
+Output from command in shell 5c2b7b:
+written .working/sources-manifest-GAPS-2026-11-28.md
+corpus keys 630 | no profile 265 | thin 277 | no-owner 247 | no-assessment 274 | measured-no-assessment 88 | treeless 91
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:32b23347 h:d7052584 -->
+### 2026-11-28 08:07:15 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && head -70 .working/sources-manifest-GAPS-2026-11-28.md | tail -40 && grep -c \"dev.to/\" .working/sources-manifest-GAPS-2026-11-28.md", "timeout": 10000}`
+
+```
+Output from command in shell 3663c1:
+- `island.lk` — **Island** — 6 unique headlines — sample: "Pope pictured for first time since surgery and cancer diagnosis"
+- `expansion.com` — **Expansion** — 6 unique headlines — sample: "El beneficio de Tesla se desploma un 43% hasta septiembre"
+- `forbes.com` — **Forbes** — 5 unique headlines — sample: "RFK Jr. Says Pennsylvania Lied About ‘So-Called’ Measles Deaths"
+- `exponentialview.co` — **Exponentialview** — 5 unique headlines — sample: "🚨 AI doesn’t need a mind to run amok"
+- `calgaryherald.com` — **Calgaryherald** — 5 unique headlines — sample: "New cure arrives for chronic, lifelong hepatitis B infection"
+- `derstandard.at` — **Derstandard** — 5 unique headlines — sample: "Welt ist nicht auf sich zuspitzende Klimafolgen vorbereitet, warnt UN-Bericht"
+- `tomshardware.com` — **Tomshardware** — 4 unique headlines — sample: "The original Xbox was released 25 years ago today — Microsoft’s Pentium III and Nvidia GPU-powered console did"
+- `6abc.com` — **6abc** — 4 unique headlines — sample: "Calling out sick for GTA 6 release? XBOX, DJ Khaled have your doctor's note for video game players"
+- `citizen.co.za` — **Citizen** — 4 unique headlines — sample: "Kenya reports first-ever Ebola death"
+- `superherohype.com` — **Superherohype** — 4 unique headlines — sample: "Beloved Batman Video Game Out Today on Nintendo Switch 2"
+- `al-monitor.com` — **Al Monitor** — 4 unique headlines — sample: "UN climate panel head wants swift end to deadlock over key scientific report"
+- `dutchnews.nl` — **Dutchnews** — 4 unique headlines — sample: "Feyenoord second best to Betis as Isco is on the spot for CL win"
+- `egyptindependent.com` — **Egyptindependent** — 4 unique headlines — sample: "What are the possible scenarios after Israel’s elections?"
+- `en.mercopress.com` — **Mercopress** — 4 unique headlines — sample: "British-Iranian man arrested over the RAF Fairford incident"
+- `hellenicshippingnews.com` — **Hellenicshippingnews** — 4 unique h
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:405d4d20 h:ad045705 -->
+### 2026-11-28 08:07:24 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport json\np=json.load(open('src/trees/profiles/sources.json'))\nfor k in ('forbes.com','espn.com','polygon.com','tomshardware.com','deadline.com','fool.com'):\n    print(k, 'profiled' if k in p else 'NO PROFILE')\n# depth spot-check: how many profiles have links?\nnolinks=[k for k,v in p.items() if not v.get('links')]`
+
+```
+Output from command in shell 2abbc4:
+forbes.com NO PROFILE
+espn.com NO PROFILE
+polygon.com NO PROFILE
+tomshardware.com NO PROFILE
+deadline.com NO PROFILE
+fool.com NO PROFILE
+profiles without links: 207 of 424
+dev.to profiles: 121
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:070c932c h:0da0b2f9 -->
+### 2026-11-28 08:07:35 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\np='scripts/build-gaps-manifest.js'\ns=open(p).read()\nold='''  if (props >= 3 && watch >= 2 && links >= 1 && words > 500) return 'full';\n  if (words < 260 || (props + watch) < 2) return 'minimal';\n  if (words < 500 || links === 0) return 'thin';\n  return 'full';'''\nnew='''  // links are bonus evidence, not depth \u20`
+
+```
+Output from command in shell c03651:
+ok
+written .working/sources-manifest-GAPS-2026-11-28.md
+corpus keys 630 | no profile 265 | thin 269 | no-owner 247 | no-assessment 274 | measured-no-assessment 88 | treeless 91
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:724a82a0 h:7e78d90b -->
+### 2026-11-28 08:07:46 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport json\np=json.load(open('src/trees/profiles/sources.json'))\nlens=sorted((len(json.dumps(v)),k) for k,v in p.items())\nimport statistics\nprint('min/med/max json len:',lens[0][0],lens[len(lens)//2][0],lens[-1][0])\nprint('under 260:',sum(1 for l,_ in lens if l<260))\nprint('under 520:',sum(1 for l,_ in lens if l<52`
+
+```
+Output from command in shell 6c8d00:
+min/med/max json len: 118 445 3078
+under 260: 19
+under 520: 251
+under 800: 357
+median example: medpagetoday.com
+{
+ "kind": "Medical news and clinical-practice publication",
+ "model": "Reports clinical research, regulatory developments, medical meetings, health policy and specialty practice for healthcare professionals.",
+ "watch": [
+  "It is journalism for clinicians, not the underlying evidence source; follow the study, regulator document or guideline."
+ ],
+ "links": [
+  {
+   "label": "medpagetoday.com \u2014 Aboutus",
+   "url": "https://www.medpagetoday.com/aboutus"
+  }
+ ]
+}
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:70cc5e84 h:33c5c26b -->
+### 2026-11-28 08:08:06 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport json\nfrom collections import Counter\np=json.load(open('src/trees/profiles/sources.json'))\nc=Counter()\nfor v in p.values():\n    for k in v: c[k]+=1\nprint(c.most_common())\nEOF", "timeout": 10000}`
+
+```
+Output from command in shell de8835:
+[('kind', 424), ('watch', 407), ('links', 217), ('properties', 178), ('model', 125), ('ownership', 108), ('leaning', 38), ('history', 27), ('flags', 18), ('governance', 4), ('notes', 2)]
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:d86a5e02 h:b870c518 -->
+### 2026-11-28 08:08:15 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\np='scripts/build-gaps-manifest.js'\ns=open(p).read()\nold='''function hasOwnershipSignal(profile) {\n  if (!profile) return false;\n  const text = [profile.kind, profile.leaning, ...(profile.properties || []), ...(profile.watch || [])].join(' ');\n  return OWNER_WORDS.test(text);\n}'''\nnew='''function hasOwnershipSignal`
+
+```
+Output from command in shell df968c:
+written .working/sources-manifest-GAPS-2026-11-28.md
+corpus keys 630 | no profile 265 | thin 269 | no-owner 166 | no-assessment 274 | measured-no-assessment 88 | treeless 91
+8:## Gap counts
+18:## 1. Additional sources — no curated profile (265)
+286:## 2. Thin or minimal profiles — need deepening (269)
+558:## 3. Relationships & connections — profiled but no ownership/funding signal (166)
+729:## 4. Non-measured quality — profiled but no external assessment (274)
+1006:## 5. Measured sources missing assessment evidence (88)
+1099:## 6. Keys with no home in the source tree (91)
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:243bd5f3 h:e87c8447 -->
+### 2026-11-28 08:08:23 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n '/## 5\\./,/## 6\\./p' .working/sources-manifest-GAPS-2026-11-28.md | head -30", "timeout": 10000}`
+
+```
+Output from command in shell 48c9db:
+## 5. Measured sources missing assessment evidence (88)
+
+Highest-priority cross-section: these sources are prominent enough to be measured, so external quality evidence is most valuable here.
+
+- `tweaktown.com` — **TweakTown** — 46 unique headlines — measured rank 1 — sample: ""
+- `myjoyonline.com` — **MyJoyOnline** — 28 unique headlines — measured rank 2 — sample: ""
+- `investing.com` — **Investing.com** — 17 unique headlines — measured rank 3 — sample: ""
+- `eurogamer.net` — **Eurogamer** — 458 unique headlines — measured rank 4 — sample: ""
+- `arabianbusiness.com` — **Arabian Business** — 19 unique headlines — measured rank 6 — sample: ""
+- `qatar-tribune.com` — **Qatar Tribune** — 28 unique headlines — measured rank 7 — sample: ""
+- `worldsoccertalk.com` — **World Soccer Talk** — 18 unique headlines — measured rank 8 — sample: ""
+- `wccftech.com` — **Wccftech** — 27 unique headlines — measured rank 13 — sample: ""
+- `globalnews.ca` — **Global News** — 19 unique headlines — measured rank 16 — sample: ""
+- `benzinga.com` — **Benzinga** — 10 unique headlines — measured rank 18 — sample: ""
+- `axios.com` — **Axios** — 16 unique headlines — measured rank 19 — sample: ""
+- `kait8.com` — **KAIT 8** — 18 unique headlines — measured rank 20 — sample: ""
+- `inc.com` — **Inc.** — 26 unique headlines — measured rank 23 — sample: ""
+- `freepressjournal.in` — **Free Press Journal** — 12 unique headlines — measured rank 24 — sample: ""
+- `discovermagazine.com` — **Discover** — 12 unique headlines — measured rank 25 — sample: ""
+- `group-nypost-pagesix` — **New York Post / Page Six** — 48 unique headlines — measured rank 27 — sample: ""
+- `sports.yahoo.com` — **Yahoo Sports** — 21 unique headlines — measured rank 28 — sample: ""
+- `news.sky.com` — **Sky News** — 48 unique headlines — measured rank 33 — sample: ""
+- `psypost.org` — **PsyPost** — 28 unique headlines — measured rank 35 — sample: ""
+- `inquirer.com` — **The Philadelphia Inquirer
+```
+
+---
+
+<!-- r:0 m:hook:stop:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb h:28d6b67d -->
+### 2026-11-28 08:08:44 UTC assistant
+
+Fresh GAPS report generated: `.working/sources-manifest-GAPS-2026-11-28.md`, via a new reusable generator `scripts/build-gaps-manifest.js` (digest corpus + measured keys vs the three knowledge layers).
+
+## What the fresh scan found
+
+**Universe: 630 source keys** across the live digest plus measured corpus. Six sections:
+
+| Gap | Count | Highest-value examples |
+|---|---:|---|
+| **1. No curated profile** | 265 | `forbes.com`, `espn.com`, `polygon.com`, `tomshardware.com`, `deadline.com`, `fool.com`, `digitaltrends.com`, `cnbc.com`, `miamiherald.com`, `asia.nikkei.com` — major outlets still unprofiled |
+| **2. Thin/minimal profiles** | 269 | the real depth problem: median profile is one kind-line + one watch item (e.g. MedPage Today) — describes what it publishes, nothing structural |
+| **3. No ownership/funding signal** | 166 | profiled, but the *relationships* layer is empty — no owner, parent, funding model or state/governance structure anywhere in the entry |
+| **4. No external assessment** | 274 | no TOLD/MBFC/AllSides/Ad Fontes/NewsGuard-style evidence |
+| **5. Measured sources with no assessment** | 88 of 145 | the priority cross-section — rank 1 TweakTown, rank 2 MyJoyOnline, Eurogamer, Sky News, This is Money, Quartz, SCMP all lack external quality evidence |
+| **6. No tree home** | 91 | unprofiled corpus keys with no curated relation — tree-placement work for the ingestion round |
+
+## Method notes
+
+- The depth classification reads actual profile content — I initially mis-measured because ownership data lives in structured `ownership`/`governance` fields (108 profiles) and missions in `model` (125), not just prose; the final scan checks structured fields directly. The 269 thin count is genuine, not an artifact: most profiles really are one-note descriptions.
+- Sorting is by unique cached headline count throughout, so section tops are the highest-value research targets.
+- Section 5 is the sharpest output: being *measured* means readers see these sources ranked on the quality page every day, yet 88 of 145 have no external evidence backing their relationships/quality presentation.
+
+The file mirrors the previous round's format so it can feed the same research → curation → ingestion pipeline. Nothing committed.
+
+---
+
+<!-- r:0 m:hook:1869ffc3-bdd6-41a2-b5c5-55557f978d51 h:0c3f6290 -->
+### 2026-11-28 08:08:52 UTC user
+
+does handlesblatt score low becuase it's german? If so, exclude non-english from the thumnbnail too. You might need to check their feed if they publish mixed, but we KNOW we cannot rank non-english effectively, so shouldn't make a claim about any feed <80% english-language (and can only mention them at the bottom of the page as available in the site but not possible to measure)
+
+---
+
+<!-- r:0 m:hook:1869ffc3-bdd6-41a2-b5c5-55557f978d51:exec:4921388a h:92851338 -->
+### 2026-11-28 08:09:00 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport csv\nrows=[r for r in csv.DictReader(open('docs/headline-data/current/headline_level_signals.csv')) if r.get('source_key')=='handelsblatt.com']\nprint('handelsblatt headlines:',len(rows))\nfor r in rows[:15]: print('-',r.get('headline','')[:100])\nprint()\nrows2=[r for r in csv.DictReader(open('docs/headline-data/`
+
+```
+Output from command in shell b6d852:
+handelsblatt headlines: 55
+- Genossenschaftsbanken: Genossenschaftsbanken bündeln Marketing in neuer Firma Coorelity
+- Prozessauftakt: Anklage erhebt schwere Vorwürfe gegen Jones-Day-Anwälte
+- +++ Bundespolitik +++: SPD kritisiert Haushaltsverfahren – „Einmaliger Vorgang"
+- EU-Haushalt: Costa will 204 Milliarden sparen – Merz reicht das nicht
+- Environment: EU bans export of plastic waste to many countries
+- Downsizing: How managers avoid the most expensive mistakes when it comes to severance pay
+- Arbeitszeit: Arbeitszeitbetrug: So können sich Unternehmen wehren
+- Ukraine: Merz calls on Kiev for reforms
+- Children in war: 589 million children in conflict zones - new high
+- EZB: Von Landshut über die USA zum zweitmächtigsten Geldpolitiker Europas: Wer ist Markus Brunnermei
+- Video: Krim-Brücke nach ukrainischen Angriffen teilweise eingestürzt
+- Energy: Power grid at the limit: Cities have to reject industrial projects
+- Millions collected?: Charges against two former board members of Knaus Tabbert
+- Märkte Insight: Der Dollar wird für Investoren zum Risiko
+- Totengedenken: Van der Bellen ruft zu Mitgefühl und Menschlichkeit auf
+
+e24 headlines: 10
+- Oljefondssjefen forsikrer: – Ikke i tvil om klimaendringene
+- Blir trolig europeisk sentralbanksjef
+- Norse advarer mot mulig konkurs
+- Hunter Group vil kjøpe Jacktel
+- Nvidia-skandalens lærdom
+- Nscale i brev til regjeringen: – Det haster
+- GTA-utgiver: Forhåndsbestillinger på «enestående nivåer»
+- Livesending om børsfrykten: Kjøpe, selge eller sitte stille?
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:1869ffc3-bdd6-41a2-b5c5-55557f978d51:exec:68c4d0e2 h:16ae5f77 -->
+### 2026-11-28 08:09:24 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && .venv/bin/python -c \"import langdetect; print('langdetect ok')\" 2>&1 | tail -1; grep -i lang scripts/headline-analysis/requirements.txt", "timeout": 10000}`
+
+```
+Output from command in shell 4f663c:
+ModuleNotFoundError: No module named 'langdetect'
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:1869ffc3-bdd6-41a2-b5c5-55557f978d51:exec:0a8067ab h:4ebdf193 -->
+### 2026-11-28 08:09:40 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && .venv/bin/pip install langdetect 2>&1 | tail -1 && .venv/bin/python - <<'EOF'\nfrom langdetect import detect\ntests=[(\"Merz reicht das nicht\",\"de\"),(\"US has lost measles elimination status\",\"en\"),(\"Oljefondssjefen forsikrer: Ikke i tvil\",\"no\"),(\"Nscale i brev til regjeringen: Det haster\",\"no\")]\nfor t,exp in tests: print(de`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: dc199a. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:1869ffc3-bdd6-41a2-b5c5-55557f978d51:exec:c014eb1e h:bad7987c -->
+### 2026-11-28 08:11:03 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && timeout 20 .venv/bin/pip install langdetect 2>&1 | tail -2", "timeout": 30000}`
+
+```
+Collecting langdetect
+
+===
+Stopped waiting for output after 10.8 seconds. Command running in background with ID: 493180. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:1869ffc3-bdd6-41a2-b5c5-55557f978d51:get_output:3d145fd4 h:4e841f03 -->
+### 2026-11-28 08:11:12 UTC tool `get_output`
+
+`{"shell_id": "493180", "timeout": 60000}`
+
+```
+Exited with code 124 and no output
+
+Exit code: 124
+```
+
+---
+
+<!-- r:0 m:hook:1869ffc3-bdd6-41a2-b5c5-55557f978d51:exec:c49963f8 h:c4ada3c2 -->
+### 2026-11-28 08:11:28 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && .venv/bin/pip install langdetect 2>&1 | tail -2", "timeout": 120000, "shell_id": "pipinstall"}`
+
+```
+Collecting langdetect
+
+===
+Stopped waiting for output after 10.9 seconds. Command running in background with ID: pipinstall. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:1869ffc3-bdd6-41a2-b5c5-55557f978d51:exec:339cc4d7 h:c935a92b -->
+### 2026-11-28 08:11:37 UTC tool `exec`
+
+`{"command": "timeout 8 curl -sI https://pypi.org/simple/langdetect/ -o /dev/null -w \"%{http_code}\\n\" 2>&1; echo rc=$?", "timeout": 12000}`
+
+```
+Output from command in shell 9a118b:
+200
+rc=0
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51 h:cfe82059 -->
+### 2026-11-28 08:11:54 UTC user
+
+don't make it a heuristic... YOU know what language they are, just log it so it drives logic. NNOo sniffing
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:e7570680 h:b6f74174 -->
+### 2026-11-28 08:12:09 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport csv, json\nfrom collections import defaultdict\nd=json.load(open('src/data/measured-sources.json'))\nkeys=[s['key'] for s in d['sources']]\nby=defaultdict(list)\nfor r in csv.DictReader(open('docs/headline-data/current/headline_level_signals.csv')):\n    if r.get('source_key') in keys and len(by[r['source_key']])<`
+
+```
+Output from command in shell 276ffb. The full terminal output is being written live to /tmp/devin-overflows-1000/shell-276ffb-9f6d6f78ede22e6b/content.txt; read or grep it for anything omitted below. Preview:
+<file-view path="/tmp/devin-overflows-1000/shell-276ffb-9f6d6f78ede22e6b/content.txt" start_line="1" end_line="25" total_lines="145">
+  1|tweaktown.com ||| PlayStation and Xbox sales more than double as GTA 6 gives consoles a much-neede ~~ GTA 6 runs better on Xbox Series X than PS5 despite Sony declaring it 'plays bes ~~ GTA 6 reportedly reaches in-game rendering on PC just a day after Xbox executabl
+  2|myjoyonline.com ||| Ghana records average of 100 fire outbreaks weekly – Interior Minister ~~ US$10bn and the audit trail: Ghana's New Economy needs auditors from the start,  ~~ 87% of business & technology leaders expect cyber budgets to go up – PwC Digital
+  3|investing.com ||| Tarsus Pharmaceuticals CEO Bobak Azamian sells $803,100 in shares ~~ Mayne Pharma shares surge on $407 mln takeover offer from Gedeon Richter ~~ Fed's Jefferson says he is taking his policy cues from inflation By Reuters
+  4|eurogamer.net ||| EA removes some live service fluff from Skate and ends seasonal structure "in fa ~~ The Witcher 3's new patch adds 40 cross-platform mods, fixes plenty of game-brea ~~ Nioh and Ninja Gaiden studio is using AI for QA, but argues "that a game becomes
+  5|jpost.com ||| Macy's Thanksgiving parade moved to Saturday as major storm threatens New York ~~ Jared Kushner calls on Israel to adopt economic diplomacy, drop 'wartime mindset ~~ 18 years after Mumbai: Rethinking India's strategic value to Israel
+  6|arabianbusiness.com ||| Best logistics and supply chain companies in the GCC: The top 10 for 2026 reveal ~~ Best e-commerce companies in the GCC: The top 10 for 2026 revealed ~~ Best retail companies in the GCC: The top 10 for 2026 revealed
+  7|qatar-tribune.com ||| Mercury probe BepiColombo enters orbit after eight-year journey ~~ Qatar Chamber to ho
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:f83289c9 h:866278b0 -->
+### 2026-11-28 08:12:34 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 26,80p /tmp/devin-overflows-1000/shell-276ffb-9f6d6f78ede22e6b/content.txt", "timeout": 10000}`
+
+```
+Output from command in shell 98b68c:
+france24.com ||| Europe will take part in US-mediated Ukraine talks in Abu Dhabi, French FM says ~~ 'Is Republican Party able to pivot away from MAGA movement, or will it sputter f ~~ Iran offers deal on Hormuz Strait, Netanyahu wants to 'finish the job'
+group-nypost-pagesix ||| Game on: Xbox Black Friday deals are here — massive savings on games ~~ Nick Bosa's girlfriend Ella Ailiff backs 49ers star in Mexico after fan gaffe ~~ Wild moment passenger is hoisted from moving cruise ship off California after su
+sports.yahoo.com ||| Recognizing his efforts to support breast cancer ... ~~ When will Dylan Harper bounce back? A local orthopedic surgeon explains sports-r ~~ Dodgers Lose Trade Deadline Acquisition For 2027 After Tommy John Surgery
+lemonde.fr ||| Budget 2027 : le Sénat abaisse le plafond de l'abattement fiscal de 10 % des ret ~~ How scientists saved a Normandy dinosaur fossil from the auction block ~~ In the United States, Wall Street in disarray after the downfall of companies li
+timesofindia.indiatimes.com ||| Rail passenger traffic to cross pre-Covid level, touch 820 crore this fiscal ~~ Nasa picked 10 of 8,000 astronaut applicants; next class deadline December 3 ~~ Brain regions may shrink a decade before Alzheimer's memory loss, study finds
+channelnewsasia.com ||| Leclerc silent on solutions, hurt by doubts about his loyalty to Ferrari ~~ BOJ's net income shrinks as interest payments on excess reserves grow ~~ Why tackling hoarding in Singapore can take months or even years
+hindustantimes.com ||| Explosion at Bangkok oil depot prompts massive blaze; evacuation underway ~~ Asteroid Dimorphos left cratered and after NASA's first planetary defense system ~~ Christa Pike's injuries 'still unknown' as lawyers seek mental health evaluation
+news.sky.com ||| Driver suspected of causing tanker crash in Egypt that killed 31 detained ~~ Airline suspends all flights - as carrier faces bankruptcy ~~ Crest Nicholson chair to step d
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:9b8a2214 h:3d0892f1 -->
+### 2026-11-28 08:12:47 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport csv\ncands=['handelsblatt.com','e24.no','lemonde.fr','politico.eu','elfinanciero.com.mx']\nrows=list(csv.DictReader(open('docs/headline-data/current/headline_level_signals.csv')))\nfor c in cands:\n    hs=[r['headline'] for r in rows if r.get('source_key')==c]\n    print(f'== {c} ({len(hs)}) ==')\n    for h in hs[`
+
+```
+Output from command in shell 74107b:
+== handelsblatt.com (55) ==
+   Genossenschaftsbanken: Genossenschaftsbanken bündeln Marketing in neuer Firma Coorelity
+   Prozessauftakt: Anklage erhebt schwere Vorwürfe gegen Jones-Day-Anwälte
+   +++ Bundespolitik +++: SPD kritisiert Haushaltsverfahren – „Einmaliger Vorgang"
+   EU-Haushalt: Costa will 204 Milliarden sparen – Merz reicht das nicht
+   Environment: EU bans export of plastic waste to many countries
+   Downsizing: How managers avoid the most expensive mistakes when it comes to severance pay
+   Arbeitszeit: Arbeitszeitbetrug: So können sich Unternehmen wehren
+   Ukraine: Merz calls on Kiev for reforms
+   Children in war: 589 million children in conflict zones - new high
+   EZB: Von Landshut über die USA zum zweitmächtigsten Geldpolitiker Europas: Wer ist Markus Brunn
+   Video: Krim-Brücke nach ukrainischen Angriffen teilweise eingestürzt
+   Energy: Power grid at the limit: Cities have to reject industrial projects
+   Millions collected?: Charges against two former board members of Knaus Tabbert
+   Märkte Insight: Der Dollar wird für Investoren zum Risiko
+   Totengedenken: Van der Bellen ruft zu Mitgefühl und Menschlichkeit auf
+   Sorge um Medien: Großdemo gegen umstrittene Medienreform in Tschechien
+   Raumfahrt: SpaceX fängt Riesen-Rakete Starship erstmals wieder auf
+   Autonomes Fahren: Tesla lässt ausgewählte Käufer Robotaxis vorbestellen
+   Acht Wochen nach Landtagswahl: Parteien machen Weg frei für Rot-Rot-Grün in MV
+   Ukraine war: Europeans tie security talks with Russia to conditions
+   Ukraine war: According to Kushner, Putin is ready to negotiate with Europeans
+   Assets: When a prenuptial agreement is worthwhile – and what it costs
+   Pilot salary: This is what Lufthansa pilots earn in 2026
+   USA: US-Repräsentantenhaus lehnt Amtsenthebungsverfahren gegen Hegseth ab
+   Immobilien: Mieten steigen schneller als Baukosten – Kapitalanleger kehren an den Immobilienmar
+   Care: Federal states resist emergency ref
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:fc480a8d h:53116418 -->
+### 2026-11-28 08:13:13 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && head -40 src/trees/profiles/source-measurement-overrides.json && python3 -c \"\nimport json\nd=json.load(open('src/trees/profiles/source-measurement-overrides.json'))\nprint('keys:',list(d.keys())[:8])\nprint('entries:',len(d))\n\" && grep -n \"overrides\\|measurement-overrides\" scripts/headline-analysis/build_measured_sources.py | head",`
+
+```
+Output from command in shell 1b11ae:
+{
+  "documentation": {
+    "purpose": "Measurement-specific source display labels and caveats for the measured-sources page. These are not ownership facts, external bias ratings, or measured-quality inputs.",
+    "notesScope": "Entries are keyed by measured source key. The family field is explanatory metadata for maintainers; the note text is what the client displays.",
+    "editing": "Keep notes short, source-specific and tied to a measurement limitation or stream shape. Do not use this file for generic regex/NLP caveats."
+  },
+  "displayLabels": {
+    "sports.yahoo.com": "Yahoo Sports",
+    "channelnewsasia.com": "CNA",
+    "timesofindia.indiatimes.com": "Times of India",
+    "obits.oregonlive.com": "OregonLive obituaries",
+    "seekingalpha.com": "Seeking Alpha",
+    "inc.com": "Inc.",
+    "indianexpress.com": "The Indian Express",
+    "dailytimes.com.pk": "Daily Times",
+    "freemalaysiatoday.com": "Free Malaysia Today"
+  },
+  "notes": {
+    "medicalxpress.com": {
+      "family": "research-release publisher",
+      "note": "High evidence and causal scores partly reflect research-release phrasing. They do not by themselves show independent verification of the underlying studies."
+    },
+    "phys.org": {
+      "family": "research-release publisher",
+      "note": "Research-release phrasing can raise evidence and causal scores. Treat them as evidence of dense research claims, not proof of independent scientific scrutiny."
+    },
+    "psypost.org": {
+      "family": "research-release publisher",
+      "note": "PsyPost often writes formulaic research-claim headlines. That raises evidence and causal scores without establishing independent verification of the studies."
+    },
+    "sciencealert.com": {
+      "family": "popular science rewriting",
+      "note": "Popular science rewriting can make research cues prominent; the score does not assess the quality of the underlying paper."
+    },
+    "nature.com": {
+      "family": "journa
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:5fcd1821 h:93077a36 -->
+### 2026-11-28 08:13:22 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport json\np='src/trees/profiles/source-measurement-overrides.json'\nd=json.load(open(p))\n# Language annotations from direct reading of pooled headlines (2026-11-28).\n# englishShare is the approximate proportion of English-language headlines observed.\nd['languages']={\n \"handelsblatt.com\": {\"primary\":\"de\",\"en`
+
+```
+Output from command in shell c223cf:
+written
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:c6c1f88a h:3986f46a -->
+### 2026-11-28 08:13:26 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 90,200p scripts/headline-analysis/build_measured_sources.py", "timeout": 10000}`
+
+```
+Output from command in shell 343efa:
+
+    rankings = pd.read_csv(out_dir/'source_rankings.csv')
+    headlines = pd.read_csv(out_dir/'headline_level_signals.csv')
+    summary = load_json(out_dir/'analysis_summary.json', {})
+    profiles = load_json(REPO_ROOT/'src/trees/profiles/sources.json', {})
+    assessment_payload = load_json(REPO_ROOT/'src/trees/profiles/source-assessments.json', {})
+    measurement_overrides = load_json(REPO_ROOT/'src/trees/profiles/source-measurement-overrides.json', {})
+    assessment_sources = assessment_payload.get('sources', {})
+    display_overrides = measurement_overrides.get('displayLabels', {})
+    source_notes = measurement_overrides.get('notes', {})
+    anchors, relationship_families = relationship_anchors(REPO_ROOT)
+
+    def measurement_note(source_key):
+        entry = source_notes.get(source_key)
+        if isinstance(entry, dict):
+            return entry.get('note', '')
+        return entry or ''
+
+    def assessments_for(source_key):
+        if source_key in assessment_sources:
+            return assessment_sources[source_key]
+        host = source_key.split('/')[0]
+        if host in assessment_sources:
+            return assessment_sources[host]
+        parts = host.split('.')
+        for i in range(1, len(parts)-1):
+            parent = '.'.join(parts[i:])
+            if parent in assessment_sources:
+                return assessment_sources[parent]
+        return []
+
+    include_min_n = int(analysis.get('export_min_source_n', 10))
+    ranked = rankings[rankings['n'] >= include_min_n].copy().sort_values('topic_adjusted_value_index', ascending=False)
+    # Display ordering is a single score-ordered list across every included source,
+    # including small samples below the stable-rank threshold. Small samples carry
+    # wider uncertainty intervals rather than being silently dropped.
+    ranked['display_rank'] = np.arange(1, len(ranked) + 1)
+    quartile_labels = ['A — upper quartile', 'B — second quartile', 'C — third quartil
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:ef926df3 h:816e849d -->
+### 2026-11-28 08:13:30 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 200,260p scripts/headline-analysis/build_measured_sources.py", "timeout": 10000}`
+
+```
+Output from command in shell d95bd7:
+            'relationshipsUrl': './relationships.html' + (('#' + anchors[icon_key]) if icon_key in anchors else ''),
+            'axes': axes_payload,
+            'strongestAxes': [k for k,_ in positive[:3]],
+            'weakestAxes': [k for k,_ in positive[-3:]],
+            'diagnostics': {
+                'originalAccessCueRate': round(float(row.get('original_reporting_signal_rate', 0.0) or 0.0), 5),
+                'titleEchoRate': round(float(row.get('cross_source_near_duplicate_rate', 0.0) or 0.0), 5),
+                'strongEvidenceSurfaceRate': round(float(row.get('strong_evidence_surface_rate', 0.0) or 0.0), 5),
+                'researchEvidenceSurfaceRate': round(float(row.get('research_evidence_surface_rate', 0.0) or 0.0), 5),
+                'directTestimonySurfaceRate': round(float(row.get('direct_testimony_surface_rate', 0.0) or 0.0), 5),
+                'quoteTestimonySurfaceRate': round(float(row.get('quote_testimony_surface_rate', 0.0) or 0.0), 5),
+                'vagueAttributionSurfaceRate': round(float(row.get('vague_attribution_surface_rate', 0.0) or 0.0), 5),
+                'curiosityGapRiskMean': round(float(row.get('curiosity_gap_risk_mean', 0.0) or 0.0), 5),
+                'stockTeaserSurfaceRate': round(float(row.get('stock_teaser_surface_rate', 0.0) or 0.0), 5),
+                'listicleWithholdingSurfaceRate': round(float(row.get('listicle_withholding_surface_rate', 0.0) or 0.0), 5),
+                'withheldReasonSurfaceRate': round(float(row.get('withheld_reason_surface_rate', 0.0) or 0.0), 5),
+                'resolutionGapSurfaceRate': round(float(row.get('resolution_gap_surface_rate', 0.0) or 0.0), 5),
+                'bodyCoverageRate': round(float(row.get('body_coverage_rate', 0.0) or 0.0), 5),
+                'bodyResearchCueRate': round(float(row.get('body_research_claim_rate', 0.0) or 0.0), 5),
+                'bodyEvidenceSurfaceRate': round(float(row.get('body_evidence_surface_rate', 0.
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:6f4e4f82 h:6f2db51b -->
+### 2026-11-28 08:13:58 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 260,310p scripts/headline-analysis/build_measured_sources.py", "timeout": 10000}`
+
+```
+Output from command in shell 11990b:
+        'sourceIndex': source_index,
+        'sources': sources,
+    }
+
+    out = args.out
+    if not out.is_absolute(): out = REPO_ROOT/out
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(data, indent=2) + '\n')
+    print(f'wrote {len(sources)} measured sources to {out}')
+
+    # Slim key -> quality lookup for the manage-sources list: every measured key
+    # (including grouped member keys) maps to the group's measured quality so the
+    # settings UI does not need the full export.
+    quality = {}
+    for source in sources:
+        entry = {'quality': source['measuredQuality'], 'headlines': source['headlines']}
+        quality[source['key']] = entry
+        for member in source.get('members', []):
+            quality.setdefault(member['key'], entry)
+    quality_out = out.parent/'source-quality.json'
+    quality_out.write_text(json.dumps({
+        'version': 1,
+        'generatedAt': data['generatedAt'],
+        'sources': quality,
+    }, indent=1) + '\n')
+    print(f'wrote {len(quality)} quality lookup keys to {quality_out}')
+
+
+if __name__ == '__main__':
+    main()
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:2bf6bf7c h:101da80f -->
+### 2026-11-28 08:14:13 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\np='scripts/headline-analysis/build_measured_sources.py'\ns=open(p).read()\n\n# 1) load languages\nold=\"\"\"    display_overrides = measurement_overrides.get('displayLabels', {})\n    source_notes = measurement_overrides.get('notes', {})\"\"\"\nnew=\"\"\"    display_overrides = measurement_overrides.get('displayLabels', `
+
+```
+Output from command in shell 448770:
+patched
+syntax ok
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:5355726c h:bee22f93 -->
+### 2026-11-28 08:14:19 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && ls scripts/headline-analysis/*.py | head -3 && grep -rn \"build_measured_sources\" docs/tasks/headline-analysis.task.json package.json Makefile 2>/dev/null | head -3; .venv/bin/python scripts/headline-analysis/build_measured_sources.py --help 2>&1 | head -12", "timeout": 15000}`
+
+```
+Output from command in shell ea3b7a:
+scripts/headline-analysis/analyse_headlines.py
+scripts/headline-analysis/build_measured_sources.py
+scripts/headline-analysis/headline_corpus_structure.py
+docs/tasks/headline-analysis.task.json:31:      "cmd": ".venv/bin/python scripts/headline-analysis/build_measured_sources.py --config docs/tasks/headline-analysis.task.json",
+usage: build_measured_sources.py [-h] [--config CONFIG] [--out OUT]
+
+options:
+  -h, --help       show this help message and exit
+  --config CONFIG
+  --out OUT
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:9ca8b7aa h:f9ee559f -->
+### 2026-11-28 08:14:26 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && .venv/bin/python scripts/headline-analysis/build_measured_sources.py --config docs/tasks/headline-analysis.task.json 2>&1 | tail -3 && python3 -c \"\nimport json\nd=json.load(open('src/data/measured-sources.json'))\nprint('measurable:',len(d['sources']),'unmeasurable:',len(d.get('unmeasurableSources',[])))\nfor u in d.get('unmeasurableSour`
+
+```
+Output from command in shell cd05f7:
+wrote 145 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+wrote 156 quality lookup keys to /home/bobbigmac/projects/bobdavies/news/src/data/source-quality.json
+measurable: 145 unmeasurable: 0
+top: TweakTown 1
+ranks contiguous: [1, 2, 3, 4, 5, 6, 7, 8] ... [143, 144, 145]
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:ec9a23ea h:fc8a3c4a -->
+### 2026-11-28 08:14:34 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport json, pandas as pd\no=json.load(open('src/trees/profiles/source-measurement-overrides.json'))\nlangs=o.get('languages',{})\nprint('lang keys:',list(langs.keys()))\num={k for k,v in langs.items() if isinstance(v,dict) and v.get('measurable') is False}\nprint('unmeasurable:',um)\nr=pd.read_csv('docs/headline-data/cu`
+
+```
+Output from command in shell ffc691:
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'pandas'
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:0002627e h:cf098a17 -->
+### 2026-11-28 08:14:40 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && .venv/bin/python - <<'EOF'\nimport json, pandas as pd\no=json.load(open('src/trees/profiles/source-measurement-overrides.json'))\nlangs=o.get('languages',{})\num={k for k,v in langs.items() if isinstance(v,dict) and v.get('measurable') is False}\nprint('unmeasurable:',um)\nr=pd.read_csv('docs/headline-data/current/source_rankings.csv')\nfo`
+
+```
+Output from command in shell 3ac67a:
+unmeasurable: {'handelsblatt.com', 'elfinanciero.com.mx', 'e24.no', 'lemonde.fr'}
+handelsblatt.com in rankings: True
+e24.no in rankings: True
+lemonde.fr in rankings: True
+elfinanciero.com.mx in rankings: True
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:ebeb9e7f h:9affa38a -->
+### 2026-11-28 08:14:55 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && .venv/bin/python - <<'EOF'\nimport json, pandas as pd\nr=pd.read_csv('docs/headline-data/current/source_rankings.csv')\num={'handelsblatt.com','elfinanciero.com.mx','e24.no','lemonde.fr'}\nel=r[r['n']>=10]\nprint('eligible rows:',len(el))\nprint('matched:',el[el['source_key'].isin(um)]['source_key'].tolist())\nfor k in um:\n    row=r[r['so`
+
+```
+Output from command in shell 6a3594:
+eligible rows: 145
+matched: ['handelsblatt.com', 'lemonde.fr', 'elfinanciero.com.mx', 'e24.no']
+e24.no n= 10
+elfinanciero.com.mx n= 11
+lemonde.fr n= 16
+handelsblatt.com n= 55
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:5cdd2b13 h:996dd19d -->
+### 2026-11-28 08:15:00 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"unmeasurable\" scripts/headline-analysis/build_measured_sources.py", "timeout": 10000}`
+
+```
+Output from command in shell bde352:
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:2280c27c h:bdc781f2 -->
+### 2026-11-28 08:15:06 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && git status --short scripts/headline-analysis/build_measured_sources.py src/trees/profiles/source-measurement-overrides.json src/data/measured-sources.json | head && git log --oneline -2 -- scripts/headline-analysis/build_measured_sources.py", "timeout": 10000}`
+
+```
+Output from command in shell 26d170:
+ M src/data/measured-sources.json
+ M src/trees/profiles/source-measurement-overrides.json
+5be8da9 measured-shows-more
+dc28908 sensible-splits
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:d3960189 h:18213b87 -->
+### 2026-11-28 08:15:24 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\np='scripts/headline-analysis/build_measured_sources.py'\ns=open(p).read()\n\nold=\"\"\"    display_overrides = measurement_overrides.get('displayLabels', {})\n    source_notes = measurement_overrides.get('notes', {})\"\"\"\nnew=\"\"\"    display_overrides = measurement_overrides.get('displayLabels', {})\n    source_notes`
+
+```
+Output from command in shell 6c026e:
+written
+8
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:c70a7872 h:81004583 -->
+### 2026-11-28 08:15:33 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && .venv/bin/python scripts/headline-analysis/build_measured_sources.py --config docs/tasks/headline-analysis.task.json 2>&1 | tail -2 && python3 -c \"\nimport json\nd=json.load(open('src/data/measured-sources.json'))\nprint('measurable:',len(d['sources']),'unmeasurable:',len(d.get('unmeasurableSources',[])))\nfor u in d.get('unmeasurableSour`
+
+```
+Output from command in shell f6cac9:
+wrote 141 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+wrote 152 quality lookup keys to /home/bobbigmac/projects/bobdavies/news/src/data/source-quality.json
+measurable: 141 unmeasurable: 4
+ - handelsblatt.com de n=55
+ - lemonde.fr fr n=16
+ - elfinanciero.com.mx es n=11
+ - e24.no no n=10
+bottom3: [('BuzzFeed', 139), ('Daily Mail', 140), ('Kotaku', 141)]
+quality keys: 152 handelsblatt in quality: False
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:0a001cf3 h:389dbb8d -->
+### 2026-11-28 08:15:38 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"bottom\\|section\\|renderSections\\|unmeasurable\" src/measured-sources.js | head -20 && grep -n \"English\" src/measured-sources.html | head -3", "timeout": 10000}`
+
+```
+Output from command in shell 623235:
+196:  const section = el('section', 'measurement-band');
+197:  section.dataset.band = key;
+207:  section.appendChild(head);
+212:  section.appendChild(list);
+213:  main.appendChild(section);
+222:  const bottom = ordered.slice(ordered.length - edge);
+237:    key: 'bottom-twenty',
+240:    sources: bottom,
+258:  for (const section of document.querySelectorAll('.measurement-band')) {
+259:    const visible = [...section.querySelectorAll('.measured-source-card')].some(card => !card.classList.contains('is-hidden'));
+260:    section.classList.toggle('is-hidden', !visible);
+116:        <li>English-language cues do not translate cleanly to non-English sources.</li>
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:fbd484d8 h:5c26eb3b -->
+### 2026-11-28 08:15:51 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 180,260p src/measured-sources.js", "timeout": 10000}`
+
+```
+Output from command in shell cc0794:
+  title.appendChild(el('p', 'measured-subtitle', subtitleParts.join(' · ')));
+  summary.appendChild(title);
+  summary.appendChild(el('span', `band-chip band-${source.band}`, source.bandLabel.replace(' measured headline value', '')));
+  const score = el('span', 'measured-score');
+  score.appendChild(el('strong', '', source.measuredQuality.toFixed(1)));
+  score.appendChild(el('small', '', 'measured quality'));
+  summary.appendChild(score);
+  card.appendChild(summary);
+  card.addEventListener('toggle', () => {
+    if (card.open) renderSourceDetail(card, source);
+  });
+  return card;
+}
+
+function renderSection(main, { key, label, summary, sources }) {
+  if (!sources.length) return;
+  const section = el('section', 'measurement-band');
+  section.dataset.band = key;
+  const head = el('header', 'band-head');
+  const titleWrap = el('div');
+  const title = el('h2', '', label);
+  const scores = sources.map(source => source.measuredQuality);
+  title.appendChild(el('span', 'band-range', `${Math.min(...scores).toFixed(2)}–${Math.max(...scores).toFixed(2)}`));
+  titleWrap.appendChild(title);
+  titleWrap.appendChild(el('p', '', summary));
+  head.appendChild(titleWrap);
+  head.appendChild(el('span', 'band-count', `${sources.length} sources`));
+  section.appendChild(head);
+  const list = el('div', 'measured-source-list');
+  for (const source of sources) {
+    list.appendChild(renderSourceCard(source));
+  }
+  section.appendChild(list);
+  main.appendChild(section);
+}
+
+function render() {
+  const main = document.getElementById('measured-main');
+  main.textContent = '';
+  const ordered = [...MEASURED_SOURCES.sources].sort((a, b) => a.rank - b.rank);
+  const edge = Math.min(20, Math.floor(ordered.length / 2));
+  const top = ordered.slice(0, edge);
+  const bottom = ordered.slice(ordered.length - edge);
+  const middle = ordered.slice(edge, ordered.length - edge);
+  renderSection(main, {
+    key: 'top-twenty',
+    label: 'Top twenty measured headline value
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:edit:88d64859 h:ab0d8865 -->
+### 2026-11-28 08:16:07 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js", "old_string": "  renderSection(main, {\n    key: 'bottom-twenty',\n    label: 'Bottom twenty measured headline value',\n    summary: 'The lowest-scoring sources in the corpus ordering: headlines comparatively thin on concrete information, heavier on attention packaging, or both.',\n    sources: bottom,\n  });\n}", "ne`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js' - made 1 replacement(s). 7 line(s) removed, 42 line(s) added at line 236.
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:87abbba7 h:2d2215a5 -->
+### 2026-11-28 08:16:23 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && cat >> src/styles/measured-cards.css <<'EOF'\n\n/* Unmeasurable (non-English) sources \u2014 listed without any quality claim */\n.unmeasurable-band .band-head h2 {\n  color: var(--muted);\n}\n\n.unmeasurable-list {\n  display: grid;\n  gap: 0.5rem;\n}\n\n.unmeasurable-item {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: baseline;\`
+
+```
+Output from command in shell 8b555d:
+methodology updated
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:cde8696e h:a9ce84d2 -->
+### 2026-11-28 08:16:28 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"measured-cards\\|measured-layout\\|measured-detail\\|measured-methodology\\|measured-responsive\\|styles/measured\" src/styles/measured-sources.css src/measured-sources.html 2>/dev/null | head -8; ls src/styles/ | grep measured", "timeout": 10000}`
+
+```
+Output from command in shell 7433e1:
+src/styles/measured-sources.css:1:@import url('./measured-layout.css');
+src/styles/measured-sources.css:2:@import url('./measured-cards.css');
+src/styles/measured-sources.css:3:@import url('./measured-detail.css');
+src/styles/measured-sources.css:4:@import url('./measured-methodology.css');
+src/styles/measured-sources.css:5:@import url('./measured-responsive.css');
+src/measured-sources.html:25:  <link rel="stylesheet" href="styles/measured-sources.css">
+measured-cards.css
+measured-detail.css
+measured-layout.css
+measured-methodology.css
+measured-responsive.css
+measured-sources.css
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:cbc4bb74 h:ae889c8c -->
+### 2026-11-28 08:16:50 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && node scripts/build-page-og-images.js && npm test 2>&1 | grep -E \"Test Files|Tests |FAIL|\u2717|\u00d7\" | head -10", "timeout": 240000}`
+
+```
+og-measured: top 7 vs bottom 7 -> src/og-measured.jpg
+og-relationships: 3 lines -> src/og-relationships.jpg
+
+===
+Stopped waiting for output after 15.5 seconds. Command running in background with ID: bd7fcb. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:get_output:094951c8 h:60bf7d91 -->
+### 2026-11-28 08:16:53 UTC tool `get_output`
+
+`{"shell_id": "bd7fcb", "timeout": 180000}`
+
+```
+[31m     [31m×[31m carries source-specific measurement notes for known structural cases[39m[32m 54[2mms[22m[39m
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+[41m[1m FAIL [22m[49m test/measured-sources.test.js[2m > [22mmeasured source export[2m > [22mcarries source-specific measurement notes for known structural cases
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m14 passed[39m[22m[90m (15)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m108 passed[39m[22m[90m (109)[39m
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:70f2cb94 h:ace8c432 -->
+### 2026-11-28 08:17:07 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && npm test 2>&1 | grep -A12 \"carries source-specific\" | head -25", "timeout": 240000}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: 9e9b61. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:34f8c3bb h:178cc712 -->
+### 2026-11-28 08:17:25 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n -B2 -A20 \"carries source-specific\" test/measured-sources.test.js", "timeout": 10000}`
+
+```
+Output from command in shell 0ab8f0:
+77-  });
+78-
+79:  it('carries source-specific measurement notes for known structural cases', () => {
+80-    const byKey = new Map(data.sources.map(source => [source.key, source]));
+81-    expect(byKey.get('medicalxpress.com')?.notes.join(' ')).toMatch(/research-release/i);
+82-    expect(byKey.get('nature.com')?.notes.join(' ')).toMatch(/journal article titles/i);
+83-    expect(byKey.get('newscientist.com')?.notes.join(' ')).toMatch(/study finds/i);
+84-    expect(byKey.get('handelsblatt.com')?.notes.join(' ')).toMatch(/German-language/i);
+85-    expect(byKey.get('group-mashable')?.notes.join(' ')).toMatch(/Regional Mashable editions/i);
+86-  });
+87-
+88-  it('carries external assessments without turning them into measured-quality input', () => {
+89-    const byKey = new Map(data.sources.map(source => [source.key, source]));
+90-    expect(byKey.get('bbc.co.uk')?.assessments.some(assessment => assessment.rater === 'AllSides')).toBe(true);
+91-    expect(byKey.get('theguardian.com')?.assessments.some(assessment => assessment.rater === 'MBFC')).toBe(true);
+92-    expect(byKey.get('dailymail.com')?.assessments.length).toBeGreaterThan(1);
+93-    for (const source of data.sources) {
+94-      for (const assessment of source.assessments || []) {
+95-        expect(assessment.url, `${source.key} assessment`).toMatch(/^https:\/\//);
+96-        expect(assessment.composite, `${source.key} assessment`).toBeUndefined();
+97-      }
+98-    }
+99-  });
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:54706603 h:e84cbba5 -->
+### 2026-11-28 08:17:35 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\np='test/measured-sources.test.js'\ns=open(p).read()\nold='''    expect(byKey.get('handelsblatt.com')?.notes.join(' ')).toMatch(/German-language/i);\n'''\nassert old in s\ns=s.replace(old,'')\nold='''  it('carries external assessments without turning them into measured-quality input', () => {'''\nnew='''  it('excludes bel`
+
+```
+Output from command in shell 711141:
+test updated
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:965d6396 h:ae432fa1 -->
+### 2026-11-28 08:17:50 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && npm test 2>&1 | grep -E \"Test Files|Tests \" ; npm run build 2>&1 | tail -3 && cmp -s src/data/measured-sources.json dist/measured-sources.json && echo \"dist export matches\" && cmp -s src/og-measured.jpg dist/og-measured.jpg && echo \"dist og matches\"", "timeout": 300000, "shell_id": "verify"}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: verify. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:get_output:4459deee h:f6f2c3c0 -->
+### 2026-11-28 08:18:17 UTC tool `get_output`
+
+`{"shell_id": "verify", "timeout": 300000}`
+
+```
+Warning: requested timeout 5m exceeds maximum of 4m 40s; clamping to 4m 40s.
+[2m Test Files [22m [1m[32m15 passed[39m[22m[90m (15)[39m
+[2m      Tests [22m [1m[32m110 passed[39m[22m[90m (110)[39m
+Story groups: 4889/5557 clusters assigned (119 via fuzzy word matches)
+Client digests: 748 recent + 4809 archived clusters (full export in dataset.json)
+Build complete. 5557 clusters, 7113 entities, 57 topics, 10517 stories in timeline -> dist/dataset.json
+dist export matches
+dist og matches
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d9c802f5-a818-42e6-996a-7c9afec12f51:exec:f90800cb h:0d17bf8a -->
+### 2026-11-28 08:18:38 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\ns=open('docs/DONE.md').read()\nentry='''# DONE\n\n## Non-English feeds excluded from measured quality (2026-11-28)\n\n- Handelsblatt's low score was a measurement artifact: its feed is majority German (~37% English headlines), so the English-only parse/lexicon pipeline could never score it fairly. Language judgements wer`
+
+```
+Output from command in shell 95ca7b:
+done
+
+
+Exit code: 0
 ```
 
 ---

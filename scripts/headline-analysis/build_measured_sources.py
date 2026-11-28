@@ -97,6 +97,8 @@ def main():
     assessment_sources = assessment_payload.get('sources', {})
     display_overrides = measurement_overrides.get('displayLabels', {})
     source_notes = measurement_overrides.get('notes', {})
+    languages = measurement_overrides.get('languages', {})
+    unmeasurable_keys = {k for k, v in languages.items() if isinstance(v, dict) and v.get('measurable') is False}
     anchors, relationship_families = relationship_anchors(REPO_ROOT)
 
     def measurement_note(source_key):
@@ -119,7 +121,12 @@ def main():
         return []
 
     include_min_n = int(analysis.get('export_min_source_n', 10))
-    ranked = rankings[rankings['n'] >= include_min_n].copy().sort_values('topic_adjusted_value_index', ascending=False)
+    eligible = rankings[rankings['n'] >= include_min_n].copy()
+    # Feeds below roughly 80% English-language headlines cannot be fairly scored by the
+    # English-only pipeline: they are listed separately at the bottom of the page with no
+    # quality claim, and excluded from the ranked ordering entirely.
+    unmeasurable_rows = eligible[eligible['source_key'].isin(unmeasurable_keys)].copy()
+    ranked = eligible[~eligible['source_key'].isin(unmeasurable_keys)].copy().sort_values('topic_adjusted_value_index', ascending=False)
     # Display ordering is a single score-ordered list across every included source,
     # including small samples below the stable-rank threshold. Small samples carry
     # wider uncertainty intervals rather than being silently dropped.
@@ -224,6 +231,24 @@ def main():
         }
         sources.append(source)
 
+    unmeasurable = []
+    for _, row in unmeasurable_rows.iterrows():
+        key = row['source_key']
+        lang = languages.get(key, {})
+        display = display_overrides.get(key) or row['source']
+        icon_key = row.get('icon_source_key') or key
+        unmeasurable.append({
+            'key': key,
+            'label': display,
+            'headlines': int(row['n']),
+            'iconKey': icon_key,
+            'language': lang.get('primary', ''),
+            'note': lang.get('note', ''),
+            'family': relationship_families.get(icon_key, ''),
+            'relationshipsUrl': './relationships.html' + (('#' + anchors[icon_key]) if icon_key in anchors else ''),
+        })
+    unmeasurable.sort(key=lambda x: -x['headlines'])
+
     source_index = {}
     for source in sources:
         source_index[source['key']] = source['key']
@@ -259,6 +284,7 @@ def main():
         'axes': axes,
         'sourceIndex': source_index,
         'sources': sources,
+        'unmeasurableSources': unmeasurable,
     }
 
     out = args.out

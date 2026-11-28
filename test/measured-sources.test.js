@@ -81,8 +81,26 @@ describe('measured source export', () => {
     expect(byKey.get('medicalxpress.com')?.notes.join(' ')).toMatch(/research-release/i);
     expect(byKey.get('nature.com')?.notes.join(' ')).toMatch(/journal article titles/i);
     expect(byKey.get('newscientist.com')?.notes.join(' ')).toMatch(/study finds/i);
-    expect(byKey.get('handelsblatt.com')?.notes.join(' ')).toMatch(/German-language/i);
     expect(byKey.get('group-mashable')?.notes.join(' ')).toMatch(/Regional Mashable editions/i);
+  });
+
+  it('excludes below-threshold non-English feeds from the ranking and makes no quality claim about them', () => {
+    const keys = new Set(data.sources.map(source => source.key));
+    for (const excluded of ['handelsblatt.com', 'e24.no', 'lemonde.fr', 'elfinanciero.com.mx']) {
+      expect(keys.has(excluded), `${excluded} must not be ranked`).toBe(false);
+    }
+    const unmeasurable = data.unmeasurableSources || [];
+    const unKeys = new Set(unmeasurable.map(source => source.key));
+    for (const expected of ['handelsblatt.com', 'e24.no', 'lemonde.fr', 'elfinanciero.com.mx']) {
+      expect(unKeys.has(expected), `${expected} must be listed as unmeasurable`).toBe(true);
+    }
+    for (const source of unmeasurable) {
+      expect(source.measuredQuality, `${source.key} carries no quality claim`).toBeUndefined();
+      expect(source.rank, `${source.key} carries no rank`).toBeUndefined();
+      expect(source.note?.length, `${source.key} explains why`).toBeGreaterThan(0);
+    }
+    // predominantly-English mixed feeds stay measurable
+    expect(keys.has('politico.eu')).toBe(true);
   });
 
   it('carries external assessments without turning them into measured-quality input', () => {
