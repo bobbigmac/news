@@ -3,8 +3,8 @@ devin-sessionlog: user-input
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 08:24:06 UTC
-entries: 81
+last_activity: 2026-11-28 08:31:51 UTC
+entries: 84
 ---
 
 # repeated-bite
@@ -660,6 +660,27 @@ make sure our favicon is being specified prperly, cos we're on a path, not the r
 ### 2026-11-28 08:24:06 UTC
 
 The oregonlive obits are probably a false flag. It's worth checking why, and if death announcements from other sources also hit the same floor if you pretend they all come from one source, or if the oregonlive obits are especially low-value info (are they like "You'll never guess who just died", cos I doubt it
+
+---
+
+<!-- r:0 m:hook:142c1735-7bb9-421d-966a-78022bb7ff52 h:64322bee -->
+### 2026-11-28 08:26:18 UTC
+
+a verb shouldn't be necessary, if a headline is high-pct information dense, it doesn't need verbs to qualify as acceptable
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4 h:1bfc8594 -->
+### 2026-11-28 08:27:32 UTC
+
+good spot, obits should be considered events
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2 h:475c6d77 -->
+### 2026-11-28 08:31:51 UTC
+
+don't get too bogged-down in special-case matching (STOP making massive complex heuristics for something you cN SIMPLY set once as a known data-source flag)
 
 ---
 

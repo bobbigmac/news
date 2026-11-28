@@ -3,8 +3,8 @@ devin-sessionlog: transcript
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 08:24:06 UTC
-entries: 2981
+last_activity: 2026-11-28 08:33:42 UTC
+entries: 3014
 ---
 
 # repeated-bite
@@ -81603,6 +81603,902 @@ Added a regression test asserting all subpages declare their icons with a commen
 ### 2026-11-28 08:24:06 UTC user
 
 The oregonlive obits are probably a false flag. It's worth checking why, and if death announcements from other sources also hit the same floor if you pretend they all come from one source, or if the oregonlive obits are especially low-value info (are they like "You'll never guess who just died", cos I doubt it
+
+---
+
+<!-- r:0 m:hook:ca564a68-8d93-49ac-bec3-8739e57c1317:exec:232375e5 h:cf5fa74c -->
+### 2026-11-28 08:24:21 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport csv, json\nrows=list(csv.DictReader(open('docs/headline-data/current/headline_level_signals.csv')))\nobit=[r for r in rows if r.get('source_key')=='obits.oregonlive.com']\nprint('oregonlive obits rows:',len(obit))\n# which signal columns exist\ncols=[c for c in rows[0].keys() if any(k in c for k in ('event','quant`
+
+```
+Output from command in shell d8ce61:
+oregonlive obits rows: 29
+sample headline: Jerry Small Obituary (1937 - 2026) - Stanwood, WA - Skagit Valley Herald
+  editorial_context = Obituary-search and notice-listing service
+  neutral_editorial_context = local and regional news
+  quantified_specificity = 0.75
+  low_explicit_curiosity_gap = 1.0
+  low_direct_service_packaging = 1
+  low_sensational_personal = 1
+  named_entity_proxy = 1
+  curiosity_specificity_points = 2.0
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:ca564a68-8d93-49ac-bec3-8739e57c1317:exec:fafc3e43 h:9ff2ef6a -->
+### 2026-11-28 08:24:26 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport csv, json\nd=json.load(open('src/data/measured-sources.json'))\ns=[x for x in d['sources'] if x['key']=='obits.oregonlive.com'][0]\nprint('rank',s['rank'],'quality',s['measuredQuality'])\nnegs=[]\nfor k,v in s['axes'].items():\n    ap=v.get('adjustedPoints',0)\n    negs.append((ap,k,v))\nnegs.sort()\nfor ap,k,v in`
+
+```
+Output from command in shell 687d1c:
+rank 137 quality 27.5
+time_place_anchor: -22.7pp rate 0.21 vs expected 0.58
+event_clarity: -14.1pp rate 0.03 vs expected 0.26
+material_consequence: -10.9pp rate 0.00 vs expected 0.18
+context_comparison: -4.9pp rate 0.00 vs expected 0.08
+explanatory_framing: -3.0pp rate 0.00 vs expected 0.05
+causal_explanation: -2.2pp rate 0.00 vs expected 0.04
+evidence_provenance: +0.4pp rate 0.01 vs expected 0.00
+sensational_restraint: +0.9pp rate 1.00 vs expected 1.00
+curiosity_restraint: +1.9pp rate 1.00 vs expected 0.97
+packaging_restraint: +2.1pp rate 1.00 vs expected 0.95
+quantified_specificity: +14.6pp rate 0.71 vs expected 0.47
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:ca564a68-8d93-49ac-bec3-8739e57c1317:exec:020df5fa h:f2a4a65e -->
+### 2026-11-28 08:24:59 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport csv, re\nrows=list(csv.DictReader(open('docs/headline-data/current/headline_level_signals.csv')))\n# death-announcement headlines across ALL sources (excluding oregonlive obits itself)\npat=re.compile(r'\\bobituar|dies|dead at|death of|morte\\b|est mort',re.I)\nhits=[r for r in rows if pat.search(r.get('headline',`
+
+```
+Output from command in shell 63ec6b:
+death-announcement-ish headlines elsewhere: 136
+top sources: [('group-bbc', 55), ('courant.com', 16), ('theguardian.com', 10), ('independent.co.uk', 5), ('dailymail.com', 5), ('jpost.com', 3), ('kotaku.com', 2), ('lemonde.fr', 2)]
+notice-form elsewhere: 17 [('courant.com', 16), ('theguardian.com', 1)]
+  - theguardian.com | Dolores Huerta obituary
+  - courant.com | Russell Richardson Obituary | October 18, 2026
+  - courant.com | Allen Schindler Obituary | October 10, 2026
+  - courant.com | Thomas Rathier Obituary | October 19, 2026
+  - courant.com | Kelly O'Dwyer Obituary | October 19, 2026
+news-form death announcements: 119
+  - group-bbc | Former England scrum-half and commentator Starmer-Smith dies aged 81
+  - group-bbc | Diesel tanker carrying up to 7,000 tonnes capsizes near Ibiza, killing one
+  - group-bbc | Duran Duran guitarist Andy Taylor dies aged 65
+  - group-bbc | Veteran Nigerian Nollywood actor Pete Edochie dies aged 79
+  - group-bbc | Man dies in M42 crash near Birmingham Airport
+  - group-bbc | Italian jeweller and businessman Paolo Bulgari dies aged 89
+  - group-bbc | Spitting Image co-creator Peter Fluck dies aged 85
+  - group-bbc | Former journalist and Lost Lives author David McKittrick dies
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:ca564a68-8d93-49ac-bec3-8739e57c1317:exec:74020cf6 h:e7993f25 -->
+### 2026-11-28 08:25:14 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport csv, re\nimport statistics as st\nrows=list(csv.DictReader(open('docs/headline-data/current/headline_level_signals.csv')))\ndef f(r,c):\n    try: return float(r.get(c) or 0)\n    except: return 0.0\nKEYS=['event_clarity','time_place_anchor','quantified_specificity','material_consequence','named_entity_proxy','cont`
+
+```
+Output from command in shell 26831f:
+OregonLive obits (n=29):
+  event_clarity: 0.03
+  time_place_anchor: 0.21
+  quantified_specificity: 1.00
+  material_consequence: 0.00
+  named_entity_proxy: 1.00
+  context_comparison: 0.00
+  explanatory_framing: 0.00
+Courant obituary notices (n=16):
+  event_clarity: 0.00
+  time_place_anchor: 0.94
+  quantified_specificity: 0.94
+  material_consequence: 0.00
+  named_entity_proxy: 1.00
+  context_comparison: 0.00
+  explanatory_framing: 0.00
+BBC news-form death announcements (n=53):
+  event_clarity: 0.98
+  time_place_anchor: 0.17
+  quantified_specificity: 0.45
+  material_consequence: 0.15
+  named_entity_proxy: 0.87
+  context_comparison: 0.34
+  explanatory_framing: 0.00
+corpus baseline sample (n=300):
+  event_clarity: 0.54
+  time_place_anchor: 0.35
+  quantified_specificity: 0.26
+  material_consequence: 0.20
+  named_entity_proxy: 0.86
+  context_comparison: 0.20
+  explanatory_framing: 0.04
+courant.com rank 91 quality 44.68 n 18
+obits.oregonlive.com rank 137 quality 27.5 n 29
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:ca564a68-8d93-49ac-bec3-8739e57c1317 h:17154b1d -->
+### 2026-11-28 08:25:58 UTC assistant
+
+Checked. Your instinct is right — it's a form artifact, not clickbait. The data:
+
+## What OregonLive obits actually are
+
+`"Jerry Small Obituary (1937 - 2026) - Stanwood, WA - Skagit Valley Herald"` — the opposite of "you'll never guess who died". Name, lifespan, town, all in the headline. Dense factual notices with zero teasing (curiosity/packaging/sensational restraint all at 1.00, quantified specificity +14.6pp — the strongest in the corpus).
+
+## Why they score at the floor anyway
+
+Two detection gaps, neither about content quality:
+
+1. **Event clarity 0.03**: the event detector needs an event *verb*. In notice-form headlines the death is carried by the genre word "Obituary" itself — grammatically it's a noun phrase, so the detector sees "no event". Semantically the headline couldn't be clearer about what happened.
+
+2. **Time/place anchor 0.21**: the detector catches full month-name dates but misses the actual information present — bare year ranges `(1937 - 2026)` and trailing `City, ST` dateline-style places (`Stanwood, WA`).
+
+## Do other death announcements hit the same floor?
+
+Yes for the form, no for the genre — it's structural:
+
+| Stream | event clarity | time/place | quantified |
+|---|---:|---:|---:|
+| OregonLive notices (n=29) | 0.03 | 0.21 | 1.00 |
+| Courant obituary notices (n=16) | **0.00** | 0.94 | 0.94 |
+| BBC news-form "X dies aged 81" (n=53) | 0.98 | 0.17 | 0.45 |
+
+- **Notice-form obituaries score identically everywhere** — Courant's notices are at the same zero-event floor. Nothing OregonLive-specific.
+- The visible difference between the two streams (OregonLive 27.5 vs courant.com 44.7 overall) comes almost entirely from the **date format**: Courant notices carry `"| October 18, 2026"` (a full date the detector sees → 0.94 time/place) while OregonLive's carry bare parenthetical years the detector misses. Same information, different typography, 17-point swing.
+- BBC-style news death announcements score fine because "dies" is an explicit verb.
+
+So the measurement is punishing a *typographic convention*, not low information value. The notice form is arguably the single most information-dense headline genre in the corpus.
+
+## Options as I see them
+
+1. **Fix the detectors at form level**: treat the genre marker "Obituary/death notice" as the death-event signal it is, recognise bare year ranges as time anchors, and trailing `City, ST` as place anchors. The year-range and city/state gaps generalise beyond obits (US dateline conventions appear in ordinary headlines too), so part of this is a real measurement improvement, not a special case. Obits would still score zero on consequence/context — correctly, since notices don't carry those — landing somewhere mid-table rather than at the floor.
+2. **Exclude notice-listing streams from measurement**, same logic as non-English: an obituary listing service isn't the thing the measurement question is about — it's a notices utility, not editorial headline writing. OregonLive's obits desk would join the bottom "not measurable" tier (with a different reason).
+3. Leave it, annotate.
+
+My lean: do the generalisable half of option 1 (year ranges + city/state detection — genuine gaps affecting all sources), and option 2 for the obits stream itself, since scoring a death-notice listing service on "headline information value" is a category error in the same way scoring German headlines is. Want me to do that?
+
+---
+
+<!-- r:0 m:hook:142c1735-7bb9-421d-966a-78022bb7ff52 h:64322bee -->
+### 2026-11-28 08:26:18 UTC user
+
+a verb shouldn't be necessary, if a headline is high-pct information dense, it doesn't need verbs to qualify as acceptable
+
+---
+
+<!-- r:0 m:hook:142c1735-7bb9-421d-966a-78022bb7ff52:exec:ee50cf1a h:1207ae72 -->
+### 2026-11-28 08:26:37 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"event\" scripts/headline-analysis/headline_language_features.py | head -15 && sed -n \"$(grep -n 'def.*event\\|EVENT' scripts/headline-analysis/headline_language_features.py | head -1 | cut -d: -f1),+45p\" scripts/headline-analysis/headline_language_features.py", "timeout": 10000}`
+
+```
+Output from command in shell f4aa1b:
+12:def build_event_lemma_pool(nlp):
+24:def event_surface_lemmas(token):
+73:    if event_surface_lemmas(token) & {'release','launch','update'} and following.lower_.casefold() in EVENT_NOUN_COMPLEMENT_HEADS|{'of'}:
+83:    if event_surface_lemmas(token) & NOUN_HEAVY_EVENT_LEMMAS:
+107:def detect_event_action(title: str, doc=None, event_lemmas=None, extra_docs=()) -> float:
+108:    # High-precision event verbs count directly. When a tagger/lemmatizer is
+110:    # game/product names do not count merely because they contain an event word.
+112:    # institutional actor. Service/task frames are explanatory, not news events.
+117:    if doc is not None and event_lemmas:
+119:            _detect_event_action_single(title,variant,event_lemmas)
+130:def _detect_event_action_single(title: str, doc, event_lemmas) -> float:
+137:        candidates=event_surface_lemmas(token)
+139:        action_lemma=next((candidate for candidate in candidates if candidate in event_lemmas),None)
+164:    nominal_event=any((token.lemma_ or token.lower_).casefold() in EVENT_NOUN_LEMMAS and token.pos_ in {'NOUN','PROPN'} for token in doc)
+165:    return 0.5 if nominal_event or MARKET_NOMINAL_MOVEMENT.search(title) else 0
+def build_event_lemma_pool(nlp):
+    lemmas=set()
+    for phrase in EVENT_WORDS:
+        first=phrase.split()[0]
+        doc=nlp(first)
+        if len(doc):
+            lemmas.add((doc[0].lemma_ or doc[0].lower_).casefold())
+        else:
+            lemmas.add(first.casefold())
+    return lemmas-GENERIC_EVENT_LEMMAS
+
+
+def event_surface_lemmas(token):
+    surface=token.lower_.casefold()
+    lemma=(token.lemma_ or token.lower_).casefold()
+    candidates={lemma,surface}
+    if surface.endswith('ies') and len(surface)>3:
+        candidates.add(surface[:-3]+'y')
+    if surface.endswith('s') and len(surface)>1:
+        candidates.add(surface[:-1])
+    if surface.endswith('es') and len(surface)>2:
+        candidates.add(surface[:-2])
+        candidates.add(sur
+```
+
+---
+
+<!-- r:0 m:hook:142c1735-7bb9-421d-966a-78022bb7ff52:exec:f218229c h:335978e9 -->
+### 2026-11-28 08:26:52 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"EVENT_NOUN_LEMMAS\\|EVENT_WORDS\\|GENERIC_EVENT_LEMMAS\\|MARKET_NOMINAL\" scripts/headline-analysis/headline_measurement_lexicon.py | head && python3 - <<'EOF'\nimport re\ns=open('scripts/headline-analysis/headline_measurement_lexicon.py').read()\nfor name in ('EVENT_NOUN_LEMMAS','EVENT_WORDS','GENERIC_EVENT_LEMMAS'):\n    m=re.s`
+
+```
+Output from command in shell 0f2194:
+14:EVENT_WORDS = """
+62:EVENT_WORDS.extend(['roll out', 'rolls out', 'rolled out', 'rolling out'])
+63:EVENT_ACTIONS = compile_word_pool(EVENT_WORDS)
+107:AMBIGUOUS_EVENT_WORDS = {'clear','clears','cleared','rule','rules','order','orders','pass','passes','passed','record','records','set','sets','open','opens'}
+112:GENERIC_EVENT_LEMMAS = {'become'}
+113:EVENT_NOUN_LEMMAS = set('attack strike crash collision explosion fire flood shooting stabbing death murder killing arrest trial verdict ruling protest riot election vote charge resignation collapse closure launch release update delay ban accident evacuation merger takeover'.split())
+116:MARKET_NOMINAL_MOVEMENT = re.compile(r"\b(?:price\w*|inflation|shares?|stocks?|rates?|sales|profits?|revenue|unemployment|growth)\b[^.!?|]{0,45}\b(?:rise\w*|fall\w*|drop\w*|increase\w*|decrease\w*|cut\w*|surge\w*|plunge\w*|decline\w*)\b|\b(?:rise\w*|fall\w*|drop\w*|increase\w*|decrease\w*|cut\w*|surge\w*|plunge\w*|decline\w*)\b[^.!?|]{0,45}\b(?:price\w*|inflation|shares?|stocks?|rates?|sales|profits?|revenue|unemployment|growth)\b", re.I)
+119:NOUN_HEAVY_EVENT_LEMMAS = EVENT_NOUN_LEMMAS | {'sanction','hit','target','record','rule','order','pass','set','open','clear'}
+EVENT_WORDS = {'clear','clears','cleared','rule','rules','order','orders','pass','passes','passed','record','records','set','sets','open','opens'}
+EVENT_CONTEXT_ACTIONS = re.compile(r"\b(?:court|courts|judge|judges|jury|prosecutors?|parliament|congress|senate|government|ministers?|council|regulators?|watchdogs?)\s+(?:rule|rules|ruled|orders?|clears?|cleared|blocks?|approves?|rejects?|passes|passed)\b", re.I)
+EVENT_RECORD_ACTIONS = re.compile(r"\b(?:set|sets|hit|hits|break|breaks|broke|smash|smashes|smashed|reach|reaches)\s+(?:(?:a|an|the|new|world|massive|livestreaming|opening-weekend|first-week)\s+){0,4}record\b", re.I)
+SERVICE_TASK_FRAME = re.compile(r"^\s*(?:how to|how do|how can|can you| 
+---
+GENERIC_EVENT_LEMMAS = {'become'}
+EVENT_NOUN
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4 h:1bfc8594 -->
+### 2026-11-28 08:27:32 UTC user
+
+good spot, obits should be considered events
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:1f7af5fe h:7d0398a8 -->
+### 2026-11-28 08:28:05 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 100,170p scripts/headline-analysis/headline_language_features.py", "timeout": 10000}`
+
+```
+Output from command in shell bd5f51:
+    alpha=_re.findall(r"\b[A-Za-z][A-Za-z'’\-]*\b",str(title))
+    if len(alpha)<5:
+        return False
+    later=alpha[1:]
+    return sum(w[:1].isupper() for w in later)/len(later)>=0.35
+
+
+def detect_event_action(title: str, doc=None, event_lemmas=None, extra_docs=()) -> float:
+    # High-precision event verbs count directly. When a tagger/lemmatizer is
+    # available, require verbal use so noun phrases such as "the fall of X" or
+    # game/product names do not count merely because they contain an event word.
+    # Ambiguous verbs such as "clear", "rules" and "order" count only with an
+    # institutional actor. Service/task frames are explanatory, not news events.
+    # Title-case headlines are parsed twice (original plus truecased); either parse
+    # may supply verbal evidence, so the score is the maximum across parse variants.
+    if SERVICE_TASK_FRAME.search(title):
+        return 0
+    if doc is not None and event_lemmas:
+        return max(
+            _detect_event_action_single(title,variant,event_lemmas)
+            for variant in [doc,*extra_docs]
+        )
+    matches=list(EVENT_ACTIONS.finditer(title))
+    for match in matches:
+        term=match.group(0).casefold()
+        if term not in AMBIGUOUS_EVENT_WORDS:
+            return 1
+    return int(bool(matches and EVENT_CONTEXT_ACTIONS.search(title)))
+
+
+def _detect_event_action_single(title: str, doc, event_lemmas) -> float:
+    if EVENT_CONTEXT_ACTIONS.search(title) or EVENT_RECORD_ACTIONS.search(title):
+        return 1
+    speech_hit=False
+    weak_action_hit=False
+    token_list=list(doc)
+    for index,token in enumerate(token_list):
+        candidates=event_surface_lemmas(token)
+        speech_lemma=next((candidate for candidate in candidates if candidate in SPEECH_EVENT_LEMMAS),None)
+        action_lemma=next((candidate for candidate in candidates if candidate in event_lemmas),None)
+        verbal=token.pos_ in {'VERB','AUX'}
+        strong_grammar_rescue=(no
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:4e91733b h:081f15f3 -->
+### 2026-11-28 08:28:33 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"time_place\\|def detect_time\\|YEAR\\|GPE\" scripts/headline-analysis/headline_language_features.py | head && sed -n \"$(grep -n 'def detect_time_place\\|def time_place' scripts/headline-analysis/headline_language_features.py | head -1 | cut -d: -f1),+40p\" scripts/headline-analysis/headline_language_features.py", "timeout": 1000`
+
+```
+Output from command in shell 27f172:
+225:        if ent.label_ not in {'GPE','LOC','FAC'}:
+sed: -e expression #1, char 1: unknown command: `,'
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:e8c83f58 h:8bc34748 -->
+### 2026-11-28 08:28:47 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"def \\|time_place\" scripts/headline-analysis/headline_language_features.py | head -20 && sed -n 195,260p scripts/headline-analysis/headline_language_features.py", "timeout": 10000}`
+
+```
+Output from command in shell c4a619:
+12:def build_event_lemma_pool(nlp):
+24:def event_surface_lemmas(token):
+44:def subject_object_verb_shape(token_list, index):
+78:def subject_only_verb_shape(token_list, index):
+97:def titleish_share(title: str) -> bool:
+107:def detect_event_action(title: str, doc=None, event_lemmas=None, extra_docs=()) -> float:
+130:def _detect_event_action_single(title: str, doc, event_lemmas) -> float:
+168:def quantified_specificity_score(title: str, doc=None) -> float:
+218:def spacy_place_anchor(title: str, doc=None) -> float:
+241:def enhanced_explanatory_framing(title: str) -> int:
+258:def enhanced_context_comparison(title: str, doc=None) -> float:
+270:def normalise_place_entity(text):
+276:def locative_place_context(title, ent):
+                value=min(value,0.15)
+            elif listicle:
+                value=min(value,0.25)
+            elif prev is not None and prev.text.casefold() in {'at','age','aged'}:
+                value=max(value,1.0)
+            else:
+                value=max(value,0.75)
+        elif low in NUM_WORDS:
+            nxt=tokens[i+1] if i+1<len(tokens) else None
+            if low=='one' and nxt is not None and nxt.text.casefold()=='of':
+                value=0.0
+            elif nxt is not None and nxt.pos_ in {'NOUN','PROPN'}:
+                value=0.25 if listicle else 0.75
+            elif low in {'hundred','thousand','million','billion'}:
+                value=0.5
+        elif low in SCALE_WORDS:
+            value=0.5
+        elif low in ORDINAL_WORDS:
+            value=0.25
+        score=max(score,value)
+    return float(score)
+
+
+def spacy_place_anchor(title: str, doc=None) -> float:
+    if TIME_PLACE.search(title) or COUNTRY_RE.search(title) or COUNTRY_ACRONYM_RE.search(title):
+        return 1
+    if doc is None:
+        return 0
+    score = 0.0
+    for ent in doc.ents:
+        if ent.label_ not in {'GPE','LOC','FAC'}:
+            continue
+        normalised = normalise_place_entity(ent.text)
+        if not n
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:b0397549 h:d6a53d84 -->
+### 2026-11-28 08:28:58 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport re\ns=open('scripts/headline-analysis/headline_measurement_lexicon.py').read()\nm=re.search(r'TIME_PLACE\\s*=.{0,600}',s,re.S)\nprint(m.group(0)[:600] if m else 'not found')\nEOF\ngrep -n \"time_place\\|spacy_place\\|TIME_CUE\\|time_cue\" scripts/headline-analysis/headline_measurement_features.py | head", "timeout`
+
+```
+Output from command in shell a73f37:
+TIME_PLACE = re.compile(rf"\b(?:{MONTHS}|{DAYS}|today|yesterday|tomorrow|tonight|this morning|this week|next week|last week|next year|last year|in \d{{4}}|by \d{{4}}|since \d{{4}}|during \d{{4}}|\d{{1,2}}(?:st|nd|rd|th)?\s+(?:{MONTHS})|(?:{MONTHS})\s+\d{{1,2}})\b", re.I)
+CAUSAL = re.compile(r"\b(?:because|due to|as a result|resulting in|results? in|led to|leads? to|caused? by|causes?|trigger\w*|prompt\w*|driv\w*|fuel\w*|in response to|thanks to|which means|what it means|linked to|associated with|contribut\w* to|forces? .* to|means that)\b", re.I)
+CONSEQUENCE_WORDS = """
+impact impacts impacted
+15:    spacy_place_anchor,
+38:    time_place = spacy_place_anchor(title,doc=doc)
+64:    curiosity_features = curiosity_gap_features(title,doc,event_action=event_action,numeric=numeric,time_place=time_place,evidence_score=evidence_score,explanatory=explanatory,direct_service=direct_service)
+70:    raw = [event_action,numeric,time_place,causal,consequence,evidence_score,context,explanatory,1-curiosity_gap_score,1-direct_service,1-personal_sensational]
+71:    legacy_raw = [int(event_action and not legacy_bait),numeric,time_place,causal,consequence,int(evidence_score>0),context,original,explanatory,1-legacy_bait,1-personal_sensational]
+125:        'time_place_anchor':time_place,'causal_explanation':causal,'material_consequence':consequence,
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:f2e8c628 h:dc484395 -->
+### 2026-11-28 08:29:22 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 1,30p scripts/headline-analysis/headline_measurement_lexicon.py && grep -n \"MONTHS\\|DAYS\" scripts/headline-analysis/headline_measurement_lexicon.py | head -4", "timeout": 10000}`
+
+```
+Output from command in shell c4daab:
+"""Surface-language lexicons for headline measurement.
+
+These are broad token-boundary watchlists and lightweight regular expressions.
+They measure visible wording only; they are not semantic truth judgements.
+"""
+import re
+
+MONTHS = r"january|february|march|april|may|june|july|august|september|october|november|december"
+DAYS = r"monday|tuesday|wednesday|thursday|friday|saturday|sunday"
+
+def compile_word_pool(words):
+    return re.compile(r"\b(?:" + '|'.join(re.escape(w) for w in sorted(set(words), key=len, reverse=True)) + r")\b", re.I)
+
+EVENT_WORDS = """
+announce announces announced announcing approve approves approved approving reject rejects rejected rejecting
+resign resigns resigned resigning win wins won winning lose loses losing lost die dies died dying
+kill kills killed killing arrest arrests arrested arresting charge charges charged charging convict convicts convicted convicting
+acquit acquits acquitted acquitting launch launches launched launching open opens opened opening close closes closed closing
+suspend suspends suspended suspending ban bans banned banning sign signs signed signing bought buy buys buying sold sell sells selling
+fell fall falls falling rose rise rises rising increase increases increased increasing decrease decreases decreased decreasing
+find finds found finding discover discovers discovered discovering ruled rule rules ruling order orders ordered ordering
+vote votes voted voting pass passes passed passing delay delays delayed delaying cut cuts cutting
+fire fires fired firing hire hires hired hiring strike strikes struck striking investigate investigates investigated investigating
+publish publishes published publishing release releases released releasing unveil unveils unveiled unveiling
+introduce introduces introduced introducing remove removes removed removing add adds added adding update updates updated updating
+change changes changed changing shut shuts shutting expand expands expanded expanding 
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:232e0b69 h:a29bbe3d -->
+### 2026-11-28 08:29:38 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\np='scripts/headline-analysis/headline_measurement_lexicon.py'\ns=open(p).read()\nanchor='TIME_PLACE = re.compile('\nidx=s.index(anchor)\n# insert new form-level patterns right before TIME_PLACE\naddition='''# A year range is a period-of-time statement \u2014 lifespans \"(1937 - 2026)\", eras and\n# multi-year windows car`
+
+```
+Output from command in shell 32a59c:
+lexicon updated
+obit: True
+year range: True
+citystate: True
+citystate fp test (no match expected): False
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:426356fb h:f5151d48 -->
+### 2026-11-28 08:29:55 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\np='scripts/headline-analysis/headline_language_features.py'\ns=open(p).read()\n\n# 1) time/place: year ranges and City, ST datelines count as anchors\nold='''def spacy_place_anchor(title: str, doc=None) -> float:\n    if TIME_PLACE.search(title) or COUNTRY_RE.search(title) or COUNTRY_ACRONYM_RE.search(title):\n        re`
+
+```
+Output from command in shell af15e2:
+import style found: True
+features updated
+2:import re
+4:from headline_measurement_lexicon import *
+5:from headline_measurement_tunings import (
+99:    import re as _re
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:066ef12e h:75187f8c -->
+### 2026-11-28 08:30:05 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"__all__\" scripts/headline-analysis/headline_measurement_lexicon.py; sed -n 95,105p scripts/headline-analysis/headline_language_features.py && python3 - <<'EOF'\n# simplify: module already imports re at top \u2014 drop the odd local import usage in the new code\np='scripts/headline-analysis/headline_language_features.py'\ns=open(`
+
+```
+Output from command in shell 49b57d:
+
+
+def titleish_share(title: str) -> bool:
+    """Title-case style measured from the original string, not the parse input."""
+    import re as _re
+    alpha=_re.findall(r"\b[A-Za-z][A-Za-z'’\-]*\b",str(title))
+    if len(alpha)<5:
+        return False
+    later=alpha[1:]
+    return sum(w[:1].isupper() for w in later)/len(later)>=0.35
+
+obit notice: 1
+guardian obit: 1
+generic: 1
+courant: 1
+place year-range: 1
+place plain: 0
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:bc8b71d8 h:b5a6344e -->
+### 2026-11-28 08:30:35 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 114,126p scripts/headline-analysis/headline_language_features.py", "timeout": 10000}`
+
+```
+Output from command in shell 9d6764:
+    # may supply verbal evidence, so the score is the maximum across parse variants.
+    if SERVICE_TASK_FRAME.search(title):
+        return 0
+    # Death-notice genre markers carry the event in their form: "Jerry Small
+    # Obituary (1937 - 2026)" announces a death as concretely as "Jerry Small
+    # dies". The guard asks only for another capitalised token — the person —
+    # so generic discussions of obituaries as a form do not count.
+    if OBITUARY_EVENT_FORM.search(title):
+        alpha=re.findall(r"\b[A-Za-z][A-Za-z'’\-]*\b",str(title))
+        caps=[w for w in alpha if w[:1].isupper() and not OBITUARY_EVENT_FORM.fullmatch(w)]
+        if len(caps)>=1 and not (len(caps)==1 and str(title).lstrip().startswith(caps[0]) and caps[0].casefold() in {'the','a','an','in','on'}):
+            return 1
+    if doc is not None and event_lemmas:
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:af9c8594 h:fba88ca5 -->
+### 2026-11-28 08:30:47 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"event_action\\|detect_event\\|CASES\\s*=\\|cases\\s*=\" scripts/headline-analysis/validate_detectors.py | head -8 && sed -n 1,40p scripts/headline-analysis/validate_detectors.py", "timeout": 10000}`
+
+```
+Output from command in shell 78f9e4:
+#!/usr/bin/env python3
+import argparse, json, sys
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).parent))
+from headline_measurement_schema import DELIVERY_METRICS
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+
+ADVERSE_AXES=['explicit_curiosity_gap_present','direct_service_packaging_present','personal_sensational_frame_present']
+AXES=DELIVERY_METRICS+['explicit_curiosity_gap_risk']+ADVERSE_AXES
+FRACTIONAL_AXES={'evidence_provenance','explicit_curiosity_gap_risk'}
+
+
+def load_out(args):
+    out=args.out
+    if out is None:
+        cfg=json.loads(args.config.read_text()) if args.config.exists() else {}
+        out=Path(cfg.get('analysis',{}).get('output_dir','docs/headline-data/current'))
+    return out if out.is_absolute() else REPO_ROOT/out
+
+
+def make_sample(h,out_path,n=150,per_source=3,seed=27):
+    rng=np.random.default_rng(seed)
+    order=rng.permutation(len(h))
+    chosen=[]; counts={}
+    for ix in order:
+        key=h.iloc[int(ix)]['source_key']
+        if counts.get(key,0)>=per_source: continue
+        chosen.append(int(ix)); counts[key]=counts.get(key,0)+1
+        if len(chosen)>=n: break
+    rows=[]
+    for ix in chosen:
+        r=h.iloc[ix]
+        row={'headline_id':r.get('headline_id',ix),'source_key':r['source_key'],'source':r['source'],'headline':r['headline'],'body_text_excerpt':r.get('body_text_excerpt',''),'url':r.get('url','')}
+        for axis in AXES:
+            row['pred_'+axis]=r[axis]
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:0b87511f h:1c27b368 -->
+### 2026-11-28 08:30:53 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && ls scripts/headline-analysis/test_corpus_outputs.py scripts/headline-analysis/*detector* 2>/dev/null; grep -rn \"detector\" scripts/headline-analysis/validate_detectors.py | head -3; grep -rln \"REGRESSION\\|regression\" scripts/headline-analysis/*.py | head -3; grep -n \"83\\|cases\" docs/tasks/headline-analysis.task.json | head -5", "tim`
+
+```
+Output from command in shell 8becff:
+scripts/headline-analysis/test_corpus_outputs.py
+scripts/headline-analysis/test_detectors.py
+scripts/headline-analysis/validate_detectors.py
+91:    sample_path=args.sample or out/'detector_validation_sample.csv'
+98:        result=score_sample(sample_path,out/'detector_validation_scores.json')
+scripts/headline-analysis/test_detectors.py
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:9ec73d80 h:8ecf2e2d -->
+### 2026-11-28 08:30:58 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 1,60p scripts/headline-analysis/test_detectors.py && grep -n \"obituary\\|event_action\" scripts/headline-analysis/test_detectors.py | head -8", "timeout": 10000}`
+
+```
+Output from command in shell 3e046e:
+"""High-precision regression cases for title-level detector behaviour."""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+import spacy
+from analyse_headlines import detect_one, build_event_lemma_pool, strip_source_boilerplate_suffix
+from headline_truecasing import parse_inputs
+
+nlp = spacy.load('en_core_web_sm', disable=['parser'])
+event_lemmas = build_event_lemma_pool(nlp)
+
+cases = [
+    ("UK net migration fell 14% in 2025 as asylum claims also fell, ONS data show",
+     {'event_clarity':1,'quantified_specificity':1,'time_place_anchor':1,'material_consequence':1,'evidence_provenance':1.0,'primary_evidence_cue':1}),
+    ("Can YOU guess the secret behind the new royal relationship...?",
+     {'explicit_curiosity_gap_present':1,'low_explicit_curiosity_gap':0.05,'direct_service_packaging_present':1}),
+    ("Jennifer Lopez reveals son Max does not like her stage looks",
+     {'personal_life_frame_present':1,'teaser_verb_present':1,'personal_sensational_frame_present':1,'low_sensational_personal':0,'explicit_curiosity_gap_present':0}),
+    ("How to clear the cache on your Xbox Series X",
+     {'direct_service_packaging_present':1,'low_direct_service_packaging':0,'explanatory_framing':1,'explicit_curiosity_gap_present':0,'event_clarity':0}),
+    ("Star Wars studio announces a new game for 2027",
+     {'celebrity_cue_present':0,'event_clarity':0.5,'quantified_specificity':0.5}),
+    ("The incredible reason your heart never develops cancer",
+     {'explicit_curiosity_gap_present':1,'low_explicit_curiosity_gap':0.22}),
+    ("Study finds forever chemicals in New Jersey tap water",
+     {'evidence_provenance':0.8,'research_claim_cue':1,'primary_evidence_cue':0,'event_clarity':1}),
+    ("Court filing reveals Google internally admitted search quality loss",
+     {'evidence_provenance':1.0,'primary_evidence_cue':1,'event_clarity':0.5}),
+    ("How rail fare increases affect commuters across England",
+     {'ex
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:22e5e35a h:adbbdef9 -->
+### 2026-11-28 08:31:09 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n \"$(grep -n 'def run\\|if __name__\\|failures' scripts/headline-analysis/test_detectors.py | head -1 | cut -d: -f1),\\$p\" scripts/headline-analysis/test_detectors.py | head -40 && grep -c \"event_clarity\\|time_place\" scripts/headline-analysis/test_detectors.py", "timeout": 10000}`
+
+```
+Output from command in shell 7df3da:
+    ("Audit finds council failures left families in unsafe housing",
+     {'primary_evidence_cue':1,'evidence_provenance':1.0}),
+    ("FDA warns GLP-1 drugs may pose risk of rare condition that causes vision loss",
+     {'personal_life_frame_present':0,'personal_sensational_frame_present':0,'low_sensational_personal':1}),
+    ("One of my favourite games in recent years is now on consoles and Xbox Game Pass, and it's a Halloween must for horror fans",
+     {'sensational_word_present':0,'personal_sensational_frame_present':0,'low_sensational_personal':1}),
+    ("Body found in river after missing walker search",
+     {'personal_life_frame_present':0,'personal_sensational_frame_present':0,'low_sensational_personal':1}),
+    ("FromSoft's Switch 2 exclusive, The Duskbloods, has been delayed into 2027",
+     {'original_reporting_signal':0}),
+    ("Coventry need to 'keep feet on the ground' after landmark win",
+     {'original_reporting_signal':0}),
+    ("The young hikers finding friendship and fresh air offline",
+     {'research_claim_cue':0,'evidence_provenance':0.0}),
+    ("Drugs running was like 'a paper round' for exploited son, mum says",
+     {'research_claim_cue':0,'evidence_provenance':0.65}),
+    ("Cambridge scientist killed in Spain train crash was 'a light for all of us'",
+     {'research_claim_cue':0,'evidence_provenance':0.0}),
+    ("Cornell scientists engineer tomatoes that turn red-purple when nitrogen is low",
+     {'research_claim_cue':1,'evidence_provenance':0.45,'primary_evidence_cue':0}),
+    ("Exclusive interview: asylum hotel residents describe life inside",
+     {'original_reporting_signal':1}),
+    ("Earlier bedtime linked to greater weight loss in prediabetes trial",
+     {'personal_life_frame_present':0,'personal_sensational_frame_present':0,'low_sensational_personal':1}),
+    ("From chaos to 'intelligent' soft matter—how tiny chemical differences guide droplets into cells",
+     {'sensational_word_present':0,'
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:ca009c52 h:11798be8 -->
+### 2026-11-28 08:31:14 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n \"$(grep -n '^cases\\s*=\\|^]$\\|def evaluate\\|print(' scripts/headline-analysis/test_detectors.py | tail -5 | head -1 | cut -d: -f1),\\$p\" scripts/headline-analysis/test_detectors.py 2>/dev/null | head -5; tail -40 scripts/headline-analysis/test_detectors.py", "timeout": 10000}`
+
+```
+Output from command in shell e2488e:
+cases = [
+    ("UK net migration fell 14% in 2025 as asylum claims also fell, ONS data show",
+     {'event_clarity':1,'quantified_specificity':1,'time_place_anchor':1,'material_consequence':1,'evidence_provenance':1.0,'primary_evidence_cue':1}),
+    ("Can YOU guess the secret behind the new royal relationship...?",
+     {'explicit_curiosity_gap_present':1,'low_explicit_curiosity_gap':0.05,'direct_service_packaging_present':1}),
+    ("Video game shows trouble in gameplay footage",
+     {'evidence_provenance':0.0,'evidence_surface_strength':0}),
+    ("These Are The 11 Best Romances BioWare Ever Made",
+     {'explicit_curiosity_gap_risk':0.4674448,'low_explicit_curiosity_gap':0.5325552,'listicle_withholding_surface':1}),
+    ("When will we know the results?",
+     {'explicit_curiosity_gap_risk':0.6244192,'low_explicit_curiosity_gap':0.3755808,'withheld_timing_surface':1,'vague_reference_surface':1}),
+    ("How online predator duped 70 girls into believing he loved them",
+     {'explicit_curiosity_gap_risk':0.37576,'low_explicit_curiosity_gap':0.62424,'mechanism_gap_surface':1}),
+    ("Here Are Some Super Useful Control Shortcuts GTA 6 Doesn't Tell You About",
+     {'explicit_curiosity_gap_risk':0.38,'low_explicit_curiosity_gap':0.62,'listicle_withholding_surface':1,'evidence_provenance':0.0}),
+    ("Why the new housing rules matter for renters",
+     {'explicit_curiosity_gap_risk':0.1,'low_explicit_curiosity_gap':0.9}),
+    ("Nintendo's Switch 2 Sales Fell 37 Percent This Year, But Game Sales Are Growing Fast",
+     {'event_clarity':1,'quantified_specificity':1}),
+    ("PlayStation 5 Crosses 100 Million Sold Milestone Daily Fix",
+     {'event_clarity':1,'quantified_specificity':1}),
+    ("Acting Legend Sir Patrick Stewart Has Died At 86",
+     {'event_clarity':1,'quantified_specificity':1}),
+    ("Union Vote Fails In Landslide At GTA 6 Studio Rockstar Games As 75 Percent Of Devs Vote No",
+     {'event_clarity':1,'quantified_specific
+```
+
+---
+
+<!-- r:0 m:hook:667919b2-f491-455a-a4f9-6b6bd0c319e4:exec:48307e7d h:a35e5353 -->
+### 2026-11-28 08:31:34 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\np='scripts/headline-analysis/test_detectors.py'\ns=open(p).read()\nanchor='''    (\"Union Vote Fails In Landslide At GTA 6 Studio Rockstar Games As 75 Percent Of Devs Vote No\",\n     {'event_clarity':1,'quantified_specificity':1}),\n]'''\nadd='''    (\"Union Vote Fails In Landslide At GTA 6 Studio Rockstar Games As 75 P`
+
+```
+cases added
+
+===
+Stopped waiting for output after 10.0 seconds. Command running in background with ID: 125c22. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2 h:475c6d77 -->
+### 2026-11-28 08:31:51 UTC user
+
+don't get too bogged-down in special-case matching (STOP making massive complex heuristics for something you cN SIMPLY set once as a known data-source flag)
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:exec:e5e432a0 h:25aa74fc -->
+### 2026-11-28 08:32:11 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && git status --short scripts/headline-analysis/headline_measurement_lexicon.py scripts/headline-analysis/headline_language_features.py scripts/headline-analysis/test_detectors.py && git diff --stat scripts/headline-analysis/ | tail -4", "timeout": 10000}`
+
+```
+Output from command in shell 9f7321:
+ M scripts/headline-analysis/headline_language_features.py
+ M scripts/headline-analysis/headline_measurement_lexicon.py
+ M scripts/headline-analysis/test_detectors.py
+ .../headline-analysis/headline_language_features.py    | 13 +++++++++++--
+ .../headline-analysis/headline_measurement_lexicon.py  | 18 ++++++++++++++++++
+ scripts/headline-analysis/test_detectors.py            |  8 ++++++++
+ 3 files changed, 37 insertions(+), 2 deletions(-)
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:exec:a0a74f04 h:5003c961 -->
+### 2026-11-28 08:32:16 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && git checkout -- scripts/headline-analysis/headline_measurement_lexicon.py scripts/headline-analysis/headline_language_features.py scripts/headline-analysis/test_detectors.py && git status --short scripts/headline-analysis/ | wc -l && echo \"reverted\"", "timeout": 10000}`
+
+```
+Output from command in shell 468d57:
+0
+reverted
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:exec:9bc32fe4 h:db6690d4 -->
+### 2026-11-28 08:32:28 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport json\np='src/trees/profiles/source-measurement-overrides.json'\nd=json.load(open(p))\nd['streamShapes']={\n \"obits.oregonlive.com\": {\n   \"streamType\": \"death-notice listings\",\n   \"measurable\": False,\n   \"note\": \"A death-notice listing service, not editorial headline writing. Notices are form-encoded `
+
+```
+Output from command in shell 06e4d3:
+overrides written
+builder patched
+2
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:exec:a6dd7171 h:1d39be49 -->
+### 2026-11-28 08:32:35 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"stream\" scripts/headline-analysis/build_measured_sources.py", "timeout": 10000}`
+
+```
+Output from command in shell f1a01e:
+101:    stream_shapes = measurement_overrides.get('streamShapes', {})
+103:    unmeasurable_keys |= {k for k, v in stream_shapes.items() if isinstance(v, dict) and v.get('measurable') is False}
+239:        lang = languages.get(key) or stream_shapes.get(key, {})
+248:            'streamType': lang.get('streamType', ''),
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:exec:04fcb88f h:561af210 -->
+### 2026-11-28 08:32:42 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && .venv/bin/python scripts/headline-analysis/build_measured_sources.py --config docs/tasks/headline-analysis.task.json 2>&1 | tail -2 && python3 -c \"\nimport json\nd=json.load(open('src/data/measured-sources.json'))\nprint('measurable:',len(d['sources']),'unmeasurable:',len(d.get('unmeasurableSources',[])))\nfor u in d.get('unmeasurableSour`
+
+```
+Output from command in shell ae4ff4:
+wrote 140 measured sources to /home/bobbigmac/projects/bobdavies/news/src/data/measured-sources.json
+wrote 151 quality lookup keys to /home/bobbigmac/projects/bobdavies/news/src/data/source-quality.json
+measurable: 140 unmeasurable: 5
+ - handelsblatt.com de
+ - obits.oregonlive.com death-notice listings
+ - lemonde.fr fr
+ - elfinanciero.com.mx es
+ - e24.no no
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:exec:c714536f h:124fa25c -->
+### 2026-11-28 08:33:03 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\np='src/measured-sources.js'\ns=open(p).read()\nold=\"titleWrap.appendChild(el('p', '', 'These sources publish mostly in languages other than English. The measurement pipeline can only reliably score English-language headlines, so no quality claim is made about them.'));\"\nnew=\"titleWrap.appendChild(el('p', '', 'These s`
+
+```
+Output from command in shell 37e286:
+page + tests updated
+methodology updated
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:exec:efc5c2b1 h:e67069c3 -->
+### 2026-11-28 08:33:19 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && node scripts/build-page-og-images.js && .venv/bin/python scripts/headline-analysis/test_detectors.py 2>&1 | tail -1 & npm test 2>&1 | grep -E \"Test Files|Tests \"; wait", "timeout": 300000, "shell_id": "verify3"}`
+
+```
+og-measured: top 7 vs bottom 7 -> src/og-measured.jpg
+
+===
+Stopped waiting for output after 10.7 seconds. Command running in background with ID: verify3. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:5f297337-c0e7-4dff-8f1c-19796db8cdd2:get_output:eda5b39b h:dd54f3cf -->
+### 2026-11-28 08:33:42 UTC tool `get_output`
+
+`{"shell_id": "verify3", "timeout": 240000}`
+
+```
+og-relationships: 3 lines -> src/og-relationships.jpg
+[2m Test Files [22m [1m[32m15 passed[39m[22m[90m (15)[39m
+[2m      Tests [22m [1m[32m110 passed[39m[22m[90m (110)[39m
+87 detector regression cases passed; 4 suffix-strip cases passed
+
+
+Exit code: 0
+```
 
 ---
 

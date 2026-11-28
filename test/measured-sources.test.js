@@ -86,12 +86,12 @@ describe('measured source export', () => {
 
   it('excludes below-threshold non-English feeds from the ranking and makes no quality claim about them', () => {
     const keys = new Set(data.sources.map(source => source.key));
-    for (const excluded of ['handelsblatt.com', 'e24.no', 'lemonde.fr', 'elfinanciero.com.mx']) {
+    for (const excluded of ['handelsblatt.com', 'e24.no', 'lemonde.fr', 'elfinanciero.com.mx', 'obits.oregonlive.com']) {
       expect(keys.has(excluded), `${excluded} must not be ranked`).toBe(false);
     }
     const unmeasurable = data.unmeasurableSources || [];
     const unKeys = new Set(unmeasurable.map(source => source.key));
-    for (const expected of ['handelsblatt.com', 'e24.no', 'lemonde.fr', 'elfinanciero.com.mx']) {
+    for (const expected of ['handelsblatt.com', 'e24.no', 'lemonde.fr', 'elfinanciero.com.mx', 'obits.oregonlive.com']) {
       expect(unKeys.has(expected), `${expected} must be listed as unmeasurable`).toBe(true);
     }
     for (const source of unmeasurable) {

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-28T08:15:32.633775+00:00",
+ "generatedAt": "2026-11-28T08:32:42.282604+00:00",
  "sources": {
   "tweaktown.com": {
    "quality": 78.11,
@@ -589,10 +589,6 @@
   "gamespot.com": {
    "quality": 28.61,
    "headlines": 56
-  },
-  "obits.oregonlive.com": {
-   "quality": 27.5,
-   "headlines": 29
   },
   "npr.org": {
    "quality": 27.09,

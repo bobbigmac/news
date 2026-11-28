@@ -252,7 +252,7 @@ function renderUnmeasurable(main) {
   const head = el('header', 'band-head');
   const titleWrap = el('div');
   titleWrap.appendChild(el('h2', '', 'Available in the digest, but not measurable'));
-  titleWrap.appendChild(el('p', '', 'These sources publish mostly in languages other than English. The measurement pipeline can only reliably score English-language headlines, so no quality claim is made about them.'));
+  titleWrap.appendChild(el('p', '', 'These sources cannot be fairly compared by this measurement: most publish in languages other than English, which the pipeline cannot reliably score, and some are structured notice or listing services rather than editorial headline writing. No quality claim is made about any of them.'));
   head.appendChild(titleWrap);
   head.appendChild(el('span', 'band-count', `${sources.length} sources`));
   section.appendChild(head);

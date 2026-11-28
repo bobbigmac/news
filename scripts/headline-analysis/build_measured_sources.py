@@ -98,7 +98,9 @@ def main():
     display_overrides = measurement_overrides.get('displayLabels', {})
     source_notes = measurement_overrides.get('notes', {})
     languages = measurement_overrides.get('languages', {})
+    stream_shapes = measurement_overrides.get('streamShapes', {})
     unmeasurable_keys = {k for k, v in languages.items() if isinstance(v, dict) and v.get('measurable') is False}
+    unmeasurable_keys |= {k for k, v in stream_shapes.items() if isinstance(v, dict) and v.get('measurable') is False}
     anchors, relationship_families = relationship_anchors(REPO_ROOT)
 
     def measurement_note(source_key):
@@ -234,7 +236,7 @@ def main():
     unmeasurable = []
     for _, row in unmeasurable_rows.iterrows():
         key = row['source_key']
-        lang = languages.get(key, {})
+        lang = languages.get(key) or stream_shapes.get(key, {})
         display = display_overrides.get(key) or row['source']
         icon_key = row.get('icon_source_key') or key
         unmeasurable.append({
@@ -243,6 +245,7 @@ def main():
             'headlines': int(row['n']),
             'iconKey': icon_key,
             'language': lang.get('primary', ''),
+            'streamType': lang.get('streamType', ''),
             'note': lang.get('note', ''),
             'family': relationship_families.get(icon_key, ''),
             'relationshipsUrl': './relationships.html' + (('#' + anchors[icon_key]) if icon_key in anchors else ''),

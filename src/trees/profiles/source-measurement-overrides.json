@@ -133,5 +133,13 @@
       "note": "Predominantly English with occasional French/German pieces; above the 80% threshold."
     },
     "documentation": "Language annotations are manual judgements from reading pooled headlines, not detector output. englishShare is approximate. measurable=false means the feed is below roughly 80% English-language headlines, so the English-only measurement pipeline cannot make a fair claim about it."
+  },
+  "streamShapes": {
+    "obits.oregonlive.com": {
+      "streamType": "death-notice listings",
+      "measurable": false,
+      "note": "A death-notice listing service, not editorial headline writing. Notices are form-encoded public records (name, lifespan, town), so headline-quality comparison with news writing is a category error."
+    },
+    "documentation": "Stream-shape exclusions are manual source-level flags for feeds whose output is a structured notice or listing service rather than editorial headline writing. measurable=false excludes the feed from the ranked ordering; it is listed at the bottom of the page with no quality claim."
   }
 }
