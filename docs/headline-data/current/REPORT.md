@@ -2,7 +2,7 @@
 
 Corpus: **11,461 headline rows**, **687 sources**.
 Source ordering eligible: **76** sources with at least 20 headlines. **611** sources are below the threshold and unranked.
-Runtime: **216.8s** local. Stage timings: parse_archive 2.0s, detectors 98.9s, headline_reuse_and_templates 26.1s, topic_model_and_crossfit_expectations 8.5s, source_statistics_and_bootstrap 77.0s, write_tables_and_radar 4.3s.
+Runtime: **209.3s** local. Stage timings: parse_archive 2.0s, detectors 100.3s, headline_reuse_and_templates 31.3s, topic_model_and_crossfit_expectations 7.7s, source_statistics_and_bootstrap 63.6s, write_tables_and_radar 4.4s.
 
 ## Measurement definition
 The core ordering has 11 cue inputs: eight information-delivery markers plus inverse forms of curiosity-gap risk, direct-address/service packaging, and sensational/personal framing. Original-access cues and cross-source title echo are plotted as diagnostic axes but excluded from the composite. Evidence specificity is now a continuous evidence-surface score rather than two stock regex tiers: documentary/legal/data evidence scores highest, typed research evidence next, direct testimony and quotation moderate, communication events or vague attribution low, and no surface evidence zero. Curiosity-gap risk is also continuous: stock teaser forms are high-risk, while vague references, withheld listicle examples, unresolved forward references, resolution/reaction/mechanism gaps and pronoun/determiner load combine as inspectable noisy-or evidence, attenuated when the headline already supplies concrete anchors. Event clarity is fractional: direct action verbs count 1.0, grammatically uncertain title-case verb forms count 0.75, speech/report/announcement acts count 0.5, and nominal event references count 0.5. Context is fractional as well: explicit comparison or record/history cues count 1.0, amid/following count 0.75, and bare sequence or comparative forms count 0.5. Numeric detail distinguishes exact quantities from weaker years, scale words, ordinals, listicle positions and product/version numerals. The composite aggregates cue residuals in natural units, so a source with several concrete cue differences outranks one with a single cue. After empirical shrinkage, axis contributions are saturated symmetrically at a corpus-derived 95th-percentile absolute axis deviation before averaging; this keeps one unusually large axis residual from dominating without renormalising rare and common cues into artificial equality. The spiderweb axes themselves remain uncapped diagnostic z-scores, not a second equally-weighted composite stage.
@@ -20,7 +20,7 @@ The core ordering has 11 cue inputs: eight information-delivery markers plus inv
 - Delivery markers are fully topic/context-adjusted, while attention packaging is only partly context-adjusted (25% by default) and otherwise compared with corpus-wide incidence; this treats attention farming more as publisher behaviour than unavoidable subject matter.
 - The local `en_core_web_sm` spaCy model supplies POS tags, lemmas and named entities. It is a small classical NLP model, not a transformer. Event detection combines verbal POS evidence with conservative local grammar for title-case or plural/-s forms that the tagger misreads; speech/report/announcement acts and noun-led event references count as weaker fractional evidence than direct action verbs. Place detection no longer trusts raw GPE/LOC/FAC labels alone because the small NER model frequently labels sports clubs, companies, games, people and “AI” as places; corpus-audited false-positive overrides, locative syntax for ambiguous entities, and reduced-weight facility hits are used instead. Numeric detail distinguishes exact quantities, bare counts, calendar years, scale words, ordinals, listicle positions and product/version numerals.
 - The composite is calculated in natural cue units before display normalisation. This avoids the previous compression artefact caused by averaging eleven independently z-scored axes. Manual inspection of fringe cases supported this choice: equal z-weighting put formulaic research-release language at the very top and over-penalised moderate curiosity/service deviations, while uncapped natural units gave single large axes too much leverage. The final composite therefore caps each shrunk axis contribution at the corpus-derived 95th-percentile absolute axis deviation before averaging.
-- Composite shrinkage is estimated from within- and between-source variance rather than fixed by hand; this run uses k=15.38 in the n/(n+k) factor. The composite axis saturation point is 12.51 adjusted percentage points. The displayed score is then corpus-normalised to mean 50 and standard deviation 15 among eligible sources, with clipping only at the extremes. Raw adjusted percentage-point residuals remain exported.
+- Composite shrinkage is estimated from within- and between-source variance rather than fixed by hand; this run uses k=18.09 in the n/(n+k) factor. The composite axis saturation point is 12.07 adjusted percentage points. The displayed score is then corpus-normalised to mean 50 and standard deviation 15 among eligible sources, with clipping only at the extremes. Raw adjusted percentage-point residuals remain exported.
 - Shrinkage sensitivity is exported across the configured grid; broad quartile ordering bands are emphasised over false precision in adjacent ranks.
 - `detector_audit_sample.csv` is a stratified manual-labelling sample intended for future precision/recall estimation.
 
@@ -54,42 +54,42 @@ The core ordering has 11 cue inputs: eight information-delivery markers plus inv
 ## High-volume ordering (n ≥ 100)
 | Rank | Source | n | Topic-adjusted title signal (95% interval) | Length-adjusted sensitivity | Raw 11-signal mean |
 |---:|---|---:|---:|---:|---:|
-| 1 | Eurogamer | 458 | 81.0 (74.6–85.8) | 76.8 | 39.7 |
-| 2 | Korea Times | 123 | 70.5 (60.4–80.0) | 72.5 | 42.8 |
-| 3 | The Guardian | 485 | 69.1 (62.7–75.5) | 68.5 | 42.7 |
-| 4 | City A.M. | 173 | 58.7 (51.0–67.7) | 56.8 | 40.4 |
-| 5 | Financial Times | 116 | 57.2 (47.5–66.1) | 64.6 | 40.8 |
-| 6 | Medical Xpress | 127 | 52.6 (41.8–62.4) | 54.1 | 38.7 |
-| 7 | BBC | 3537 | 45.8 (43.0–48.3) | 47.8 | 39.9 |
-| 8 | Phys.org | 190 | 42.5 (32.0–52.4) | 40.7 | 36.5 |
-| 9 | The Independent | 246 | 42.5 (33.8–50.5) | 40.4 | 39.7 |
-| 10 | Mirror | 133 | 41.6 (31.3–51.1) | 39.2 | 38.8 |
-| 11 | Punch | 348 | 34.7 (29.4–40.3) | 41.4 | 38.8 |
-| 12 | IGN | 125 | 26.0 (17.8–35.1) | 35.4 | 34.2 |
-| 13 | Daily Mail | 350 | 25.7 (19.9–31.8) | 25.9 | 37.6 |
-| 14 | Kotaku | 671 | 18.4 (14.1–23.2) | 17.1 | 34.9 |
+| 1 | Eurogamer | 458 | 76.5 (70.1–82.4) | 68.5 | 39.7 |
+| 2 | Korea Times | 123 | 71.3 (57.8–81.1) | 73.7 | 42.8 |
+| 3 | The Guardian | 485 | 70.7 (64.2–77.4) | 70.2 | 42.7 |
+| 4 | City A.M. | 173 | 57.1 (48.5–66.6) | 54.0 | 40.4 |
+| 5 | Financial Times | 116 | 56.3 (45.9–66.0) | 63.9 | 40.8 |
+| 6 | Medical Xpress | 127 | 51.3 (40.7–63.2) | 51.5 | 38.7 |
+| 7 | BBC | 3537 | 45.7 (42.8–48.1) | 47.7 | 39.9 |
+| 8 | The Independent | 246 | 42.1 (32.2–50.9) | 39.4 | 39.7 |
+| 9 | Mirror | 133 | 41.6 (30.9–51.4) | 39.3 | 38.8 |
+| 10 | Phys.org | 190 | 40.4 (30.4–51.2) | 37.2 | 36.5 |
+| 11 | Punch | 348 | 33.7 (28.1–40.4) | 40.9 | 38.8 |
+| 12 | IGN | 125 | 29.5 (21.3–38.3) | 43.9 | 35.7 |
+| 13 | Daily Mail | 350 | 24.4 (17.4–32.3) | 24.5 | 37.6 |
+| 14 | Kotaku | 671 | 23.3 (17.8–29.0) | 23.9 | 35.9 |
 
 ## Composite numerical audit
-The composite cap is **12.51 adjusted percentage points**, applied symmetrically to each shrunk axis contribution before averaging. Axis spread below is the standard deviation of capped adjusted axis positions across ranked sources; leave-one-out compares the composite ranking with the ranking after removing that axis.
+The composite cap is **12.07 adjusted percentage points**, applied symmetrically to each shrunk axis contribution before averaging. Axis spread below is the standard deviation of capped adjusted axis positions across ranked sources; leave-one-out compares the composite ranking with the ranking after removing that axis.
 | Axis | Capped spread (pp sd) | Composite correlation | Leave-one-out Spearman | Max rank move |
 |---|---:|---:|---:|---:|
-| Explicit event / action | 7.22 | +0.69 | 0.952 | 16 |
-| Quantified detail | 6.31 | +0.36 | 0.957 | 14 |
-| Time / place anchor | 8.09 | +0.39 | 0.910 | 20 |
-| Causal relationship | 2.53 | +0.37 | 0.991 | 13 |
-| Material consequences | 6.86 | +0.58 | 0.934 | 22 |
-| Evidence specificity | 3.29 | +0.51 | 0.988 | 12 |
-| Context / comparison | 4.81 | +0.59 | 0.973 | 14 |
-| Explanatory / service framing | 2.83 | -0.21 | 0.992 | 8 |
-| Curiosity-gap restraint | 1.50 | +0.05 | 0.997 | 6 |
-| Avoidance of direct/service packaging | 3.62 | +0.21 | 0.981 | 15 |
-| Avoidance of sensational/personal framing | 1.75 | +0.16 | 0.995 | 9 |
+| Explicit event / action | 7.01 | +0.68 | 0.937 | 19 |
+| Quantified detail | 5.97 | +0.30 | 0.954 | 17 |
+| Time / place anchor | 7.53 | +0.34 | 0.918 | 21 |
+| Causal relationship | 2.41 | +0.37 | 0.991 | 12 |
+| Material consequences | 6.56 | +0.59 | 0.928 | 24 |
+| Evidence specificity | 3.04 | +0.54 | 0.988 | 10 |
+| Context / comparison | 4.60 | +0.60 | 0.970 | 16 |
+| Explanatory / service framing | 2.68 | -0.19 | 0.992 | 9 |
+| Curiosity-gap restraint | 1.43 | +0.05 | 0.996 | 6 |
+| Avoidance of direct/service packaging | 3.46 | +0.19 | 0.979 | 15 |
+| Avoidance of sensational/personal framing | 1.69 | +0.16 | 0.996 | 7 |
 
-Ranking comparisons — length-adjusted sensitivity: Spearman 0.924; simple axis-z average: Spearman 0.929; raw unadjusted signal: Spearman 0.824. The simple axis-z average is a diagnostic weighting sensitivity, not the primary composite.
+Ranking comparisons — length-adjusted sensitivity: Spearman 0.919; simple axis-z average: Spearman 0.925; raw unadjusted signal: Spearman 0.835. The simple axis-z average is a diagnostic weighting sensitivity, not the primary composite.
 
-Cap sensitivity — q=0.80: Spearman 0.980, max rank move 12; q=0.90: Spearman 0.995, max rank move 8; q=0.95: Spearman 1.000, max rank move 0; q=0.99: Spearman 0.995, max rank move 6; uncapped: Spearman 0.991, max rank move 13. The cap changes tail leverage; it is not a hidden reweighting of the axis scales.
+Cap sensitivity — q=0.80: Spearman 0.983, max rank move 12; q=0.90: Spearman 0.995, max rank move 7; q=0.95: Spearman 1.000, max rank move 0; q=0.99: Spearman 0.995, max rank move 7; uncapped: Spearman 0.991, max rank move 12. The cap changes tail leverage; it is not a hidden reweighting of the axis scales.
 
-Sparse axes are not separately boosted: median absolute adjusted deviation is only 1.16 pp for curiosity-gap restraint and 1.93 pp for evidence specificity. Those axes remain in natural units, so unusual offenders or evidence-heavy sources still matter without inflating sparse cues to the same leverage as high-variance event/context axes.
+Sparse axes are not separately boosted: median absolute adjusted deviation is only 1.10 pp for curiosity-gap restraint and 1.91 pp for evidence specificity. Those axes remain in natural units, so unusual offenders or evidence-heavy sources still matter without inflating sparse cues to the same leverage as high-variance event/context axes.
 
 Explanatory framing and avoidance of direct/service packaging correlate at -0.50 across ranked sources. They are intentionally not decorrelated: explanatory/service headlines can receive explanatory credit while still incurring packaging pressure, and removing that overlap numerically would erase the distinction rather than resolve it.
 
@@ -104,9 +104,9 @@ Available article summaries are treated as the body tier. Coverage means the sum
 | Financial Times | 116 | 35.3% | 2.6% | 14.7% | 51.7% | 2.6% |
 | Medical Xpress | 127 | 86.6% | 13.4% | 18.9% | 66.1% | 1.6% |
 | BBC | 3537 | 55.8% | 1.8% | 24.5% | 53.7% | 0.6% |
-| Phys.org | 190 | 91.6% | 11.1% | 17.4% | 58.9% | 3.2% |
 | The Independent | 246 | 37.0% | 2.8% | 21.1% | 42.3% | 0.0% |
 | Mirror | 133 | 64.7% | 1.5% | 15.8% | 59.4% | 1.5% |
+| Phys.org | 190 | 91.6% | 11.1% | 17.4% | 58.9% | 3.2% |
 | Punch | 348 | 80.2% | 0.9% | 21.6% | 67.8% | 1.1% |
 | IGN | 125 | 71.2% | 1.6% | 10.4% | 63.2% | 2.4% |
 | Daily Mail | 350 | 86.9% | 3.4% | 14.6% | 52.3% | 1.1% |
@@ -115,40 +115,40 @@ Available article summaries are treated as the body tier. Coverage means the sum
 ## Highest topic-adjusted title-signal profiles (minimum n)
 | Rank | Source | n | Topic-adjusted title signal (95% interval) | Band | Raw 11-signal mean |
 |---:|---|---:|---:|---|---:|
-| 1 | Eurogamer | 458 | 81.0 (74.6–85.8) | A — upper quartile | 39.7 |
-| 2 | TweakTown | 46 | 77.5 (60.6–91.4) | A — upper quartile | 40.7 |
-| 3 | MyJoyOnline | 28 | 77.3 (55.5–91.3) | A — upper quartile | 45.4 |
-| 4 | Jerusalem Post | 68 | 73.6 (59.1–86.6) | A — upper quartile | 45.6 |
-| 5 | Qatar Tribune | 28 | 72.7 (55.5–88.3) | A — upper quartile | 45.9 |
-| 6 | South China Morning Post | 25 | 72.3 (51.3–87.1) | A — upper quartile | 45.3 |
-| 7 | Wccftech | 27 | 71.7 (52.0–87.5) | A — upper quartile | 43.8 |
-| 8 | The Indian Express | 20 | 70.6 (55.0–86.7) | A — upper quartile | 44.9 |
-| 9 | Korea Times | 123 | 70.5 (60.4–80.0) | A — upper quartile | 42.8 |
-| 10 | STAT News | 22 | 69.7 (50.6–83.5) | A — upper quartile | 42.1 |
-| 11 | Quartz | 24 | 69.4 (53.3–84.3) | A — upper quartile | 45.1 |
-| 12 | The Guardian | 485 | 69.1 (62.7–75.5) | A — upper quartile | 42.7 |
-| 13 | PBS | 20 | 67.0 (47.5–80.0) | A — upper quartile | 44.3 |
-| 14 | Yahoo Sports | 21 | 66.9 (50.7–79.1) | A — upper quartile | 39.2 |
-| 15 | New York Post / Page Six | 48 | 64.1 (42.8–82.9) | A — upper quartile | 40.4 |
+| 1 | TweakTown | 46 | 78.1 (62.3–93.5) | A — upper quartile | 40.7 |
+| 2 | MyJoyOnline | 28 | 77.9 (59.3–92.0) | A — upper quartile | 45.4 |
+| 3 | Eurogamer | 458 | 76.5 (70.1–82.4) | A — upper quartile | 39.7 |
+| 4 | Jerusalem Post | 68 | 74.9 (62.0–87.5) | A — upper quartile | 45.6 |
+| 5 | Qatar Tribune | 28 | 73.5 (54.2–87.1) | A — upper quartile | 45.9 |
+| 6 | South China Morning Post | 25 | 73.2 (51.3–89.8) | A — upper quartile | 45.3 |
+| 7 | Quartz | 24 | 71.9 (55.2–87.8) | A — upper quartile | 45.1 |
+| 8 | Korea Times | 123 | 71.3 (57.8–81.1) | A — upper quartile | 42.8 |
+| 9 | Wccftech | 27 | 70.8 (53.5–87.5) | A — upper quartile | 44.6 |
+| 10 | The Guardian | 485 | 70.7 (64.2–77.4) | A — upper quartile | 42.7 |
+| 11 | The Indian Express | 20 | 70.5 (53.4–85.6) | A — upper quartile | 44.9 |
+| 12 | STAT News | 22 | 70.4 (51.3–85.0) | A — upper quartile | 42.1 |
+| 13 | PBS | 20 | 67.3 (50.5–80.1) | A — upper quartile | 44.3 |
+| 14 | Inc. | 26 | 66.5 (52.7–78.2) | A — upper quartile | 41.3 |
+| 15 | New York Post / Page Six | 48 | 64.7 (43.8–83.7) | A — upper quartile | 40.4 |
 
 ## Lowest topic-adjusted title-signal profiles (minimum n)
 | Rank | Source | n | Topic-adjusted title signal (95% interval) | Band | Raw 11-signal mean |
 |---:|---|---:|---:|---|---:|
-| 76 | Kotaku | 671 | 18.4 (14.1–23.2) | D — lower quartile | 34.9 |
-| 75 | Handelsblatt | 55 | 22.5 (14.4–31.9) | D — lower quartile | 33.5 |
-| 74 | GameSpot | 56 | 25.2 (14.4–40.7) | D — lower quartile | 34.6 |
-| 73 | Daily Mail | 350 | 25.7 (19.9–31.8) | D — lower quartile | 37.6 |
-| 72 | IGN | 125 | 26.0 (17.8–35.1) | D — lower quartile | 34.2 |
-| 71 | OregonLive Obituaries | 29 | 27.4 (27.2–32.9) | D — lower quartile | 36.7 |
-| 70 | Engadget | 21 | 30.7 (17.4–45.1) | D — lower quartile | 30.8 |
-| 69 | Sydney Morning Herald | 28 | 32.2 (24.7–43.6) | D — lower quartile | 33.7 |
-| 68 | Nature | 42 | 32.9 (18.5–45.2) | D — lower quartile | 33.8 |
-| 67 | Philippine Daily Inquirer | 20 | 33.4 (18.9–50.4) | D — lower quartile | 35.5 |
-| 66 | Metro | 73 | 34.5 (22.3–45.3) | D — lower quartile | 39.1 |
-| 65 | Punch | 348 | 34.7 (29.4–40.3) | D — lower quartile | 38.8 |
-| 64 | Business Recorder | 70 | 35.1 (24.4–48.5) | D — lower quartile | 36.5 |
-| 63 | Business Day | 31 | 35.3 (25.2–45.3) | D — lower quartile | 37.6 |
-| 62 | The Hindu | 52 | 36.5 (23.1–55.3) | D — lower quartile | 36.5 |
+| 76 | Handelsblatt | 55 | 20.2 (13.7–30.2) | D — lower quartile | 33.6 |
+| 75 | Kotaku | 671 | 23.3 (17.8–29.0) | D — lower quartile | 35.9 |
+| 74 | Daily Mail | 350 | 24.4 (17.4–32.3) | D — lower quartile | 37.6 |
+| 73 | OregonLive Obituaries | 29 | 27.5 (27.0–30.5) | D — lower quartile | 36.0 |
+| 72 | GameSpot | 56 | 28.6 (12.9–44.3) | D — lower quartile | 35.5 |
+| 71 | IGN | 125 | 29.5 (21.3–38.3) | D — lower quartile | 35.7 |
+| 70 | Engadget | 21 | 29.7 (18.0–47.0) | D — lower quartile | 30.8 |
+| 69 | Nature | 42 | 31.4 (20.0–47.1) | D — lower quartile | 33.8 |
+| 68 | Sydney Morning Herald | 28 | 31.9 (22.2–40.7) | D — lower quartile | 33.7 |
+| 67 | Business Recorder | 70 | 32.0 (20.8–44.2) | D — lower quartile | 36.5 |
+| 66 | Philippine Daily Inquirer | 20 | 33.2 (19.7–51.0) | D — lower quartile | 35.5 |
+| 65 | Punch | 348 | 33.7 (28.1–40.4) | D — lower quartile | 38.8 |
+| 64 | Business Day | 31 | 33.8 (25.5–47.4) | D — lower quartile | 37.6 |
+| 63 | Metro | 73 | 34.2 (20.3–49.0) | D — lower quartile | 39.1 |
+| 62 | The Hindu | 52 | 35.6 (21.1–52.4) | D — lower quartile | 36.5 |
 
 ## Files
 - `headline_level_signals.csv`: one row per headline with detector results and metadata.

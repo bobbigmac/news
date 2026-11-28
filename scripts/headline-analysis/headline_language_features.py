@@ -94,58 +94,75 @@ def subject_only_verb_shape(token_list, index):
     return False
 
 
-def detect_event_action(title: str, doc=None, event_lemmas=None) -> float:
+def titleish_share(title: str) -> bool:
+    """Title-case style measured from the original string, not the parse input."""
+    import re as _re
+    alpha=_re.findall(r"\b[A-Za-z][A-Za-z'’\-]*\b",str(title))
+    if len(alpha)<5:
+        return False
+    later=alpha[1:]
+    return sum(w[:1].isupper() for w in later)/len(later)>=0.35
+
+
+def detect_event_action(title: str, doc=None, event_lemmas=None, extra_docs=()) -> float:
     # High-precision event verbs count directly. When a tagger/lemmatizer is
     # available, require verbal use so noun phrases such as "the fall of X" or
     # game/product names do not count merely because they contain an event word.
     # Ambiguous verbs such as "clear", "rules" and "order" count only with an
     # institutional actor. Service/task frames are explanatory, not news events.
+    # Title-case headlines are parsed twice (original plus truecased); either parse
+    # may supply verbal evidence, so the score is the maximum across parse variants.
     if SERVICE_TASK_FRAME.search(title):
         return 0
     if doc is not None and event_lemmas:
-        if EVENT_CONTEXT_ACTIONS.search(title) or EVENT_RECORD_ACTIONS.search(title):
-            return 1
-        speech_hit=False
-        weak_action_hit=False
-        token_list=list(doc)
-        for index,token in enumerate(token_list):
-            candidates=event_surface_lemmas(token)
-            speech_lemma=next((candidate for candidate in candidates if candidate in SPEECH_EVENT_LEMMAS),None)
-            action_lemma=next((candidate for candidate in candidates if candidate in event_lemmas),None)
-            verbal=token.pos_ in {'VERB','AUX'}
-            strong_grammar_rescue=(not verbal) and subject_object_verb_shape(token_list,index)
-            weak_grammar_rescue=(not verbal) and (not strong_grammar_rescue) and subject_only_verb_shape(token_list,index)
-            if not verbal and not strong_grammar_rescue and not weak_grammar_rescue:
-                continue
-            if speech_lemma:
-                speech_hit=True
-                continue
-            if not action_lemma:
-                continue
-            if action_lemma=='roll':
-                following=' '.join(t.lower_ for t in token_list[index+1:index+3])
-                if 'out' not in following:
-                    continue
-            if action_lemma in AMBIGUOUS_EVENT_WORDS and not EVENT_CONTEXT_ACTIONS.search(title):
-                continue
-            if verbal or strong_grammar_rescue:
-                return 1
-            weak_action_hit=True
-        alpha_tokens=[token for token in doc if any(ch.isalpha() for ch in token.text)]
-        later_tokens=alpha_tokens[1:] if len(alpha_tokens)>1 else []
-        titleish=len(alpha_tokens)>=5 and later_tokens and sum(token.text[:1].isupper() for token in later_tokens)/len(later_tokens)>=0.35
-        if weak_action_hit:
-            return 0.75
-        if speech_hit or (titleish and SPEECH_EVENT_RESCUE.search(title)):
-            return 0.5
-        nominal_event=any((token.lemma_ or token.lower_).casefold() in EVENT_NOUN_LEMMAS and token.pos_ in {'NOUN','PROPN'} for token in doc)
-        return 0.5 if nominal_event or MARKET_NOMINAL_MOVEMENT.search(title) else 0
+        return max(
+            _detect_event_action_single(title,variant,event_lemmas)
+            for variant in [doc,*extra_docs]
+        )
     matches=list(EVENT_ACTIONS.finditer(title))
     for match in matches:
         term=match.group(0).casefold()
         if term not in AMBIGUOUS_EVENT_WORDS:
             return 1
     return int(bool(matches and EVENT_CONTEXT_ACTIONS.search(title)))
+
+
+def _detect_event_action_single(title: str, doc, event_lemmas) -> float:
+    if EVENT_CONTEXT_ACTIONS.search(title) or EVENT_RECORD_ACTIONS.search(title):
+        return 1
+    speech_hit=False
+    weak_action_hit=False
+    token_list=list(doc)
+    for index,token in enumerate(token_list):
+        candidates=event_surface_lemmas(token)
+        speech_lemma=next((candidate for candidate in candidates if candidate in SPEECH_EVENT_LEMMAS),None)
+        action_lemma=next((candidate for candidate in candidates if candidate in event_lemmas),None)
+        verbal=token.pos_ in {'VERB','AUX'}
+        strong_grammar_rescue=(not verbal) and subject_object_verb_shape(token_list,index)
+        weak_grammar_rescue=(not verbal) and (not strong_grammar_rescue) and subject_only_verb_shape(token_list,index)
+        if not verbal and not strong_grammar_rescue and not weak_grammar_rescue:
+            continue
+        if speech_lemma:
+            speech_hit=True
+            continue
+        if not action_lemma:
+            continue
+        if action_lemma=='roll':
+            following=' '.join(t.lower_ for t in token_list[index+1:index+3])
+            if 'out' not in following:
+                continue
+        if action_lemma in AMBIGUOUS_EVENT_WORDS and not EVENT_CONTEXT_ACTIONS.search(title):
+            continue
+        if verbal or strong_grammar_rescue:
+            return 1
+        weak_action_hit=True
+    titleish=titleish_share(title)
+    if weak_action_hit:
+        return 0.75
+    if speech_hit or (titleish and SPEECH_EVENT_RESCUE.search(title)):
+        return 0.5
+    nominal_event=any((token.lemma_ or token.lower_).casefold() in EVENT_NOUN_LEMMAS and token.pos_ in {'NOUN','PROPN'} for token in doc)
+    return 0.5 if nominal_event or MARKET_NOMINAL_MOVEMENT.search(title) else 0
 
 
 def quantified_specificity_score(title: str, doc=None) -> float:

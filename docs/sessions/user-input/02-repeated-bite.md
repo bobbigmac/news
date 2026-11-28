@@ -3,8 +3,8 @@ devin-sessionlog: user-input
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 06:08:39 UTC
-entries: 60
+last_activity: 2026-11-28 07:40:34 UTC
+entries: 66
 ---
 
 # repeated-bite
@@ -507,6 +507,54 @@ If you're rating individual stories, you're screwing up
 ### 2026-11-28 06:08:39 UTC
 
 this does look more sensible. With the large addition/eval of libs, oneliner commit (see history for style) this work, and make sure anything that shouldn't be in the repo is gitignored, and anything that should is. There are a few kludges in here around very specific names, and a few VERY large single-files that need to be split, but commit first, then you can sensibly split concerns to smaller files, lift very specific constants and per-source tunes into specific files so notes about specific sources are in the right places, specific to that source or source family, and make sure it all builds and the numbers and spiderwebs in the measured-sources are up to date
+
+---
+
+<!-- r:0 m:hook:d1b0c96f-069b-4113-99b9-dfea24e0488b h:3a35e0e8 -->
+### 2026-11-28 06:47:46 UTC
+
+Non-anglo sources should be clearly flagged as "We can only reliably score English-language sources" in the methodology, and need to annotate/separate non-anglo sources anyway because we need our user to be able to pick which languages they read/speak AND add support for more non-anglo sources in future revisiions as we expand capabilities (they're todos, I am mainly argeting english readers for now). Also cite libraries we use or studies we borrow from below the methodologies panel.
+
+I also notice eurogamer score at the very top of the chart, but kotaku score at the very bottom, but to me, a human, they seem to publish a lot of the same stories, can you identify between their headlines/summaries WHY they score so differently through our systems? IGN makes sense to be low too, but I suspect at some point you eradicated some consideration of specialist press. Look at just these 3 sources and consider them yourself, not heuristics. Gimme a report on your understanding of those, THEN ingest ./working/[REDACTED:TOKEN].md for updates sources data, that I don't think you imported yet to our sources for the social/trust/relations information.
+
+---
+
+<!-- r:0 m:hook:d3972d5d-1402-4af1-ad75-6315f1687ca2 h:d5c99e4d -->
+### 2026-11-28 06:53:00 UTC
+
+good spot. Fix for casing spoils everywhere
+
+---
+
+<!-- r:0 m:hook:dcaeca31-335a-4ca0-99ad-e5f86038be92 h:cff98183 -->
+### 2026-11-28 06:53:51 UTC
+
+that's a hack. There must be a setting in spacy to do better
+
+---
+
+<!-- r:0 m:hook:f8c8366f-eca1-462e-8fc5-45309cba415d h:90e88cde -->
+### 2026-11-28 06:54:31 UTC
+
+search online, this is proabbly a common problem with spacy
+
+---
+
+<!-- r:0 m:hook:68fdffe0-7cc3-432b-8459-fb80c4cc7d97 h:08c2b432 -->
+### 2026-11-28 07:27:08 UTC
+
+i noticed in multi-column display modes, our measured-sources lists wrap vertical first, then horizontal (i.e. the left side is 1-10 and the right side is 11-19), but should be 1-2,3-4,5-6... and so on, so it's clear items at the top of the list are better than those at the bottom. The # number cell should also be bold so it's clear we HAVE ordered these by their position. ALL sources with enough stories to be testable in our pool, should be included on this page, not just a picked 80, since we lose major sources. Keep the top twenty and bottom twenty panels as distinct, but everything in the middle can just be one table. We should also show the quality on the "manage sources" list (show the score as a column, losing the `33 stories in pool` instead to `# articles, quality #) is cleaner.
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452 h:969d20f4 -->
+### 2026-11-28 07:40:34 UTC
+
+NO fox items are included in the measured-sources... did you exclude them, or just not enough stories to measure? If not enough stories is this a dead rss feed?
+
+The manage sources sub-view should contain a link at the top, to this measured-sources page, because on the main page this is otherwise only accessible by scrolling to the bottom or entering views that shirnk the page a LOT more than usual (most daily views of the homepage expect a lot of content).
+
+Also, do we have a top-level set of filters we can show before the tables, that lets the viewer switch from all to filtered subsets based on sector/type. The corpus-relative figures still, no recalc, just a filterer that understands group memberships, but using mostly top level groups (like I want 15-20 filters that include most of our logged sources, and an item could exist in multiple sets, but usually won't), like "National Broadcasters" is a good top level group, but "BBC" isn't. "Games Media" is a good top-level group, and so is "Sports", but "IGN-owned" isn't. "Billionaire Owned" is, but "Newscorp" less so. "Lots of articles" for just BIG groups is good. We're looking for essentially narrowing the window to groups that make sense to compare, intent/reader-interest, NOT dataset-obsessed.
 
 ---
 

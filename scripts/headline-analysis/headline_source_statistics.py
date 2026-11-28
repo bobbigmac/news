@@ -125,7 +125,7 @@ def band_from_rank(rank, eligible_count):
     return 'D — lower quartile'
 
 
-def source_statistics(df, expected, min_source_n=20, shrinkage=25, shrinkage_grid=(10,25,50), bootstrap=250, seed=27, attention_context_adjustment=0.25, empirical_composite_shrinkage=True, composite_axis_cap_quantile=0.9):
+def source_statistics(df, expected, min_source_n=20, shrinkage=25, shrinkage_grid=(10,25,50), bootstrap=250, seed=27, attention_context_adjustment=0.25, empirical_composite_shrinkage=True, composite_axis_cap_quantile=0.9, bootstrap_min_n=10):
     component_residuals,composite_row_residual=value_component_residuals(df,expected,attention_context_adjustment=attention_context_adjustment)
     g=df.groupby('source_key', sort=False)
     src=g.agg(source=('source',lambda x:x.mode().iat[0] if len(x.mode()) else x.iloc[0]),
@@ -262,7 +262,7 @@ def source_statistics(df, expected, min_source_n=20, shrinkage=25, shrinkage_gri
         for source_key, positions in g.indices.items():
             row_i=src_index[source_key]
             n=len(positions)
-            if n<min_source_n: continue
+            if n<bootstrap_min_n: continue
             pos=np.asarray(positions,dtype=int)
             Rsrc=component_residuals[pos,:]
             boot_ix=rng.integers(0,n,size=(int(bootstrap),n))

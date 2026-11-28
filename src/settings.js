@@ -19,6 +19,7 @@ import {
   ui,
 } from './state.js';
 import { canonicalCategory } from './view-model.js';
+import SOURCE_QUALITY from './data/source-quality.json' with { type: 'json' };
 import { attachAlgoListeners, renderChangelog } from './changelog.js';
 
 function storyCountLabel(count, suffix = '') {
@@ -111,7 +112,10 @@ export function renderSourcePrefs() {
 
     const label = document.createElement('div');
     label.className = 'manage-label';
-    label.innerHTML = `<span class="manage-name">${source.label}</span><span class="manage-count">${storyCountLabel(source.count, ' in pool')}</span>`;
+    const quality = SOURCE_QUALITY.sources[source.key];
+    const countLabel = `${source.count} ${source.count === 1 ? 'article' : 'articles'}`;
+    const qualityLabel = quality && Number.isFinite(quality.quality) ? `, quality ${quality.quality.toFixed(1)}` : '';
+    label.innerHTML = `<span class="manage-name">${source.label}</span><span class="manage-count">${countLabel}${qualityLabel}</span>`;
 
     const btn = document.createElement('button');
     btn.className = 'cycle-btn cat-pref-btn';

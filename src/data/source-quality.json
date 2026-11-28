@@ -1,0 +1,630 @@
+{
+ "version": 1,
+ "generatedAt": "2026-11-28T07:37:32.051790+00:00",
+ "sources": {
+  "tweaktown.com": {
+   "quality": 78.11,
+   "headlines": 46
+  },
+  "myjoyonline.com": {
+   "quality": 77.86,
+   "headlines": 28
+  },
+  "investing.com": {
+   "quality": 77.48,
+   "headlines": 17
+  },
+  "eurogamer.net": {
+   "quality": 76.53,
+   "headlines": 458
+  },
+  "jpost.com": {
+   "quality": 74.85,
+   "headlines": 68
+  },
+  "arabianbusiness.com": {
+   "quality": 74.36,
+   "headlines": 19
+  },
+  "qatar-tribune.com": {
+   "quality": 73.5,
+   "headlines": 28
+  },
+  "worldsoccertalk.com": {
+   "quality": 73.45,
+   "headlines": 18
+  },
+  "scmp.com": {
+   "quality": 73.16,
+   "headlines": 25
+  },
+  "qz.com": {
+   "quality": 71.9,
+   "headlines": 24
+  },
+  "aljazeera.com": {
+   "quality": 71.74,
+   "headlines": 17
+  },
+  "koreatimes.co.kr": {
+   "quality": 71.28,
+   "headlines": 123
+  },
+  "wccftech.com": {
+   "quality": 70.83,
+   "headlines": 27
+  },
+  "theguardian.com": {
+   "quality": 70.65,
+   "headlines": 485
+  },
+  "indianexpress.com": {
+   "quality": 70.53,
+   "headlines": 20
+  },
+  "globalnews.ca": {
+   "quality": 70.47,
+   "headlines": 19
+  },
+  "statnews.com": {
+   "quality": 70.42,
+   "headlines": 22
+  },
+  "benzinga.com": {
+   "quality": 68.81,
+   "headlines": 10
+  },
+  "axios.com": {
+   "quality": 68.71,
+   "headlines": 16
+  },
+  "kait8.com": {
+   "quality": 68.11,
+   "headlines": 18
+  },
+  "pbs.org": {
+   "quality": 67.25,
+   "headlines": 20
+  },
+  "bloomberg.com": {
+   "quality": 66.71,
+   "headlines": 14
+  },
+  "inc.com": {
+   "quality": 66.51,
+   "headlines": 26
+  },
+  "freepressjournal.in": {
+   "quality": 66.03,
+   "headlines": 12
+  },
+  "discovermagazine.com": {
+   "quality": 65.34,
+   "headlines": 12
+  },
+  "france24.com": {
+   "quality": 64.74,
+   "headlines": 14
+  },
+  "group-nypost-pagesix": {
+   "quality": 64.68,
+   "headlines": 48
+  },
+  "nypost.com": {
+   "quality": 64.68,
+   "headlines": 48
+  },
+  "pagesix.com": {
+   "quality": 64.68,
+   "headlines": 48
+  },
+  "sports.yahoo.com": {
+   "quality": 64.35,
+   "headlines": 21
+  },
+  "lemonde.fr": {
+   "quality": 64.34,
+   "headlines": 16
+  },
+  "timesofindia.indiatimes.com": {
+   "quality": 63.63,
+   "headlines": 20
+  },
+  "channelnewsasia.com": {
+   "quality": 63.59,
+   "headlines": 34
+  },
+  "hindustantimes.com": {
+   "quality": 62.8,
+   "headlines": 10
+  },
+  "news.sky.com": {
+   "quality": 62.8,
+   "headlines": 48
+  },
+  "premiumtimesng.com": {
+   "quality": 62.78,
+   "headlines": 18
+  },
+  "psypost.org": {
+   "quality": 62.57,
+   "headlines": 28
+  },
+  "indiatoday.in": {
+   "quality": 62.43,
+   "headlines": 14
+  },
+  "inquirer.com": {
+   "quality": 62.17,
+   "headlines": 17
+  },
+  "colombiaone.com": {
+   "quality": 62.06,
+   "headlines": 11
+  },
+  "dev.to/wlz": {
+   "quality": 61.92,
+   "headlines": 11
+  },
+  "businessinsider.com": {
+   "quality": 61.91,
+   "headlines": 33
+  },
+  "thisismoney.co.uk": {
+   "quality": 61.85,
+   "headlines": 81
+  },
+  "variety.com": {
+   "quality": 61.67,
+   "headlines": 10
+  },
+  "cbc.ca": {
+   "quality": 60.78,
+   "headlines": 10
+  },
+  "dw.com": {
+   "quality": 60.35,
+   "headlines": 15
+  },
+  "sciencedaily.com": {
+   "quality": 60.17,
+   "headlines": 10
+  },
+  "thenationalnews.com": {
+   "quality": 60.01,
+   "headlines": 26
+  },
+  "middleeasteye.net": {
+   "quality": 59.95,
+   "headlines": 15
+  },
+  "sempremilan.com": {
+   "quality": 59.88,
+   "headlines": 11
+  },
+  "space.com": {
+   "quality": 59.55,
+   "headlines": 16
+  },
+  "mothership.sg": {
+   "quality": 58.01,
+   "headlines": 10
+  },
+  "sciencealert.com": {
+   "quality": 57.97,
+   "headlines": 22
+  },
+  "marketbeat.com": {
+   "quality": 57.15,
+   "headlines": 37
+  },
+  "cityam.com": {
+   "quality": 57.09,
+   "headlines": 173
+  },
+  "edinburghnews.scotsman.com": {
+   "quality": 56.94,
+   "headlines": 18
+  },
+  "ft.com": {
+   "quality": 56.29,
+   "headlines": 116
+  },
+  "thewest.com.au": {
+   "quality": 56.26,
+   "headlines": 10
+  },
+  "healthpolicy-watch.news": {
+   "quality": 55.93,
+   "headlines": 10
+  },
+  "peopledaily.digital": {
+   "quality": 55.62,
+   "headlines": 12
+  },
+  "economictimes.indiatimes.com": {
+   "quality": 55.0,
+   "headlines": 16
+  },
+  "euronews.com": {
+   "quality": 54.61,
+   "headlines": 15
+  },
+  "thestar.com.my": {
+   "quality": 53.95,
+   "headlines": 54
+  },
+  "semafor.com": {
+   "quality": 53.74,
+   "headlines": 27
+  },
+  "theage.com.au": {
+   "quality": 53.68,
+   "headlines": 26
+  },
+  "reddit.com": {
+   "quality": 53.34,
+   "headlines": 40
+  },
+  "hothardware.com": {
+   "quality": 52.97,
+   "headlines": 14
+  },
+  "standard.co.uk": {
+   "quality": 52.63,
+   "headlines": 92
+  },
+  "rnz.co.nz": {
+   "quality": 52.23,
+   "headlines": 12
+  },
+  "3news.com": {
+   "quality": 51.78,
+   "headlines": 11
+  },
+  "medicalxpress.com": {
+   "quality": 51.33,
+   "headlines": 127
+  },
+  "newsweek.com": {
+   "quality": 50.38,
+   "headlines": 28
+  },
+  "prnewswire.com": {
+   "quality": 49.69,
+   "headlines": 10
+  },
+  "arstechnica.com": {
+   "quality": 49.56,
+   "headlines": 38
+  },
+  "chalkbeat.org": {
+   "quality": 49.54,
+   "headlines": 23
+  },
+  "cnet.com": {
+   "quality": 49.13,
+   "headlines": 11
+  },
+  "nasdaq.com": {
+   "quality": 48.96,
+   "headlines": 26
+  },
+  "techradar.com": {
+   "quality": 48.95,
+   "headlines": 40
+  },
+  "english.ajel.sa": {
+   "quality": 48.37,
+   "headlines": 20
+  },
+  "bernama.com": {
+   "quality": 48.26,
+   "headlines": 23
+  },
+  "seekingalpha.com": {
+   "quality": 47.8,
+   "headlines": 24
+  },
+  "kitguru.net": {
+   "quality": 47.32,
+   "headlines": 15
+  },
+  "vice.com": {
+   "quality": 47.14,
+   "headlines": 30
+  },
+  "techspot.com": {
+   "quality": 46.82,
+   "headlines": 11
+  },
+  "dailytimes.com.pk": {
+   "quality": 46.66,
+   "headlines": 22
+  },
+  "t3.com": {
+   "quality": 46.47,
+   "headlines": 13
+  },
+  "freemalaysiatoday.com": {
+   "quality": 46.24,
+   "headlines": 21
+  },
+  "rte.ie": {
+   "quality": 45.72,
+   "headlines": 11
+  },
+  "bbc.co.uk": {
+   "quality": 45.71,
+   "headlines": 3537
+  },
+  "thejakartapost.com": {
+   "quality": 45.6,
+   "headlines": 16
+  },
+  "winnipegfreepress.com": {
+   "quality": 45.14,
+   "headlines": 58
+  },
+  "newscientist.com": {
+   "quality": 44.76,
+   "headlines": 40
+  },
+  "torontosun.com": {
+   "quality": 44.75,
+   "headlines": 15
+  },
+  "courant.com": {
+   "quality": 44.68,
+   "headlines": 18
+  },
+  "onlineathens.com": {
+   "quality": 44.42,
+   "headlines": 17
+  },
+  "malaymail.com": {
+   "quality": 43.76,
+   "headlines": 14
+  },
+  "bgr.com": {
+   "quality": 43.66,
+   "headlines": 14
+  },
+  "windowscentral.com": {
+   "quality": 43.13,
+   "headlines": 50
+  },
+  "medpagetoday.com": {
+   "quality": 42.9,
+   "headlines": 11
+  },
+  "nytimes.com": {
+   "quality": 42.62,
+   "headlines": 15
+  },
+  "iol.co.za": {
+   "quality": 42.34,
+   "headlines": 12
+  },
+  "usatoday.com": {
+   "quality": 42.25,
+   "headlines": 10
+  },
+  "businesskorea.co.kr": {
+   "quality": 42.24,
+   "headlines": 18
+  },
+  "independent.co.uk": {
+   "quality": 42.15,
+   "headlines": 246
+  },
+  "asahi.com": {
+   "quality": 42.03,
+   "headlines": 19
+  },
+  "nautil.us": {
+   "quality": 41.91,
+   "headlines": 12
+  },
+  "politico.eu": {
+   "quality": 41.8,
+   "headlines": 12
+  },
+  "mirror.co.uk": {
+   "quality": 41.56,
+   "headlines": 133
+  },
+  "belfastlive.co.uk": {
+   "quality": 41.51,
+   "headlines": 13
+  },
+  "notebookcheck.net": {
+   "quality": 41.28,
+   "headlines": 61
+  },
+  "abc.net.au": {
+   "quality": 40.91,
+   "headlines": 38
+  },
+  "group-mashable": {
+   "quality": 40.43,
+   "headlines": 27
+  },
+  "mashable.com": {
+   "quality": 40.43,
+   "headlines": 27
+  },
+  "in.mashable.com": {
+   "quality": 40.43,
+   "headlines": 27
+  },
+  "sea.mashable.com": {
+   "quality": 40.43,
+   "headlines": 27
+  },
+  "phys.org": {
+   "quality": 40.37,
+   "headlines": 190
+  },
+  "theverge.com": {
+   "quality": 40.14,
+   "headlines": 35
+  },
+  "rockpapershotgun.com": {
+   "quality": 39.67,
+   "headlines": 10
+  },
+  "nst.com.my": {
+   "quality": 39.49,
+   "headlines": 51
+  },
+  "wired.com": {
+   "quality": 39.03,
+   "headlines": 26
+  },
+  "theregister.com": {
+   "quality": 39.0,
+   "headlines": 11
+  },
+  "endpoints.news": {
+   "quality": 38.83,
+   "headlines": 14
+  },
+  "dailypost.ng": {
+   "quality": 38.58,
+   "headlines": 12
+  },
+  "elfinanciero.com.mx": {
+   "quality": 38.51,
+   "headlines": 11
+  },
+  "news.xbox.com": {
+   "quality": 38.06,
+   "headlines": 21
+  },
+  "frontiersin.org": {
+   "quality": 37.68,
+   "headlines": 17
+  },
+  "cbsnews.com": {
+   "quality": 37.61,
+   "headlines": 29
+  },
+  "eng.belta.by": {
+   "quality": 37.16,
+   "headlines": 10
+  },
+  "finextra.com": {
+   "quality": 36.95,
+   "headlines": 50
+  },
+  "dailymaverick.co.za": {
+   "quality": 36.49,
+   "headlines": 29
+  },
+  "androidheadlines.com": {
+   "quality": 36.27,
+   "headlines": 11
+  },
+  "thehindu.com": {
+   "quality": 35.61,
+   "headlines": 52
+  },
+  "metro.co.uk": {
+   "quality": 34.17,
+   "headlines": 73
+  },
+  "businessday.ng": {
+   "quality": 33.85,
+   "headlines": 31
+  },
+  "punchng.com": {
+   "quality": 33.73,
+   "headlines": 348
+  },
+  "group-philippine-inquirer": {
+   "quality": 33.21,
+   "headlines": 20
+  },
+  "newsinfo.inquirer.net": {
+   "quality": 33.21,
+   "headlines": 20
+  },
+  "entertainment.inquirer.net": {
+   "quality": 33.21,
+   "headlines": 20
+  },
+  "cebudailynews.inquirer.net": {
+   "quality": 33.21,
+   "headlines": 20
+  },
+  "business.inquirer.net": {
+   "quality": 33.21,
+   "headlines": 20
+  },
+  "lifestyle.inquirer.net": {
+   "quality": 33.21,
+   "headlines": 20
+  },
+  "technology.inquirer.net": {
+   "quality": 33.21,
+   "headlines": 20
+  },
+  "brecorder.com": {
+   "quality": 31.97,
+   "headlines": 70
+  },
+  "smh.com.au": {
+   "quality": 31.9,
+   "headlines": 28
+  },
+  "nature.com": {
+   "quality": 31.4,
+   "headlines": 42
+  },
+  "engadget.com": {
+   "quality": 29.71,
+   "headlines": 21
+  },
+  "ign.com": {
+   "quality": 29.52,
+   "headlines": 125
+  },
+  "github.com": {
+   "quality": 28.74,
+   "headlines": 12
+  },
+  "gamespot.com": {
+   "quality": 28.61,
+   "headlines": 56
+  },
+  "obits.oregonlive.com": {
+   "quality": 27.5,
+   "headlines": 29
+  },
+  "npr.org": {
+   "quality": 27.09,
+   "headlines": 11
+  },
+  "buzzfeed.com": {
+   "quality": 25.18,
+   "headlines": 11
+  },
+  "dailymail.com": {
+   "quality": 24.39,
+   "headlines": 350
+  },
+  "kotaku.com": {
+   "quality": 23.29,
+   "headlines": 671
+  },
+  "handelsblatt.com": {
+   "quality": 20.17,
+   "headlines": 55
+  },
+  "e24.no": {
+   "quality": 14.22,
+   "headlines": 10
+  }
+ }
+}

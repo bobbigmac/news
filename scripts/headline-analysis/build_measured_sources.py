@@ -118,7 +118,14 @@ def main():
                 return assessment_sources[parent]
         return []
 
-    ranked = rankings[rankings['rank'].notna()].copy().sort_values('topic_adjusted_value_index', ascending=False)
+    include_min_n = int(analysis.get('export_min_source_n', 10))
+    ranked = rankings[rankings['n'] >= include_min_n].copy().sort_values('topic_adjusted_value_index', ascending=False)
+    # Display ordering is a single score-ordered list across every included source,
+    # including small samples below the stable-rank threshold. Small samples carry
+    # wider uncertainty intervals rather than being silently dropped.
+    ranked['display_rank'] = np.arange(1, len(ranked) + 1)
+    quartile_labels = ['A — upper quartile', 'B — second quartile', 'C — third quartile', 'D — lower quartile']
+    ranked['display_band'] = [quartile_labels[min(3, int((r - 1) * 4 / max(len(ranked), 1)))] for r in ranked['display_rank']]
     axes = []
     pooled_z = []
     for axis in AXES:
@@ -137,7 +144,7 @@ def main():
             member_counts.setdefault(group_key, []).append({'key':member_key,'label':member_label,'headlines':int(count)})
 
     band_ranges = {}
-    for band, rows in ranked.groupby('ordering_band'):
+    for band, rows in ranked.groupby('display_band'):
         meta = BAND_META.get(band)
         if not meta: continue
         vals = rows['topic_adjusted_value_index'].astype(float)
@@ -174,13 +181,14 @@ def main():
             'key': key,
             'label': display,
             'headlines': int(row['n']),
-            'rank': int(row['rank']),
+            'rank': int(row['display_rank']),
+            'stableSample': bool(row.get('rank_eligible', False)),
             'measuredQuality': round(float(row['topic_adjusted_value_index']), 2),
             'measuredQualityZ': round(float(row.get('composite_relative_z', 0.0) or 0.0), 3),
             'measuredQualityAdjustedPoints': round(float(row.get('composite_adjusted_pp', 0.0) or 0.0), 3),
             'measuredQualityCi95': [round(float(row.get('topic_adjusted_index_ci95_low', np.nan)), 2), round(float(row.get('topic_adjusted_index_ci95_high', np.nan)), 2)] if np.isfinite(row.get('topic_adjusted_index_ci95_low', np.nan)) and np.isfinite(row.get('topic_adjusted_index_ci95_high', np.nan)) else None,
-            'band': band_key(row['ordering_band']),
-            'bandLabel': BAND_META[row['ordering_band']]['label'],
+            'band': band_key(row['display_band']),
+            'bandLabel': BAND_META[row['display_band']]['label'],
             'grouped': grouped,
             'iconKey': icon_key,
             'members': members,
@@ -240,7 +248,8 @@ def main():
             'axisCapAdjustedPoints': summary.get('composite_axis_cap_pp'),
             'shrinkageK': summary.get('composite_shrinkage_k'),
         },
-        'minimumHeadlines': int(analysis.get('min_source_n', 20)),
+        'minimumHeadlines': include_min_n,
+        'stableSampleHeadlines': int(analysis.get('min_source_n', 20)),
         'summary': {
             'sourceCount': len(sources),
             'headlineRows': int(summary.get('headline_rows', len(headlines))),
@@ -257,6 +266,23 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(data, indent=2) + '\n')
     print(f'wrote {len(sources)} measured sources to {out}')
+
+    # Slim key -> quality lookup for the manage-sources list: every measured key
+    # (including grouped member keys) maps to the group's measured quality so the
+    # settings UI does not need the full export.
+    quality = {}
+    for source in sources:
+        entry = {'quality': source['measuredQuality'], 'headlines': source['headlines']}
+        quality[source['key']] = entry
+        for member in source.get('members', []):
+            quality.setdefault(member['key'], entry)
+    quality_out = out.parent/'source-quality.json'
+    quality_out.write_text(json.dumps({
+        'version': 1,
+        'generatedAt': data['generatedAt'],
+        'sources': quality,
+    }, indent=1) + '\n')
+    print(f'wrote {len(quality)} quality lookup keys to {quality_out}')
 
 
 if __name__ == '__main__':

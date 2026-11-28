@@ -6,3 +6,5 @@ spacy>=3.8
 plotly>=6.5
 matplotlib>=3.10
 pycountry>=24.6
+truecase>=0.0.14
+nltk>=3.9

@@ -1,388 +1,391 @@
 {
-  "id": "us-media",
-  "label": "US Media",
-  "icon": "nytimes.com",
-  "children": [
+ "id": "us-media",
+ "label": "US Media",
+ "icon": "nytimes.com",
+ "children": [
+  {
+   "id": "us-nationals",
+   "label": "US Nationals",
+   "icon": "nytimes.com",
+   "children": [
     {
-      "id": "us-nationals",
-      "label": "US Nationals",
-      "icon": "nytimes.com",
-      "children": [
-        {
-          "id": "nytimes",
-          "label": "New York Times",
-          "icon": "nytimes.com",
-          "sources": [
-            "nytimes.com"
-          ]
-        },
-        {
-          "id": "billionaire-backed-nationals",
-          "label": "Owner-backed Nationals",
-          "icon": "washingtonpost.com",
-          "sources": [
-            "washingtonpost.com",
-            "latimes.com",
-            "bostonglobe.com",
-            "time.com"
-          ]
-        },
-        {
-          "id": "independent-city-papers",
-          "label": "Independent City Papers",
-          "icon": "seattletimes.com",
-          "sources": [
-            "seattletimes.com",
-            "startribune.com",
-            "sfchronicle.com",
-            "houstonchronicle.com",
-            "inquirer.com"
-          ]
-        }
-      ]
+     "id": "nytimes",
+     "label": "New York Times",
+     "icon": "nytimes.com",
+     "sources": [
+      "nytimes.com"
+     ]
     },
     {
-      "id": "us-local",
-      "label": "US Local Media",
-      "icon": "usatoday.com",
-      "children": [
-        {
-          "id": "gannett",
-          "label": "Gannett",
-          "icon": "usatoday.com",
-          "sources": [
-            "usatoday.com",
-            "detroitnews.com",
-            "nwfdailynews.com",
-            "onlineathens.com",
-            "palmbeachpost.com",
-            "indystar.com",
-            "courier-journal.com",
-            "azcentral.com",
-            "desmoinesregister.com",
-            "freep.com",
-            "jsonline.com",
-            "tennessean.com",
-            "dispatch.com",
-            "statesman.com",
-            "providencejournal.com",
-            "registerguard.com",
-            "democratandchronicle.com",
-            "northjersey.com",
-            "pressconnects.com",
-            "lohud.com",
-            "poughkeepsiejournal.com",
-            "app.com",
-            "floridatoday.com",
-            "naplesnews.com",
-            "news-press.com",
-            "tcpalm.com",
-            "tallahassee.com",
-            "montgomeryadvertiser.com",
-            "clarionledger.com",
-            "hattiesburgamerican.com",
-            "goupstate.com",
-            "knoxnews.com",
-            "commercialappeal.com",
-            "capecodtimes.com",
-            "telegram.com",
-            "savannahnow.com",
-            "staugustine.com"
-          ]
-        },
-        {
-          "id": "mcclatchy",
-          "label": "McClatchy",
-          "icon": "miamiherald.com",
-          "sources": [
-            "miamiherald.com",
-            "kentucky.com",
-            "modbee.com",
-            "idahostatesman.com",
-            "thenewstribune.com",
-            "kansascity.com",
-            "star-telegram.com",
-            "sacbee.com",
-            "charlotteobserver.com",
-            "newsobserver.com",
-            "bnd.com",
-            "heraldonline.com",
-            "ledger-enquirer.com",
-            "macon.com",
-            "sunherald.com",
-            "thestate.com",
-            "bradenton.com",
-            "centredailytimes.com",
-            "kansas.com"
-          ]
-        },
-        {
-          "id": "tribune",
-          "label": "Tribune",
-          "icon": "courant.com",
-          "sources": [
-            "courant.com",
-            "chicagotribune.com",
-            "nydailynews.com",
-            "baltimoresun.com",
-            "orlandosentinel.com",
-            "sun-sentinel.com",
-            "dailypress.com",
-            "mcall.com",
-            "pilotonline.com",
-            "capitalgazette.com"
-          ]
-        },
-        {
-          "id": "hearst-local",
-          "label": "Hearst Local",
-          "icon": "sfgate.com",
-          "sources": [
-            "sfgate.com",
-            "timesunion.com",
-            "connecticutpost.com",
-            "greenwichtime.com",
-            "middletownpress.com",
-            "newstimes.com",
-            "registercitizen.com",
-            "stamfordadvocate.com",
-            "thehour.com"
-          ]
-        },
-        {
-          "id": "advance-local",
-          "label": "Advance Local",
-          "icon": "oregonlive.com",
-          "sources": [
-            "oregonlive.com",
-            "obits.oregonlive.com",
-            "lehighvalleylive.com",
-            "nj.com",
-            "mlive.com",
-            "masslive.com",
-            "syracuse.com",
-            "cleveland.com",
-            "al.com",
-            "pennlive.com"
-          ]
-        },
-        {
-          "id": "tegna",
-          "label": "Tegna",
-          "icon": "king5.com",
-          "sources": [
-            "king5.com",
-            "kare11.com",
-            "khou.com",
-            "kusa.com",
-            "wgrz.com",
-            "wtsp.com",
-            "13newsnow.com",
-            "firstcoastnews.com",
-            "wfaa.com",
-            "wzzm13.com",
-            "wcnc.com",
-            "wusa9.com",
-            "cbs8.com",
-            "krem.com",
-            "ksdk.com",
-            "wbir.com",
-            "wxia.com",
-            "whas11.com",
-            "wltx.com"
-          ]
-        },
-        {
-          "id": "nexstar",
-          "label": "Nexstar",
-          "icon": "wivb.com",
-          "sources": [
-            "wivb.com",
-            "keloland.com",
-            "wkrg.com",
-            "wreg.com",
-            "wwlp.com",
-            "wavy.com",
-            "ktla.com",
-            "wpix.com",
-            "newsnationnow.com",
-            "cw33.com",
-            "kron4.com",
-            "fox2now.com",
-            "fox40.com",
-            "fox59.com",
-            "fox5sandiego.com",
-            "thehill.com"
-          ]
-        },
-        {
-          "id": "scripps",
-          "label": "E.W. Scripps",
-          "icon": "denver7.com",
-          "sources": [
-            "denver7.com",
-            "kjrh.com",
-            "wrtv.com",
-            "wcpo.com",
-            "kshb.com",
-            "ktnv.com",
-            "wfts.com",
-            "wxyz.com",
-            "tucson.com",
-            "newson5.com"
-          ]
-        },
-        {
-          "id": "gray-media",
-          "label": "Gray Media",
-          "icon": "kait8.com",
-          "sources": [
-            "kait8.com",
-            "kwqc.com",
-            "wndu.com",
-            "wibw.com",
-            "wdbj7.com",
-            "wcax.com",
-            "wect.com",
-            "weau.com",
-            "wgem.com",
-            "kgwn.tv",
-            "kolotv.com",
-            "kktv.com",
-            "ky3.com",
-            "wjhg.com",
-            "wmbfnews.com",
-            "wmcactionnews5.com",
-            "wsaz.com",
-            "wsmv.com",
-            "wtvy.com",
-            "wvlt.tv",
-            "wwbt.com"
-          ]
-        },
-        {
-          "id": "sinclair",
-          "label": "Sinclair",
-          "icon": "thenationaldesk.com",
-          "sources": [
-            "thenationaldesk.com",
-            "komonews.com",
-            "wjla.com",
-            "wsbt.com",
-            "katu.com",
-            "kutv.com",
-            "nbc15.com",
-            "turnto10.com"
-          ]
-        },
-        {
-          "id": "lee",
-          "label": "Lee Enterprises",
-          "icon": "madison.com",
-          "sources": [
-            "madison.com",
-            "journalstar.com",
-            "tucson.com",
-            "richmond.com",
-            "buffalonews.com",
-            "stltoday.com",
-            "omaha.com",
-            "siouxcityjournal.com",
-            "billingsgazette.com",
-            "missoulian.com",
-            "mtstandard.com",
-            "journalnow.com",
-            "greensboro.com",
-            "roanoke.com",
-            "nwitimes.com",
-            "wacotrib.com"
-          ]
-        },
-        {
-          "id": "fox-affiliated-local",
-          "label": "Fox-affiliated Local Stations",
-          "icon": "fox5ny.com",
-          "sources": [
-            "fox2now.com",
-            "fox5sandiego.com",
-            "fox5vegas.com",
-            "fox8live.com",
-            "fox11online.com",
-            "fox12oregon.com",
-            "fox13memphis.com",
-            "fox14tv.com",
-            "fox16.com",
-            "fox17.com",
-            "fox19.com",
-            "fox21online.com",
-            "fox23maine.com",
-            "fox25boston.com",
-            "fox28media.com",
-            "fox30jax.com",
-            "fox40.com",
-            "fox43.com",
-            "fox44.com",
-            "fox46charlotte.com",
-            "fox47news.com",
-            "fox59.com"
-          ]
-        }
-      ]
+     "id": "billionaire-backed-nationals",
+     "label": "Owner-backed Nationals",
+     "icon": "washingtonpost.com",
+     "sources": [
+      "washingtonpost.com",
+      "latimes.com",
+      "bostonglobe.com",
+      "time.com"
+     ]
     },
     {
-      "id": "us-broadcast",
-      "label": "US Broadcast Networks",
-      "icon": "concept:broadcast",
-      "children": [
-        {
-          "id": "nbcu",
-          "label": "NBCUniversal",
-          "icon": "nbcnews.com",
-          "sources": [
-            "nbcnews.com",
-            "cnbc.com",
-            "msnbc.com",
-            "today.com",
-            "eonline.com",
-            "telemundo.com",
-            "oxygen.com"
-          ]
-        },
-        {
-          "id": "abc-disney",
-          "label": "Disney / ABC",
-          "icon": "abcnews.com",
-          "sources": [
-            "abcnews.com",
-            "abcnews.go.com",
-            "6abc.com",
-            "abc7ny.com",
-            "abc7.com",
-            "abc7chicago.com",
-            "abc7news.com",
-            "abc13.com",
-            "abc11.com",
-            "abc30.com"
-          ]
-        },
-        {
-          "id": "cbs-paramount",
-          "label": "Paramount / CBS",
-          "icon": "cbsnews.com",
-          "sources": [
-            "cbsnews.com",
-            "cbslocal.com"
-          ]
-        },
-        {
-          "id": "cnn",
-          "label": "CNN",
-          "icon": "cnn.com",
-          "sources": [
-            "cnn.com"
-          ]
-        }
-      ]
+     "id": "independent-city-papers",
+     "label": "Independent City Papers",
+     "icon": "seattletimes.com",
+     "sources": [
+      "seattletimes.com",
+      "startribune.com",
+      "sfchronicle.com",
+      "houstonchronicle.com",
+      "inquirer.com",
+      "sltrib.com"
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "us-local",
+   "label": "US Local Media",
+   "icon": "usatoday.com",
+   "children": [
+    {
+     "id": "gannett",
+     "label": "Gannett",
+     "icon": "usatoday.com",
+     "sources": [
+      "usatoday.com",
+      "detroitnews.com",
+      "nwfdailynews.com",
+      "onlineathens.com",
+      "palmbeachpost.com",
+      "indystar.com",
+      "courier-journal.com",
+      "azcentral.com",
+      "desmoinesregister.com",
+      "freep.com",
+      "jsonline.com",
+      "tennessean.com",
+      "dispatch.com",
+      "statesman.com",
+      "providencejournal.com",
+      "registerguard.com",
+      "democratandchronicle.com",
+      "northjersey.com",
+      "pressconnects.com",
+      "lohud.com",
+      "poughkeepsiejournal.com",
+      "app.com",
+      "floridatoday.com",
+      "naplesnews.com",
+      "news-press.com",
+      "tcpalm.com",
+      "tallahassee.com",
+      "montgomeryadvertiser.com",
+      "clarionledger.com",
+      "hattiesburgamerican.com",
+      "goupstate.com",
+      "knoxnews.com",
+      "commercialappeal.com",
+      "capecodtimes.com",
+      "telegram.com",
+      "savannahnow.com",
+      "staugustine.com",
+      "thenewsstar.com"
+     ]
+    },
+    {
+     "id": "mcclatchy",
+     "label": "McClatchy",
+     "icon": "miamiherald.com",
+     "sources": [
+      "miamiherald.com",
+      "kentucky.com",
+      "modbee.com",
+      "idahostatesman.com",
+      "thenewstribune.com",
+      "kansascity.com",
+      "star-telegram.com",
+      "sacbee.com",
+      "charlotteobserver.com",
+      "newsobserver.com",
+      "bnd.com",
+      "heraldonline.com",
+      "ledger-enquirer.com",
+      "macon.com",
+      "sunherald.com",
+      "thestate.com",
+      "bradenton.com",
+      "centredailytimes.com",
+      "kansas.com",
+      "fresnobee.com"
+     ]
+    },
+    {
+     "id": "tribune",
+     "label": "Tribune",
+     "icon": "courant.com",
+     "sources": [
+      "courant.com",
+      "chicagotribune.com",
+      "nydailynews.com",
+      "baltimoresun.com",
+      "orlandosentinel.com",
+      "sun-sentinel.com",
+      "dailypress.com",
+      "mcall.com",
+      "pilotonline.com",
+      "capitalgazette.com"
+     ]
+    },
+    {
+     "id": "hearst-local",
+     "label": "Hearst Local",
+     "icon": "sfgate.com",
+     "sources": [
+      "sfgate.com",
+      "timesunion.com",
+      "connecticutpost.com",
+      "greenwichtime.com",
+      "middletownpress.com",
+      "newstimes.com",
+      "registercitizen.com",
+      "stamfordadvocate.com",
+      "thehour.com"
+     ]
+    },
+    {
+     "id": "advance-local",
+     "label": "Advance Local",
+     "icon": "oregonlive.com",
+     "sources": [
+      "oregonlive.com",
+      "obits.oregonlive.com",
+      "lehighvalleylive.com",
+      "nj.com",
+      "mlive.com",
+      "masslive.com",
+      "syracuse.com",
+      "cleveland.com",
+      "al.com",
+      "pennlive.com"
+     ]
+    },
+    {
+     "id": "tegna",
+     "label": "Tegna",
+     "icon": "king5.com",
+     "sources": [
+      "king5.com",
+      "kare11.com",
+      "khou.com",
+      "kusa.com",
+      "wgrz.com",
+      "wtsp.com",
+      "13newsnow.com",
+      "firstcoastnews.com",
+      "wfaa.com",
+      "wzzm13.com",
+      "wcnc.com",
+      "wusa9.com",
+      "cbs8.com",
+      "krem.com",
+      "ksdk.com",
+      "wbir.com",
+      "wxia.com",
+      "whas11.com",
+      "wltx.com"
+     ]
+    },
+    {
+     "id": "nexstar",
+     "label": "Nexstar",
+     "icon": "wivb.com",
+     "sources": [
+      "wivb.com",
+      "keloland.com",
+      "wkrg.com",
+      "wreg.com",
+      "wwlp.com",
+      "wavy.com",
+      "ktla.com",
+      "wpix.com",
+      "newsnationnow.com",
+      "cw33.com",
+      "kron4.com",
+      "fox2now.com",
+      "fox40.com",
+      "fox59.com",
+      "fox5sandiego.com",
+      "thehill.com"
+     ]
+    },
+    {
+     "id": "scripps",
+     "label": "E.W. Scripps",
+     "icon": "denver7.com",
+     "sources": [
+      "denver7.com",
+      "kjrh.com",
+      "wrtv.com",
+      "wcpo.com",
+      "kshb.com",
+      "ktnv.com",
+      "wfts.com",
+      "wxyz.com",
+      "tucson.com",
+      "newson5.com"
+     ]
+    },
+    {
+     "id": "gray-media",
+     "label": "Gray Media",
+     "icon": "kait8.com",
+     "sources": [
+      "kait8.com",
+      "kwqc.com",
+      "wndu.com",
+      "wibw.com",
+      "wdbj7.com",
+      "wcax.com",
+      "wect.com",
+      "weau.com",
+      "wgem.com",
+      "kgwn.tv",
+      "kolotv.com",
+      "kktv.com",
+      "ky3.com",
+      "wjhg.com",
+      "wmbfnews.com",
+      "wmcactionnews5.com",
+      "wsaz.com",
+      "wsmv.com",
+      "wtvy.com",
+      "wvlt.tv",
+      "wwbt.com"
+     ]
+    },
+    {
+     "id": "sinclair",
+     "label": "Sinclair",
+     "icon": "thenationaldesk.com",
+     "sources": [
+      "thenationaldesk.com",
+      "komonews.com",
+      "wjla.com",
+      "wsbt.com",
+      "katu.com",
+      "kutv.com",
+      "nbc15.com",
+      "turnto10.com"
+     ]
+    },
+    {
+     "id": "lee",
+     "label": "Lee Enterprises",
+     "icon": "madison.com",
+     "sources": [
+      "madison.com",
+      "journalstar.com",
+      "tucson.com",
+      "richmond.com",
+      "buffalonews.com",
+      "stltoday.com",
+      "omaha.com",
+      "siouxcityjournal.com",
+      "billingsgazette.com",
+      "missoulian.com",
+      "mtstandard.com",
+      "journalnow.com",
+      "greensboro.com",
+      "roanoke.com",
+      "nwitimes.com",
+      "wacotrib.com"
+     ]
+    },
+    {
+     "id": "fox-affiliated-local",
+     "label": "Fox-affiliated Local Stations",
+     "icon": "fox5ny.com",
+     "sources": [
+      "fox2now.com",
+      "fox5sandiego.com",
+      "fox5vegas.com",
+      "fox8live.com",
+      "fox11online.com",
+      "fox12oregon.com",
+      "fox13memphis.com",
+      "fox14tv.com",
+      "fox16.com",
+      "fox17.com",
+      "fox19.com",
+      "fox21online.com",
+      "fox23maine.com",
+      "fox25boston.com",
+      "fox28media.com",
+      "fox30jax.com",
+      "fox40.com",
+      "fox43.com",
+      "fox44.com",
+      "fox46charlotte.com",
+      "fox47news.com",
+      "fox59.com"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "us-broadcast",
+   "label": "US Broadcast Networks",
+   "icon": "concept:broadcast",
+   "children": [
+    {
+     "id": "nbcu",
+     "label": "NBCUniversal",
+     "icon": "nbcnews.com",
+     "sources": [
+      "nbcnews.com",
+      "cnbc.com",
+      "msnbc.com",
+      "today.com",
+      "eonline.com",
+      "telemundo.com",
+      "oxygen.com"
+     ]
+    },
+    {
+     "id": "abc-disney",
+     "label": "Disney / ABC",
+     "icon": "abcnews.com",
+     "sources": [
+      "abcnews.com",
+      "abcnews.go.com",
+      "6abc.com",
+      "abc7ny.com",
+      "abc7.com",
+      "abc7chicago.com",
+      "abc7news.com",
+      "abc13.com",
+      "abc11.com",
+      "abc30.com"
+     ]
+    },
+    {
+     "id": "cbs-paramount",
+     "label": "Paramount / CBS",
+     "icon": "cbsnews.com",
+     "sources": [
+      "cbsnews.com",
+      "cbslocal.com"
+     ]
+    },
+    {
+     "id": "cnn",
+     "label": "CNN",
+     "icon": "cnn.com",
+     "sources": [
+      "cnn.com"
+     ]
+    }
+   ]
+  }
+ ]
 }

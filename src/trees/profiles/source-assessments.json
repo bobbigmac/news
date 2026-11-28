@@ -1,1104 +1,1398 @@
 {
-  "snapshot": "2026-11-27",
-  "note": "External publisher assessments preserved by rater and scope. Ratings are not averaged or treated as truth scores; MediaBias.News entries are republished index signals, not independent votes. Absence of an entry means no imported assessment, not neutrality.",
-  "sources": {
-    "aa.com.tr": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Right (6.4)",
-        "url": "https://mediabiasfactcheck.com/anadolu-agency/",
-        "factual_reporting": "Mixed (5.0)",
-        "note": "MBFC describes strong pro-government framing and sourcing concerns; institutional state relationship matters more than a US-style partisan label"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans right",
-        "url": "https://mediabias.news/sources",
-        "subject": "Anadolu Ajansı"
-      }
-    ],
-    "abc.net.au": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-2.8)",
-        "url": "https://mediabiasfactcheck.com/abc-news-australia/",
-        "factual_reporting": "High",
-        "note": "MBFC flags occasional loaded political headlines while describing generally reliable sourcing"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "ABC Australia"
-      }
-    ],
-    "abcnews.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "ABC News (US)"
-      }
-    ],
-    "aljazeera.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-3.2)",
-        "url": "https://mediabiasfactcheck.com/al-jazeera/",
-        "factual_reporting": "Mixed",
-        "note": "MBFC raises concerns about sourcing, selected factual errors and Qatar-state influence; Qatar ownership/funding is a separate structural factor"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources/al-jazeera",
-        "subject": "Al Jazeera"
-      }
-    ],
-    "apnews.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Left / Lean Left depending rating vintage and section",
-        "url": "https://www.allsides.com/media-bias/verification-log",
-        "note": "AllSides records recent reviews, including May 2026; its own chart lists AP among Left sources in one 2026 chart version. Do not treat the category as fixed"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "Associated Press News"
-      }
-    ],
-    "arstechnica.com": [
-      {
-        "rater": "Ad Fontes",
-        "type": "bias and reliability",
-        "rating": "Middle bias (-2.10); Reliable, Analysis/Fact Reporting (44.63)",
-        "url": "https://adfontesmedia.com/ars-technica-bias-and-reliability/",
-        "note": "Article/show scale: bias −42..+42, reliability 0..64"
-      },
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Least Biased (-0.6)",
-        "url": "https://mediabiasfactcheck.com/ars-technica/",
-        "factual_reporting": "High (1.0)",
-        "note": "MBFC describes a mostly neutral technology beat; Ad Fontes independently places it in Middle bias and Reliable Analysis/Fact Reporting"
-      }
-    ],
-    "bbc.co.uk": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Center (-0.76)",
-        "url": "https://www.allsides.com/news-source/bbc-news-media-bias",
-        "note": "Medium confidence; Oct 2026 blind survey; online written content only. Previous surveys oscillated between Center and Lean Left"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "BBC News"
-      }
-    ],
-    "bloomberg.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Center (-0.87)",
-        "url": "https://www.allsides.com/news-source/bloomberg-media-bias",
-        "note": "Low/initial confidence; 2026 editorial reviews and Mar 2026 survey; rating changed over time"
-      },
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-2.4)",
-        "url": "https://mediabiasfactcheck.com/bloomberg/",
-        "factual_reporting": "Mostly Factual (2.2)",
-        "note": "AllSides currently lists Bloomberg Center; the disagreement is worth retaining, not averaging away"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "Bloomberg"
-      }
-    ],
-    "businessinsider.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-3.3)",
-        "url": "https://mediabiasfactcheck.com/business-insider/",
-        "factual_reporting": "Mostly Factual (2.3)",
-        "note": "MBFC cites story-selection and occasional sourcing/fact-check issues"
-      }
-    ],
-    "cbc.ca": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "CBC News"
-      }
-    ],
-    "cbsnews.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Center / separate product scope",
-        "url": "https://www.allsides.com/media-bias/verification-log",
-        "note": "AllSides records Jan 2026 editorial review; verify the exact page/section before using for CBS television"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "CBS News"
-      }
-    ],
-    "channelnewsasia.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "Channel News Asia"
-      }
-    ],
-    "citizen.co.za": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Right-Center (+4.0)",
-        "url": "https://mediabiasfactcheck.com/the-citizen-south-africa/",
-        "factual_reporting": "High (1.5)",
-        "note": "MBFC notes reasonable sourcing and syndicated copy via African News Agency"
-      }
-    ],
-    "dailymail.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Lean Right (+1.48)",
-        "url": "https://www.allsides.com/news-source/daily-mail-media-bias",
-        "note": "High confidence; Sep 2025 multipartisan editorial review; reviewers specifically cited sensationalism"
-      },
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Right (6.4)",
-        "url": "https://mediabiasfactcheck.com/daily-mail/",
-        "factual_reporting": "Mostly Factual (4.4)",
-        "note": "MBFC describes recurring sensationalist/ideological framing; its factuality verdict is separate"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans right",
-        "url": "https://mediabias.news/sources/dailymailcom",
-        "subject": "dailymail.com"
-      }
-    ],
-    "dailymaverick.co.za": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Least Biased",
-        "url": "https://mediabiasfactcheck.com/daily-maverick/",
-        "factual_reporting": "Mostly Factual",
-        "note": "MBFC describes comparatively balanced selection and a small number of failed checks"
-      }
-    ],
-    "dailytrust.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-2.5)",
-        "url": "https://mediabiasfactcheck.com/daily-trust-bias/",
-        "factual_reporting": "Mostly Factual (2.5)",
-        "note": "MBFC cites slightly left-favouring story selection, weak sourcing and one failed check"
-      }
-    ],
-    "dawn.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center",
-        "url": "https://mediabiasfactcheck.com/dawn/",
-        "factual_reporting": "Mostly Factual",
-        "note": "MBFC cites editorial positioning and difficulties with sourcing/government reporting in Pakistan’s constrained media environment"
-      }
-    ],
-    "dw.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources/deutsche-welle",
-        "subject": "Deutsche Welle"
-      }
-    ],
-    "economictimes.indiatimes.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "The Economic Times"
-      }
-    ],
-    "euronews.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "Euronews"
-      }
-    ],
-    "express.co.uk": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Right (6.3)",
-        "url": "https://mediabiasfactcheck.com/daily-express/",
-        "factual_reporting": "Mixed (5.5)",
-        "note": "MBFC discusses editorial positions and misinformation/pseudoscience concerns"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans right",
-        "url": "https://mediabias.news/sources",
-        "subject": "Daily Express"
-      }
-    ],
-    "foxnews.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Right",
-        "url": "https://www.allsides.com/media-bias/verification-log",
-        "note": "AllSides verification log records Aug 2026 editorial review and separate news/opinion distinctions"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Right",
-        "url": "https://mediabias.news/sources",
-        "subject": "Fox News"
-      }
-    ],
-    "france24.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "France24"
-      }
-    ],
-    "freemalaysiatoday.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Right-Center (+4.0)",
-        "url": "https://mediabiasfactcheck.com/free-malaysia-today/",
-        "factual_reporting": "Mixed (4.8)",
-        "note": "MBFC cites political relationships/coverage patterns and inconsistent sourcing; MediaBias.News directory also lists it leaning right"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans right",
-        "url": "https://mediabias.news/sources",
-        "subject": "Free Malaysia Today News"
-      }
-    ],
-    "gulfnews.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans right",
-        "url": "https://mediabias.news/sources",
-        "subject": "Gulf News"
-      }
-    ],
-    "handelsblatt.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans right",
-        "url": "https://mediabias.news/sources",
-        "subject": "Handelsblatt"
-      }
-    ],
-    "hindustantimes.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "Hindustan Times"
-      }
-    ],
-    "independent.co.uk": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-3.6)",
-        "url": "https://mediabiasfactcheck.com/the-independent/",
-        "factual_reporting": "Mixed (5.8)",
-        "note": "MBFC cites left-leaning story selection and sourcing/fact-check concerns; this differs from Ad Fontes High factuality"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources/the-independent",
-        "subject": "The Independent"
-      }
-    ],
-    "indianexpress.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "Indian Express"
-      }
-    ],
-    "indiatoday.in": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans right",
-        "url": "https://mediabias.news/sources",
-        "subject": "India Today"
-      }
-    ],
-    "japantimes.co.jp": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "The Japan Times"
-      }
-    ],
-    "jpost.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Right-Center (+2.9)",
-        "url": "https://mediabiasfactcheck.com/jerusalem-post/",
-        "factual_reporting": "Mostly Factual (3.4)",
-        "note": "MBFC describes a right-leaning Israeli government position and some factual errors"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "Jerusalem Post"
-      }
-    ],
-    "koreaherald.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Right-Center (+3.0)",
-        "url": "https://mediabiasfactcheck.com/korea-herald/",
-        "factual_reporting": "Mostly Factual (2.5)",
-        "note": "MBFC rates it separately from the Korea Times; avoid transferring one Korean outlet’s label to another"
-      }
-    ],
-    "koreatimes.co.kr": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center",
-        "url": "https://mediabiasfactcheck.com/korea-times/",
-        "factual_reporting": "Mostly Factual",
-        "note": "MBFC distinguishes its editorial positioning from its factual-reporting category"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "The Korea Times"
-      }
-    ],
-    "kotaku.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-3.4)",
-        "url": "https://mediabiasfactcheck.com/kotaku/",
-        "factual_reporting": "Mostly Factual (3.4)",
-        "note": "Caution: MBFC page is updated Dec 2025 and its ownership information is stale (it still describes G/O Media); use the rating cautiously pending re-review"
-      }
-    ],
-    "kyivpost.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources/kyiv-post",
-        "subject": "Kyiv Post"
-      }
-    ],
-    "latimes.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "Los Angeles Times"
-      }
-    ],
-    "lemonde.fr": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "Le Monde"
-      }
-    ],
-    "malaymail.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans right",
-        "url": "https://mediabias.news/sources",
-        "subject": "Malay Mail"
-      }
-    ],
-    "marketwatch.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Right-Center (+2.8)",
-        "url": "https://mediabiasfactcheck.com/marketwatch/",
-        "factual_reporting": "High (1.0)",
-        "note": "MBFC describes market/economic-position signals; do not read this as a general partisan news diagnosis"
-      }
-    ],
-    "mirror.co.uk": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center",
-        "url": "https://mediabiasfactcheck.com/daily-mirror/",
-        "factual_reporting": "Mostly Factual",
-        "note": "MBFC describes Labour sympathy and some sourcing/statistical errors"
-      }
-    ],
-    "nbcnews.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Lean Left",
-        "url": "https://www.allsides.com/media-bias/verification-log",
-        "note": "AllSides records Oct 2026 editorial review of NBC News Digital"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "NBC News"
-      }
-    ],
-    "ndtv.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans right",
-        "url": "https://mediabias.news/sources",
-        "subject": "NDTV"
-      }
-    ],
-    "news.cgtn.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "CGTN"
-      }
-    ],
-    "news.err.ee": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "Eesti Rahvusringhääling"
-      }
-    ],
-    "newsweek.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "Newsweek"
-      }
-    ],
-    "npr.org": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Lean Left",
-        "url": "https://www.allsides.com/media-bias/ratings",
-        "note": "AllSides’ wider ratings history includes NPR; its online ratings should not be applied automatically to radio affiliates or syndicated programmes"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "NPR"
-      }
-    ],
-    "nst.com.my": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Least Biased (+1.7)",
-        "url": "https://mediabiasfactcheck.com/new-straits-times/",
-        "factual_reporting": "Mostly Factual (2.5)",
-        "note": "MBFC notes broadly balanced selection but limited hyperlink sourcing"
-      }
-    ],
-    "nypost.com": [
-      {
-        "rater": "Ad Fontes",
-        "type": "bias and reliability",
-        "rating": "Skews Right (+9.56); Mixed Reliability (30.09)",
-        "url": "https://adfontesmedia.com/new-york-post-bias-and-reliability/",
-        "note": "A strong rightward sample placement and lower reliability than its straight-news peers; compare news and opinion separately"
-      },
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Right-Center",
-        "url": "https://mediabiasfactcheck.com/new-york-post/",
-        "factual_reporting": "Mixed",
-        "note": "Ad Fontes places its sampled content far to the right and in mixed reliability; AllSides has separate New York Post News content"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans right",
-        "url": "https://mediabias.news/sources",
-        "subject": "New York Post"
-      }
-    ],
-    "nytimes.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Lean Left (News) / separate Opinion rating",
-        "url": "https://www.allsides.com/media-bias/ratings",
-        "note": "AllSides maintains separate News and Opinion ratings; do not merge them"
-      },
-      {
-        "rater": "Ad Fontes",
-        "type": "bias and reliability",
-        "rating": "Skews Left (-7.81); Reliable, Analysis/Fact Reporting (40.83)",
-        "url": "https://adfontesmedia.com/new-york-times-bias-and-reliability/",
-        "note": "Ad Fontes’ sampled content position differs in degree from AllSides/MBFC labels; reliability is separate"
-      },
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center",
-        "url": "https://mediabiasfactcheck.com/new-york-times/",
-        "factual_reporting": "High",
-        "note": "Ad Fontes rates it Skews Left but Reliable Analysis/Fact Reporting; AllSides separates News from Opinion"
-      }
-    ],
-    "pbs.org": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Lean Left (PBS NewsHour)",
-        "url": "https://www.allsides.com/media-bias/verification-log",
-        "note": "This is the NewsHour rating, not every PBS member-station or independently produced programme"
-      },
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-2.4)",
-        "url": "https://mediabiasfactcheck.com/pbs-newshour/",
-        "factual_reporting": "High (1.0)",
-        "note": "Applies to PBS NewsHour, not every PBS member-station or independently produced item"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources/pbs-newshour",
-        "subject": "PBS NewsHour"
-      }
-    ],
-    "perthnow.com.au": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "PerthNow"
-      }
-    ],
-    "polygon.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-2.0)",
-        "url": "https://mediabiasfactcheck.com/polygon/",
-        "factual_reporting": "High (1.0)",
-        "note": "The label is a broad source-level placement; it does not imply a comparable political lens in game reviews"
-      }
-    ],
-    "premiumtimesng.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-3.3)",
-        "url": "https://mediabiasfactcheck.com/premium-times-bias-and-credibility/",
-        "factual_reporting": "Mostly Factual (3.6)",
-        "note": "MBFC links its position to governance/accountability and scrutiny of centre-right Nigerian leadership; says sourcing could improve despite no failed fact-checks"
-      }
-    ],
-    "punchng.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-3.4)",
-        "url": "https://mediabiasfactcheck.com/the-punch-nigeria/",
-        "factual_reporting": "Mixed (5.0)",
-        "note": "MBFC says story selection is broadly balanced but flags weak hyperlink sourcing and two failed fact checks; its lean is based mainly on editorials"
-      }
-    ],
-    "qz.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-3.2)",
-        "url": "https://mediabiasfactcheck.com/quartz/",
-        "factual_reporting": "High",
-        "note": "MBFC rates source-level coverage; its own AllSides/Ad Fontes profiles should be checked for any separate current score"
-      }
-    ],
-    "reuters.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Center",
-        "url": "https://www.allsides.com/media-bias/verification-log",
-        "note": "AllSides lists repeated blind surveys/editorial reviews; MBN also shows agreement from Ad Fontes and MBFC"
-      },
-      {
-        "rater": "Ad Fontes",
-        "type": "bias and reliability",
-        "rating": "Middle bias; Reliable, Analysis/Fact Reporting",
-        "url": "https://adfontesmedia.com/reuters-bias-and-reliability/",
-        "note": "Ad Fontes source-level aggregate; MBN lists Centre and very high factuality from Ad Fontes"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources/reuters",
-        "subject": "Reuters"
-      }
-    ],
-    "rfi.fr": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "Radio France Internationale"
-      }
-    ],
-    "rte.ie": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "RTÉ"
-      }
-    ],
-    "scientificamerican.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-3.5)",
-        "url": "https://mediabiasfactcheck.com/scientific-american/",
-        "factual_reporting": "High (0.5)",
-        "note": "MBFC’s “pro-science” and political framing language should be read carefully: advocacy for scientific consensus is not equivalent to partisan misinformation"
-      }
-    ],
-    "scmp.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-2.9)",
-        "url": "https://mediabiasfactcheck.com/south-china-morning-post/",
-        "factual_reporting": "Mixed (4.8)",
-        "note": "MBFC flags sourcing and restricted-press-environment issues; MediaBias.News directory lists Centre, so retain disagreement"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "South China Morning Post"
-      }
-    ],
-    "seattletimes.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "The Seattle Times"
-      }
-    ],
-    "semafor.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Least Biased (-0.4)",
-        "url": "https://mediabiasfactcheck.com/semafor/",
-        "factual_reporting": "High",
-        "note": "MBFC’s profile predates much of the current corpus; check the last-review date before treating as current"
-      }
-    ],
-    "smh.com.au": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "Sydney Morning Herald"
-      }
-    ],
-    "statnews.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-3.3)",
-        "url": "https://mediabiasfactcheck.com/stat-news/",
-        "factual_reporting": "High (1.0)",
-        "note": "Health-policy and science framing contributes to this placement; MBFC rates factual reporting separately"
-      }
-    ],
-    "straitstimes.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans right",
-        "url": "https://mediabias.news/sources",
-        "subject": "The Straits Times"
-      }
-    ],
-    "techcrunch.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Center",
-        "url": "https://www.allsides.com/news-source/techcrunch-media-bias",
-        "note": "Low/initial confidence; independent review; online written material"
-      },
-      {
-        "rater": "Ad Fontes",
-        "type": "bias and reliability",
-        "rating": "Middle bias (-0.47); Reliable, Analysis/Fact Reporting (45.30)",
-        "url": "https://adfontesmedia.com/techcrunch-bias-and-reliability/",
-        "note": "Article/show scale; source-level values aggregate sampled article/program ratings"
-      },
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-3.6)",
-        "url": "https://mediabiasfactcheck.com/techcrunch/",
-        "factual_reporting": "High (0.9)",
-        "note": "Political/news story selection is scored separately from the tech beat; not a blanket technical-quality assessment"
-      }
-    ],
-    "theage.com.au": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-4.0)",
-        "url": "https://mediabiasfactcheck.com/the-age/",
-        "factual_reporting": "High",
-        "note": "MBFC’s rating is distinct from its parent-group relationship with Nine; MBN directory separately labels it leaning left"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "The Age"
-      }
-    ],
-    "thedailystar.net": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "The Daily Star"
-      }
-    ],
-    "theguardian.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Left (-3.50)",
-        "url": "https://www.allsides.com/news-source/guardian-media-bias",
-        "note": "Low/initial confidence; Nov 2024 editorial review; online written news, not all Guardian products"
-      },
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-3.6)",
-        "url": "https://mediabiasfactcheck.com/the-guardian/",
-        "factual_reporting": "High (1.8)",
-        "note": "MBFC attributes its placement mainly to story selection; AllSides rates the online content Left, illustrating scope/method disagreement"
-      }
-    ],
-    "thehill.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Center / product-specific",
-        "url": "https://www.allsides.com/media-bias/verification-log",
-        "note": "AllSides records an Apr 2026 review; distinguish standard reporting, opinion columns and curated news products"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "The Hill"
-      }
-    ],
-    "thehindu.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center",
-        "url": "https://mediabiasfactcheck.com/the-hindu/",
-        "factual_reporting": "Mostly Factual",
-        "note": "MBFC mentions one failed fact check and a misleading claim; source-level category is not a judgement on every section"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources/the-hindu",
-        "subject": "The Hindu"
-      }
-    ],
-    "theregister.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Least Biased (-1.0)",
-        "url": "https://mediabiasfactcheck.com/the-register-uk/",
-        "factual_reporting": "High (1.0)",
-        "note": "MBFC notes minimal editorialising and a technology/news focus"
-      }
-    ],
-    "thesouthafrican.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-2.5)",
-        "url": "https://mediabiasfactcheck.com/the-south-african/",
-        "factual_reporting": "High (1.5)",
-        "note": "MBFC rates this separately from the Citizen; do not conflate South African publishers"
-      }
-    ],
-    "theverge.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Lean Left (-2.00)",
-        "url": "https://www.allsides.com/news-source/verge-media-bias",
-        "note": "Low/initial confidence; rating based on online politics section; not a technical-content quality score"
-      },
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-2.8)",
-        "url": "https://mediabiasfactcheck.com/the-verge/",
-        "factual_reporting": "High (1.1)",
-        "note": "MBFC characterises political story selection as slightly left; technical coverage is generally well sourced"
-      }
-    ],
-    "thewest.com.au": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans right",
-        "url": "https://mediabias.news/sources",
-        "subject": "The West Australian"
-      }
-    ],
-    "timesofindia.indiatimes.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans right",
-        "url": "https://mediabias.news/sources",
-        "subject": "Times of India"
-      }
-    ],
-    "usatoday.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "USA Today"
-      }
-    ],
-    "vanguardngr.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-4.5)",
-        "url": "https://mediabiasfactcheck.com/vanguard-news-nigeria-bias/",
-        "factual_reporting": "Mixed (5.0)",
-        "note": "MBFC associates the rating with editorial positions and past misinformation"
-      }
-    ],
-    "washingtonpost.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Lean Left (News); separate Editorial Board rating",
-        "url": "https://www.allsides.com/media-bias/verification-log",
-        "note": "AllSides records an Aug 2026 News review and Jul 2026 Editorial Board review"
-      },
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-3.6)",
-        "url": "https://mediabiasfactcheck.com/washington-post/",
-        "factual_reporting": "Mostly Factual (2.1)",
-        "note": "AllSides also labels its online news Lean Left; the opinion section should not be folded into the same estimate"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Leans left",
-        "url": "https://mediabias.news/sources",
-        "subject": "The Washington Post"
-      }
-    ],
-    "westernjournal.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Right",
-        "url": "https://mediabias.news/sources",
-        "subject": "The Western Journal"
-      }
-    ],
-    "winnipegfreepress.com": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources/winnipeg-free-press",
-        "subject": "Winnipeg Free Press"
-      }
-    ],
-    "wired.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "Left (-4.07)",
-        "url": "https://www.allsides.com/news-source/wired-media-bias",
-        "note": "Medium confidence; editorial reviews Feb/Jan 2025 and blind survey Dec 2024"
-      },
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Left-Center (-3.0)",
-        "url": "https://mediabiasfactcheck.com/wired-magazine/",
-        "factual_reporting": "High (1.0)",
-        "note": "AllSides rates WIRED Left; the two providers are classifying differently weighted samples/constructs"
-      }
-    ],
-    "wsj.com": [
-      {
-        "rater": "AllSides",
-        "type": "political leaning",
-        "rating": "News and Opinion separately rated",
-        "url": "https://www.allsides.com/media-bias/ratings",
-        "note": "The Wall Street Journal’s news and opinion pages are deliberately rated separately by AllSides"
-      },
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Right-Center",
-        "url": "https://mediabiasfactcheck.com/wall-street-journal/",
-        "factual_reporting": "Mostly Factual",
-        "note": "Keep news reporting distinct from editorial/opinion; separate AllSides ratings exist for WSJ News and Opinion"
-      }
-    ],
-    "yle.fi": [
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Centre",
-        "url": "https://mediabias.news/sources",
-        "subject": "Yle"
-      }
-    ],
-    "zerohedge.com": [
-      {
-        "rater": "MBFC",
-        "type": "political leaning and factual reporting",
-        "rating": "Right",
-        "url": "https://mediabiasfactcheck.com/zero-hedge/",
-        "factual_reporting": "Low / questionable",
-        "note": "MBFC has raised conspiracy/pseudoscience and sourcing concerns; do not treat its political descriptor as the main issue"
-      },
-      {
-        "rater": "MediaBias.News index",
-        "type": "republished political-leaning index",
-        "rating": "Right",
-        "url": "https://mediabias.news/sources",
-        "subject": "Zero Hedge"
-      }
-    ]
-  }
+ "snapshot": "2026-11-27",
+ "note": "External publisher assessments preserved by rater and scope. Ratings are not averaged or treated as truth scores; MediaBias.News entries are republished index signals, not independent votes. Absence of an entry means no imported assessment, not neutrality.",
+ "sources": {
+  "aa.com.tr": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right (6.4)",
+    "url": "https://mediabiasfactcheck.com/anadolu-agency/",
+    "factual_reporting": "Mixed (5.0)",
+    "note": "MBFC describes strong pro-government framing and sourcing concerns; institutional state relationship matters more than a US-style partisan label"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans right",
+    "url": "https://mediabias.news/sources",
+    "subject": "Anadolu Ajansı"
+   }
+  ],
+  "abc.net.au": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-2.8)",
+    "url": "https://mediabiasfactcheck.com/abc-news-australia/",
+    "factual_reporting": "High",
+    "note": "MBFC flags occasional loaded political headlines while describing generally reliable sourcing"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "ABC Australia"
+   }
+  ],
+  "abcnews.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "ABC News (US)"
+   }
+  ],
+  "aljazeera.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-3.2)",
+    "url": "https://mediabiasfactcheck.com/al-jazeera/",
+    "factual_reporting": "Mixed",
+    "note": "MBFC raises concerns about sourcing, selected factual errors and Qatar-state influence; Qatar ownership/funding is a separate structural factor"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources/al-jazeera",
+    "subject": "Al Jazeera"
+   }
+  ],
+  "apnews.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Left / Lean Left depending rating vintage and section",
+    "url": "https://www.allsides.com/media-bias/verification-log",
+    "note": "AllSides records recent reviews, including May 2026; its own chart lists AP among Left sources in one 2026 chart version. Do not treat the category as fixed"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "Associated Press News"
+   }
+  ],
+  "arstechnica.com": [
+   {
+    "rater": "Ad Fontes",
+    "type": "bias and reliability",
+    "rating": "Middle bias (-2.10); Reliable, Analysis/Fact Reporting (44.63)",
+    "url": "https://adfontesmedia.com/ars-technica-bias-and-reliability/",
+    "note": "Article/show scale: bias −42..+42, reliability 0..64"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Least Biased (-0.6)",
+    "url": "https://mediabiasfactcheck.com/ars-technica/",
+    "factual_reporting": "High (1.0)",
+    "note": "MBFC describes a mostly neutral technology beat; Ad Fontes independently places it in Middle bias and Reliable Analysis/Fact Reporting"
+   }
+  ],
+  "bbc.co.uk": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Center (-0.76)",
+    "url": "https://www.allsides.com/news-source/bbc-news-media-bias",
+    "note": "Medium confidence; Oct 2026 blind survey; online written content only. Previous surveys oscillated between Center and Lean Left"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "BBC News"
+   }
+  ],
+  "bloomberg.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Center (-0.87)",
+    "url": "https://www.allsides.com/news-source/bloomberg-media-bias",
+    "note": "Low/initial confidence; 2026 editorial reviews and Mar 2026 survey; rating changed over time"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-2.4)",
+    "url": "https://mediabiasfactcheck.com/bloomberg/",
+    "factual_reporting": "Mostly Factual (2.2)",
+    "note": "AllSides currently lists Bloomberg Center; the disagreement is worth retaining, not averaging away"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "Bloomberg"
+   }
+  ],
+  "businessinsider.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-3.3)",
+    "url": "https://mediabiasfactcheck.com/business-insider/",
+    "factual_reporting": "Mostly Factual (2.3)",
+    "note": "MBFC cites story-selection and occasional sourcing/fact-check issues"
+   },
+   {
+    "rater": "AllSides",
+    "type": "political leaning (news product)",
+    "rating": "Lean Left",
+    "url": "https://www.allsides.com/news-source/business-insider-media-bias"
+   },
+   {
+    "rater": "Ad Fontes",
+    "type": "bias and reliability",
+    "rating": "Middle / Reliable, Analysis-Fact Reporting",
+    "url": "https://adfontesmedia.com/business-insider-bias-and-reliability/"
+   },
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Lean left",
+    "url": "https://told.news/news-sources/businessinsider.com"
+   }
+  ],
+  "cbc.ca": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "CBC News"
+   }
+  ],
+  "cbsnews.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Center / separate product scope",
+    "url": "https://www.allsides.com/media-bias/verification-log",
+    "note": "AllSides records Jan 2026 editorial review; verify the exact page/section before using for CBS television"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "CBS News"
+   }
+  ],
+  "channelnewsasia.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "Channel News Asia"
+   }
+  ],
+  "citizen.co.za": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right-Center (+4.0)",
+    "url": "https://mediabiasfactcheck.com/the-citizen-south-africa/",
+    "factual_reporting": "High (1.5)",
+    "note": "MBFC notes reasonable sourcing and syndicated copy via African News Agency"
+   }
+  ],
+  "dailymail.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Lean Right (+1.48)",
+    "url": "https://www.allsides.com/news-source/daily-mail-media-bias",
+    "note": "High confidence; Sep 2025 multipartisan editorial review; reviewers specifically cited sensationalism"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right (6.4)",
+    "url": "https://mediabiasfactcheck.com/daily-mail/",
+    "factual_reporting": "Mostly Factual (4.4)",
+    "note": "MBFC describes recurring sensationalist/ideological framing; its factuality verdict is separate"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans right",
+    "url": "https://mediabias.news/sources/dailymailcom",
+    "subject": "dailymail.com"
+   }
+  ],
+  "dailymaverick.co.za": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Least Biased",
+    "url": "https://mediabiasfactcheck.com/daily-maverick/",
+    "factual_reporting": "Mostly Factual",
+    "note": "MBFC describes comparatively balanced selection and a small number of failed checks"
+   }
+  ],
+  "dailytrust.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-2.5)",
+    "url": "https://mediabiasfactcheck.com/daily-trust-bias/",
+    "factual_reporting": "Mostly Factual (2.5)",
+    "note": "MBFC cites slightly left-favouring story selection, weak sourcing and one failed check"
+   }
+  ],
+  "dawn.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center",
+    "url": "https://mediabiasfactcheck.com/dawn/",
+    "factual_reporting": "Mostly Factual",
+    "note": "MBFC cites editorial positioning and difficulties with sourcing/government reporting in Pakistan’s constrained media environment"
+   },
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Lean left",
+    "url": "https://told.news/news-sources/dawn.com"
+   }
+  ],
+  "dw.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources/deutsche-welle",
+    "subject": "Deutsche Welle"
+   }
+  ],
+  "economictimes.indiatimes.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "The Economic Times"
+   }
+  ],
+  "euronews.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "Euronews"
+   }
+  ],
+  "express.co.uk": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right (6.3)",
+    "url": "https://mediabiasfactcheck.com/daily-express/",
+    "factual_reporting": "Mixed (5.5)",
+    "note": "MBFC discusses editorial positions and misinformation/pseudoscience concerns"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans right",
+    "url": "https://mediabias.news/sources",
+    "subject": "Daily Express"
+   }
+  ],
+  "foxnews.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Right",
+    "url": "https://www.allsides.com/media-bias/verification-log",
+    "note": "AllSides verification log records Aug 2026 editorial review and separate news/opinion distinctions"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Right",
+    "url": "https://mediabias.news/sources",
+    "subject": "Fox News"
+   }
+  ],
+  "france24.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "France24"
+   }
+  ],
+  "freemalaysiatoday.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right-Center (+4.0)",
+    "url": "https://mediabiasfactcheck.com/free-malaysia-today/",
+    "factual_reporting": "Mixed (4.8)",
+    "note": "MBFC cites political relationships/coverage patterns and inconsistent sourcing; MediaBias.News directory also lists it leaning right"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans right",
+    "url": "https://mediabias.news/sources",
+    "subject": "Free Malaysia Today News"
+   }
+  ],
+  "gulfnews.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans right",
+    "url": "https://mediabias.news/sources",
+    "subject": "Gulf News"
+   }
+  ],
+  "handelsblatt.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans right",
+    "url": "https://mediabias.news/sources",
+    "subject": "Handelsblatt"
+   }
+  ],
+  "hindustantimes.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "Hindustan Times"
+   }
+  ],
+  "independent.co.uk": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-3.6)",
+    "url": "https://mediabiasfactcheck.com/the-independent/",
+    "factual_reporting": "Mixed (5.8)",
+    "note": "MBFC cites left-leaning story selection and sourcing/fact-check concerns; this differs from Ad Fontes High factuality"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources/the-independent",
+    "subject": "The Independent"
+   }
+  ],
+  "indianexpress.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "Indian Express"
+   }
+  ],
+  "indiatoday.in": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans right",
+    "url": "https://mediabias.news/sources",
+    "subject": "India Today"
+   }
+  ],
+  "japantimes.co.jp": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "The Japan Times"
+   }
+  ],
+  "jpost.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right-Center (+2.9)",
+    "url": "https://mediabiasfactcheck.com/jerusalem-post/",
+    "factual_reporting": "Mostly Factual (3.4)",
+    "note": "MBFC describes a right-leaning Israeli government position and some factual errors"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "Jerusalem Post"
+   }
+  ],
+  "koreaherald.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right-Center (+3.0)",
+    "url": "https://mediabiasfactcheck.com/korea-herald/",
+    "factual_reporting": "Mostly Factual (2.5)",
+    "note": "MBFC rates it separately from the Korea Times; avoid transferring one Korean outlet’s label to another"
+   },
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Lean right",
+    "url": "https://told.news/news-sources/koreaherald.com"
+   }
+  ],
+  "koreatimes.co.kr": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center",
+    "url": "https://mediabiasfactcheck.com/korea-times/",
+    "factual_reporting": "Mostly Factual",
+    "note": "MBFC distinguishes its editorial positioning from its factual-reporting category"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "The Korea Times"
+   }
+  ],
+  "kotaku.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-3.4)",
+    "url": "https://mediabiasfactcheck.com/kotaku/",
+    "factual_reporting": "Mostly Factual (3.4)",
+    "note": "Caution: MBFC page is updated Dec 2025 and its ownership information is stale (it still describes G/O Media); use the rating cautiously pending re-review"
+   }
+  ],
+  "kyivpost.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources/kyiv-post",
+    "subject": "Kyiv Post"
+   }
+  ],
+  "latimes.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "Los Angeles Times"
+   }
+  ],
+  "lemonde.fr": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "Le Monde"
+   }
+  ],
+  "malaymail.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans right",
+    "url": "https://mediabias.news/sources",
+    "subject": "Malay Mail"
+   }
+  ],
+  "marketwatch.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right-Center (+2.8)",
+    "url": "https://mediabiasfactcheck.com/marketwatch/",
+    "factual_reporting": "High (1.0)",
+    "note": "MBFC describes market/economic-position signals; do not read this as a general partisan news diagnosis"
+   },
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Balanced",
+    "url": "https://told.news/news-sources/marketwatch.com"
+   }
+  ],
+  "mirror.co.uk": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center",
+    "url": "https://mediabiasfactcheck.com/daily-mirror/",
+    "factual_reporting": "Mostly Factual",
+    "note": "MBFC describes Labour sympathy and some sourcing/statistical errors"
+   }
+  ],
+  "nbcnews.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Lean Left",
+    "url": "https://www.allsides.com/media-bias/verification-log",
+    "note": "AllSides records Oct 2026 editorial review of NBC News Digital"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "NBC News"
+   }
+  ],
+  "ndtv.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans right",
+    "url": "https://mediabias.news/sources",
+    "subject": "NDTV"
+   }
+  ],
+  "news.cgtn.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "CGTN"
+   }
+  ],
+  "news.err.ee": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "Eesti Rahvusringhääling"
+   }
+  ],
+  "newsweek.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "Newsweek"
+   }
+  ],
+  "npr.org": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Lean Left",
+    "url": "https://www.allsides.com/media-bias/ratings",
+    "note": "AllSides’ wider ratings history includes NPR; its online ratings should not be applied automatically to radio affiliates or syndicated programmes"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "NPR"
+   }
+  ],
+  "nst.com.my": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Least Biased (+1.7)",
+    "url": "https://mediabiasfactcheck.com/new-straits-times/",
+    "factual_reporting": "Mostly Factual (2.5)",
+    "note": "MBFC notes broadly balanced selection but limited hyperlink sourcing"
+   }
+  ],
+  "nypost.com": [
+   {
+    "rater": "Ad Fontes",
+    "type": "bias and reliability",
+    "rating": "Skews Right (+9.56); Mixed Reliability (30.09)",
+    "url": "https://adfontesmedia.com/new-york-post-bias-and-reliability/",
+    "note": "A strong rightward sample placement and lower reliability than its straight-news peers; compare news and opinion separately"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right-Center",
+    "url": "https://mediabiasfactcheck.com/new-york-post/",
+    "factual_reporting": "Mixed",
+    "note": "Ad Fontes places its sampled content far to the right and in mixed reliability; AllSides has separate New York Post News content"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans right",
+    "url": "https://mediabias.news/sources",
+    "subject": "New York Post"
+   }
+  ],
+  "nytimes.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Lean Left (News) / separate Opinion rating",
+    "url": "https://www.allsides.com/media-bias/ratings",
+    "note": "AllSides maintains separate News and Opinion ratings; do not merge them"
+   },
+   {
+    "rater": "Ad Fontes",
+    "type": "bias and reliability",
+    "rating": "Skews Left (-7.81); Reliable, Analysis/Fact Reporting (40.83)",
+    "url": "https://adfontesmedia.com/new-york-times-bias-and-reliability/",
+    "note": "Ad Fontes’ sampled content position differs in degree from AllSides/MBFC labels; reliability is separate"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center",
+    "url": "https://mediabiasfactcheck.com/new-york-times/",
+    "factual_reporting": "High",
+    "note": "Ad Fontes rates it Skews Left but Reliable Analysis/Fact Reporting; AllSides separates News from Opinion"
+   },
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Lean left",
+    "url": "https://told.news/news-sources/nytimes.com"
+   }
+  ],
+  "pbs.org": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Lean Left (PBS NewsHour)",
+    "url": "https://www.allsides.com/media-bias/verification-log",
+    "note": "This is the NewsHour rating, not every PBS member-station or independently produced programme"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-2.4)",
+    "url": "https://mediabiasfactcheck.com/pbs-newshour/",
+    "factual_reporting": "High (1.0)",
+    "note": "Applies to PBS NewsHour, not every PBS member-station or independently produced item"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources/pbs-newshour",
+    "subject": "PBS NewsHour"
+   }
+  ],
+  "perthnow.com.au": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "PerthNow"
+   }
+  ],
+  "polygon.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-2.0)",
+    "url": "https://mediabiasfactcheck.com/polygon/",
+    "factual_reporting": "High (1.0)",
+    "note": "The label is a broad source-level placement; it does not imply a comparable political lens in game reviews"
+   }
+  ],
+  "premiumtimesng.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-3.3)",
+    "url": "https://mediabiasfactcheck.com/premium-times-bias-and-credibility/",
+    "factual_reporting": "Mostly Factual (3.6)",
+    "note": "MBFC links its position to governance/accountability and scrutiny of centre-right Nigerian leadership; says sourcing could improve despite no failed fact-checks"
+   }
+  ],
+  "punchng.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-3.4)",
+    "url": "https://mediabiasfactcheck.com/the-punch-nigeria/",
+    "factual_reporting": "Mixed (5.0)",
+    "note": "MBFC says story selection is broadly balanced but flags weak hyperlink sourcing and two failed fact checks; its lean is based mainly on editorials"
+   }
+  ],
+  "qz.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-3.2)",
+    "url": "https://mediabiasfactcheck.com/quartz/",
+    "factual_reporting": "High",
+    "note": "MBFC rates source-level coverage; its own AllSides/Ad Fontes profiles should be checked for any separate current score"
+   }
+  ],
+  "reuters.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Center",
+    "url": "https://www.allsides.com/media-bias/verification-log",
+    "note": "AllSides lists repeated blind surveys/editorial reviews; MBN also shows agreement from Ad Fontes and MBFC"
+   },
+   {
+    "rater": "Ad Fontes",
+    "type": "bias and reliability",
+    "rating": "Middle bias; Reliable, Analysis/Fact Reporting",
+    "url": "https://adfontesmedia.com/reuters-bias-and-reliability/",
+    "note": "Ad Fontes source-level aggregate; MBN lists Centre and very high factuality from Ad Fontes"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources/reuters",
+    "subject": "Reuters"
+   }
+  ],
+  "rfi.fr": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "Radio France Internationale"
+   }
+  ],
+  "rte.ie": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "RTÉ"
+   }
+  ],
+  "scientificamerican.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-3.5)",
+    "url": "https://mediabiasfactcheck.com/scientific-american/",
+    "factual_reporting": "High (0.5)",
+    "note": "MBFC’s “pro-science” and political framing language should be read carefully: advocacy for scientific consensus is not equivalent to partisan misinformation"
+   }
+  ],
+  "scmp.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-2.9)",
+    "url": "https://mediabiasfactcheck.com/south-china-morning-post/",
+    "factual_reporting": "Mixed (4.8)",
+    "note": "MBFC flags sourcing and restricted-press-environment issues; MediaBias.News directory lists Centre, so retain disagreement"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "South China Morning Post"
+   }
+  ],
+  "seattletimes.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "The Seattle Times"
+   }
+  ],
+  "semafor.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Least Biased (-0.4)",
+    "url": "https://mediabiasfactcheck.com/semafor/",
+    "factual_reporting": "High",
+    "note": "MBFC’s profile predates much of the current corpus; check the last-review date before treating as current"
+   }
+  ],
+  "smh.com.au": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "Sydney Morning Herald"
+   }
+  ],
+  "statnews.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-3.3)",
+    "url": "https://mediabiasfactcheck.com/stat-news/",
+    "factual_reporting": "High (1.0)",
+    "note": "Health-policy and science framing contributes to this placement; MBFC rates factual reporting separately"
+   }
+  ],
+  "straitstimes.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans right",
+    "url": "https://mediabias.news/sources",
+    "subject": "The Straits Times"
+   }
+  ],
+  "techcrunch.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Center",
+    "url": "https://www.allsides.com/news-source/techcrunch-media-bias",
+    "note": "Low/initial confidence; independent review; online written material"
+   },
+   {
+    "rater": "Ad Fontes",
+    "type": "bias and reliability",
+    "rating": "Middle bias (-0.47); Reliable, Analysis/Fact Reporting (45.30)",
+    "url": "https://adfontesmedia.com/techcrunch-bias-and-reliability/",
+    "note": "Article/show scale; source-level values aggregate sampled article/program ratings"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-3.6)",
+    "url": "https://mediabiasfactcheck.com/techcrunch/",
+    "factual_reporting": "High (0.9)",
+    "note": "Political/news story selection is scored separately from the tech beat; not a blanket technical-quality assessment"
+   }
+  ],
+  "theage.com.au": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-4.0)",
+    "url": "https://mediabiasfactcheck.com/the-age/",
+    "factual_reporting": "High",
+    "note": "MBFC’s rating is distinct from its parent-group relationship with Nine; MBN directory separately labels it leaning left"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "The Age"
+   }
+  ],
+  "thedailystar.net": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "The Daily Star"
+   }
+  ],
+  "theguardian.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Left (-3.50)",
+    "url": "https://www.allsides.com/news-source/guardian-media-bias",
+    "note": "Low/initial confidence; Nov 2024 editorial review; online written news, not all Guardian products"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-3.6)",
+    "url": "https://mediabiasfactcheck.com/the-guardian/",
+    "factual_reporting": "High (1.8)",
+    "note": "MBFC attributes its placement mainly to story selection; AllSides rates the online content Left, illustrating scope/method disagreement"
+   }
+  ],
+  "thehill.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Center / product-specific",
+    "url": "https://www.allsides.com/media-bias/verification-log",
+    "note": "AllSides records an Apr 2026 review; distinguish standard reporting, opinion columns and curated news products"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "The Hill"
+   }
+  ],
+  "thehindu.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center",
+    "url": "https://mediabiasfactcheck.com/the-hindu/",
+    "factual_reporting": "Mostly Factual",
+    "note": "MBFC mentions one failed fact check and a misleading claim; source-level category is not a judgement on every section"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources/the-hindu",
+    "subject": "The Hindu"
+   }
+  ],
+  "theregister.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Least Biased (-1.0)",
+    "url": "https://mediabiasfactcheck.com/the-register-uk/",
+    "factual_reporting": "High (1.0)",
+    "note": "MBFC notes minimal editorialising and a technology/news focus"
+   }
+  ],
+  "thesouthafrican.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-2.5)",
+    "url": "https://mediabiasfactcheck.com/the-south-african/",
+    "factual_reporting": "High (1.5)",
+    "note": "MBFC rates this separately from the Citizen; do not conflate South African publishers"
+   }
+  ],
+  "theverge.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Lean Left (-2.00)",
+    "url": "https://www.allsides.com/news-source/verge-media-bias",
+    "note": "Low/initial confidence; rating based on online politics section; not a technical-content quality score"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-2.8)",
+    "url": "https://mediabiasfactcheck.com/the-verge/",
+    "factual_reporting": "High (1.1)",
+    "note": "MBFC characterises political story selection as slightly left; technical coverage is generally well sourced"
+   }
+  ],
+  "thewest.com.au": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans right",
+    "url": "https://mediabias.news/sources",
+    "subject": "The West Australian"
+   }
+  ],
+  "timesofindia.indiatimes.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans right",
+    "url": "https://mediabias.news/sources",
+    "subject": "Times of India"
+   }
+  ],
+  "usatoday.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "USA Today"
+   }
+  ],
+  "vanguardngr.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-4.5)",
+    "url": "https://mediabiasfactcheck.com/vanguard-news-nigeria-bias/",
+    "factual_reporting": "Mixed (5.0)",
+    "note": "MBFC associates the rating with editorial positions and past misinformation"
+   }
+  ],
+  "washingtonpost.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Lean Left (News); separate Editorial Board rating",
+    "url": "https://www.allsides.com/media-bias/verification-log",
+    "note": "AllSides records an Aug 2026 News review and Jul 2026 Editorial Board review"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-3.6)",
+    "url": "https://mediabiasfactcheck.com/washington-post/",
+    "factual_reporting": "Mostly Factual (2.1)",
+    "note": "AllSides also labels its online news Lean Left; the opinion section should not be folded into the same estimate"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Leans left",
+    "url": "https://mediabias.news/sources",
+    "subject": "The Washington Post"
+   },
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Lean left",
+    "url": "https://told.news/news-sources/washingtonpost.com"
+   }
+  ],
+  "westernjournal.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Right",
+    "url": "https://mediabias.news/sources",
+    "subject": "The Western Journal"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Far Right",
+    "factual_reporting": "Mixed",
+    "url": "https://mediabiasfactcheck.com/western-journalism/",
+    "note": "Describes a record of failed fact-checks"
+   },
+   {
+    "rater": "Ad Fontes",
+    "type": "bias and reliability",
+    "rating": "Hyper-Partisan Right / Unreliable",
+    "url": "https://adfontesmedia.com/western-journal-bias-reliability/"
+   }
+  ],
+  "winnipegfreepress.com": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources/winnipeg-free-press",
+    "subject": "Winnipeg Free Press"
+   }
+  ],
+  "wired.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "Left (-4.07)",
+    "url": "https://www.allsides.com/news-source/wired-media-bias",
+    "note": "Medium confidence; editorial reviews Feb/Jan 2025 and blind survey Dec 2024"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Left-Center (-3.0)",
+    "url": "https://mediabiasfactcheck.com/wired-magazine/",
+    "factual_reporting": "High (1.0)",
+    "note": "AllSides rates WIRED Left; the two providers are classifying differently weighted samples/constructs"
+   }
+  ],
+  "wsj.com": [
+   {
+    "rater": "AllSides",
+    "type": "political leaning",
+    "rating": "News and Opinion separately rated",
+    "url": "https://www.allsides.com/media-bias/ratings",
+    "note": "The Wall Street Journal’s news and opinion pages are deliberately rated separately by AllSides"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right-Center",
+    "url": "https://mediabiasfactcheck.com/wall-street-journal/",
+    "factual_reporting": "Mostly Factual",
+    "note": "Keep news reporting distinct from editorial/opinion; separate AllSides ratings exist for WSJ News and Opinion"
+   },
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Lean right",
+    "url": "https://told.news/news-sources/wsj.com"
+   }
+  ],
+  "yle.fi": [
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Centre",
+    "url": "https://mediabias.news/sources",
+    "subject": "Yle"
+   }
+  ],
+  "zerohedge.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right",
+    "url": "https://mediabiasfactcheck.com/zero-hedge/",
+    "factual_reporting": "Low / questionable",
+    "note": "MBFC has raised conspiracy/pseudoscience and sourcing concerns; do not treat its political descriptor as the main issue"
+   },
+   {
+    "rater": "MediaBias.News index",
+    "type": "republished political-leaning index",
+    "rating": "Right",
+    "url": "https://mediabias.news/sources",
+    "subject": "Zero Hedge"
+   }
+  ],
+  "standard.co.uk": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Lean right",
+    "url": "https://told.news/news-sources/standard.co.uk"
+   }
+  ],
+  "thestar.com.my": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Lean right",
+    "url": "https://told.news/news-sources/thestar.com.my"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right",
+    "factual_reporting": "Mixed",
+    "url": "https://mediabiasfactcheck.com/the-star-malaysia/"
+   }
+  ],
+  "finextra.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Least Biased",
+    "factual_reporting": "High",
+    "url": "https://mediabiasfactcheck.com/finextra-bias/",
+    "note": "Rates language/sourcing, not commercial-model dependence"
+   }
+  ],
+  "newscientist.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Pro-Science",
+    "factual_reporting": "High",
+    "url": "https://mediabiasfactcheck.com/new-scientist/"
+   }
+  ],
+  "businessday.ng": [
+   {
+    "rater": "Media Power Monitor",
+    "type": "transparency verification",
+    "rating": "Limited — 1/6 layers verified",
+    "url": "https://mpmonitor.org/p/ng-m-00004-1/"
+   },
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Lean right",
+    "url": "https://told.news/news-sources/businessday.ng"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right-Center",
+    "factual_reporting": "Mixed",
+    "url": "https://mediabiasfactcheck.com/business-day-nigeria-bias/"
+   }
+  ],
+  "thenationalnews.com": [
+   {
+    "rater": "State Media Monitor",
+    "type": "ownership/control classification",
+    "rating": "Captured Public/State-Managed (parent IMI)",
+    "url": "https://statemediamonitor.com/2026/06/international-media-investments-imi/"
+   },
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right-Center",
+    "factual_reporting": "Mixed",
+    "url": "https://mediabiasfactcheck.com/the-national-uae/"
+   }
+  ],
+  "colombiaone.com": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Non-aligned",
+    "url": "https://told.news/news-sources/colombiaone.com"
+   }
+  ],
+  "nation.com.pk": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right-Center",
+    "factual_reporting": "Mixed",
+    "url": "https://mediabiasfactcheck.com/the-nation-pakistan/"
+   }
+  ],
+  "thepeninsulaqatar.com": [
+   {
+    "rater": "State Media Monitor",
+    "type": "ownership/control classification",
+    "rating": "Captured Private (parent Dar Al Sharq)",
+    "url": "https://statemediamonitor.com/2026/06/dar-al-sharq/"
+   }
+  ],
+  "universetoday.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Pro-Science",
+    "factual_reporting": "High",
+    "url": "https://mediabiasfactcheck.com/universe-today/"
+   }
+  ],
+  "euroweeklynews.com": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Non-aligned",
+    "url": "https://told.news/news-sources/euroweeklynews.com"
+   }
+  ],
+  "thisdaylive.com": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Lean right",
+    "url": "https://told.news/news-sources/thisdaylive.com"
+   }
+  ],
+  "cnbc.com": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Balanced",
+    "url": "https://told.news/news-sources/cnbc.com"
+   }
+  ],
+  "allafrica.com": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Balanced",
+    "url": "https://told.news/news-sources/allafrica.com"
+   }
+  ],
+  "asia.nikkei.com": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Lean right",
+    "url": "https://told.news/news-sources/asia.nikkei.com"
+   }
+  ],
+  "businesstimes.com.sg": [
+   {
+    "rater": "State Media Monitor",
+    "type": "ownership/funding classification",
+    "rating": "Ministerially influenced model; substantial public funding, no statutory independence safeguard",
+    "url": "https://statemediamonitor.com/singapore/"
+   }
+  ],
+  "euromaidanpress.com": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Lean left",
+    "url": "https://told.news/news-sources/euromaidanpress.com"
+   }
+  ],
+  "ukrinform.net": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "State-influenced",
+    "url": "https://told.news/news-sources/ukrinform.net"
+   }
+  ],
+  "kyivindependent.com": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Balanced",
+    "url": "https://told.news/news-sources/kyivindependent.com"
+   }
+  ],
+  "english.hani.co.kr": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Left",
+    "url": "https://told.news/news-sources/english.hani.co.kr"
+   }
+  ],
+  "sabcnews.com": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Balanced",
+    "url": "https://told.news/news-sources/sabcnews.com"
+   }
+  ],
+  "bworldonline.com": [
+   {
+    "rater": "TOLD",
+    "type": "structural editorial position",
+    "rating": "Balanced",
+    "url": "https://told.news/news-sources/bworldonline.com"
+   }
+  ],
+  "sott.net": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right Conspiracy-Pseudoscience",
+    "factual_reporting": "Low",
+    "url": "https://mediabiasfactcheck.com/signs-of-the-times-sott/"
+   }
+  ],
+  "fortune.com": [
+   {
+    "rater": "MBFC",
+    "type": "political leaning and factual reporting",
+    "rating": "Right-Center",
+    "factual_reporting": "High",
+    "url": "https://mediabiasfactcheck.com/fortune-magazine/"
+   }
+  ]
+ }
 }

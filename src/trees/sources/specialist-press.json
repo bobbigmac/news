@@ -1,611 +1,625 @@
 {
-  "id": "specialist-press",
-  "label": "Specialist Press",
-  "icon": "eurogamer.net",
-  "children": [
+ "id": "specialist-press",
+ "label": "Specialist Press",
+ "icon": "eurogamer.net",
+ "children": [
+  {
+   "id": "gaming-press",
+   "label": "Gaming Press",
+   "icon": "eurogamer.net",
+   "children": [
     {
-      "id": "gaming-press",
-      "label": "Gaming Press",
-      "icon": "eurogamer.net",
-      "children": [
-        {
-          "id": "gaming-press-major",
-          "label": "Major Gaming Outlets",
-          "icon": "eurogamer.net",
-          "children": [
-            {
-              "id": "eurogamer",
-              "label": "Eurogamer",
-              "icon": "eurogamer.net",
-              "sources": [
-                "eurogamer.net"
-              ]
-            },
-            {
-              "id": "kotaku",
-              "label": "Kotaku",
-              "icon": "kotaku.com",
-              "sources": [
-                "kotaku.com"
-              ]
-            },
-            {
-              "id": "ign",
-              "label": "IGN",
-              "icon": "ign.com",
-              "sources": [
-                "ign.com"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "gaming-press-networks",
-          "label": "Gaming Networks",
-          "icon": "gamespot.com",
-          "sources": [
-            "gamespot.com",
-            "pcgamer.com",
-            "gamesradar.com",
-            "polygon.com",
-            "vg247.com",
-            "gamerant.com",
-            "thegamer.com",
-            "gamepur.com",
-            "dualshockers.com",
-            "destructoid.com",
-            "nintendolife.com",
-            "rockpapershotgun.com",
-            "pcgamesn.com",
-            "gamesbeat.com",
-            "adventuregamers.com",
-            "pokde.net",
-            "yugatech.com",
-            "pushsquare.com",
-            "nintendoeverything.com",
-            "gameinformer.com",
-            "gamesindustry.biz",
-            "rpgfan.com",
-            "gematsu.com",
-            "nintendoworldreport.com"
-          ]
-        },
-        {
-          "id": "gaming-platforms",
-          "label": "Gaming Platforms",
-          "icon": "news.xbox.com",
-          "sources": [
-            "news.xbox.com",
-            "xbox.com",
-            "playstation.com",
-            "blog.playstation.com",
-            "nintendo.com"
-          ]
-        }
-      ]
+     "id": "gaming-press-major",
+     "label": "Major Gaming Outlets",
+     "icon": "eurogamer.net",
+     "children": [
+      {
+       "id": "eurogamer",
+       "label": "Eurogamer",
+       "icon": "eurogamer.net",
+       "sources": [
+        "eurogamer.net"
+       ]
+      },
+      {
+       "id": "kotaku",
+       "label": "Kotaku",
+       "icon": "kotaku.com",
+       "sources": [
+        "kotaku.com"
+       ]
+      },
+      {
+       "id": "ign",
+       "label": "IGN",
+       "icon": "ign.com",
+       "sources": [
+        "ign.com"
+       ]
+      }
+     ]
     },
     {
-      "id": "science-health-press",
-      "label": "Science & Health Press",
-      "icon": "phys.org",
-      "children": [
-        {
-          "id": "science-xpress",
-          "label": "Science X Network",
-          "icon": "phys.org",
-          "children": [
-            {
-              "id": "phys-org",
-              "label": "Phys.org",
-              "icon": "phys.org",
-              "sources": [
-                "phys.org"
-              ]
-            },
-            {
-              "id": "medical-xpress",
-              "label": "Medical Xpress",
-              "icon": "medicalxpress.com",
-              "sources": [
-                "medicalxpress.com"
-              ]
-            },
-            {
-              "id": "tech-xplore",
-              "label": "Tech Xplore",
-              "icon": "techxplore.com",
-              "sources": [
-                "techxplore.com"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "science-news-commentary",
-          "label": "Science News & Commentary",
-          "icon": "livescience.com",
-          "children": [
-            {
-              "id": "institutional-research-releases",
-              "label": "Institutional Research Releases",
-              "icon": "sciencedaily.com",
-              "sources": [
-                "sciencedaily.com",
-                "futurity.org"
-              ]
-            },
-            {
-              "id": "popular-science-news",
-              "label": "Popular Science News",
-              "icon": "sciencealert.com",
-              "sources": [
-                "sciencealert.com",
-                "psypost.org",
-                "sci.news",
-                "zmescience.com"
-              ]
-            },
-            {
-              "id": "science-criticism",
-              "label": "Science Criticism",
-              "icon": "sciencebasedmedicine.org",
-              "sources": [
-                "sciencebasedmedicine.org"
-              ]
-            },
-            {
-              "id": "science-magazines",
-              "label": "Science Magazines",
-              "icon": "newscientist.com",
-              "sources": [
-                "livescience.com",
-                "newscientist.com",
-                "scientificamerican.com",
-                "sciencenews.org",
-                "smithsonianmag.com",
-                "discovermagazine.com",
-                "nautil.us"
-              ]
-            },
-            {
-              "id": "space-physics",
-              "label": "Space & Physics",
-              "icon": "space.com",
-              "sources": [
-                "space.com",
-                "universetoday.com",
-                "physicsworld.com"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "science-journals",
-          "label": "Science Journals & Repositories",
-          "icon": "nature.com",
-          "sources": [
-            "nature.com",
-            "frontiersin.org",
-            "cell.com",
-            "science.org",
-            "scirp.org",
-            "plos.org",
-            "biorxiv.org",
-            "arxiv.org",
-            "jamanetwork.com",
-            "thelancet.com",
-            "nejm.org",
-            "bmj.com",
-            "royalsocietypublishing.org"
-          ]
-        },
-        {
-          "id": "health-medical",
-          "label": "Health & Medical",
-          "icon": "medpagetoday.com",
-          "sources": [
-            "medpagetoday.com",
-            "statnews.com",
-            "endpoints.com",
-            "genengnews.com",
-            "labiotech.eu",
-            "healthpolicy-watch.news",
-            "kffhealthnews.org",
-            "yourlocalepidemiologist.substack.com",
-            "health-e.org.za",
-            "cancerresearchuk.org",
-            "reutershealth.com",
-            "webmd.com",
-            "healthline.com",
-            "medscape.com",
-            "endpoints.news"
-          ]
-        }
-      ]
+     "id": "gaming-press-networks",
+     "label": "Gaming Networks",
+     "icon": "gamespot.com",
+     "sources": [
+      "gamespot.com",
+      "pcgamer.com",
+      "gamesradar.com",
+      "polygon.com",
+      "vg247.com",
+      "gamerant.com",
+      "thegamer.com",
+      "gamepur.com",
+      "dualshockers.com",
+      "destructoid.com",
+      "nintendolife.com",
+      "rockpapershotgun.com",
+      "pcgamesn.com",
+      "gamesbeat.com",
+      "adventuregamers.com",
+      "pokde.net",
+      "yugatech.com",
+      "pushsquare.com",
+      "nintendoeverything.com",
+      "gameinformer.com",
+      "gamesindustry.biz",
+      "rpgfan.com",
+      "gematsu.com",
+      "nintendoworldreport.com",
+      "aftermath.site"
+     ]
     },
     {
-      "id": "business-money",
-      "label": "Business & Money",
-      "icon": "ft.com",
-      "children": [
-        {
-          "id": "financial-national",
-          "label": "Financial Nationals",
-          "icon": "ft.com",
-          "children": [
-            {
-              "id": "financial-times",
-              "label": "Financial Times",
-              "icon": "ft.com",
-              "sources": [
-                "ft.com"
-              ]
-            },
-            {
-              "id": "business-newsweeklies",
-              "label": "Business Newsweeklies",
-              "icon": "concept:newspaper",
-              "sources": [
-                "economist.com",
-                "bloomberg.com",
-                "wsj.com",
-                "barrons.com",
-                "marketwatch.com"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "investor-advice",
-          "label": "Investor & Markets",
-          "icon": "fool.com",
-          "children": [
-            {
-              "id": "markets-data",
-              "label": "Markets Data",
-              "icon": "marketbeat.com",
-              "sources": [
-                "marketbeat.com",
-                "nasdaq.com",
-                "seekingalpha.com",
-                "netinterest.co",
-                "investing.com"
-              ]
-            },
-            {
-              "id": "retail-investor",
-              "label": "Retail Investor",
-              "icon": "concept:finance",
-              "sources": [
-                "fool.com",
-                "fool.ca",
-                "fool.com.au",
-                "fool.co.uk",
-                "nairametrics.com",
-                "moneyweb.co.za",
-                "macrobusiness.com.au",
-                "stockhead.com.au",
-                "benzinga.com"
-              ]
-            },
-            {
-              "id": "business-recorder",
-              "label": "Business Recorder",
-              "icon": "brecorder.com",
-              "sources": [
-                "brecorder.com"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "business-specialist",
-          "label": "Business Specialist",
-          "icon": "finextra.com",
-          "children": [
-            {
-              "id": "cityam",
-              "label": "City A.M.",
-              "icon": "cityam.com",
-              "sources": [
-                "cityam.com"
-              ]
-            },
-            {
-              "id": "business-insider-network",
-              "label": "Business & Startup Digital",
-              "icon": "businessinsider.com",
-              "sources": [
-                "businessinsider.com",
-                "insider.com",
-                "morningbrew.com",
-                "finextra.com",
-                "gfmag.com",
-                "pymnts.com",
-                "inc42.com",
-                "yourstory.com",
-                "startupdaily.net",
-                "fintechnews.sg",
-                "e27.co"
-              ]
-            },
-            {
-              "id": "business-magazines",
-              "label": "Business Magazines",
-              "icon": "inc.com",
-              "sources": [
-                "inc.com"
-              ]
-            },
-            {
-              "id": "european-business-analysis",
-              "label": "European Business Analysis",
-              "icon": "handelsblatt.com",
-              "sources": [
-                "handelsblatt.com",
-                "taxfoundation.org",
-                "mckinsey.com"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "regional-business",
-          "label": "Regional Business",
-          "icon": "businessday.ng",
-          "sources": [
-            "businessday.ng",
-            "businesstimes.com.sg",
-            "thehindubusinessline.com",
-            "business-standard.com",
-            "businesslive.co.za",
-            "engineeringnews.co.za",
-            "miningweekly.com",
-            "braziljournal.com",
-            "elfinanciero.com.mx",
-            "expansion.com",
-            "ilsole24ore.com",
-            "businesskorea.co.kr"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "technology-press",
-      "label": "Technology Press",
-      "icon": "theverge.com",
-      "children": [
-        {
-          "id": "consumer-tech",
-          "label": "Consumer Tech",
-          "icon": "theverge.com",
-          "children": [
-            {
-              "id": "tech-analysis",
-              "label": "Tech Analysis",
-              "icon": "theverge.com",
-              "sources": [
-                "theverge.com",
-                "wired.com",
-                "arstechnica.com",
-                "techcrunch.com",
-                "theregister.com",
-                "zdnet.com"
-              ]
-            },
-            {
-              "id": "consumer-gadgets",
-              "label": "Consumer Gadgets",
-              "icon": "techradar.com",
-              "sources": [
-                "techradar.com",
-                "engadget.com",
-                "cnet.com",
-                "digitaltrends.com",
-                "bgr.com"
-              ]
-            },
-            {
-              "id": "social-tech",
-              "label": "Social Tech",
-              "icon": "concept:social",
-              "sources": [
-                "mashable.com",
-                "in.mashable.com",
-                "sea.mashable.com",
-                "lifehacker.com",
-                "gizmodo.com"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "hardware-components",
-          "label": "Hardware & Components",
-          "icon": "tomshardware.com",
-          "children": [
-            {
-              "id": "notebookcheck",
-              "label": "Notebookcheck",
-              "icon": "notebookcheck.net",
-              "sources": [
-                "notebookcheck.net"
-              ]
-            },
-            {
-              "id": "enthusiast-hardware",
-              "label": "Enthusiast Hardware",
-              "icon": "tweaktown.com",
-              "sources": [
-                "tweaktown.com",
-                "kitguru.net",
-                "hothardware.com",
-                "techspot.com"
-              ]
-            },
-            {
-              "id": "hardware-guides",
-              "label": "Hardware Guides",
-              "icon": "concept:hardware",
-              "sources": [
-                "tomshardware.com",
-                "tomsguide.com",
-                "pcmag.com",
-                "wccftech.com",
-                "hardwarezone.com.sg",
-                "extremetech.com",
-                "anandtech.com"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "mobile-software",
-          "label": "Mobile & Software",
-          "icon": "concept:mobile",
-          "sources": [
-            "androidauthority.com",
-            "androidheadlines.com",
-            "9to5google.com",
-            "9to5mac.com",
-            "macrumors.com",
-            "macstories.net",
-            "apple.news",
-            "techdows.com",
-            "bleepingcomputer.com",
-            "windowscentral.com",
-            "thewindowsclub.com",
-            "mspoweruser.com",
-            "ghacks.net"
-          ]
-        },
-        {
-          "id": "industry-b2b",
-          "label": "Industry & B2B",
-          "icon": "concept:industry",
-          "children": [
-            {
-              "id": "industry-dive",
-              "label": "Industry Dive",
-              "icon": "retaildive.com",
-              "sources": [
-                "bankingdive.com",
-                "retaildive.com",
-                "restaurantdive.com",
-                "grocerydive.com",
-                "marketingdive.com",
-                "supplychaindive.com",
-                "truckingdive.com",
-                "hrdive.com",
-                "manufacturingdive.com",
-                "constructiondive.com",
-                "biopharmadive.com",
-                "healthcaredive.com",
-                "medtechdive.com",
-                "pharmavoice.com",
-                "utilitydive.com",
-                "educationdive.com",
-                "smartcitiesdive.com",
-                "wastedive.com",
-                "cybersecuritydive.com",
-                "legaldive.com"
-              ]
-            },
-            {
-              "id": "b2b-specialist",
-              "label": "B2B Specialist",
-              "icon": "retail-insider.com",
-              "sources": [
-                "retail-insider.com",
-                "fashionunited.uk",
-                "marketingweek.com",
-                "prolificnorth.co.uk",
-                "adweek.com",
-                "digiday.com",
-                "martech.org",
-                "cio.com",
-                "csoonline.com",
-                "thefastmode.com",
-                "risk.net",
-                "complianceweek.com",
-                "thenationallawreview.com",
-                "livemint.com"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "entertainment-culture",
-      "label": "Entertainment & Culture",
-      "icon": "concept:entertainment",
-      "children": [
-        {
-          "id": "entertainment-trade",
-          "label": "Entertainment Trade",
-          "icon": "variety.com",
-          "sources": [
-            "variety.com",
-            "deadline.com",
-            "hollywoodreporter.com",
-            "indiewire.com",
-            "thewrap.com",
-            "screenrant.com",
-            "comingsoon.net",
-            "comicbook.com",
-            "superherohype.com",
-            "decider.com",
-            "vulture.com",
-            "pitchfork.com",
-            "sportico.com"
-          ]
-        },
-        {
-          "id": "music-culture",
-          "label": "Music & Culture",
-          "icon": "billboard.com",
-          "sources": [
-            "billboard.com",
-            "rollingstone.com",
-            "nme.com",
-            "atwoodmagazine.com",
-            "soompi.com",
-            "seoulbeats.com",
-            "bustle.com",
-            "hypebeast.com",
-            "marieclaire.com",
-            "marieclaire.co.uk",
-            "wwd.com",
-            "footwearnews.com"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sports-press",
-      "label": "Sports Press",
-      "icon": "concept:sports",
-      "sources": [
-        "espn.com",
-        "espnfc.com",
-        "andscape.com",
-        "sportico.com",
-        "worldsoccertalk.com",
-        "frontofficesports.com",
-        "yardbarker.com",
-        "givemesport.com",
-        "cbssports.com",
-        "nbcsports.com",
-        "skysports.com",
-        "sbnation.com",
-        "sports.yahoo.com",
-        "sportsgrid.com",
-        "sportsmole.co.uk",
-        "planetfootball.com",
-        "90min.com",
-        "theanalyst.com"
-      ]
+     "id": "gaming-platforms",
+     "label": "Gaming Platforms",
+     "icon": "news.xbox.com",
+     "sources": [
+      "news.xbox.com",
+      "xbox.com",
+      "playstation.com",
+      "blog.playstation.com",
+      "nintendo.com"
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "science-health-press",
+   "label": "Science & Health Press",
+   "icon": "phys.org",
+   "children": [
+    {
+     "id": "science-xpress",
+     "label": "Science X Network",
+     "icon": "phys.org",
+     "children": [
+      {
+       "id": "phys-org",
+       "label": "Phys.org",
+       "icon": "phys.org",
+       "sources": [
+        "phys.org"
+       ]
+      },
+      {
+       "id": "medical-xpress",
+       "label": "Medical Xpress",
+       "icon": "medicalxpress.com",
+       "sources": [
+        "medicalxpress.com"
+       ]
+      },
+      {
+       "id": "tech-xplore",
+       "label": "Tech Xplore",
+       "icon": "techxplore.com",
+       "sources": [
+        "techxplore.com"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "science-news-commentary",
+     "label": "Science News & Commentary",
+     "icon": "livescience.com",
+     "children": [
+      {
+       "id": "institutional-research-releases",
+       "label": "Institutional Research Releases",
+       "icon": "sciencedaily.com",
+       "sources": [
+        "sciencedaily.com",
+        "futurity.org"
+       ]
+      },
+      {
+       "id": "popular-science-news",
+       "label": "Popular Science News",
+       "icon": "sciencealert.com",
+       "sources": [
+        "sciencealert.com",
+        "psypost.org",
+        "sci.news",
+        "zmescience.com"
+       ]
+      },
+      {
+       "id": "science-criticism",
+       "label": "Science Criticism",
+       "icon": "sciencebasedmedicine.org",
+       "sources": [
+        "sciencebasedmedicine.org"
+       ]
+      },
+      {
+       "id": "science-magazines",
+       "label": "Science Magazines",
+       "icon": "newscientist.com",
+       "sources": [
+        "livescience.com",
+        "newscientist.com",
+        "scientificamerican.com",
+        "sciencenews.org",
+        "smithsonianmag.com",
+        "discovermagazine.com",
+        "nautil.us",
+        "thetransmitter.org"
+       ]
+      },
+      {
+       "id": "space-physics",
+       "label": "Space & Physics",
+       "icon": "space.com",
+       "sources": [
+        "space.com",
+        "universetoday.com",
+        "physicsworld.com"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "science-journals",
+     "label": "Science Journals & Repositories",
+     "icon": "nature.com",
+     "sources": [
+      "nature.com",
+      "frontiersin.org",
+      "cell.com",
+      "science.org",
+      "scirp.org",
+      "plos.org",
+      "biorxiv.org",
+      "arxiv.org",
+      "jamanetwork.com",
+      "thelancet.com",
+      "nejm.org",
+      "bmj.com",
+      "royalsocietypublishing.org"
+     ]
+    },
+    {
+     "id": "health-medical",
+     "label": "Health & Medical",
+     "icon": "medpagetoday.com",
+     "sources": [
+      "medpagetoday.com",
+      "statnews.com",
+      "endpoints.com",
+      "genengnews.com",
+      "labiotech.eu",
+      "healthpolicy-watch.news",
+      "kffhealthnews.org",
+      "yourlocalepidemiologist.substack.com",
+      "health-e.org.za",
+      "cancerresearchuk.org",
+      "reutershealth.com",
+      "webmd.com",
+      "healthline.com",
+      "medscape.com",
+      "endpoints.news",
+      "biomedviews.com"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "business-money",
+   "label": "Business & Money",
+   "icon": "ft.com",
+   "children": [
+    {
+     "id": "financial-national",
+     "label": "Financial Nationals",
+     "icon": "ft.com",
+     "children": [
+      {
+       "id": "financial-times",
+       "label": "Financial Times",
+       "icon": "ft.com",
+       "sources": [
+        "ft.com"
+       ]
+      },
+      {
+       "id": "business-newsweeklies",
+       "label": "Business Newsweeklies",
+       "icon": "concept:newspaper",
+       "sources": [
+        "economist.com",
+        "bloomberg.com",
+        "wsj.com",
+        "barrons.com",
+        "marketwatch.com"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "investor-advice",
+     "label": "Investor & Markets",
+     "icon": "fool.com",
+     "children": [
+      {
+       "id": "markets-data",
+       "label": "Markets Data",
+       "icon": "marketbeat.com",
+       "sources": [
+        "marketbeat.com",
+        "nasdaq.com",
+        "seekingalpha.com",
+        "netinterest.co",
+        "investing.com"
+       ]
+      },
+      {
+       "id": "retail-investor",
+       "label": "Retail Investor",
+       "icon": "concept:finance",
+       "sources": [
+        "fool.com",
+        "fool.ca",
+        "fool.com.au",
+        "fool.co.uk",
+        "nairametrics.com",
+        "moneyweb.co.za",
+        "macrobusiness.com.au",
+        "stockhead.com.au",
+        "benzinga.com"
+       ]
+      },
+      {
+       "id": "business-recorder",
+       "label": "Business Recorder",
+       "icon": "brecorder.com",
+       "sources": [
+        "brecorder.com"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "business-specialist",
+     "label": "Business Specialist",
+     "icon": "finextra.com",
+     "children": [
+      {
+       "id": "cityam",
+       "label": "City A.M.",
+       "icon": "cityam.com",
+       "sources": [
+        "cityam.com"
+       ]
+      },
+      {
+       "id": "business-insider-network",
+       "label": "Business & Startup Digital",
+       "icon": "businessinsider.com",
+       "sources": [
+        "businessinsider.com",
+        "insider.com",
+        "morningbrew.com",
+        "finextra.com",
+        "gfmag.com",
+        "pymnts.com",
+        "inc42.com",
+        "yourstory.com",
+        "startupdaily.net",
+        "fintechnews.sg",
+        "e27.co"
+       ]
+      },
+      {
+       "id": "business-magazines",
+       "label": "Business Magazines",
+       "icon": "inc.com",
+       "sources": [
+        "inc.com",
+        "fortune.com",
+        "fastcompany.com"
+       ]
+      },
+      {
+       "id": "european-business-analysis",
+       "label": "European Business Analysis",
+       "icon": "handelsblatt.com",
+       "sources": [
+        "handelsblatt.com",
+        "taxfoundation.org",
+        "mckinsey.com"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "regional-business",
+     "label": "Regional Business",
+     "icon": "businessday.ng",
+     "sources": [
+      "businessday.ng",
+      "businesstimes.com.sg",
+      "thehindubusinessline.com",
+      "business-standard.com",
+      "businesslive.co.za",
+      "engineeringnews.co.za",
+      "miningweekly.com",
+      "braziljournal.com",
+      "elfinanciero.com.mx",
+      "expansion.com",
+      "ilsole24ore.com",
+      "businesskorea.co.kr"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "technology-press",
+   "label": "Technology Press",
+   "icon": "theverge.com",
+   "children": [
+    {
+     "id": "consumer-tech",
+     "label": "Consumer Tech",
+     "icon": "theverge.com",
+     "children": [
+      {
+       "id": "tech-analysis",
+       "label": "Tech Analysis",
+       "icon": "theverge.com",
+       "sources": [
+        "theverge.com",
+        "wired.com",
+        "arstechnica.com",
+        "techcrunch.com",
+        "theregister.com",
+        "zdnet.com",
+        "decrypt.co"
+       ]
+      },
+      {
+       "id": "consumer-gadgets",
+       "label": "Consumer Gadgets",
+       "icon": "techradar.com",
+       "sources": [
+        "techradar.com",
+        "engadget.com",
+        "cnet.com",
+        "digitaltrends.com",
+        "bgr.com",
+        "stuff.tv"
+       ]
+      },
+      {
+       "id": "social-tech",
+       "label": "Social Tech",
+       "icon": "concept:social",
+       "sources": [
+        "mashable.com",
+        "in.mashable.com",
+        "sea.mashable.com",
+        "lifehacker.com",
+        "gizmodo.com"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "hardware-components",
+     "label": "Hardware & Components",
+     "icon": "tomshardware.com",
+     "children": [
+      {
+       "id": "notebookcheck",
+       "label": "Notebookcheck",
+       "icon": "notebookcheck.net",
+       "sources": [
+        "notebookcheck.net"
+       ]
+      },
+      {
+       "id": "enthusiast-hardware",
+       "label": "Enthusiast Hardware",
+       "icon": "tweaktown.com",
+       "sources": [
+        "tweaktown.com",
+        "kitguru.net",
+        "hothardware.com",
+        "techspot.com"
+       ]
+      },
+      {
+       "id": "hardware-guides",
+       "label": "Hardware Guides",
+       "icon": "concept:hardware",
+       "sources": [
+        "tomshardware.com",
+        "tomsguide.com",
+        "pcmag.com",
+        "wccftech.com",
+        "hardwarezone.com.sg",
+        "extremetech.com",
+        "anandtech.com"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "mobile-software",
+     "label": "Mobile & Software",
+     "icon": "concept:mobile",
+     "sources": [
+      "androidauthority.com",
+      "androidheadlines.com",
+      "9to5google.com",
+      "9to5mac.com",
+      "macrumors.com",
+      "macstories.net",
+      "apple.news",
+      "techdows.com",
+      "bleepingcomputer.com",
+      "windowscentral.com",
+      "thewindowsclub.com",
+      "mspoweruser.com",
+      "ghacks.net"
+     ]
+    },
+    {
+     "id": "industry-b2b",
+     "label": "Industry & B2B",
+     "icon": "concept:industry",
+     "children": [
+      {
+       "id": "industry-dive",
+       "label": "Industry Dive",
+       "icon": "retaildive.com",
+       "sources": [
+        "bankingdive.com",
+        "retaildive.com",
+        "restaurantdive.com",
+        "grocerydive.com",
+        "marketingdive.com",
+        "supplychaindive.com",
+        "truckingdive.com",
+        "hrdive.com",
+        "manufacturingdive.com",
+        "constructiondive.com",
+        "biopharmadive.com",
+        "healthcaredive.com",
+        "medtechdive.com",
+        "pharmavoice.com",
+        "utilitydive.com",
+        "educationdive.com",
+        "smartcitiesdive.com",
+        "wastedive.com",
+        "cybersecuritydive.com",
+        "legaldive.com"
+       ]
+      },
+      {
+       "id": "b2b-specialist",
+       "label": "B2B Specialist",
+       "icon": "retail-insider.com",
+       "sources": [
+        "retail-insider.com",
+        "fashionunited.uk",
+        "marketingweek.com",
+        "prolificnorth.co.uk",
+        "adweek.com",
+        "digiday.com",
+        "martech.org",
+        "cio.com",
+        "csoonline.com",
+        "thefastmode.com",
+        "risk.net",
+        "complianceweek.com",
+        "thenationallawreview.com",
+        "livemint.com",
+        "modernretail.co",
+        "freightwaves.com",
+        "mining.com",
+        "oilprice.com",
+        "businessoffashion.com"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "entertainment-culture",
+   "label": "Entertainment & Culture",
+   "icon": "concept:entertainment",
+   "children": [
+    {
+     "id": "entertainment-trade",
+     "label": "Entertainment Trade",
+     "icon": "variety.com",
+     "sources": [
+      "variety.com",
+      "deadline.com",
+      "hollywoodreporter.com",
+      "indiewire.com",
+      "thewrap.com",
+      "screenrant.com",
+      "comingsoon.net",
+      "comicbook.com",
+      "superherohype.com",
+      "decider.com",
+      "vulture.com",
+      "pitchfork.com",
+      "sportico.com",
+      "radiotimes.com"
+     ]
+    },
+    {
+     "id": "music-culture",
+     "label": "Music & Culture",
+     "icon": "billboard.com",
+     "sources": [
+      "billboard.com",
+      "rollingstone.com",
+      "nme.com",
+      "atwoodmagazine.com",
+      "soompi.com",
+      "seoulbeats.com",
+      "bustle.com",
+      "hypebeast.com",
+      "marieclaire.com",
+      "marieclaire.co.uk",
+      "wwd.com",
+      "footwearnews.com"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sports-press",
+   "label": "Sports Press",
+   "icon": "concept:sports",
+   "sources": [
+    "espn.com",
+    "espnfc.com",
+    "andscape.com",
+    "sportico.com",
+    "worldsoccertalk.com",
+    "frontofficesports.com",
+    "yardbarker.com",
+    "givemesport.com",
+    "cbssports.com",
+    "nbcsports.com",
+    "skysports.com",
+    "sbnation.com",
+    "sports.yahoo.com",
+    "sportsgrid.com",
+    "sportsmole.co.uk",
+    "planetfootball.com",
+    "90min.com",
+    "theanalyst.com",
+    "sempremilan.com"
+   ]
+  }
+ ]
 }

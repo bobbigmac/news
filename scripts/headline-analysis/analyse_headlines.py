@@ -34,6 +34,7 @@ from headline_measurement_schema import (
     VALUE_METRICS,
 )
 from headline_measurement_tunings import SOURCE_SUFFIX_ALIASES
+from headline_truecasing import parse_inputs
 from headline_corpus_structure import (
     add_within_source_template_proxy,
     crossfit_expected,
@@ -240,8 +241,22 @@ def main():
         nlp=spacy.blank('en')
     event_lemmas=build_event_lemma_pool(nlp) if 'tagger' in nlp.pipe_names and 'lemmatizer' in nlp.pipe_names else None
     titles=df['headline'].tolist()
-    docs=list(nlp.pipe(titles,batch_size=int(cfg.get('spacy_batch_size',500))))
-    det=pd.DataFrame([detect_one(title,nlp,doc=doc,event_lemmas=event_lemmas) for title,doc in zip(titles,docs)])
+    # Title-case headlines are parsed twice: once as written and once after statistical
+    # truecasing. The truecased parse is primary for title-case rows because POS/NER
+    # evidence is unreliable when every content word is capitalised; the original parse
+    # remains as a secondary source of verbal evidence. Surface regexes always run on
+    # the original string.
+    variants=[parse_inputs(title) for title in titles]
+    flat_inputs=[variant for row in variants for variant in row]
+    flat_docs=list(nlp.pipe(flat_inputs,batch_size=int(cfg.get('spacy_batch_size',500))))
+    doc_iter=iter(flat_docs)
+    doc_rows=[[next(doc_iter) for _ in row] for row in variants]
+    truecased_rows=sum(1 for row in variants if len(row)>1)
+    print(f'title-case rows dual-parsed after truecasing: {truecased_rows}/{len(titles)}',flush=True)
+    det=pd.DataFrame([
+        detect_one(title,nlp,doc=row[-1],event_lemmas=event_lemmas,extra_docs=row[:-1])
+        for title,row in zip(titles,doc_rows)
+    ])
     df=pd.concat([df.reset_index(drop=True),det],axis=1)
     df['strong_evidence_surface']=df['evidence_surface_strength'].ge(4).astype(int)
     df['research_evidence_surface']=df['evidence_surface_strength'].eq(3).astype(int)

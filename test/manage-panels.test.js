@@ -72,8 +72,8 @@ describe('management panel rows', () => {
     const rows = [...document.querySelectorAll('#source-prefs > .setting-row')];
     expect(rows).toHaveLength(2);
     expect(rows[0].querySelector('.manage-name').textContent).toBe('BBC');
-    expect(rows[0].querySelector('.manage-count').textContent).toBe('2 stories in pool');
-    expect(rows[1].querySelector('.manage-count').textContent).toBe('1 story in pool');
+    expect(rows[0].querySelector('.manage-count').textContent).toMatch(/^2 articles, quality \d+\.\d$/);
+    expect(rows[1].querySelector('.manage-count').textContent).toMatch(/^1 article, quality \d+\.\d$/);
     for (const row of rows) expect(row.querySelectorAll('.setting-row')).toHaveLength(0);
   });
 

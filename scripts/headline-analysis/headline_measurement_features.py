@@ -15,22 +15,25 @@ from headline_language_features import (
     spacy_place_anchor,
 )
 
-def detect_one(title: str, nlp, doc=None, event_lemmas=None):
+def detect_one(title: str, nlp, doc=None, event_lemmas=None, extra_docs=()):
     doc=doc if doc is not None else nlp(title)
     tokens=[t for t in doc if not t.is_space]
     words=[t for t in tokens if t.is_alpha]
+    # Casing diagnostics must use the original string: the primary parse input is
+    # truecased for title-case headlines, which deliberately erases casing evidence.
+    string_tokens=re.findall(r"\b[A-Za-z][A-Za-z'’\-]*\b",title)
     cap_tokens=[]
-    for i,t in enumerate(tokens):
-        if t.text.isupper() and len(t.text)>1:
-            cap_tokens.append(t.text)
-        elif t.text[:1].isupper() and t.text[1:].islower() and i>0:
-            cap_tokens.append(t.text)
+    for i,text in enumerate(string_tokens):
+        if text.isupper() and len(text)>1:
+            cap_tokens.append(text)
+        elif text[:1].isupper() and text[1:].islower() and i>0:
+            cap_tokens.append(text)
     cap_multi = len(re.findall(r"\b[A-Z][a-z]+(?:\s+(?:of|the|and|[A-Z][a-z]+)){1,4}\b", title))
     acronym = len(re.findall(r"\b[A-Z]{2,}(?:\d+)?\b", title))
     ner_named = any(ent.label_ in {'PERSON','ORG','GPE','LOC','PRODUCT','EVENT','WORK_OF_ART','NORP','LAW','FAC'} for ent in getattr(doc,'ents',[]))
     named_entity = int(cap_multi>0 or acronym>0 or ORG_HINT.search(title) is not None or ner_named)
 
-    event_action = detect_event_action(title,doc=doc,event_lemmas=event_lemmas)
+    event_action = detect_event_action(title,doc=doc,event_lemmas=event_lemmas,extra_docs=extra_docs)
     numeric = quantified_specificity_score(title,doc=doc)
     time_place = spacy_place_anchor(title,doc=doc)
     causal = int(CAUSAL.search(title) is not None)

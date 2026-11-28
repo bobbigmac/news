@@ -1,13 +1,11 @@
 /* Split from measured-sources.css: source cards, chips and scores. */
 .measured-source-card {
-  break-inside: avoid;
   background: var(--paper);
   border: 1px solid var(--rule);
-  margin-bottom: 0.45rem;
 }
 
 .measured-source-card[open] {
-  column-span: all;
+  grid-column: 1 / -1;
 }
 
 .measured-card-head {
@@ -40,7 +38,8 @@
   min-width: 2.1rem;
   font-family: var(--sans);
   font-size: 0.72rem;
-  color: var(--muted);
+  font-weight: 700;
+  color: var(--ink);
   text-align: right;
 }
 

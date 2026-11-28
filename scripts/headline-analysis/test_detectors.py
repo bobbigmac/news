@@ -4,6 +4,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import spacy
 from analyse_headlines import detect_one, build_event_lemma_pool, strip_source_boilerplate_suffix
+from headline_truecasing import parse_inputs
 
 nlp = spacy.load('en_core_web_sm', disable=['parser'])
 event_lemmas = build_event_lemma_pool(nlp)
@@ -166,7 +167,7 @@ cases = [
     ("Video game shows trouble in gameplay footage",
      {'evidence_provenance':0.0,'evidence_surface_strength':0}),
     ("These Are The 11 Best Romances BioWare Ever Made",
-     {'explicit_curiosity_gap_risk':0.48664,'low_explicit_curiosity_gap':0.51336,'listicle_withholding_surface':1}),
+     {'explicit_curiosity_gap_risk':0.4674448,'low_explicit_curiosity_gap':0.5325552,'listicle_withholding_surface':1}),
     ("When will we know the results?",
      {'explicit_curiosity_gap_risk':0.6244192,'low_explicit_curiosity_gap':0.3755808,'withheld_timing_surface':1,'vague_reference_surface':1}),
     ("How online predator duped 70 girls into believing he loved them",
@@ -175,9 +176,22 @@ cases = [
      {'explicit_curiosity_gap_risk':0.38,'low_explicit_curiosity_gap':0.62,'listicle_withholding_surface':1,'evidence_provenance':0.0}),
     ("Why the new housing rules matter for renters",
      {'explicit_curiosity_gap_risk':0.1,'low_explicit_curiosity_gap':0.9}),
+    ("Nintendo's Switch 2 Sales Fell 37 Percent This Year, But Game Sales Are Growing Fast",
+     {'event_clarity':1,'quantified_specificity':1}),
+    ("PlayStation 5 Crosses 100 Million Sold Milestone Daily Fix",
+     {'event_clarity':1,'quantified_specificity':1}),
+    ("Acting Legend Sir Patrick Stewart Has Died At 86",
+     {'event_clarity':1,'quantified_specificity':1}),
+    ("Union Vote Fails In Landslide At GTA 6 Studio Rockstar Games As 75 Percent Of Devs Vote No",
+     {'event_clarity':1,'quantified_specificity':1}),
 ]
+def production_detect(title):
+    variants = parse_inputs(title)
+    docs = list(nlp.pipe(variants))
+    return detect_one(title, nlp, doc=docs[-1], event_lemmas=event_lemmas, extra_docs=docs[:-1])
+
 for title, expected in cases:
-    got = detect_one(title, nlp, event_lemmas=event_lemmas)
+    got = production_detect(title)
     for key, value in expected.items():
         assert abs(float(got[key]) - float(value)) < 1e-6, (title, key, got[key], value)
 suffix_cases = [

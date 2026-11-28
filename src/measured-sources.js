@@ -171,7 +171,8 @@ function renderSourceCard(source) {
   if (family) subtitleParts.push(family);
   if (source.grouped && source.members?.length > 1) subtitleParts.push(`${source.members.length} measured together`);
   subtitleParts.push(`${source.headlines} headlines`);
-  if (source.headlines < 50) subtitleParts.push('small sample');
+  if (source.stableSample === false) subtitleParts.push('small sample — unstable');
+  else if (source.headlines < 50) subtitleParts.push('small sample');
   title.appendChild(el('p', 'measured-subtitle', subtitleParts.join(' · ')));
   summary.appendChild(title);
   summary.appendChild(el('span', `band-chip band-${source.band}`, source.bandLabel.replace(' measured headline value', '')));
@@ -186,28 +187,54 @@ function renderSourceCard(source) {
   return card;
 }
 
+function renderSection(main, { key, label, summary, sources }) {
+  if (!sources.length) return;
+  const section = el('section', 'measurement-band');
+  section.dataset.band = key;
+  const head = el('header', 'band-head');
+  const titleWrap = el('div');
+  const title = el('h2', '', label);
+  const scores = sources.map(source => source.measuredQuality);
+  title.appendChild(el('span', 'band-range', `${Math.min(...scores).toFixed(2)}–${Math.max(...scores).toFixed(2)}`));
+  titleWrap.appendChild(title);
+  titleWrap.appendChild(el('p', '', summary));
+  head.appendChild(titleWrap);
+  head.appendChild(el('span', 'band-count', `${sources.length} sources`));
+  section.appendChild(head);
+  const list = el('div', 'measured-source-list');
+  for (const source of sources) {
+    list.appendChild(renderSourceCard(source));
+  }
+  section.appendChild(list);
+  main.appendChild(section);
+}
+
 function render() {
   const main = document.getElementById('measured-main');
   main.textContent = '';
-  for (const band of MEASURED_SOURCES.bands) {
-    const section = el('section', 'measurement-band');
-    section.dataset.band = band.key;
-    const head = el('header', 'band-head');
-    const titleWrap = el('div');
-    const title = el('h2', '', band.label);
-    title.appendChild(el('span', 'band-range', band.rangeText));
-    titleWrap.appendChild(title);
-    titleWrap.appendChild(el('p', '', band.summary));
-    head.appendChild(titleWrap);
-    head.appendChild(el('span', 'band-count', `${band.sourceCount} sources`));
-    section.appendChild(head);
-    const list = el('div', 'measured-source-list');
-    for (const source of MEASURED_SOURCES.sources.filter(item => item.band === band.key)) {
-      list.appendChild(renderSourceCard(source));
-    }
-    section.appendChild(list);
-    main.appendChild(section);
-  }
+  const ordered = [...MEASURED_SOURCES.sources].sort((a, b) => a.rank - b.rank);
+  const edge = Math.min(20, Math.floor(ordered.length / 2));
+  const top = ordered.slice(0, edge);
+  const bottom = ordered.slice(ordered.length - edge);
+  const middle = ordered.slice(edge, ordered.length - edge);
+  renderSection(main, {
+    key: 'top-twenty',
+    label: 'Top twenty measured headline value',
+    summary: 'The highest-scoring sources in the corpus ordering: headlines most often combine concrete information with comparatively restrained packaging.',
+    sources: top,
+  });
+  renderSection(main, {
+    key: 'middle',
+    label: 'Middle of the measured ordering',
+    summary: 'Every other measured source with enough pooled headlines to score, in score order. Small samples are marked and carry wider uncertainty intervals in their detail view.',
+    sources: middle,
+  });
+  renderSection(main, {
+    key: 'bottom-twenty',
+    label: 'Bottom twenty measured headline value',
+    summary: 'The lowest-scoring sources in the corpus ordering: headlines comparatively thin on concrete information, heavier on attention packaging, or both.',
+    sources: bottom,
+  });
 }
 
 function bindSearch() {
