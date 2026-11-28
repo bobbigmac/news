@@ -118,6 +118,9 @@
         ],
         "reason": "Page Six is part of the New York Post publishing operation."
       }
+    ],
+    "measurement_grouping_notes": [
+      "unlike-owned Fox-branded local affiliates are not grouped with Fox News because the cache holds only a few rows each and the stations have different owners"
     ]
   }
 }

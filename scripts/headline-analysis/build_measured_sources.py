@@ -8,82 +8,11 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).parent))
-from analyse_headlines import REPO_ROOT, COMPOSITE_DELIVERY_METRICS
+from measured_source_schema import AXES, BAND_META, PROFILE_FIELDS
 
-DISPLAY_OVERRIDES = {
-    'sports.yahoo.com': 'Yahoo Sports',
-    'channelnewsasia.com': 'CNA',
-    'timesofindia.indiatimes.com': 'Times of India',
-    'obits.oregonlive.com': 'OregonLive obituaries',
-    'seekingalpha.com': 'Seeking Alpha',
-    'inc.com': 'Inc.',
-    'indianexpress.com': 'The Indian Express',
-    'dailytimes.com.pk': 'Daily Times',
-    'freemalaysiatoday.com': 'Free Malaysia Today',
-}
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
-AXES = [
-    {'key':'event_clarity','metricKey':'event_clarity','label':'Events & actions','shortLabel':'Events','kind':'delivery','description':'The headline says something happened, changed or was decided; speech acts and noun-led event references count less than direct action verbs.'},
-    {'key':'quantified_specificity','metricKey':'quantified_specificity','label':'Numbers & detail','shortLabel':'Detail','kind':'delivery','description':'The headline carries concrete quantities, amounts, ages or counts; bare years and scale words count less, while product/listicle numerals are discounted.'},
-    {'key':'time_place_anchor','metricKey':'time_place_anchor','label':'Time & place','shortLabel':'Place','kind':'delivery','description':'The headline anchors the story in a time or location; place candidates are precision-filtered because headline-case entity recognition often mistakes teams, brands and products for places.'},
-    {'key':'causal_explanation','metricKey':'causal_explanation','label':'Cause & effect','shortLabel':'Cause','kind':'delivery','description':'The headline links events, causes or consequences.'},
-    {'key':'material_consequence','metricKey':'material_consequence','label':'Real-world stakes','shortLabel':'Stakes','kind':'delivery','description':'The headline signals costs, risks, harm, benefit or other material consequences.'},
-    {'key':'evidence_provenance','metricKey':'evidence_provenance','label':'Evidence cues','shortLabel':'Evidence','kind':'delivery','description':'The headline points to evidence surface: documents/data/legal material strongest, typed research next, direct testimony or quotation moderate, and vague sourcing weak.'},
-    {'key':'context_comparison','metricKey':'context_comparison','label':'Context & comparison','shortLabel':'Context','kind':'delivery','description':'The headline compares, contrasts or places events in a sequence; bare sequence markers count less than explicit comparisons or historical anchors.'},
-    {'key':'explanatory_framing','metricKey':'explanatory_framing','label':'Explanatory framing','shortLabel':'Explain','kind':'delivery','description':'The headline offers explanation, mechanism, guidance or service information.'},
-    {'key':'curiosity_restraint','metricKey':'low_explicit_curiosity_gap','label':'Curiosity restraint','shortLabel':'No tease','kind':'restraint','adverseKey':'explicit_curiosity_gap_incidence_rate','description':'The headline resolves rather than withholds the central example, reason, mechanism, timing or referent; stock teasers count most strongly.'},
-    {'key':'packaging_restraint','metricKey':'low_direct_service_packaging','label':'Low search-capture packaging','shortLabel':'No capture','kind':'restraint','adverseKey':'direct_service_packaging_incidence_rate','description':'The headline avoids direct-address, how-to and search-capture packaging.'},
-    {'key':'sensational_restraint','metricKey':'low_sensational_personal','label':'Sensational restraint','shortLabel':'No hype','kind':'restraint','adverseKey':'sensational_personal_incidence_rate','description':'The headline avoids sensational vocabulary and celebrity/personal-life framing.'},
-]
 
-BAND_META = {
-    'A — upper quartile': {
-        'key':'strongest',
-        'label':'Strongest measured headline value',
-        'summary':'Headlines most often combine concrete information with comparatively restrained packaging.',
-    },
-    'B — second quartile': {
-        'key':'above-typical',
-        'label':'Above-typical measured headline value',
-        'summary':'Headlines are usually informative or restrained, with some weaker axes or mixed behaviour.',
-    },
-    'C — third quartile': {
-        'key':'below-typical',
-        'label':'Below-typical measured headline value',
-        'summary':'Headlines more often omit concrete anchors or use more attention-oriented framing.',
-    },
-    'D — lower quartile': {
-        'key':'weakest',
-        'label':'Weakest measured headline value',
-        'summary':'Headlines are comparatively thin on concrete information, heavier on packaging, or both.',
-    },
-}
-
-SOURCE_NOTES = {
-    'medicalxpress.com': 'High evidence and causal scores partly reflect research-release phrasing. They do not by themselves show independent verification of the underlying studies.',
-    'phys.org': 'Research-release phrasing can raise evidence and causal scores. Treat them as evidence of dense research claims, not proof of independent scientific scrutiny.',
-    'psypost.org': 'PsyPost often writes formulaic research-claim headlines. That raises evidence and causal scores without establishing independent verification of the studies.',
-    'sciencealert.com': 'Popular science rewriting can make research cues prominent; the score does not assess the quality of the underlying paper.',
-    'nature.com': 'The low event/action score is largely a form effect: many Nature rows are journal article titles written as descriptive noun phrases. This does not mean the underlying research articles lack evidence.',
-    'newscientist.com': 'The low evidence score often means the headline avoids formulaic “study finds” phrasing; it is not evidence that the article lacks research support.',
-    'obits.oregonlive.com': 'This measurement mostly describes syndicated obituary entries rather than OregonLive’s wider newsroom output.',
-    'seekingalpha.com': 'Earnings, transcript and market-data formats make this source narrower than a general news publisher; read the axes before the composite.',
-    'reddit.com': 'Reddit rows reflect headlines as posted or repeated on the platform. They describe reused headline text, not original reporting or verification by Reddit.',
-    'news.xbox.com': 'Xbox Wire is official platform communication, so its score is not a measure of independent games journalism.',
-    'handelsblatt.com': 'English-language cue detection undercounts German-language headlines; treat this position as non-comparable with English-language sources.',
-    'group-mashable': 'Regional Mashable editions are grouped because they substantially reuse the same articles; their measured headline profiles are broadly similar rather than dominated by one outlier edition.',
-    'group-philippine-inquirer': 'Philippine Daily Inquirer verticals and regional subdomains are grouped as sections of one publisher. Philadelphia’s unrelated inquirer.com is deliberately excluded.',
-    'group-nypost-pagesix': 'Page Six is measured with the New York Post because it belongs to the same publishing operation; the combined view is dominated by the larger New York Post stream.',
-    'dailymail.com': 'The low position is driven especially by sensational and personal framing, alongside weaker time/place and evidence cues.',
-    'mirror.co.uk': 'Sensational and personal framing is the largest negative contribution here, even where individual headlines are otherwise concrete.',
-    'kotaku.com': 'The low position mainly reflects fewer time/place anchors, less causal/consequence language, and more direct-address packaging.',
-    'wccftech.com': 'Long tech and gaming headlines often contain specifications, comparisons and reported claims. The measurement does not assess whether rumours or analyst claims are accurate.',
-    'statnews.com': 'The small sample includes recurring Pharmalittle roundup formats, so sequence and context cues partly reflect that repeatable newsletter format.',
-    'punchng.com': 'Punch uses compressed Nigerian headline conventions that can omit explicit country or date anchors because audience context is assumed; low time/place does not necessarily mean the stories lack local specificity.',
-    'thisismoney.co.uk': 'Personal-finance coverage naturally scores highly on money and consumer-consequence cues even when individual headlines also use service or search-capture packaging.',
-}
-
-PROFILE_FIELDS = ['kind','ownership','model','leaning','history','notes']
 
 
 def clamp(v, lo=0.0, hi=100.0):
@@ -164,8 +93,17 @@ def main():
     summary = load_json(out_dir/'analysis_summary.json', {})
     profiles = load_json(REPO_ROOT/'src/trees/profiles/sources.json', {})
     assessment_payload = load_json(REPO_ROOT/'src/trees/profiles/source-assessments.json', {})
+    measurement_overrides = load_json(REPO_ROOT/'src/trees/profiles/source-measurement-overrides.json', {})
     assessment_sources = assessment_payload.get('sources', {})
+    display_overrides = measurement_overrides.get('displayLabels', {})
+    source_notes = measurement_overrides.get('notes', {})
     anchors, relationship_families = relationship_anchors(REPO_ROOT)
+
+    def measurement_note(source_key):
+        entry = source_notes.get(source_key)
+        if isinstance(entry, dict):
+            return entry.get('note', '')
+        return entry or ''
 
     def assessments_for(source_key):
         if source_key in assessment_sources:
@@ -222,10 +160,10 @@ def main():
         if len(members) == 1:
             key = members[0]['key']
             icon_key = key
-        display = DISPLAY_OVERRIDES.get(key) or row['source']
+        display = display_overrides.get(key) or row['source']
         profile_source = profiles.get(icon_key) or {}
         profile = {field: profile_source[field] for field in PROFILE_FIELDS if profile_source.get(field)}
-        member_labels = [DISPLAY_OVERRIDES.get(m['key']) or m['label'] for m in members]
+        member_labels = [display_overrides.get(m['key']) or m['label'] for m in members]
         axes_payload = {axis['key']: axis_payload(row, axis) for axis in axes}
         positive = sorted(((k, v['z']) for k, v in axes_payload.items()), key=lambda x: -x[1])
         row_family = clean_text(row.get('group'))
@@ -274,7 +212,7 @@ def main():
                 'bodyTestimonySurfaceRate': round(float(row.get('body_testimony_surface_rate', 0.0) or 0.0), 5),
                 'bodyEvidenceSurfaceScoreMean': round(float(row.get('body_evidence_surface_score_mean', 0.0) or 0.0), 5),
             },
-            'notes': [SOURCE_NOTES[key]] if key in SOURCE_NOTES else [],
+            'notes': [note] if (note := measurement_note(key)) else [],
         }
         sources.append(source)
 

@@ -438,13 +438,13 @@
       "topic_adjusted_value_index": 40.657208284920195
     }
   ],
-  "runtime_seconds": 204.106,
+  "runtime_seconds": 216.758,
   "stage_times": {
-    "parse_archive": 2.112,
-    "detectors": 93.191,
-    "headline_reuse_and_templates": 30.466,
-    "topic_model_and_crossfit_expectations": 9.037,
-    "source_statistics_and_bootstrap": 64.872,
-    "write_tables_and_radar": 4.363
+    "parse_archive": 1.994,
+    "detectors": 98.874,
+    "headline_reuse_and_templates": 26.108,
+    "topic_model_and_crossfit_expectations": 8.498,
+    "source_statistics_and_bootstrap": 76.955,
+    "write_tables_and_radar": 4.263
   }
 }

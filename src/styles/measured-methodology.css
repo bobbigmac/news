@@ -1,0 +1,52 @@
+/* Split from measured-sources.css: methodology and caveats section. */
+.methodology-section {
+  width: min(980px, calc(100vw - 2rem));
+  margin: 0 auto 3rem;
+}
+
+.methodology-card {
+  background: var(--paper-light);
+  border: 1px solid var(--rule);
+  padding: 1.2rem;
+}
+
+.methodology-card h2 {
+  font-size: 1.7rem;
+  margin-bottom: 0.55rem;
+}
+
+.methodology-card h3 {
+  font-size: 1.05rem;
+  margin: 0.8rem 0 0.25rem;
+}
+
+.methodology-card p,
+.methodology-card li {
+  font-size: 0.94rem;
+  color: var(--muted);
+}
+
+.methodology-card p + p {
+  margin-top: 0.55rem;
+}
+
+.methodology-card ul {
+  margin-left: 1.2rem;
+}
+
+.methodology-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0.8rem 0;
+}
+
+.limits-list li {
+  margin-bottom: 0.25rem;
+}
+
+.data-link-note {
+  border-top: 1px solid var(--rule);
+  margin-top: 0.9rem;
+  padding-top: 0.7rem;
+}

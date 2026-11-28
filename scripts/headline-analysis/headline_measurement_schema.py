@@ -1,0 +1,23 @@
+"""Metric schema shared by row measurement, source aggregation and reporting."""
+
+DELIVERY_METRICS = ['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing','original_reporting_signal']
+COMPOSITE_DELIVERY_METRICS = ['event_clarity','quantified_specificity','time_place_anchor','causal_explanation','material_consequence','evidence_provenance','context_comparison','explanatory_framing']
+ATTENTION_METRICS = ['low_explicit_curiosity_gap','low_direct_service_packaging','low_sensational_personal']
+VALUE_METRICS = COMPOSITE_DELIVERY_METRICS + ATTENTION_METRICS
+FEATURES = [
+    {'key':'event_clarity','label':'Explicit event / action','polarity':'positive','value':True,'description':'Specific event/action predicate. Direct action verbs count fully; grammatically uncertain title-case verb forms count 0.75; speech/report/announcement acts and clear noun-led event references count 0.5. Independent of attention packaging so packaging is not double-counted.'},
+    {'key':'quantified_specificity','label':'Quantified detail','polarity':'positive','value':True,'description':'Fractional numeric detail: exact quantities/money/percentages/ages count fully; bare or spelled counts slightly less; years, scale words and ordinals are weaker; product/version/listicle numerals are discounted.'},
+    {'key':'time_place_anchor','label':'Time / place anchor','polarity':'positive','value':True,'description':'Explicit date/time/day or country/place anchor; NER place candidates are filtered for headline-case false positives, and facility-only anchors count weakly.'},
+    {'key':'causal_explanation','label':'Causal relationship','polarity':'positive','value':True,'description':'Causal, consequence-linking or explicit relational language.'},
+    {'key':'material_consequence','label':'Material consequences','polarity':'positive','value':True,'description':'Impacts, costs, risks, jobs, health, harm, benefits or material changes.'},
+    {'key':'evidence_provenance','label':'Evidence specificity','polarity':'positive','value':True,'description':'Continuous evidence-surface score: documentary/legal/data evidence highest, typed research evidence next, direct testimony moderate, communication events or vague attribution low. Surface specificity only, not truth or methodological quality.'},
+    {'key':'context_comparison','label':'Context / comparison','polarity':'positive','value':True,'description':'Fractional context cue: explicit comparisons, trends, records or historical references count fully; amid/following count 0.75; bare sequence markers and comparative forms count 0.5.'},
+    {'key':'explanatory_framing','label':'Explanatory / service framing','polarity':'positive','value':True,'description':'Explanation, guide, mechanism, why/how question or explicit service-journalism framing; language presence only, not correctness.'},
+    {'key':'original_reporting_signal','label':'Original-access cue','polarity':'positive','value':False,'description':'Explicit original-access/provenance cue: investigation reveals/found, exclusive interview/report/access, documents obtained, interview with, FOI or our-analysis. High precision, very low recall; diagnostic only because it is too sparse for stable source ordering.'},
+    {'key':'low_explicit_curiosity_gap','label':'Curiosity-gap restraint','polarity':'inverse','value':True,'description':'Continuous curiosity-gap risk built from stock teaser phrases plus structural withholding cues: vague references, listicle examples, unresolved forward references, reaction/resolution gaps and pronoun/determiner load. Stored inverse is used in the composite; exported adverse rate is mean risk, not binary incidence.'},
+    {'key':'low_direct_service_packaging','label':'Direct-address/service packaging incidence','polarity':'inverse','value':True,'description':'How-to/you/your/search-capture framing. Often useful service journalism, but still a packaging/aggregation style; stored inverse is used in the composite.'},
+    {'key':'low_sensational_personal','label':'Sensational / personal framing incidence','polarity':'inverse','value':True,'description':'Strong sensational vocabulary or celebrity/personal-life teaser framing; stored inverse is used in the composite.'},
+]
+ECHO_FEATURE = {'key':'cross_source_title_echo','label':'Near-identical cross-source headline','polarity':'adverse','value':False,'description':'Near-identical title match at character n-gram cosine similarity above threshold; diagnostic only, excluded from the composite.'}
+RADAR_FEATURES = FEATURES + [ECHO_FEATURE]
+FEATURE_KEYS = [x['key'] for x in FEATURES]

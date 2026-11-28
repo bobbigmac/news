@@ -1,0 +1,104 @@
+{
+  "documentation": {
+    "purpose": "Measurement-specific source display labels and caveats for the measured-sources page. These are not ownership facts, external bias ratings, or measured-quality inputs.",
+    "notesScope": "Entries are keyed by measured source key. The family field is explanatory metadata for maintainers; the note text is what the client displays.",
+    "editing": "Keep notes short, source-specific and tied to a measurement limitation or stream shape. Do not use this file for generic regex/NLP caveats."
+  },
+  "displayLabels": {
+    "sports.yahoo.com": "Yahoo Sports",
+    "channelnewsasia.com": "CNA",
+    "timesofindia.indiatimes.com": "Times of India",
+    "obits.oregonlive.com": "OregonLive obituaries",
+    "seekingalpha.com": "Seeking Alpha",
+    "inc.com": "Inc.",
+    "indianexpress.com": "The Indian Express",
+    "dailytimes.com.pk": "Daily Times",
+    "freemalaysiatoday.com": "Free Malaysia Today"
+  },
+  "notes": {
+    "medicalxpress.com": {
+      "family": "research-release publisher",
+      "note": "High evidence and causal scores partly reflect research-release phrasing. They do not by themselves show independent verification of the underlying studies."
+    },
+    "phys.org": {
+      "family": "research-release publisher",
+      "note": "Research-release phrasing can raise evidence and causal scores. Treat them as evidence of dense research claims, not proof of independent scientific scrutiny."
+    },
+    "psypost.org": {
+      "family": "research-release publisher",
+      "note": "PsyPost often writes formulaic research-claim headlines. That raises evidence and causal scores without establishing independent verification of the studies."
+    },
+    "sciencealert.com": {
+      "family": "popular science rewriting",
+      "note": "Popular science rewriting can make research cues prominent; the score does not assess the quality of the underlying paper."
+    },
+    "nature.com": {
+      "family": "journal-title stream",
+      "note": "The low event/action score is largely a form effect: many Nature rows are journal article titles written as descriptive noun phrases. This does not mean the underlying research articles lack evidence."
+    },
+    "newscientist.com": {
+      "family": "narrative science journalism",
+      "note": "The low evidence score often means the headline avoids formulaic “study finds” phrasing; it is not evidence that the article lacks research support."
+    },
+    "obits.oregonlive.com": {
+      "family": "syndicated listings stream",
+      "note": "This measurement mostly describes syndicated obituary entries rather than OregonLive’s wider newsroom output."
+    },
+    "seekingalpha.com": {
+      "family": "market/transcript stream",
+      "note": "Earnings, transcript and market-data formats make this source narrower than a general news publisher; read the axes before the composite."
+    },
+    "reddit.com": {
+      "family": "aggregation platform",
+      "note": "Reddit rows reflect headlines as posted or repeated on the platform. They describe reused headline text, not original reporting or verification by Reddit."
+    },
+    "news.xbox.com": {
+      "family": "official platform communication",
+      "note": "Xbox Wire is official platform communication, so its score is not a measure of independent games journalism."
+    },
+    "handelsblatt.com": {
+      "family": "non-English stream",
+      "note": "English-language cue detection undercounts German-language headlines; treat this position as non-comparable with English-language sources."
+    },
+    "group-mashable": {
+      "family": "measured source group",
+      "note": "Regional Mashable editions are grouped because they substantially reuse the same articles; their measured headline profiles are broadly similar rather than dominated by one outlier edition."
+    },
+    "group-philippine-inquirer": {
+      "family": "measured source group",
+      "note": "Philippine Daily Inquirer verticals and regional subdomains are grouped as sections of one publisher. Philadelphia’s unrelated inquirer.com is deliberately excluded."
+    },
+    "group-nypost-pagesix": {
+      "family": "measured source group",
+      "note": "Page Six is measured with the New York Post because it belongs to the same publishing operation; the combined view is dominated by the larger New York Post stream."
+    },
+    "dailymail.com": {
+      "family": "UK tabloid",
+      "note": "The low position is driven especially by sensational and personal framing, alongside weaker time/place and evidence cues."
+    },
+    "mirror.co.uk": {
+      "family": "UK tabloid",
+      "note": "Sensational and personal framing is the largest negative contribution here, even where individual headlines are otherwise concrete."
+    },
+    "kotaku.com": {
+      "family": "games journalism",
+      "note": "The low position mainly reflects fewer time/place anchors, less causal/consequence language, and more direct-address packaging."
+    },
+    "wccftech.com": {
+      "family": "technology rumours/specification coverage",
+      "note": "Long tech and gaming headlines often contain specifications, comparisons and reported claims. The measurement does not assess whether rumours or analyst claims are accurate."
+    },
+    "statnews.com": {
+      "family": "specialist health/newsletter stream",
+      "note": "The small sample includes recurring Pharmalittle roundup formats, so sequence and context cues partly reflect that repeatable newsletter format."
+    },
+    "punchng.com": {
+      "family": "compressed national headline style",
+      "note": "Punch uses compressed Nigerian headline conventions that can omit explicit country or date anchors because audience context is assumed; low time/place does not necessarily mean the stories lack local specificity."
+    },
+    "thisismoney.co.uk": {
+      "family": "personal-finance service journalism",
+      "note": "Personal-finance coverage naturally scores highly on money and consumer-consequence cues even when individual headlines also use service or search-capture packaging."
+    }
+  }
+}

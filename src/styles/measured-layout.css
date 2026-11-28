@@ -1,0 +1,146 @@
+/* Split from measured-sources.css: page frame, masthead, bands and list layout. */
+:root {
+  --spider-fill: rgba(139, 26, 26, 0.22);
+}
+
+[data-theme="night"] {
+  --spider-fill: rgba(204, 68, 68, 0.28);
+}
+
+.measured-page {
+  min-height: 100vh;
+}
+
+.measured-page a {
+  color: var(--accent);
+}
+
+.measured-page .back-link {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+}
+
+.measured-masthead {
+  display: grid;
+  grid-template-columns: minmax(120px, 180px) minmax(0, 1fr) minmax(240px, 320px);
+  gap: 1rem;
+  align-items: start;
+  padding: 1.5rem min(4vw, 3rem) 1rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.source-search-label {
+  display: grid;
+  gap: 0.3rem;
+  min-width: min(360px, 40vw);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.source-search-label input {
+  width: 100%;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+}
+
+.measured-title-block h1 {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  font-variant: small-caps;
+}
+
+.measured-title-block .intro {
+  max-width: 76ch;
+  margin-top: 0.65rem;
+  color: var(--muted);
+}
+
+.page-peer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+}
+
+.page-peer-nav a {
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.22rem 0.6rem;
+  text-decoration: none;
+}
+
+.measured-main {
+  width: min(1320px, calc(100vw - 2rem));
+  margin: 0 auto;
+  padding: 1rem 0 2rem;
+}
+
+.measurement-band {
+  background: var(--paper-light);
+  border: 1px solid var(--rule);
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.band-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.65rem;
+  margin-bottom: 0.7rem;
+}
+
+.band-head h2 {
+  font-size: 1.35rem;
+}
+
+.band-head p {
+  max-width: 75ch;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.band-range {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.band-count {
+  flex: 0 0 auto;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--paper);
+  background: var(--ink);
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+}
+
+.measured-source-list {
+  columns: 2 430px;
+  column-gap: 0.65rem;
+}
+
+.measured-footer {
+  border-top: 1px solid var(--rule);
+}
+
+.is-hidden {
+  display: none !important;
+}

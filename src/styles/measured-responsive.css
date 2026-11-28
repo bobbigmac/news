@@ -1,0 +1,42 @@
+/* Split from measured-sources.css: responsive adjustments. Must import last. */
+@media (max-width: 960px) {
+  .measured-masthead {
+    grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .measured-masthead,
+  .band-head,
+  .measured-detail,
+  .methodology-grid {
+    display: block;
+  }
+
+  .back-link,
+  .source-search-label {
+    margin-bottom: 0.75rem;
+  }
+
+  .source-search-label {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .band-count {
+    display: inline-block;
+    margin-top: 0.4rem;
+  }
+
+  .measured-card-head {
+    grid-template-columns: auto auto minmax(0, 1fr) auto auto;
+  }
+
+  .band-chip {
+    display: none;
+  }
+
+  .source-reading {
+    margin-top: 0.75rem;
+  }
+}

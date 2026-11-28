@@ -1,0 +1,152 @@
+/* Split from measured-sources.css: source cards, chips and scores. */
+.measured-source-card {
+  break-inside: avoid;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  margin-bottom: 0.45rem;
+}
+
+.measured-source-card[open] {
+  column-span: all;
+}
+
+.measured-card-head {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr) auto auto auto;
+  gap: 0.55rem;
+  align-items: center;
+  min-height: 3.2rem;
+  padding: 0.35rem 0.45rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.measured-card-head::-webkit-details-marker {
+  display: none;
+}
+
+.measured-card-head::after {
+  content: '+';
+  font-family: var(--sans);
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.measured-source-card[open] > .measured-card-head::after {
+  content: '\2013';
+}
+
+.measured-rank {
+  min-width: 2.1rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-align: right;
+}
+
+.measured-card-head .source-sprite {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+}
+
+.measured-letter {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rule);
+  font-weight: 700;
+}
+
+.measured-title {
+  min-width: 0;
+}
+
+.measured-title h3 {
+  font-size: 1rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.measured-subtitle {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.band-chip {
+  max-width: 8rem;
+  border: 1px solid var(--rule-thick);
+  border-radius: 3px;
+  padding: 0.1rem 0.4rem;
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+}
+
+.band-strongest {
+  color: #155d2f;
+  border-color: #155d2f;
+}
+
+.band-above-typical {
+  color: #3f6212;
+  border-color: #3f6212;
+}
+
+.band-below-typical {
+  color: #8a5a10;
+  border-color: #8a5a10;
+}
+
+.band-weakest {
+  color: #9b1c1c;
+  border-color: #9b1c1c;
+}
+
+[data-theme="night"] .band-strongest {
+  color: #7bd88f;
+  border-color: #7bd88f;
+}
+
+[data-theme="night"] .band-above-typical {
+  color: #b8d96a;
+  border-color: #b8d96a;
+}
+
+[data-theme="night"] .band-below-typical {
+  color: #e0ad55;
+  border-color: #e0ad55;
+}
+
+[data-theme="night"] .band-weakest {
+  color: #ef8a8a;
+  border-color: #ef8a8a;
+}
+
+.measured-score {
+  display: grid;
+  justify-items: end;
+  line-height: 1.05;
+}
+
+.measured-score strong {
+  font-family: var(--sans);
+  font-size: 1.25rem;
+}
+
+.measured-score small {
+  max-width: 4.8rem;
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  color: var(--muted);
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

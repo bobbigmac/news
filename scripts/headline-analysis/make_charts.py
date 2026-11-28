@@ -8,7 +8,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 sys.path.insert(0, str(Path(__file__).parent))
-from analyse_headlines import REPO_ROOT
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 ap=argparse.ArgumentParser()
 ap.add_argument('--config',type=Path,default=REPO_ROOT/'docs/tasks/headline-analysis.task.json')

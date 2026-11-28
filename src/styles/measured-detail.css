@@ -1,0 +1,139 @@
+/* Split from measured-sources.css: expanded detail, spiderweb and source reading. */
+.measured-detail {
+  display: grid;
+  grid-template-columns: minmax(250px, 360px) minmax(0, 1fr);
+  gap: 1rem;
+  border-top: 1px solid var(--rule);
+  padding: 0.75rem 0.65rem 0.85rem;
+}
+
+.spider-column {
+  min-width: 0;
+}
+
+.spiderweb {
+  display: block;
+  width: min(100%, 360px);
+  height: auto;
+  margin: 0 auto;
+}
+
+.spider-ring {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 0.8;
+}
+
+.spider-ring-mid {
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 3;
+  opacity: 0.7;
+}
+
+.spider-spoke {
+  stroke: var(--rule);
+  stroke-width: 0.7;
+}
+
+.spider-value {
+  fill: var(--spider-fill);
+  stroke: var(--accent);
+  stroke-width: 1.8;
+}
+
+.spider-point {
+  fill: var(--accent);
+}
+
+.spider-label {
+  fill: var(--muted);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  dominant-baseline: middle;
+}
+
+.measurement-notes {
+  margin-top: 0.65rem;
+  border-left: 3px solid var(--accent);
+  padding-left: 0.65rem;
+}
+
+.measurement-notes h4 {
+  font-size: 0.92rem;
+  margin-bottom: 0.25rem;
+}
+
+.measurement-notes p {
+  font-size: 0.83rem;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.source-reading {
+  min-width: 0;
+  align-self: start;
+}
+
+.measured-profile-row,
+.axis-reading-line {
+  font-size: 0.87rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.measured-profile-row strong,
+.axis-reading-line strong {
+  color: var(--ink);
+}
+
+.measured-assessments {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 0.55rem;
+}
+
+.measured-assessments ul {
+  margin: 0.2rem 0 0 1rem;
+}
+
+.measured-assessments li {
+  margin-bottom: 0.28rem;
+}
+
+.measured-assessments .assessment-tag {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0 0.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.measured-assessments .assessment-source {
+  margin-left: 0.4rem;
+  font-size: 0.74rem;
+}
+
+.axis-reading {
+  border-top: 1px solid var(--rule);
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+}
+
+.measured-actions {
+  margin-top: 0.7rem;
+}
+
+.measured-link {
+  display: inline-block;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.28rem 0.65rem;
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  text-decoration: none;
+}
