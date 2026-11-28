@@ -9,8 +9,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 from analyse_headlines import REPO_ROOT, DELIVERY_METRICS
 
 ADVERSE_AXES=['explicit_curiosity_gap_present','direct_service_packaging_present','personal_sensational_frame_present']
-AXES=DELIVERY_METRICS+ADVERSE_AXES
-FRACTIONAL_AXES={'evidence_provenance'}
+AXES=DELIVERY_METRICS+['explicit_curiosity_gap_risk']+ADVERSE_AXES
+FRACTIONAL_AXES={'evidence_provenance','explicit_curiosity_gap_risk'}
 
 
 def load_out(args):

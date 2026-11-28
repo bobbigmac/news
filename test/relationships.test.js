@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import { describe, expect, it } from 'vitest';
-import { SOURCE_PROFILES } from '../src/source-profiles.js';
+import { SOURCE_ASSESSMENTS, SOURCE_PROFILES } from '../src/source-profiles.js';
 import { SOURCE_RELATION_TREE } from '../src/source-tree.js';
 
 const treeHosts = new Set();
@@ -50,6 +50,22 @@ describe('relationships page', () => {
         profile.caution?.length || profile.links?.length;
       expect(descriptive, host).toBeTruthy();
     });
+  });
+
+  it('keeps external assessments structured, evidenced and non-composited', () => {
+    expect(Object.keys(SOURCE_ASSESSMENTS.sources).length).toBeGreaterThan(80);
+    for (const [host, assessments] of Object.entries(SOURCE_ASSESSMENTS.sources)) {
+      expect(assessments.length, host).toBeGreaterThan(0);
+      for (const assessment of assessments) {
+        expect(assessment.rater, host).toBeTruthy();
+        expect(assessment.type, host).toBeTruthy();
+        expect(assessment.rating, host).toBeTruthy();
+        expect(assessment.url, host).toMatch(/^https:\/\//);
+        expect(assessment.composite, host).toBeUndefined();
+      }
+    }
+    expect(SOURCE_ASSESSMENTS.sources['bbc.co.uk'].some(assessment => assessment.rater === 'AllSides')).toBe(true);
+    expect(SOURCE_ASSESSMENTS.sources['theguardian.com'].some(assessment => assessment.rater === 'MBFC')).toBe(true);
   });
 
   it('requires multiple independent references for every trust flag', () => {

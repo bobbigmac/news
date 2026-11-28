@@ -377,6 +377,36 @@
   color: var(--ink);
 }
 
+.measured-assessments {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 0.55rem;
+}
+
+.measured-assessments ul {
+  margin: 0.2rem 0 0 1rem;
+}
+
+.measured-assessments li {
+  margin-bottom: 0.28rem;
+}
+
+.measured-assessments .assessment-tag {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0 0.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.measured-assessments .assessment-source {
+  margin-left: 0.4rem;
+  font-size: 0.74rem;
+}
+
 .axis-reading {
   border-top: 1px solid var(--rule);
   margin-top: 0.6rem;

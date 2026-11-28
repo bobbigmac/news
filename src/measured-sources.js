@@ -38,6 +38,14 @@ function polygonPoints(count, cx, cy, radius) {
   return points.join(' ');
 }
 
+function axisTooltip(axis, source) {
+  const value = source.axes[axis.key];
+  const points = Number.isFinite(value.adjustedPoints)
+    ? ` Adjusted difference: ${value.adjustedPoints >= 0 ? '+' : ''}${value.adjustedPoints.toFixed(1)} percentage points.`
+    : '';
+  return `${axis.label}: ${value.score} corpus-relative.${points} ${axis.description}`;
+}
+
 function renderSpiderweb(source) {
   const size = 420;
   const cx = size / 2;
@@ -76,7 +84,7 @@ function renderSpiderweb(source) {
     });
     label.textContent = axis.shortLabel;
     const title = svgEl('title');
-    title.textContent = `${axis.label}: ${source.axes[axis.key].score}`;
+    title.textContent = axisTooltip(axis, source);
     label.appendChild(title);
     svg.appendChild(label);
   });
@@ -98,7 +106,7 @@ function renderSpiderweb(source) {
       class: 'spider-point',
     });
     const title = svgEl('title');
-    title.textContent = `${axis.label}: ${source.axes[axis.key].score}`;
+    title.textContent = axisTooltip(axis, source);
     point.appendChild(title);
     svg.appendChild(point);
   });
@@ -106,8 +114,13 @@ function renderSpiderweb(source) {
   return svg;
 }
 
-function axisNames(keys) {
-  return keys.map(key => axisByKey.get(key)?.label || key).join(', ');
+function axisNames(keys, source) {
+  return keys.map(key => {
+    const label = axisByKey.get(key)?.label || key;
+    const points = source?.axes?.[key]?.adjustedPoints;
+    if (!Number.isFinite(points)) return label;
+    return `${label} (${points >= 0 ? '+' : ''}${points.toFixed(1)}pp)`;
+  }).join(', ');
 }
 
 function appendProfile(container, source) {
@@ -127,16 +140,64 @@ function appendProfile(container, source) {
   }
 }
 
+function appendAssessments(container, source) {
+  if (!source.assessments?.length) return;
+  const wrap = el('div', 'measured-assessments');
+  wrap.appendChild(el('strong', '', 'External assessments'));
+  const list = el('ul');
+  for (const assessment of source.assessments) {
+    const item = el('li');
+    const subject = assessment.subject ? ` (${assessment.subject})` : '';
+    const factual = assessment.factual_reporting ? `; factual: ${assessment.factual_reporting}` : '';
+    item.appendChild(document.createTextNode(`${assessment.rater}: ${assessment.rating}${subject}${factual}`));
+    if (assessment.type === 'republished political-leaning index') {
+      const tag = el('span', 'assessment-tag', 'republished index');
+      tag.title = 'MediaBias.News republishes other raters’ verdicts; it is not an independent rating.';
+      item.appendChild(tag);
+    }
+    if (assessment.note) {
+      const note = el('span', 'assessment-note', ` — ${assessment.note}`);
+      item.appendChild(note);
+    }
+    if (assessment.url) {
+      const link = el('a', 'assessment-source', 'source');
+      link.href = assessment.url;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      item.appendChild(link);
+    }
+    list.appendChild(item);
+  }
+  wrap.appendChild(list);
+  container.appendChild(wrap);
+}
+
+function renderScoreUncertainty(container, source) {
+  if (!source.measuredQualityCi95) return;
+  const wrap = el('div', 'score-uncertainty');
+  const line = el('p', 'axis-reading-line');
+  line.appendChild(el('strong', '', 'Sampling range: '));
+  line.appendChild(document.createTextNode(`${source.measuredQualityCi95[0].toFixed(1)}–${source.measuredQualityCi95[1].toFixed(1)} at 95% headline-resampling uncertainty`));
+  wrap.appendChild(line);
+  if (Number.isFinite(source.measuredQualityAdjustedPoints)) {
+    const raw = el('p', 'axis-reading-line');
+    raw.appendChild(el('strong', '', 'Underlying adjusted difference: '));
+    raw.appendChild(document.createTextNode(`${source.measuredQualityAdjustedPoints >= 0 ? '+' : ''}${source.measuredQualityAdjustedPoints.toFixed(1)} percentage points`));
+    wrap.appendChild(raw);
+  }
+  container.appendChild(wrap);
+}
+
 function renderAxisReading(container, source) {
   const strongest = source.strongestAxes || [];
   const weakest = [...(source.weakestAxes || [])].reverse();
   const wrap = el('div', 'axis-reading');
   const strong = el('p', 'axis-reading-line');
   strong.appendChild(el('strong', '', 'Strongest measured traits: '));
-  strong.appendChild(document.createTextNode(axisNames(strongest)));
+  strong.appendChild(document.createTextNode(axisNames(strongest, source)));
   const weak = el('p', 'axis-reading-line');
   weak.appendChild(el('strong', '', 'Comparatively weaker traits: '));
-  weak.appendChild(document.createTextNode(axisNames(weakest)));
+  weak.appendChild(document.createTextNode(axisNames(weakest, source)));
   wrap.appendChild(strong);
   wrap.appendChild(weak);
   container.appendChild(wrap);
@@ -164,12 +225,14 @@ function renderSourceDetail(card, source) {
 
   const reading = el('div', 'source-reading');
   appendProfile(reading, source);
+  appendAssessments(reading, source);
   if (source.members?.length > 1) {
     const members = el('p', 'measured-profile-row');
     members.appendChild(el('strong', '', 'Measured together: '));
     members.appendChild(document.createTextNode(source.members.map(member => member.label).join(' · ')));
     reading.appendChild(members);
   }
+  renderScoreUncertainty(reading, source);
   renderAxisReading(reading, source);
   const actions = el('div', 'measured-actions');
   const rel = el('a', 'measured-link', 'Ownership and source context');
@@ -210,6 +273,7 @@ function renderSourceCard(source) {
   if (family) subtitleParts.push(family);
   if (source.grouped && source.members?.length > 1) subtitleParts.push(`${source.members.length} measured together`);
   subtitleParts.push(`${source.headlines} headlines`);
+  if (source.headlines < 50) subtitleParts.push('small sample');
   title.appendChild(el('p', 'measured-subtitle', subtitleParts.join(' · ')));
   summary.appendChild(title);
   summary.appendChild(el('span', `band-chip band-${source.band}`, source.bandLabel.replace(' measured headline value', '')));

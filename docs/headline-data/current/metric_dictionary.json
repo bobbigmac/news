@@ -4,21 +4,21 @@
     "label": "Explicit event / action",
     "polarity": "positive",
     "included_in_composite": true,
-    "description": "Specific event/action predicate. Independent of attention packaging so packaging is not double-counted."
+    "description": "Specific event/action predicate. Direct action verbs count fully; grammatically uncertain title-case verb forms count 0.75; speech/report/announcement acts and clear noun-led event references count 0.5. Independent of attention packaging so packaging is not double-counted."
   },
   {
     "key": "quantified_specificity",
     "label": "Quantified detail",
     "polarity": "positive",
     "included_in_composite": true,
-    "description": "Number, percentage, amount, age, count or other numeric detail."
+    "description": "Fractional numeric detail: exact quantities/money/percentages/ages count fully; bare or spelled counts slightly less; years, scale words and ordinals are weaker; product/version/listicle numerals are discounted."
   },
   {
     "key": "time_place_anchor",
     "label": "Time / place anchor",
     "polarity": "positive",
     "included_in_composite": true,
-    "description": "Explicit date/time/day or country/place anchor."
+    "description": "Explicit date/time/day or country/place anchor; NER place candidates are filtered for headline-case false positives, and facility-only anchors count weakly."
   },
   {
     "key": "causal_explanation",
@@ -39,21 +39,21 @@
     "label": "Evidence specificity",
     "polarity": "positive",
     "included_in_composite": true,
-    "description": "Fractional cue: 0.5 for research/survey/study claims, 1.0 for primary artefacts such as documents, filings, audits, datasets, transcripts or court material."
+    "description": "Continuous evidence-surface score: documentary/legal/data evidence highest, typed research evidence next, direct testimony moderate, communication events or vague attribution low. Surface specificity only, not truth or methodological quality."
   },
   {
     "key": "context_comparison",
     "label": "Context / comparison",
     "polarity": "positive",
     "included_in_composite": true,
-    "description": "Comparisons, trends, historical references, records or prior-period context."
+    "description": "Fractional context cue: explicit comparisons, trends, records or historical references count fully; amid/following count 0.75; bare sequence markers and comparative forms count 0.5."
   },
   {
     "key": "explanatory_framing",
     "label": "Explanatory / service framing",
     "polarity": "positive",
     "included_in_composite": true,
-    "description": "Explanation, guide, mechanism, why/how or explicit service-journalism framing; language presence only, not correctness."
+    "description": "Explanation, guide, mechanism, why/how question or explicit service-journalism framing; language presence only, not correctness."
   },
   {
     "key": "original_reporting_signal",
@@ -64,10 +64,10 @@
   },
   {
     "key": "low_explicit_curiosity_gap",
-    "label": "Explicit curiosity-gap incidence",
+    "label": "Curiosity-gap restraint",
     "polarity": "inverse",
     "included_in_composite": true,
-    "description": "Stock clickbait phrases, explicit guessing/teasing or a trailing ellipsis; stored inverse is used in the composite, exported incidence is adverse."
+    "description": "Continuous curiosity-gap risk built from stock teaser phrases plus structural withholding cues: vague references, listicle examples, unresolved forward references, reaction/resolution gaps and pronoun/determiner load. Stored inverse is used in the composite; exported adverse rate is mean risk, not binary incidence."
   },
   {
     "key": "low_direct_service_packaging",

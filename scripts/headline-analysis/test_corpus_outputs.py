@@ -33,17 +33,23 @@ assert set(h['source_key']) == set(s['source_key'])
 
 # Story-level score arithmetic and bounds.
 expected_delivery = 100*h[DELIVERY_METRICS].mean(axis=1)
-expected_attention = 100*h[['explicit_curiosity_gap_present','direct_service_packaging_present','personal_sensational_frame_present']].mean(axis=1)
+expected_attention = 100*h[['explicit_curiosity_gap_risk','direct_service_packaging_present','personal_sensational_frame_present']].mean(axis=1)
 expected_value = 100*h[VALUE_METRICS].mean(axis=1)
 assert np.allclose(h['information_delivery_signal'], expected_delivery)
 assert np.allclose(h['attention_packaging_pressure'], expected_attention)
 assert np.allclose(h['title_value_signal'], expected_value)
 for c in ['information_delivery_signal','attention_packaging_pressure','title_value_signal']:
     assert h[c].between(0,100).all(), c
-assert h['evidence_provenance'].isin([0.0,0.5,1.0]).all()
-for c in ['body_coverage_present','body_primary_evidence_cue','body_research_claim_cue','body_event_action_cue','body_explanatory_cue']:
+assert h['evidence_provenance'].between(0,1).all()
+assert h['explicit_curiosity_gap_risk'].between(0,1).all()
+assert h['low_explicit_curiosity_gap'].between(0,1).all()
+assert np.allclose(h['low_explicit_curiosity_gap'], 1-h['explicit_curiosity_gap_risk'])
+assert h['evidence_surface_strength'].isin([0,1,2,3,4]).all()
+assert h['time_place_anchor'].isin([0.0,0.5,1.0]).all()
+assert 'raw_headline' in h.columns and h['source_suffix_stripped'].isin([0,1]).all()
+for c in ['body_coverage_present','body_primary_evidence_cue','body_research_claim_cue','body_event_action_cue','body_explanatory_cue','body_strong_evidence_surface','body_testimony_surface','body_vague_attribution_surface']:
     assert c in h.columns and h[c].isin([0,1]).all(), c
-for c in ['body_coverage_rate','body_primary_evidence_rate','body_research_claim_rate','body_event_action_rate','body_explanatory_rate']:
+for c in ['body_coverage_rate','body_primary_evidence_rate','body_research_claim_rate','body_evidence_surface_rate','body_testimony_surface_rate','body_evidence_surface_score_mean','body_event_action_rate','body_explanatory_rate']:
     assert c in s.columns and s[c].between(0,1).all(), c
 
 # Radar export is occurrence-oriented: positive rates plus explicit adverse incidences.
@@ -67,6 +73,8 @@ elig = s[s['n'] >= min_n]
 assert len(elig) == int(m['sources_ranked_min_n'])
 assert (elig['topic_adjusted_index_ci95_low'] <= elig['topic_adjusted_value_index']).all()
 assert (elig['topic_adjusted_value_index'] <= elig['topic_adjusted_index_ci95_high']).all()
+assert 'composite_axis_cap_pp' in s.columns and np.isfinite(s['composite_axis_cap_pp'].iloc[0])
+assert 0 < float(s['composite_axis_cap_pp'].iloc[0]) <= 100
 assert m['radar_axis_count'] == len(RADAR_FEATURES)
 assert m['delivery_signal_count'] == len(DELIVERY_METRICS)
 assert m['value_signal_count'] == len(VALUE_METRICS)

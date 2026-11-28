@@ -4,22 +4,22 @@
     "terms": [
       "gta",
       "rockstar",
-      "ps5",
       "launch",
-      "series",
-      "xbox series",
+      "ps5",
       "play",
       "gta vi",
-      "xbox",
-      "players"
+      "players",
+      "release",
+      "vi",
+      "pc"
     ]
   },
   {
     "topic": 1,
     "terms": [
       "man",
-      "utd",
       "man utd",
+      "utd",
       "carrick",
       "fernandes",
       "pochettino",
@@ -33,15 +33,15 @@
     "topic": 2,
     "terms": [
       "says",
-      "brand",
-      "russell",
-      "russell brand",
       "minister",
       "health",
-      "rape",
-      "ex",
+      "won",
       "minister says",
-      "chief"
+      "chief",
+      "burnham",
+      "life",
+      "leader",
+      "tinubu"
     ]
   },
   {
@@ -54,9 +54,9 @@
       "theft auto",
       "auto vi",
       "vi",
-      "kotaku",
       "lucia",
-      "gameplay"
+      "gameplay",
+      "look"
     ]
   },
   {
@@ -69,8 +69,8 @@
       "new zealand",
       "study",
       "new study",
-      "times",
       "finds",
+      "games",
       "home"
     ]
   },
@@ -78,8 +78,8 @@
     "topic": 5,
     "terms": [
       "time",
-      "ocarina",
       "ocarina time",
+      "ocarina",
       "zelda",
       "zelda ocarina",
       "remake",
@@ -110,13 +110,13 @@
       "2026",
       "obituary",
       "november",
-      "november 2026",
       "october",
-      "legacy",
+      "november 2026",
+      "obituary october",
       "best",
-      "courant",
-      "hartford",
-      "hartford courant"
+      "10",
+      "news",
+      "budget"
     ]
   },
   {
@@ -146,7 +146,7 @@
       "stocks",
       "fears",
       "warns",
-      "ai boom"
+      "used"
     ]
   },
   {
@@ -174,24 +174,24 @@
       "war day",
       "budget",
       "review",
-      "500 million",
       "day review",
+      "500 million",
       "500"
     ]
   },
   {
     "topic": 12,
     "terms": [
-      "world",
-      "warcraft",
-      "world warcraft",
-      "forever",
-      "warcraft forever",
-      "blizzard",
-      "players",
-      "record",
-      "launch",
-      "wow"
+      "xbox",
+      "series",
+      "xbox series",
+      "ps5",
+      "console",
+      "microsoft",
+      "disc",
+      "digital",
+      "ps5 xbox",
+      "gaming"
     ]
   },
   {
@@ -227,31 +227,31 @@
   {
     "topic": 15,
     "terms": [
-      "year",
-      "old",
-      "year old",
-      "20",
-      "girl",
+      "ebola",
       "000",
-      "20 year",
-      "000 year",
-      "10",
-      "old girl"
+      "outbreak",
+      "kenya",
+      "congo",
+      "case",
+      "nigeria",
+      "ebola outbreak",
+      "cases",
+      "dr"
     ]
   },
   {
     "topic": 16,
     "terms": [
-      "xbox",
       "game",
-      "game pass",
       "pass",
-      "games",
+      "game pass",
       "xbox game",
-      "series",
-      "xbox series",
-      "console",
-      "microsoft"
+      "games",
+      "xbox",
+      "video",
+      "video game",
+      "november",
+      "leaving"
     ]
   },
   {
@@ -272,20 +272,35 @@
   {
     "topic": 18,
     "terms": [
-      "ebola",
-      "000",
-      "outbreak",
-      "kenya",
-      "congo",
-      "case",
-      "nigeria",
-      "ebola outbreak",
-      "cases",
-      "dr"
+      "world",
+      "world warcraft",
+      "warcraft",
+      "forever",
+      "warcraft forever",
+      "blizzard",
+      "players",
+      "record",
+      "launch",
+      "wow"
     ]
   },
   {
     "topic": 19,
+    "terms": [
+      "brand",
+      "russell",
+      "russell brand",
+      "rape",
+      "court",
+      "woman",
+      "police",
+      "trial",
+      "wife",
+      "prison"
+    ]
+  },
+  {
+    "topic": 20,
     "terms": [
       "ukraine",
       "russia",
@@ -300,21 +315,6 @@
     ]
   },
   {
-    "topic": 20,
-    "terms": [
-      "pike",
-      "christa pike",
-      "christa",
-      "execution",
-      "failed",
-      "failed execution",
-      "botched",
-      "say",
-      "botched execution",
-      "lawyers"
-    ]
-  },
-  {
     "topic": 21,
     "terms": [
       "modern",
@@ -323,9 +323,9 @@
       "duty",
       "duty modern",
       "dmz",
-      "players",
       "campaign",
       "warfare dmz",
+      "players",
       "mode"
     ]
   }

@@ -3,8 +3,8 @@ devin-sessionlog: user-input
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-27 09:40:17 UTC
-entries: 36
+last_activity: 2026-11-28 06:08:39 UTC
+entries: 60
 ---
 
 # repeated-bite
@@ -335,6 +335,178 @@ continue, tho you're hitting quota now, so be sure you document progress and act
 ### 2026-11-27 09:40:17 UTC
 
 all work is yours, I didn't make any edits, just committing your work
+
+---
+
+<!-- r:0 m:hook:7b794acc-c08b-48bf-8e60-5e494dd78e53 h:fbfa945e -->
+### 2026-11-27 09:55:08 UTC
+
+continue, it looks like you're nearly there
+
+---
+
+<!-- r:0 m:hook:e83de69e-7cc0-4dc1-b189-fccc429b7ad8 h:e31b6310 -->
+### 2026-11-27 10:25:52 UTC
+
+continue, it looks like you're nearly there, just get on with it
+
+---
+
+<!-- r:0 m:hook:a088dcaf-cfe2-40b4-a12d-10f003d0467f h:ed53eed6 -->
+### 2026-11-27 10:26:46 UTC
+
+export a GAPS sources manifest, focusing instead on sources we don't know anything, or know very little about. You can also validate that you imported eveyrthing from the sources=-manifest-UPDATE while you build it
+
+---
+
+<!-- r:0 m:hook:a6f12319-f6a2-4f1d-8ef6-aa8a270b054e h:dc561e78 -->
+### 2026-11-27 10:33:59 UTC
+
+don't make it complicated, just generate a dump of gaps
+
+---
+
+<!-- r:0 m:hook:7551de6b-cbc2-4232-9cb6-0220ad6026b0 h:93fa0445 -->
+### 2026-11-27 10:35:03 UTC
+
+STOP FUCKING ABOUT... don't make it complicated, just generate a dump of gaps
+
+---
+
+<!-- r:0 m:hook:a5b6da35-fdac-4632-a163-7ea4c7751eb4 h:22d0b1cc -->
+### 2026-11-27 10:35:23 UTC
+
+I've also added bias reports from chatgpt, import and apply to our datasets where appropriate for /home/bobbigmac/projects/bobdavies/news/.working/sources-bias-reports-2026-11-27.md
+
+---
+
+<!-- r:0 m:hook:2f81f6a3-7b5a-464b-825d-9a04d1ac8c13 h:762954e8 -->
+### 2026-11-27 12:03:16 UTC
+
+on the measured results... we have a lot of metrics where almost EVERY (like >98%) are within the same range of 1, around the average. Normalise each by metric and re-evaluate what better expression over a wider range needs from deeper/further analysis, or whether to enclose that range to be corpus-based/normalised rather than based on arbitrary boundaries. I suspect you can get more range out of the overall score by better exploring the possibile ranges and developing a little deeper analysis on some of themetrics
+
+---
+
+<!-- r:0 m:hook:28daea57-f707-4a73-8960-5a59ec08befa h:6df5a617 -->
+### 2026-11-27 13:52:53 UTC
+
+recap your goal and start closing in on some final states now. You've been churning over this for a while and need to start heading towards a wrap-up
+
+---
+
+<!-- r:0 m:hook:8e5ab353-bfe8-4111-aa73-9f038b8a594c h:82c03221 -->
+### 2026-11-27 14:02:21 UTC
+
+no, get on with the numbers work... no more underlying-data-finessing
+
+---
+
+<!-- r:0 m:hook:476069a7-71b5-4f80-8cda-9f31dcb388b0 h:79d68e35 -->
+### 2026-11-27 14:06:23 UTC
+
+you can READ the texts pertinent to fringe conditions to evaluate with your own (LLM) judgment, not heuristics, to help determine sensible relative scales considering cross-axes comparisons
+
+---
+
+<!-- r:0 m:hook:ec6d5438-fcf8-4181-bc50-55bda6ab1170 h:1c4df89a -->
+### 2026-11-28 03:40:35 UTC
+
+continue. focus on wrapping up, I want to see the updated numbers finished 
+
+---
+
+<!-- r:0 m:hook:f367aee7-9df9-4f0a-a769-1bd83cfb1788 h:4e2db2f9 -->
+### 2026-11-28 03:41:41 UTC
+
+Here's an updated gaps research for filling more info slots in our sources pool: ./working/[REDACTED:TOKEN].md
+
+---
+
+<!-- r:0 m:hook:1e09f1b5-5567-401a-b071-0549461c98df h:6791e3a0 -->
+### 2026-11-28 03:43:43 UTC
+
+http://localhost:8000/measured-sources.html seems exactly the same numbers. This doesn't solve the problem I raised, reread the docs/sessions/user-input
+
+---
+
+<!-- r:0 m:hook:dc6280af-4bbd-4a35-80a0-fec6d26cf919 h:04f145d0 -->
+### 2026-11-28 03:48:18 UTC
+
+Ah, I had a cached version, I got an updated one... the main numbers actually make more sense 18.3-to-82.6 is a much wider range on the final output, but the spiderwebs still seem narrowly ranged, but only for some metrics. Also I suspect we still have a few metrics in very narrow ranges for all sources. Check the complete distribution per-metric/per-prop across all sources to see which has a narrow window of expression, first, then tell me their respective ranges 
+
+---
+
+<!-- r:0 m:hook:111be768-f500-408f-aa2b-b841fc1a5fad h:1d531fe4 -->
+### 2026-11-28 03:50:25 UTC
+
+I also notice eurogamer score at the very top of the chart, but kotaku score at the very bottom, but to me, a human, they seem to publish a lot of the same stories, can you identify between their headlines/summaries WHY they score so differently through our systems? IGN makes sense to be low too, but I suspect at some point you eradicated some consideration of specialist press. Look at just these 3 sources and consider them yourself, not heuristics
+
+---
+
+<!-- r:0 m:hook:a120cff3-5e5a-4701-baa4-2c11c4775ec5 h:681c3358 -->
+### 2026-11-28 03:59:53 UTC
+
+`Meaning: almost every measured source almost always avoids explicit curiosity-gap phrases. The axis only separates the small number of sources that use trailing ellipses/teasing unusually often. It is not expressing much for normal sources.` this suggests we need a few better sniffers for curiosity-gap, because this is a lot more present than you measured. I think you relied on heuristics for qualification, but onlY YOU (the LLM) can evaluate this language, you can't put heuristics on the sniffer AND on the qualifier.
+
+`2. Evidence specificity — narrow for typical sources, wide only because of outliers`. This sounds like YOU can qualify these better too, don't get pullled into a swamp of heuristic cycles tho, explore the set of headlines BY this score, and it should highlight simple ways some scoring at their current position should score better or worse. Iirc, guessit or similar (or maybe a name/proper-noun-detector lib(s)) MIGHT help catch more of these specifics. I think you're underusing libs here that can distinguish between words and names, and CAN also be used on the summary, especially to identify where a source using leading/pull language in the front of the article, instead of naming who, what, where or when, for examply. Evidence presence should be pretty easy to find on various types because the heuristics that other libs provide can already detect a LOT of evidence in both headlines and ~bodies (summaries in our case), tho this might need to exempt story-cells that got summarised by our LLM (which are cross-sourrce anyway, so shouldn't really be in our assesment pool). If we can find libs that extract that info, it's also worth adding to ingestion (if they're light and fast enough, to just decorate each new story with a 'guessed tags' as a peer to the LLM-produced or originator tags)
+
+`Most sources cluster high because most avoid strong sensational/personal framing most of the time. The axis mainly punishes offenders; it does not meaningfully distinguish restraint levels among ordinary sources.` using a non-linear scale might help here (if we have big-end-weighted axes, try and identify if it's because of a long-tail or because of bad metrics or thin testing)
+
+---
+
+<!-- r:0 m:hook:2e863304-12b9-44d4-bbe1-83dfbb124018 h:cbf834bd -->
+### 2026-11-28 04:00:58 UTC
+
+Search teh web for more useful libs first, you might just find some that already help here cos we already did a lot of research on backend analysis providers that can help inform this stack for free/cheap
+
+---
+
+<!-- r:0 m:hook:7b419d41-27ce-4cd8-96f9-739668d72101 h:02cd9b29 -->
+### 2026-11-28 04:01:59 UTC
+
+NO more "guessing till you get it", cos you're drifting further away... you need SOLID research based on existing understandings, not sampler experiments you can't really qualify properly. Write up whatever you find and why thoroughly 
+
+---
+
+<!-- r:0 m:hook:4f11bf8d-7914-4d61-a3ef-31de4514a5e0 h:f0600012 -->
+### 2026-11-28 04:10:21 UTC
+
+we definitely want entity extraction, and I thought SpaCy was already in this stack AND runnable on github actions (with some limitations, iirc)
+
+---
+
+<!-- r:0 m:hook:a51fb933-d406-4a0f-adfb-c448c9e385ec h:9921d694 -->
+### 2026-11-28 04:12:39 UTC
+
+okay continue, I thought I told you to also do what podcasts was doing with spacy weeks ago, lol, but guess you didn't (maybe that was a different model), but yes, I'm pretty sure that runs on github actions just fine. The only caveat with spaCy entity extraction is it's floppy/loose matching so it's useful for metrics/guidance (it doesn't understand words, really) but be careful what builds on its outputs, it's considered a guider, NOT a rock floor 
+
+---
+
+<!-- r:0 m:hook:0d72a4e5-d5f9-411d-9df8-798ba6c2dedf h:7c059ac1 -->
+### 2026-11-28 04:23:18 UTC
+
+don't waste quota and big dumps you can write to a file once based on real data, and don't wait forever on calls that look like they're failing
+
+---
+
+<!-- r:0 m:hook:f305b2d3-0b66-4ac2-9cbc-90adca2676b3 h:6f79070e -->
+### 2026-11-28 04:56:31 UTC
+
+try not to get distracted into deep-tunnel specific-phrase sniffing. Use the libs and write watchlists or tokenmatchers, you shouldn't be reasoning deeply about individual word/phrase-choices, but instead stick to writing up lists of words/phrases that can hint token matchers for most use cases. We don't need EVERY possible deep-tree-node, we're just trying to get the feel for it.
+
+---
+
+<!-- r:0 m:hook:1b612947-1131-48cb-ae68-83479bd280be h:a5da973c -->
+### 2026-11-28 04:59:58 UTC
+
+If you're rating individual stories, you're screwing up
+
+---
+
+<!-- r:0 m:hook:d5ade7a5-b036-4448-8570-08438b1aac15 h:ce1e9f8a -->
+### 2026-11-28 06:08:39 UTC
+
+this does look more sensible. With the large addition/eval of libs, oneliner commit (see history for style) this work, and make sure anything that shouldn't be in the repo is gitignored, and anything that should is. There are a few kludges in here around very specific names, and a few VERY large single-files that need to be split, but commit first, then you can sensibly split concerns to smaller files, lift very specific constants and per-source tunes into specific files so notes about specific sources are in the right places, specific to that source or source family, and make sure it all builds and the numbers and spiderwebs in the measured-sources are up to date
 
 ---
 

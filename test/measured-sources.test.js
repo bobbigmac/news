@@ -12,6 +12,14 @@ describe('measured source export', () => {
     expect(data.bands).toHaveLength(4);
     expect(data.axes).toHaveLength(11);
     expect(new Set(data.axes.map(axis => axis.key)).size).toBe(11);
+    expect(new Set(data.axes.map(axis => axis.displayScale)).size).toBe(1);
+    for (const axis of data.axes) {
+      expect(axis.displayScale, axis.key).toBeGreaterThan(0);
+    }
+    expect(data.axisScale.method).toContain('pooled 95th percentile');
+    expect(data.compositeScale.method).toContain('symmetrically saturated');
+    expect(data.compositeScale.axisCapAdjustedPoints).toBeGreaterThan(0);
+    expect(data.compositeScale.shrinkageK).toBeGreaterThan(0);
     for (const band of data.bands) {
       expect(band.sourceCount).toBeGreaterThan(0);
       expect(Number.isFinite(band.min)).toBe(true);
@@ -34,6 +42,13 @@ describe('measured source export', () => {
         expect(value, `${source.key}.${axis.key}`).toBeTruthy();
         expect(value.score).toBeGreaterThanOrEqual(0);
         expect(value.score).toBeLessThanOrEqual(100);
+        expect(Number.isFinite(value.z), `${source.key}.${axis.key}.z`).toBe(true);
+        expect(Number.isFinite(value.adjustedPoints), `${source.key}.${axis.key}.adjustedPoints`).toBe(true);
+      }
+      for (const key of ['strongEvidenceSurfaceRate','researchEvidenceSurfaceRate','directTestimonySurfaceRate','vagueAttributionSurfaceRate','curiosityGapRiskMean','bodyEvidenceSurfaceRate','bodyTestimonySurfaceRate']) {
+        expect(Number.isFinite(source.diagnostics[key]), `${source.key}.${key}`).toBe(true);
+        expect(source.diagnostics[key], `${source.key}.${key}`).toBeGreaterThanOrEqual(0);
+        expect(source.diagnostics[key], `${source.key}.${key}`).toBeLessThanOrEqual(1);
       }
     }
   });
@@ -51,6 +66,9 @@ describe('measured source export', () => {
     expect(data.sourceIndex['bbc.co.uk']).toBe('bbc.co.uk');
     expect(byKey.get('indianexpress.com')?.label).toBe('The Indian Express');
     expect(byKey.get('seekingalpha.com')?.label).toBe('Seeking Alpha');
+    expect(byKey.get('news.sky.com')?.relationshipsUrl).toContain('sky-uk');
+    expect(byKey.get('engadget.com')?.relationshipsUrl).toContain('static-media');
+    expect(byKey.get('gamespot.com')?.relationshipsUrl).toContain('fandom');
     expect([...byKey.keys()].some(key => key.includes('fox'))).toBe(false);
     for (const source of data.sources) {
       expect(source.relationshipsUrl, source.key).toContain('#rel-');
@@ -65,6 +83,19 @@ describe('measured source export', () => {
     expect(byKey.get('newscientist.com')?.notes.join(' ')).toMatch(/study finds/i);
     expect(byKey.get('handelsblatt.com')?.notes.join(' ')).toMatch(/German-language/i);
     expect(byKey.get('group-mashable')?.notes.join(' ')).toMatch(/Regional Mashable editions/i);
+  });
+
+  it('carries external assessments without turning them into measured-quality input', () => {
+    const byKey = new Map(data.sources.map(source => [source.key, source]));
+    expect(byKey.get('bbc.co.uk')?.assessments.some(assessment => assessment.rater === 'AllSides')).toBe(true);
+    expect(byKey.get('theguardian.com')?.assessments.some(assessment => assessment.rater === 'MBFC')).toBe(true);
+    expect(byKey.get('dailymail.com')?.assessments.length).toBeGreaterThan(1);
+    for (const source of data.sources) {
+      for (const assessment of source.assessments || []) {
+        expect(assessment.url, `${source.key} assessment`).toMatch(/^https:\/\//);
+        expect(assessment.composite, `${source.key} assessment`).toBeUndefined();
+      }
+    }
   });
 });
 

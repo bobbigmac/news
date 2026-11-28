@@ -23,15 +23,15 @@ DISPLAY_OVERRIDES = {
 }
 
 AXES = [
-    {'key':'event_clarity','metricKey':'event_clarity','label':'Events & actions','shortLabel':'Events','kind':'delivery','description':'The headline says something happened, changed or was decided.'},
-    {'key':'quantified_specificity','metricKey':'quantified_specificity','label':'Numbers & detail','shortLabel':'Detail','kind':'delivery','description':'The headline carries concrete quantities, amounts or counts.'},
-    {'key':'time_place_anchor','metricKey':'time_place_anchor','label':'Time & place','shortLabel':'Place','kind':'delivery','description':'The headline anchors the story in a time or location.'},
+    {'key':'event_clarity','metricKey':'event_clarity','label':'Events & actions','shortLabel':'Events','kind':'delivery','description':'The headline says something happened, changed or was decided; speech acts and noun-led event references count less than direct action verbs.'},
+    {'key':'quantified_specificity','metricKey':'quantified_specificity','label':'Numbers & detail','shortLabel':'Detail','kind':'delivery','description':'The headline carries concrete quantities, amounts, ages or counts; bare years and scale words count less, while product/listicle numerals are discounted.'},
+    {'key':'time_place_anchor','metricKey':'time_place_anchor','label':'Time & place','shortLabel':'Place','kind':'delivery','description':'The headline anchors the story in a time or location; place candidates are precision-filtered because headline-case entity recognition often mistakes teams, brands and products for places.'},
     {'key':'causal_explanation','metricKey':'causal_explanation','label':'Cause & effect','shortLabel':'Cause','kind':'delivery','description':'The headline links events, causes or consequences.'},
     {'key':'material_consequence','metricKey':'material_consequence','label':'Real-world stakes','shortLabel':'Stakes','kind':'delivery','description':'The headline signals costs, risks, harm, benefit or other material consequences.'},
-    {'key':'evidence_provenance','metricKey':'evidence_provenance','label':'Evidence cues','shortLabel':'Evidence','kind':'delivery','description':'The headline points to research, documents, data or other evidence.'},
-    {'key':'context_comparison','metricKey':'context_comparison','label':'Context & comparison','shortLabel':'Context','kind':'delivery','description':'The headline compares, contrasts or places events in a sequence.'},
+    {'key':'evidence_provenance','metricKey':'evidence_provenance','label':'Evidence cues','shortLabel':'Evidence','kind':'delivery','description':'The headline points to evidence surface: documents/data/legal material strongest, typed research next, direct testimony or quotation moderate, and vague sourcing weak.'},
+    {'key':'context_comparison','metricKey':'context_comparison','label':'Context & comparison','shortLabel':'Context','kind':'delivery','description':'The headline compares, contrasts or places events in a sequence; bare sequence markers count less than explicit comparisons or historical anchors.'},
     {'key':'explanatory_framing','metricKey':'explanatory_framing','label':'Explanatory framing','shortLabel':'Explain','kind':'delivery','description':'The headline offers explanation, mechanism, guidance or service information.'},
-    {'key':'curiosity_restraint','metricKey':'low_explicit_curiosity_gap','label':'Curiosity restraint','shortLabel':'No tease','kind':'restraint','adverseKey':'explicit_curiosity_gap_incidence_rate','description':'The headline avoids stock teasers and withholding the point.'},
+    {'key':'curiosity_restraint','metricKey':'low_explicit_curiosity_gap','label':'Curiosity restraint','shortLabel':'No tease','kind':'restraint','adverseKey':'explicit_curiosity_gap_incidence_rate','description':'The headline resolves rather than withholds the central example, reason, mechanism, timing or referent; stock teasers count most strongly.'},
     {'key':'packaging_restraint','metricKey':'low_direct_service_packaging','label':'Low search-capture packaging','shortLabel':'No capture','kind':'restraint','adverseKey':'direct_service_packaging_incidence_rate','description':'The headline avoids direct-address, how-to and search-capture packaging.'},
     {'key':'sensational_restraint','metricKey':'low_sensational_personal','label':'Sensational restraint','shortLabel':'No hype','kind':'restraint','adverseKey':'sensational_personal_incidence_rate','description':'The headline avoids sensational vocabulary and celebrity/personal-life framing.'},
 ]
@@ -77,6 +77,10 @@ SOURCE_NOTES = {
     'dailymail.com': 'The low position is driven especially by sensational and personal framing, alongside weaker time/place and evidence cues.',
     'mirror.co.uk': 'Sensational and personal framing is the largest negative contribution here, even where individual headlines are otherwise concrete.',
     'kotaku.com': 'The low position mainly reflects fewer time/place anchors, less causal/consequence language, and more direct-address packaging.',
+    'wccftech.com': 'Long tech and gaming headlines often contain specifications, comparisons and reported claims. The measurement does not assess whether rumours or analyst claims are accurate.',
+    'statnews.com': 'The small sample includes recurring Pharmalittle roundup formats, so sequence and context cues partly reflect that repeatable newsletter format.',
+    'punchng.com': 'Punch uses compressed Nigerian headline conventions that can omit explicit country or date anchors because audience context is assumed; low time/place does not necessarily mean the stories lack local specificity.',
+    'thisismoney.co.uk': 'Personal-finance coverage naturally scores highly on money and consumer-consequence cues even when individual headlines also use service or search-capture packaging.',
 }
 
 PROFILE_FIELDS = ['kind','ownership','model','leaning','history','notes']
@@ -130,15 +134,18 @@ def axis_payload(row, axis):
     metric = axis['metricKey']
     z = float(row.get(metric + '_relative_z', 0.0) or 0.0)
     if not np.isfinite(z): z = 0.0
+    display_scale = float(axis.get('displayScale', 15.0))
     payload = {
-        'score': round(clamp(50 + 15*z), 1),
+        'score': round(clamp(50 + display_scale*z), 1),
         'z': round(z, 3),
         'rate': round(float(row.get(metric + '_rate', 0.0) or 0.0), 5),
         'expectedRate': round(float(row.get(metric + '_expected_context', 0.0) or 0.0), 5),
         'adjustedPoints': round(float(row.get(metric + '_adjusted_pp', 0.0) or 0.0), 2),
     }
     if axis.get('adverseKey'):
-        payload['adverseIncidenceRate'] = round(float(row.get(axis['adverseKey'], 0.0) or 0.0), 5)
+        adverse_rate = round(float(row.get(axis['adverseKey'], 0.0) or 0.0), 5)
+        payload['adverseRate'] = adverse_rate
+        payload['adverseIncidenceRate'] = adverse_rate
     return payload
 
 
@@ -156,9 +163,36 @@ def main():
     headlines = pd.read_csv(out_dir/'headline_level_signals.csv')
     summary = load_json(out_dir/'analysis_summary.json', {})
     profiles = load_json(REPO_ROOT/'src/trees/profiles/sources.json', {})
+    assessment_payload = load_json(REPO_ROOT/'src/trees/profiles/source-assessments.json', {})
+    assessment_sources = assessment_payload.get('sources', {})
     anchors, relationship_families = relationship_anchors(REPO_ROOT)
 
+    def assessments_for(source_key):
+        if source_key in assessment_sources:
+            return assessment_sources[source_key]
+        host = source_key.split('/')[0]
+        if host in assessment_sources:
+            return assessment_sources[host]
+        parts = host.split('.')
+        for i in range(1, len(parts)-1):
+            parent = '.'.join(parts[i:])
+            if parent in assessment_sources:
+                return assessment_sources[parent]
+        return []
+
     ranked = rankings[rankings['rank'].notna()].copy().sort_values('topic_adjusted_value_index', ascending=False)
+    axes = []
+    pooled_z = []
+    for axis in AXES:
+        zvals = ranked[axis['metricKey'] + '_relative_z'].astype(float).replace([np.inf, -np.inf], np.nan).dropna().to_numpy()
+        pooled_z.append(zvals)
+    pooled_z = np.concatenate(pooled_z) if pooled_z else np.array([])
+    pooled_spread = float(np.quantile(np.abs(pooled_z), 0.95)) if len(pooled_z) else 2.0
+    common_display_scale = round(45.0 / max(pooled_spread, 1e-6), 2)
+    for axis in AXES:
+        item = dict(axis)
+        item['displayScale'] = common_display_scale
+        axes.append(item)
     member_counts = {}
     if 'member_source_key' in headlines:
         for (group_key, member_key, member_label), count in headlines.groupby(['source_key','member_source_key','member_source']).size().items():
@@ -185,8 +219,6 @@ def main():
         members = member_counts.get(key, [])
         members.sort(key=lambda x: -x['headlines'])
         grouped = bool(row.get('measurement_grouped', False)) and len(members) > 1
-        # A synthetic measurement group with only one observed member should keep
-        # the canonical host key so client-side lookups stay source-shaped.
         if len(members) == 1:
             key = members[0]['key']
             icon_key = key
@@ -194,8 +226,8 @@ def main():
         profile_source = profiles.get(icon_key) or {}
         profile = {field: profile_source[field] for field in PROFILE_FIELDS if profile_source.get(field)}
         member_labels = [DISPLAY_OVERRIDES.get(m['key']) or m['label'] for m in members]
-        axes = {axis['key']: axis_payload(row, axis) for axis in AXES}
-        positive = sorted(((k, v['score']) for k, v in axes.items()), key=lambda x: -x[1])
+        axes_payload = {axis['key']: axis_payload(row, axis) for axis in axes}
+        positive = sorted(((k, v['z']) for k, v in axes_payload.items()), key=lambda x: -x[1])
         row_family = clean_text(row.get('group'))
         tree_family = relationship_families.get(icon_key, '')
         family = tree_family or (row_family if row_family != 'Unmatched sources' else '')
@@ -206,6 +238,9 @@ def main():
             'headlines': int(row['n']),
             'rank': int(row['rank']),
             'measuredQuality': round(float(row['topic_adjusted_value_index']), 2),
+            'measuredQualityZ': round(float(row.get('composite_relative_z', 0.0) or 0.0), 3),
+            'measuredQualityAdjustedPoints': round(float(row.get('composite_adjusted_pp', 0.0) or 0.0), 3),
+            'measuredQualityCi95': [round(float(row.get('topic_adjusted_index_ci95_low', np.nan)), 2), round(float(row.get('topic_adjusted_index_ci95_high', np.nan)), 2)] if np.isfinite(row.get('topic_adjusted_index_ci95_low', np.nan)) and np.isfinite(row.get('topic_adjusted_index_ci95_high', np.nan)) else None,
             'band': band_key(row['ordering_band']),
             'bandLabel': BAND_META[row['ordering_band']]['label'],
             'grouped': grouped,
@@ -215,15 +250,29 @@ def main():
             'family': family,
             'treeRoot': tree_root,
             'profile': profile,
+            'assessments': assessments_for(icon_key),
             'relationshipsUrl': './relationships.html' + (('#' + anchors[icon_key]) if icon_key in anchors else ''),
-            'axes': axes,
+            'axes': axes_payload,
             'strongestAxes': [k for k,_ in positive[:3]],
             'weakestAxes': [k for k,_ in positive[-3:]],
             'diagnostics': {
                 'originalAccessCueRate': round(float(row.get('original_reporting_signal_rate', 0.0) or 0.0), 5),
                 'titleEchoRate': round(float(row.get('cross_source_near_duplicate_rate', 0.0) or 0.0), 5),
+                'strongEvidenceSurfaceRate': round(float(row.get('strong_evidence_surface_rate', 0.0) or 0.0), 5),
+                'researchEvidenceSurfaceRate': round(float(row.get('research_evidence_surface_rate', 0.0) or 0.0), 5),
+                'directTestimonySurfaceRate': round(float(row.get('direct_testimony_surface_rate', 0.0) or 0.0), 5),
+                'quoteTestimonySurfaceRate': round(float(row.get('quote_testimony_surface_rate', 0.0) or 0.0), 5),
+                'vagueAttributionSurfaceRate': round(float(row.get('vague_attribution_surface_rate', 0.0) or 0.0), 5),
+                'curiosityGapRiskMean': round(float(row.get('curiosity_gap_risk_mean', 0.0) or 0.0), 5),
+                'stockTeaserSurfaceRate': round(float(row.get('stock_teaser_surface_rate', 0.0) or 0.0), 5),
+                'listicleWithholdingSurfaceRate': round(float(row.get('listicle_withholding_surface_rate', 0.0) or 0.0), 5),
+                'withheldReasonSurfaceRate': round(float(row.get('withheld_reason_surface_rate', 0.0) or 0.0), 5),
+                'resolutionGapSurfaceRate': round(float(row.get('resolution_gap_surface_rate', 0.0) or 0.0), 5),
                 'bodyCoverageRate': round(float(row.get('body_coverage_rate', 0.0) or 0.0), 5),
                 'bodyResearchCueRate': round(float(row.get('body_research_claim_rate', 0.0) or 0.0), 5),
+                'bodyEvidenceSurfaceRate': round(float(row.get('body_evidence_surface_rate', 0.0) or 0.0), 5),
+                'bodyTestimonySurfaceRate': round(float(row.get('body_testimony_surface_rate', 0.0) or 0.0), 5),
+                'bodyEvidenceSurfaceScoreMean': round(float(row.get('body_evidence_surface_score_mean', 0.0) or 0.0), 5),
             },
             'notes': [SOURCE_NOTES[key]] if key in SOURCE_NOTES else [],
         }
@@ -243,7 +292,15 @@ def main():
             'midpoint': 50,
             'minimum': 0,
             'maximum': 100,
-            'meaning': 'Corpus-relative axis position; higher is always more desirable. 50 is typical across measured sources, with positions derived from adjusted z-scores and bounded for display.',
+            'meaning': 'Corpus-relative axis position; higher is always more desirable. 50 is typical across measured sources. Each axis keeps its adjusted z-score in the z field, while the display score applies one shared corpus calibration across all axes so positions remain comparable.',
+            'method': 'adjusted z-score scaled by the pooled 95th percentile absolute z position across all measured axes and sources, then bounded to 0–100',
+        },
+        'compositeScale': {
+            'meaning': 'Corpus-relative measured headline value. 50 is typical across measured sources; higher indicates more concrete headline information and less attention packaging after comparison with similar story mixes.',
+            'method': 'natural-unit axis residuals, empirically shrunk for sample size, symmetrically saturated at a corpus-derived high-percentile axis deviation, averaged across the eleven composite axes, then centred and scaled across eligible sources',
+            'axisCapQuantile': summary.get('composite_axis_cap_quantile'),
+            'axisCapAdjustedPoints': summary.get('composite_axis_cap_pp'),
+            'shrinkageK': summary.get('composite_shrinkage_k'),
         },
         'minimumHeadlines': int(analysis.get('min_source_n', 20)),
         'summary': {
@@ -252,7 +309,7 @@ def main():
             'inputSourceCount': int(summary.get('sources', 0)),
         },
         'bands': bands,
-        'axes': AXES,
+        'axes': axes,
         'sourceIndex': source_index,
         'sources': sources,
     }

@@ -1,12 +1,12 @@
 {
-  "runtime_seconds": 130.838,
+  "runtime_seconds": 204.106,
   "stage_times": {
-    "parse_archive": 1.8,
-    "detectors": 29.002,
-    "headline_reuse_and_templates": 29.376,
-    "topic_model_and_crossfit_expectations": 7.507,
-    "source_statistics_and_bootstrap": 59.567,
-    "write_tables_and_radar": 3.521
+    "parse_archive": 2.112,
+    "detectors": 93.191,
+    "headline_reuse_and_templates": 30.466,
+    "topic_model_and_crossfit_expectations": 9.037,
+    "source_statistics_and_bootstrap": 64.872,
+    "write_tables_and_radar": 4.363
   },
   "config": {
     "input_zip": ".working/source-headlines-analysis.zip",
@@ -26,6 +26,11 @@
     "adjust_title_length": false,
     "length_adjusted_sensitivity": true,
     "attention_context_adjustment": 0.25,
+    "empirical_composite_shrinkage": true,
+    "composite_axis_cap_quantile": 0.95,
+    "use_spacy_model": true,
+    "spacy_model": "en_core_web_sm",
+    "spacy_batch_size": 500,
     "shrinkage_grid": [
       10,
       25,

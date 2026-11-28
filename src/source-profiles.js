@@ -9,5 +9,6 @@
 // the note rather than pretending one generic record can capture every outlet.
 import BRANCH_PROFILES from './trees/profiles/branches.json' with { type: 'json' };
 import SOURCE_PROFILES from './trees/profiles/sources.json' with { type: 'json' };
+import SOURCE_ASSESSMENTS from './trees/profiles/source-assessments.json' with { type: 'json' };
 
-export { BRANCH_PROFILES, SOURCE_PROFILES };
+export { BRANCH_PROFILES, SOURCE_PROFILES, SOURCE_ASSESSMENTS };

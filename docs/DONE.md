@@ -1,5 +1,28 @@
 # DONE
 
+## Continuous evidence/curiosity measurement finalised (2026-11-28)
+
+- Replaced the sparse stock-regex evidence detector with a family-based continuous evidence-surface score: documentary/legal/data evidence highest, typed research evidence next, direct testimony moderate, communication-event or vague-attribution surfaces low. spaCy `en_core_web_sm` supplies noisy POS/entity support, but measurement remains transparent token-boundary surface matching rather than semantic truth judgement. Proper-name collisions, passive fragments, negated `tell` constructions, content labels such as standalone transcripts, and compound uses such as video game/gameplay footage are guarded.
+- Replaced binary curiosity-gap detection with continuous curiosity-gap risk using broad structural withholding families: stock teaser forms, listicle/example withholding, unresolved forward references, resolution/reaction/mechanism gaps, vague references, and pronoun/determiner/WH load, attenuated where the headline already supplies concrete anchors. Transparent service/explanatory headlines are not treated as clickbait merely because they use question or how-to form.
+- Calibrated the curiosity measurement only in aggregate against the fixed stratified LLM audit labels: 133 assessable rows, Spearman 0.751, Pearson 0.735; mean risk by audit score rises 0.029 → 0.140 → 0.390 → 0.547 across scores 0–3. Low-label rows scoring at least 0.5: 4/95; high-label rows scoring below 0.2: 4/38. This is a graded source-level language measurement, not a story verdict or formal precision/recall validation.
+- Body/summary diagnostics now include strong-evidence, testimony and vague-attribution surfaces. They remain diagnostics only because coverage varies sharply by feed/source; they do not alter the headline composite. The report body table now exposes those newer surfaces rather than the older narrow regex-only rates.
+- Full regeneration completed: 11,461 headline rows, 687 measured/grouped source keys, 76 ranked sources, runtime 204.1s. Empirical composite shrinkage is k=15.38; axis cap is 12.51 adjusted percentage points. Final measured-quality range is 18.43–81.04. High-volume ordering is Eurogamer 81.0, Korea Times 70.5, The Guardian 69.1, City A.M. 58.7, Financial Times 57.2, Medical Xpress 52.6, BBC 45.8, Phys.org 42.5, The Independent 42.5, Mirror 41.6, Punch 34.7, IGN 26.0, Daily Mail 25.7, Kotaku 18.4.
+- Axis display spread is no longer narrow for the two problem axes. Across the 76 measured sources, evidence specificity now spans 9.3–100 on the shared spiderweb scale (median 47.95; 11/76 within 45–55), while curiosity-gap restraint spans 0–79.4 (median 52.7; 16/76 within 45–55). The underlying adjusted-point ranges remain asymmetric because these are mostly penalty/risk axes; the display spread is corpus-relative and the natural-unit differences remain visible in the detail cards/export.
+- Evidence-source distributions are now plausible at aggregate level: direct testimony is the common layer (median source rate about 6.8%), strong documentary/legal/data evidence remains rare, and research-release sources separate clearly — Medical Xpress has a 15.7% research-evidence surface rate versus 0.8% direct headline testimony, while The Guardian has broader direct testimony and quotation surfaces. Curiosity-risk leaders include Business Insider, CBS News, Vice, TechRadar, Reddit and Kotaku; many wire-like/source-specific streams remain near zero.
+- Updated methodology, metric dictionary, detector validation axes, corpus invariants, measured-source diagnostics/export, radar annotation, audit sample and regression coverage. Final detector regression coverage is 83 detector cases plus 4 suffix-strip cases; corpus-output invariants pass for 11,461 headlines, 687 sources, 13 radar axes and 76 ordered sources.
+- Rebuilt `src/data/measured-sources.json`, `dist/measured-sources.json`, validation sample, charts and production site. `npm test` passes 13/13 files and 101/101 tests; `npm run build` succeeds. Nothing was committed.
+
+## Measured-source numerical scaling finalised (2026-11-27)
+
+- Final measured-source composite rebuilt as a robust natural-unit aggregate: per-axis context-adjusted residuals are empirically shrunk, each shrunk axis contribution is symmetrically capped at the corpus-derived 95th-percentile absolute axis deviation, then the 11 axes are averaged and corpus-normalised for display. This was a numerical scaling change only; the frozen headline rows and detector outputs were not further cleaned.
+- Fringe-case text review drove the choice. Equal z-weighting made formulaic research-release sources look too strong (PsyPost/Medical Xpress) and over-penalised moderate curiosity/service deviations; uncapped natural units gave single large axes too much leverage. The capped natural-unit compromise preserves real magnitudes without letting one axis swamp the profile.
+- Final run: 11,461 headline rows, 687 measured/grouped source keys, 76 ranked sources, empirical shrinkage k=16.18, axis cap 12.23 adjusted percentage points, composite range 18.33–82.56, mean bootstrap CI width 27.61, runtime 177.2s.
+- High-volume ordering is now: Eurogamer 82.6, Korea Times 70.2, The Guardian 68.6, Financial Times 57.2, City A.M. 56.2, Medical Xpress 55.0, BBC 46.5, Phys.org 44.9, The Independent 42.8, Mirror 42.6, Punch 35.3, Daily Mail 26.5, IGN 24.2, Kotaku 18.3. These remain bands/ordering aids, not precise publisher-quality scores.
+- Final numerical audit is embedded in `docs/headline-data/current/REPORT.md`: length-adjusted ranking Spearman 0.932, simple axis-z average 0.915, raw unadjusted signal 0.809. Leave-one-axis-out ordering remains Spearman 0.908–0.999; time/place, material consequences, event clarity and context carry most spread, while sparse evidence/curiosity axes carry less. Cap sensitivity is high: q=0.90 Spearman 0.992, q=0.99 Spearman 0.995, uncapped Spearman 0.992 versus the primary q=0.95 composite.
+- Sparse-axis decision: curiosity-gap restraint and evidence specificity are not separately boosted. Median absolute adjusted deviation is only 0.11pp for curiosity-gap restraint and 0.53pp for evidence specificity, so most sources genuinely cluster there; unusual offenders/evidence-heavy sources still matter without giving sparse cues artificial equality with high-variance event/context axes.
+- Overlap decision: explanatory framing and avoidance of direct/service packaging correlate at -0.50, but they are intentionally not decorrelated. Explanatory/service headlines can receive explanatory credit while still incurring packaging pressure; removing that overlap numerically would erase the distinction.
+- Regenerated `docs/headline-data/current/*`, `src/data/measured-sources.json`, validation sample and charts; built `dist/measured-sources.html` plus copied `dist/measured-sources.json`. Corpus invariants pass; `npm test` passes 13/13 files and 101/101 tests; production `npm run build` passes.
+
 ## Platform-tenant source attribution audit
 
 - Multi-tenant platforms are no longer treated as sources: `yourlocalepidemiologist.substack.com` displayed as "Substack" because base-domain extraction took the platform label — same class of bug hit neocities, and worst of all dev.to, where 115 stories by ~97 individual authors were all lumped under one "DEV" source.
@@ -273,9 +296,9 @@
   hosts resolve to their measured group. The frozen export is copied as static site
   data; analysis itself remains dev-time only.
 - Conservative measurement grouping is configured in the task file: BBC services,
-  Mashable regional editions, Inquirer verticals, and New York Post/Page Six are
-  measured together; unlike-owned Fox-branded affiliates are not grouped with Fox
-  News. Member-level raw profiles were checked before grouping: Mashable editions
+  Mashable regional editions, Philippine Daily Inquirer verticals, and New York
+  Post/Page Six are measured together; unlike-owned Fox-branded affiliates are not
+  grouped with Fox News. Member-level raw profiles were checked before grouping: Mashable editions
   are similar, Page Six is small and close to the main New York Post stream, while
   the Inquirer note explicitly warns that tiny verticals differ and the combined
   view mainly describes the main/news streams.
@@ -290,3 +313,105 @@
   family labels, quartile boundary overlap, and stale analysis charts. Verified
   rendered output in Firefox headless at desktop/mobile widths and with expanded
   spiderwebs. `npm test` passes 97/97 and `npm run build` succeeds.
+
+## Source-manifest update import (2026-11-27)
+
+- Reviewed all 118 source blocks in `docs/sources-manifest-UPDATE-2026-11-27.md`
+  and imported the durable facts into `src/trees/profiles/sources.json`: ownership,
+  governance, publishing model, source-specific watch notes, structural corrections
+  and evidence links. Corpus-observation percentages and repetitive self-description
+  disclaimers were deliberately not copied; they are snapshot/method framing rather
+  than durable source facts.
+- Added tree homes for previously unplaced sparse sources including Axios, BuzzFeed,
+  The Hill, Global News, News18, Interfax-Ukraine, People Daily, The Conversation,
+  Mongabay, Nautilus, Endpoints, Investing.com, Benzinga and `dev.to/wlz`. Matched
+  export coverage improved from 522 to 543 of 695 cache sources.
+- Applied explicit relation corrections: Engadget/BGR moved from Yahoo to Static
+  Media; GameSpot moved from Red Ventures to Fandom; CNET and Mashable sit under
+  Ziff Davis; Sky News UK moved out of the US Comcast branch into UK national
+  broadcasters; Philadelphia `inquirer.com` and Philippine `newsinfo.inquirer.net`
+  are now structurally separate publishers.
+- Corrected entity kinds where the hostname was misleading: `obits.oregonlive.com`
+  is Legacy-hosted obituary listings rather than the OregonLive newsroom,
+  `factcheck.afp.com` is the AFP Fact Check vertical rather than a general AFP wire
+  feed, and `dev.to/wlz` is an individual author feed rather than DEV as a platform.
+- Centralised display labels in `src/source-labels.js` so pipeline, export and
+  reader pages resolve the same names. This fixed visible labels such as Economic
+  Times, Times of India, Interfax-Ukraine, Philippine Daily Inquirer, The
+  Philadelphia Inquirer, Yahoo Sports and Xbox Wire instead of host-derived
+  fragments such as “Indiatimes”.
+- Reran the full dev-time analysis after the tree corrections: 11,461 headline rows,
+  687 measured/grouped source keys, 76 ranked sources, corpus invariants passing.
+  The Philippine Daily Inquirer group contains only Philippine verticals;
+  Philadelphia remains separate but unranked with 17 headlines. Measured-source
+  relationship links now point at the corrected Static Media/Fandom/Sky UK anchors.
+- The update file itself has been reduced to an import ledger: processed source
+  blocks were removed so the same ChatGPT research delta cannot accidentally be
+  imported twice.
+
+## Source-knowledge gaps dump + external bias assessments (2026-11-27)
+
+- Generated `.working/sources-manifest-GAPS-2026-11-27.md`: 517 gap rows out of
+  695 cached source keys (488 unprofiled, 15 minimal, 14 thin), sorted by cached
+  unique-headline count with relation status and one sample headline per row. The
+  same generation pass validated the completed update import: all 118 keys resolve
+  to usable profiles and curated relations, with no unprocessed update markers left.
+- Imported `.working/sources-bias-reports-2026-11-27.md` into a separate structured
+  dataset, `src/trees/profiles/source-assessments.json`, rather than folding third-party
+  verdicts into curated profile prose. It preserves 126 source-level assessments across
+  86 source keys by rater, scope and evidence URL: 44 MBFC, 59 MediaBias.News index,
+  18 AllSides and 5 Ad Fontes entries. MediaBias.News rows are explicitly typed as
+  republished index signals rather than independent votes; no composite or averaged
+  ideological score was created. Rows that mentioned an AllSides review without
+  reproducing its current label were not imported as ratings.
+- Relationships and measured-source detail cards now surface external assessments
+  beside curated context, including MBFC factual-reporting tiers where present and a
+  compact “republished index” tag for MediaBias.News rows. `measured-sources.json`
+  carries the same assessments as metadata; they are not inputs to measured quality.
+- Verification: regenerated `src/data/measured-sources.json`; `npm test` passes
+  101/101 and `npm run build` succeeds.
+
+## Measured-score decompression + final validation (2026-11-27)
+
+- Reworked the measured-quality composite after finding that independently
+  z-scoring eleven sparse axes compressed almost every source into a narrow band.
+  The composite now aggregates cue residuals in natural percentage-point units
+  before one corpus-relative display normalisation. Axis z-scores remain
+  diagnostic spiderweb inputs rather than a second equally weighted composite
+  stage. Composite shrinkage is estimated from within/between-source variance
+  (`k≈16.18` in the final run), and shrinkage sensitivity remains high
+  (Spearman about 0.999 at nearby settings).
+- Deepened weak binary detectors into fractional measurements where that was
+  tractable: direct/speech/nominal event forms, exact versus weak numeric detail,
+  explicit versus weak context/comparison, and research-claim versus primary-artefact
+  evidence. Final detector regression coverage is 72 detector cases plus 4
+  source-suffix cases.
+- Corrected two measurement artefacts found during manual audit. First, raw spaCy
+  place entities are no longer trusted alone because the small model frequently
+  labels sports clubs, companies, games, people and “AI” as places; exact
+  corpus-audited false-positive overrides, context requirements for ambiguous
+  place names, and reduced-weight facility hits are used instead. Second, exact
+  publisher boilerplate suffixes such as “- The Korea Times” and
+  “| The Jerusalem Post” are stripped before measurement while editorial
+  hyphenated subtitles remain; 238 rows were cleaned and raw headlines remain
+  exported for audit.
+- Final run: 11,461 headlines, 687 grouped/measured source keys, 76 ranked
+  sources, runtime about 181s. Composite range is now 21.40–81.46 rather than
+  the previous narrow cluster. High-volume ordering is Eurogamer 81.5, Guardian
+  73.8, Korea Times 67.9, City A.M. 59.9, Financial Times 58.0, Medical Xpress
+  54.3, BBC 46.7, Phys.org 45.2, Independent 43.3, Mirror 41.0, Punch 30.0,
+  Daily Mail 28.8, IGN 23.5, Kotaku 21.4. Small-sample leaders remain leads,
+  not robust publisher verdicts.
+- Rebuilt `src/data/measured-sources.json` with one shared axis display scale
+  derived from the pooled 95th-percentile absolute z position across all measured
+  axes (22.26 points per z unit). This keeps axes comparable while using most of
+  the spiderweb range. Final quartile ranges: strongest 62.66–81.46,
+  above-typical 46.95–60.67, below-typical 38.98–46.81, weakest 21.40–38.94.
+- Measured-source detail cards now show sampling intervals, underlying adjusted
+  percentage-point differences, and strongest/weakest axes with their natural-unit
+  differences, so sparse-axis spiderweb positions are less likely to be misread
+  as absolute percentages.
+- Verification: detector tests pass (72+4 cases); corpus-output invariants pass
+  for 11,461 headlines, 687 sources, 13 radar axes and 76 ordered sources;
+  `npm test` passes 101/101; `npm run build` succeeds. No analysis step was added
+  to the normal build pipeline.

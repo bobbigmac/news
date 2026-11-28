@@ -3,6 +3,7 @@
   "config": "/home/bobbigmac/projects/bobdavies/news/docs/tasks/headline-analysis.task.json",
   "headline_rows": 11461,
   "sources": 687,
+  "source_suffix_stripped_rows": 238,
   "exact_duplicate_headline_rows": 46,
   "cross_source_near_duplicate_title_rows": 168,
   "sources_ranked_min_n": 76,
@@ -21,34 +22,52 @@
     25,
     50
   ],
+  "empirical_composite_shrinkage": true,
+  "composite_shrinkage_k": 15.377039505863305,
+  "composite_axis_cap_quantile": 0.95,
+  "composite_axis_cap_pp": 12.514594406207458,
+  "composite_score_range": [
+    18.430589479663116,
+    81.03834483911493
+  ],
+  "composite_ci95_width_mean": 26.68496635303561,
   "shrinkage_spearman_correlation": {
-    "10": {
-      "10": 1.0,
-      "25": 0.9972,
-      "50": 0.9915
+    "10.0": {
+      "10.0": 1.0,
+      "15.377039505863305": 0.9984,
+      "25.0": 0.9932,
+      "50.0": 0.9819
     },
-    "25": {
-      "10": 0.9972,
-      "25": 1.0,
-      "50": 0.9974
+    "15.377039505863305": {
+      "10.0": 0.9984,
+      "15.377039505863305": 1.0,
+      "25.0": 0.9967,
+      "50.0": 0.9864
     },
-    "50": {
-      "10": 0.9915,
-      "25": 0.9974,
-      "50": 1.0
+    "25.0": {
+      "10.0": 0.9932,
+      "15.377039505863305": 0.9967,
+      "25.0": 1.0,
+      "50.0": 0.9932
+    },
+    "50.0": {
+      "10.0": 0.9819,
+      "15.377039505863305": 0.9864,
+      "25.0": 0.9932,
+      "50.0": 1.0
     }
   },
   "overall_axis_rates": {
-    "event_clarity": 0.38748800279207746,
-    "quantified_specificity": 0.12433470028793299,
-    "time_place_anchor": 0.22668179041968414,
+    "event_clarity": 0.3926140825407905,
+    "quantified_specificity": 0.1765116481982375,
+    "time_place_anchor": 0.3275892156007329,
     "causal_explanation": 0.034988220923130614,
     "material_consequence": 0.18959951138644096,
-    "evidence_provenance": 0.00959776633801588,
-    "context_comparison": 0.06962743216124248,
-    "explanatory_framing": 0.01474565919204258,
+    "evidence_provenance": 0.08184713375796178,
+    "context_comparison": 0.1312058284617398,
+    "explanatory_framing": 0.04720355989878719,
     "original_reporting_signal": 0.0004362621062734491,
-    "explicit_curiosity_gap_incidence": 0.0017450484250937964,
+    "explicit_curiosity_gap_incidence": 0.029941286498560333,
     "direct_service_packaging_incidence": 0.030625599860396126,
     "sensational_personal_incidence": 0.01928278509728645,
     "cross_source_title_echo": 0.014658406770787889
@@ -56,245 +75,245 @@
   "top_15": [
     {
       "rank": 1.0,
-      "source": "South China Morning Post",
-      "n": 25,
-      "topic_adjusted_value_index": 62.3898598751935,
+      "source": "Eurogamer",
+      "n": 458,
+      "topic_adjusted_value_index": 81.03834483911493,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 44.72727272727273
+      "raw_title_signal_index": 39.73049344978166
     },
     {
       "rank": 2.0,
-      "source": "PsyPost",
-      "n": 28,
-      "topic_adjusted_value_index": 59.219884075439815,
+      "source": "TweakTown",
+      "n": 46,
+      "topic_adjusted_value_index": 77.48500081169193,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 37.98701298701299
+      "raw_title_signal_index": 40.709486166007906
     },
     {
       "rank": 3.0,
-      "source": "Eurogamer",
-      "n": 458,
-      "topic_adjusted_value_index": 59.06558846162813,
+      "source": "MyJoyOnline",
+      "n": 28,
+      "topic_adjusted_value_index": 77.3469696355271,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 37.842397776895595
+      "raw_title_signal_index": 45.43766233766234
     },
     {
       "rank": 4.0,
-      "source": "TweakTown",
-      "n": 46,
-      "topic_adjusted_value_index": 58.78403370908005,
+      "source": "Jerusalem Post",
+      "n": 68,
+      "topic_adjusted_value_index": 73.6124569384213,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 38.73517786561265
+      "raw_title_signal_index": 45.57286096256684
     },
     {
       "rank": 5.0,
-      "source": "Medical Xpress",
-      "n": 127,
-      "topic_adjusted_value_index": 58.430036211439074,
+      "source": "Qatar Tribune",
+      "n": 28,
+      "topic_adjusted_value_index": 72.70738385205314,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 36.47100930565498
+      "raw_title_signal_index": 45.89285714285714
     },
     {
       "rank": 6.0,
-      "source": "The Guardian",
-      "n": 485,
-      "topic_adjusted_value_index": 58.03019460707965,
+      "source": "South China Morning Post",
+      "n": 25,
+      "topic_adjusted_value_index": 72.29993137742386,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 38.388003748828496
+      "raw_title_signal_index": 45.27272727272727
     },
     {
       "rank": 7.0,
-      "source": "Jerusalem Post",
-      "n": 68,
-      "topic_adjusted_value_index": 57.410856636110026,
+      "source": "Wccftech",
+      "n": 27,
+      "topic_adjusted_value_index": 71.65141697206866,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 40.44117647058824
+      "raw_title_signal_index": 43.823063973063974
     },
     {
       "rank": 8.0,
-      "source": "MyJoyOnline",
-      "n": 28,
-      "topic_adjusted_value_index": 56.59742026512891,
+      "source": "The Indian Express",
+      "n": 20,
+      "topic_adjusted_value_index": 70.64979826189403,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 42.04545454545455
+      "raw_title_signal_index": 44.93181818181819
     },
     {
       "rank": 9.0,
-      "source": "PBS",
-      "n": 20,
-      "topic_adjusted_value_index": 55.229499978665345,
+      "source": "Korea Times",
+      "n": 123,
+      "topic_adjusted_value_index": 70.52226223637385,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 37.272727272727266
+      "raw_title_signal_index": 42.79383887657058
     },
     {
       "rank": 10.0,
-      "source": "Quartz",
-      "n": 24,
-      "topic_adjusted_value_index": 55.12722665025412,
+      "source": "STAT News",
+      "n": 22,
+      "topic_adjusted_value_index": 69.72795228341083,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 43.18181818181818
+      "raw_title_signal_index": 42.086776859504134
     },
     {
       "rank": 11.0,
-      "source": "Qatar Tribune",
-      "n": 28,
-      "topic_adjusted_value_index": 55.058205242244775,
+      "source": "Quartz",
+      "n": 24,
+      "topic_adjusted_value_index": 69.43323734464072,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 41.23376623376623
+      "raw_title_signal_index": 45.1090909090909
     },
     {
       "rank": 12.0,
-      "source": "Times of India",
-      "n": 20,
-      "topic_adjusted_value_index": 54.474856910089926,
+      "source": "The Guardian",
+      "n": 485,
+      "topic_adjusted_value_index": 69.0629961188784,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 40.0
+      "raw_title_signal_index": 42.714894298031865
     },
     {
       "rank": 13.0,
-      "source": "Wccftech",
-      "n": 27,
-      "topic_adjusted_value_index": 54.14821747471029,
+      "source": "PBS",
+      "n": 20,
+      "topic_adjusted_value_index": 67.01432294241991,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 40.4040404040404
+      "raw_title_signal_index": 44.30716363636364
     },
     {
       "rank": 14.0,
-      "source": "Sky News",
-      "n": 48,
-      "topic_adjusted_value_index": 54.0300722910436,
+      "source": "Yahoo Sports",
+      "n": 21,
+      "topic_adjusted_value_index": 66.92983252548069,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 37.973484848484844
+      "raw_title_signal_index": 39.248658008658005
     },
     {
       "rank": 15.0,
-      "source": "Financial Times",
-      "n": 116,
-      "topic_adjusted_value_index": 53.69197548672152,
+      "source": "New York Post / Page Six",
+      "n": 48,
+      "topic_adjusted_value_index": 64.05029181981493,
       "ordering_band": "A \u2014 upper quartile",
-      "raw_title_signal_index": 38.00940438871473
+      "raw_title_signal_index": 40.414204545454545
     }
   ],
   "bottom_15": [
     {
       "rank": 76.0,
-      "source": "Daily Mail",
-      "n": 350,
-      "topic_adjusted_value_index": 36.43732914368069,
+      "source": "Kotaku",
+      "n": 671,
+      "topic_adjusted_value_index": 18.430589479663116,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 33.68831168831169
+      "raw_title_signal_index": 34.90351061157025
     },
     {
       "rank": 75.0,
-      "source": "Kotaku",
-      "n": 671,
-      "topic_adjusted_value_index": 39.2828560651634,
+      "source": "Handelsblatt",
+      "n": 55,
+      "topic_adjusted_value_index": 22.505871189540144,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 33.51849342907465
+      "raw_title_signal_index": 33.48181818181818
     },
     {
       "rank": 74.0,
-      "source": "New Scientist",
-      "n": 40,
-      "topic_adjusted_value_index": 41.631318665269234,
+      "source": "GameSpot",
+      "n": 56,
+      "topic_adjusted_value_index": 25.17889931684243,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 35.90909090909091
+      "raw_title_signal_index": 34.61663961038961
     },
     {
       "rank": 73.0,
-      "source": "Handelsblatt",
-      "n": 55,
-      "topic_adjusted_value_index": 43.11192790439897,
+      "source": "Daily Mail",
+      "n": 350,
+      "topic_adjusted_value_index": 25.71285910423171,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 32.231404958677686
+      "raw_title_signal_index": 37.60332727272727
     },
     {
       "rank": 72.0,
-      "source": "OregonLive Obituaries",
-      "n": 29,
-      "topic_adjusted_value_index": 43.62157353449815,
+      "source": "IGN",
+      "n": 125,
+      "topic_adjusted_value_index": 26.025712342467806,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 36.677115987460816
+      "raw_title_signal_index": 34.20401163636363
     },
     {
       "rank": 71.0,
-      "source": "Metro",
-      "n": 73,
-      "topic_adjusted_value_index": 44.64589083823793,
+      "source": "OregonLive Obituaries",
+      "n": 29,
+      "topic_adjusted_value_index": 27.350557749001638,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 36.986301369863014
+      "raw_title_signal_index": 36.677115987460816
     },
     {
       "rank": 70.0,
       "source": "Engadget",
       "n": 21,
-      "topic_adjusted_value_index": 44.90884202694366,
+      "topic_adjusted_value_index": 30.65508203482952,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 28.57142857142857
+      "raw_title_signal_index": 30.75038961038961
     },
     {
       "rank": 69.0,
-      "source": "GameSpot",
-      "n": 56,
-      "topic_adjusted_value_index": 45.022970025260726,
+      "source": "Sydney Morning Herald",
+      "n": 28,
+      "topic_adjusted_value_index": 32.216362190238556,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 34.33441558441558
+      "raw_title_signal_index": 33.655499999999996
     },
     {
       "rank": 68.0,
-      "source": "Sydney Morning Herald",
-      "n": 28,
-      "topic_adjusted_value_index": 45.18906801652497,
+      "source": "Nature",
+      "n": 42,
+      "topic_adjusted_value_index": 32.923740874530296,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 30.519480519480517
+      "raw_title_signal_index": 33.80831168831169
     },
     {
       "rank": 67.0,
-      "source": "Punch",
-      "n": 348,
-      "topic_adjusted_value_index": 45.229297785357204,
+      "source": "Philippine Daily Inquirer",
+      "n": 20,
+      "topic_adjusted_value_index": 33.406708864710545,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 35.73667711598746
+      "raw_title_signal_index": 35.45454545454545
     },
     {
       "rank": 66.0,
-      "source": "Wired",
-      "n": 26,
-      "topic_adjusted_value_index": 45.48014279876328,
+      "source": "Metro",
+      "n": 73,
+      "topic_adjusted_value_index": 34.451397196795746,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 36.88811188811189
+      "raw_title_signal_index": 39.130192777085924
     },
     {
       "rank": 65.0,
-      "source": "Business Recorder",
-      "n": 70,
-      "topic_adjusted_value_index": 45.4810900488225,
+      "source": "Punch",
+      "n": 348,
+      "topic_adjusted_value_index": 34.65770489561938,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 33.76623376623377
+      "raw_title_signal_index": 38.78709508881922
     },
     {
       "rank": 64.0,
-      "source": "Yahoo Sports",
-      "n": 21,
-      "topic_adjusted_value_index": 46.131112670449006,
+      "source": "Business Recorder",
+      "n": 70,
+      "topic_adjusted_value_index": 35.09751133268655,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 35.064935064935064
+      "raw_title_signal_index": 36.528571428571425
     },
     {
       "rank": 63.0,
-      "source": "Mirror",
-      "n": 133,
-      "topic_adjusted_value_index": 46.23942012490145,
+      "source": "Business Day",
+      "n": 31,
+      "topic_adjusted_value_index": 35.32442644933656,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 35.88516746411483
+      "raw_title_signal_index": 37.59530791788856
     },
     {
       "rank": 62.0,
-      "source": "Nature",
-      "n": 42,
-      "topic_adjusted_value_index": 46.52211933752475,
+      "source": "The Hindu",
+      "n": 52,
+      "topic_adjusted_value_index": 36.51728293779465,
       "ordering_band": "D \u2014 lower quartile",
-      "raw_title_signal_index": 31.601731601731597
+      "raw_title_signal_index": 36.54282006993007
     }
   ],
   "largest_sources": [
@@ -302,130 +321,130 @@
       "source": "BBC",
       "n": 3537,
       "group": "BBC",
-      "topic_adjusted_value_index": 49.54119996817758
+      "topic_adjusted_value_index": 45.7538575771641
     },
     {
       "source": "Kotaku",
       "n": 671,
       "group": "Kotaku",
-      "topic_adjusted_value_index": 39.2828560651634
+      "topic_adjusted_value_index": 18.430589479663116
     },
     {
       "source": "The Guardian",
       "n": 485,
       "group": "The Guardian",
-      "topic_adjusted_value_index": 58.03019460707965
+      "topic_adjusted_value_index": 69.0629961188784
     },
     {
       "source": "Eurogamer",
       "n": 458,
       "group": "Eurogamer",
-      "topic_adjusted_value_index": 59.06558846162813
+      "topic_adjusted_value_index": 81.03834483911493
     },
     {
       "source": "Daily Mail",
       "n": 350,
       "group": "Daily Mail",
-      "topic_adjusted_value_index": 36.43732914368069
+      "topic_adjusted_value_index": 25.71285910423171
     },
     {
       "source": "Punch",
       "n": 348,
       "group": "The Punch",
-      "topic_adjusted_value_index": 45.229297785357204
+      "topic_adjusted_value_index": 34.65770489561938
     },
     {
       "source": "The Independent",
       "n": 246,
       "group": "Independent",
-      "topic_adjusted_value_index": 50.48070605212874
+      "topic_adjusted_value_index": 42.480183596082995
     },
     {
       "source": "Phys.org",
       "n": 190,
       "group": "Phys.org",
-      "topic_adjusted_value_index": 51.44861221344275
+      "topic_adjusted_value_index": 42.497387140889536
     },
     {
       "source": "City A.M.",
       "n": 173,
       "group": "City A.M.",
-      "topic_adjusted_value_index": 52.7419118788246
+      "topic_adjusted_value_index": 58.66410285634946
     },
     {
       "source": "Mirror",
       "n": 133,
       "group": "Reach Nationals",
-      "topic_adjusted_value_index": 46.23942012490145
+      "topic_adjusted_value_index": 41.57420352527152
     },
     {
       "source": "Medical Xpress",
       "n": 127,
       "group": "Medical Xpress",
-      "topic_adjusted_value_index": 58.430036211439074
+      "topic_adjusted_value_index": 52.62038517593214
     },
     {
       "source": "IGN",
       "n": 125,
       "group": "IGN",
-      "topic_adjusted_value_index": 48.11697459819389
+      "topic_adjusted_value_index": 26.025712342467806
     },
     {
       "source": "Korea Times",
       "n": 123,
       "group": "Korea Times",
-      "topic_adjusted_value_index": 51.6198066256683
+      "topic_adjusted_value_index": 70.52226223637385
     },
     {
       "source": "Financial Times",
       "n": 116,
       "group": "Financial Times",
-      "topic_adjusted_value_index": 53.69197548672152
+      "topic_adjusted_value_index": 57.15272781959978
     },
     {
       "source": "Evening Standard",
       "n": 92,
       "group": "Evening Standard",
-      "topic_adjusted_value_index": 52.55394840455391
+      "topic_adjusted_value_index": 52.24364511183445
     },
     {
       "source": "This is Money",
       "n": 81,
       "group": "DMGT Companion",
-      "topic_adjusted_value_index": 50.929483249664955
+      "topic_adjusted_value_index": 60.60360497602973
     },
     {
       "source": "Metro",
       "n": 73,
       "group": "DMGT Companion",
-      "topic_adjusted_value_index": 44.64589083823793
+      "topic_adjusted_value_index": 34.451397196795746
     },
     {
       "source": "Business Recorder",
       "n": 70,
       "group": "Business Recorder",
-      "topic_adjusted_value_index": 45.4810900488225
+      "topic_adjusted_value_index": 35.09751133268655
     },
     {
       "source": "Jerusalem Post",
       "n": 68,
       "group": "Jerusalem Post",
-      "topic_adjusted_value_index": 57.410856636110026
+      "topic_adjusted_value_index": 73.6124569384213
     },
     {
       "source": "Notebookcheck",
       "n": 61,
       "group": "Notebookcheck",
-      "topic_adjusted_value_index": 47.388341559068934
+      "topic_adjusted_value_index": 40.657208284920195
     }
   ],
-  "runtime_seconds": 130.838,
+  "runtime_seconds": 204.106,
   "stage_times": {
-    "parse_archive": 1.8,
-    "detectors": 29.002,
-    "headline_reuse_and_templates": 29.376,
-    "topic_model_and_crossfit_expectations": 7.507,
-    "source_statistics_and_bootstrap": 59.567,
-    "write_tables_and_radar": 3.521
+    "parse_archive": 2.112,
+    "detectors": 93.191,
+    "headline_reuse_and_templates": 30.466,
+    "topic_model_and_crossfit_expectations": 9.037,
+    "source_statistics_and_bootstrap": 64.872,
+    "write_tables_and_radar": 4.363
   }
 }

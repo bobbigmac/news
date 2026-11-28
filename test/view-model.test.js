@@ -222,7 +222,7 @@ describe('buildViewModel', () => {
 describe('platform tenant attribution', () => {
   it('attributes subdomain tenants to the publication, never the platform', () => {
     expect(prettifySourceKey('yourlocalepidemiologist.substack.com')).not.toMatch(/substack/i);
-    expect(prettifySourceKey('laurenleek.substack.com')).toBe('Laurenleek');
+    expect(prettifySourceKey('laurenleek.substack.com')).toBe('Lauren Leek');
     expect(prettifySourceKey('systemdrift.neocities.org')).toBe('Systemdrift');
   });
 

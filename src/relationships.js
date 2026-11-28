@@ -1,5 +1,5 @@
 import { getFaviconSpriteClass } from './favicon-sprite.js';
-import { BRANCH_PROFILES, SOURCE_PROFILES } from './source-profiles.js';
+import { BRANCH_PROFILES, SOURCE_ASSESSMENTS, SOURCE_PROFILES } from './source-profiles.js';
 import { SOURCE_RELATION_TREE } from './source-tree.js';
 import { prettifySourceKey } from './view-model.js';
 
@@ -95,6 +95,47 @@ function appendProfileBody(container, profile) {
   appendLinkList(container, profile.links);
 }
 
+function assessmentsFor(host) {
+  const sources = SOURCE_ASSESSMENTS.sources || {};
+  if (sources[host]) return sources[host];
+  const serviceKey = Object.keys(sources).find(key => key.endsWith(`.${host}`));
+  return serviceKey ? sources[serviceKey] : null;
+}
+
+function appendExternalAssessments(container, assessments) {
+  if (!assessments?.length) return;
+  const row = el('div', 'profile-field profile-assessments');
+  row.appendChild(el('strong', '', 'External assessments'));
+  const list = el('ul', 'profile-list assessment-list');
+  for (const assessment of assessments) {
+    const item = el('li', 'assessment-item');
+    const line = el('div', 'assessment-line');
+    line.appendChild(el('strong', '', `${assessment.rater}: `));
+    const subject = assessment.subject ? ` (${assessment.subject})` : '';
+    line.appendChild(document.createTextNode(`${assessment.rating}${subject}`));
+    if (assessment.factual_reporting) {
+      line.appendChild(document.createTextNode(`; factual reporting: ${assessment.factual_reporting}`));
+    }
+    if (assessment.type === 'republished political-leaning index') {
+      const tag = el('span', 'assessment-tag', 'republished index');
+      tag.title = 'MediaBias.News republishes other raters’ verdicts; it is not an independent rating.';
+      line.appendChild(tag);
+    }
+    if (assessment.url) {
+      const link = el('a', 'assessment-source', 'source');
+      link.href = assessment.url;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      line.appendChild(link);
+    }
+    item.appendChild(line);
+    if (assessment.note) item.appendChild(el('div', 'assessment-note', assessment.note));
+    list.appendChild(item);
+  }
+  row.appendChild(list);
+  container.appendChild(row);
+}
+
 function renderSourceIcon(container, key) {
   const spriteClass = getFaviconSpriteClass(key);
   if (spriteClass) {
@@ -106,7 +147,9 @@ function renderSourceIcon(container, key) {
 
 function renderOutletCard(host, currentPath) {
   const profile = SOURCE_PROFILES[host];
-  const card = el(profile ? 'details' : 'div', 'source-card');
+  const assessments = assessmentsFor(host);
+  const hasDetails = Boolean(profile || assessments?.length);
+  const card = el(hasDetails ? 'details' : 'div', 'source-card');
   const memberships = membershipsByHost.get(host) || [];
   const others = memberships.filter(m => m.path !== currentPath);
   const searchText = [host, prettifySourceKey(host), ...memberships.map(m => m.path)];
@@ -116,12 +159,15 @@ function renderOutletCard(host, currentPath) {
       else if (Array.isArray(value)) searchText.push(...value.filter(v => typeof v === 'string'));
     }
   }
-  card.dataset.search = searchText.join(' ').toLowerCase().replace(/-/g, ' ');
+  for (const assessment of assessments || []) {
+    searchText.push(assessment.rater, assessment.rating, assessment.subject, assessment.note, assessment.factual_reporting);
+  }
+  card.dataset.search = searchText.filter(Boolean).join(' ').toLowerCase().replace(/-/g, ' ');
 
   // Collapsed by default: icon + name is the whole visible row. The profile
   // only renders when the reader opens it, so thin rows cost one line each
   // and no space is wasted beside dense rows.
-  const summary = el(profile ? 'summary' : 'div', 'source-card-head');
+  const summary = el(hasDetails ? 'summary' : 'div', 'source-card-head');
   renderSourceIcon(summary, host);
   const title = el('div', 'source-card-title');
   title.appendChild(el('h4', '', prettifySourceKey(host)));
@@ -151,9 +197,10 @@ function renderOutletCard(host, currentPath) {
     card.appendChild(also);
   }
 
-  if (profile) {
+  if (hasDetails) {
     const body = el('div', 'source-profile');
-    appendProfileBody(body, profile);
+    if (profile) appendProfileBody(body, profile);
+    appendExternalAssessments(body, assessments);
     card.appendChild(body);
   }
   return card;

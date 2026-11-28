@@ -65,6 +65,11 @@
     "adjust_title_length": false,
     "length_adjusted_sensitivity": true,
     "attention_context_adjustment": 0.25,
+    "empirical_composite_shrinkage": true,
+    "composite_axis_cap_quantile": 0.95,
+    "use_spacy_model": true,
+    "spacy_model": "en_core_web_sm",
+    "spacy_batch_size": 500,
     "shrinkage_grid": [
       10,
       25,
