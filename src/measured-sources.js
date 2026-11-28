@@ -1,9 +1,12 @@
 import { getFaviconSpriteClass } from './favicon-sprite.js';
 import MEASURED_SOURCES from './data/measured-sources.json' with { type: 'json' };
 import { axisNames, renderSpiderweb } from './measured-spiderweb.js';
+import { FILTER_GROUPS, sourceMatchesGroup } from './measured-filters.js';
 
 const axes = MEASURED_SOURCES.axes;
 const axisByKey = new Map(axes.map(axis => [axis.key, axis]));
+
+
 
 function el(tag, className, text) {
   const node = document.createElement(tag);
@@ -160,6 +163,7 @@ function renderSourceCard(source) {
     ...(source.memberLabels || []),
     ...(source.notes || []),
   ].join(' ').toLowerCase();
+  card.dataset.groups = (groupBySourceKey.get(source.key) || []).join(' ');
 
   const summary = el('summary', 'measured-card-head');
   summary.appendChild(el('span', 'measured-rank', `#${source.rank}`));
@@ -237,19 +241,60 @@ function render() {
   });
 }
 
+let activeFilter = 'all';
+const groupBySourceKey = new Map();
+for (const source of MEASURED_SOURCES.sources) {
+  const groups = FILTER_GROUPS.filter(group => sourceMatchesGroup(source, group)).map(group => group.key);
+  groupBySourceKey.set(source.key, groups);
+}
+
+function applyVisibility() {
+  const query = (document.getElementById('measured-search')?.value || '').trim().toLowerCase();
+  for (const card of document.querySelectorAll('.measured-source-card')) {
+    const matchesQuery = !query || card.dataset.search.includes(query);
+    const matchesFilter = activeFilter === 'all' || card.dataset.groups?.split(' ').includes(activeFilter);
+    card.classList.toggle('is-hidden', !(matchesQuery && matchesFilter));
+  }
+  for (const section of document.querySelectorAll('.measurement-band')) {
+    const visible = [...section.querySelectorAll('.measured-source-card')].some(card => !card.classList.contains('is-hidden'));
+    section.classList.toggle('is-hidden', !visible);
+  }
+}
+
+function renderFilters() {
+  const nav = document.getElementById('measured-filters');
+  if (!nav) return;
+  const counts = new Map();
+  for (const groups of groupBySourceKey.values()) {
+    for (const key of groups) counts.set(key, (counts.get(key) || 0) + 1);
+  }
+  const chips = [{ key: 'all', label: `All ${MEASURED_SOURCES.sources.length} measured sources` }];
+  for (const group of FILTER_GROUPS) {
+    const count = counts.get(group.key) || 0;
+    if (!count) continue;
+    chips.push({ key: group.key, label: `${group.label} ${count}` });
+  }
+  for (const chip of chips) {
+    const btn = el('button', 'measured-filter-chip', chip.label);
+    btn.type = 'button';
+    btn.dataset.filter = chip.key;
+    btn.setAttribute('aria-pressed', chip.key === activeFilter ? 'true' : 'false');
+    btn.addEventListener('click', () => {
+      activeFilter = activeFilter === chip.key ? 'all' : chip.key;
+      for (const other of nav.querySelectorAll('.measured-filter-chip')) {
+        other.setAttribute('aria-pressed', other.dataset.filter === activeFilter ? 'true' : 'false');
+      }
+      applyVisibility();
+    });
+    nav.appendChild(btn);
+  }
+}
+
 function bindSearch() {
   const input = document.getElementById('measured-search');
-  input.addEventListener('input', () => {
-    const query = input.value.trim().toLowerCase();
-    for (const card of document.querySelectorAll('.measured-source-card')) {
-      card.classList.toggle('is-hidden', query && !card.dataset.search.includes(query));
-    }
-    for (const section of document.querySelectorAll('.measurement-band')) {
-      const visible = [...section.querySelectorAll('.measured-source-card')].some(card => !card.classList.contains('is-hidden'));
-      section.classList.toggle('is-hidden', Boolean(query) && !visible);
-    }
-  });
+  input.addEventListener('input', applyVisibility);
 }
 
 render();
+renderFilters();
 bindSearch();

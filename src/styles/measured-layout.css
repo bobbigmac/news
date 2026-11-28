@@ -139,6 +139,34 @@
   align-items: start;
 }
 
+.measured-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+}
+
+.measured-filter-chip {
+  border: 1px solid var(--rule-thick);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.measured-filter-chip:hover {
+  border-color: var(--ink);
+}
+
+.measured-filter-chip[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
 .measured-footer {
   border-top: 1px solid var(--rule);
 }

@@ -196,6 +196,12 @@
 }
 
 /* Category/source management rows */
+.manage-measured-link {
+  margin: 0.35rem 0 0.7rem;
+  font-size: 0.8rem;
+}
+
+
 .category-prefs {
   display: flex;
   flex-direction: column;

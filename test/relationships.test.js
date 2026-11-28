@@ -16,7 +16,11 @@ describe('relationships page', () => {
     const viteConfig = readFileSync('vite.config.js', 'utf8');
     const page = readFileSync('src/relationships.html', 'utf8');
 
-    expect(index).toContain('<a class="settings-link" href="./relationships.html">Source Relationships</a>');
+    // the relationships link belongs inside the Manage Sources subpanel, not the settings sidebar
+    expect(index).not.toContain('settings-link" href="./relationships.html"');
+    const sourcePanel = index.split('id="source-panel"')[1] || '';
+    expect(sourcePanel).toContain('href="./relationships.html"');
+    expect(sourcePanel).toContain('href="./measured-sources.html"');
     expect(index).toContain('<a href="./relationships.html">Source relationships</a>');
     expect(viteConfig).toContain('relationships');
     expect(page).toContain('id="relationships-main"');

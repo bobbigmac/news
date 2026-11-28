@@ -1,5 +1,12 @@
 # DONE
 
+## Measured-source interest filters + manage-panel links (2026-11-28)
+
+- Fox absence explained, not a bug: Fox News and the Fox local affiliates have only 1-7 pooled headlines each because no Fox feed is configured in ingestion (`RSS_FEEDS` covers BBC/gaming/urgent/techmeme/sky/techpress/science). The few Fox items arrive via aggregators. The Fox feed itself (`moxie.foxnews.com/google-publisher/latest.xml`) is live, so measuring Fox is an ingestion decision, not a measurement limitation.
+- Reader-interest filter chips added above the measured-source sections: sixteen sector/type groups (UK national papers, US national news, local & metro, broadcasters, world & international, games, sports, tech, science & health, business & markets, digital-native, billionaire-owned, state-influenced, corporate & official, aggregators, lots of articles). Groups are comparison-minded rather than ownership-tree-minded per the design guidance; cross-cutting sets (billionaire-owned, state-influenced, high-volume) deliberately overlap sector sets. Filters narrow the existing corpus-relative ordering only — no recalculation. Definitions live in `src/measured-filters.js`, validated so every measured source falls into at least one group and every group has at least two members.
+- Manage Sources panel now links to the measured-sources page at the top ("See how sources measure up"), since the only other paths were the page footer or the settings list.
+- Verification: `npm test` 15/15 files, 109/109 tests including five new filter-coverage tests; production build passes.
+
 ## Measured-sources ordering, coverage and manage-list quality (2026-11-28)
 
 - Multi-column source lists were CSS-column layouts, so reading order ran down the left column then continued at the top of the right (1–10 left, 11–19 right), hiding the fact that position in the list is the ranking. The layout is now a row-major grid (`repeat(auto-fill, minmax(min(100%, 430px), 1fr))`), so reading left-to-right, top-to-bottom follows the score order at any column count; expanded cards span the full grid width. Rank numbers are bold so the ordering is visibly deliberate.

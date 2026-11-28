@@ -3,8 +3,8 @@ devin-sessionlog: user-input
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 07:40:34 UTC
-entries: 66
+last_activity: 2026-11-28 07:52:06 UTC
+entries: 71
 ---
 
 # repeated-bite
@@ -555,6 +555,41 @@ NO fox items are included in the measured-sources... did you exclude them, or ju
 The manage sources sub-view should contain a link at the top, to this measured-sources page, because on the main page this is otherwise only accessible by scrolling to the bottom or entering views that shirnk the page a LOT more than usual (most daily views of the homepage expect a lot of content).
 
 Also, do we have a top-level set of filters we can show before the tables, that lets the viewer switch from all to filtered subsets based on sector/type. The corpus-relative figures still, no recalc, just a filterer that understands group memberships, but using mostly top level groups (like I want 15-20 filters that include most of our logged sources, and an item could exist in multiple sets, but usually won't), like "National Broadcasters" is a good top level group, but "BBC" isn't. "Games Media" is a good top-level group, and so is "Sports", but "IGN-owned" isn't. "Billionaire Owned" is, but "Newscorp" less so. "Lots of articles" for just BIG groups is good. We're looking for essentially narrowing the window to groups that make sense to compare, intent/reader-interest, NOT dataset-obsessed.
+
+---
+
+<!-- r:0 m:hook:0f0217d1-74a2-4b9b-abbe-8fd563263976 h:c22d6e7e -->
+### 2026-11-28 07:47:35 UTC
+
+produce a fresh GAPS report for additional sources, relationships and connections/quality (non-measured) research
+
+---
+
+<!-- r:0 m:hook:033e1e4c-e738-4e92-9e1c-27f10ca32ce5 h:8e86d037 -->
+### 2026-11-28 07:47:47 UTC
+
+I see youre saying it exists, but I don't want it there, I want it after the heading but before the toggles
+
+---
+
+<!-- r:0 m:hook:d2f28d32-8da9-4636-a00d-fb9318aa3f8c h:bbf02ddf -->
+### 2026-11-28 07:49:35 UTC
+
+the settings sidebar should contain "Manage Categories" AND "Manage Sources" links, NOT "Source Relationships" or "Measured Source Quality". Those links belong INSIDE the Manage Categroies subpanel
+
+---
+
+<!-- r:0 m:hook:3fb51b76-3282-4188-af18-e457a6a16e55 h:df455771 -->
+### 2026-11-28 07:50:07 UTC
+
+the settings sidebar should contain "Manage Categories" AND "Manage Sources" links, NOT "Source Relationships" or "Measured Source Quality". Those links belong INSIDE the "Manage Sources" subpanel
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913 h:55140c22 -->
+### 2026-11-28 07:52:06 UTC
+
+we need an opengraph image specific for the measured-sources page (split in half with top 6 on the left and bottom 6 on the right, with a simple short title as intro, and a one-liner footer, like "News sources ranked by text-metrics"), AND one specific for the relationships page, which I think can be just about the page, more like simple text-content like what is in our site-wide og-image. There is an opengraph-image generator already, that can be adapted, but don''t giev the measured-sources page icons-grid as a background, just make a simpler short-form of the content on the page over white, more like the real page (essentially use the same content as the real page, just top and bottom 6 with a title and footer as described).
 
 ---
 

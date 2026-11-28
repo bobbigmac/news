@@ -3,8 +3,8 @@ devin-sessionlog: transcript
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 07:41:43 UTC
-entries: 2813
+last_activity: 2026-11-28 07:53:50 UTC
+entries: 2858
 ---
 
 # repeated-bite
@@ -77869,6 +77869,982 @@ PROFILE KINDS:
   1 Specialist health, medicine and life-sciences newsroom
   1 Financial-news and market-data platform for individual investors
   1 US digit
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:db8d3264 h:7b122ea8 -->
+### 2026-11-28 07:42:07 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'PY'\nimport json\nd=json.load(open('src/data/measured-sources.json'))\nfor s in sorted(d['sources'],key=lambda x:(x.get('treeRoot',''),x.get('family',''),x['label'])):\n    print(f\"{s['label'][:32]:34}| {s.get('treeRoot','')[:22]:24}| {s.get('family','')[:34]:36}| n={s['headlines']}\")\nPY", "timeout": 10000}`
+
+```
+Output from command in shell b0421b:
+The West Australian               | Australia Media         | Australia National                  | n=10
+Sydney Morning Herald             | Australia Media         | Nine                                | n=28
+The Age                           | Australia Media         | Nine                                | n=26
+Global News                       | Canada Media            | Corus Entertainment                 | n=19
+Winnipeg Free Press               | Canada Media            | Independent Canadian Newspapers     | n=58
+Toronto Sun                       | Canada Media            | Postmedia                           | n=15
+POLITICO Europe                   | Digital Publishers      | Axel Springer                       | n=12
+Axios                             | Digital Publishers      | Digital-native News                 | n=16
+BuzzFeed                          | Digital Publishers      | Digital-native News                 | n=11
+Newsweek                          | Digital Publishers      | Digital-native News                 | n=28
+Quartz                            | Digital Publishers      | Digital-native News                 | n=24
+Semafor                           | Digital Publishers      | Digital-native News                 | n=27
+Vice                              | Digital Publishers      | Digital-native News                 | n=30
+Chalkbeat                         | Digital Publishers      | Nonprofit News & Explainers         | n=23
+New York Post / Page Six          | Murdoch-family media    | News Corp Print                     | n=48
+Dev Game                          | Platforms & Aggregator  | DEV Community                       | n=11
+Github                            | Platforms & Aggregator  | Microsoft                           | n=12
+Reddit                            | Platforms & Aggregator  | Social Aggregators                  | n=40
+ABC News                          | Public & International  | Australia &
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:1b128488 h:22377a9c -->
+### 2026-11-28 07:43:09 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'PY'\nimport json\nd=json.load(open('src/data/measured-sources.json'))\nsrcs=d['sources']\n# draft filter definitions: match by family exact names or explicit keys, validate coverage\nFILTERS = {\n 'UK national papers': {'families':{'The Guardian','Daily Mail','Independent','Evening Standard','Reach Nationals'},'keys':{'metro.c`
+
+```
+Output from command in shell 3db2fe:
+UK national papers: 6
+    Daily Mail, Evening Standard, Metro, Mirror, The Guardian, The Independent
+US national news: 3
+    New York Post / Page Six, New York Times, USA TODAY
+Local & city news: 14
+    Belfast Live, Edinburgh News, Global News, Hartford Courant, KAIT 8, Online Athens, OregonLive obituaries, Sydney Morning Herald, The Age, The Philadelphia Inquirer, The West Australian, Toronto Sun...
+Broadcasters: 13
+    ABC News, Al Jazeera, BBC, CBC, CBS News, DW, France 24, Global News, NPR, PBS, RNZ, RTÉ...
+World & international news: 40
+    3News, Ajel English, Arabian Business, Asahi Shimbun, Bernama, Business Recorder, CNA, Colombiaone, Daily Maverick, Daily Post, Daily Times, E24...
+Games media: 5
+    Eurogamer, GameSpot, IGN, Kotaku, Rockpapershotgun
+Sports media: 3
+    Sempremilan, World Soccer Talk, Yahoo Sports
+Technology press: 18
+    Android Headlines, Ars Technica, BGR, CNET, Engadget, HotHardware, KitGuru, Mashable, Notebookcheck, T3, TechRadar, TechSpot...
+Science & health: 15
+    Discover, Endpoints News, Frontiers, Health Policy Watch, MedPage Today, Medical Xpress, Nature, Nautilus, New Scientist, Phys.org, PsyPost, STAT News...
+Business & markets: 20
+    Arabian Business, Benzinga, Bloomberg, Business Day, Business Insider, BusinessKorea, City A.M., Economic Times, El Financiero, Financial Times, Finextra, Handelsblatt...
+Digital-native news: 9
+    Axios, BuzzFeed, Chalkbeat, Newsweek, POLITICO Europe, Quartz, Semafor, Variety, Vice
+Billionaire & proprietor-owned: 4
+    Daily Mail, Metro, New York Post / Page Six, This is Money
+State-influenced media: 3
+    Al Jazeera, BelTA, Bernama
+Corporate, official & press releases: 3
+    Github, Prnewswire, Xbox Wire
+Aggregators & platforms: 2
+    Dev Game, Reddit
+
+High-volume (n>=150): 9 ['BBC', 'City A.M.', 'Daily Mail', 'Eurogamer', 'Kotaku', 'Phys.org', 'Punch', 'The Guardian', 'The Independent']
+
+uncovered: 0 []
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:1c65d6a8 h:c4eba5d4 -->
+### 2026-11-28 07:43:41 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"measured-main\\|methodology\\|masthead\" src/measured-sources.html | head -8 && sed -n 30,60p src/measured-sources.html", "timeout": 10000}`
+
+```
+Output from command in shell b03bcf:
+22:  <header class="measured-masthead">
+32:        <a href="#methodology">What this measurement means</a>
+41:  <main id="measured-main" class="measured-main" aria-live="polite"></main>
+43:  <section id="methodology" class="methodology-section">
+44:    <div class="methodology-card">
+74:      <div class="methodology-grid">
+      <nav class="page-peer-nav" aria-label="Source context pages">
+        <a href="./relationships.html">Who’s behind the news</a>
+        <a href="#methodology">What this measurement means</a>
+      </nav>
+    </div>
+    <label class="source-search-label">
+      Search measured sources
+      <input id="measured-search" type="search" placeholder="BBC, Guardian, science…">
+    </label>
+  </header>
+
+  <main id="measured-main" class="measured-main" aria-live="polite"></main>
+
+  <section id="methodology" class="methodology-section">
+    <div class="methodology-card">
+      <p class="eyebrow">Methodology</p>
+      <h2>What “measured quality” means here</h2>
+      <p>
+        This is a measure of headline value, not a truth score. It asks whether a headline
+        usually tells you something concrete — what happened, where, when, with what detail,
+        consequence, context or evidence — and whether it does so without leaning on teasing,
+        search-capture phrasing, celebrity framing or sensational language.
+      </p>
+      <p>
+        Each spiderweb shows eleven measured traits. The middle ring is typical for the measured
+        sources as a group. Further out means more of the desirable trait; closer to the centre
+        means less. All axes share one scale derived from the spread actually observed in this
+        measured group so real differences remain visible without making axes incomparable.
+        These are relative positions within the measured group, not absolute marks out of 100.
+        The traits are measured after comparing sources with broadly similar story mixes, so a
+        games outlet i
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:edit:393c35c4 h:7a714832 -->
+### 2026-11-28 07:43:47 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.html", "old_string": "  <main id=\"measured-main\" class=\"measured-main\" aria-live=\"polite\"></main>", "new_string": "  <nav id=\"measured-filters\" class=\"measured-filters\" aria-label=\"Filter sources by type\"></nav>\n\n  <main id=\"measured-main\" class=\"measured-main\" aria-live=\"polite\"></main>"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/measured-sources.html' - made 1 replacement(s). 1 line(s) removed, 3 line(s) added at line 41.
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:edit:d4d64d5a h:f8ce70ad -->
+### 2026-11-28 07:44:02 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js", "old_string": "const axes = MEASURED_SOURCES.axes;\nconst axisByKey = new Map(axes.map(axis => [axis.key, axis]));", "new_string": "const axes = MEASURED_SOURCES.axes;\nconst axisByKey = new Map(axes.map(axis => [axis.key, axis]));\n\n// Reader-interest filter groups: sector/type comparisons a reader would actually\n/`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js' - made 1 replacement(s). 2 line(s) removed, 34 line(s) added at line 5.
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:edit:1b2ec39e h:fc9b1981 -->
+### 2026-11-28 07:44:19 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js", "old_string": "function bindSearch() {\n  const input = document.getElementById('measured-search');\n  input.addEventListener('input', () => {\n    const query = input.value.trim().toLowerCase();\n    for (const card of document.querySelectorAll('.measured-source-card')) {\n      card.classList.toggle('is-hidden', que`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js' - made 1 replacement(s). 16 line(s) removed, 60 line(s) added at line 272.
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:edit:aef70275 h:15f1c51f -->
+### 2026-11-28 07:44:34 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js", "old_string": "render();\nfor (const card of document.querySelectorAll('.measured-source-card')) {\n  const groups = groupBySourceKey.get(card.querySelector('h3') ? findSourceKey(card) : '') || [];\n}\nrenderFilters();\nbindSearch();", "new_string": "render();\nrenderFilters();\nbindSearch();"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js' - made 1 replacement(s). 6 line(s) removed, 3 line(s) added at line 326.
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:edit:84fd23b0 h:f851ab51 -->
+### 2026-11-28 07:44:39 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js", "old_string": "  card.dataset.search = [\n    source.label,\n    source.key,\n    source.family,\n    source.treeRoot,\n    ...(source.memberLabels || []),\n    ...(source.notes || []),\n  ].join(' ').toLowerCase();", "new_string": "  card.dataset.search = [\n    source.label,\n    source.key,\n    source.family,\n   `
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/src/measured-sources.js' - made 1 replacement(s). 8 line(s) removed, 9 line(s) added at line 187.
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:1442247d h:ce768294 -->
+### 2026-11-28 07:44:49 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"band-chip\" src/styles/measured-cards.css | head -3 && sed -n \"$(grep -n 'band-chip' src/styles/measured-cards.css | head -1 | cut -d: -f1),+10p\" src/styles/measured-cards.css && grep -n \"category-panel-content p\\|manage\" src/styles/settings.css | head -5", "timeout": 10000}`
+
+```
+Output from command in shell ad4902:
+79:.band-chip {
+.band-chip {
+  max-width: 8rem;
+  border: 1px solid var(--rule-thick);
+  border-radius: 3px;
+  padding: 0.1rem 0.4rem;
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+198:/* Category/source management rows */
+216:.manage-label {
+223:.manage-name {
+230:.manage-count {
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:1479a786 h:9361a821 -->
+### 2026-11-28 07:45:08 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'PY'\np='src/styles/measured-layout.css'\ns=open(p).read()\ns=s.replace('''.measured-footer {\n  border-top: 1px solid var(--rule);\n}''','''.measured-filters {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 0.35rem;\n  margin-bottom: 0.85rem;\n}\n\n.measured-filter-chip {\n  border: 1px solid var(--rule-thick);\n  border-radius`
+
+```
+Output from command in shell e2b3c9:
+css updated
+3
+1
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:ab66c9fb h:581a5905 -->
+### 2026-11-28 07:45:17 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && node --input-type=module -e \"\nimport data from './src/data/measured-sources.json' with { type: 'json' };\n// replicate filter logic\nconst src = (await import('fs')).readFileSync('src/measured-sources.js','utf8');\n// extract FILTER_GROUPS via eval hack \u2014 simpler: re-implement match test using same arrays parsed from module is britt`
+
+```
+Output from command in shell 380855:
+metro.co.uk KEY
+usatoday.com KEY
+eurogamer.net KEY
+ign.com KEY
+rockpapershotgun.com KEY
+mashable.com member
+group-mashable KEY
+cnet.com KEY
+economictimes.indiatimes.com KEY
+qz.com KEY
+thisismoney.co.uk KEY
+arabianbusiness.com KEY
+businessrecorder.com.pk MISSING
+elfinanciero.com.mx KEY
+businesskorea.co.kr KEY
+politico.eu KEY
+variety.com KEY
+chalkbeat.org KEY
+globalnews.ca KEY
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:7d086047 h:984afea4 -->
+### 2026-11-28 07:45:31 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 -c \"\nimport json\nd=json.load(open('src/data/measured-sources.json'))\nfor s in d['sources']:\n    if 'recorder' in s['label'].lower() or 'Recorder' in s['label']:\n        print(s['key'],s['label'],s.get('family'))\n\"", "timeout": 10000}`
+
+```
+Output from command in shell a1c3df:
+brecorder.com Business Recorder Pakistan Media
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:18ad8543 h:1e3b7607 -->
+### 2026-11-28 07:45:39 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 -c \"\ns=open('src/measured-sources.js').read()\ns=s.replace('businessrecorder.com.pk','brecorder.com')\nopen('src/measured-sources.js','w').write(s)\nprint('fixed')\n\" && node --check src/measured-sources.js 2>&1 && echo \"syntax ok\" ; node --input-type=module -e \"\n// smoke test the filter matching logic end-to-end in jsdom-fr`
+
+```
+Output from command in shell 7b2a4b:
+fixed
+syntax ok
+module import: browser-only (expected: needs DOM)
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:f32adb4e h:f90c7e6e -->
+### 2026-11-28 07:45:53 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'PY'\ns=open('src/measured-sources.js').read()\nstart=s.index('// Reader-interest filter groups:')\nend=s.index('function sourceMatchesGroup')\nend2=s.index('}',s.index('return (source.members || [])',end))+1\nblock=s[start:end2]\n# extract just the FILTER_GROUPS array + sourceMatchesGroup into new module\ngroups_start=block.in`
+
+```
+Output from command in shell 8c60aa:
+extracted
+both syntax ok
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:59594f23 h:69134d9a -->
+### 2026-11-28 07:45:57 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && cat src/measured-filters.js | head -20 && grep -n \"FILTER_GROUPS\\|sourceMatchesGroup\" src/measured-sources.js | head -5", "timeout": 10000}`
+
+```
+Output from command in shell bf6587:
+// Reader-interest filter groups: sector/type comparisons a reader would actually
+// want, not ownership-tree or dataset structure. Membership rules were validated
+// against the measured export so most sources fall into at least one group; a few
+// cross-cutting groups (billionaire-owned, state-influenced, lots of articles)
+// deliberately overlap with the sector groups.
+export const FILTER_GROUPS = [
+  { key: 'uk-nationals', label: 'UK national papers', families: ['The Guardian', 'Daily Mail', 'Independent', 'Evening Standard', 'Reach Nationals'], keys: ['metro.co.uk'] },
+  { key: 'us-nationals', label: 'US national news', families: ['New York Times', 'News Corp Print'], keys: ['usatoday.com'] },
+  { key: 'local-metro', label: 'Local & metro news', families: ['Reach Local', 'The Scotsman', 'Independent City Papers', 'Tribune', 'Gannett', 'Gray Media', 'Advance Local', 'Independent Canadian Newspapers', 'Postmedia', 'Nine', 'Australia National'], keys: [] },
+  { key: 'broadcasters', label: 'Broadcasters', families: ['BBC', 'Sky UK', 'Australia & NZ Public', 'European Public', 'North America Public', 'Paramount / CBS', 'Qatari State-Funded Network', 'Corus Entertainment'], keys: [] },
+  { key: 'world-news', label: 'World & international news', families: ['India Media', 'Pakistan Media', 'Ghana Media', 'Kenya Media', 'Nigeria Companion Papers', 'The Punch', 'The Star Malaysia', 'Malay Mail', 'Malaysia Alternative', 'New Straits Times', 'Singapore Media', 'Philippine Daily Inquirer', 'Qatar Media', 'Saudi Media', 'UAE Media', 'Middle East Companion', 'Japan Media', 'Hong Kong & Taiwan', 'Korea Times', 'Indonesia Media', 'Latin America Media', 'Europe English', 'Jerusalem Post', 'South Africa Media', 'Bernama'], keys: [] },
+  { key: 'games', label: 'Games media', families: ['Keleops', 'Fandom'], keys: ['eurogamer.net', 'ign.com', 'rockpapershotgun.com'] },
+  { key: 'sports', label: 'Sports media', families: ['Sports Press', 'Yahoo']
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:write:a1d1de6a h:3bf17b42 -->
+### 2026-11-28 07:46:11 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/test/measured-filters.test.js", "content": "import { readFileSync } from 'fs';\nimport { describe, expect, it } from 'vitest';\nimport { FILTER_GROUPS, sourceMatchesGroup } from '../src/measured-filters.js';\n\nconst data = JSON.parse(readFileSync('src/data/measured-sources.json', 'utf8'));\n\ndescribe('measured-source interest filters', () =>`
+
+```
+Successfully wrote 2552 bytes (58 lines) to /home/bobbigmac/projects/bobdavies/news/test/measured-filters.test.js
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:960bd332 h:e2629173 -->
+### 2026-11-28 07:46:17 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && npx vitest run test/measured-filters.test.js 2>&1 | grep -E \"Test Files|Tests |\u2713|\u00d7|FAIL|members|corpus\" | head -12", "timeout": 60000}`
+
+```
+Output from command in shell 2f2fb8:
+ [32m✓[39m test/measured-filters.test.js [2m([22m[2m5 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m5 passed[39m[22m[90m (5)[39m
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:f390ca6f h:bb311a56 -->
+### 2026-11-28 07:46:34 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && npm test 2>&1 | grep -E \"Test Files|Tests |FAIL\" | head -4 && npm run build 2>&1 | tail -2", "timeout": 300000}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: d6c0e8. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:173f938b h:67878df6 -->
+### 2026-11-28 07:46:37 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"manage-sources\\|measured\" src/index.html | head -8", "timeout": 10000}`
+
+```
+Output from command in shell 275f40:
+110:      <button id="manage-sources" class="settings-link" type="button">Manage Sources</button>
+112:      <a class="settings-link" href="./measured-sources.html">Measured Source Quality</a>
+135:      <p class="manage-measured-link"><a href="./measured-sources.html">See how sources measure up</a> — headline quality scores for every measured source, in ranked order.</p>
+188:    <p>Generated from <a href="https://currentsapi.services" target="_blank" rel="noopener">Currents API</a> and <a href="https://www.bbc.co.uk/news" target="_blank" rel="noopener">BBC</a> with <a href="https://openrouter.ai" target="_blank" rel="noopener">OpenRouter</a> &middot; <a href="./relationships.html">Source relationships</a> &middot; <a href="./measured-sources.html">Measured source quality</a> &middot; <a href="https://github.com/bobbigmac/news" target="_blank" rel="noopener">Github</a>. No data gathered. You are not our product.</p>
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:get_output:f522649b h:4384cf91 -->
+### 2026-11-28 07:47:00 UTC tool `get_output`
+
+`{"shell_id": "d6c0e8", "timeout": 240000}`
+
+```
+[2m Test Files [22m [1m[32m15 passed[39m[22m[90m (15)[39m
+[2m      Tests [22m [1m[32m109 passed[39m[22m[90m (109)[39m
+
+> build
+> vite build && node scripts/build.js
+
+vite v8.1.4 building client environment for production...
+[2K
+transforming...✓ 75 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/assets/site-D1VkUSnh.webmanifest          0.46 kB
+dist/assets/favicon-16x16-DiDxEP5I.png         0.61 kB
+dist/assets/favicon-32x32-gx7jztkS.png         1.83 kB
+dist/relationships.html                        2.38 kB │ gzip:  1.17 kB
+dist/assets/icon-D43pJgon.svg                  3.43 kB │ gzip:  1.75 kB
+dist/measured-sources.html                     7.27 kB │ gzip:  3.04 kB
+dist/index.html                               10.53 kB │ gzip:  2.96 kB
+dist/assets/favicon-cIRlZqHK.ico              15.40 kB
+dist/assets/apple-touch-icon-DtMA9gHK.png     28.56 kB
+dist/assets/sprite-XqPrXdnM.png            1,285.35 kB
+dist/assets/relationships-AXM1SEFW.css         5.26 kB │ gzip:  1.60 kB
+dist/assets/measuredSources-BafezFnQ.css       7.64 kB │ gzip:  2.06 kB
+dist/assets/favicon-sprite-BCFZ4OtI.css       78.54 kB │ gzip: 13.55 kB
+dist/assets/favicon-sprite-hA9GRVYA.js        14.37 kB │ gzip:  5.80 kB
+dist/assets/view-model-DLtX9SPw.js            49.36 kB │ gzip: 16.60 kB
+dist/assets/main-CyNZmcFg.js                 110.29 kB │ gzip: 37.51 kB
+dist/assets/relationships-DkKLU0mu.js        288.92 kB │ gzip: 74.08 kB
+dist/assets/measuredSources-BwpCwlxo.js      428.78 kB │ gzip: 86.20 kB
+
+✓ built in 468ms
+Story groups: 4889/5557 clusters assigned (119 via fuzzy word matches)
+Client digests: 749 recent + 4808 archived clusters (full export in dataset.json)
+Build complete. 5557 clusters, 7113 entities, 57 topics, 10517 stories in timeline -> dist/dataset.json
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3ec70868-8ad9-4f6f-af9d-5110f24f6452:exec:9ce6d04e h:cde372c0 -->
+### 2026-11-28 07:47:14 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'PY'\ns=open('docs/DONE.md').read()\nentry='''# DONE\n\n## Measured-source interest filters + manage-panel links (2026-11-28)\n\n- Fox absence explained, not a bug: Fox News and the Fox local affiliates have only 1-7 pooled headlines each because no Fox feed is configured in ingestion (`RSS_FEEDS` covers BBC/gaming/urgent/techm`
+
+```
+Output from command in shell ed8bf3:
+done
+# DONE
+
+## Measured-source interest filters + manage-panel links (2026-11-28)
+
+- Fox absence explained, not a bug: Fox News and the Fox local affiliates have only 1-7 pooled headlines each because no Fox feed is configured in ingestion (`RSS_FEEDS` covers BBC/gaming/urgent/techmeme/sky/techpress/science). The few Fox items arrive via aggregators. The Fox feed itself (`moxie.foxnews.com/google-publisher/latest.xml`) is live, so measuring Fox is an ingestion decision, not a measurement limitation.
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:3ec70868-8ad9-4f6f-af9d-5110f24f6452 h:817fef87 -->
+### 2026-11-28 07:47:26 UTC assistant
+
+All three done. Nothing committed.
+
+## Fox: not excluded — barely ingested
+
+Fox isn't filtered out anywhere. Fox News has just **3** pooled headlines and the local affiliates 1–7 each — all below the 10-headline inclusion floor. The cause: **no Fox feed exists in ingestion**. `RSS_FEEDS` covers BBC, gaming, urgent, Techmeme, Sky, tech press and science — Fox items only trickle in when the Currents API or urgent.news aggregation happens to surface one. It's also not a dead feed: `moxie.foxnews.com/google-publisher/latest.xml` is live (HTTP 200, ~200KB). So measuring Fox is purely an ingestion decision — add the feed and it'll accumulate enough headlines to score within weeks.
+
+## Manage Sources link
+
+The Manage Sources panel now opens with "**See how sources measure up** — headline quality scores for every measured source, in ranked order", linking directly to the measured-sources page. (There was already a settings-panel link and a footer link, but nothing inside the manage view itself.)
+
+## Reader-interest filters
+
+Sixteen filter chips above the measured sections, designed as comparison sets rather than ownership-tree trivia:
+
+**Sector/type**: UK national papers (6), US national news (3), Local & metro news (14), Broadcasters (13), World & international news (40), Games media (5), Sports media (3), Tech press (18), Science & health (15), Business & markets (20), Digital-native news (9), Aggregators & platforms (2)
+
+**Cross-cutting lenses**: Billionaire-owned (4: Mail/Metro/This is Money/NY Post), State-influenced (3: Al Jazeera, BelTA, Bernama), Corporate & official channels (3: Xbox Wire, GitHub, PR Newswire), **Lots of articles** (9 sources with 150+ headlines)
+
+Key decisions:
+
+- **Corpus-relative figures unchanged** — filters only narrow the window, no recalculation
+- Overlaps only where honest: Al Jazeera is both a broadcaster and state-influenced; Arabian Business is both international and business
+- Global News sits in Broadcasters, not local news — it's Corus's national network
+- **Every one of the 145 measured sources falls into at least one group** — enforced by test, along with a 60%-of-corpus ceiling so no group becomes meaningless and flagship-placement checks (BBC in broadcasters not games, Kotaku in games not broadcasters, NYT in US nationals but not high-volume)
+- Clicking a chip filters; clicking again or "All 145 measured sources" resets; combines with the search box
+
+Verification: **15/15 test files, 109/109 tests** (5 new filter tests), production build passes. Logged in `docs/DONE.md`.
+
+---
+
+<!-- r:0 m:hook:0f0217d1-74a2-4b9b-abbe-8fd563263976 h:c22d6e7e -->
+### 2026-11-28 07:47:35 UTC user
+
+produce a fresh GAPS report for additional sources, relationships and connections/quality (non-measured) research
+
+---
+
+<!-- r:0 m:hook:033e1e4c-e738-4e92-9e1c-27f10ca32ce5 h:8e86d037 -->
+### 2026-11-28 07:47:47 UTC user
+
+I see youre saying it exists, but I don't want it there, I want it after the heading but before the toggles
+
+---
+
+<!-- r:0 m:hook:8e53d455-e7c8-4ba7-b88e-0ac7c7ef97f8:exec:6776e705 h:8a2f698e -->
+### 2026-11-28 07:48:12 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 95,125p src/index.html", "timeout": 10000}`
+
+```
+Output from command in shell 065f04:
+        <input type="checkbox" id="setting-fullwidth">
+        <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        <span class="toggle-label">Full width (up to 12 columns)</span>
+      </label>
+
+      <div class="settings-divider"></div>
+      <h4 class="settings-subhead">Watch Words</h4>
+      <input type="text" id="setting-watchwords" class="watch-words-input" placeholder="Xbox, Gaming, Longsight"
+       autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+       data-1p-ignore data-lpignore="true" data-bwignore data-protonpass-ignore="true" data-dashlane-ignore="true"
+       data-form-type="other">
+      <p class="settings-hint">Comma-separated. Stories matching any word are highlighted.</p>
+
+      <div class="settings-divider"></div>
+      <button id="manage-categories" class="settings-link" type="button">Manage Categories</button>
+      <button id="manage-sources" class="settings-link" type="button">Manage Sources</button>
+      <a class="settings-link" href="./relationships.html">Source Relationships</a>
+      <a class="settings-link" href="./measured-sources.html">Measured Source Quality</a>
+
+      <button id="settings-close" class="settings-close">Close</button>
+      <button id="settings-changelog" class="settings-close">Recent Updates</button>
+    </div>
+  </div>
+
+  <div id="category-panel" class="category-panel hidden">
+    <div class="category-panel-content">
+      <div class="category-panel-header">
+        <h3>Manage Categories</h3>
+        <button id="category-close" class="changelog-close">&times;</button>
+      </div>
+      <div id="category-prefs" class="category-prefs"></div>
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:d2f28d32-8da9-4636-a00d-fb9318aa3f8c h:bbf02ddf -->
+### 2026-11-28 07:49:35 UTC user
+
+the settings sidebar should contain "Manage Categories" AND "Manage Sources" links, NOT "Source Relationships" or "Measured Source Quality". Those links belong INSIDE the Manage Categroies subpanel
+
+---
+
+<!-- r:0 m:hook:3fb51b76-3282-4188-af18-e457a6a16e55 h:df455771 -->
+### 2026-11-28 07:50:07 UTC user
+
+the settings sidebar should contain "Manage Categories" AND "Manage Sources" links, NOT "Source Relationships" or "Measured Source Quality". Those links belong INSIDE the "Manage Sources" subpanel
+
+---
+
+<!-- r:0 m:hook:3fb51b76-3282-4188-af18-e457a6a16e55:exec:547ba7c4 h:b2727345 -->
+### 2026-11-28 07:50:15 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'PY'\np='src/index.html'\ns=open(p).read()\ns=s.replace('''      <button id=\"manage-categories\" class=\"settings-link\" type=\"button\">Manage Categories</button>\n      <button id=\"manage-sources\" class=\"settings-link\" type=\"button\">Manage Sources</button>\n      <a class=\"settings-link\" href=\"./relationships.html\"`
+
+```
+Output from command in shell fee97f:
+updated
+109:      <button id="manage-categories" class="settings-link" type="button">Manage Categories</button>
+110:      <button id="manage-sources" class="settings-link" type="button">Manage Sources</button>
+133:      <p class="manage-measured-link"><a href="./measured-sources.html">See how sources measure up</a> — headline quality scores for every measured source, in ranked order. <a href="./relationships.html">Source relationships</a> — who owns and funds each outlet.</p>
+142:        <button id="reset-read-log" class="settings-link" type="button">Reset Read Log</button>
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3fb51b76-3282-4188-af18-e457a6a16e55:exec:c5e171c6 h:c9049a74 -->
+### 2026-11-28 07:50:34 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -rn \"Measured Source Quality\\|Source Relationships\\|measured-sources.html\" test/*.js | head -8 && npm test 2>&1 | grep -E \"Test Files|Tests |FAIL\" | head -4", "timeout": 180000}`
+
+```
+test/measured-sources.test.js:5:const page = readFileSync('src/measured-sources.html', 'utf8');
+test/measured-sources.test.js:107:    expect(vite).toContain('measured-sources.html');
+test/measured-sources.test.js:108:    expect(index).toContain('./measured-sources.html');
+test/measured-sources.test.js:109:    expect(relationships).toContain('./measured-sources.html');
+test/relationships.test.js:19:    expect(index).toContain('<a class="settings-link" href="./relationships.html">Source Relationships</a>');
+
+===
+Stopped waiting for output after 10.0 seconds. Command running in background with ID: 4210fe. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:3fb51b76-3282-4188-af18-e457a6a16e55:exec:c8b2c452 h:96c8c98e -->
+### 2026-11-28 07:50:46 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 12,30p test/relationships.test.js", "timeout": 10000}`
+
+```
+Output from command in shell b740bb:
+
+describe('relationships page', () => {
+  it('is linked from the feed and included in the build', () => {
+    const index = readFileSync('src/index.html', 'utf8');
+    const viteConfig = readFileSync('vite.config.js', 'utf8');
+    const page = readFileSync('src/relationships.html', 'utf8');
+
+    expect(index).toContain('<a class="settings-link" href="./relationships.html">Source Relationships</a>');
+    expect(index).toContain('<a href="./relationships.html">Source relationships</a>');
+    expect(viteConfig).toContain('relationships');
+    expect(page).toContain('id="relationships-main"');
+    expect(page).toContain('id="source-search"');
+  });
+
+  it('never talks about the dataset or methodology — readers get relationships, not internals', () => {
+    const page = readFileSync('src/relationships.html', 'utf8').toLowerCase();
+    const script = readFileSync('src/relationships.js', 'utf8');
+    // the page is about who outlets are and how they connect; allocation
+    // mechanics, controls, and dataset framing belong in docs/, never here
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3fb51b76-3282-4188-af18-e457a6a16e55:exec:f90a5728 h:293473e3 -->
+### 2026-11-28 07:50:57 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'PY'\np='test/relationships.test.js'\ns=open(p).read()\ns=s.replace('''    expect(index).toContain('<a class=\"settings-link\" href=\"./relationships.html\">Source Relationships</a>');\n    expect(index).toContain('<a href=\"./relationships.html\">Source relationships</a>');''','''    // the relationships link belongs inside th`
+
+```
+Output from command in shell 60c029:
+test updated
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m16 passed[39m[22m[90m (16)[39m
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3fb51b76-3282-4188-af18-e457a6a16e55:get_output:c5fe9d67 h:fcea4499 -->
+### 2026-11-28 07:51:00 UTC tool `get_output`
+
+`{"shell_id": "4210fe", "timeout": 150000}`
+
+```
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+[41m[1m FAIL [22m[49m test/relationships.test.js[2m > [22mrelationships page[2m > [22mis linked from the feed and included in the build
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m14 passed[39m[22m[90m (15)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m108 passed[39m[22m[90m (109)[39m
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:3fb51b76-3282-4188-af18-e457a6a16e55:exec:d4209466 h:ea52af9e -->
+### 2026-11-28 07:51:14 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && npm run build 2>&1 | tail -2 && npm test 2>&1 | grep -E \"Test Files|Tests \" | head -3", "timeout": 300000}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: 4786df. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:3fb51b76-3282-4188-af18-e457a6a16e55:get_output:f25cbfc1 h:c14826c2 -->
+### 2026-11-28 07:51:52 UTC tool `get_output`
+
+`{"shell_id": "4786df", "timeout": 240000}`
+
+```
+Client digests: 749 recent + 4808 archived clusters (full export in dataset.json)
+Build complete. 5557 clusters, 7113 entities, 57 topics, 10517 stories in timeline -> dist/dataset.json
+[2m Test Files [22m [1m[32m15 passed[39m[22m[90m (15)[39m
+[2m      Tests [22m [1m[32m109 passed[39m[22m[90m (109)[39m
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:3fb51b76-3282-4188-af18-e457a6a16e55 h:60118ff3 -->
+### 2026-11-28 07:51:56 UTC assistant
+
+Done. The settings sidebar now has only **Manage Categories** and **Manage Sources**. Inside the Manage Sources subpanel — after the heading, before the toggles — both context links now sit together:
+
+> **See how sources measure up** — headline quality scores for every measured source, in ranked order. **Source relationships** — who owns and funds each outlet.
+
+The relationships test now asserts this placement explicitly (subpanel contains both links, sidebar does not). Build passes, **15/15 files, 109/109 tests**. Nothing committed.
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913 h:55140c22 -->
+### 2026-11-28 07:52:06 UTC user
+
+we need an opengraph image specific for the measured-sources page (split in half with top 6 on the left and bottom 6 on the right, with a simple short title as intro, and a one-liner footer, like "News sources ranked by text-metrics"), AND one specific for the relationships page, which I think can be just about the page, more like simple text-content like what is in our site-wide og-image. There is an opengraph-image generator already, that can be adapted, but don''t giev the measured-sources page icons-grid as a background, just make a simpler short-form of the content on the page over white, more like the real page (essentially use the same content as the real page, just top and bottom 6 with a title and footer as described).
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:73ebdf01 h:3aa7d82f -->
+### 2026-11-28 07:52:12 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && ls scripts/ | grep -i \"og\\|opengraph\\|image\"; grep -rln \"og:image\\|opengraph\" scripts/*.js src/*.html vite.config.js 2>/dev/null | head -8", "timeout": 10000}`
+
+```
+Output from command in shell e9106d:
+build-og-image.js
+src/index.html
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:2a532191 h:0fab816a -->
+### 2026-11-28 07:52:16 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && cat scripts/build-og-image.js | head -120 && grep -n \"og:\" src/index.html src/measured-sources.html src/relationships.html 2>/dev/null | head -15", "timeout": 10000}`
+
+```
+Output from command in shell 332a5f:
+// Manual generator — writes src/og-cover.jpg, which is committed and copied by the
+// build like any static asset. Source favicons (volume-ordered,
+// so the sources readers actually see most lead the texture) on a white base,
+// spaced so the white shows between them, with the masthead type composited
+// over it — each line on its own dark strip. Runs at build so the grid grows
+// as the source base does.
+import sharp from 'sharp';
+import { readdirSync, readFileSync, existsSync } from 'fs';
+import { join } from 'path';
+import { loadJson } from './cache-io.js';
+
+// Extracts the largest PNG-compressed frame from an ICO container — modern
+// ICOs embed real PNG data for their larger frames, which sharp can then read.
+// Returns { png, size } of the biggest frame, or null if none is PNG-encoded.
+function extractIcoPng(path) {
+… (113 lines truncated)
+
+Exit code: 0
+
+`| head -15` was parsed out (15 of 128 total lines shown).
+<truncation_notice>
+Full output written to: /tmp/devin-overflows-1000/7631e7bb/content.txt
+</truncation_notice>
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:eae41500 h:e5687e05 -->
+### 2026-11-28 07:52:19 UTC tool `exec`
+
+`{"command": "cat /tmp/devin-overflows-1000/7631e7bb/content.txt | sed -n 1,128p | tail -100", "timeout": 10000}`
+
+```
+Output from command in shell 275cd5:
+… (28 lines truncated)
+      if (!best || w > best.size) best = { png: buf.subarray(dataOff, dataOff + size), size: w };
+    }
+  }
+  return best;
+}
+
+// Collects every source with icon artwork >= minSize px, from cached original
+// downloads: large PNGs directly, PNG frames extracted from ICO containers.
+// Keyed by host so quad slots line up with the tile inventory.
+function collectHiresIcons(cacheDir, minSize) {
+  const dir = join(cacheDir, 'favicons');
+  if (!existsSync(dir)) return new Map();
+  const hires = new Map();
+  for (const f of readdirSync(dir)) {
+    const host = f.replace(/\.(png|ico)$/, '');
+    const path = join(dir, f);
+    try {
+      if (f.endsWith('.png')) hires.set(host, { input: path });
+      else if (f.endsWith('.ico')) {
+        const frame = extractIcoPng(path);
+        if (frame) hires.set(host, { input: frame.png });
+      }
+    } catch { /* unreadable — skip */ }
+  }
+  return hires;
+}
+
+const WIDTH = 1200;
+const HEIGHT = 630;
+const TILE = 28;  // content size after cropping the baked-in 2px tile margin —
+                  // native pixels, never upscaled
+const PITCH = 28; // tiles touch — full coverage, no gaps
+const CROP = { left: 2, top: 2, width: 28, height: 28 };
+const FAVICONS_DIR = 'src/favicons';
+const CACHE_DIR = 'cache';
+
+const LINES = [
+  { text: 'The Daily Broadsheet', font: 'Georgia, serif', size: 84, weight: 700, spacing: 0, fill: '#f5f0e8' },
+  { text: 'A DAILY NEWS DIGEST', font: 'Helvetica, Arial, sans-serif', size: 42, weight: 400, spacing: 6, fill: '#d8d4cc' },
+  { text: 'Good news! Well, some of it is.', font: 'Helvetica, Arial, sans-serif', size: 30, weight: 400, spacing: 0, fill: '#c8c4bc' },
+];
+
+// Measures a text line by rendering it alone and trimming transparent pixels —
+// real glyph bounds, no font-metrics guessing for the strip sizes.
+async function measure(line) {
+  const svg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH * 2}" height="${line.size * 3
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:927e2e9f h:51beb5e4 -->
+### 2026-11-28 07:52:23 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 120,200p scripts/build-og-image.js && grep -n \"buildOgImage\\|og-cover\\|og-image\" scripts/build.js vite.config.js package.json 2>/dev/null | head -8 && grep -n \"og:\\|og-image\\|og-cover\" src/measured-sources.html src/relationships.html | head", "timeout": 10000}`
+
+```
+Output from command in shell c0d3a5:
+  // Grid is oversized and centred, so tiles clip at all four edges — no
+  // margin of bare base anywhere on the canvas.
+  const cols = Math.ceil(WIDTH / PITCH) + 2;
+  const rows = Math.ceil(HEIGHT / PITCH) + 2;
+  const cells = cols * rows;
+  const offsetX = Math.round((WIDTH - ((cols - 1) * PITCH + TILE)) / 2);
+  const offsetY = Math.round((HEIGHT - ((rows - 1) * PITCH + TILE)) / 2);
+
+  // Quad slots: sources with real hi-res artwork (>= 64px native — cached
+  // original PNGs, or PNG frames extracted from ICO containers) get a 2x2
+  // cell slot at native-or-downscaled size, never upscaled. Scattered
+  // irregularly through the grid rather than clumped.
+  const QUAD_MIN = 64; // source artwork floor — never upscale into a slot
+  const hiresRaw = collectHiresIcons(CACHE_DIR, QUAD_MIN);
+  const quads = [];
+  for (const [host, art] of hiresRaw) {
+    try {
+      const meta = await sharp(art.input).metadata();
+      if (meta.width >= QUAD_MIN && meta.height >= QUAD_MIN) {
+        quads.push({ host, input: await sharp(art.input).resize(PITCH * 2, PITCH * 2).png().toBuffer(), vol: volume.get(host) || 0 });
+      }
+    } catch { /* unreadable — skip */ }
+  }
+  quads.sort((a, b) => b.vol - a.vol || spread(a.host) - spread(b.host));
+  const quadHosts = new Set(quads.map(q => q.host));
+
+  // Irregular scatter: deterministic shuffled position order, quads keep at
+  // least one cell of ordinary tiles between each other so they read as
+  // accents in the texture rather than a clustered block.
+  const occupied = Array.from({ length: rows }, () => new Array(cols).fill(false));
+  const quadPositions = [];
+  for (let y = 1; y < rows - 2; y++) for (let x = 1; x < cols - 2; x++) quadPositions.push([x, y]);
+  quadPositions.sort((a, b) => spread(a[0] * 1000 + a[1] + '') - spread(b[0] * 1000 + b[1] + ''));
+  const nearQuad = (x, y) => {
+    for (let dy = -2; dy <= 3; dy++) for (let dx = -2; dx <= 3; dx++) {
+      if (occupied[y + dy]?.[x + dx]) 
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:488d5b90 h:2bd56cf8 -->
+### 2026-11-28 07:52:27 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 200,260p scripts/build-og-image.js && sed -n 180,210p scripts/build.js && ls src/og-cover.jpg 2>/dev/null; grep -rn \"build-og-image\\|buildOgImage\" scripts/build.js package.json | head -5", "timeout": 10000}`
+
+```
+Output from command in shell 7e942e:
+  // Masthead: measure every line, then lay strips+text out centred as a block.
+  const measured = [];
+  for (const line of LINES) measured.push({ ...line, ...(await measure(line)) });
+
+  const PAD_X = 28;
+  const PAD_Y = 12;
+  const GAP = 22;
+  const stripHeights = measured.map(m => m.h + PAD_Y * 2);
+  const blockH = stripHeights.reduce((a, b) => a + b, 0) + GAP * (measured.length - 1);
+  let y = Math.floor((HEIGHT - blockH) / 2);
+
+  const parts = ['<rect x="40" y="40" width="1120" height="550" fill="none" stroke="#8b1a1a" stroke-width="3"/>'];
+  for (let i = 0; i < measured.length; i++) {
+    const m = measured[i];
+    const stripW = m.w + PAD_X * 2;
+    const stripH = stripHeights[i];
+    const stripX = Math.round((WIDTH - stripW) / 2);
+    parts.push(`<rect x="${stripX}" y="${y}" width="${stripW}" height="${stripH}" rx="6" fill="#0a0a0a" opacity="0.9"/>`);
+    const baseline = y + PAD_Y + m.ascent;
+    parts.push(`<text x="${WIDTH / 2}" y="${baseline}" font-family="${m.font}" font-size="${m.size}" font-weight="${m.weight}" letter-spacing="${m.spacing}" fill="${m.fill}" text-anchor="middle">${m.text}</text>`);
+    y += stripH + GAP;
+  }
+
+  const overlay = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}">${parts.join('\n')}</svg>`);
+
+  await sharp({ create: { width: WIDTH, height: HEIGHT, channels: 3, background: '#ffffff' } })
+    .composite([...composites, { input: overlay, left: 0, top: 0 }])
+    .jpeg({ quality: 88 })
+    .toFile(outPath);
+  return { icons, cells, quads: qi };
+}
+
+// Standalone: node scripts/build-og-image.js [out] — manual generation, then commit the output
+if (process.argv[1]?.endsWith('build-og-image.js')) {
+  const out = process.argv[2] || 'src/og-cover.jpg';
+  const { icons, cells, quads } = await buildOgImage(out);
+  console.log(`og-image: ${icons} icons (${quads} quads) across ${cells} cells -> ${out}`);
+}
+writeFileSync(join(OUT_
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:c1b33ea8 h:da7fdd21 -->
+### 2026-11-28 07:53:09 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 -c \"\nimport json\nd=json.load(open('src/data/measured-sources.json'))\nprint('top6:',[(s['rank'],s['label'],s['measuredQuality']) for s in d['sources'][:6]])\nprint('bottom6:',[(s['rank'],s['label'],s['measuredQuality']) for s in d['sources'][-6:]])\n\" && grep -n \"og:url\\|og:image\" src/index.html", "timeout": 10000}`
+
+```
+Output from command in shell 3dc57b:
+top6: [(1, 'TweakTown', 78.11), (2, 'MyJoyOnline', 77.86), (3, 'Investing.com', 77.48), (4, 'Eurogamer', 76.53), (5, 'Jerusalem Post', 74.85), (6, 'Arabian Business', 74.36)]
+bottom6: [(140, 'NPR', 27.09), (141, 'BuzzFeed', 25.18), (142, 'Daily Mail', 24.39), (143, 'Kotaku', 23.29), (144, 'Handelsblatt', 20.17), (145, 'E24', 14.22)]
+13:  <meta property="og:url" content="https://bobbigmac.github.io/news/">
+14:  <meta property="og:image" content="https://bobdavies.co.uk/news/og-cover.jpg">
+15:  <meta property="og:image:width" content="1200">
+16:  <meta property="og:image:height" content="630">
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:write:08fa216f h:4ca656f8 -->
+### 2026-11-28 07:53:34 UTC tool `write`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-page-og-images.js", "content": "// Manual generator \u2014 writes src/og-measured.jpg and src/og-relationships.jpg,\n// committed and copied by the build like any static asset. Unlike the site-wide\n// og-cover (a favicon texture), these are plain white cards that mirror what\n// each page is about: the measured page shows the ac`
+
+```
+Successfully wrote 7936 bytes (146 lines) to /home/bobbigmac/projects/bobdavies/news/scripts/build-page-og-images.js
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:22a0ee63 h:517b5169 -->
+### 2026-11-28 07:53:43 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && node scripts/build-page-og-images.js 2>&1 | head -5 && ls -la src/og-measured.jpg src/og-relationships.jpg 2>/dev/null", "timeout": 60000}`
+
+```
+Output from command in shell ffb7b0:
+og-measured: top 6 vs bottom 6 -> src/og-measured.jpg
+og-relationships: 3 lines -> src/og-relationships.jpg
+-rw-r--r-- 1 bobbigmac bobbigmac 103488 Nov 28 07:53 src/og-measured.jpg
+-rw-r--r-- 1 bobbigmac bobbigmac  59003 Nov 28 07:53 src/og-relationships.jpg
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:read:1eaba0c7 h:4ae61ff7 -->
+### 2026-11-28 07:53:50 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/src/og-measured.jpg"}`
+
+```
+[Image: image/jpeg]
 ```
 
 ---
