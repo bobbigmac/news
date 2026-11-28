@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { describe, expect, it } from 'vitest';
 import { SOURCE_ASSESSMENTS, SOURCE_PROFILES } from '../src/source-profiles.js';
 import { SOURCE_RELATION_TREE } from '../src/source-tree.js';
@@ -25,6 +25,8 @@ describe('relationships page', () => {
     expect(viteConfig).toContain('relationships');
     expect(page).toContain('id="relationships-main"');
     expect(page).toContain('id="source-search"');
+    expect(page).toContain('og:image" content="https://bobdavies.co.uk/news/og-relationships.jpg');
+    expect(existsSync('src/og-relationships.jpg')).toBe(true);
   });
 
   it('never talks about the dataset or methodology — readers get relationships, not internals', () => {

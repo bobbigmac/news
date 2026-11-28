@@ -3,8 +3,8 @@ devin-sessionlog: transcript
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 07:53:50 UTC
-entries: 2858
+last_activity: 2026-11-28 08:05:49 UTC
+entries: 2915
 ---
 
 # repeated-bite
@@ -78845,6 +78845,1281 @@ Exit code: 0
 
 ```
 [Image: image/jpeg]
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:ab158975 h:f3e264b5 -->
+### 2026-11-28 07:54:18 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'PY'\np='scripts/build-page-og-images.js'\ns=open(p).read()\ns=s.replace('parts.push(`<text x=\"${WIDTH / 2}\" y=\"${96 + titleM.ascent}\" font-family=\"${title.font}\" font-size=\"${title.size}\" font-weight=\"${title.weight}\" fill=\"${INK}\" text-anchor=\"middle\">${esc(title.text)}</text>`);',\n'parts.push(`<text x=\"${WIDT`
+
+```
+Output from command in shell 969df1:
+fixed
+og-measured: top 6 vs bottom 6 -> src/og-measured.jpg
+og-relationships: 3 lines -> src/og-relationships.jpg
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:aafa9951 h:eda9b09b -->
+### 2026-11-28 07:54:27 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 1,20p src/measured-sources.html && sed -n 1,15p src/relationships.html", "timeout": 10000}`
+
+```
+Output from command in shell 2f4439:
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Measured Source Quality — The Daily Broadsheet</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A measured comparison of headline information value and attention packaging across news sources.">
+  <script>
+    (function() {
+      var s = JSON.parse(localStorage.getItem('broadsheet-settings') || '{}');
+      var theme = s.theme || 'auto';
+      var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var effective = theme === 'auto' ? (dark ? 'night' : 'day') : theme;
+      document.documentElement.setAttribute('data-theme', effective);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/measured-sources.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Source Relationships — The Daily Broadsheet</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Who owns, funds, and operates the news outlets in The Daily Broadsheet — and how they connect.">
+  <script>
+    (function() {
+      var s = JSON.parse(localStorage.getItem('broadsheet-settings') || '{}');
+      var theme = s.theme || 'auto';
+      var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var effective = theme === 'auto' ? (dark ? 'night' : 'day') : theme;
+      document.documentElement.setAttribute('data-theme', effective);
+    })();
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:2fffbe17 h:d1952ee7 -->
+### 2026-11-28 07:54:35 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'PY'\n# measured-sources.html og tags\np='src/measured-sources.html'\ns=open(p).read()\ns=s.replace('''  <meta name=\"description\" content=\"A measured comparison of headline information value and attention packaging across news sources.\">''','''  <meta name=\"description\" content=\"A measured comparison of headline informat`
+
+```
+Output from command in shell 2cb9dc:
+wired
+src/measured-sources.html:3
+src/relationships.html:3
+191:copyStatic('og-measured.jpg');
+192:copyStatic('og-relationships.jpg');
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:a2665313 h:c761f017 -->
+### 2026-11-28 07:54:52 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && npm run build 2>&1 | tail -2 && ls -la dist/og-measured.jpg dist/og-relationships.jpg 2>&1 | head -3", "timeout": 240000}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: f59fc6. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:7390cc37 h:a91c207a -->
+### 2026-11-28 07:55:00 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'PY'\np='test/measured-sources.test.js'\ns=open(p).read()\n# find the test that checks vite/index wiring and extend it\nif 'og-measured.jpg' not in s:\n    s=s.replace(\"    expect(vite).toContain('measured-sources.html');\",\"    expect(vite).toContain('measured-sources.html');\\n    expect(page).toContain('og:image\\\" conten`
+
+```
+Output from command in shell addfac:
+measured test updated
+relationships test updated
+test/measured-sources.test.js:108:    expect(page).toContain('og:image" content="https://bobdavies.co.uk/news/og-measured.jpg');
+test/measured-sources.test.js:109:    expect(existsSync('src/og-measured.jpg')).toBe(true);
+test/relationships.test.js:28:    expect(page).toContain('og:image" content="https://bobdavies.co.uk/news/og-relationships.jpg');
+test/relationships.test.js:29:    expect(existsSync('src/og-relationships.jpg')).toBe(true);
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:bcc5d287 h:3d2a59ed -->
+### 2026-11-28 07:55:12 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"measured-sources.html\\|const page\\|const vite\" test/measured-sources.test.js | head -5 && sed -n 100,115p test/measured-sources.test.js", "timeout": 10000}`
+
+```
+Output from command in shell a9b7d1:
+5:const page = readFileSync('src/measured-sources.html', 'utf8');
+104:    const vite = readFileSync('vite.config.js', 'utf8');
+107:    expect(vite).toContain('measured-sources.html');
+110:    expect(index).toContain('./measured-sources.html');
+111:    expect(relationships).toContain('./measured-sources.html');
+});
+
+describe('measured sources page wiring', () => {
+  it('is a peer to relationships in navigation and build inputs', () => {
+    const vite = readFileSync('vite.config.js', 'utf8');
+    const index = readFileSync('src/index.html', 'utf8');
+    const relationships = readFileSync('src/relationships.html', 'utf8');
+    expect(vite).toContain('measured-sources.html');
+    expect(page).toContain('og:image" content="https://bobdavies.co.uk/news/og-measured.jpg');
+    expect(existsSync('src/og-measured.jpg')).toBe(true);
+    expect(index).toContain('./measured-sources.html');
+    expect(relationships).toContain('./measured-sources.html');
+    expect(page).toContain('./relationships.html');
+  });
+
+  it('keeps the methodology and known limits at the end of the page', () => {
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:get_output:e23877cc h:86a5614a -->
+### 2026-11-28 07:55:17 UTC tool `get_output`
+
+`{"shell_id": "f59fc6", "timeout": 180000}`
+
+```
+Client digests: 749 recent + 4808 archived clusters (full export in dataset.json)
+Build complete. 5557 clusters, 7113 entities, 57 topics, 10517 stories in timeline -> dist/dataset.json
+-rw-r--r-- 1 bobbigmac bobbigmac 108697 Nov 28 07:55 dist/og-measured.jpg
+-rw-r--r-- 1 bobbigmac bobbigmac  59003 Nov 28 07:55 dist/og-relationships.jpg
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:5b1171c4 h:14da915d -->
+### 2026-11-28 07:55:32 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && npm test 2>&1 | grep -E \"Test Files|Tests |FAIL\" | head -4", "timeout": 240000}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: b0e873. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:fec8a336 h:1e706407 -->
+### 2026-11-28 07:55:38 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 -c \"\nimport json\na=open('src/og-measured.jpg','rb').read()\nb=open('dist/og-measured.jpg','rb').read()\nprint('og-measured dist matches:',a==b)\na=open('src/og-relationships.jpg','rb').read()\nb=open('dist/og-relationships.jpg','rb').read()\nprint('og-relationships dist matches:',a==b)\n\"", "timeout": 10000}`
+
+```
+Output from command in shell 44dd72:
+og-measured dist matches: True
+og-relationships dist matches: True
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:get_output:8a99efa3 h:6b7db425 -->
+### 2026-11-28 07:55:41 UTC tool `get_output`
+
+`{"shell_id": "b0e873", "timeout": 180000}`
+
+```
+[2m Test Files [22m [1m[32m15 passed[39m[22m[90m (15)[39m
+[2m      Tests [22m [1m[32m109 passed[39m[22m[90m (109)[39m
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:5d20e9bc-122d-4650-9053-03ff29cf3913:exec:443a6cc6 h:1e26237b -->
+### 2026-11-28 07:55:51 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'PY'\ns=open('docs/DONE.md').read()\nentry='''# DONE\n\n## Page-specific OpenGraph images (2026-11-28)\n\n- `scripts/build-page-og-images.js` generates two committed card images with the same sharp+SVG technique as the site-wide cover, re-runnable when measurements change.\n- `src/og-measured.jpg`: plain white card mirroring th`
+
+```
+Output from command in shell 87dcaf:
+done
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:5d20e9bc-122d-4650-9053-03ff29cf3913 h:336e62ba -->
+### 2026-11-28 07:56:00 UTC assistant
+
+Done. Nothing committed.
+
+## `og-measured.jpg` — measured-sources card
+
+Plain white card mirroring the real page, no icon texture:
+
+- Title intro: **Measured source quality** + strapline "Which headlines tell you something concrete — and which just want your click"
+- Split in half like the page: **Strongest headlines** (top 6: TweakTown 78.1, MyJoyOnline 77.9, Investing.com 77.5, Eurogamer 76.5, Jerusalem Post 74.8, Arabian Business 74.4) on the left, **Weakest headlines** (bottom 6: NPR, BuzzFeed, Daily Mail, Kotaku, Handelsblatt, E24) on the right, ranks and scores included
+- Footer one-liner: "145 news sources ranked by text-metrics"
+- Red rule frame matching the site identity
+
+Caught and fixed a real rendering bug before finalising: the first render had the subtitle colliding with the title's descenders — the corrected version is what's committed.
+
+## `og-relationships.jpg` — relationships card
+
+Simple centred type strips in the site masthead style, as requested: **Source Relationships** / WHO OWNS AND FUNDS EACH OUTLET / "The money and structure behind the news you read."
+
+## Wiring
+
+- `scripts/build-page-og-images.js` — the generator, adapted from the existing `build-og-image.js` technique (sharp + measured SVG type). **Re-run it after future measurement updates** since the measured card shows live rankings: `node scripts/build-page-og-images.js`
+- Both pages now carry full `og:type/title/description/url/image` meta tags pointing at their own cards
+- `scripts/build.js` copies both into `dist` — verified byte-identical
+- Tests assert the og wiring and image presence on both pages: **15/15 files, 109/109** pass; production build passes
+
+Logged in `docs/DONE.md`.
+
+---
+
+<!-- r:0 m:hook:8ca4bc1a-f0cf-488d-a658-4db5f226cca6 h:74b45191 -->
+### 2026-11-28 07:56:48 UTC user
+
+og-measured.jpg is ugly. Style closer to the actual page, and don't flip the ordering around the centre. It's not a mirror. 
+
+---
+
+<!-- r:0 m:hook:8ca4bc1a-f0cf-488d-a658-4db5f226cca6:exec:0c092284 h:48234f02 -->
+### 2026-11-28 07:56:59 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 1,60p src/styles/measured-layout.css && grep -n \"paper\\|ink\\|rule\\|serif\\|sans\" src/style.css | head -15 && sed -n 20,30p src/measured-sources.html", "timeout": 10000}`
+
+```
+Output from command in shell 08cadd:
+/* Split from measured-sources.css: page frame, masthead, bands and list layout. */
+:root {
+  --spider-fill: rgba(139, 26, 26, 0.22);
+}
+
+[data-theme="night"] {
+  --spider-fill: rgba(204, 68, 68, 0.28);
+}
+
+.measured-page {
+  min-height: 100vh;
+}
+
+.measured-page a {
+  color: var(--accent);
+}
+
+.measured-page .back-link {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+}
+
+.measured-masthead {
+  display: grid;
+  grid-template-columns: minmax(120px, 180px) minmax(0, 1fr) minmax(240px, 320px);
+  gap: 1rem;
+  align-items: start;
+  padding: 1.5rem min(4vw, 3rem) 1rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.source-search-label {
+  display: grid;
+  gap: 0.3rem;
+  min-width: min(360px, 40vw);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.source-search-label input {
+  width: 100%;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+}
+
+.measured-title-block h1 {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  font-variant: small-caps;
+}
+
+      var effective = theme === 'auto' ? (dark ? 'night' : 'day') : theme;
+      document.documentElement.setAttribute('data-theme', effective);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/measured-sources.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="measured-page">
+  <header class="measured-masthead">
+    <a class="back-link" href="./">← The Daily Broadsheet</a>
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:8ca4bc1a-f0cf-488d-a658-4db5f226cca6:exec:835aa63a h:02697c15 -->
+### 2026-11-28 07:57:13 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \":root\\|--paper\\|--ink\\|--rule\\|--muted\\|--accent\\|--sans\\|--serif\" src/style.css | head -20 && sed -n \"$(grep -n ':root' src/style.css | head -1 | cut -d: -f1),+20p\" src/style.css && grep -n \"measured-card-head\\|band-chip\\|measured-score\\|band-head\" src/styles/measured-cards.css src/styles/measured-layout.css | hea`
+
+```
+Output from command in shell a32429:
+sed: -e expression #1, char 1: unknown command: `,'
+
+
+Exit code: 1
+```
+
+---
+
+<!-- r:0 m:hook:8ca4bc1a-f0cf-488d-a658-4db5f226cca6:exec:3d43490f h:d22c8489 -->
+### 2026-11-28 07:57:18 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n -- \"--paper\\|--ink\\|--rule\\|--muted\\|--accent\\|--sans\\|--serif\" src/style.css | grep -v night | head -12 && sed -n \"$(grep -n 'measured-score' src/styles/measured-cards.css | head -1 | cut -d: -f1),+16p\" src/styles/measured-cards.css; sed -n 36,60p src/measured-sources.html", "timeout": 10000}`
+
+```
+Output from command in shell 3cc471:
+.measured-score {
+  display: grid;
+  justify-items: end;
+  line-height: 1.05;
+}
+
+.measured-score strong {
+  font-family: var(--sans);
+  font-size: 1.25rem;
+}
+
+.measured-score small {
+  max-width: 4.8rem;
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  color: var(--muted);
+  text-align: right;
+      </p>
+      <nav class="page-peer-nav" aria-label="Source context pages">
+        <a href="./relationships.html">Who’s behind the news</a>
+        <a href="#methodology">What this measurement means</a>
+      </nav>
+    </div>
+    <label class="source-search-label">
+      Search measured sources
+      <input id="measured-search" type="search" placeholder="BBC, Guardian, science…">
+    </label>
+  </header>
+
+  <nav id="measured-filters" class="measured-filters" aria-label="Filter sources by type"></nav>
+
+  <main id="measured-main" class="measured-main" aria-live="polite"></main>
+
+  <section id="methodology" class="methodology-section">
+    <div class="methodology-card">
+      <p class="eyebrow">Methodology</p>
+      <h2>What “measured quality” means here</h2>
+      <p>
+        This is a measure of headline value, not a truth score. It asks whether a headline
+        usually tells you something concrete — what happened, where, when, with what detail,
+        consequence, context or evidence — and whether it does so without leaning on teasing,
+        search-capture phrasing, celebrity framing or sensational language.
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:8ca4bc1a-f0cf-488d-a658-4db5f226cca6:exec:14f95d92 h:1de94b09 -->
+### 2026-11-28 07:57:24 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -rn -- \"--paper:\\|--ink:\\|--rule:\\|--muted:\\|--accent:\\|--sans:\\|--serif:\" src/style.css src/styles/*.css 2>/dev/null | head -12 && sed -n 22,36p src/measured-sources.html && grep -n \"measured-title-block\\|band-head\\|eyebrow\" src/styles/measured-layout.css | head -5 && sed -n \"$(grep -n 'band-head' src/styles/measured-lay`
+
+```
+Output from command in shell 7ceabc:
+src/styles/shell.css:2:  --ink: #1a1a1a;
+src/styles/shell.css:3:  --paper: #faf9f7;
+src/styles/shell.css:5:  --rule: #d9d6d0;
+src/styles/shell.css:7:  --accent: #8b1a1a;
+src/styles/shell.css:8:  --muted: #6b6357;
+src/styles/shell.css:9:  --serif: 'Georgia', 'Times New Roman', 'Noto Serif', serif;
+src/styles/shell.css:10:  --sans: 'Helvetica Neue', 'Arial', sans-serif;
+src/styles/shell.css:14:  --ink: #d8d4ce;
+src/styles/shell.css:15:  --paper: #1a1a1a;
+src/styles/shell.css:17:  --rule: #3a3a3a;
+src/styles/shell.css:19:  --accent: #c44;
+src/styles/shell.css:20:  --muted: #8a8275;
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/measured-sources.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="measured-page">
+  <header class="measured-masthead">
+    <a class="back-link" href="./">← The Daily Broadsheet</a>
+    <div class="measured-title-block">
+… (31 lines truncated)
+
+Exit code: 0
+
+`| head -22` was parsed out (22 of 53 total lines shown).
+<truncation_notice>
+Full output written to: /tmp/devin-overflows-1000/51faeb6e/content.txt
+</truncation_notice>
+```
+
+---
+
+<!-- r:0 m:hook:8ca4bc1a-f0cf-488d-a658-4db5f226cca6:exec:7c0d95b4 h:537fee2e -->
+### 2026-11-28 07:57:45 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 -c \"\nimport json,os\nd=json.load(open('src/data/measured-sources.json'))\nkeys=[s['key'] for s in d['sources'][:6]+d['sources'][-6:]]\nicons={s['key']:s.get('iconKey',s['key']) for s in d['sources'][:6]+d['sources'][-6:]}\nfor k in keys:\n    ik=icons[k]\n    print(k,'icon:',ik,'file:',os.path.exists(f'src/favicons/{ik}.png'))\n\`
+
+```
+Output from command in shell 92ba0a:
+tweaktown.com icon: tweaktown.com file: True
+myjoyonline.com icon: myjoyonline.com file: True
+investing.com icon: investing.com file: False
+eurogamer.net icon: eurogamer.net file: True
+jpost.com icon: jpost.com file: True
+arabianbusiness.com icon: arabianbusiness.com file: True
+npr.org icon: npr.org file: True
+buzzfeed.com icon: buzzfeed.com file: False
+dailymail.com icon: dailymail.com file: True
+kotaku.com icon: kotaku.com file: True
+handelsblatt.com icon: handelsblatt.com file: True
+e24.no icon: e24.no file: True
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:PostCompaction:8ca4bc1a-f0cf-488d-a658-4db5f226cca6 h:cd086b81 -->
+### 2026-11-28 07:57:45 UTC · postcompaction 
+
+---
+
+<!-- r:0 m:hook:8ca4bc1a-f0cf-488d-a658-4db5f226cca6:read:b1d06930 h:4867d958 -->
+### 2026-11-28 07:57:53 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-page-og-images.js"}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/build-page-og-images.js" start_line="1" end_line="146">
+  1|// Manual generator — writes src/og-measured.jpg and src/og-relationships.jpg,
+  2|// committed and copied by the build like any static asset. Unlike the site-wide
+  3|// og-cover (a favicon texture), these are plain white cards that mirror what
+  4|// each page is about: the measured page shows the actual top and bottom of the
+  5|// source ordering; the relationships page is simple type on strips.
+  6|// Re-run after measurements change: node scripts/build-page-og-images.js
+  7|import sharp from 'sharp';
+  8|import { readFileSync } from 'fs';
+  9|
+ 10|const WIDTH = 1200;
+ 11|const HEIGHT = 630;
+ 12|
+ 13|function esc(text) {
+ 14|  return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+ 15|}
+ 16|
+ 17|// Measures a text line by rendering it alone and trimming transparent pixels —
+ 18|// real glyph bounds, no font-metrics guessing.
+ 19|async function measure(line) {
+ 20|  const svg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH * 2}" height="${line.size * 3}">
+ 21|    <text x="20" y="${line.size * 2}" font-family="${line.font}" font-size="${line.size}" font-weight="${line.weight}" letter-spacing="${line.spacing || 0}">${esc(line.text)}</text>
+ 22|  </svg>`);
+ 23|  const img = sharp(svg, { density: 72 });
+ 24|  const { data, info } = await img.raw().toBuffer({ resolveWithObject: true });
+ 25|  let minX = info.width, maxX = 0, minY = info.height, maxY = 0;
+ 26|  for (let y = 0; y < info.height; y++) {
+ 27|    for (let x = 0; x < info.width; x++) {
+ 28|      if (data[(y * info.width + x) * info.channels + 3] > 16) {
+ 29|        if (x < minX) minX = x;
+ 30|        if (x > maxX) maxX = x;
+ 31|        if (y < minY) minY = y;
+ 32|        if (y > maxY) maxY = y;
+ 33|      }
+ 34|    }
+ 35|  }
+ 36|  return { w: maxX - minX + 1, h: maxY - minY + 1, ascent: line.size * 2 - minY 
+```
+
+---
+
+<!-- r:0 m:hook:8ca4bc1a-f0cf-488d-a658-4db5f226cca6:edit:45bac889 h:b47ddcd4 -->
+### 2026-11-28 07:58:45 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-page-og-images.js", "old_string": "const SERIF = 'Georgia, serif';\nconst SANS = 'Helvetica, Arial, sans-serif';\nconst INK = '#1a1815';\nconst MUTED = '#6b655c';\nconst RED = '#8b1a1a';\nconst PAPER = '#ffffff';\n\nasync function writeCard(outPath, parts) {\n  const svg = Buffer.from(`<svg xmlns=\"http://www.w3.org/2000/svg\" wi`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/build-page-og-images.js' - made 1 replacement(s). 71 line(s) removed, 83 line(s) added at line 39.
+```
+
+---
+
+<!-- r:0 m:hook:8ca4bc1a-f0cf-488d-a658-4db5f226cca6:exec:42c10b51 h:f88d7598 -->
+### 2026-11-28 07:58:49 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && node scripts/build-page-og-images.js && cp src/og-measured.jpg dist/og-measured.jpg 2>/dev/null; ls -la src/og-measured.jpg", "timeout": 60000}`
+
+```
+Output from command in shell a58135:
+og-measured: top 6 vs bottom 6 -> src/og-measured.jpg
+og-relationships: 3 lines -> src/og-relationships.jpg
+-rw-r--r-- 1 bobbigmac bobbigmac 101782 Nov 28 07:58 src/og-measured.jpg
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:8ca4bc1a-f0cf-488d-a658-4db5f226cca6:exec:2e6a8345 h:fd5d64bc -->
+### 2026-11-28 07:59:13 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && cmp -s src/og-measured.jpg dist/og-measured.jpg && echo \"dist matches\" && npm test 2>&1 | tail -3", "timeout": 180000}`
+
+```
+Output from command in shell 8d33bb:
+… (36 lines truncated)
+[2m            [22m [2mcreate it once per worker with [22m[33mpool: 'vmThreads'[39m[2m (keeps per-file isolation) or [22m[33misolate: false[39m[2m (shares it across files)[22m
+[2m            [22m [2mlearn more: https://vitest.dev/guide/improving-performance#test-environments[22m
+
+
+Exit code: 0
+
+`| tail -3` was parsed out (3 of 39 total lines shown).
+<truncation_notice>
+Full output written to: /tmp/devin-overflows-1000/5fcdfbbf/content.txt
+</truncation_notice>
+```
+
+---
+
+<!-- r:0 m:hook:8ca4bc1a-f0cf-488d-a658-4db5f226cca6:exec:1982b493 h:77fb059a -->
+### 2026-11-28 07:59:26 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && npm test 2>&1 | grep -E \"Test Files|Tests \" | head -2 && cmp -s src/og-measured.jpg dist/og-measured.jpg && echo dist-matches", "timeout": 180000}`
+
+```
+No output produced after 10.0 seconds. Command running in background with ID: 1478ce. Run get_output with timeout if you need to wait.
+```
+
+---
+
+<!-- r:0 m:hook:8ca4bc1a-f0cf-488d-a658-4db5f226cca6:get_output:565afc5f h:7f0530c9 -->
+### 2026-11-28 07:59:29 UTC tool `get_output`
+
+`{"shell_id": "1478ce", "timeout": 120000}`
+
+```
+[2m Test Files [22m [1m[32m15 passed[39m[22m[90m (15)[39m
+[2m      Tests [22m [1m[32m109 passed[39m[22m[90m (109)[39m
+dist-matches
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:8ca4bc1a-f0cf-488d-a658-4db5f226cca6 h:3c9ccb65 -->
+### 2026-11-28 07:59:40 UTC assistant
+
+Reworked — the card now reads as a crop of the actual page rather than a generic infographic:
+
+- **Paper background** `#faf9f7` and the site's day-theme palette (ink `#1a1a1a`, muted `#6b6357`, hairline rules `#d9d6d0`) instead of flat white
+- **Serif masthead** in the page's style — "Measured Source Quality" + the muted strapline, closed off with the same 2px ink rule the real page header carries
+- **Card rows exactly like the list rows**: white rounded cards with a thin rule border, bold `#rank`, the source's real **favicon** (composited from `src/favicons/`, with a grey letter-tile fallback for the two keys that don't have one), semibold name, and the big right-aligned score
+- **Both columns read the same direction** — no more mirroring; rank/icon/name on the left, score on the right in both. Left is "The strongest headlines" (ranks 1–6), right is "The weakest headlines" (ranks 140–145)
+- **Footer** behind a hairline rule: "145 news sources ranked by text-metrics — bobdavies.co.uk/news"
+- The heavy red frame is gone — the page doesn't have one
+
+Regenerated with `node scripts/build-page-og-images.js`, dist copy byte-identical, **15/15 files, 109/109 tests** pass. Nothing committed.
+
+---
+
+<!-- r:0 m:hook:1190e4b5-38c0-42e0-a35a-532710e4e46d h:08027dc2 -->
+### 2026-11-28 07:59:47 UTC user
+
+og-relationships.jpg can get the icons grid background
+
+---
+
+<!-- r:0 m:hook:1190e4b5-38c0-42e0-a35a-532710e4e46d:read:02f53924 h:b887b1b7 -->
+### 2026-11-28 07:59:52 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-og-image.js"}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/build-og-image.js" start_line="1" end_line="237">
+  1|// Manual generator — writes src/og-cover.jpg, which is committed and copied by the
+  2|// build like any static asset. Source favicons (volume-ordered,
+  3|// so the sources readers actually see most lead the texture) on a white base,
+  4|// spaced so the white shows between them, with the masthead type composited
+  5|// over it — each line on its own dark strip. Runs at build so the grid grows
+  6|// as the source base does.
+  7|import sharp from 'sharp';
+  8|import { readdirSync, readFileSync, existsSync } from 'fs';
+  9|import { join } from 'path';
+ 10|import { loadJson } from './cache-io.js';
+ 11|
+ 12|// Extracts the largest PNG-compressed frame from an ICO container — modern
+ 13|// ICOs embed real PNG data for their larger frames, which sharp can then read.
+ 14|// Returns { png, size } of the biggest frame, or null if none is PNG-encoded.
+ 15|function extractIcoPng(path) {
+ 16|  const buf = readFileSync(path);
+ 17|  if (buf.length < 6 || buf.readUInt16LE(0) !== 0 || buf.readUInt16LE(2) !== 1) return null;
+ 18|  const count = buf.readUInt16LE(4);
+ 19|  let best = null;
+ 20|  for (let i = 0; i < count; i++) {
+ 21|    const off = 6 + i * 16;
+ 22|    const w = buf[off] || 256;
+ 23|    const size = buf.readUInt32LE(off + 8);
+ 24|    const dataOff = buf.readUInt32LE(off + 12);
+ 25|    if (dataOff + size > buf.length) continue;
+ 26|    // PNG magic
+ 27|    if (buf.readUInt32BE(dataOff) === 0x89504e47) {
+ 28|      if (!best || w > best.size) best = { png: buf.subarray(dataOff, dataOff + size), size: w };
+ 29|    }
+ 30|  }
+ 31|  return best;
+ 32|}
+ 33|
+ 34|// Collects every source with icon artwork >= minSize px, from cached original
+ 35|// downloads: large PNGs directly, PNG frames extracted from ICO containers.
+ 36|// Keyed by host so quad slots line up with the tile inventory.
+ 37|function collectHiresIcons(cacheDir, minSize) {
+ 38|  const dir = joi
+```
+
+---
+
+<!-- r:0 m:hook:1190e4b5-38c0-42e0-a35a-532710e4e46d:edit:7987c300 h:03f7afb5 -->
+### 2026-11-28 08:00:13 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-og-image.js", "old_string": "export async function buildOgImage(outPath) {\n  // Order tiles by source volume in the digest so the grid is led by the\n  // highest-volume outlets rather than alphabetically arbitrary ones.", "new_string": "// Builds the volume-ordered favicon grid composites (no masthead) so page-specific\n// card`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/build-og-image.js' - made 1 replacement(s). 3 line(s) removed, 5 line(s) added at line 92.
+```
+
+---
+
+<!-- r:0 m:hook:31013e4e-204a-4db2-aa58-07d97da4d394 h:b577f3fd -->
+### 2026-11-28 08:00:25 UTC user
+
+you added the domain name to the og-image without me requesting it. I don't want that cos this is a test/dev site/url
+
+---
+
+<!-- r:0 m:hook:31013e4e-204a-4db2-aa58-07d97da4d394:edit:a1237534 h:0fbe7fed -->
+### 2026-11-28 08:00:37 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-page-og-images.js", "old_string": "  parts.push(`<text x=\"${WIDTH / 2}\" y=\"${footY + 34}\" font-family=\"${SANS}\" font-size=\"21\" fill=\"${MUTED}\" text-anchor=\"middle\">${data.sources.length} news sources ranked by text-metrics \u2014 bobdavies.co.uk/news</text>`);", "new_string": "  parts.push(`<text x=\"${WIDTH / 2}\" y=`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/build-page-og-images.js' - made 1 replacement(s). 1 line(s) removed, 1 line(s) added at line 117.
+```
+
+---
+
+<!-- r:0 m:hook:31013e4e-204a-4db2-aa58-07d97da4d394:read:3a967758 h:6fb52c13 -->
+### 2026-11-28 08:00:42 UTC tool `read`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-og-image.js", "offset": 195, "limit": 50}`
+
+```
+<file-view path="/home/bobbigmac/projects/bobdavies/news/scripts/build-og-image.js" start_line="195" end_line="239">
+195|      });
+196|      ti++;
+197|      icons++;
+198|    }
+199|    if (ti >= fillTiles.length) ti += spread('row' + y) % 17;
+200|  }
+201|
+202|  // Masthead: measure every line, then lay strips+text out centred as a block.
+203|  const measured = [];
+204|  for (const line of LINES) measured.push({ ...line, ...(await measure(line)) });
+205|
+206|  const PAD_X = 28;
+207|  const PAD_Y = 12;
+208|  const GAP = 22;
+209|  const stripHeights = measured.map(m => m.h + PAD_Y * 2);
+210|  const blockH = stripHeights.reduce((a, b) => a + b, 0) + GAP * (measured.length - 1);
+211|  let y = Math.floor((HEIGHT - blockH) / 2);
+212|
+213|  const parts = ['<rect x="40" y="40" width="1120" height="550" fill="none" stroke="#8b1a1a" stroke-width="3"/>'];
+214|  for (let i = 0; i < measured.length; i++) {
+215|    const m = measured[i];
+216|    const stripW = m.w + PAD_X * 2;
+217|    const stripH = stripHeights[i];
+218|    const stripX = Math.round((WIDTH - stripW) / 2);
+219|    parts.push(`<rect x="${stripX}" y="${y}" width="${stripW}" height="${stripH}" rx="6" fill="#0a0a0a" opacity="0.9"/>`);
+220|    const baseline = y + PAD_Y + m.ascent;
+221|    parts.push(`<text x="${WIDTH / 2}" y="${baseline}" font-family="${m.font}" font-size="${m.size}" font-weight="${m.weight}" letter-spacing="${m.spacing}" fill="${m.fill}" text-anchor="middle">${m.text}</text>`);
+222|    y += stripH + GAP;
+223|  }
+224|
+225|  const overlay = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}">${parts.join('\n')}</svg>`);
+226|
+227|  await sharp({ create: { width: WIDTH, height: HEIGHT, channels: 3, background: '#ffffff' } })
+228|    .composite([...composites, { input: overlay, left: 0, top: 0 }])
+229|    .jpeg({ quality: 88 })
+230|    .toFile(outPath);
+231|  return { icons, cells, quads: qi };
+232|}
+233|
+234|// Standalone: node scripts/b
+```
+
+---
+
+<!-- r:0 m:hook:31013e4e-204a-4db2-aa58-07d97da4d394:edit:d6011cd8 h:62ab413c -->
+### 2026-11-28 08:00:49 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-og-image.js", "old_string": "    if (ti >= fillTiles.length) ti += spread('row' + y) % 17;\n  }\n\n  // Masthead: measure every line, then lay strips+text out centred as a block.\n  const measured = [];", "new_string": "    if (ti >= fillTiles.length) ti += spread('row' + y) % 17;\n  }\n  return { composites, icons, cells, quads:`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/build-og-image.js' - made 1 replacement(s). 5 line(s) removed, 10 line(s) added at line 199.
+```
+
+---
+
+<!-- r:0 m:hook:31013e4e-204a-4db2-aa58-07d97da4d394:edit:15eb1fb1 h:cd44c5dd -->
+### 2026-11-28 08:00:55 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-og-image.js", "old_string": "    .jpeg({ quality: 88 })\n    .toFile(outPath);\n  return { icons, cells, quads: qi };\n}\n\n// Standalone: node scripts/build-og-image.js [out] \u2014 manual generation, then commit the output", "new_string": "    .jpeg({ quality: 88 })\n    .toFile(outPath);\n  return { icons, cells, quads };\n}\n`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/build-og-image.js' - made 1 replacement(s). 6 line(s) removed, 6 line(s) added at line 234.
+```
+
+---
+
+<!-- r:0 m:hook:264503d1-953f-427a-af3f-c8b7c0a3ae13 h:eaa7cf10 -->
+### 2026-11-28 08:01:15 UTC user
+
+you also have just enough roo to list top 7 and bottom 7, rather than 6, so do that 
+
+---
+
+<!-- r:0 m:hook:264503d1-953f-427a-af3f-c8b7c0a3ae13:edit:1c9c764b h:5704a8f7 -->
+### 2026-11-28 08:01:29 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-page-og-images.js", "old_string": "import sharp from 'sharp';\nimport { readFileSync } from 'fs';", "new_string": "import sharp from 'sharp';\nimport { readFileSync } from 'fs';\nimport { buildIconGrid } from './build-og-image.js';"}`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/build-page-og-images.js' - made 1 replacement(s). 2 line(s) removed, 3 line(s) added at line 7.
+```
+
+---
+
+<!-- r:0 m:hook:264503d1-953f-427a-af3f-c8b7c0a3ae13:exec:638e1783 h:0a069259 -->
+### 2026-11-28 08:01:33 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"slice(0, 6)\\|slice(-6)\\|footY\\|6 \\* (cardH\" scripts/build-page-og-images.js", "timeout": 10000}`
+
+```
+Output from command in shell 2a218d:
+75:  const top = ordered.slice(0, 6);
+76:  const bottom = ordered.slice(-6);
+116:  const footY = cardY0 + 6 * (cardH + gap) + 34;
+117:  parts.push(`<line x1="56" y1="${footY}" x2="${WIDTH - 56}" y2="${footY}" stroke="${RULE}" stroke-width="1"/>`);
+118:  parts.push(`<text x="${WIDTH / 2}" y="${footY + 34}" font-family="${SANS}" font-size="21" fill="${MUTED}" text-anchor="middle">${data.sources.length} news sources ranked by text-metrics</text>`);
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:264503d1-953f-427a-af3f-c8b7c0a3ae13:exec:567f807b h:73ae735c -->
+### 2026-11-28 08:01:38 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport re\np='scripts/build-page-og-images.js'\ns=open(p).read()\ns=s.replace('const top = ordered.slice(0, 6);','const top = ordered.slice(0, 7);')\ns=s.replace('const bottom = ordered.slice(-6);','const bottom = ordered.slice(-7);')\ns=s.replace('const footY = cardY0 + 6 * (cardH + gap) + 34;','const footY = cardY0 + 7`
+
+```
+Output from command in shell 78e2f0:
+ok
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:264503d1-953f-427a-af3f-c8b7c0a3ae13:edit:d7acb2b5 h:1fb5db78 -->
+### 2026-11-28 08:01:56 UTC tool `edit`
+
+`{"file_path": "/home/bobbigmac/projects/bobdavies/news/scripts/build-page-og-images.js", "old_string": "  const parts = [`<rect x=\"40\" y=\"40\" width=\"${WIDTH - 80}\" height=\"${HEIGHT - 80}\" fill=\"none\" stroke=\"${RED}\" stroke-width=\"3\"/>`];\n  for (let i = 0; i < measured.length; i++) {\n    const m = measured[i];\n    const stripW = m.w + PAD_X * 2;\n    const stripH = stripHeights[i];`
+
+```
+Successfully edited file '/home/bobbigmac/projects/bobdavies/news/scripts/build-page-og-images.js' - made 1 replacement(s). 14 line(s) removed, 20 line(s) added at line 141.
+```
+
+---
+
+<!-- r:0 m:hook:264503d1-953f-427a-af3f-c8b7c0a3ae13:exec:55e8efae h:151887ae -->
+### 2026-11-28 08:02:05 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && node scripts/build-page-og-images.js && cp src/og-measured.jpg src/og-relationships.jpg dist/ 2>/dev/null; echo done", "timeout": 120000}`
+
+```
+Output from command in shell 4d6999:
+og-measured: top 7 vs bottom 7 -> src/og-measured.jpg
+og-relationships: 3 lines -> src/og-relationships.jpg
+done
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:264503d1-953f-427a-af3f-c8b7c0a3ae13:exec:4797dd24 h:a6922e6a -->
+### 2026-11-28 08:02:26 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"og\" scripts/build.js | head -8 && node -e \"import('./scripts/build-og-image.js').then(m=>m.buildOgImage('/tmp/og-test.jpg')).then(r=>console.log('og-cover build ok:',r.icons,'icons'))\" 2>&1 | tail -2", "timeout": 60000}`
+
+```
+Output from command in shell e6b7a7:
+… (7 lines truncated)
+190:copyStatic('og-cover.jpg');
+og-cover build ok: 1098 icons
+
+Exit code: 0
+
+`| tail -2` was parsed out (2 of 9 total lines shown).
+<truncation_notice>
+Full output written to: /tmp/devin-overflows-1000/ec3b51e8/content.txt
+</truncation_notice>
+```
+
+---
+
+<!-- r:0 m:hook:264503d1-953f-427a-af3f-c8b7c0a3ae13:exec:05ed0c37 h:0e4925e0 -->
+### 2026-11-28 08:02:30 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && cmp /tmp/og-test.jpg src/og-cover.jpg && echo \"og-cover byte-identical after refactor\" || echo \"og-cover differs\"", "timeout": 10000}`
+
+```
+Output from command in shell 74e953:
+og-cover byte-identical after refactor
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:264503d1-953f-427a-af3f-c8b7c0a3ae13:exec:a9250187 h:c7cd3f24 -->
+### 2026-11-28 08:02:49 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\ns=open('docs/DONE.md').read()\nold='- `src/og-measured.jpg`: plain white card mirroring the measured-sources page \u2014 no favicon texture. Title (\"Measured source quality\") with a one-line strap, then the live top six sources on the left and bottom six on the right with rank and score, footer \"145 news sources ranke`
+
+```
+Output from command in shell 9148aa:
+done
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:264503d1-953f-427a-af3f-c8b7c0a3ae13 h:324376f0 -->
+### 2026-11-28 08:02:54 UTC assistant
+
+All three fixes in. Nothing committed.
+
+**og-measured.jpg**: now top **seven** vs bottom seven (OregonLive obituaries #139 and Qatar Tribune #7 join the card), and the `bobdavies.co.uk/news` domain is removed from the footer — it just reads "145 news sources ranked by text-metrics".
+
+**og-relationships.jpg**: now carries the same volume-ordered favicon texture as the site-wide cover, with the three dark type strips over it. To do this without duplicating the grid logic, I extracted the icon-grid construction from `build-og-image.js` into a shared exported `buildIconGrid()` — and verified the refactor is output-neutral: **regenerated og-cover.jpg is byte-identical** to the committed one (1,098 icons placed).
+
+Both images regenerated, copied to `dist/` byte-identical, DONE.md updated.
+
+---
+
+<!-- r:0 m:hook:522250aa-6dae-4674-b743-481a139f3733 h:2430d7e3 -->
+### 2026-11-28 08:03:03 UTC user
+
+oh wow, NPR lands down our list? why?
+
+---
+
+<!-- r:0 m:hook:522250aa-6dae-4674-b743-481a139f3733:exec:cb4178bc h:8a3970d0 -->
+### 2026-11-28 08:03:10 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport csv\nrows=[r for r in csv.DictReader(open('docs/headline-data/current/headline_level_signals.csv')) if r.get('source_key')=='npr.org']\nprint('NPR headlines in pool:', len(rows))\nfor r in rows[:40]:\n    print('-', r.get('headline','')[:110])\nEOF", "timeout": 10000}`
+
+```
+Output from command in shell 1129c2:
+NPR headlines in pool: 11
+- FCC says SpaceX can deploy 1 million satellites for data centers in space. Scientists are skeptical
+- Sydney Sweeney has great jeans. Who made them? (Psst: Workers)
+- US has lost measles elimination status, global health authorities say
+- Do you know signs of a stroke? BE FAST are the words to remember
+- What's gone up even faster than gas or rent? The cost of caregiving
+- U.S. measles cases more than double what they were last year as outbreak spreads
+- Is your Medicare Advantage plan ending next year? Here's what to know
+- Pope Leo XIV leaves hospital days after lung cancer surgery
+- Hit a midlife wall? This test identifies your strengths and what matters to you
+- Zelenskyy sits down with NPR. And, Pope Leo diagnosed with lung cancer
+- As diseases loom, CDC's response to measles deaths stirs fears about agency's reliability
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:522250aa-6dae-4674-b743-481a139f3733:exec:ce7f1a3e h:080d9d7a -->
+### 2026-11-28 08:03:21 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport csv, json\nrows=list(csv.DictReader(open('docs/headline-data/current/source_rankings.csv')))\nnpr=[r for r in rows if r['source_key']=='npr.org'][0]\n# print nonzero / interesting fields\nkeys=['rank','headline_count','composite','measured_quality']\nfor k in list(npr.keys()):\n    v=npr[k]\n    try:\n        f=fl`
+
+```
+Output from command in shell aacc05:
+mean_words: 12.364
+delivery_signal_mean: 12.929
+attention_pressure_mean: 11.655
+body_coverage_rate: 0.364
+body_word_count_mean: 19.364
+body_research_claim_rate: 0.091
+body_evidence_surface_rate: 0.091
+body_testimony_surface_rate: 0.273
+body_evidence_surface_score_mean: 0.200
+body_event_action_rate: 0.364
+attribution_cue_rate: 0.182
+direct_testimony_surface_rate: 0.182
+curiosity_gap_risk_mean: 0.077
+cross_source_near_duplicate_rate: 0.091
+mean_cross_source_similarity: 0.462
+event_clarity_rate: 0.273
+quantified_specificity_rate: 0.091
+time_place_anchor_rate: 0.273
+material_consequence_rate: 0.182
+evidence_provenance_rate: 0.118
+context_comparison_rate: 0.227
+low_explicit_curiosity_gap_rate: 0.923
+low_direct_service_packaging_rate: 0.727
+low_sensational_personal_rate: 1.000
+composite_residual_uncapped_mean: -0.068
+named_entity_signal_rate: 0.818
+public_interest_rate: 0.273
+explicit_curiosity_gap_incidence_rate: 0.077
+direct_service_packaging_incidence_rate: 0.273
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:522250aa-6dae-4674-b743-481a139f3733:exec:dd3999f1 h:1b1b6f74 -->
+### 2026-11-28 08:03:35 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\nimport csv, json\n# NPR vs corpus comparison on key rates\nrows=list(csv.DictReader(open('docs/headline-data/current/source_rankings.csv')))\ndef g(r,k):\n    try: return float(r[k])\n    except: return 0.0\nnpr=[r for r in rows if r['source_key']=='npr.org'][0]\nprint('npr count', npr.get('headline_count'), 'ci', npr.ge`
+
+```
+Output from command in shell cdefb3:
+npr count None ci None None None None
+Traceback (most recent call last):
+  File "<stdin>", line 12, in <module>
+IndexError: list index out of range
+{
+ "rank": 140,
+ "measuredQuality": 27.09
+}
+axes: {
+ "event_clarity": {
+  "score": 25.6,
+  "z": -1.019,
+  "rate": 0.27273,
+  "expectedRate": 0.47405,
+  "adjustedPoints": -7.61
+ },
+ "quantified_specificity": {
+  "score": 37.3,
+  "z": -0.532,
+  "rate": 0.09091,
+  "expectedRate": 0.16873,
+  "adjustedPoints": -2.94
+ },
+ "time_place_anchor": {
+  "score": 39.9,
+  "z": -0.422,
+  "rate": 0.27273,
+  "expectedRate": 0.38434,
+  "adjustedPoints": -4.22
+ },
+ "causal_explanation": {
+  "score": 36.9,
+  "z": -0.55,
+  "rate": 0.0,
+  "expectedRate": 0.04004,
+  "adjustedPoints": -1.51
+ },
+ "material_consequence": {
+  "score": 39.8,
+  "z": -0.428,
+  "rate": 0.18182,
+  "expectedRate": 0.26105,
+  "adjustedPoints": -3.0
+ },
+ "evidence_provenance": {
+  "score": 52.3,
+  "z": 0.097,
+  "rate": 0.11818,
+  "expectedRate": 0.099,
+  "adjustedPoints": 0.73
+ },
+ "context
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:522250aa-6dae-4674-b743-481a139f3733:exec:ae2a1e8c h:8c2f842d -->
+### 2026-11-28 08:03:40 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 -c \"\nimport json\nd=json.load(open('src/data/measured-sources.json'))\nnpr=[s for s in d['sources'] if s['key']=='npr.org'][0]\nprint('keys:',[k for k in npr.keys()])\nprint('sample:',npr.get('sample'))\nprint('uncertainty:',npr.get('uncertainty'))\nfor k in ('curiosity_gap_restraint','service_packaging_avoidance','attention_rest`
+
+```
+Output from command in shell 166d85:
+keys: ['key', 'label', 'headlines', 'rank', 'stableSample', 'measuredQuality', 'measuredQualityZ', 'measuredQualityAdjustedPoints', 'measuredQualityCi95', 'band', 'bandLabel', 'grouped', 'iconKey', 'members', 'memberLabels', 'family', 'treeRoot', 'profile', 'assessments', 'relationshipsUrl', 'axes', 'strongestAxes', 'weakestAxes', 'diagnostics', 'notes']
+sample: None
+uncertainty: None
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:522250aa-6dae-4674-b743-481a139f3733:exec:3e53c1ca h:daad4918 -->
+### 2026-11-28 08:03:46 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 -c \"\nimport json\nd=json.load(open('src/data/measured-sources.json'))\nnpr=[s for s in d['sources'] if s['key']=='npr.org'][0]\nprint('headlines:',npr['headlines'],'stable:',npr['stableSample'],'ci95:',npr.get('measuredQualityCi95'),'band:',npr.get('bandLabel'))\nprint()\nneg=[(k,v) for k,v in sorted(npr['axes'].items(), key=lamb`
+
+```
+Output from command in shell dc64df:
+headlines: 11 stable: False ci95: [10.99, 44.84] band: Weakest measured headline value
+
+packaging_restraint: -9.3pp (rate 0.73 vs expected 0.99)
+event_clarity: -7.6pp (rate 0.27 vs expected 0.47)
+time_place_anchor: -4.2pp (rate 0.27 vs expected 0.38)
+material_consequence: -3.0pp (rate 0.18 vs expected 0.26)
+quantified_specificity: -2.9pp (rate 0.09 vs expected 0.17)
+explanatory_framing: -2.2pp (rate 0.00 vs expected 0.06)
+curiosity_restraint: -1.7pp (rate 0.92 vs expected 0.97)
+causal_explanation: -1.5pp (rate 0.00 vs expected 0.04)
+
+context_comparison: +2.8pp
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:522250aa-6dae-4674-b743-481a139f3733 h:e8461204 -->
+### 2026-11-28 08:04:24 UTC assistant
+
+Looking at the data — it's a small-sample story plus a genuine editorial-style detection.
+
+## The sample problem first
+
+NPR has only **11 headlines** in the pool, and its 95% sampling range is **11.0–44.8** — one of the widest intervals on the page. There's no NPR feed in ingestion; these 11 arrived via aggregators (urgent.news/Currents), which skews the sample toward whatever health/consumer verticals those services happened to surface rather than NPR's core news report. At n=11, four soft headlines are enough to sink the score.
+
+## What the metric actually detected
+
+Reading all 11 headlines myself, they split into two distinct NPR voices:
+
+**Straight news — scores well, and did:**
+- "US has lost measles elimination status, global health authorities say" — event + attribution
+- "U.S. measles cases more than double what they were last year as outbreak spreads" — quantified event
+- "FCC says SpaceX can deploy 1 million satellites... Scientists are skeptical" — event + counterpoint evidence
+- "Pope Leo XIV leaves hospital days after lung cancer surgery"
+
+**Service/explainer journalism — this is what the metric is punishing:**
+- "Is your Medicare Advantage plan ending next year? Here's what to know"
+- "Do you know signs of a stroke? BE FAST are the words to remember"
+- "Hit a midlife wall? This test identifies your strengths and what matters to you"
+- "What's gone up even faster than gas or rent? The cost of caregiving"
+- "Zelenskyy sits down with NPR. And, ..." — self-promotional packaging
+
+The axis-level math confirms it: NPR's biggest hit is **packaging restraint −9.3pp** — 27% of its headlines use second-person/direct-address service framing ("Here's what to know", "Do you know...") where the corpus norm is ~1%. Then **event clarity −7.6pp**: only 27% of its headlines deliver a concrete event vs an expected 47%, because service explainers aren't events.
+
+## My judgment
+
+The measurement is **directionally right about what it's measuring** but answering a narrower question than "is NPR good":
+
+1. **The style is real.** NPR genuinely writes service journalism in second person — it's a deliberate editorial voice for a radio audience, not clickbait. But structurally it *is* the same shape as attention packaging: no event, direct address, implied utility rather than stated facts. The metric can't see that "What's gone up even faster than gas or rent? **The cost of caregiving**" self-answers in the headline — mechanically it's a question-tease; in substance it actually tells you the fact.
+
+2. **The sample is doing real damage.** 11 aggregator-surfaced headlines can't represent NPR. If ingestion had an NPR feed (`npr.org` has public RSS), the straight-news desk output would dilute the service pieces and the score would very likely climb into the middle of the table.
+
+3. **A genuine corpus-relative question**: should informative service journalism score as low-value? The metric's definition is "does the headline tell you something concrete about what happened" — and for explainers, nothing "happened". That's a defensible definition, but it does mean public-service explainer outlets get structurally under-credited. Worth noting in the methodology rather than "fixing" — the alternative (scoring utility) is much harder to measure honestly.
+
+Short version: don't read #140 as "NPR is worse than the Daily Mail is better" — read it as "11 NPR headlines, mostly from its service verticals, with a sampling range spanning 34 points". The rank is doing its job of showing uncertainty; the feed gap is the real fix.
+
+---
+
+<!-- r:0 m:hook:454a4ed2-1129-4285-88a8-ad6d136af209 h:b64f7703 -->
+### 2026-11-28 08:04:49 UTC user
+
+measured-masthead shouldn't have a border-bottom. It's worth excluding small-sample-counts from the opengraph image, as we'll reassess whn more articles available
+
+---
+
+<!-- r:0 m:hook:454a4ed2-1129-4285-88a8-ad6d136af209:exec:4b6580ae h:3a499542 -->
+### 2026-11-28 08:04:55 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && grep -n \"border-bottom\" src/styles/measured-layout.css | head -3 && grep -n \"stableSample\\|slice\" scripts/build-page-og-images.js | head -6", "timeout": 10000}`
+
+```
+Output from command in shell 329ac8:
+33:  border-bottom: 2px solid var(--ink);
+101:  border-bottom: 1px solid var(--rule);
+75:  const top = ordered.slice(0, 7);
+76:  const bottom = ordered.slice(-7);
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:454a4ed2-1129-4285-88a8-ad6d136af209:exec:3069e5bb h:20d0d953 -->
+### 2026-11-28 08:05:01 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && sed -n 28,36p src/styles/measured-layout.css", "timeout": 10000}`
+
+```
+Output from command in shell bd32ef:
+  display: grid;
+  grid-template-columns: minmax(120px, 180px) minmax(0, 1fr) minmax(240px, 320px);
+  gap: 1rem;
+  align-items: start;
+  padding: 1.5rem min(4vw, 3rem) 1rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.source-search-label {
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:454a4ed2-1129-4285-88a8-ad6d136af209:exec:20b1abd9 h:4fc927b6 -->
+### 2026-11-28 08:05:14 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && python3 - <<'EOF'\n# 1) remove masthead border-bottom\np='src/styles/measured-layout.css'\ns=open(p).read()\ns=s.replace('''  padding: 1.5rem min(4vw, 3rem) 1rem;\n  border-bottom: 2px solid var(--ink);\n}''','''  padding: 1.5rem min(4vw, 3rem) 1rem;\n}''',1)\nopen(p,'w').write(s)\n\n# 2) og image: stable samples only\np='scripts/build-pag`
+
+```
+Output from command in shell 6e01eb:
+ok
+og-measured: top 7 vs bottom 7 -> src/og-measured.jpg
+og-relationships: 3 lines -> src/og-relationships.jpg
+copied
+
+
+Exit code: 0
+```
+
+---
+
+<!-- r:0 m:hook:stop:454a4ed2-1129-4285-88a8-ad6d136af209 h:8f6e882c -->
+### 2026-11-28 08:05:27 UTC assistant
+
+Both done. The card now shows only stable-sample sources — the small-sample rows (Investing.com, NPR, BuzzFeed, E24) are gone, so the bottom end now correctly shows the stable low end: Engadget, IGN, GameSpot, Daily Mail, Kotaku, Handelsblatt. The rank numbers keep their absolute positions in the full 145-source ranking (skipping #3, #6, #8 on the left), which reads as informative rather than broken.
+
+The masthead `border-bottom` is removed from `measured-layout.css` — the title block now sits open above the filter bar. The OG image keeps its own ink rule since a card needs the visual structure, but the page itself no longer has the dividing line.
+
+Dist copies refreshed. Nothing committed.
+
+---
+
+<!-- r:0 m:hook:1d78abd1-7df7-423e-9db7-c23fcb8d0fdb:exec:af9bf386 h:81c00b73 -->
+### 2026-11-28 08:05:49 UTC tool `exec`
+
+`{"command": "cd /home/bobbigmac/projects/bobdavies/news && ls .working/ | grep -i gap; ls .working/*.md 2>/dev/null | head; head -80 .working/[REDACTED:TOKEN].md 2>/dev/null", "timeout": 10000}`
+
+```
+Output from command in shell a2e095:
+gaps-curation.json
+gaps-deep-profiles.json
+gaps-research-parsed.json
+sources-manifest-GAPS-2026-11-27.md
+[REDACTED:TOKEN].md
+.working/evidence_matcher_examples.md
+.working/evidence_matcher_v2_examples.md
+.working/evidence_matcher_v2_examples_sample2.md
+.working/evidence_matcher_v2_examples_sample.md
+.working/evidence_matcher_v2_examples_surface.md
+.working/sources-bias-reports-2026-11-27.md
+.working/sources-manifest-GAPS-2026-11-27.md
+.working/[REDACTED:TOKEN].md
+# Source-gap research supplement — broad scan and deep profiles
+
+**Research date:** 27 November 2026  
+**Input:** `sources-manifest-GAPS-2026-11-27.md`  
+**Scope:** all 517 source keys in the gap file; deep profiles prioritise the larger/structurally important publishers.
+
+## Executive findings
+
+- The gap file contains **517 source keys**: **488** with no profile, **15** minimal and **14** thin. All 517 are reproduced in the broad inventory below.
+- **120** are individual `dev.to/<username>` author pages. These are contributor accounts, not news organisations; a platform-level publisher rating would be a category error.
+- **93** sources have at least four unique headlines; **16** have ten or more. The top counts are useful for prioritising research but do not establish audience reach or journalistic importance.
+- A meaningful share of the apparent gaps are not conventional publishers: corporate/government channels, press-release wires, community platforms, aggregation services, hosted author pages and specialist trade outlets need different treatment.
+- The strongest broad discovery layer located is TOLD’s global source catalogue. Its own documentation says its label describes structural editorial position (ownership, funding, focus), **not** truth, factuality or quality. It lists 503 sources and 316 live feeds; it cannot cover every item in this manifest.
+- For deeper structural evidence, State Media Monitor, Media Ownership Monitor and Media Power Monitor are more usef
 ```
 
 ---

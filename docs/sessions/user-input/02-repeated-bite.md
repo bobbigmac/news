@@ -3,8 +3,8 @@ devin-sessionlog: user-input
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 07:52:06 UTC
-entries: 71
+last_activity: 2026-11-28 08:04:49 UTC
+entries: 77
 ---
 
 # repeated-bite
@@ -590,6 +590,48 @@ the settings sidebar should contain "Manage Categories" AND "Manage Sources" lin
 ### 2026-11-28 07:52:06 UTC
 
 we need an opengraph image specific for the measured-sources page (split in half with top 6 on the left and bottom 6 on the right, with a simple short title as intro, and a one-liner footer, like "News sources ranked by text-metrics"), AND one specific for the relationships page, which I think can be just about the page, more like simple text-content like what is in our site-wide og-image. There is an opengraph-image generator already, that can be adapted, but don''t giev the measured-sources page icons-grid as a background, just make a simpler short-form of the content on the page over white, more like the real page (essentially use the same content as the real page, just top and bottom 6 with a title and footer as described).
+
+---
+
+<!-- r:0 m:hook:8ca4bc1a-f0cf-488d-a658-4db5f226cca6 h:74b45191 -->
+### 2026-11-28 07:56:48 UTC
+
+og-measured.jpg is ugly. Style closer to the actual page, and don't flip the ordering around the centre. It's not a mirror. 
+
+---
+
+<!-- r:0 m:hook:1190e4b5-38c0-42e0-a35a-532710e4e46d h:08027dc2 -->
+### 2026-11-28 07:59:47 UTC
+
+og-relationships.jpg can get the icons grid background
+
+---
+
+<!-- r:0 m:hook:31013e4e-204a-4db2-aa58-07d97da4d394 h:b577f3fd -->
+### 2026-11-28 08:00:25 UTC
+
+you added the domain name to the og-image without me requesting it. I don't want that cos this is a test/dev site/url
+
+---
+
+<!-- r:0 m:hook:264503d1-953f-427a-af3f-c8b7c0a3ae13 h:eaa7cf10 -->
+### 2026-11-28 08:01:15 UTC
+
+you also have just enough roo to list top 7 and bottom 7, rather than 6, so do that 
+
+---
+
+<!-- r:0 m:hook:522250aa-6dae-4674-b743-481a139f3733 h:2430d7e3 -->
+### 2026-11-28 08:03:03 UTC
+
+oh wow, NPR lands down our list? why?
+
+---
+
+<!-- r:0 m:hook:454a4ed2-1129-4285-88a8-ad6d136af209 h:b64f7703 -->
+### 2026-11-28 08:04:49 UTC
+
+measured-masthead shouldn't have a border-bottom. It's worth excluding small-sample-counts from the opengraph image, as we'll reassess whn more articles available
 
 ---
 

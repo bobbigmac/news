@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { describe, expect, it } from 'vitest';
 
 const data = JSON.parse(readFileSync('src/data/measured-sources.json', 'utf8'));
@@ -105,6 +105,8 @@ describe('measured sources page wiring', () => {
     const index = readFileSync('src/index.html', 'utf8');
     const relationships = readFileSync('src/relationships.html', 'utf8');
     expect(vite).toContain('measured-sources.html');
+    expect(page).toContain('og:image" content="https://bobdavies.co.uk/news/og-measured.jpg');
+    expect(existsSync('src/og-measured.jpg')).toBe(true);
     expect(index).toContain('./measured-sources.html');
     expect(relationships).toContain('./measured-sources.html');
     expect(page).toContain('./relationships.html');

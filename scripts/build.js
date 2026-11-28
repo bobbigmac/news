@@ -188,6 +188,8 @@ writeFileSync(join(OUT_DIR, 'run-log.json'), JSON.stringify(runLog, null, 2));
 
 // Copy static assets that Vite doesn't process
 copyStatic('og-cover.jpg');
+copyStatic('og-measured.jpg');
+copyStatic('og-relationships.jpg');
 copyStatic('sw.js');
 // Favicon set (favicon.io output + the traced SVG master)
 for (const f of ['favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png', 'apple-touch-icon.png',

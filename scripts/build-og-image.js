@@ -89,7 +89,9 @@ async function measure(line) {
   return { w: maxX - minX + 1, h: maxY - minY + 1, ascent: line.size * 2 - minY };
 }
 
-export async function buildOgImage(outPath) {
+// Builds the volume-ordered favicon grid composites (no masthead) so page-specific
+// cards can reuse the same texture under their own overlays.
+export async function buildIconGrid() {
   // Order tiles by source volume in the digest so the grid is led by the
   // highest-volume outlets rather than alphabetically arbitrary ones.
   const digest = loadJson(join(CACHE_DIR, 'digest.json'), { clusters: [] });
@@ -196,6 +198,11 @@ export async function buildOgImage(outPath) {
     }
     if (ti >= fillTiles.length) ti += spread('row' + y) % 17;
   }
+  return { composites, icons, cells, quads: qi };
+}
+
+export async function buildOgImage(outPath) {
+  const { composites, icons, cells, quads } = await buildIconGrid();
 
   // Masthead: measure every line, then lay strips+text out centred as a block.
   const measured = [];
@@ -226,7 +233,7 @@ export async function buildOgImage(outPath) {
     .composite([...composites, { input: overlay, left: 0, top: 0 }])
     .jpeg({ quality: 88 })
     .toFile(outPath);
-  return { icons, cells, quads: qi };
+  return { icons, cells, quads };
 }
 
 // Standalone: node scripts/build-og-image.js [out] — manual generation, then commit the output

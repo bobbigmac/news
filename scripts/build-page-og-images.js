@@ -6,6 +6,7 @@
 // Re-run after measurements change: node scripts/build-page-og-images.js
 import sharp from 'sharp';
 import { readFileSync } from 'fs';
+import { buildIconGrid } from './build-og-image.js';
 
 const WIDTH = 1200;
 const HEIGHT = 630;
@@ -38,73 +39,86 @@ async function measure(line) {
 
 const SERIF = 'Georgia, serif';
 const SANS = 'Helvetica, Arial, sans-serif';
-const INK = '#1a1815';
-const MUTED = '#6b655c';
+// Day-theme site palette — the card should read as a crop of the real page.
+const INK = '#1a1a1a';
+const MUTED = '#6b6357';
 const RED = '#8b1a1a';
-const PAPER = '#ffffff';
+const PAPER = '#faf9f7';
+const RULE = '#d9d6d0';
+const CARD = '#ffffff';
 
-async function writeCard(outPath, parts) {
+async function writeCard(outPath, parts, icons = []) {
   const svg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}">
     <rect x="0" y="0" width="${WIDTH}" height="${HEIGHT}" fill="${PAPER}"/>
     ${parts.join('\n')}
   </svg>`);
   await sharp({ create: { width: WIDTH, height: HEIGHT, channels: 3, background: PAPER } })
-    .composite([{ input: svg, left: 0, top: 0 }])
+    .composite([{ input: svg, left: 0, top: 0 }, ...icons])
     .jpeg({ quality: 90 })
     .toFile(outPath);
 }
 
-// --- measured-sources: title intro, top six left / bottom six right, footer ---
+async function loadIcon(key) {
+  const path = `src/favicons/${key}.png`;
+  try {
+    return await sharp(path).resize(22, 22).png().toBuffer();
+  } catch {
+    return null;
+  }
+}
+
+// --- measured-sources: masthead like the real page, then card rows with
+// rank + favicon + name + score, all reading left-to-right in both columns ---
 async function buildMeasuredOg(outPath) {
   const data = JSON.parse(readFileSync('src/data/measured-sources.json', 'utf8'));
-  const ordered = [...data.sources].sort((a, b) => a.rank - b.rank);
-  const top = ordered.slice(0, 6);
-  const bottom = ordered.slice(-6);
+  // Small-sample rows are excluded — their positions are too unstable to put on a card.
+  const ordered = data.sources.filter(s => s.stableSample).sort((a, b) => a.rank - b.rank);
+  const top = ordered.slice(0, 7);
+  const bottom = ordered.slice(-7);
 
   const parts = [];
-  const title = { text: 'Measured source quality', font: SERIF, size: 64, weight: 700, spacing: 0 };
-  const titleM = await measure(title);
-  parts.push(`<text x="${WIDTH / 2}" y="${96 + titleM.ascent}" font-family="${title.font}" font-size="${title.size}" font-weight="${title.weight}" fill="${INK}" text-anchor="middle">${esc(title.text)}</text>`);
-  const sub = { text: 'Which headlines tell you something concrete — and which just want your click', font: SANS, size: 27, weight: 400, spacing: 0 };
-  const subM = await measure(sub);
-  parts.push(`<text x="${WIDTH / 2}" y="${138 + subM.ascent}" font-family="${sub.font}" font-size="${sub.size}" fill="${MUTED}" text-anchor="middle">${esc(sub.text)}</text>`);
-  parts.push(`<line x1="80" y1="196" x2="${WIDTH - 80}" y2="196" stroke="${RED}" stroke-width="2"/>`);
+  // Masthead: serif title (small-caps feel) + strapline + the 2px ink rule the
+  // page header carries.
+  parts.push(`<text x="${WIDTH / 2}" y="92" font-family="${SERIF}" font-size="54" font-weight="700" letter-spacing="1" fill="${INK}" text-anchor="middle">Measured Source Quality</text>`);
+  parts.push(`<text x="${WIDTH / 2}" y="128" font-family="${SANS}" font-size="21" fill="${MUTED}" text-anchor="middle">Which headlines tell you something concrete — and which just want your click</text>`);
+  parts.push(`<line x1="56" y1="152" x2="${WIDTH - 56}" y2="152" stroke="${INK}" stroke-width="2"/>`);
 
-  const colY0 = 236;
-  const rowH = 52;
-  const headSize = 22;
-  const rowSize = 27;
+  const colW = 520;
   const columns = [
-    { x: 90, align: 'start', head: 'STRONGEST HEADLINES', rows: top, scoreFill: INK },
-    { x: WIDTH - 90, align: 'end', head: 'WEAKEST HEADLINES', rows: bottom, scoreFill: INK },
+    { x: 56, head: 'The strongest headlines', rows: top },
+    { x: WIDTH - 56 - colW, head: 'The weakest headlines', rows: bottom },
   ];
+  const cardH = 42;
+  const gap = 7;
+  const headY = 188;
+  const cardY0 = 204;
+  const icons = [];
   for (const col of columns) {
-    const anchor = col.align === 'end' ? 'end' : 'start';
-    parts.push(`<text x="${col.x}" y="${colY0}" font-family="${SANS}" font-size="${headSize}" font-weight="700" letter-spacing="3" fill="${RED}" text-anchor="${anchor}">${col.head}</text>`);
-    let y = colY0 + 30;
-    for (const source of col.rows) {
-      y += rowH - 16;
-      const label = `#${source.rank} ${source.label}`;
-      const score = source.measuredQuality.toFixed(1);
-      if (col.align === 'start') {
-        parts.push(`<text x="${col.x}" y="${y}" font-family="${SANS}" font-size="${rowSize}" fill="${INK}" text-anchor="start">${esc(label)}</text>`);
-        parts.push(`<text x="${WIDTH / 2 - 40}" y="${y}" font-family="${SANS}" font-size="${rowSize}" font-weight="700" fill="${col.scoreFill}" text-anchor="end">${score}</text>`);
+    parts.push(`<text x="${col.x}" y="${headY}" font-family="${SERIF}" font-size="25" font-weight="700" fill="${INK}">${col.head}</text>`);
+    for (let i = 0; i < col.rows.length; i++) {
+      const source = col.rows[i];
+      const y = cardY0 + i * (cardH + gap);
+      const mid = y + cardH / 2;
+      parts.push(`<rect x="${col.x}" y="${y}" width="${colW}" height="${cardH}" rx="4" fill="${CARD}" stroke="${RULE}" stroke-width="1"/>`);
+      parts.push(`<text x="${col.x + 14}" y="${mid + 8}" font-family="${SANS}" font-size="20" font-weight="700" fill="${INK}">#${source.rank}</text>`);
+      parts.push(`<text x="${col.x + 100}" y="${mid + 7}" font-family="${SANS}" font-size="21" font-weight="600" fill="${INK}">${esc(source.label)}</text>`);
+      parts.push(`<text x="${col.x + colW - 14}" y="${mid + 8}" font-family="${SANS}" font-size="23" font-weight="700" fill="${INK}" text-anchor="end">${source.measuredQuality.toFixed(1)}</text>`);
+      const iconKey = source.iconKey || source.key;
+      const icon = await loadIcon(iconKey);
+      if (icon) {
+        icons.push({ input: icon, left: col.x + 66, top: Math.round(mid - 11) });
       } else {
-        parts.push(`<text x="${WIDTH / 2 + 40}" y="${y}" font-family="${SANS}" font-size="${rowSize}" font-weight="700" fill="${col.scoreFill}" text-anchor="start">${score}</text>`);
-        parts.push(`<text x="${col.x}" y="${y}" font-family="${SANS}" font-size="${rowSize}" fill="${INK}" text-anchor="end">${esc(label)}</text>`);
+        parts.push(`<circle cx="${col.x + 77}" cy="${mid}" r="11" fill="${RULE}"/>`);
+        parts.push(`<text x="${col.x + 77}" y="${mid + 6}" font-family="${SANS}" font-size="15" font-weight="700" fill="${MUTED}" text-anchor="middle">${esc(source.label.charAt(0).toUpperCase())}</text>`);
       }
-      y += 6;
     }
   }
-  parts.push(`<line x1="${WIDTH / 2}" y1="${colY0 - 14}" x2="${WIDTH / 2}" y2="${colY0 + 6 * rowH + 8}" stroke="#d8d4cc" stroke-width="1"/>`);
 
-  const foot = { text: `${data.sources.length} news sources ranked by text-metrics`, font: SANS, size: 26, weight: 400, spacing: 0 };
-  const footM = await measure(foot);
-  parts.push(`<line x1="80" y1="${HEIGHT - 96}" x2="${WIDTH - 80}" y2="${HEIGHT - 96}" stroke="${RED}" stroke-width="2"/>`);
-  parts.push(`<text x="${WIDTH / 2}" y="${HEIGHT - 78 + footM.ascent}" font-family="${foot.font}" font-size="${foot.size}" fill="${MUTED}" text-anchor="middle">${esc(foot.text)}</text>`);
-  parts.push(`<rect x="24" y="24" width="${WIDTH - 48}" height="${HEIGHT - 48}" fill="none" stroke="${RED}" stroke-width="3"/>`);
+  const footY = cardY0 + 7 * (cardH + gap) + 16;
+  parts.push(`<line x1="56" y1="${footY}" x2="${WIDTH - 56}" y2="${footY}" stroke="${RULE}" stroke-width="1"/>`);
+  parts.push(`<text x="${WIDTH / 2}" y="${footY + 34}" font-family="${SANS}" font-size="21" fill="${MUTED}" text-anchor="middle">${data.sources.length} news sources ranked by text-metrics</text>`);
 
-  await writeCard(outPath, parts);
+  await writeCard(outPath, parts, icons);
   return { top: top.length, bottom: bottom.length };
 }
 
@@ -136,7 +150,13 @@ async function buildRelationshipsOg(outPath) {
     parts.push(`<text x="${WIDTH / 2}" y="${baseline}" font-family="${m.font}" font-size="${m.size}" font-weight="${m.weight}" letter-spacing="${m.spacing}" fill="${m.fill}" text-anchor="middle">${esc(m.text)}</text>`);
     y += stripH + GAP;
   }
-  await writeCard(outPath, parts);
+  const overlay = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}">${parts.join('\n')}</svg>`);
+  // Same volume-ordered favicon texture as the site-wide cover, dark strips over it.
+  const { composites } = await buildIconGrid();
+  await sharp({ create: { width: WIDTH, height: HEIGHT, channels: 3, background: '#ffffff' } })
+    .composite([...composites, { input: overlay, left: 0, top: 0 }])
+    .jpeg({ quality: 88 })
+    .toFile(outPath);
   return { lines: lines.length };
 }
 

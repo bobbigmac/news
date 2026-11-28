@@ -30,7 +30,6 @@
   gap: 1rem;
   align-items: start;
   padding: 1.5rem min(4vw, 3rem) 1rem;
-  border-bottom: 2px solid var(--ink);
 }
 
 .source-search-label {

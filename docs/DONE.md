@@ -1,5 +1,13 @@
 # DONE
 
+## Page-specific OpenGraph images (2026-11-28)
+
+- `scripts/build-page-og-images.js` generates two committed card images with the same sharp+SVG technique as the site-wide cover, re-runnable when measurements change.
+- `src/og-measured.jpg`: styled as a crop of the real measured-sources page — paper background, serif masthead with the 2px ink rule, card rows with rank + favicon + name + score reading left-to-right in both columns (no mirroring). Live top seven sources on the left, bottom seven on the right; footer "145 news sources ranked by text-metrics" (no domain — this is a test/dev site). Regenerate after future measurement updates with `node scripts/build-page-og-images.js`.
+- `src/og-relationships.jpg`: the site-wide cover's volume-ordered favicon texture (icon-grid construction extracted from `build-og-image.js` into a shared `buildIconGrid()` — og-cover output verified byte-identical after the refactor) with the same dark type strips over it — "Source Relationships / WHO OWNS AND FUNDS EACH OUTLET / The money and structure behind the news you read."
+- Both pages now carry full og:type/title/description/url/image meta tags pointing at `bobdavies.co.uk/news/` card URLs; `scripts/build.js` copies both images into `dist`.
+- Verification: images visually inspected after fixing a title/subtitle baseline collision in the first render; dist copies byte-identical; `npm test` 15/15 files, 109/109 tests including new og-wiring assertions on both pages.
+
 ## Measured-source interest filters + manage-panel links (2026-11-28)
 
 - Fox absence explained, not a bug: Fox News and the Fox local affiliates have only 1-7 pooled headlines each because no Fox feed is configured in ingestion (`RSS_FEEDS` covers BBC/gaming/urgent/techmeme/sky/techpress/science). The few Fox items arrive via aggregators. The Fox feed itself (`moxie.foxnews.com/google-publisher/latest.xml`) is live, so measuring Fox is an ingestion decision, not a measurement limitation.
