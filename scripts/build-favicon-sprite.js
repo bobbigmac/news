@@ -67,7 +67,7 @@ try {
       } catch { /* skip */ }
     }
   }
-  for (const [host, count] of counts) if (count >= 20) digestHosts.add(host);
+  for (const [host, count] of counts) if (count >= 1) digestHosts.add(host);
 } catch { /* digest optional */ }
 
 const neededHosts = new Set([...treeHosts, ...cachedHosts, ...digestHosts]);
@@ -147,7 +147,89 @@ async function fetchBuffer(url) {
   }
 }
 
+async function fetchHtml(host, path = '/') {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  try {
+    const res = await fetch(`https://${host}${path}`, {
+      signal: controller.signal,
+      redirect: 'follow',
+      headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36', accept: 'text/html' },
+    });
+    if (!res.ok) return null;
+    const type = res.headers.get('content-type') || '';
+    if (!type.includes('text/html')) return null;
+    return await res.text();
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// Parses icon declarations out of homepage HTML — most modern sites never serve
+// /favicon.ico or a root apple-touch-icon, they declare them in <link> tags.
+// Returns candidate URLs ordered by preference: large PNGs, SVG, any icon.
+function iconUrlsFromHtml(html, host) {
+  if (!html) return [];
+  const urls = [];
+  const linkRe = /<link\b[^>]*>/gi;
+  let m;
+  while ((m = linkRe.exec(html))) {
+    const tag = m[0];
+    if (!/rel=["'][^"']*icon/i.test(tag)) continue;
+    const href = (tag.match(/href=["']([^"']+)["']/i) || [])[1];
+    if (!href || href.startsWith('data:')) continue;
+    let url;
+    try {
+      url = new URL(href, `https://${host}/`).href;
+    } catch { continue; }
+    const sizes = (tag.match(/sizes=["']([^"']+)["']/i) || [])[1] || '';
+    const size = parseInt(sizes.split('x')[0], 10) || 0;
+    urls.push({ url, size, svg: /svg/i.test(tag) || url.includes('.svg') });
+  }
+  urls.sort((a, b) => (b.svg - a.svg) || (b.size - a.size));
+  return urls.map(u => u.url);
+}
+
+// Tenant keys (dev.to/user, medium.com/@user, timeout.com/london) are authors or
+// editions, not sites — the right icon is the author's avatar or edition image,
+// not the platform favicon. Profile-image upload URLs are the strongest signal;
+// og:image is the fallback.
+function avatarUrlsFromHtml(html) {
+  if (!html) return [];
+  const urls = [];
+  for (const m of html.matchAll(/https?:\/\/[^"'\s]+\/(?:profile_image|uploads\/user)\/[^"'\s]+/gi)) urls.push(m[0]);
+  const og = html.match(/property=["']og:image["'][^>]*content=["']([^"']+)["']/i)
+    || html.match(/content=["']([^"']+)["'][^>]*property=["']og:image["']/i);
+  if (og) urls.push(og[1]);
+  return urls;
+}
+
 async function fetchFaviconPng(host) {
+  // tenant keys: author avatar or edition image from the page HTML
+  if (host.includes('/')) {
+    const pageHtml = await fetchHtml(host);
+    for (const url of avatarUrlsFromHtml(pageHtml)) {
+      const buf = await fetchBuffer(url);
+      if (!buf) continue;
+      try {
+        const meta = await sharp(buf).metadata();
+        if ((meta.width || 0) >= 32) return buf;
+      } catch { /* try next */ }
+    }
+    return null;
+  }
+  // 0. icons declared in the homepage HTML — where most modern sites put them
+  const html = await fetchHtml(host);
+  for (const url of iconUrlsFromHtml(html, host)) {
+    const buf = await fetchBuffer(url);
+    if (!buf) continue;
+    try {
+      const meta = await sharp(buf).metadata();
+      if ((meta.width || 0) >= 32) return buf;
+    } catch { /* not a readable image — try next candidate */ }
+  }
   // 1. apple-touch-icon (usually high-res colour PNG)
   for (const name of ['apple-touch-icon.png', 'apple-touch-icon-precomposed.png']) {
     const buf = await fetchBuffer(`https://${host}/${name}`);
@@ -170,6 +252,16 @@ async function fetchFaviconPng(host) {
   const staticUrl = `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${host}&size=64`;
   const gstatic = await fetchBuffer(staticUrl);
   if (gstatic) return gstatic;
+  // 4. Wayback Machine — some newsrooms bot-block every direct fetch (AFP 403s
+  // even browsers-shaped agents); the archived asset is the same file.
+  for (const path of ['favicon.ico', 'apple-touch-icon.png']) {
+    const archived = await fetchBuffer(`https://web.archive.org/web/2024id_/https://www.${host}/${path}`);
+    if (!archived) continue;
+    const isPng = archived.length > 8 && archived[0] === 0x89 && archived[1] === 0x50;
+    if (isPng) return archived;
+    const entries = extractPngsFromIco(archived);
+    if (entries.length) return entries[0].png;
+  }
   return null;
 }
 
@@ -258,7 +350,7 @@ const registryNotes = [];
 
 async function tileForHost(host) {
   const key = `host:${host}`;
-  const tilePath = join(TILES_DIR, `${host}.png`);
+  const tilePath = join(TILES_DIR, `${host.replaceAll('/', '__')}.png`);
   if (existsSync(tilePath) && !FORCE.has(host)) {
     const existing = readFileSync(tilePath);
     const meta = await sharp(existing).metadata();

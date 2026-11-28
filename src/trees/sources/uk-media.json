@@ -13,8 +13,7 @@
           "label": "Daily Mail",
           "icon": "dailymail.com",
           "sources": [
-            "dailymail.com",
-            "mailonline.com"
+            "dailymail.com"
           ]
         },
         {
@@ -89,7 +88,6 @@
             "chroniclelive.co.uk",
             "birminghammail.co.uk",
             "leicestermercury.co.uk",
-            "bristollive.co.uk",
             "bristolpost.co.uk",
             "cornwalllive.com",
             "derbyshirelive.co.uk",
@@ -104,7 +102,7 @@
             "plymouthherald.co.uk",
             "somersetlive.co.uk",
             "stokesentinel.co.uk",
-            "surrey.live",
+            "getsurrey.co.uk",
             "sussexlive.co.uk",
             "cambridge-news.co.uk",
             "cheshire-live.co.uk",

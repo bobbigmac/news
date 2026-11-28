@@ -280,8 +280,9 @@
    "sources": [
     "globaltimes.cn",
     "chinadaily.com.cn",
-    "peopledaily.com",
-    "shanghaidaily.com",
+    "en.people.cn",
+    "shine.cn",
+    "citynewsservice.cn",
     "sixthtone.com",
     "cgtn.com",
     "news.cgtn.com"
@@ -462,7 +463,6 @@
     "thelocal.se",
     "thelocal.dk",
     "thelocal.at",
-    "anadoluagency.com",
     "irishtimes.com",
     "themoscowtimes.com",
     "meduza.io",

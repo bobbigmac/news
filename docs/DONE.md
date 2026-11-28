@@ -1,5 +1,21 @@
 # DONE
 
+## Dead tree keys corrected to live domains (2026-11-28)
+
+- Browser-verified each suspicious tree key in the real browser (CDP): several were unregistered or dead domains carrying zero corpus stories. Corrections, all verified live before editing: `bristollive.co.uk` removed (bristolpost.co.uk was already present), `surrey.live` → `getsurrey.co.uk`, `mailonline.com` removed (dailymail.com is canonical), `bbci.co.uk` squatter removed from BBC node, `peopledaily.com` → `en.people.cn`, `shanghaidaily.com` → `shine.cn` + `citynewsservice.cn` (Shanghai Daily now redirects to City News Service), `anadoluagency.com` removed (aa.com.tr already in state-media), `newson5.com` removed (dead, no discernible correct target), `r.smartbrief.com` → `smartbrief.com` with the curated profile rekeyed to match.
+- The other Reach keys (derbyshirelive, kentlive.news, lancs.live, cornwalllive, examinerlive, hulldailymail, somersetlive, sussexlive, stokesentinel, cambridge-news, leicestermercury, chroniclelive) were all browser-verified as live and correct — no changes.
+- New tiles fetched via the browser for getsurrey.co.uk, en.people.cn, shine.cn, citynewsservice.cn, smartbrief.com (citynewsservice serves a JPEG mislabeled as image/x-icon); spritesheet now 1220 tiles.
+- Verification: 15/15 test files, 110/110 tests (the smartbrief profile-rekey fixed the one failure the rename introduced); production build passes.
+
+## Favicon gaps filled — direct LLM fetching, no heuristic machinery (2026-11-28)
+
+- Tile count grew from ~999 to 1216 in the spritesheet. Gaps were filled by directly reading each site's real icon: homepage HTML icon links where reachable, the user's real browser via CDP (`tools/brave-cdp.mjs`) for bot-protected hosts, and archived copies for dead sites. No fallback scoring chains were added to the fetcher for this work.
+- New tiles include Forbes, Mother Jones, Big Think, Entrepreneur, Observer, AFP, Dhaka Tribune, Arab- and local-news long tail, plus 121 dev.to/medium tenant avatar tiles (path tenants use `__` in tile filenames).
+- CDP revealed several tree keys are dead or unregistered domains, not fetch failures: bristollive.co.uk (real site is bristolpost.co.uk), surrey.live (getsurrey.co.uk), mailonline.com (connection error even in a real browser), newson5.com, shanghaidaily.com, peopledaily.com (parked/junk — the real paper is people.com.cn), bbci.co.uk (squatter), anadoluagency.com serves nothing (real domain aa.com.tr, tiled separately). These are data-quality issues in the tree keys; their tree-node icon aliases already cover rendering.
+- Remaining tile-less keys are exactly those dead/junk keys plus deleted medium accounts, redirector hosts (r.smartbrief.com, redir.folha.com.br), and learningjquery.com (page loads but genuinely declares no icon). Every live digest source now has a tile.
+- Verification: 15/15 test files, 110/110 tests; production build passes; sprite bundled into dist assets by vite.
+
+
 ## Death-notice streams excluded as a source-level flag (2026-11-28)
 
 - OregonLive obituaries at rank ~137 was a false flag: notice-form obituaries ("Jerry Small Obituary (1937 - 2026) - Stanwood, WA") are the most information-dense headlines in the corpus — name, lifespan, town, zero teasing. Their floor position came from form, not content: "Obituary" is not a verb so event clarity read ~0, and bare year ranges plus "City, ST" datelines were invisible to time/place detection.

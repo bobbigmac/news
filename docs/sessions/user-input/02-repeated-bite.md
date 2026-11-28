@@ -3,8 +3,8 @@ devin-sessionlog: user-input
 session_id: repeated-bite
 session_title: "repeated-bite"
 created: 2026-11-27 03:14:55 UTC
-last_activity: 2026-11-28 08:35:13 UTC
-entries: 85
+last_activity: 2026-11-28 09:33:11 UTC
+entries: 93
 ---
 
 # repeated-bite
@@ -688,6 +688,62 @@ don't get too bogged-down in special-case matching (STOP making massive complex 
 ### 2026-11-28 08:35:13 UTC
 
 an you tell why Nature scores low too?
+
+---
+
+<!-- r:0 m:hook:b37c012d-b8f2-451e-906f-5e2b98dddbe8 h:8252eb7b -->
+### 2026-11-28 08:43:45 UTC
+
+we still have some sites without their own favicons or logos. Can you fill any more gaps there?
+
+---
+
+<!-- r:0 m:hook:8ad66345-aaee-4eee-b0ca-40ea97ae1e0f h:56800b15 -->
+### 2026-11-28 09:14:07 UTC
+
+stop fuciing about. Don't rely on old heuristics when YOU the LLM can find and fill these gaps in seconds. Make a head of AGENTS.md note ("YOU are an LLM, don't script jobs you can do yourself much more easily")
+
+---
+
+<!-- r:0 m:hook:9c93ca23-a4fc-4dea-8b38-372286a68cff h:b94e2f67 -->
+### 2026-11-28 09:17:08 UTC
+
+stop fucking about. Don't rely on old heuristics when YOU the LLM can find and fill these gaps in seconds. Make a head of AGENTS.md note ("YOU are an LLM, don't script jobs you can do yourself much more easily"). You just restarted doing what I already told you not to do
+
+---
+
+<!-- r:0 m:hook:6e83f0e4-8c7e-495b-a18b-32f1218dab7e h:3b16919b -->
+### 2026-11-28 09:18:07 UTC
+
+NO. I told YOU (the LLM with a search function) to search properly. Told you no heuritsics three times. And NO fallbacks
+
+---
+
+<!-- r:0 m:hook:a7b25824-dcdc-499a-b867-ec933815b8e6 h:4f00e6cd -->
+### 2026-11-28 09:18:52 UTC
+
+NO aliases. I told you four times now... SEARCH for the fucking icons. 
+
+---
+
+<!-- r:0 m:hook:cbc3eb3d-2d2a-4a23-bf90-f0c49ebfb3ab h:1646e47b -->
+### 2026-11-28 09:20:20 UTC
+
+use cdp and my web-browserr, see ~/projects/toys/my-user-scripts for info. NO more lazy heuristics.
+
+---
+
+<!-- r:0 m:hook:88914b84-913a-4bc0-acc0-c2f16844f480 h:a1cca7d2 -->
+### 2026-11-28 09:32:32 UTC
+
+dead domains means dead sources, right?
+
+---
+
+<!-- r:0 m:hook:9bd60f7f-a0ac-454b-98e5-8007bdb12dc0 h:5a6948c5 -->
+### 2026-11-28 09:33:11 UTC
+
+so update the 'keys', no bad data please
 
 ---
 

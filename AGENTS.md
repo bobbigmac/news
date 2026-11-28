@@ -1,5 +1,16 @@
 # Agent Guidelines
 
+## You are an LLM — do the work yourself
+
+Do not script jobs you can do yourself more easily. Before writing a heuristic
+or detection pipeline, evaluate whether you can simply read the data and make
+the judgement directly: you can read headlines and know what language they are,
+what genre they belong to, whether a favicon is right, or which feed a story
+came from. Heuristics are for site-finding and metrics/analysis at scale — not
+for one-off classification that a careful read settles in seconds. Prefer
+curated/manual flags driven by your own reading over clever matching machinery.
+
+
 ## Dev-time analysis tasks
 
 - Re-runnable analysis/task configuration lives in `docs/tasks/*.task.json`. Edit the config file rather than maintaining long CLI parameter lists.

@@ -4592,16 +4592,6 @@
    }
   ]
  },
- "r.smartbrief.com": {
-  "kind": "Professional-news curation and newsletter service",
-  "properties": [
-   "Future plc subsidiary, 200+ niche newsletters with trade-association partnerships",
-   "editors curate from other outlets plus selected original content"
-  ],
-  "watch": [
-   "Attribute items to the original publisher — this is a discovery/filtering layer, not the originating newsroom"
-  ]
- },
  "mining.com": {
   "kind": "Mining and metals news and opinion site",
   "properties": [
@@ -5983,6 +5973,16 @@
   "kind": "Individual author newsletter on Substack",
   "watch": [
    "Bylined creator output hosted by a platform — assess the author’s expertise, citations and commercial interests, not a newsroom rating"
+  ]
+ },
+ "smartbrief.com": {
+  "kind": "Professional-news curation and newsletter service",
+  "properties": [
+   "Future plc subsidiary, 200+ niche newsletters with trade-association partnerships",
+   "editors curate from other outlets plus selected original content"
+  ],
+  "watch": [
+   "Attribute items to the original publisher — this is a discovery/filtering layer, not the originating newsroom"
   ]
  }
 }
